@@ -15,6 +15,47 @@ namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public class FhirTypeMappings
 {
+    public static readonly List<string> CanonicalTargets = [
+        "ActivityDefinition",
+        "ActorDefinition",
+        "CapabilityStatement",
+        "ChargeItemDefinition",
+        "Citation",
+        "CodeSystem",
+        "CompartmentDefinition",
+        "ConceptMap",
+        "ConditionDefinition",
+        "EffectEvidenceSynthesis",
+        "EventDefinition",
+        "Evidence",
+        "EvidenceReport",
+        "EvidenceVariable",
+        "ExampleScenario",
+        "GraphDefinition",
+        "ImplementationGuide",
+        "Library",
+        "Measure",
+        "MessageDefinition",
+        "NamingSystem",
+        "OperationDefinition",
+        "PlanDefinition",
+        "Questionnaire",
+        "Requirements",
+        "ResearchDefinition",
+        "ResearchElementDefinition",
+        "RiskEvidenceSynthesis",
+        "SearchParameter",
+        "SpecimenDefinition",
+        "StructureDefinition",
+        "StructureMap",
+        "SubscriptionTopic",
+        "TerminologyCapabilities",
+        "TestPlan",
+        "TestScript",
+        "ValueSet",
+        ];
+
+
     /// <summary>
     /// Represents a mapping between source and target types for code generation.
     /// </summary>

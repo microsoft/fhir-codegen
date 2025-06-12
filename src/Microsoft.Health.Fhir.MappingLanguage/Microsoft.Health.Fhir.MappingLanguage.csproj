@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
-    <PackageReference Include="Hl7.Fhir.R5" Version="5.11.6" />
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.11.7" />
     <PackageReference Include="brianpos.Fhir.Base.FhirPath.Validator" Version="5.11.4-rc1" />
   </ItemGroup>
 
@@ -16,7 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Text.Json" Version="9.0.4" />
+    <PackageReference Include="System.Text.Json" Version="9.0.6" />
   </ItemGroup>
 
   <ItemGroup>

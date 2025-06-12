@@ -149,10 +149,43 @@ public class ConfigXVer : ConfigRoot
         },
     };
 
+    [ConfigOption(
+        ArgName = "--xver-generate-npms",
+        EnvName = "Xver_Generate_Npms",
+        ArgArity = "0..1",
+        Description = "Set to generate NPMs for XVer artifacts.")]
+    public bool XverGenerateNpms { get; set; } = true;
 
+    private static ConfigurationOption XverGenerateNpmsParameter => new()
+    {
+        Name = "Xver_Generate_Npms",
+        EnvVarName = "Xver_Generate_Npms",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--xver-generate-npms", "Set to generate NPMs for XVer artifacts.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
 
+    [ConfigOption(
+        ArgName = "--xver-generate-snapshots",
+        EnvName = "Xver_Generate_Snapshots",
+        ArgArity = "0..1",
+        Description = "Set to generate snapshots for XVer artifacts.")]
+    public bool XverGenerateSnapshots { get; set; } = false;
 
-
+    private static ConfigurationOption XverGenerateSnapshotsParameter => new()
+    {
+        Name = "Xver_Generate_Snapshots",
+        EnvVarName = "Xver_Generate_Snapshots",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--xver-generate-snapshots", "Set to generate snapshots for XVer artifacts.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
 
     [ConfigOption(
         ArgName = "--no-output",
@@ -219,6 +252,8 @@ public class ConfigXVer : ConfigRoot
         CrossVersionSourceDbParameter,
         ComparisonPairFilterKeysParameter,
         XverArtifactVersionParameter,
+        XverGenerateNpmsParameter,
+        XverGenerateSnapshotsParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
@@ -259,6 +294,12 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Xver_Artifact_Version":
                     XverArtifactVersion = GetOpt(parseResult, opt, XverArtifactVersion);
+                    break;
+                case "Xver_Generate_Npms":
+                    XverGenerateNpms = GetOpt(parseResult, opt, XverGenerateNpms);
+                    break;
+                case "Xver_Generate_Snapshots":
+                    XverGenerateSnapshots = GetOpt(parseResult, opt, XverGenerateSnapshots);
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt, NoOutput);

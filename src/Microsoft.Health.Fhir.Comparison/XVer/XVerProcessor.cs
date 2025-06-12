@@ -364,22 +364,32 @@ public class XVerProcessor
         /// Gets the package index.
         /// </summary>
         public required int PackageIndex { get; init; }
+
         /// <summary>
         /// Gets the FHIR package.
         /// </summary>
         public required DbFhirPackage Package { get; init; }
+
         /// <summary>
         /// Gets the set of basic element paths.
         /// </summary>
         public HashSet<string> BasicElements { get; init; } = [];
+
         /// <summary>
         /// Gets the set of allowed extension types.
         /// </summary>
         public HashSet<string> AllowedExtensionTypes { get; init; } = [];
+
+        /// <summary>
+        /// Gets the set of allowed canonical target types.
+        /// </summary>
+        public HashSet<string> AllowedCanonicalTypes { get; init; } = [];
+
         /// <summary>
         /// Gets or sets the core definition collection.
         /// </summary>
         public DefinitionCollection? CoreDC { get; set; } = null;
+
         /// <summary>
         /// Gets or sets the snapshot generator.
         /// </summary>
@@ -631,6 +641,9 @@ public class XVerProcessor
             DefinitionCollection coreDc = loader.LoadPackages([packageDirective]).Result
                 ?? throw new Exception($"Could not load package: {packageDirective}");
 
+            // add required extra extensions to our defintions for use later in snapshot generation
+            addRequiredExtensionDefinitions(coreDc);
+
             PackageXverSupport packageSupport = new()
             {
                 PackageIndex = index,
@@ -704,6 +717,16 @@ public class XVerProcessor
                     }
                 }
             }
+
+            // create the intersection of possible canonical types and resources in this package
+            foreach (string canonicalType in FhirTypeMappings.CanonicalTargets)
+            {
+                if (coreDc.ResourcesByName.ContainsKey(canonicalType))
+                {
+                    packageSupport.AllowedCanonicalTypes.Add(canonicalType);
+                    packageSupport.AllowedCanonicalTypes.Add("http://hl7.org/fhir/StructureDefinition/" + canonicalType);
+                }
+            }
         }
 
         // iterate over the list of packages
@@ -727,9 +750,38 @@ public class XVerProcessor
             writeXverValueSets(packages, focusPackageIndex, xverValueSets, fhirDir);
             //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
 
+            Dictionary<string, DbGraphSd> graphsForStructures = [];
+
+            // iterate over the structures to setup baseline necessary mappings
+            foreach (DbStructureDefinition sd in DbStructureDefinition.SelectList(_db!.DbConnection, FhirPackageKey: packages[focusPackageIndex].Key))
+            {
+                if (!xverOutcomes.ContainsKey((focusPackageIndex, sd.Name)))
+                {
+                    xverOutcomes[(focusPackageIndex, sd.Name)] = [];
+                    for (int i = 0; i < packageSupports.Count; i++)
+                    {
+                        xverOutcomes[(focusPackageIndex, sd.Name)].Add([]);
+                    }
+                }
+
+                // build a graph for this structure
+                DbGraphSd sdGraph = new()
+                {
+                    DB = _db!.DbConnection,
+                    Packages = packageSupports.Select(ps => ps.Package).ToList(),
+                    KeySd = sd,
+                };
+
+                // ensure there is an initial structure projection
+                sdGraph.BuildProjection();
+
+                // add to our database
+                graphsForStructures.Add(sd.Id, sdGraph);
+            }
+
             Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions = [];
-            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, FhirArtifactClassEnum.ComplexType);
-            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, FhirArtifactClassEnum.Resource);
+            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, graphsForStructures, FhirArtifactClassEnum.ComplexType);
+            buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, graphsForStructures, FhirArtifactClassEnum.Resource);
 
             writeXverStructures(packageSupports, focusPackageIndex, xverExtensions, fhirDir);
 
@@ -744,36 +796,39 @@ public class XVerProcessor
         writeXverOutcomes(packageSupports, xverOutcomes, outputDir);
 
         // make the make package tgz files
-        foreach (DbFhirPackage focusPackage in packages)
+        if (_config.XverGenerateNpms)
         {
-            // TODO: until verified, only write R4 and later packages
-            if ((focusPackage.ShortName == "R2") ||
-                (focusPackage.ShortName == "R3"))
+            foreach (DbFhirPackage focusPackage in packages)
             {
-                continue;
-            }
-
-            string validationPackageId = $"hl7.fhir.uv.xver.{focusPackage.ShortName.ToLowerInvariant()}";
-
-            // create the validation package
-            createTgzFromDirectory(
-                Path.Combine(fhirDir, focusPackage.ShortName),
-                Path.Combine(fhirDir, $"{validationPackageId}.{_crossDefinitionVersion}.tgz"));
-
-            // look for all combination packages, using the focus as the target
-            foreach (DbFhirPackage sourcePackage in packages)
-            {
-                if (sourcePackage.Key == focusPackage.Key)
+                // TODO: until verified, only write R4 and later packages
+                if ((focusPackage.ShortName == "R2") ||
+                    (focusPackage.ShortName == "R3"))
                 {
                     continue;
                 }
 
-                string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{focusPackage.ShortName.ToLowerInvariant()}";
+                string validationPackageId = $"hl7.fhir.uv.xver.{focusPackage.ShortName.ToLowerInvariant()}";
 
                 // create the validation package
                 createTgzFromDirectory(
-                    Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{focusPackage.ShortName}"),
-                    Path.Combine(fhirDir, $"{packageId}.{_crossDefinitionVersion}.tgz"));
+                    Path.Combine(fhirDir, focusPackage.ShortName),
+                    Path.Combine(fhirDir, $"{validationPackageId}.{_crossDefinitionVersion}.tgz"));
+
+                // look for all combination packages, using the focus as the target
+                foreach (DbFhirPackage sourcePackage in packages)
+                {
+                    if (sourcePackage.Key == focusPackage.Key)
+                    {
+                        continue;
+                    }
+
+                    string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{focusPackage.ShortName.ToLowerInvariant()}";
+
+                    // create the validation package
+                    createTgzFromDirectory(
+                        Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{focusPackage.ShortName}"),
+                        Path.Combine(fhirDir, $"{packageId}.{_crossDefinitionVersion}.tgz"));
+                }
             }
         }
     }
@@ -800,7 +855,7 @@ public class XVerProcessor
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to create tgz {outputTgzFile} from source {sourceDirectory}");
+            Console.WriteLine($"Failed to create tgz {outputTgzFile} from source {sourceDirectory} ({ex.Message})");
         }
     }
 
@@ -2134,40 +2189,38 @@ public class XVerProcessor
                 continue;
             }
 
-            try
+            // there are unfixable errors in the snapshot generator right now, so we are adding a step to generate snapshots via IG publisher by default
+            if (_config.XverGenerateSnapshots == true)
             {
-                if (sd.Snapshot == null)
+                try
                 {
-                    // create a new snapshot
-                    sd.Snapshot = new StructureDefinition.SnapshotComponent();
-                }
-
-                // a valid snapshot will always have at least the root element
-                if (sd.Snapshot.Element.Count == 0)
-                {
-                    //sd.Snapshot.Element = packageSupports[targetPackageId].SnapshotGenerator?.GenerateAsync(sd).Result ?? [];
-                    sd.Snapshot.Element = generatorsById[targetPackageId]?.FirstOrDefault()?.GenerateAsync(sd).Result ?? [];
-                }
-
-                // check for two copies of 'Extension.url' - current issue with the snapshot generator
-                List<ElementDefinition> urlElements = sd.Snapshot.Element.Where(e => e.Path == "Extension.url").ToList();
-
-                if (urlElements.Count > 1)
-                {
-                    // remove all but the first
-                    for (int i = 1; i < urlElements.Count; i++)
+                    if (sd.Snapshot == null)
                     {
-                        sd.Snapshot.Element.Remove(urlElements[i]);
+                        // create a new snapshot
+                        sd.Snapshot = new StructureDefinition.SnapshotComponent();
                     }
-                }
 
-                //if ((sd.FhirVersion == FHIRVersion.N4_0_1) &&
-                //    (sd.Id == "ext-R5-Device.category"))
-                //{
-                //    Console.Write("");
-                //}
+                    // a valid snapshot will always have at least the root element
+                    if (sd.Snapshot.Element.Count == 0)
+                    {
+                        //sd.Snapshot.Element = packageSupports[targetPackageId].SnapshotGenerator?.GenerateAsync(sd).Result ?? [];
+                        sd.Snapshot.Element = generatorsById[targetPackageId]?.FirstOrDefault()?.GenerateAsync(sd).Result ?? [];
+                    }
+
+                    //// check for two copies of 'Extension.url' - current issue with the snapshot generator
+                    //List<ElementDefinition> urlElements = sd.Snapshot.Element.Where(e => e.Path == "Extension.url").ToList();
+
+                    //if (urlElements.Count > 1)
+                    //{
+                    //    // remove all but the first
+                    //    for (int i = 1; i < urlElements.Count; i++)
+                    //    {
+                    //        sd.Snapshot.Element.Remove(urlElements[i]);
+                    //    }
+                    //}
+                }
+                catch (Exception) { }
             }
-            catch (Exception) { }
 
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
@@ -2188,18 +2241,27 @@ public class XVerProcessor
             string filename = $"StructureDefinition-{sd.Id}.json";
 
             string path = Path.Combine(dir, filename);
-            //File.WriteAllText(path, sd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
             File.WriteAllText(path, jsonSerializer.SerializeToString(sd));
         }
     }
 
 
+    /// <summary>
+    /// Builds cross-version FHIR StructureDefinitions (extensions) and tracks mapping outcomes between source and target packages.
+    /// </summary>
+    /// <param name="packageSupports">List of package support objects representing each FHIR package.</param>
+    /// <param name="sourcePackageIndex">Index of the source package in the packageSupports list.</param>
+    /// <param name="xverValueSets">Dictionary of cross-version ValueSets, keyed by (source ValueSet key, target package id).</param>
+    /// <param name="xverExtensions">Dictionary of cross-version StructureDefinitions (extensions), keyed by (source element key, target package id).</param>
+    /// <param name="xverOutcomes">Dictionary tracking mapping outcomes for each structure and element, keyed by (source package index, structure name).</param>
+    /// <param name="artifactClass">The artifact class (e.g., Resource, ComplexType) to process.</param>
     private void buildXverStructures(
         List<PackageXverSupport> packageSupports,
         int sourcePackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
+        Dictionary<string, DbGraphSd> graphsForStructures,
         FhirArtifactClassEnum artifactClass)
     {
         DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
@@ -2216,22 +2278,7 @@ public class XVerProcessor
         // iterate over the structures
         foreach (DbStructureDefinition sd in structures)
         {
-            if (!xverOutcomes.ContainsKey((sourcePackageIndex, sd.Name)))
-            {
-                xverOutcomes[(sourcePackageIndex, sd.Name)] = [];
-                for (int i = 0; i < packageSupports.Count; i++)
-                {
-                    xverOutcomes[(sourcePackageIndex, sd.Name)].Add([]);
-                }
-            }
-
-            // build a graph for this structure
-            DbGraphSd sdGraph = new()
-            {
-                DB = _db!.DbConnection,
-                Packages = packageSupports.Select(ps => ps.Package).ToList(),
-                KeySd = sd,
-            };
+            DbGraphSd sdGraph = graphsForStructures[sd.Id];
 
             // build a dictionary of all element projections, by element key
             Dictionary<int, List<DbGraphSd.DbElementRow>> elementProjectionDict = [];
@@ -2391,49 +2438,6 @@ public class XVerProcessor
                                     ReplacementExtensionUrl = null,
                                 });
                             }
-
-                            //foreach (DbGraphSd.DbElementCell? cell in sourceCells)
-                            //{
-                            //    // do not need to generate if equivalent or source is NARROWER
-                            //    if ((cell?.RightComparison?.Relationship == CMR.Equivalent) ||
-                            //        (cell?.RightComparison?.Relationship == CMR.SourceIsNarrowerThanTarget))
-                            //    {
-                            //        extensionNeeded = false;
-
-                            //        if (cell!.RightCell?.Element.Id == element.Id)
-                            //        {
-                            //            xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                            //            {
-                            //                SourcePackageKey = sourcePackage.Key,
-                            //                SourceStructureName = sd.Name,
-                            //                SourceElementId = element.Id,
-                            //                SourceElementFieldOrder = element.ResourceFieldOrder,
-                            //                TargetPackageKey = targetPackage.Key,
-                            //                OutcomeCode = XverOutcomeCodes.UseElementSameName,
-                            //                TargetElementId = cell!.RightCell!.Element.Id,
-                            //                TargetExtensionUrl = null,
-                            //                ReplacementExtensionUrl = null,
-                            //            });
-                            //        }
-                            //        else
-                            //        {
-                            //            xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                            //            {
-                            //                SourcePackageKey = sourcePackage.Key,
-                            //                SourceStructureName = sd.Name,
-                            //                SourceElementId = element.Id,
-                            //                SourceElementFieldOrder = element.ResourceFieldOrder,
-                            //                TargetPackageKey = targetPackage.Key,
-                            //                OutcomeCode = XverOutcomeCodes.UseElementRenamed,
-                            //                TargetElementId = cell!.RightCell!.Element.Id,
-                            //                TargetExtensionUrl = null,
-                            //                ReplacementExtensionUrl = null,
-                            //            });
-                            //        }
-
-                            //        break;
-                            //    }
-                            //}
                         }
                     }
 
@@ -2466,6 +2470,7 @@ public class XVerProcessor
                         targetPackageIndex,
                         packageSupports[targetPackageIndex],
                         sd,
+                        graphsForStructures,
                         element,
                         comparisons,
                         elementProjectionDict,
@@ -2680,6 +2685,7 @@ public class XVerProcessor
                         targetPackageIndex,
                         packageSupports[targetPackageIndex],
                         sd,
+                        graphsForStructures,
                         element,
                         comparisons,
                         elementProjectionDict,
@@ -3163,6 +3169,7 @@ public class XVerProcessor
         int targetIndex,
         PackageXverSupport targetPackageSupport,
         DbStructureDefinition sd,
+        Dictionary<string, DbGraphSd> graphsForStructures,
         DbElement element,
         List<DbElementComparison> relevantComparisons,
         Dictionary<int, List<DbGraphSd.DbElementRow>> elementProjectionDict,
@@ -3255,24 +3262,25 @@ public class XVerProcessor
             sourcePackageSupport,
             targetPackageSupport,
             sd,
+            graphsForStructures,
             element,
             relevantComparisons,
             xverValueSets);
 
-        extSd.Differential.Element.Add(new()
-        {
-            ElementId = "Extension.url",
-            Path = "Extension.url",
-            Min = 1,
-            Max = "1",
-            Base = new()
-            {
-                Path = "Extension.url",
-                Min = 1,
-                Max = "1",
-            },
-            Fixed = new FhirUri(extSd.Url)
-        });
+        //extSd.Differential.Element.Add(new()
+        //{
+        //    ElementId = "Extension.url",
+        //    Path = "Extension.url",
+        //    Min = 1,
+        //    Max = "1",
+        //    Base = new()
+        //    {
+        //        Path = "Extension.url",
+        //        Min = 1,
+        //        Max = "1",
+        //    },
+        //    Fixed = new FhirUri(extSd.Url)
+        //});
 
         return extSd;
     }
@@ -3349,6 +3357,7 @@ public class XVerProcessor
         PackageXverSupport sourcePackageSupport,
         PackageXverSupport targetPackageSupport,
         DbStructureDefinition sd,
+        Dictionary<string, DbGraphSd> graphsForStructures,
         DbElement element,
         List<DbElementComparison> relevantComparisons,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
@@ -3400,7 +3409,7 @@ public class XVerProcessor
                 ?? (element.IsModifier == true ? $"This extension is a modifier because the target element {element.Id} is flagged IsModifier" : null),
         };
 
-        if (extElementPath == "Extension")
+        if (string.IsNullOrEmpty(sliceName))
         {
             extEd.Base = new()
             {
@@ -3471,6 +3480,7 @@ public class XVerProcessor
                     sourcePackageSupport,
                     targetPackageSupport,
                     sd,
+                    graphsForStructures,
                     childElement,
                     relevantComparisons,
                     xverValueSets);
@@ -3485,6 +3495,43 @@ public class XVerProcessor
 
             edForChildren.Min = minRequired;
 
+            // before we leave, we need to add the URL
+            if (string.IsNullOrEmpty(sliceName))
+            {
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = extElementId + ".url",
+                    Path = extElementPath + ".url",
+                    Min = 1,
+                    Max = "1",
+                    Base = new()
+                    {
+                        Path = "Extension.url",
+                        Min = 1,
+                        Max = "1",
+                    },
+                    Fixed = new FhirUri(extSd.Url)
+                });
+            }
+            else
+            {
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = extElementId + ".url",
+                    Path = extElementPath + ".url",
+                    Min = 1,
+                    Max = "1",
+                    Base = new()
+                    {
+                        Path = "Extension.url",
+                        Min = 1,
+                        Max = "1",
+                    },
+                    Fixed = new FhirUri(sliceName)
+                });
+            }
+
+            // done processing
             return;
         }
 
@@ -3539,7 +3586,176 @@ public class XVerProcessor
             ElementKey: element.Key);
 
         // setup a lookup by type name
-        ILookup<string, DbElementType> collectedValueTypes = elementValueTypes.ToLookup(t => t.TypeName ?? string.Empty);
+        Dictionary<string, List<DbElementType>> collectedValueTypes = [];
+        Dictionary<string, List<string>> collectedTypeProfiles = [];
+        Dictionary<string, List<string>> collectedTargetProfiles = [];
+        List<string> alternateCanonicalTargets = [];
+
+        foreach (DbElementType valueType in elementValueTypes)
+        {
+            string typeName = valueType.TypeName ?? string.Empty;
+            if (!collectedValueTypes.TryGetValue(typeName, out List<DbElementType>? typeList))
+            {
+                typeList = [];
+                collectedValueTypes.Add(typeName, typeList);
+            }
+            typeList.Add(valueType);
+
+            if (!collectedTypeProfiles.TryGetValue(typeName, out List<string>? typeProfiles))
+            {
+                typeProfiles = [];
+                collectedTypeProfiles.Add(typeName, typeProfiles);
+            }
+            if (!string.IsNullOrEmpty(valueType.TypeProfile))
+            {
+                typeProfiles.Add(valueType.TypeProfile);
+            }
+
+            if (!collectedTargetProfiles.TryGetValue(typeName, out List<string>? targetProfiles))
+            {
+                targetProfiles = [];
+                collectedTargetProfiles.Add(typeName, targetProfiles);
+            }
+            if (!string.IsNullOrEmpty(valueType.TargetProfile))
+            {
+                int lastSlashIndex = valueType.TargetProfile.LastIndexOf('/');
+                string targetProfileTypeName = lastSlashIndex == -1
+                    ? valueType.TargetProfile
+                    : valueType.TargetProfile.Substring(lastSlashIndex + 1);
+
+                // try to lookup the type in the structure graph
+                if (!graphsForStructures.TryGetValue(targetProfileTypeName, out DbGraphSd? sdGraph))
+                {
+                    // not sure what to do here
+                    Console.Write("");
+                    continue;
+                }
+
+                // pull the type names from the graph for the target version
+                List<string> resolvedTargetTypes = sdGraph.Projection
+                    .Select(sdRow => sdRow.CellAt(targetPackageSupport.PackageIndex)?.Sd?.UnversionedUrl ?? string.Empty)
+                    .ToList();
+
+                // if we are in a canonical reference, check the allowed types for the target package
+                switch (typeName)
+                {
+                    case "canonical":
+                        {
+                            List<string> valid = [];
+                            List<string> invalid = [];
+
+                            foreach (string value in resolvedTargetTypes)
+                            {
+                                if (string.IsNullOrEmpty(value))
+                                {
+                                    continue;
+                                }
+
+                                if (targetPackageSupport.AllowedCanonicalTypes.Contains(value))
+                                {
+                                    valid.Add(value);
+                                }
+                                else
+                                {
+                                    invalid.Add(value);
+                                }
+                            }
+
+                            if ((valid.Count == 0) && (invalid.Count == 0))
+                            {
+                                // add the original type as an alternate target
+                                alternateCanonicalTargets.Add(valueType.TargetProfile);
+                                continue;
+                            }
+
+                            if (invalid.Count > 0)
+                            {
+                                alternateCanonicalTargets = invalid.Distinct().ToList();
+                            }
+
+                            if (valid.Count > 0)
+                            {
+                                targetProfiles.AddRange(valid.Distinct());
+                            }
+                        }
+                        break;
+
+                    case "Reference":
+                        {
+                            List<string> valid = [];
+                            List<string> invalid = [];
+                            bool needsBasic = false;
+
+                            foreach (string value in resolvedTargetTypes)
+                            {
+                                if (string.IsNullOrEmpty(value))
+                                {
+                                    needsBasic = true;
+                                    continue;
+                                }
+
+                                if (targetPackageSupport.CoreDC!.CanResolveCanonicalUri(value))
+                                {
+                                    valid.Add(value);
+                                }
+                                else
+                                {
+                                    invalid.Add(value);
+                                }
+                            }
+
+                            if (valid.Count > 0)
+                            {
+                                targetProfiles.AddRange(valid.Distinct());
+                            }
+
+                            // check for needing basic support
+                            if (needsBasic || (invalid.Count > 0))
+                            {
+                                typeProfiles.Add("http://hl7.org/fhir/StructureDefinition/Basic");
+                                //resolvedTargetTypes.Add("http://hl7.org/fhir/StructureDefinition/Basic");
+                                //resolvedTargetTypes.RemoveAll(string.IsNullOrEmpty);
+                            }
+                        }
+                        break;
+                }
+
+            }
+        }
+
+        //// if we have moved target profiles from canonical to uri, make sure that we have a URI type
+        //if (collectedTargetProfiles.ContainsKey("uri") && !collectedValueTypes.ContainsKey("uri"))
+        //{
+        //    DbElementType? uriElementType = DbElementType.SelectSingle(_db!.DbConnection,
+        //        ElementKey: element.Key,
+        //        TypeName: "uri",
+        //        FhirPackageKey: targetPackageSupport.Package.Key);
+
+        //    uriElementType ??= new DbElementType()
+        //    {
+        //        FhirPackageKey = targetPackageSupport.Package.Key,
+        //        StructureKey = element.StructureKey,
+        //        ElementKey = element.Key,
+        //        TypeName = "uri",
+        //        TypeProfile = null,
+        //        TargetProfile = null,
+        //        TypeStructureKey = null,
+        //    };
+
+        //    collectedValueTypes.Add("uri", [uriElementType]);
+        //    elementValueTypes.Add(uriElementType);
+        //}
+
+        //// similarly, if we removed *all* the types from canonical, it should no longer appear
+        //if (collectedValueTypes.ContainsKey("canonical") &&
+        //    (collectedTargetProfiles["canonical"].Count == 0))
+        //{
+        //    collectedValueTypes.Remove("canonical");
+        //    collectedTypeProfiles.Remove("canonical");
+        //    collectedTargetProfiles.Remove("canonical");
+        //    elementValueTypes.RemoveAll(et => et.TypeName == "canonical");
+        //}
+
         List<string> extAllowedTypes = [];
         Dictionary<string, List<string>> extReplaceableTypes = [];
         List<string> extMappedTypes = [];
@@ -3554,7 +3770,8 @@ public class XVerProcessor
                 // check for this being the "Quantity" type to do special type profile handling
                 if (valueTypeName == "Quantity")
                 {
-                    List<string> typeProfiles = collectedValueTypes[valueTypeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
+                    collectedTypeProfiles.TryGetValue(valueTypeName, out List<string>? typeProfiles);
+                    typeProfiles ??= [];
 
                     if (typeProfiles.Count > 0)
                     {
@@ -3595,7 +3812,7 @@ public class XVerProcessor
             extMappedTypes.Add(valueTypeName);
         }
 
-        HashSet<string> usedTypes = [];
+        HashSet<string> addedTypes = [];
         ElementDefinition? extensionDatatypeValueElement = null;
 
         // process mapped types (extension before value)
@@ -3643,16 +3860,66 @@ public class XVerProcessor
                     sourcePackageSupport,
                     targetPackageSupport,
                     sd,
+                    graphsForStructures,
                     etElement,
                     relevantComparisons,
                     xverValueSets);
             }
         }
 
-        // process replaced quantity types
-        foreach (string typeName in quantityProfilesMovedToTypes)
+        // if we are listing the alternate-canonical extension, we need to add the extension before adding our slice URL
+        if (alternateCanonicalTargets.Count > 0)
         {
-            if (usedTypes.Contains(typeName))
+            addAlternateCanonicalExtension(
+                extSd,
+                element,
+                sourcePackageSupport,
+                ref extensionDatatypeValueElement,
+                extElementId,
+                extElementPath,
+                alternateCanonicalTargets);
+        }
+
+        // we are switching from .extension to .value[x] here, so we need to add the url element
+        if (string.IsNullOrEmpty(sliceName))
+        {
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".url",
+                Path = extElementPath + ".url",
+                Min = 1,
+                Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.url",
+                    Min = 1,
+                    Max = "1",
+                },
+                Fixed = new FhirUri(extSd.Url)
+            });
+        }
+        else
+        {
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".url",
+                Path = extElementPath + ".url",
+                Min = 1,
+                Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.url",
+                    Min = 1,
+                    Max = "1",
+                },
+                Fixed = new FhirUri(sliceName)
+            });
+        }
+
+        // process replaced quantity types - sort types for readability
+        foreach (string typeName in quantityProfilesMovedToTypes.Order())
+        {
+            if (addedTypes.Contains(typeName))
             {
                 continue;
             }
@@ -3664,17 +3931,23 @@ public class XVerProcessor
                 addedEdValue = true;
             }
 
-            // consolidate profiles
-            List<string> typeProfiles = collectedValueTypes.Contains(typeName) ? collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>() : [];
-            List<string> targetProfiles = collectedValueTypes.Contains(typeName) ? collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>() : [];
+            collectedTypeProfiles.TryGetValue(typeName, out List<string>? typeProfiles);
+            typeProfiles ??= [];
+
+            collectedTargetProfiles.TryGetValue(typeName, out List<string>? targetProfiles);
+            targetProfiles ??= [];
 
             // create a new type reference
-            ElementDefinition.TypeRefComponent? edValueType = new()
+            ElementDefinition.TypeRefComponent edValueType = new()
             {
                 Code = typeName,
                 ProfileElement = typeProfiles.Select(v => new Canonical(v)).ToList(),
-                TargetProfileElement = targetProfiles.Select(v => new Canonical(v)).ToList(),
             };
+
+            if ((typeName == "Reference") || (typeName == "canonical"))
+            {
+                edValueType.TargetProfileElement = targetProfiles.Select(v => new Canonical(v)).ToList();
+            }
 
             extensionEdValue.Type.Add(edValueType);
 
@@ -3695,13 +3968,13 @@ public class XVerProcessor
                 }
             }
 
-            usedTypes.Add(typeName);
+            addedTypes.Add(typeName);
         }
 
-        // process allowed and replaceable types
-        foreach (string typeName in extAllowedTypes)
+        // process allowed and replaceable types - sort types for readability
+        foreach (string typeName in extAllowedTypes.Order())
         {
-            if (usedTypes.Contains(typeName))
+            if (addedTypes.Contains(typeName))
             {
                 continue;
             }
@@ -3712,10 +3985,11 @@ public class XVerProcessor
                 extSd.Differential.Element.Add(extensionEdValue);
                 addedEdValue = true;
             }
+            collectedTypeProfiles.TryGetValue(typeName, out List<string>? typeProfiles);
+            typeProfiles ??= [];
 
-            // consolidate profiles
-            List<string> typeProfiles = collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
-            List<string> targetProfiles = collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>();
+            collectedTargetProfiles.TryGetValue(typeName, out List<string>? targetProfiles);
+            targetProfiles ??= [];
 
             // remove any quantity type profiles that got promoted
             if ((typeName == "Quantity") &&
@@ -3730,12 +4004,16 @@ public class XVerProcessor
             }
 
             // create a new type reference
-            ElementDefinition.TypeRefComponent? edValueType = new()
+            ElementDefinition.TypeRefComponent edValueType = new()
             {
                 Code = typeName,
                 ProfileElement = typeProfiles.Select(v => new Canonical(v)).ToList(),
-                TargetProfileElement = targetProfiles.Select(v => new Canonical(v)).ToList(),
             };
+
+            if ((typeName == "Reference") || (typeName == "canonical"))
+            {
+                edValueType.TargetProfileElement = targetProfiles.Select(v => new Canonical(v)).ToList();
+            }
 
             extensionEdValue.Type.Add(edValueType);
 
@@ -3756,13 +4034,13 @@ public class XVerProcessor
                 }
             }
 
-            usedTypes.Add(typeName);
+            addedTypes.Add(typeName);
         }
 
-        // check for any missed replaceable types
-        foreach ((string typeName, List<string> replaceableTypes) in extReplaceableTypes)
+        // check for any missed replaceable types - sort types for readability
+        foreach ((string typeName, List<string> replaceableTypes) in extReplaceableTypes.OrderBy(kvp => kvp.Key))
         {
-            if (usedTypes.Contains(typeName))
+            if (addedTypes.Contains(typeName))
             {
                 continue;
             }
@@ -3795,10 +4073,81 @@ public class XVerProcessor
                     rt);
             }
 
-            usedTypes.Add(typeName);
+            addedTypes.Add(typeName);
         }
 
         return;
+    }
+
+    private void addAlternateCanonicalExtension(
+        StructureDefinition extSd,
+        DbElement sourceDbElement,
+        PackageXverSupport sourcePackageSupport,
+        ref ElementDefinition? extensionDatatypeValueElement,
+        string parentId,
+        string parentPath,
+        List<string> canonicalTargets)
+    {
+        extSd.Differential.Element.Add(new()
+        {
+            ElementId = parentId + ".extension:alternate-canonical",
+            Path = parentPath + ".extension",
+            SliceName = "alternate-canonical",
+            Short = "Alternative reference (target type is wrong)",
+            Definition = "Used when the target of the reference has a type that is not allowed by the definition of the element. In general, this should only arise when wrangling between versions using cross-version extensions.",
+            Comment = $"Allowed for resources representing FHIR {sourcePackageSupport.Package.FhirVersionShort}: {string.Join(", ", canonicalTargets.Select(ct => ct.Split('/')[^1]))}",
+            Min = 0,
+            Max = "1",
+            Base = new()
+            {
+                Path = "Extension.extension",
+                Min = 0,
+                Max = "*",
+            },
+            Type = [
+                new()
+                {
+                    Code = "Extension",
+                    Profile = ["http://hl7.org/fhir/StructureDefinition/alternate-canonical"],
+                }
+            ],
+        });
+
+        extSd.Differential.Element.Add(new()
+        {
+            ElementId = parentId + ".extension:alternate-canonical.url",
+            Path = parentPath + ".extension.url",
+            Min = 1,
+            Max = "1",
+            Base = new()
+            {
+                Path = "Extension.url",
+                Min = 1,
+                Max = "1",
+            },
+            Fixed = new FhirUri("http://hl7.org/fhir/StructureDefinition/alternate-canonical")
+        });
+
+        extSd.Differential.Element.Add(new()
+        {
+            ElementId = parentId + ".extension:alternate-canonical.value[x]",
+            Path = parentPath + ".extension.value[x]",
+            Comment = $"Allowed for resources representing FHIR {sourcePackageSupport.Package.FhirVersionShort}: {string.Join(", ", canonicalTargets.Select(ct => ct.Split('/')[^1]))}",
+            Min = 1,
+            Max = "1",
+            Base = new()
+            {
+                Path = "Extension.value[x]",
+                Min = 0,
+                Max = "1",
+            },
+            Type = [
+                new()
+                {
+                    Code = "url",
+                }
+            ]
+        });
     }
 
     /// <summary>
@@ -3850,6 +4199,21 @@ public class XVerProcessor
                             Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
                         }
                     ],
+            });
+
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = parentId + ".extension:_datatype.url",
+                Path = parentPath + ".extension.url",
+                Min = 1,
+                Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.url",
+                    Min = 1,
+                    Max = "1",
+                },
+                Fixed = new FhirUri("_datatype")
             });
 
             extensionDatatypeValueElement = new()
@@ -6460,4 +6824,531 @@ public class XVerProcessor
         cdr == ConceptDomainRelationshipCodes.SourceIsNew ||
         cdr == ConceptDomainRelationshipCodes.NotMapped;
 
+    private void addRequiredExtensionDefinitions(DefinitionCollection dc)
+    {
+        string alternateCanonicalJson = """
+            {
+              "resourceType" : "StructureDefinition",
+              "id" : "alternate-canonical",
+              "text" : {
+                "status" : "extensions",
+                "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: StructureDefinition alternate-canonical</b></p><a name=\"alternate-canonical\"> </a><a name=\"hcalternate-canonical\"> </a><a name=\"alternate-canonical-en-US\"> </a><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;\"><tr style=\"border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top\"><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"The logical name of the element\">Name</a></th><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Information about the use of the element\">Flags</a></th><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Minimum and Maximum # of times the element can appear in the instance\">Card.</a></th><th style=\"width: 100px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Reference to the type of the element\">Type</a></th><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Additional information about the element\">Description &amp; Constraints</a><span style=\"float: right\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/></a></span></th></tr><tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-alternate-canonical-definitions.html#Extension\" title=\"Used with inter-version extensions where the element being referenced by inter-version extension is of type 'canonical' and includes a reference to a resource whose canonical URL is different in the referencing version than it is in the FHIR version where the element was defined.  E.g. if an R5 implementation were using inter-version extensions to support an element that referenced Bar, when in R7, the url would have been .../Foo.  In this situation, the canonical element would have no value and would instead have an extension that referred to the canonical URL of the '../Bar' resource (which would technically not be supported in R7, but is appropriate in R5).\">Extension</a><a name=\"Extension\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R5/extensibility.html#Extension\">Extension</a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Alternative reference (target type is wrong)</td></tr>\r\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_extension_simple.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Simple Extension\" class=\"hierarchy\"/> <span style=\"text-decoration:line-through\">extension</span><a name=\"Extension.extension\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"text-decoration:line-through\"/><span style=\"text-decoration:line-through\">0</span><span style=\"text-decoration:line-through\">..</span><span style=\"text-decoration:line-through\">0</span></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>\r\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-alternate-canonical-definitions.html#Extension.url\">url</a><a name=\"Extension.url\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5\" href=\"http://hl7.org/fhir/R5/datatypes.html#uri\">uri</a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"color: darkgreen\">&quot;http://hl7.org/fhir/StructureDefinition/alternate-canonical&quot;</span></td></tr>\r\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck00.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_primitive.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Primitive Data Type\" class=\"hierarchy\"/> <a href=\"StructureDefinition-alternate-canonical-definitions.html#Extension.value[x]\">value[x]</a><a name=\"Extension.value_x_\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">1..<span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R5/datatypes.html#url\">url</a></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Value of extension</span></td></tr>\r\n<tr><td colspan=\"5\" class=\"hierarchy\"><br/><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/> Documentation for this format</a></td></tr></table></div>"
+              },
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                "valueCode" : "fhir"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+                "valueInteger" : 2
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                "valueCode" : "trial-use"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+                "valueCode" : "can-bind"
+              }],
+              "url" : "http://hl7.org/fhir/StructureDefinition/alternate-canonical",
+              "identifier" : [{
+                "system" : "urn:ietf:rfc:3986",
+                "value" : "urn:oid:2.16.840.1.113883.4.642.5.1674"
+              }],
+              "version" : "5.2.0",
+              "name" : "AlternateCanonical",
+              "title" : "Alternate Canonical",
+              "status" : "draft",
+              "experimental" : false,
+              "date" : "2014-04-27",
+              "publisher" : "HL7 International / FHIR Infrastructure",
+              "contact" : [{
+                "telecom" : [{
+                  "system" : "url",
+                  "value" : "http://www.hl7.org/Special/committees/fiwg"
+                }]
+              }],
+              "description" : "Used with inter-version extensions where the element being referenced by inter-version extension is of type 'canonical' and includes a reference to a resource whose canonical URL is different in the referencing version than it is in the FHIR version where the element was defined.  E.g. if an R5 implementation were using inter-version extensions to support an element that referenced Bar, when in R7, the url would have been .../Foo.  In this situation, the canonical element would have no value and would instead have an extension that referred to the canonical URL of the '../Bar' resource (which would technically not be supported in R7, but is appropriate in R5).",
+              "jurisdiction" : [{
+                "coding" : [{
+                  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                  "code" : "001"
+                }]
+              }],
+              "fhirVersion" : "5.0.0",
+              "mapping" : [{
+                "identity" : "rim",
+                "uri" : "http://hl7.org/v3",
+                "name" : "RIM Mapping"
+              }],
+              "kind" : "complex-type",
+              "abstract" : false,
+              "context" : [{
+                "type" : "element",
+                "expression" : "canonical"
+              }],
+              "type" : "Extension",
+              "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",
+              "derivation" : "constraint",
+              "snapshot" : {
+                "extension" : [{
+                  "url" : "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+                  "valueString" : "5.0.0"
+                }],
+                "element" : [{
+                  "id" : "Extension",
+                  "path" : "Extension",
+                  "short" : "Alternative reference (target type is wrong)",
+                  "definition" : "Used with inter-version extensions where the element being referenced by inter-version extension is of type 'canonical' and includes a reference to a resource whose canonical URL is different in the referencing version than it is in the FHIR version where the element was defined.  E.g. if an R5 implementation were using inter-version extensions to support an element that referenced Bar, when in R7, the url would have been .../Foo.  In this situation, the canonical element would have no value and would instead have an extension that referred to the canonical URL of the '../Bar' resource (which would technically not be supported in R7, but is appropriate in R5).",
+                  "min" : 0,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Extension",
+                    "min" : 0,
+                    "max" : "*"
+                  },
+                  "constraint" : [{
+                    "key" : "ele-1",
+                    "severity" : "error",
+                    "human" : "All FHIR elements must have a @value or children",
+                    "expression" : "hasValue() or (children().count() > id.count())",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+                  },
+                  {
+                    "key" : "ext-1",
+                    "severity" : "error",
+                    "human" : "Must have either extensions or value[x], not both",
+                    "expression" : "extension.exists() != value.exists()",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
+                  }],
+                  "isModifier" : false
+                },
+                {
+                  "id" : "Extension.id",
+                  "path" : "Extension.id",
+                  "representation" : ["xmlAttr"],
+                  "short" : "Unique id for inter-element referencing",
+                  "definition" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+                  "min" : 0,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Element.id",
+                    "min" : 0,
+                    "max" : "1"
+                  },
+                  "type" : [{
+                    "extension" : [{
+                      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+                      "valueUrl" : "id"
+                    }],
+                    "code" : "http://hl7.org/fhirpath/System.String"
+                  }],
+                  "condition" : ["ele-1"],
+                  "isModifier" : false,
+                  "isSummary" : false,
+                  "mapping" : [{
+                    "identity" : "rim",
+                    "map" : "n/a"
+                  }]
+                },
+                {
+                  "id" : "Extension.extension",
+                  "path" : "Extension.extension",
+                  "slicing" : {
+                    "discriminator" : [{
+                      "type" : "value",
+                      "path" : "url"
+                    }],
+                    "description" : "Extensions are always sliced by (at least) url",
+                    "rules" : "open"
+                  },
+                  "short" : "Extension",
+                  "definition" : "An Extension",
+                  "min" : 0,
+                  "max" : "0",
+                  "base" : {
+                    "path" : "Element.extension",
+                    "min" : 0,
+                    "max" : "*"
+                  },
+                  "type" : [{
+                    "code" : "Extension"
+                  }],
+                  "constraint" : [{
+                    "key" : "ele-1",
+                    "severity" : "error",
+                    "human" : "All FHIR elements must have a @value or children",
+                    "expression" : "hasValue() or (children().count() > id.count())",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+                  },
+                  {
+                    "key" : "ext-1",
+                    "severity" : "error",
+                    "human" : "Must have either extensions or value[x], not both",
+                    "expression" : "extension.exists() != value.exists()",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
+                  }],
+                  "isModifier" : false,
+                  "isSummary" : false
+                },
+                {
+                  "id" : "Extension.url",
+                  "path" : "Extension.url",
+                  "representation" : ["xmlAttr"],
+                  "short" : "identifies the meaning of the extension",
+                  "definition" : "Source of the definition for the extension code - a logical name or a URL.",
+                  "comment" : "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+                  "min" : 1,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Extension.url",
+                    "min" : 1,
+                    "max" : "1"
+                  },
+                  "type" : [{
+                    "extension" : [{
+                      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+                      "valueUrl" : "uri"
+                    }],
+                    "code" : "http://hl7.org/fhirpath/System.String"
+                  }],
+                  "fixedUri" : "http://hl7.org/fhir/StructureDefinition/alternate-canonical",
+                  "isModifier" : false,
+                  "isSummary" : false,
+                  "mapping" : [{
+                    "identity" : "rim",
+                    "map" : "N/A"
+                  }]
+                },
+                {
+                  "id" : "Extension.value[x]",
+                  "path" : "Extension.value[x]",
+                  "short" : "Value of extension",
+                  "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R5/extensibility.html) for a list).",
+                  "min" : 1,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Extension.value[x]",
+                    "min" : 0,
+                    "max" : "1"
+                  },
+                  "type" : [{
+                    "code" : "url"
+                  }],
+                  "condition" : ["ext-1"],
+                  "constraint" : [{
+                    "key" : "ele-1",
+                    "severity" : "error",
+                    "human" : "All FHIR elements must have a @value or children",
+                    "expression" : "hasValue() or (children().count() > id.count())",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+                  }],
+                  "isModifier" : false,
+                  "isSummary" : false,
+                  "mapping" : [{
+                    "identity" : "rim",
+                    "map" : "N/A"
+                  }]
+                }]
+              },
+              "differential" : {
+                "element" : [{
+                  "id" : "Extension",
+                  "path" : "Extension",
+                  "short" : "Alternative reference (target type is wrong)",
+                  "definition" : "Used with inter-version extensions where the element being referenced by inter-version extension is of type 'canonical' and includes a reference to a resource whose canonical URL is different in the referencing version than it is in the FHIR version where the element was defined.  E.g. if an R5 implementation were using inter-version extensions to support an element that referenced Bar, when in R7, the url would have been .../Foo.  In this situation, the canonical element would have no value and would instead have an extension that referred to the canonical URL of the '../Bar' resource (which would technically not be supported in R7, but is appropriate in R5).",
+                  "min" : 0,
+                  "max" : "1"
+                },
+                {
+                  "id" : "Extension.extension",
+                  "path" : "Extension.extension",
+                  "max" : "0"
+                },
+                {
+                  "id" : "Extension.url",
+                  "path" : "Extension.url",
+                  "fixedUri" : "http://hl7.org/fhir/StructureDefinition/alternate-canonical"
+                },
+                {
+                  "id" : "Extension.value[x]",
+                  "path" : "Extension.value[x]",
+                  "min" : 1,
+                  "type" : [{
+                    "code" : "url"
+                  }]
+                }]
+              }
+            }
+            """;
+
+        string datatypeJson = """
+            {
+              "resourceType" : "StructureDefinition",
+              "id" : "datatype",
+              "text" : {
+                "status" : "extensions",
+                "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: StructureDefinition datatype</b></p><a name=\"datatype\"> </a><a name=\"hcdatatype\"> </a><a name=\"datatype-en-US\"> </a><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;\"><tr style=\"border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top\"><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"The logical name of the element\">Name</a></th><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Information about the use of the element\">Flags</a></th><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Minimum and Maximum # of times the element can appear in the instance\">Card.</a></th><th style=\"width: 100px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Reference to the type of the element\">Type</a></th><th style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Additional information about the element\">Description &amp; Constraints</a><span style=\"float: right\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/></a></span></th></tr><tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-datatype-definitions.html#Extension\" title=\"Used when the actual type is not allowed by the definition of the element. In general, this should only arise when wrangling between versions using cross-version extensions - see [Cross Version Extensions](versions.html#extensions).\">Extension</a><a name=\"Extension\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..1</td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R5/extensibility.html#Extension\">Extension</a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Alternative datatype name (for cross version extensions)</td></tr>\r\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_extension_simple.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Simple Extension\" class=\"hierarchy\"/> <span style=\"text-decoration:line-through\">extension</span><a name=\"Extension.extension\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"text-decoration:line-through\"/><span style=\"text-decoration:line-through\">0</span><span style=\"text-decoration:line-through\">..</span><span style=\"text-decoration:line-through\">0</span></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>\r\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-datatype-definitions.html#Extension.url\">url</a><a name=\"Extension.url\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5\" href=\"http://hl7.org/fhir/R5/datatypes.html#uri\">uri</a></td><td style=\"vertical-align: top; text-align : left; background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"color: darkgreen\">&quot;http://hl7.org/fhir/StructureDefinition/_datatype&quot;</span></td></tr>\r\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck00.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_primitive.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Primitive Data Type\" class=\"hierarchy\"/> <a href=\"StructureDefinition-datatype-definitions.html#Extension.value[x]\">value[x]</a><a name=\"Extension.value_x_\"> </a></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">1..<span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R5/datatypes.html#string\">string</a></td><td style=\"vertical-align: top; text-align : left; background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Value of extension</span></td></tr>\r\n<tr><td colspan=\"5\" class=\"hierarchy\"><br/><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/> Documentation for this format</a></td></tr></table></div>"
+              },
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                "valueCode" : "fhir"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+                "valueInteger" : 2
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                "valueCode" : "trial-use"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+                "valueCode" : "can-bind"
+              }],
+              "url" : "http://hl7.org/fhir/StructureDefinition/_datatype",
+              "identifier" : [{
+                "system" : "urn:ietf:rfc:3986",
+                "value" : "urn:oid:2.16.840.1.113883.4.642.5.1774"
+              }],
+              "version" : "5.2.0",
+              "name" : "Datatype",
+              "title" : "Datatype",
+              "status" : "draft",
+              "experimental" : false,
+              "date" : "2014-04-27",
+              "publisher" : "HL7 International / FHIR Infrastructure",
+              "contact" : [{
+                "telecom" : [{
+                  "system" : "url",
+                  "value" : "http://www.hl7.org/Special/committees/fiwg"
+                }]
+              }],
+              "description" : "Used when the actual type is not allowed by the definition of the element. In general, this should only arise when wrangling between versions using cross-version extensions - see [Cross Version Extensions](versions.html#extensions).",
+              "jurisdiction" : [{
+                "coding" : [{
+                  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                  "code" : "001"
+                }]
+              }],
+              "fhirVersion" : "5.0.0",
+              "mapping" : [{
+                "identity" : "rim",
+                "uri" : "http://hl7.org/v3",
+                "name" : "RIM Mapping"
+              }],
+              "kind" : "complex-type",
+              "abstract" : false,
+              "context" : [{
+                "type" : "element",
+                "expression" : "Base"
+              }],
+              "type" : "Extension",
+              "baseDefinition" : "http://hl7.org/fhir/StructureDefinition/Extension",
+              "derivation" : "constraint",
+              "snapshot" : {
+                "extension" : [{
+                  "url" : "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+                  "valueString" : "5.0.0"
+                }],
+                "element" : [{
+                  "id" : "Extension",
+                  "path" : "Extension",
+                  "short" : "Alternative datatype name (for cross version extensions)",
+                  "definition" : "Used when the actual type is not allowed by the definition of the element. In general, this should only arise when wrangling between versions using cross-version extensions - see [Cross Version Extensions](versions.html#extensions).",
+                  "min" : 0,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Extension",
+                    "min" : 0,
+                    "max" : "*"
+                  },
+                  "constraint" : [{
+                    "key" : "ele-1",
+                    "severity" : "error",
+                    "human" : "All FHIR elements must have a @value or children",
+                    "expression" : "hasValue() or (children().count() > id.count())",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+                  },
+                  {
+                    "key" : "ext-1",
+                    "severity" : "error",
+                    "human" : "Must have either extensions or value[x], not both",
+                    "expression" : "extension.exists() != value.exists()",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
+                  }],
+                  "isModifier" : false
+                },
+                {
+                  "id" : "Extension.id",
+                  "path" : "Extension.id",
+                  "representation" : ["xmlAttr"],
+                  "short" : "Unique id for inter-element referencing",
+                  "definition" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+                  "min" : 0,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Element.id",
+                    "min" : 0,
+                    "max" : "1"
+                  },
+                  "type" : [{
+                    "extension" : [{
+                      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+                      "valueUrl" : "id"
+                    }],
+                    "code" : "http://hl7.org/fhirpath/System.String"
+                  }],
+                  "condition" : ["ele-1"],
+                  "isModifier" : false,
+                  "isSummary" : false,
+                  "mapping" : [{
+                    "identity" : "rim",
+                    "map" : "n/a"
+                  }]
+                },
+                {
+                  "id" : "Extension.extension",
+                  "path" : "Extension.extension",
+                  "slicing" : {
+                    "discriminator" : [{
+                      "type" : "value",
+                      "path" : "url"
+                    }],
+                    "description" : "Extensions are always sliced by (at least) url",
+                    "rules" : "open"
+                  },
+                  "short" : "Extension",
+                  "definition" : "An Extension",
+                  "min" : 0,
+                  "max" : "0",
+                  "base" : {
+                    "path" : "Element.extension",
+                    "min" : 0,
+                    "max" : "*"
+                  },
+                  "type" : [{
+                    "code" : "Extension"
+                  }],
+                  "constraint" : [{
+                    "key" : "ele-1",
+                    "severity" : "error",
+                    "human" : "All FHIR elements must have a @value or children",
+                    "expression" : "hasValue() or (children().count() > id.count())",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+                  },
+                  {
+                    "key" : "ext-1",
+                    "severity" : "error",
+                    "human" : "Must have either extensions or value[x], not both",
+                    "expression" : "extension.exists() != value.exists()",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Extension"
+                  }],
+                  "isModifier" : false,
+                  "isSummary" : false
+                },
+                {
+                  "id" : "Extension.url",
+                  "path" : "Extension.url",
+                  "representation" : ["xmlAttr"],
+                  "short" : "identifies the meaning of the extension",
+                  "definition" : "Source of the definition for the extension code - a logical name or a URL.",
+                  "comment" : "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+                  "min" : 1,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Extension.url",
+                    "min" : 1,
+                    "max" : "1"
+                  },
+                  "type" : [{
+                    "extension" : [{
+                      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+                      "valueUrl" : "uri"
+                    }],
+                    "code" : "http://hl7.org/fhirpath/System.String"
+                  }],
+                  "fixedUri" : "http://hl7.org/fhir/StructureDefinition/_datatype",
+                  "isModifier" : false,
+                  "isSummary" : false,
+                  "mapping" : [{
+                    "identity" : "rim",
+                    "map" : "N/A"
+                  }]
+                },
+                {
+                  "id" : "Extension.value[x]",
+                  "path" : "Extension.value[x]",
+                  "short" : "Value of extension",
+                  "definition" : "Value of extension - must be one of a constrained set of the data types (see [Extensibility](http://hl7.org/fhir/R5/extensibility.html) for a list).",
+                  "min" : 1,
+                  "max" : "1",
+                  "base" : {
+                    "path" : "Extension.value[x]",
+                    "min" : 0,
+                    "max" : "1"
+                  },
+                  "type" : [{
+                    "code" : "string"
+                  }],
+                  "condition" : ["ext-1"],
+                  "constraint" : [{
+                    "key" : "ele-1",
+                    "severity" : "error",
+                    "human" : "All FHIR elements must have a @value or children",
+                    "expression" : "hasValue() or (children().count() > id.count())",
+                    "source" : "http://hl7.org/fhir/StructureDefinition/Element"
+                  }],
+                  "isModifier" : false,
+                  "isSummary" : false,
+                  "mapping" : [{
+                    "identity" : "rim",
+                    "map" : "N/A"
+                  }]
+                }]
+              },
+              "differential" : {
+                "element" : [{
+                  "id" : "Extension",
+                  "path" : "Extension",
+                  "short" : "Alternative datatype name (for cross version extensions)",
+                  "definition" : "Used when the actual type is not allowed by the definition of the element. In general, this should only arise when wrangling between versions using cross-version extensions - see [Cross Version Extensions](versions.html#extensions).",
+                  "min" : 0,
+                  "max" : "1"
+                },
+                {
+                  "id" : "Extension.extension",
+                  "path" : "Extension.extension",
+                  "max" : "0"
+                },
+                {
+                  "id" : "Extension.url",
+                  "path" : "Extension.url",
+                  "fixedUri" : "http://hl7.org/fhir/StructureDefinition/_datatype"
+                },
+                {
+                  "id" : "Extension.value[x]",
+                  "path" : "Extension.value[x]",
+                  "min" : 1,
+                  "type" : [{
+                    "code" : "string"
+                  }]
+                }]
+              }
+            }
+            """;
+
+        FhirJsonParser parser = new FhirJsonParser(new ParserSettings()
+        {
+            AcceptUnknownMembers = true,
+            AllowUnrecognizedEnums = true,
+            PermissiveParsing = true,
+        });
+
+        StructureDefinition alternateCanonical = parser.Parse<StructureDefinition>(alternateCanonicalJson);
+        dc.AddStructureDefinition(alternateCanonical, dc.FhirSequence, "hl7.fhir.uv.extensions", "5.2.0");
+
+        StructureDefinition datatype = parser.Parse<StructureDefinition>(datatypeJson);
+        dc.AddStructureDefinition(datatype, dc.FhirSequence, "hl7.fhir.uv.extensions", "5.2.0");
+    }
 }

@@ -146,6 +146,10 @@ public class DbGraphSd
             }
         }
 
+        public void ClearProjection()
+        {
+            _projection = null;
+        }
 
         public List<DbElementRow> BuildProjection(int? keyColumnIndex = null, bool fullJoin = false)
         {
@@ -643,6 +647,16 @@ public class DbGraphSd
         IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
     }
 
+    /// <summary>
+    /// Clear the element projections for this graph.
+    /// </summary>
+    public void ClearElementProjections()
+    {
+        foreach (DbSdRow row in _projection ?? [])
+        {
+            row.ClearProjection();
+        }
+    }
 
     public List<DbSdRow> BuildProjection()
     {
