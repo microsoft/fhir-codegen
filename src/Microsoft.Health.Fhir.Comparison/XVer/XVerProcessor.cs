@@ -3231,7 +3231,7 @@ public class XVerProcessor
             Id = sdId,
             //Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
-            Name = sdId.Replace('-', '_').Replace('.', '_'),
+            Name = char.ToUpperInvariant(sdId[0]) + sdId[1..].Replace('-', '_').Replace('.', '_'),
             Version = _crossDefinitionVersion,
             FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(targetPackageSupport!.CoreDC!.FhirVersionLiteral) ?? FHIRVersion.N5_0_0,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
@@ -3376,6 +3376,12 @@ public class XVerProcessor
             return;
         }
 
+        //// check for R5:SubscriptionStatus.eventsSinceSubscriptionStart
+        //if (element.Key == 42051)
+        //{
+        //    Console.Write("");
+        //}
+
         HashSet<string> basicElementPaths = targetPackageSupport.BasicElements;
 
         // check to see if this element is in the 'basic' resource of this version (do not add)
@@ -3426,40 +3432,57 @@ public class XVerProcessor
                 Min = 0,
                 Max = "*",
             };
+
+            //extEd.Slicing = new()
+            //{
+            //    Discriminator = [
+            //        new() {
+            //            Type = ElementDefinition.DiscriminatorType.Value,
+            //            Path = "url",
+            //        }
+            //    ],
+            //    Ordered = false,
+            //    Rules = ElementDefinition.SlicingRules.Open,
+            //};
         }
 
         extSd.Differential.Element.Add(extEd);
 
-        // if there are no child elements, we are done
-        if (element.ChildElementCount != 0)
+        bool addedEdForChildren = false;
+        ElementDefinition edForChildren = new()
         {
-            ElementDefinition edForChildren = new()
+            ElementId = extElementId + ".extension",
+            Path = extElementPath + ".extension",
+            Slicing = new()
             {
-                ElementId = extElementId + ".extension",
-                Path = extElementPath + ".extension",
-                Slicing = new()
-                {
-                    Discriminator = [
-                        new() {
+                Discriminator = [
+                    new() {
                             Type = ElementDefinition.DiscriminatorType.Value,
                             Path = "url",
                         }
-                    ],
-                    Ordered = false,
-                    Rules = ElementDefinition.SlicingRules.Closed,
-                },
+                ],
+                Ordered = false,
+                Rules = ElementDefinition.SlicingRules.Open,
+            },
+            Min = 0,
+            Max = "*",
+            Base = new()
+            {
+                Path = "Element.extension",
                 Min = 0,
                 Max = "*",
-                Base = new()
-                {
-                    Path = "Element.extension",
-                    Min = 0,
-                    Max = "*",
-                },
-            };
+            },
+        };
 
-            // if we have child extensions, we cannot have a value
-            extSd.Differential.Element.Add(edForChildren);
+        // if there are child elements, we are done
+        if (element.ChildElementCount != 0)
+        {
+            if (!addedEdForChildren)
+            {
+                // add the extension element for children
+                extSd.Differential.Element.Add(edForChildren);
+                addedEdForChildren = true;
+            }
 
             int minRequired = 0;
 
@@ -3537,9 +3560,7 @@ public class XVerProcessor
 
         //bool addedEdExt = false;
 
-        bool addedEdValue = false;
-        //bool addedEdValueExtension = false;
-        //ElementDefinition? extEdValueExtension = null;
+        bool shouldAddEdValue = false;
         ElementDefinition extensionEdValue = new()
         {
             ElementId = extElementId + ".value[x]",
@@ -3626,8 +3647,8 @@ public class XVerProcessor
                 // try to lookup the type in the structure graph
                 if (!graphsForStructures.TryGetValue(targetProfileTypeName, out DbGraphSd? sdGraph))
                 {
-                    // not sure what to do here
-                    Console.Write("");
+                    // this does not occur - just a safety check
+                    Console.WriteLine($"addElementToExtension <<< failed to resolve target profile: {targetProfileTypeName} in graphsForStructures, skipping!");
                     continue;
                 }
 
@@ -3818,6 +3839,13 @@ public class XVerProcessor
         // process mapped types (extension before value)
         foreach (string typeName in extMappedTypes)
         {
+            if (!addedEdForChildren)
+            {
+                // add the extension element for children
+                extSd.Differential.Element.Add(edForChildren);
+                addedEdForChildren = true;
+            }
+
             addDatatypeExtension(
                 extSd,
                 element,
@@ -3880,42 +3908,6 @@ public class XVerProcessor
                 alternateCanonicalTargets);
         }
 
-        // we are switching from .extension to .value[x] here, so we need to add the url element
-        if (string.IsNullOrEmpty(sliceName))
-        {
-            extSd.Differential.Element.Add(new()
-            {
-                ElementId = extElementId + ".url",
-                Path = extElementPath + ".url",
-                Min = 1,
-                Max = "1",
-                Base = new()
-                {
-                    Path = "Extension.url",
-                    Min = 1,
-                    Max = "1",
-                },
-                Fixed = new FhirUri(extSd.Url)
-            });
-        }
-        else
-        {
-            extSd.Differential.Element.Add(new()
-            {
-                ElementId = extElementId + ".url",
-                Path = extElementPath + ".url",
-                Min = 1,
-                Max = "1",
-                Base = new()
-                {
-                    Path = "Extension.url",
-                    Min = 1,
-                    Max = "1",
-                },
-                Fixed = new FhirUri(sliceName)
-            });
-        }
-
         // process replaced quantity types - sort types for readability
         foreach (string typeName in quantityProfilesMovedToTypes.Order())
         {
@@ -3925,10 +3917,9 @@ public class XVerProcessor
             }
 
             // add the value element if we are supposed to
-            if (!addedEdValue)
+            if (!shouldAddEdValue)
             {
-                extSd.Differential.Element.Add(extensionEdValue);
-                addedEdValue = true;
+                shouldAddEdValue = true;
             }
 
             collectedTypeProfiles.TryGetValue(typeName, out List<string>? typeProfiles);
@@ -3980,10 +3971,9 @@ public class XVerProcessor
             }
 
             // add the value element if we are supposed to
-            if (!addedEdValue)
+            if (!shouldAddEdValue)
             {
-                extSd.Differential.Element.Add(extensionEdValue);
-                addedEdValue = true;
+                shouldAddEdValue = true;
             }
             collectedTypeProfiles.TryGetValue(typeName, out List<string>? typeProfiles);
             typeProfiles ??= [];
@@ -4040,40 +4030,129 @@ public class XVerProcessor
         // check for any missed replaceable types - sort types for readability
         foreach ((string typeName, List<string> replaceableTypes) in extReplaceableTypes.OrderBy(kvp => kvp.Key))
         {
-            if (addedTypes.Contains(typeName))
+            foreach (string sourceTypeName in replaceableTypes)
             {
-                continue;
-            }
+                if (addedTypes.Contains(sourceTypeName))
+                {
+                    continue;
+                }
 
-            // add the value element if we are supposed to
-            if (!addedEdValue)
-            {
-                extSd.Differential.Element.Add(extensionEdValue);
-                addedEdValue = true;
-            }
+                if (!addedEdForChildren)
+                {
+                    // add the extension element for children
+                    extSd.Differential.Element.Add(edForChildren);
+                    addedEdForChildren = true;
+                }
 
-            // create a new type reference
-            ElementDefinition.TypeRefComponent? edValueType = new()
-            {
-                Code = typeName,
-            };
-
-            extensionEdValue.Type.Add(edValueType);
-
-            // add each of the replaceable types
-            foreach (string rt in replaceableTypes)
-            {
+                // add the _datatype extension for this type (or add to the existing one)
                 addDatatypeExtension(
                     extSd,
                     element,
                     sourcePackageSupport,
                     ref extensionDatatypeValueElement,
-                    extElementId,           //extElementId + ".value[x].extension",
-                    extElementPath,         //extElementPath + ".value[x].extension",
-                    rt);
-            }
+                    extElementId,
+                    extElementPath,
+                    sourceTypeName);
 
-            addedTypes.Add(typeName);
+                string typeSliceName = "value" + sourceTypeName.ToPascalCase();
+
+                // add this type as an extension slice
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = $"{extElementId}.extension:{typeSliceName}",
+                    Path = extElementPath + ".extension",
+                    SliceName = typeSliceName,
+                    Min = 0,
+                    Max = element.MaxCardinalityString,
+                    Base = new()
+                    {
+                        Path = "Element.extension",
+                        Min = 0,
+                        Max = "*",
+                    },
+                });
+
+                // add the url element for this extension slice
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = $"{extElementId}.extension:{typeSliceName}.url",
+                    Path = extElementPath + ".extension.url",
+                    Min = 1,
+                    Max = "1",
+                    Base = new()
+                    {
+                        Path = "Extension.url",
+                        Min = 1,
+                        Max = "1",
+                    },
+                    Fixed = new FhirUri(typeSliceName),
+                });
+
+                // add the value[x] element for this extension slice, using the replacement type
+                extSd.Differential.Element.Add(new()
+                {
+                    ElementId = $"{extElementId}.extension:{typeSliceName}.value[x]",
+                    Path = extElementPath + ".extension.value[x]",
+                    Min = 0,
+                    Max = "1",
+                    Base = new()
+                    {
+                        Path = "Extension.value[x]",
+                        Min = 0,
+                        Max = "1",
+                    },
+                    Type = [
+                        new()
+                        {
+                            Code = typeName,
+                        }
+                    ],
+                });
+
+                addedTypes.Add(sourceTypeName);
+            }
+        }
+
+        // we are switching from .extension to .value[x] here, so we need to add the url element
+        if (string.IsNullOrEmpty(sliceName))
+        {
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".url",
+                Path = extElementPath + ".url",
+                Min = 1,
+                Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.url",
+                    Min = 1,
+                    Max = "1",
+                },
+                Fixed = new FhirUri(extSd.Url)
+            });
+        }
+        else
+        {
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".url",
+                Path = extElementPath + ".url",
+                Min = 1,
+                Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.url",
+                    Min = 1,
+                    Max = "1",
+                },
+                Fixed = new FhirUri(sliceName)
+            });
+        }
+
+        // check if we need to add the value element
+        if (shouldAddEdValue)
+        {
+            extSd.Differential.Element.Add(extensionEdValue);
         }
 
         return;
@@ -4172,7 +4251,8 @@ public class XVerProcessor
         ref ElementDefinition? extensionDatatypeValueElement,
         string parentId,
         string parentPath,
-        string typeName)
+        string typeName,
+        bool isRequired = false)
     {
         // if we don't have the element already, we need to create the whole set
         if (extensionDatatypeValueElement == null)
@@ -4184,7 +4264,7 @@ public class XVerProcessor
                 SliceName = "_datatype",
                 Short = $"Data type name for {sourceDbElement.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
                 Definition = $"Data type name for {sourceDbElement.Id} from FHIR {sourcePackageSupport.Package.ShortName}",
-                Min = 0,
+                Min = isRequired ? 1 : 0,
                 Max = "1",
                 Base = new()
                 {
@@ -4230,11 +4310,11 @@ public class XVerProcessor
                     Max = "1",
                 },
                 Type = [
-                        new()
-                            {
-                                Code = "string",
-                            }
-                    ],
+                    new()
+                        {
+                            Code = "string",
+                        }
+                ],
                 Fixed = new FhirString(typeName),
             };
 
