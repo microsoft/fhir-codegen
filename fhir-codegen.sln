@@ -53,6 +53,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fhir-codegen.SQLiteGenerato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xver_editor", "src\xver_editor\xver_editor.csproj", "{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		docs\sanitization.md = docs\sanitization.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +119,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2D24D8E9-FC38-4956-8052-70C76500938F} = {DEDEA68B-9432-40E9-BB9E-84013AD677E0}
 		{AE7FEF4B-C8D8-4EC1-9297-D5E43D2BC131} = {2D24D8E9-FC38-4956-8052-70C76500938F}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {DEDEA68B-9432-40E9-BB9E-84013AD677E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17802D6E-34A0-472E-9041-76E54F463711}
