@@ -116,7 +116,8 @@ public class FhirDbComparer
 
     public void Compare(
         FhirArtifactClassEnum? artifactFilter = null,
-        HashSet<int>? comparisonPairFilterSet = null)
+        HashSet<int>? comparisonPairFilterSet = null,
+        bool allowUpdates = true)
     {
         Dictionary<int, DbFhirPackage> packages = DbFhirPackage.SelectDict(_db);
 

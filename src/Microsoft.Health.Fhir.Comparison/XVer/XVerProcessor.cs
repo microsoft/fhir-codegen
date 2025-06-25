@@ -259,6 +259,11 @@ public class XVerProcessor
                 CompareInDatabase(FhirArtifactClassEnum.Resource);
                 break;
 
+            case "compare-vs-missing":
+                LoadDatabase(_config.ReloadDatabase, true, FhirArtifactClassEnum.ValueSet);
+                CompareInDatabase(FhirArtifactClassEnum.ValueSet, allowUpdates: false);
+                break;
+
             case "docs":
                 LoadDatabase(false, false);
                 WriteDocsFromDatabase();
@@ -344,7 +349,7 @@ public class XVerProcessor
     /// Runs the comparison process in the loaded database for the specified artifact type.
     /// </summary>
     /// <param name="artifactFilter">Optional artifact type filter.</param>
-    public void CompareInDatabase(FhirArtifactClassEnum? artifactFilter = null)
+    public void CompareInDatabase(FhirArtifactClassEnum? artifactFilter = null, bool allowUpdates = true)
     {
         if (_db == null)
         {
@@ -352,7 +357,7 @@ public class XVerProcessor
         }
 
         FhirDbComparer dbComparer = new(_db, _config.LogFactory);
-        dbComparer.Compare(artifactFilter, _config.ComparisonPairFilterKeys);
+        dbComparer.Compare(artifactFilter, _config.ComparisonPairFilterKeys, allowUpdates);
     }
 
     /// <summary>

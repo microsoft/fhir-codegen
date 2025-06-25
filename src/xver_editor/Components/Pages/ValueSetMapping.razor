@@ -430,13 +430,14 @@ Class="concept-dialog-container">
             <FluentLabel Typo="Typography.Body"><b><code>Left to Right:</code></b></FluentLabel>
             <FluentLabel Typo="Typography.Body">Relationship:</FluentLabel>
             <FluentCombobox Items="@_relationships"
-            Class="full-width"
-            Placeholder="Search for a relationship..."
-            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
-            OptionText="@(i => i?.Text)"
-            @bind-SelectedOption="@mapLRRelationship"
-            Multiple="false"
-            Autocomplete="ComboboxAutocomplete.Inline" />
+                TOption="Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>"
+                Class="full-width"
+                Placeholder="Search for a relationship..."
+                OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+                OptionText="@(i => i?.Text)"
+                @bind-SelectedOption="@mapLRRelationship"
+                Multiple="false"
+                Autocomplete="ComboboxAutocomplete.Inline" />
             <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
             <FluentTextField @bind-Value="@mapLRMessage" Class="full-width" />
             <FluentTextArea @bind-Value="@mapLRUserMessage" Class="full-width" Rows="5" />
@@ -446,13 +447,14 @@ Class="concept-dialog-container">
             <FluentLabel Typo="Typography.Body"><b><code>Right to Left:</code></b></FluentLabel>
             <FluentLabel Typo="Typography.Body">Relationship:</FluentLabel>
             <FluentCombobox Items="@_relationships"
-            Class="full-width"
-            Placeholder="Search for a relationship..."
-            OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
-            OptionText="@(i => i?.Text)"
-            @bind-SelectedOption="@mapRLRelationship"
-            Multiple="false"
-            Autocomplete="ComboboxAutocomplete.Inline" />
+                TOption="Option<Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship?>"
+                Class="full-width"
+                Placeholder="Search for a relationship..."
+                OptionValue="@(i => i?.Value.ToString() ?? string.Empty)"
+                OptionText="@(i => i?.Text)"
+                @bind-SelectedOption="@mapRLRelationship"
+                Multiple="false"
+                Autocomplete="ComboboxAutocomplete.Inline" />
             <FluentLabel Typo="Typography.Body">Mapping Message:</FluentLabel>
             <FluentTextField @bind-Value="@mapRLMessage" Class="full-width" />
             <FluentTextArea @bind-Value="@mapRLUserMessage" Class="full-width" Rows="5" />
