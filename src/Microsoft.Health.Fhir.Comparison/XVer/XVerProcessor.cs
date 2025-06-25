@@ -4,37 +4,38 @@
 // </copyright>
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.CommandLine;
+using System.Data;
+using System.Data.Common;
+using System.Formats.Tar;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.CdsHooks;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Utility;
+using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
-using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
-using System.CommandLine;
-using System.Linq;
-using System.Data.Common;
-using System.Collections.Concurrent;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.Comparison.Models;
-using System.Xml.Linq;
-using System.Data;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Snapshot;
 using static System.Net.Mime.MediaTypeNames;
-using Hl7.FhirPath.Sprache;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
-using System.IO;
-using System.IO.Compression;
-using System.Formats.Tar;
 
 namespace Microsoft.Health.Fhir.Comparison.XVer;
 
@@ -3145,6 +3146,16 @@ public class XVerProcessor
         }
     }
 
+    private record TargetContextModifierRec
+    {
+        public required StructureDefinition.ContextComponent Context { get; init; }
+        public required bool IsModifier { get; init; }
+        public required bool HasChildElements { get; init; }
+        public required bool HasPrimitiveType { get; init; }
+        public required bool IsArray { get; init; }
+        public required bool IsRootElement { get; init; }
+    }
+
     /// <summary>
     /// Creates a StructureDefinition for a cross-version extension based on the provided source and target package supports,
     /// structure definition, and element. This method determines the appropriate extension context, builds the extension StructureDefinition,
@@ -3174,6 +3185,15 @@ public class XVerProcessor
         Dictionary<int, List<DbGraphSd.DbElementRow>> elementProjectionDict,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
     {
+        // never create extensions for '.extension', '.modifierExtension', or '.id' elements
+        switch (element.Name)
+        {
+            case "extension":
+            case "modifierExtension":
+            case "id":
+                return null;
+        }
+
         DbFhirPackage sourcePackage = sourcePackageSupport.Package;
         DbFhirPackage targetPackage = targetPackageSupport.Package;
 
@@ -3240,7 +3260,6 @@ public class XVerProcessor
             Experimental = false,
             Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
             Abstract = false,
-            Context = contexts,
             Type = "Extension",
             BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
             Derivation = StructureDefinition.TypeDerivationRule.Constraint,
@@ -3266,20 +3285,84 @@ public class XVerProcessor
             relevantComparisons,
             xverValueSets);
 
-        //extSd.Differential.Element.Add(new()
-        //{
-        //    ElementId = "Extension.url",
-        //    Path = "Extension.url",
-        //    Min = 1,
-        //    Max = "1",
-        //    Base = new()
-        //    {
-        //        Path = "Extension.url",
-        //        Min = 1,
-        //        Max = "1",
-        //    },
-        //    Fixed = new FhirUri(extSd.Url)
-        //});
+        // check if the element was a modifier so we can determine if the extension is a modifier
+        if (element.IsModifier)
+        {
+            /*
+             * Rules for determining if an extension is a modifier:
+             * source is modifier element -> target is modifier element: extension is not modifier
+             * source is modifier element -> target is backbone that is not modifier: extension is modifier
+             * source is modifier element -> target is primitive scalar that is not modifier: need to move the context up one level and extension is modifier
+             * source is modifier element -> target is primitive array that is modifier: throw for now and resolve if we hit any
+             */
+
+            List<StructureDefinition.ContextComponent> contextsToShorten = [];
+            List<TargetContextModifierRec> tcInfoRecs = [];
+
+            // iterate across the contexts
+            foreach (StructureDefinition.ContextComponent context in contexts)
+            {
+                // resolve the context element from the target package
+                if (!targetPackageSupport.CoreDC!.TryResolveElementTree(context.Expression, out StructureDefinition? targetSd, out ElementDefinition[] targetElements))
+                {
+                    // if we cannot resolve the context element, we have a serious problem
+                    throw new Exception($"Failed to resolve context element {context.Expression} in target package {targetPackage.ShortName} for extension {extSd.Url}!");
+                }
+
+                ElementDefinition targetContextElement = targetElements[^1];
+
+                // fill out our target context modifier info
+                tcInfoRecs.Add(new()
+                {
+                    Context = context,
+                    IsModifier = targetContextElement.IsModifier == true,
+                    HasChildElements = targetPackageSupport.CoreDC!.HasChildElements(targetContextElement.Path),
+                    HasPrimitiveType = targetContextElement.Type.Any(t => targetPackageSupport.CoreDC!.PrimitiveTypesByName.ContainsKey(t.Code)),
+                    IsArray = targetContextElement.cgCardinalityMax() != 1,
+                    IsRootElement = targetContextElement.IsRootElement(),
+                });
+            }
+
+            // check if all contexts are modifier elements
+            if (tcInfoRecs.All(r => r.IsModifier == true))
+            {
+                // do not need to make this a modifier extension
+            }
+            // check if all contexts have child elements
+            else if (tcInfoRecs.All(r => r.HasChildElements))
+            {
+                // this needs to be a modifier extension
+                extSd.Differential.Element[0].IsModifier = true;
+                extSd.Differential.Element[0].IsModifierReason = element.IsModifierReason
+                        ?? (element.IsModifier == true ? $"This extension is a modifier because the source element {element.Id} is a modifier" : null);
+            }
+            // check if any context is an array with primitive types
+            else if (tcInfoRecs.Any(r => r.IsArray && r.HasPrimitiveType))
+            {
+                // throw an exception - we do not know how to handle this yet (note this has never thrown - precautionary in case something in R6+ causes in the future)
+                throw new Exception($"Extension {extSd.Url} has a context element that is an array of primitive types, which is not supported for modifier extensions in cross-version processing.");
+            }
+            // falling through rules, this needs to be a modifier and any primitive type context should be moved up a level
+            else
+            {
+                // this needs to be a modifier extension
+                extSd.Differential.Element[0].IsModifier = true;
+                extSd.Differential.Element[0].IsModifierReason = element.IsModifierReason
+                        ?? (element.IsModifier == true ? $"This extension is a modifier because the source element {element.Id} is a modifier" : null);
+
+                // modify any contexts we need to shorten
+                foreach (TargetContextModifierRec tcInfoRec in tcInfoRecs)
+                {
+                    if (tcInfoRec.HasPrimitiveType)
+                    {
+                        tcInfoRec.Context.Expression = tcInfoRec.Context.Expression.Substring(0, tcInfoRec.Context.Expression.LastIndexOf('.'));
+                    }
+                }
+            }
+        }
+
+        // set our contexts
+        extSd.Context = contexts;
 
         return extSd;
     }
@@ -3409,9 +3492,6 @@ public class XVerProcessor
             Comment = edComment,
             Min = element.MinCardinality,
             Max = element.MaxCardinalityString,
-            IsModifier = element.IsModifier,
-            IsModifierReason = element.IsModifierReason
-                ?? (element.IsModifier == true ? $"This extension is a modifier because the target element {element.Id} is flagged IsModifier" : null),
         };
 
         if (string.IsNullOrEmpty(sliceName))
