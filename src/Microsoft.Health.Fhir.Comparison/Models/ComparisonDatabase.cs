@@ -2082,7 +2082,7 @@ public class ComparisonDatabase : IDisposable
                         Id = sd.Id,
                         VersionedUrl = sd.Url + "|" + sd.Version,
                         UnversionedUrl = sd.Url,
-                        Name = sd.Name,
+                        Name = FhirSanitizationUtils.SanitizeForProperty(sd.Name, replacements: []),
                         Version = sd.Version,
                         Status = sd.Status,
                         Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,

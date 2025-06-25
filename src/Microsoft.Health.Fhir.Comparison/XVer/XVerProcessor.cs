@@ -1763,8 +1763,6 @@ public class XVerProcessor
     }
 
 
-
-
     private void writeXverOutcomes(
         List<PackageXverSupport> packageSupports,
         Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
@@ -1792,6 +1790,8 @@ public class XVerProcessor
         // iterate over each structure in each source package
         foreach (((int sourcePackageIndex, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
         {
+            string sourceStructureNameForFile = FhirSanitizationUtils.SanitizeForProperty(sourceStructureName, replacements: []);
+
             // iterate across each of our targets
             foreach ((List<XverOutcome> outcomes, int targetPackageIndex) in structureOutcomesByTarget.Select((ol, i) => (ol, i)))
             {
@@ -1841,8 +1841,8 @@ public class XVerProcessor
                 }
 
                 // create a filename for this structure's md file
-                string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
-                string htmlFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.html";
+                string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureNameForFile}-{targetPackage.ShortName}.md";
+                string htmlFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureNameForFile}-{targetPackage.ShortName}.html";
 
                 // open our files
                 using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(mdDir, mdFilename), false, false);
@@ -3361,7 +3361,7 @@ public class XVerProcessor
             }
         }
 
-        // set our contexts
+        // set the contexts for our extension
         extSd.Context = contexts;
 
         return extSd;
