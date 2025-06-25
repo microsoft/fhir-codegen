@@ -245,23 +245,18 @@ public class XVerProcessor
                 break;
 
             case "compare":
-                LoadDatabase(_config.ReloadDatabase, true);
-                CompareInDatabase();
+                LoadDatabase(_config.ReloadDatabase, _config.XverAllowComparisonUpdates);
+                CompareInDatabase(allowUpdates: _config.XverAllowComparisonUpdates);
                 break;
 
             case "compare-vs":
-                LoadDatabase(_config.ReloadDatabase, true, FhirArtifactClassEnum.ValueSet);
-                CompareInDatabase(FhirArtifactClassEnum.ValueSet);
+                LoadDatabase(_config.ReloadDatabase, _config.XverAllowComparisonUpdates, FhirArtifactClassEnum.ValueSet);
+                CompareInDatabase(FhirArtifactClassEnum.ValueSet, allowUpdates: _config.XverAllowComparisonUpdates);
                 break;
 
             case "compare-sd":
                 LoadDatabase(_config.ReloadDatabase, false, FhirArtifactClassEnum.Resource);
-                CompareInDatabase(FhirArtifactClassEnum.Resource);
-                break;
-
-            case "compare-vs-missing":
-                LoadDatabase(_config.ReloadDatabase, true, FhirArtifactClassEnum.ValueSet);
-                CompareInDatabase(FhirArtifactClassEnum.ValueSet, allowUpdates: false);
+                CompareInDatabase(FhirArtifactClassEnum.Resource, allowUpdates: _config.XverAllowComparisonUpdates);
                 break;
 
             case "docs":
@@ -1926,8 +1921,7 @@ public class XVerProcessor
         // get the list of value sets in this version that have a required binding
         List<DbValueSet> valueSets = DbValueSet.SelectList(
             _db!.DbConnection,
-            FhirPackageKey: sourcePackage.Key,
-            StrongestBindingCore: BindingStrength.Required);
+            FhirPackageKey: sourcePackage.Key);
 
         // iterate over the value sets
         foreach (DbValueSet vs in valueSets)

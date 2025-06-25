@@ -185,6 +185,11 @@
             "commandLineArgs": "xver compare",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "XVer compare-vs-add": {
+            "commandName": "Project",
+            "commandLineArgs": "xver compare-vs --xver-allow-comparison-updates false",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "XVer docs-db": {
             "commandName": "Project",
             "commandLineArgs": "xver docs",

@@ -181,12 +181,26 @@ public class FhirDbComparer
                 _vsComparisons.Clear();
                 _conceptComparisons.Clear();
 
-                List<DbValueSet> valueSets = DbValueSet.SelectList(_db, FhirPackageKey: sourcePackage.Key, StrongestBindingCore: Hl7.Fhir.Model.BindingStrength.Required);
-                _logger.LogInformation($" <<< processing ValueSets with required bindings, count: {valueSets.Count}");
+                List<DbValueSet> valueSets = DbValueSet.SelectList(_db, FhirPackageKey: sourcePackage.Key);
+                _logger.LogInformation($" <<< processing {sourcePackage.FhirVersionShort} ValueSets, count: {valueSets.Count}");
 
                 // iterate over value sets in the package
                 foreach (DbValueSet sourceVs in valueSets)
                 {
+                    // if we are not allowing updates, we need to see if this value set has been compared before
+                    if (allowUpdates == false)
+                    {
+                        int matchCount = DbValueSetComparison.SelectCount(
+                            _db,
+                            SourceFhirPackageKey: sourcePackage.Key,
+                            SourceValueSetKey: sourceVs.Key);
+
+                        if (matchCount != 0)
+                        {
+                            continue;
+                        }
+                    }
+
                     _logger.LogInformation($" <<< processing ValueSet {sourceVs.VersionedUrl}");
 
                     // iterate over the comparison pairs
@@ -232,6 +246,20 @@ public class FhirDbComparer
                     // iterate over the structures in the package
                     foreach (DbStructureDefinition sourceSd in structures)
                     {
+                        // if we are not allowing updates, we need to see if this structure has been compared before
+                        if (allowUpdates == false)
+                        {
+                            int matchCount = DbStructureComparison.SelectCount(
+                                _db,
+                                SourceFhirPackageKey: sourcePackage.Key,
+                                SourceStructureKey: sourceSd.Key);
+
+                            if (matchCount != 0)
+                            {
+                                continue;
+                            }
+                        }
+
                         _logger.LogInformation($" <<< processing Structure:{artifactClass} {sourceSd.VersionedUrl}");
 
                         // iterate over the comparison pairs

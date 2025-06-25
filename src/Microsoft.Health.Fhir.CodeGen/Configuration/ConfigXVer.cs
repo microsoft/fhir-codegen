@@ -188,6 +188,25 @@ public class ConfigXVer : ConfigRoot
     };
 
     [ConfigOption(
+        ArgName = "--xver-allow-comparison-updates",
+        EnvName = "Xver_Allow_Comparison_Updates",
+        ArgArity = "0..1",
+        Description = "Whether or not to allow updates to the comparison database during processing.")]
+    public bool XverAllowComparisonUpdates { get; set; } = true;
+
+    private static ConfigurationOption XverAllowComparisonUpdatesParameter => new()
+    {
+        Name = "Xver_Allow_Comparison_Updates",
+        EnvVarName = "Xver_Allow_Comparison_Updates",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--xver-allow-comparison-updates", "Whether or not to allow updates to the comparison database during processing.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
         ArgName = "--no-output",
         EnvName = "No_Output",
         ArgArity = "0..1",
@@ -223,7 +242,6 @@ public class ConfigXVer : ConfigRoot
         },
     };
 
-
     [ConfigOption(
         ArgName = "--map-destination-path",
         EnvName = "Map_Destination_Path",
@@ -254,6 +272,7 @@ public class ConfigXVer : ConfigRoot
         XverArtifactVersionParameter,
         XverGenerateNpmsParameter,
         XverGenerateSnapshotsParameter,
+        XverAllowComparisonUpdatesParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
@@ -300,6 +319,9 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Xver_Generate_Snapshots":
                     XverGenerateSnapshots = GetOpt(parseResult, opt, XverGenerateSnapshots);
+                    break;
+                case "Xver_Allow_Comparison_Updates":
+                    XverAllowComparisonUpdates = GetOpt(parseResult, opt, XverAllowComparisonUpdates);
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt, NoOutput);
