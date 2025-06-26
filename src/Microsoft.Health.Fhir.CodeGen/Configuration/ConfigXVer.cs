@@ -207,6 +207,24 @@ public class ConfigXVer : ConfigRoot
     };
 
     [ConfigOption(
+        ArgName = "--xver-export-for-publisher",
+        EnvName = "Xver_Export_For_Publisher",
+        ArgArity = "0..1",
+        Description = "Set to export XVer artifacts for publisher.")]
+    public bool XverExportForPublisher { get; set; } = false;
+    private static ConfigurationOption XverExportForPublisherParameter => new()
+    {
+        Name = "Xver_Export_For_Publisher",
+        EnvVarName = "Xver_Export_For_Publisher",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--xver-export-for-publisher", "Set to export XVer artifacts for publisher.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
         ArgName = "--no-output",
         EnvName = "No_Output",
         ArgArity = "0..1",
@@ -273,6 +291,7 @@ public class ConfigXVer : ConfigRoot
         XverGenerateNpmsParameter,
         XverGenerateSnapshotsParameter,
         XverAllowComparisonUpdatesParameter,
+        XverExportForPublisherParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
@@ -322,6 +341,9 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Xver_Allow_Comparison_Updates":
                     XverAllowComparisonUpdates = GetOpt(parseResult, opt, XverAllowComparisonUpdates);
+                    break;
+                case "Xver_Export_For_Publisher":
+                    XverExportForPublisher = GetOpt(parseResult, opt, XverExportForPublisher);
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt, NoOutput);

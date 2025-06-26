@@ -808,35 +808,35 @@ public class XVerProcessor
         // make the make package tgz files
         if (_config.XverGenerateNpms)
         {
-            foreach (DbFhirPackage focusPackage in packages)
+            foreach (DbFhirPackage targetPackage in packages)
             {
                 // TODO: until verified, only write R4 and later packages
-                if ((focusPackage.ShortName == "R2") ||
-                    (focusPackage.ShortName == "R3"))
+                if ((targetPackage.ShortName == "R2") ||
+                    (targetPackage.ShortName == "R3"))
                 {
                     continue;
                 }
 
-                string validationPackageId = $"hl7.fhir.uv.xver.{focusPackage.ShortName.ToLowerInvariant()}";
+                string validationPackageId = getXverPackageId(targetPackage.ShortName);
 
                 // create the validation package
                 createTgzFromDirectory(
-                    Path.Combine(fhirDir, focusPackage.ShortName),
+                    Path.Combine(fhirDir, targetPackage.ShortName),
                     Path.Combine(fhirDir, $"{validationPackageId}.{_crossDefinitionVersion}.tgz"));
 
                 // look for all combination packages, using the focus as the target
                 foreach (DbFhirPackage sourcePackage in packages)
                 {
-                    if (sourcePackage.Key == focusPackage.Key)
+                    if (sourcePackage.Key == targetPackage.Key)
                     {
                         continue;
                     }
 
-                    string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{focusPackage.ShortName.ToLowerInvariant()}";
+                    string packageId = getXverPackageId(targetPackage.ShortName, sourcePackage.ShortName);
 
                     // create the validation package
                     createTgzFromDirectory(
-                        Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{focusPackage.ShortName}"),
+                        Path.Combine(fhirDir, packageId),
                         Path.Combine(fhirDir, $"{packageId}.{_crossDefinitionVersion}.tgz"));
                 }
             }
@@ -881,9 +881,11 @@ public class XVerProcessor
         string fhirDir)
     {
         // iterate over the support packages
-        foreach (PackageXverSupport packageSupport in packageSupports)
+        foreach (PackageXverSupport targetPackageSupport in packageSupports)
         {
-            string dir = Path.Combine(fhirDir, packageSupport.Package.ShortName);
+            string packageId = getXverPackageId(targetPackageSupport.Package.ShortName);
+
+            string dir = Path.Combine(fhirDir, packageId);
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -896,34 +898,32 @@ public class XVerProcessor
             }
 
             List<(string packageId, string packageVersion)> internalDependencies = [];
-            foreach (PackageXverSupport sourcePackage in packageSupports)
+            foreach (PackageXverSupport sourcePackageSupport in packageSupports)
             {
-                if (sourcePackage.Package.Key == packageSupport.Package.Key)
+                if (sourcePackageSupport.Package.Key == targetPackageSupport.Package.Key)
                 {
                     continue;
                 }
 
                 internalDependencies.Add((
-                    $"hl7.fhir.uv.xver-{sourcePackage.Package.ShortName.ToLowerInvariant()}.{packageSupport.Package.ShortName.ToLowerInvariant()}",
+                    getXverPackageId(targetPackageSupport.Package.ShortName, sourcePackageSupport.Package.ShortName),
                     _crossDefinitionVersion));
             }
 
             // get the list of index informations that *target* this version
-            List<XverPackageIndexInfo> packageIndexInfos = allPackageIndexInfos.Where(ii => ii.TargetPackageSupport.Package.Key == packageSupport.Package.Key).ToList();
-
-            string packageId = $"hl7.fhir.uv.xver.{packageSupport.Package.ShortName.ToLowerInvariant()}";
+            List<XverPackageIndexInfo> packageIndexInfos = allPackageIndexInfos.Where(ii => ii.TargetPackageSupport.Package.Key == targetPackageSupport.Package.Key).ToList();
 
             // build and write the ImplementationGuide resource for the combination package (single source and target)
             {
                 string igJson;
 
-                if (packageSupport.Package.FhirVersionShort.StartsWith('4'))
+                if (targetPackageSupport.Package.FhirVersionShort.StartsWith('4'))
                 {
-                    igJson = getIgJsonR4(packageSupport.Package, packageId, internalDependencies, packageIndexInfos);
+                    igJson = getIgJsonR4(targetPackageSupport.Package, packageId, internalDependencies, packageIndexInfos);
                 }
-                else if (packageSupport.Package.FhirVersionShort.StartsWith('5'))
+                else if (targetPackageSupport.Package.FhirVersionShort.StartsWith('5'))
                 {
-                    igJson = getIgJsonR5(packageSupport.Package, packageId, internalDependencies, packageIndexInfos);
+                    igJson = getIgJsonR5(targetPackageSupport.Package, packageId, internalDependencies, packageIndexInfos);
                 }
                 else
                 {
@@ -940,7 +940,7 @@ public class XVerProcessor
                 string pmJson = $$$"""
                     {
                       "version" : "{{{_crossDefinitionVersion}}}",
-                      "fhirVersion" : ["{{{packageSupport.Package.PackageVersion}}}"],
+                      "fhirVersion" : ["{{{targetPackageSupport.Package.PackageVersion}}}"],
                       "date" : "{{{DateTime.Now.ToString("yyyyMMddHHmmss")}}}",
                       "name" : "{{{packageId}}}",
                       "jurisdiction" : "http://unstats.un.org/unsd/methods/m49/m49.htm#001"
@@ -953,7 +953,7 @@ public class XVerProcessor
 
             // build and write the .index.json file
             {
-                string indexJson = getIndexJson(packageSupport.Package, packageId, internalDependencies, packageIndexInfos);
+                string indexJson = getIndexJson(targetPackageSupport.Package, packageId, internalDependencies, packageIndexInfos);
                 string filename = ".index.json";
                 File.WriteAllText(Path.Combine(dir, filename), indexJson);
             }
@@ -975,14 +975,14 @@ public class XVerProcessor
                         "canonical" : "http://hl7.org/fhir/uv/xver",
                         "notForPublication" : true,
                         "url" : "http://hl7.org/fhir/uv/xver",
-                        "title" : "XVer-{{{packageSupport.Package.ShortName}}}",
-                        "description" : "All Cross Version Extensions for FHIR {{{packageSupport.Package.ShortName}}}",
-                        "fhirVersions" : ["{{{packageSupport.Package.PackageVersion}}}"],
+                        "title" : "XVer-{{{targetPackageSupport.Package.ShortName}}}",
+                        "description" : "All Cross Version Extensions for FHIR {{{targetPackageSupport.Package.ShortName}}}",
+                        "fhirVersions" : ["{{{targetPackageSupport.Package.PackageVersion}}}"],
                         "dependencies" : {
-                            "{{{packageSupport.Package.PackageId}}}" : "{{{packageSupport.Package.PackageVersion}}}",
-                            "hl7.terminology.{{{packageSupport.Package.ShortName.ToLowerInvariant()}}}" : "6.3.0",
-                            "hl7.fhir.uv.extensions.{{{packageSupport.Package.ShortName.ToLowerInvariant()}}}" : "5.2.0",
-                            "hl7.fhir.uv.tools.{{{packageSupport.Package.ShortName.ToLowerInvariant()}}}" : "current"
+                            "{{{targetPackageSupport.Package.PackageId}}}" : "{{{targetPackageSupport.Package.PackageVersion}}}",
+                            "hl7.terminology.{{{targetPackageSupport.Package.ShortName.ToLowerInvariant()}}}" : "6.3.0",
+                            "hl7.fhir.uv.extensions.{{{targetPackageSupport.Package.ShortName.ToLowerInvariant()}}}" : "5.2.0",
+                            "hl7.fhir.uv.tools.{{{targetPackageSupport.Package.ShortName.ToLowerInvariant()}}}" : "current"
                             {{{additionalDependencies}}}
                         },
                         "author" : "HL7 International / FHIR Infrastructure",
@@ -1033,7 +1033,7 @@ public class XVerProcessor
                 continue;
             }
 
-            string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{targetSupport.Package.ShortName.ToLowerInvariant()}";
+            string packageId = getXverPackageId(targetSupport.Package.ShortName, sourcePackage.ShortName);
 
             XverPackageIndexInfo indexInfo = new()
             {
@@ -1063,7 +1063,7 @@ public class XVerProcessor
                 }
 
                 string filename = $"ImplementationGuide-{packageId}.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), igJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), igJson);
             }
 
             // build and write the package.manifest.json file
@@ -1079,14 +1079,14 @@ public class XVerProcessor
                     """;
 
                 string filename = "package.manifest.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), pmJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), pmJson);
             }
 
             // build and write the .index.json file
             {
                 string indexJson = getIndexJson(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo);
                 string filename = ".index.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), indexJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), indexJson);
             }
 
             // build and write the package.json file
@@ -1127,7 +1127,7 @@ public class XVerProcessor
                     """;
 
                 string filename = "package.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), packageJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), packageJson);
             }
         }
 
@@ -1812,17 +1812,18 @@ public class XVerProcessor
                 DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
                 DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
-                string packageFor = $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}";
+                string packageId = getXverPackageId(targetPackage.ShortName, sourcePackage.ShortName);
                 string htmlDir;
                 string mdDir;
-                if (createdDirs.Contains(packageFor))
+
+                if (createdDirs.Contains(packageId))
                 {
-                    htmlDir = Path.Combine(fhirDir, packageFor, "package", "doc");
-                    mdDir = Path.Combine(docsDir, packageFor);
+                    htmlDir = Path.Combine(fhirDir, packageId, "package", "doc");
+                    mdDir = Path.Combine(docsDir, packageId);
                 }
                 else
                 {
-                    htmlDir = Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}");
+                    htmlDir = Path.Combine(fhirDir, packageId);
                     if (!Directory.Exists(htmlDir))
                     {
                         Directory.CreateDirectory(htmlDir);
@@ -1840,13 +1841,13 @@ public class XVerProcessor
                         Directory.CreateDirectory(htmlDir);
                     }
 
-                    mdDir = Path.Combine(docsDir, packageFor);
+                    mdDir = Path.Combine(docsDir, packageId);
                     if (!Directory.Exists (mdDir))
                     {
                         Directory.CreateDirectory(mdDir);
                     }
 
-                    createdDirs.Add(packageFor);
+                    createdDirs.Add(packageId);
                 }
 
                 // create a filename for this structure's md file
@@ -1885,6 +1886,15 @@ public class XVerProcessor
         }
     }
 
+    private string getXverPackageId(string targetShortName, string sourceShortName)
+    {
+        return $"hl7.fhir.uv.xver-{sourceShortName.ToLowerInvariant()}.{targetShortName.ToLowerInvariant()}";
+    }
+
+    private string getXverPackageId(string targetShortName)
+    {
+        return $"hl7.fhir.uv.xver.{targetShortName.ToLowerInvariant()}";
+    }
 
     private void writeXverValueSets(
         List<DbFhirPackage> packages,
@@ -1901,7 +1911,7 @@ public class XVerProcessor
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
             // build a path for this direction
-            string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            string dir = Path.Combine(fhirDir, getXverPackageId(targetPackage.ShortName, focusPackage.ShortName));
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -2222,7 +2232,7 @@ public class XVerProcessor
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
             // build a path for this direction
-            string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            string dir = Path.Combine(fhirDir, getXverPackageId(targetPackage.ShortName, focusPackage.ShortName));
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -2508,7 +2518,7 @@ public class XVerProcessor
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
             // build a path for this direction
-            string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            string dir = Path.Combine(fhirDir, getXverPackageId(targetPackage.ShortName, focusPackage.ShortName));
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -3450,12 +3460,6 @@ public class XVerProcessor
             return;
         }
 
-        //// check for R5:SubscriptionStatus.eventsSinceSubscriptionStart
-        //if (element.Key == 42051)
-        //{
-        //    Console.Write("");
-        //}
-
         HashSet<string> basicElementPaths = targetPackageSupport.BasicElements;
 
         // check to see if this element is in the 'basic' resource of this version (do not add)
@@ -3503,18 +3507,6 @@ public class XVerProcessor
                 Min = 0,
                 Max = "*",
             };
-
-            //extEd.Slicing = new()
-            //{
-            //    Discriminator = [
-            //        new() {
-            //            Type = ElementDefinition.DiscriminatorType.Value,
-            //            Path = "url",
-            //        }
-            //    ],
-            //    Ordered = false,
-            //    Rules = ElementDefinition.SlicingRules.Open,
-            //};
         }
 
         extSd.Differential.Element.Add(extEd);
@@ -3579,13 +3571,6 @@ public class XVerProcessor
                     relevantComparisons,
                     xverValueSets);
             }
-
-            //extSd.Differential.Element.Add(new()
-            //{
-            //    ElementId = extElementId + ".value[x]",
-            //    Path = extElementPath + ".value[x]",
-            //    Max = "0",
-            //});
 
             edForChildren.Min = minRequired;
 
@@ -3805,8 +3790,6 @@ public class XVerProcessor
                             if (needsBasic || (invalid.Count > 0))
                             {
                                 typeProfiles.Add("http://hl7.org/fhir/StructureDefinition/Basic");
-                                //resolvedTargetTypes.Add("http://hl7.org/fhir/StructureDefinition/Basic");
-                                //resolvedTargetTypes.RemoveAll(string.IsNullOrEmpty);
                             }
                         }
                         break;
@@ -3814,39 +3797,6 @@ public class XVerProcessor
 
             }
         }
-
-        //// if we have moved target profiles from canonical to uri, make sure that we have a URI type
-        //if (collectedTargetProfiles.ContainsKey("uri") && !collectedValueTypes.ContainsKey("uri"))
-        //{
-        //    DbElementType? uriElementType = DbElementType.SelectSingle(_db!.DbConnection,
-        //        ElementKey: element.Key,
-        //        TypeName: "uri",
-        //        FhirPackageKey: targetPackageSupport.Package.Key);
-
-        //    uriElementType ??= new DbElementType()
-        //    {
-        //        FhirPackageKey = targetPackageSupport.Package.Key,
-        //        StructureKey = element.StructureKey,
-        //        ElementKey = element.Key,
-        //        TypeName = "uri",
-        //        TypeProfile = null,
-        //        TargetProfile = null,
-        //        TypeStructureKey = null,
-        //    };
-
-        //    collectedValueTypes.Add("uri", [uriElementType]);
-        //    elementValueTypes.Add(uriElementType);
-        //}
-
-        //// similarly, if we removed *all* the types from canonical, it should no longer appear
-        //if (collectedValueTypes.ContainsKey("canonical") &&
-        //    (collectedTargetProfiles["canonical"].Count == 0))
-        //{
-        //    collectedValueTypes.Remove("canonical");
-        //    collectedTypeProfiles.Remove("canonical");
-        //    collectedTargetProfiles.Remove("canonical");
-        //    elementValueTypes.RemoveAll(et => et.TypeName == "canonical");
-        //}
 
         List<string> extAllowedTypes = [];
         Dictionary<string, List<string>> extReplaceableTypes = [];
@@ -4798,36 +4748,6 @@ public class XVerProcessor
                         {
                             writer.Write($"| _{cell.RightComparison.Relationship}_<br/>({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-                        //{
-                        //    writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        //}
-                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-                        //{
-                        //    writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        //}
-                        //if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
-                        //{
-                        //    // write mapping notes
-                        //    writer.Write(
-                        //        $"| → {cell.RightComparison.Relationship} → " +
-                        //        $"<hr/>" +
-                        //        $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
-                        //}
-                        //else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.Equivalent)
-                        //{
-                        //    writer.Write("| == ");
-                        //}
-                        //else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget)
-                        //{
-                        //    writer.Write("| > ");
-                        //}
-                        //else if (cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget)
-                        //{
-                        //    writer.Write("| < ");
-                        //}
                         else
                         {
                             // write mapping notes
@@ -5032,13 +4952,6 @@ public class XVerProcessor
             using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
             {
                 writeMdDetailedVs(_db!.DbConnection, vsWriter, packages, package, keyPackageColIndex, vs, vsGraph);
-
-                //// check for failures - write a stub file with information about the value set
-                //if (ca.FailureCode != null)
-                //{
-                //    writeMdComparisonFailed(vsWriter, vs);
-                //    continue;
-                //}
             }
 
         });
@@ -5332,10 +5245,6 @@ public class XVerProcessor
         writer.WriteLine();
 
         int mapGroupIndex = 0;
-        //List<DbValueSetConcept> keyConcepts = DbValueSetConcept.SelectList(
-        //    db,
-        //    ValueSetKey: keyVs.Key,
-        //    orderByProperties: [nameof(DbValueSetConcept.System), nameof(DbValueSetConcept.Code)]);
 
         foreach (DbGraphVs.DbVsRow valueSetRow in vsGraph.Projection)
         {
@@ -5389,13 +5298,6 @@ public class XVerProcessor
                 {
                     lastSystem = conceptRow[keyPackageColIndex]?.Concept.System;
                     writer.WriteLine($"""| <td colspan="{byTwoColumnCount - 1}">**{package.ShortName.ForMdTable()}** System: `{lastSystem.ForMdTable()}`""");
-
-                    //writeTableColumns(
-                    //    writer,
-                    //    $"""{package.ShortName.ForMdTable()} System:<br/>`{lastSystem.ForMdTable()}`""",
-                    //    byTwoColumnCount,
-                    //    appendNewline: true,
-                    //    valueOnlyInColumn: keyPackageColIndex * 2);
                 }
 
                 int column = -1;
@@ -5440,24 +5342,6 @@ public class XVerProcessor
                         {
                             writer.Write($"| _{cell.RightComparison.Relationship}_ <br/>({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
                         }
-                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-                        //{
-                        //    writer.Write($"| ↢↢↢ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        //}
-                        //else if ((cell.RightComparison.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-                        //    (cell.RightCell.LeftComparison?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-                        //{
-                        //    writer.Write($"| ↣↣↣ ({cell.RightComparison.Key}/{cell.RightCell.LeftComparison?.Key})");
-                        //}
-                        //else if (cell.RightComparison.Relationship != cell.RightCell.LeftComparison?.Relationship)
-                        //{
-                        //    // write mapping notes
-                        //    writer.Write(
-                        //        $"| → {cell.RightComparison.Relationship} → " +
-                        //        $"<hr/>" +
-                        //        $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
-                        //}
                         else
                         {
                             // write mapping notes
@@ -5532,65 +5416,8 @@ public class XVerProcessor
                 $"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
                 $"<br/>- Identical: `{comparison.IsIdentical ?? false}`" +
                 $"<br/>{arrows}";
-
-            //return $"[{comparison.CompositeName.ForMdTable()} ({comparison.Key})]" +
-            //    $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{target.DC.FhirSequence.ToRLiteral()}/ConceptMap-{comparison.Name}.json)";
         }
     }
-
-
-    //public void Compare(bool? saveUpdates = null, FhirArtifactClassEnum? artifactFilter = null)
-    //{
-    //    if (_definitions.Length < 2)
-    //    {
-    //        throw new InvalidOperationException("At least two definitions are required to compare.");
-    //    }
-
-    //    // load the current cross version maps if necessary
-    //    if (_comparisonCache.Count == 0)
-    //    {
-    //        LoadFhirCrossVersionMaps(preferV1Maps: false);
-    //    }
-
-    //    if ((artifactFilter == null) ||
-    //        (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
-    //        (artifactFilter == FhirArtifactClassEnum.Resource))
-    //    {
-    //        // discover the set of value sets that we want to compare across all selected versions
-    //        _vsUrlsToInclude = getValueSetsToCompare();
-    //    }
-
-    //    // walk the definitions to run the comparisons between each version pair
-    //    for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
-    //    {
-    //        DefinitionCollection left = _definitions[definitionIndex - 1];
-    //        DefinitionCollection right = _definitions[definitionIndex];
-
-    //        // grab the comparer for this pair (the same comparer will exist for either direction of the pair)
-    //        if (!_comparisonCache.TryGetValue((left.Key, right.Key), out FhirCoreComparer? comparer))
-    //        {
-    //            _logger.LogMapsNotFound($"{left.Key} -> {right.Key}");
-    //            continue;
-    //        }
-
-    //        if ((artifactFilter == null) ||
-    //            (artifactFilter == FhirArtifactClassEnum.ValueSet) ||
-    //            (artifactFilter == FhirArtifactClassEnum.Resource))
-    //        {
-    //            // register our filtered sets of value sets
-    //            comparer.RegisterValueSetFilters(_vsUrlsToInclude[left.Key], _vsUrlsToInclude[right.Key]);
-    //        }
-
-    //        // run the comparison (bi-directional)
-    //        comparer.Compare(artifactFilter);
-
-    //        // save our results if necessary
-    //        if (saveUpdates ?? _config.SaveComparisonResult)
-    //        {
-    //            comparer.Save(artifactFilter);
-    //        }
-    //    }
-    //}
 
     /// <summary>
     /// Retrieves a dictionary of value sets to compare, based on required bindings and mappings between definition collections.
@@ -5863,13 +5690,6 @@ public class XVerProcessor
             using (ExportStreamWriter artifactWriter = createMarkdownWriter(filename, true, true))
             {
                 writeMdDetailed(artifactWriter, kvp.Value, artifactClass, dc, projection);
-
-                //// check for failures - write a stub file with information about the structure
-                //if (ca.FailureCode != null)
-                //{
-                //    writeMdComparisonFailed(vsWriter, vs);
-                //    continue;
-                //}
             }
         });
 
@@ -5936,13 +5756,6 @@ public class XVerProcessor
             using (ExportStreamWriter vsWriter = createMarkdownWriter(filename, true, true))
             {
                 writeMdDetailed(vsWriter, vs, dc, projection, expanded, expandMessage);
-
-                //// check for failures - write a stub file with information about the value set
-                //if (ca.FailureCode != null)
-                //{
-                //    writeMdComparisonFailed(vsWriter, vs);
-                //    continue;
-                //}
             }
         });
 
@@ -6120,183 +5933,7 @@ public class XVerProcessor
         }
         writer.WriteLine();
 
-
-        //// write a section for the code table
-        //writer.WriteLine("### Code Mappings");
-        //writer.WriteLine();
-
-        //int mapGroupIndex = 0;
-
-        //foreach (ValueSetGraphCell?[] valueSetRow in projection)
-        //{
-        //    if (valueSetRow[keyColumn] == null)
-        //    {
-        //        continue;
-        //    }
-
-        //    writer.WriteLine();
-        //    writer.WriteLine("#### Map Group " + mapGroupIndex++);
-        //    writer.WriteLine();
-        //    writer.WriteLine($"This group is centered on the Value Set {valueSetRow[keyColumn]!.Resource.Name} from {valueSetRow[keyColumn]!.DC.Key} (column {keyColumn}).");
-        //    writer.WriteLine("All codes from this value set are listed while other value sets only show contents that have relationships with those codes.");
-        //    writer.WriteLine();
-
-        //    // write the table header
-        //    for (int col = 0; col < _definitions.Length; col++)
-        //    {
-        //        if (col > 0)
-        //        {
-        //            writer.Write("| Relationship ");
-        //        }
-
-        //        ValueSetGraphCell? cell = valueSetRow[col];
-
-        //        if (cell == null)
-        //        {
-        //            writer.Write("| *No Map* ");
-        //            continue;
-        //        }
-
-        //        if (col == keyColumn)
-        //        {
-        //            writer.Write($"| {cell.DC.Key} {cell.Resource.Name.ForMdTable()}");
-        //        }
-        //        else
-        //        {
-        //            writer.Write($"| [{cell.DC.Key} {cell.Resource.Name.ForMdTable()}]({sdRootUrlsByVersion[col]}/{getVsFilename(cell.Resource.Name.ToPascalCase(), includeRelativeDir: false)})");
-        //        }
-        //    }
-        //    writer.WriteLine();
-        //    writeTableColumns(writer, "---", (_definitions.Length * 2) - 1, appendNewline: true);
-
-        //    // build a code map graph
-        //    ValueSetComponentGraph codeMapGraph = new()
-        //    {
-        //        SourceRow = valueSetRow,
-        //    };
-
-        //    HashSet<string>[] codesPerVs = _definitions.Select(_ => new HashSet<string>()).ToArray();
-
-        //    // iterate over the components in the key value set
-        //    foreach (ValueSet.ContainsComponent component in valueSetRow[keyColumn]!.Resource.cgGetFlatContains())
-        //    {
-        //        bool hasMap = false;
-
-        //        // project this component
-        //        foreach (ValueSetComponentGraphCell?[] componentRow in codeMapGraph.Project(valueSetRow[keyColumn]!, component))
-        //        {
-        //            hasMap = true;
-        //            int column = -1;
-
-        //            // traverse columns
-        //            foreach (ValueSetComponentGraphCell? cell in componentRow)
-        //            {
-        //                column++;
-
-        //                if (cell == null)
-        //                {
-        //                    writer.Write("| | ");
-        //                    continue;
-        //                }
-
-        //                codesPerVs[column].Add(cell.Component.cgKey());
-
-        //                if (column == keyColumn)
-        //                {
-        //                    writer.Write($"| **`{cell.Component.Code.ForMdTable()}`**");
-        //                }
-        //                else
-        //                {
-        //                    writer.Write($"| `{cell.Component.Code.ForMdTable()}`");
-        //                }
-
-        //                if (column == (componentRow.Length - 1))
-        //                {
-        //                    continue;
-        //                }
-
-        //                if (cell.RightEdge == null)
-        //                {
-        //                    writer.Write("| ");
-        //                }
-        //                else
-        //                {
-        //                    if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent) &&
-        //                        (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.Equivalent))
-        //                    {
-        //                        writer.Write("| == ");
-        //                    }
-        //                    else if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget) &&
-        //                             (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget))
-        //                    {
-        //                        writer.Write("| > ");
-        //                    }
-        //                    else if ((cell.RightEdge?.UpTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsBroaderThanTarget) &&
-        //                             (cell.RightEdge?.DownTarget?.Relationship == ConceptMap.ConceptMapRelationship.SourceIsNarrowerThanTarget))
-        //                    {
-        //                        writer.Write("| < ");
-        //                    }
-        //                    else
-        //                    {
-        //                        // write mapping notes
-        //                        writer.Write(
-        //                            $"| → {cell.RightEdge?.UpTarget?.Relationship} → " +
-        //                            $"<hr/>" +
-        //                            $"← {cell.RightEdge?.DownTarget?.Relationship} ← ");
-        //                    }
-        //                }
-        //            }
-
-        //            writer.WriteLine();
-        //        }
-
-        //        // check for unmapped concepts
-        //        if (!hasMap)
-        //        {
-        //            for (int i = 0; i < valueSetRow.Length; i++)
-        //            {
-        //                if (i == keyColumn)
-        //                {
-        //                    writer.Write($"| **`{component.Code.ForMdTable()}`**");
-        //                }
-        //                else
-        //                {
-        //                    writer.Write("| ");
-        //                }
-        //            }
-        //            writer.WriteLine();
-        //        }
-        //    }
-
-        //    // check for unused codes in value sets
-        //    for (int i = 0; i < valueSetRow.Length; i++)
-        //    {
-        //        if (i != 0)
-        //        {
-        //            writer.Write("| ");
-        //        }
-
-        //        if (valueSetRow[i] == null)
-        //        {
-        //            writer.Write("| ");
-        //        }
-        //        else
-        //        {
-        //            writer.Write($"| *{codesPerVs[i].Count} of {valueSetRow[i]!.UniqueCodeCount} codes used* ");
-        //        }
-        //    }
-        //    writer.WriteLine();
-
-        //    writer.WriteLine();
-        //}
-
         return;
-
-        //bool isRelated(ConceptDomainRelationshipCodes? relationship) =>
-        //    (relationship == ConceptDomainRelationshipCodes.Equivalent) ||
-        //    (relationship == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget) ||
-        //    (relationship == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget) ||
-        //    (relationship == ConceptDomainRelationshipCodes.Related);
     }
 
     private void writeMdOverviewIntroValueSets(ExportStreamWriter writer, DefinitionCollection dc)
@@ -6647,12 +6284,6 @@ public class XVerProcessor
         }
 
         return;
-            
-        //bool isRelated(ConceptDomainRelationshipCodes? relationship) =>
-        //    (relationship == ConceptDomainRelationshipCodes.Equivalent) ||
-        //    (relationship == ConceptDomainRelationshipCodes.SourceIsNarrowerThanTarget) ||
-        //    (relationship == ConceptDomainRelationshipCodes.SourceIsBroaderThanTarget) ||
-        //    (relationship == ConceptDomainRelationshipCodes.Related);
     }
 
     private void writeTableColumns(
@@ -6791,10 +6422,6 @@ public class XVerProcessor
         return includeRelativeDir
             ? $"ValueSets/{FhirSanitizationUtils.SanitizeForProperty(sourceVsName, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase)}.md"
             : FhirSanitizationUtils.SanitizeForProperty(sourceVsName, convertToConvention: FhirNameConventionExtensions.NamingConvention.PascalCase) + ".md";
-
-        //return includeRelativeDir
-        //    ? $"ValueSets/{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}"
-        //    : $"{sourceVsName}_{cd.TargetDefinition.FhirSequence.ToRLiteral()}_{cd.Target?.Name.ToPascalCase()}";
     }
 
     private (string to, string from) getConceptMapMdLinks(ValueSetGraphCell cell, ComparisonDirection direction)
@@ -6811,35 +6438,6 @@ public class XVerProcessor
         ConceptMap? mapFrom = direction == ComparisonDirection.Up ? edge?.Down : edge?.Up;
 
         return (getLink(mapTo, targetCell), getLink(mapFrom, targetCell));
-
-        //if (direction == ComparisonDirection.Up)
-        //{
-        //    if ((cell.RightCell == null) ||
-        //        (cell.RightEdge?.Up == null) ||
-        //        (cell.RightEdge?.Down == null))
-        //    {
-        //        return ("*no map*", "*no map*");
-        //    }
-
-        //    return (
-        //        $"[{cell.RightEdge.Up.Name.ForMdTable()}]" +
-        //        $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.RightCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.RightEdge.Up.Name}.json)",
-        //        $"[{cell.RightEdge.Down.Name.ForMdTable()}]" +
-        //        $"(/input/codes_v2/{cell.RightCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.RightEdge.Down.Name}.json)");
-        //}
-
-        //if ((cell.LeftCell == null) ||
-        //    (cell.LeftEdge?.Up == null) ||
-        //    (cell.LeftEdge?.Down == null))
-        //{
-        //    return ("*no map*", "*no map*");
-        //}
-
-        //return (
-        //    $"[{cell.LeftEdge.Down.Name.ForMdTable()}]" +
-        //    $"(/input/codes_v2/{cell.DC.FhirSequence.ToRLiteral()}to{cell.LeftCell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.LeftEdge.Down.Name}.json)",
-        //    $"[{cell.LeftEdge.Up.Name.ForMdTable()}]" +
-        //    $"(/input/codes_v2/{cell.LeftCell.DC.FhirSequence.ToRLiteral()}to{cell.DC.FhirSequence.ToRLiteral()}/ConceptMap-{cell.LeftEdge.Up.Name}.json)");
 
         string getLink(ConceptMap? map, ValueSetGraphCell? target)
         {
