@@ -1873,11 +1873,11 @@ public class CrossVersionMapCollection
 
     //private CMR ApplyRelationship(CMR existing, CMR? change) => existing switch
     //{
-    //    CMR.Equivalent => change ?? CMR.Equivalent,
+    //    CMR.IsEquivalent => change ?? CMR.IsEquivalent,
     //    CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : existing,
-    //    CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.Equivalent)
+    //    CMR.SourceIsNarrowerThanTarget => (change == CMR.SourceIsNarrowerThanTarget || change == CMR.IsEquivalent)
     //        ? CMR.SourceIsNarrowerThanTarget : CMR.RelatedTo,
-    //    CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.Equivalent)
+    //    CMR.SourceIsBroaderThanTarget => (change == CMR.SourceIsBroaderThanTarget || change == CMR.IsEquivalent)
     //        ? CMR.SourceIsBroaderThanTarget : CMR.RelatedTo,
     //    CMR.NotRelatedTo => change ?? existing,
     //    _ => change ?? existing,

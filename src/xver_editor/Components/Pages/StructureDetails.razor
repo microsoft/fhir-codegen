@@ -431,7 +431,7 @@
                                                     <FluentGridItem xs="10"><code>@context.Element.FhirCardinalityString</code></FluentGridItem>
 
                                                     <FluentGridItem xs="2">Type</FluentGridItem>
-                                                    <FluentGridItem xs="10"><code>@context.Element.CollatedTypeLiteral</code></FluentGridItem>
+                                                    <FluentGridItem xs="10"><code>@context.Element.FullCollatedTypeLiteral</code></FluentGridItem>
 
                                                     <FluentGridItem xs="2">Short</FluentGridItem>
                                                     <FluentGridItem xs="10"><code>@context.Element.Short</code></FluentGridItem>
@@ -643,7 +643,7 @@
                                                                             <FluentGridItem xs="10"><code>@rowContext.TargetCell.Element.FhirCardinalityString</code></FluentGridItem>
 
                                                                             <FluentGridItem xs="2">Type</FluentGridItem>
-                                                                            <FluentGridItem xs="10"><code>@rowContext.TargetCell.Element.CollatedTypeLiteral</code></FluentGridItem>
+                                                                            <FluentGridItem xs="10"><code>@rowContext.TargetCell.Element.FullCollatedTypeLiteral</code></FluentGridItem>
 
                                                                             <FluentGridItem xs="2">Short</FluentGridItem>
                                                                             <FluentGridItem xs="10"><code>@rowContext.TargetCell.Element.Short</code></FluentGridItem>
@@ -1242,7 +1242,7 @@ Class="sd-dialog-container">
 
         DbComparisonCache<DbStructureComparison> sdComparisons = new();
         DbComparisonCache<DbElementComparison> elementComparisons = new();
-        DbComparisonCache<DbElementTypeComparison> elementTypeComparisons = new();
+        DbComparisonCache<DbCollatedTypeComparison> elementTypeComparisons = new();
 
         sdComparisons.CacheAdd(sdComparison);
 

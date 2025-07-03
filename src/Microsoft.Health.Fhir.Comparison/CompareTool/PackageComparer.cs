@@ -1071,7 +1071,7 @@ public class PackageComparer
             foreach (ElementTypeComparisonDetails details in etComparison.TargetTypes)
             {
                 //// check for types we should skip
-                //if ((details.Relationship == CMR.Equivalent) ||
+                //if ((details.Relationship == CMR.IsEquivalent) ||
                 //    (details.Relationship == CMR.SourceIsNarrowerThanTarget))
                 //{
                 //    continue;
@@ -2642,7 +2642,7 @@ public class PackageComparer
                             // be optimistic on first pass
                             elementRelationship ??= CMR.Equivalent;
 
-                            CMR relationship = mapTargetElement.Relationship ?? CMR.Equivalent;     //  GetDefaultRelationship(mapTargetElement, mapSourceElement.Target) ?? CMR.Equivalent;
+                            CMR relationship = mapTargetElement.Relationship ?? CMR.Equivalent;     //  GetDefaultRelationship(mapTargetElement, mapSourceElement.Target) ?? CMR.IsEquivalent;
                             string message = string.IsNullOrEmpty(mapTargetElement.Comment)
                                 ? MessageForElementRelationship(relationship, mapSourceElement, mapTargetElement)
                                 : mapTargetElement.Comment;
@@ -2706,7 +2706,7 @@ public class PackageComparer
                 //elementComparisonDetails.Add(new()
                 //{
                 //    Target = GetInfo(targetElement),
-                //    Relationship = CMR.Equivalent,
+                //    Relationship = CMR.IsEquivalent,
                 //    Message = $"{_sourceRLiteral} `{sourceEd.Path}` is assumed equivalent to {_targetRLiteral} `{targetElement.Path}` (no map, but paths match)",
                 //});
             }
@@ -2793,7 +2793,7 @@ public class PackageComparer
         //CMR? RelationshipForDetails(List<ElementComparisonDetails> details) => details.Count switch
         //{
         //    0 => CMR.NotRelatedTo,
-        //    1 => CMR.Equivalent,
+        //    1 => CMR.IsEquivalent,
         //    _ => CMR.SourceIsBroaderThanTarget,
         //};
 

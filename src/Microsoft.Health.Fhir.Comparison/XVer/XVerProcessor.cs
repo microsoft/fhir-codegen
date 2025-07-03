@@ -32,7 +32,9 @@ using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
+using Microsoft.Health.Fhir.Comparison.Extensions;
 using Microsoft.Health.Fhir.Comparison.Models;
+using Octokit;
 using static System.Net.Mime.MediaTypeNames;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
@@ -98,6 +100,29 @@ internal static class XVerExtensions
 /// </summary>
 public class XVerProcessor
 {
+    private const string _changelogContent = $$$"""
+                    ### 0.0.1-snapshot-2
+                    * Fixed issue with usability of modifier extensions with the following logic
+                        * source is modifier element -> target is modifier element: extension is not modifier
+                        * source is modifier element -> target is backbone that is not modifier: extension is modifier
+                        * source is modifier element -> target is primitive scalar that is not modifier: need to move the context up one level and extension is modifier
+                        * source is modifier element -> target is primitive array that is modifier: throw for now and resolve if we hit any (none currently exist)
+                    * Fixed issue generating extensions with `canonical` targets that do not exist in the target version
+                        * Added use of `alternate-canonical` extension
+                    * Fixed issue generating extensions with `referece` targets of types that do not exist in the target version
+                        * Consolidate all such references into a `Basic` target
+                    * Added profiles for cross-version representations of all resources
+                    * Added definitions for all referenced value sets that can be expanded
+                    * Added Value-Set comparisons for `extensible`-bound value sets
+                    * Fixed issue with `.url` elements appearing multiple times in snapshots
+                    * Fixed issue with `_datatype` extension being out-of-order
+                    * Fixed issue with extension URL discriminators being `closed` instead of `open`
+
+                    ### 0.0.1-snapshot-1
+
+                    * Initial public package for review
+                    """;
+
     private string _crossDefinitionVersion = "0.7.0";
 
     /// <summary>
@@ -626,7 +651,7 @@ public class XVerProcessor
         ConcurrentDictionary<int, string> differentialVsBySourceKey = [];
 
         Dictionary<int, HashSet<string>> basicElementPathsByPackageKey = [];
-        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes = [];
+        Dictionary<(int sourcePackageKey, string sourceSdName), List<List<XverOutcome>>> xverOutcomes = [];
 
         List<PackageXverSupport> packageSupports = [];
 
@@ -738,6 +763,8 @@ public class XVerProcessor
         // iterate over the list of packages
         for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
         {
+            int focusPackageKey = packages[focusPackageIndex].Key;
+
             // ignore DSTU2 for now
             //if (packageSupports[focusPackageIndex].Package.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.DSTU2)
             //{
@@ -752,21 +779,19 @@ public class XVerProcessor
             _logger.LogInformation($"Processing package {focusPackageIndex + 1} of {packages.Count}: {packages[focusPackageIndex].ShortName}");
 
             Dictionary<(int sourceVsKey, int targetPackageId), ValueSet>  xverValueSets = buildXverValueSets(packages, focusPackageIndex);
-
             writeXverValueSets(packages, focusPackageIndex, xverValueSets, fhirDir);
-            //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
 
             Dictionary<string, DbGraphSd> graphsForStructures = [];
 
             // iterate over the structures to setup baseline necessary mappings
             foreach (DbStructureDefinition sd in DbStructureDefinition.SelectList(_db!.DbConnection, FhirPackageKey: packages[focusPackageIndex].Key))
             {
-                if (!xverOutcomes.ContainsKey((focusPackageIndex, sd.Name)))
+                if (!xverOutcomes.ContainsKey((focusPackageKey, sd.Name)))
                 {
-                    xverOutcomes[(focusPackageIndex, sd.Name)] = [];
+                    xverOutcomes[(focusPackageKey, sd.Name)] = [];
                     for (int i = 0; i < packageSupports.Count; i++)
                     {
-                        xverOutcomes[(focusPackageIndex, sd.Name)].Add([]);
+                        xverOutcomes[(focusPackageKey, sd.Name)].Add([]);
                     }
                 }
 
@@ -795,18 +820,43 @@ public class XVerProcessor
             buildXverProfiles(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverOutcomes, xverProfiles, graphsForStructures);
             writeXverProfiles(packageSupports, focusPackageIndex, xverProfiles, fhirDir);
 
-            List<XverPackageIndexInfo> focusedIndexInfos = writeXverSinglePackageSupportFiles(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, fhirDir);
-            allIndexInfos.AddRange(focusedIndexInfos);
+            // write package support or ig-related files for this package
+            if (_config.XverExportForPublisher == true)
+            {
+                List<XverPackageIndexInfo> focusedIndexInfos = writeXverSinglePackagePublisherFiles(
+                    packageSupports,
+                    focusPackageIndex,
+                    xverValueSets,
+                    xverExtensions,
+                    xverOutcomes,
+                    fhirDir,
+                    outputDir);
+                allIndexInfos.AddRange(focusedIndexInfos);
+            }
+            else
+            {
+                List<XverPackageIndexInfo> focusedIndexInfos = writeXverSinglePackageSupportFiles(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, fhirDir);
+                allIndexInfos.AddRange(focusedIndexInfos);
+            }
         }
 
-        // write our combined package support files
-        writeXverValidationPackageSupportFiles(packageSupports, allIndexInfos, fhirDir);
+        // write package support or ig-related files for the consolidated packages
+        if (_config.XverExportForPublisher == true)
+        {
+
+        }
+        else
+        {
+            // write our combined package support files
+            writeXverValidationPackageSupportFiles(packageSupports, allIndexInfos, fhirDir);
+        }
 
         // write all of our outcome lists
         writeXverOutcomes(packageSupports, xverOutcomes, outputDir);
 
-        // make the make package tgz files
-        if (_config.XverGenerateNpms)
+        // make the make package tgz files if requested and not writing for publisher
+        if ((_config.XverExportForPublisher == false) &&
+            _config.XverGenerateNpms)
         {
             foreach (DbFhirPackage targetPackage in packages)
             {
@@ -884,18 +934,7 @@ public class XVerProcessor
         foreach (PackageXverSupport targetPackageSupport in packageSupports)
         {
             string packageId = getXverPackageId(targetPackageSupport.Package.ShortName);
-
-            string dir = Path.Combine(fhirDir, packageId);
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            dir = Path.Combine(dir, "package");
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
+            string dir = getXverPackageArtifactDir(fhirDir, packageId, true);
 
             List<(string packageId, string packageVersion)> internalDependencies = [];
             foreach (PackageXverSupport sourcePackageSupport in packageSupports)
@@ -982,7 +1021,7 @@ public class XVerProcessor
                             "{{{targetPackageSupport.Package.PackageId}}}" : "{{{targetPackageSupport.Package.PackageVersion}}}",
                             "hl7.terminology.{{{targetPackageSupport.Package.ShortName.ToLowerInvariant()}}}" : "6.3.0",
                             "hl7.fhir.uv.extensions.{{{targetPackageSupport.Package.ShortName.ToLowerInvariant()}}}" : "5.2.0",
-                            "hl7.fhir.uv.tools.{{{targetPackageSupport.Package.ShortName.ToLowerInvariant()}}}" : "current"
+                            "hl7.fhir.uv.tools.{{{targetPackageSupport.Package.ShortName.ToLowerInvariant()}}}" : "latest"
                             {{{additionalDependencies}}}
                         },
                         "author" : "HL7 International / FHIR Infrastructure",
@@ -1004,6 +1043,310 @@ public class XVerProcessor
                 File.WriteAllText(Path.Combine(dir, filename), packageJson);
             }
         }
+    }
+
+    private static List<(string name, string content)>? _publisherScripts = null;
+
+    private async Tasks.Task<List<(string filename, string contents)>> getCurrentIgPublisherScripts()
+    {
+        if (_publisherScripts != null)
+        {
+            return _publisherScripts;
+        }
+
+        GitHubClient ghClient = new(new ProductHeaderValue("Microsft.fhir-codegen"));
+        Dictionary<string, string> clientParams = [];
+
+        IReadOnlyList<RepositoryContent> contents = await ghClient
+            .Repository
+            .Content
+            .GetAllContents("HL7", "ig-publisher-scripts");
+
+        _publisherScripts = [];
+        foreach (RepositoryContent rc in contents)
+        {
+            if (rc.Name.EndsWith(".md"))
+            {
+                continue;
+            }
+
+            string? content = await getContent(rc.DownloadUrl);
+            if (content == null)
+            {
+                continue;
+            }
+
+            _publisherScripts.Add((rc.Name, content));
+        }
+
+        return _publisherScripts;
+
+        async Task<string?> getContent(string url)
+        {
+            IApiResponse<byte[]> response = await ghClient.Connection.GetRaw(new Uri(url), clientParams);
+            if (!response.HttpResponse.IsSuccessStatusCode())
+            {
+                return null;
+            }
+
+            switch (response.HttpResponse.Body)
+            {
+                case byte[] valueBA:
+                    return Encoding.UTF8.GetString(valueBA);
+
+                case string valueString:
+                    return valueString;
+
+                default:
+                    return Convert.ToString(response.HttpResponse.Body);
+            }
+        }
+    }
+
+    private List<XverPackageIndexInfo> writeXverSinglePackagePublisherFiles(
+        List<PackageXverSupport> packageSupports,
+        int focusPackageIndex,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceSdKey, int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
+        Dictionary<(int sourcePackageKey, string sourceSdName), List<List<XverOutcome>>> xverOutcomes,
+        string fhirDir,
+        string outputDir)
+    {
+        List<XverPackageIndexInfo> infos = [];
+
+        DbFhirPackage sourcePackage = packageSupports[focusPackageIndex].Package;
+
+        foreach (PackageXverSupport targetSupport in packageSupports)
+        {
+            if (targetSupport.Package.Key == sourcePackage.Key)
+            {
+                continue;
+            }
+
+            DbFhirPackage targetPackage = targetSupport.Package;
+            string packageId = getXverPackageId(targetPackage.ShortName, sourcePackage.ShortName);
+            string artifactDir = getXverPackageArtifactDir(fhirDir, packageId, false);
+            string igDir = Path.Combine(fhirDir, packageId);
+            string igInputDir = Path.Combine(igDir, "input");
+            string pageDir = getXverDocsDir(outputDir, packageId, true);
+
+            // make sure to create the input/fsh directory
+            string fshDir = Path.Combine(igInputDir, "fsh");
+            if (!Directory.Exists(fshDir))
+            {
+                Directory.CreateDirectory(fshDir);
+            }
+
+            XverPackageIndexInfo indexInfo = new()
+            {
+                SourcePackageSupport = packageSupports[focusPackageIndex],
+                TargetPackageSupport = targetSupport,
+                PackageId = packageId,
+            };
+
+            infos.Add(indexInfo);
+
+            // write the .gitignore file
+            {
+                string content = $$$"""
+                    .DS_Store
+                    Thumbs.db
+                    /fsh-generated
+                    /input-cache
+                    /output
+                    /temp
+                    /template
+
+                    /node_modules/
+                    /save/
+                    /bin/
+                    /target/
+                    """;
+            }
+
+            // write the IG publisher scripts
+            {
+                List<(string name, string content)> pubScripts = getCurrentIgPublisherScripts().Result;
+                foreach ((string name, string content) in pubScripts)
+                {
+                    string filename = Path.Combine(igDir, name);
+                    File.WriteAllText(filename, content);
+                }
+            }
+
+            // write the ig.ini file
+            {
+                string content = $$$"""
+                    [IG]
+                    ig = fsh-generated/resources/ImplementationGuide-{{{packageId}}}.json
+                    template = fhir.base.template#current
+                    """;
+
+                string filename = Path.Combine(igDir, "ig.ini");
+                File.WriteAllText(filename, content);
+            }
+
+            // write the sushi-config file
+            {
+                string content = $$$"""
+                    id: {{{packageId}}}
+                    canonical: http://hl7.org/fhir/uv/xver
+                    name: XVer-FHIR-{{{sourcePackage.ShortName}}}-For-{{{targetPackage.ShortName}}}
+                    title: Cross Version Extensions from {{{sourcePackage.ShortName}}} for {{{targetPackage.ShortName}}}
+                    description: Cross Version Extensions for using FHIR {{{sourcePackage.ShortName}}} in FHIR {{{targetSupport.Package.ShortName}}}
+                    status: draft                   # draft | active | retired | unknown
+                    version: {{{_crossDefinitionVersion}}}
+                    fhirVersion: {{{targetPackage.PackageVersion}}}
+                    copyrightYear: 2025+
+                    jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
+                    releaseLabel: ci-build          # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+                    publisher:
+                      name: HL7 International / FHIR Infrastructure
+                      url: http://www.hl7.org/Special/committees/fiwg
+                    license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+                    parameters:
+                      apply-wg: true
+                      default-wg: true
+                      shownav: 'true'
+                      path-resource:
+                        - input/definitions/*
+                    extension:
+                      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+                        valueCode: trial-use
+                      - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
+                        valueCode: fhir
+                    dependencies:
+                      {{{targetPackage.PackageId}}}: {{{targetPackage.PackageVersion}}}
+                      hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}: 6.3.0
+                      hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}: 5.2.0
+                      hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}: latest
+                    pages:
+                      index.md:
+                        title: Home
+                      lookup.md:
+                        title: Artifact Lookup
+                      downloads.md:
+                        title: Downloads
+                      changelog.md:
+                        title: Change Log
+                    menu:
+                      Contents: toc.html
+                      Home: index.html
+                      Lookup: lookup.html
+                      Support:
+                        Downloads: downloads.html
+                        Change Log: changelog.html
+                    """;
+
+                string filename = Path.Combine(igDir, "sushi-config.yaml");
+                File.WriteAllText(filename, content);
+            }
+
+            // write the index.md page
+            {
+                string content = $$$"""
+                    The Cross-Version extension package for using definitions from FHIR {{{sourcePackage.ShortName}}} in FHIR {{{targetPackage.ShortName}}}.
+
+                    ### About This Guide
+
+                    Cross-version extension content is generated via a combination of automatic differential detection and manual editing.
+
+                    For details or questions, please reach out on [Zulip](https://chat.fhir.org/#narrow/channel/426854-FHIR-cross-version-issues) or
+                    to the FHIR Infrastructure WorkGroup.
+
+                    ### Change Log
+
+                    A [Change log](changelog.html) is provided to highlight differences between versions.
+
+                    ### Intellectual Property Statements
+
+                    {% include ip-statements.xhtml %}
+                    """;
+
+                string filename = Path.Combine(pageDir, "index.md");
+                File.WriteAllText(filename, content);
+            }
+
+            // write the lookup shell/index page
+            {
+                // build the list of lookup file links
+                List<string> lines = [];
+
+                foreach (((int sourcePackageKey, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
+                {
+                    if (sourcePackageKey != sourcePackage.Key)
+                    {
+                        continue;
+                    }
+
+                    string sourceStructureNameForFile = FhirSanitizationUtils.SanitizeForProperty(sourceStructureName, replacements: []);
+                    lines.Add($"* [{sourceStructureName}](Lookup-{sourcePackage.ShortName}-{sourceStructureNameForFile}-{targetPackage.ShortName}.html)");
+                }
+
+                // this file's content
+                string content = $$$"""
+                    ### Artifact Lookup Info
+
+                    The following table links to documentation for the source version of FHIR, for implementers
+                    to understand if there is an extension for the element they are trying to use.
+
+                    These are structures defined in FHIR {{{sourcePackage.ShortName}}} (the source package), with
+                    applicable usage as mapped into FHIR {{{targetPackage.ShortName}}} (the target package).
+
+                    {{{string.Join('\n', lines)}}}
+                    """;
+
+                string filename = Path.Combine(pageDir, "lookup.md");
+                File.WriteAllText(filename, content);
+            }
+
+            // write the downloads page
+            {
+                string content = $$$"""
+                    ### Package File
+
+                    The following package file includes an NPM package file used by many of the FHIR tools. It contains all the value sets,
+                    profiles, extensions, list of pages and urls in the IG, etc defined as part of this version of the Implementation Guides.
+                    This file should be the first choice whenever generating any implementation artifacts since it contains all of the rules
+                    about what makes the profiles valid. Implementers will still need to be familiar with the content of the specification
+                    and profiles that apply in order to make a conformant implementation. See the overview on
+                    [validating FHIR profiles and resources](http://hl7.org/fhir/validation.html):
+
+                    * [Package](package.tgz)
+
+                    ### Examples
+
+                    * [JSON](examples.json.zip)
+                    * [XML](examples.xml.zip)
+
+                    ### Downloadable Copy of this Specification
+
+                    A downloadable version of this IG is available so it can be hosted locally:
+
+                    * [Downloadable Copy](full-ig.zip)
+
+                    ### Package Dependencies
+
+                    {% include dependency-table.xhtml %}
+
+                    ### Global Profile Definitions
+
+                    {% include globals-table.xhtml %}
+                    """;
+
+                string filename = Path.Combine(pageDir, "downloads.md");
+                File.WriteAllText(filename, content);
+            }
+
+            // write the changelog
+            {
+                string filename = Path.Combine(pageDir, "changelog.md");
+                File.WriteAllText(filename, _changelogContent);
+            }
+
+        }
+
+        return infos;
     }
 
     /// <summary>
@@ -1034,6 +1377,7 @@ public class XVerProcessor
             }
 
             string packageId = getXverPackageId(targetSupport.Package.ShortName, sourcePackage.ShortName);
+            string dir = getXverPackageArtifactDir(fhirDir, packageId, false);
 
             XverPackageIndexInfo indexInfo = new()
             {
@@ -1063,7 +1407,7 @@ public class XVerProcessor
                 }
 
                 string filename = $"ImplementationGuide-{packageId}.json";
-                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), igJson);
+                File.WriteAllText(Path.Combine(dir, filename), igJson);
             }
 
             // build and write the package.manifest.json file
@@ -1079,14 +1423,14 @@ public class XVerProcessor
                     """;
 
                 string filename = "package.manifest.json";
-                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), pmJson);
+                File.WriteAllText(Path.Combine(dir, filename), pmJson);
             }
 
             // build and write the .index.json file
             {
                 string indexJson = getIndexJson(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo);
                 string filename = ".index.json";
-                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), indexJson);
+                File.WriteAllText(Path.Combine(dir, filename), indexJson);
             }
 
             // build and write the package.json file
@@ -1109,7 +1453,7 @@ public class XVerProcessor
                             "{{{targetSupport.Package.PackageId}}}" : "{{{targetSupport.Package.PackageVersion}}}",
                             "hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "6.3.0",
                             "hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "5.2.0",
-                            "hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "current"
+                            "hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "latest"
                         },
                         "author" : "HL7 International / FHIR Infrastructure",
                         "maintainers" : [
@@ -1127,7 +1471,7 @@ public class XVerProcessor
                     """;
 
                 string filename = "package.json";
-                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), packageJson);
+                File.WriteAllText(Path.Combine(dir, filename), packageJson);
             }
         }
 
@@ -1355,7 +1699,7 @@ public class XVerProcessor
                     ElementId = "hl7_fhir_uv_tools",
                     Uri = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                     PackageId = "hl7.fhir.uv.tools.r5",
-                    Version = "current",
+                    Version = "latest",
                 },
             ],
             Definition = new()
@@ -1508,7 +1852,7 @@ public class XVerProcessor
                     ElementId = "hl7_fhir_uv_tools",
                     Uri = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                     PackageId = "hl7.fhir.uv.tools.r5",
-                    Version = "current",
+                    Version = "latest",
                 },
             ],
             Definition = new()
@@ -1655,7 +1999,7 @@ public class XVerProcessor
                 "id" : "hl7_fhir_uv_tools",
                 "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                 "packageId" : "hl7.fhir.uv.tools.{{{targetPackage.ShortName.ToLowerInvariant()}}}",
-                "version" : "current"
+                "version" : "latest"
               }],
               "definition" : {
                 "resource" : [
@@ -1762,7 +2106,7 @@ public class XVerProcessor
                 "id" : "hl7_fhir_uv_tools",
                 "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                 "packageId" : "hl7.fhir.uv.tools.{{{package.ShortName.ToLowerInvariant()}}}",
-                "version" : "current"
+                "version" : "latest"
               }{{{additionalDependencies}}}
               ]{{{resources}}}
             }
@@ -1774,7 +2118,7 @@ public class XVerProcessor
 
     private void writeXverOutcomes(
         List<PackageXverSupport> packageSupports,
-        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
+        Dictionary<(int sourcePackageKey, string sourceSdName), List<List<XverOutcome>>> xverOutcomes,
         string outputDir)
     {
         HashSet<string> createdDirs = [];
@@ -1790,62 +2134,41 @@ public class XVerProcessor
             Directory.CreateDirectory (fhirDir);
         }
 
-        string docsDir = Path.Combine(outputDir, "docs");
-        if (!Directory.Exists (docsDir))
-        {
-            Directory.CreateDirectory (docsDir);
-        }
-
         // iterate over each structure in each source package
-        foreach (((int sourcePackageIndex, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
+        foreach (((int sourcePackageKey, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
         {
             string sourceStructureNameForFile = FhirSanitizationUtils.SanitizeForProperty(sourceStructureName, replacements: []);
 
             // iterate across each of our targets
             foreach ((List<XverOutcome> outcomes, int targetPackageIndex) in structureOutcomesByTarget.Select((ol, i) => (ol, i)))
             {
-                if (sourcePackageIndex == targetPackageIndex)
+                if (sourcePackageKey == packageSupports[targetPackageIndex].Package.Key)
                 {
                     continue;
                 }
 
-                DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
+                DbFhirPackage sourcePackage = packageSupports.First(ps => ps.Package.Key == sourcePackageKey).Package;
                 DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
                 string packageId = getXverPackageId(targetPackage.ShortName, sourcePackage.ShortName);
+                string packageDir = getXverPackageArtifactDir(fhirDir, packageId, true);
                 string htmlDir;
                 string mdDir;
 
                 if (createdDirs.Contains(packageId))
                 {
-                    htmlDir = Path.Combine(fhirDir, packageId, "package", "doc");
-                    mdDir = Path.Combine(docsDir, packageId);
+                    htmlDir = Path.Combine(packageDir, "doc");
+                    mdDir = getXverDocsDir(outputDir, packageId, false);
                 }
                 else
                 {
-                    htmlDir = Path.Combine(fhirDir, packageId);
+                    htmlDir = Path.Combine(packageDir, "doc");
                     if (!Directory.Exists(htmlDir))
                     {
                         Directory.CreateDirectory(htmlDir);
                     }
 
-                    htmlDir = Path.Combine(htmlDir, "package");
-                    if (!Directory.Exists(htmlDir))
-                    {
-                        Directory.CreateDirectory(htmlDir);
-                    }
-
-                    htmlDir = Path.Combine(htmlDir, "doc");
-                    if (!Directory.Exists(htmlDir))
-                    {
-                        Directory.CreateDirectory(htmlDir);
-                    }
-
-                    mdDir = Path.Combine(docsDir, packageId);
-                    if (!Directory.Exists (mdDir))
-                    {
-                        Directory.CreateDirectory(mdDir);
-                    }
+                    mdDir = getXverDocsDir(outputDir, packageId, true); 
 
                     createdDirs.Add(packageId);
                 }
@@ -1896,6 +2219,102 @@ public class XVerProcessor
         return $"hl7.fhir.uv.xver.{targetShortName.ToLowerInvariant()}";
     }
 
+    private string getXverDocsDir(string outputDir, string packageId, bool createIfMissing)
+    {
+        if (createIfMissing && !Directory.Exists(outputDir))
+        {
+            Directory.CreateDirectory(outputDir);
+        }
+
+        if (_config.XverExportForPublisher == false)
+        {
+            string dir = Path.Combine(outputDir, "docs");
+            if (createIfMissing &&
+                !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            return dir;
+        }
+
+        string fhirDir = Path.Combine(outputDir, "fhir");
+        if (createIfMissing && !Directory.Exists(fhirDir))
+        {
+            Directory.CreateDirectory(fhirDir);
+        }
+
+        string packageDir = Path.Combine(fhirDir, packageId);
+        if (createIfMissing && !Directory.Exists(packageDir))
+        {
+            Directory.CreateDirectory(packageDir);
+        }
+
+        if (!createIfMissing)
+        {
+            return Path.Combine(packageDir, "input", "pagecontent");
+        }
+
+        string inputDir = Path.Combine(packageDir, "input");
+        if (!Directory.Exists(inputDir))
+        {
+            Directory.CreateDirectory(inputDir);
+        }
+
+        string docsDir = Path.Combine(inputDir, "pagecontent");
+        if (!Directory.Exists(docsDir))
+        {
+            Directory.CreateDirectory(docsDir);
+        }
+
+        return docsDir;
+    }
+
+    private string getXverPackageArtifactDir(string fhirDir, string packageId, bool createIfMissing)
+    {
+        if (createIfMissing && !Directory.Exists(fhirDir))
+        {
+            Directory.CreateDirectory(fhirDir);
+        }
+
+        string packageDir = Path.Combine(fhirDir, packageId);
+        if (createIfMissing && !Directory.Exists(packageDir))
+        {
+            Directory.CreateDirectory(packageDir);
+        }
+
+        if (_config.XverExportForPublisher == true)
+        {
+            if (!createIfMissing)
+            {
+                return Path.Combine(packageDir, "input", "definitions");
+            }
+
+            string inputDir = Path.Combine(packageDir, "input");
+            if (!Directory.Exists(inputDir))
+            {
+                Directory.CreateDirectory(inputDir);
+            }
+
+            string defDir = Path.Combine(inputDir, "definitions");
+            if (!Directory.Exists(defDir))
+            {
+                Directory.CreateDirectory(defDir);
+            }
+
+            return defDir;
+        }
+
+        string dir = Path.Combine(packageDir, "package");
+        if (createIfMissing &&
+            !Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        return Path.Combine(packageDir, "package");
+    }
+
     private void writeXverValueSets(
         List<DbFhirPackage> packages,
         int focusPackageIndex,
@@ -1910,18 +2329,9 @@ public class XVerProcessor
         {
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
-            // build a path for this direction
-            string dir = Path.Combine(fhirDir, getXverPackageId(targetPackage.ShortName, focusPackage.ShortName));
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            dir = Path.Combine(dir, "package");
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
+            // build the path we are using for export
+            string packageId = getXverPackageId(targetPackage.ShortName, focusPackage.ShortName);
+            string dir = getXverPackageArtifactDir(fhirDir, packageId, true);
 
             // write the value set to a file
             string filename = $"ValueSet-{vs.Id}.json";
@@ -2231,18 +2641,9 @@ public class XVerProcessor
 
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
-            // build a path for this direction
-            string dir = Path.Combine(fhirDir, getXverPackageId(targetPackage.ShortName, focusPackage.ShortName));
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            dir = Path.Combine(dir, "package");
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
+            // build the path we are using for export
+            string packageId = getXverPackageId(targetPackage.ShortName, focusPackage.ShortName);
+            string dir = getXverPackageArtifactDir(fhirDir, packageId, true);
 
             // write the value set to a file
             string filename = $"StructureDefinition-{sd.Id}.json";
@@ -2257,7 +2658,7 @@ public class XVerProcessor
         int sourcePackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         Dictionary<(int sourceSdKey, int sourceElementKey, int targetPackageId), (StructureDefinition extSd, DbExtensionSubstitution? extSub)> xverExtensions,
-        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
+        Dictionary<(int sourcePackageKey, string sourceSdName), List<List<XverOutcome>>> xverOutcomes,
         Dictionary<(int sourceSdKey, int targetSdKey, int targetPackageId), StructureDefinition> xverProfiles,
         Dictionary<string, DbGraphSd> graphsForStructures)
     {
@@ -2517,18 +2918,9 @@ public class XVerProcessor
 
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
-            // build a path for this direction
-            string dir = Path.Combine(fhirDir, getXverPackageId(targetPackage.ShortName, focusPackage.ShortName));
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            dir = Path.Combine(dir, "package");
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
+            // build the path we are using for export
+            string packageId = getXverPackageId(targetPackage.ShortName, focusPackage.ShortName);
+            string dir = getXverPackageArtifactDir(fhirDir, packageId, true);
 
             // write the value set to a file
             string filename = $"StructureDefinition-{sd.Id}.json";
@@ -2553,7 +2945,7 @@ public class XVerProcessor
         int sourcePackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         Dictionary<(int sourceSdKey, int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
-        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
+        Dictionary<(int sourcePackageKey, string sourceSdName), List<List<XverOutcome>>> xverOutcomes,
         Dictionary<string, DbGraphSd> graphsForStructures,
         FhirArtifactClassEnum artifactClass)
     {
@@ -2632,7 +3024,7 @@ public class XVerProcessor
                     {
                         // add this element to the generated list
                         generatedElementKeys[targetPackageIndex].Add(element.Key);
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                         {
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureKey = sd.Key,
@@ -2653,7 +3045,7 @@ public class XVerProcessor
                         (element.ParentElementKey != null) &&
                         packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
                     {
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                         {
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureKey = sd.Key,
@@ -2720,7 +3112,7 @@ public class XVerProcessor
                                         ? XverOutcomeCodes.UseElementSameName
                                         : XverOutcomeCodes.UseElementRenamed;
 
-                                xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                                xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                                 {
                                     SourcePackageKey = sourcePackage.Key,
                                     SourceStructureKey = sd.Key,
@@ -2779,7 +3171,7 @@ public class XVerProcessor
                         xverExtensions.Add((element.StructureKey, element.Key, packageSupports[targetPackageIndex].Package.Key), (extSd, extSub));
                         generatedElementKeys[targetPackageIndex].Add(element.Key);
 
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                         {
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureKey = sd.Key,
@@ -2809,7 +3201,7 @@ public class XVerProcessor
                     {
                         // add this element to the generated list
                         generatedElementKeys[targetPackageIndex].Add(element.Key);
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                         {
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureKey = sd.Key,
@@ -2830,7 +3222,7 @@ public class XVerProcessor
                         (element.ParentElementKey != null) &&
                         packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
                     {
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                         {
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureKey = sd.Key,
@@ -2897,7 +3289,7 @@ public class XVerProcessor
                                         ? XverOutcomeCodes.UseElementSameName
                                         : XverOutcomeCodes.UseElementRenamed;
 
-                                xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                                xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                                 {
                                     SourcePackageKey = sourcePackage.Key,
                                     SourceStructureKey = sd.Key,
@@ -2956,7 +3348,7 @@ public class XVerProcessor
                         xverExtensions.Add((element.StructureKey, element.Key, targetPackage.Key), (extSd, extSub));
                         generatedElementKeys[targetPackageIndex].Add(element.Key);
 
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        xverOutcomes[(sourcePackage.Key, sd.Name)][targetPackageIndex].Add(new()
                         {
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureKey = sd.Key,
@@ -3065,8 +3457,7 @@ public class XVerProcessor
         }
     }
 
-    private void discoverContexts(
-        HashSet<string> contextElementPaths,
+    private List<DbElement> discoverContexts(
         int sourceIndex,
         int targetIndex,
         PackageXverSupport targetPackageSupport,
@@ -3074,6 +3465,9 @@ public class XVerProcessor
         Dictionary<int, List<DbGraphSd.DbElementRow>> elementProjectionDict)
 
     {
+        HashSet<string> usedElementPaths = [];
+        List<DbElement> contextElements = [];
+
         // iterate over the element projection rows
         foreach ((DbGraphSd.DbElementRow elementRow, int elementRowNumber) in elementProjectionDict[element.Key].Select((r, i) => (r, i)))
         {
@@ -3083,7 +3477,11 @@ public class XVerProcessor
             // if the cell is not null, use the target path from the cell
             if (eCell != null)
             {
-                contextElementPaths.Add(eCell.Element.Path);
+                if (usedElementPaths.Add(eCell.Element.Path))
+                {
+                    contextElements.Add(eCell.Element);
+                }
+
                 continue;
             }
 
@@ -3109,7 +3507,10 @@ public class XVerProcessor
                         DbGraphSd.DbElementCell? parentCell = parentRow[targetIndex];
                         if (parentCell != null)
                         {
-                            contextElementPaths.Add(parentCell.Element.Path);
+                            if (usedElementPaths.Add(parentCell.Element.Path))
+                            {
+                                contextElements.Add(parentCell.Element);
+                            }
                             addedSomething = true;
                             break;
                         }
@@ -3120,7 +3521,10 @@ public class XVerProcessor
                             if (contextCell.Element.ResourceFieldOrder == 0)
                             {
                                 // add this as the context
-                                contextElementPaths.Add(contextCell.Element.Path);
+                                if (usedElementPaths.Add(contextCell.Element.Path))
+                                {
+                                    contextElements.Add(contextCell.Element);
+                                }
                                 addedSomething = true;
                                 break;
                             }
@@ -3137,20 +3541,30 @@ public class XVerProcessor
                 // if we can't find anything that matches, see if this structure exists in the target
                 string name = element.Path.Split('.')[0];
 
-                if ((targetPackageSupport.CoreDC?.ComplexTypesByName.ContainsKey(name) == true) ||
-                    (targetPackageSupport.CoreDC?.ResourcesByName.ContainsKey(name) == true))
+                DbElement? targetElement = DbElement.SelectSingle(
+                    _db!.DbConnection,
+                    FhirPackageKey: targetPackageSupport.Package.Key,
+                    Id: name);
+
+                if (targetElement != null)
                 {
-                    contextElementPaths.Add(name);
+                    if (usedElementPaths.Add(targetElement.Path))
+                    {
+                        contextElements.Add(targetElement);
+                    }
                 }
 
                 // if we do not find *anything* that matches, the caller will default by adding Element
             }
         }
+
+        return contextElements;
     }
 
     private record TargetContextModifierRec
     {
         public required StructureDefinition.ContextComponent Context { get; init; }
+        public required DbElement Element { get; init; }
         public required bool IsModifier { get; init; }
         public required bool HasChildElements { get; init; }
         public required bool HasPrimitiveType { get; init; }
@@ -3207,32 +3621,39 @@ public class XVerProcessor
         bool isRootElement = element.ResourceFieldOrder == 0;
         int elementPathLen = element.Path.Length;
 
-        List<StructureDefinition.ContextComponent> contexts = [];
+        List<(StructureDefinition.ContextComponent context, DbElement? contextElement)> contexts = [];
 
         // if our source element is a resource or datatype, we can only apply it to the basic resource
         if (isRootElement)
         {
-            contexts.Add(new()
+            DbElement? basicRootElement = DbElement.SelectSingle(
+                _db!.DbConnection,
+                FhirPackageKey: targetPackageSupport.Package.Key,
+                Id: "Basic");
+
+            contexts.Add((new()
             {
                 Type = StructureDefinition.ExtensionContextType.Element,
                 Expression = "Basic",
-            });
+            },
+            basicRootElement));
         }
         else
         {
-            HashSet<string> contextElementPaths = [];
+            List<DbElement> contextTargetElements = [];
 
-            discoverContexts(contextElementPaths, sourceIndex, targetIndex, targetPackageSupport, element, elementProjectionDict);
+            contextTargetElements = discoverContexts(sourceIndex, targetIndex, targetPackageSupport, element, elementProjectionDict);
 
-            if (contextElementPaths.Count != 0)
+            if (contextTargetElements.Count != 0)
             {
-                foreach (string path in contextElementPaths.Distinct().Order())
+                foreach (DbElement targetElement in contextTargetElements.OrderBy(e => e.Path))
                 {
-                    contexts.Add(new()
+                    contexts.Add((new()
                     {
                         Type = StructureDefinition.ExtensionContextType.Element,
-                        Expression = path,
-                    });
+                        Expression = targetElement.Path,
+                    },
+                    targetElement));
                 }
             }
         }
@@ -3240,11 +3661,17 @@ public class XVerProcessor
         // fallback to element if we have no contexts
         if (contexts.Count == 0)
         {
-            contexts.Add(new()
+            DbElement? elementRootElement = DbElement.SelectSingle(
+                _db!.DbConnection,
+                FhirPackageKey: targetPackageSupport.Package.Key,
+                Id: "Element");
+
+            contexts.Add((new()
             {
                 Type = StructureDefinition.ExtensionContextType.Element,
                 Expression = "Element",
-            });
+            },
+            elementRootElement));
         }
 
         StructureDefinition extSd = new()
@@ -3285,7 +3712,8 @@ public class XVerProcessor
             graphsForStructures,
             element,
             relevantComparisons,
-            xverValueSets);
+            xverValueSets,
+            contexts);
 
         // check if the element was a modifier so we can determine if the extension is a modifier
         if (element.IsModifier)
@@ -3302,26 +3730,39 @@ public class XVerProcessor
             List<TargetContextModifierRec> tcInfoRecs = [];
 
             // iterate across the contexts
-            foreach (StructureDefinition.ContextComponent context in contexts)
+            foreach ((StructureDefinition.ContextComponent context, DbElement? contextElement) in contexts)
             {
-                // resolve the context element from the target package
-                if (!targetPackageSupport.CoreDC!.TryResolveElementTree(context.Expression, out StructureDefinition? targetSd, out ElementDefinition[] targetElements))
+                //// resolve the context element from the target package
+                //if (!targetPackageSupport.CoreDC!.TryResolveElementTree(context.Expression, out StructureDefinition? targetSd, out ElementDefinition[] targetElements))
+                //{
+                //    // if we cannot resolve the context element, we have a serious problem
+                //    throw new Exception($"Failed to resolve context element {context.Expression} in target package {targetPackage.ShortName} for extension {extSd.Url}!");
+                //}
+
+                //ElementDefinition targetContextElement = targetElements[^1];
+
+                DbElement? targetContextElement = contextElement
+                    ?? DbElement.SelectSingle(
+                    _db!.DbConnection,
+                    FhirPackageKey: targetPackageSupport.Package.Key,
+                    Id: context.Expression);
+
+                if (targetContextElement == null)
                 {
                     // if we cannot resolve the context element, we have a serious problem
                     throw new Exception($"Failed to resolve context element {context.Expression} in target package {targetPackage.ShortName} for extension {extSd.Url}!");
                 }
 
-                ElementDefinition targetContextElement = targetElements[^1];
-
                 // fill out our target context modifier info
                 tcInfoRecs.Add(new()
                 {
                     Context = context,
+                    Element = targetContextElement,
                     IsModifier = targetContextElement.IsModifier == true,
-                    HasChildElements = targetPackageSupport.CoreDC!.HasChildElements(targetContextElement.Path),
-                    HasPrimitiveType = targetContextElement.Type.Any(t => targetPackageSupport.CoreDC!.PrimitiveTypesByName.ContainsKey(t.Code)),
-                    IsArray = targetContextElement.cgCardinalityMax() != 1,
-                    IsRootElement = targetContextElement.IsRootElement(),
+                    HasChildElements = targetContextElement.ChildElementCount != 0,
+                    HasPrimitiveType = targetContextElement.HasPrimitiveType(_db!.DbConnection),
+                    IsArray = targetContextElement.MaxCardinality != 1,
+                    IsRootElement = targetContextElement.ResourceFieldOrder == 0,
                 });
             }
 
@@ -3364,7 +3805,7 @@ public class XVerProcessor
         }
 
         // set the contexts for our extension
-        extSd.Context = contexts;
+        extSd.Context = contexts.Select(kvp => kvp.context).ToList();
 
         return extSd;
     }
@@ -3444,10 +3885,11 @@ public class XVerProcessor
         Dictionary<string, DbGraphSd> graphsForStructures,
         DbElement element,
         List<DbElementComparison> relevantComparisons,
-        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        List<(StructureDefinition.ContextComponent context, DbElement? contextElement)> contexts)
     {
         // do not build extensions for extension or base elements
-        switch (element.CollatedTypeLiteral)
+        switch (element.FullCollatedTypeLiteral)
         {
             case "Extension":
             case "Base":
@@ -3458,6 +3900,12 @@ public class XVerProcessor
         if (extElementId.EndsWith(".extension:id", StringComparison.Ordinal))
         {
             return;
+        }
+
+        // debugging issue with ActivityDefinition.product[x] - should not be listing `CodeableConcept` as a type since it is unchanged.
+        if (element.Key == 34515)
+        {
+            Console.Write("");
         }
 
         HashSet<string> basicElementPaths = targetPackageSupport.BasicElements;
@@ -3569,7 +4017,8 @@ public class XVerProcessor
                     graphsForStructures,
                     childElement,
                     relevantComparisons,
-                    xverValueSets);
+                    xverValueSets,
+                    []);
             }
 
             edForChildren.Min = minRequired;
@@ -3789,7 +4238,10 @@ public class XVerProcessor
                             // check for needing basic support
                             if (needsBasic || (invalid.Count > 0))
                             {
-                                typeProfiles.Add("http://hl7.org/fhir/StructureDefinition/Basic");
+                                if (!typeProfiles.Contains("http://hl7.org/fhir/StructureDefinition/Basic"))
+                                {
+                                    typeProfiles.Add("http://hl7.org/fhir/StructureDefinition/Basic");
+                                }
                             }
                         }
                         break;
@@ -3912,7 +4364,8 @@ public class XVerProcessor
                     graphsForStructures,
                     etElement,
                     relevantComparisons,
-                    xverValueSets);
+                    xverValueSets,
+                    []);
             }
         }
 
@@ -4570,7 +5023,7 @@ public class XVerProcessor
                 $" | {e.BasePath?.ForMdTable()}" +
                 $" | {e.Short.ForMdTable()}" +
                 $" | {e.MinCardinality}..{e.MaxCardinalityString}" +
-                $" | {e.CollatedTypeLiteral.ForMdTable()}" +
+                $" | {e.FullCollatedTypeLiteral.ForMdTable()}" +
                 $" | {(e.ValueSetBindingStrength == null ? string.Empty : "`" + e.ValueSetBindingStrength + "`")}" +
                 $" | {(e.BindingValueSet == null ? string.Empty : "`" + e.BindingValueSet + "`")}" +
                 $" |");

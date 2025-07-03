@@ -475,7 +475,7 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbElementTypeComparison.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
     public required int? ElementTypeComparisonKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
@@ -523,38 +523,80 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
     };
 }
 
-[CgSQLiteTable(tableName: "ElementTypeComparisons")]
-[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
-public partial class DbElementTypeComparison : DbPackageComparisonContent, IDbPackageComparisonContent
+[CgSQLiteTable(tableName: "CollatedTypeComparisons")]
+//[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
+//[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey))]
+public partial class DbCollatedTypeComparison : DbPackageComparisonContent, IDbPackageComparisonContent
 {
-    [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
-    public required int StructureComparisonKey { get; set; }
-
     [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
     public required int ElementComparisonKey { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int SourceStructureKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int? TargetStructureKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
     public required int SourceElementKey { get; set; }
-    public required string SourceElementTypeLiteral { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int SourceCollatedTypeKey { get; set; }
+
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
     public required int? TargetElementKey { get; set; }
-    public required string? TargetElementTypeLiteral { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int? TargetCollatedTypeKey { get; set; }
+
+    public required bool? NoMap { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TargetProfileRelationship { get; set; }
+    public required string TargetProfileMessage { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TypeProfileRelationship { get; set; }
+    public required string TypeProfileMessage { get; set; }
+
+    [CgSQLiteIgnore]
+    public int SourceContentKey => SourceElementKey;
+    [CgSQLiteIgnore]
+    public int? TargetContentKey => TargetElementKey;
+}
+
+[CgSQLiteTable(tableName: "ElementTypeComparisons")]
+[CgSQLiteIndex(nameof(CollatedTypeComparisonKey), nameof(SourceTypeKey))]
+[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
+[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey), nameof(SourceTypeKey))]
+//[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceElementTypeLiteral), nameof(TargetElementTypeLiteral))]
+public partial class DbElementTypeComparison : DbPackageComparisonContent, IDbPackageComparisonContent
+{
+    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
+    public required int ElementComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "CollatedTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
+    public required int CollatedTypeComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
+    public required int SourceElementKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int SourceTypeKey { get; set; }
+
+    public required string SourceTypeLiteral { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
+    public required int? TargetElementKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int? TargetTypeKey { get; set; }
+
+    public required string? TargetTypeLiteral { get; set; }
 
     public required bool? NoMap { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
     [CgSQLiteIgnore]
-    public int SourceContentKey => SourceElementKey;
+    public int SourceContentKey => SourceTypeKey;
     [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetElementKey;
+    public int? TargetContentKey => TargetTypeKey;
 }
 
 

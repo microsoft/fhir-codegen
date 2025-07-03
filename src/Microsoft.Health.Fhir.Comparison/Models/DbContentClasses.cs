@@ -289,7 +289,7 @@ public partial class DbElement : DbPackageContent
 
     public required string? SliceName { get; set; }
 
-    public required string CollatedTypeLiteral { get; set; }
+    public required string FullCollatedTypeLiteral { get; set; }
 
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
@@ -299,6 +299,11 @@ public partial class DbElement : DbPackageContent
 
     public required bool IsInherited { get; set; }
     public required string? BasePath { get; set; }
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int? BaseElementKey { get; set; }
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? BaseStructureKey { get; set; }
+
     public required bool IsSimpleType { get; set; }
     public required bool IsModifier { get; set; }
     public required string? IsModifierReason { get; set; }
@@ -329,7 +334,7 @@ public partial class DbElement : DbPackageContent
                 return "-";
             }
 
-            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral.Replace("http://hl7.org/fhir/StructureDefinition/", string.Empty)})";
+            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {FullCollatedTypeLiteral.Replace("http://hl7.org/fhir/StructureDefinition/", string.Empty)})";
         }
     }
 
@@ -343,7 +348,7 @@ public partial class DbElement : DbPackageContent
                 return "-";
             }
 
-            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {CollatedTypeLiteral.Replace("http://hl7.org/fhir/StructureDefinition/", string.Empty)})" +
+            return $"{Id} ({MinCardinality}..{MaxCardinalityString}, {FullCollatedTypeLiteral.Replace("http://hl7.org/fhir/StructureDefinition/", string.Empty)})" +
                 (string.IsNullOrEmpty(Short) ? string.Empty : " - " + Short);
         }
     }
@@ -375,7 +380,7 @@ public partial class DbElement : DbPackageContent
         MaxCardinality = 0,
         MaxCardinalityString = string.Empty,
         SliceName = null,
-        CollatedTypeLiteral = string.Empty,
+        FullCollatedTypeLiteral = string.Empty,
         ValueSetBindingStrength = null,
         BindingValueSet = null,
         BindingValueSetKey = null,
@@ -383,6 +388,8 @@ public partial class DbElement : DbPackageContent
         AdditionalBindingCount = 0,
         IsInherited = false,
         BasePath = null,
+        BaseElementKey = null,
+        BaseStructureKey = null,
         IsSimpleType = false,
         IsModifier = false,
         IsModifierReason = null,
@@ -409,6 +416,23 @@ public partial class DbElementAdditionalBinding : DbPackageContent
     public required bool? SatisfiedBySingleRepetition { get; set; }
 }
 
+[CgSQLiteTable(tableName: "CollatedTypes")]
+[CgSQLiteIndex(nameof(ElementKey))]
+[CgSQLiteIndex(nameof(ElementKey), nameof(TypeName))]
+public partial class DbCollatedType : DbPackageContent
+{
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int StructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int ElementKey { get; set; }
+    public required string CollatedLiteral { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TypeStructureKey { get; set; }
+    public required string TypeName { get; set; }
+}
+
 [CgSQLiteTable(tableName: "ElementTypes")]
 [CgSQLiteIndex(nameof(ElementKey))]
 [CgSQLiteIndex(nameof(ElementKey), nameof(TypeName))]
@@ -423,6 +447,9 @@ public partial class DbElementType : DbPackageContent
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int ElementKey { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
+    public required int CollatedTypeKey { get; set; }
+
     public required string? TypeName { get; set; }
     public required string? TypeProfile { get; set; }
     public required string? TargetProfile { get; set; }
@@ -435,4 +462,5 @@ public partial class DbElementType : DbPackageContent
         (string.IsNullOrEmpty(TypeName) ? string.Empty : TypeName) +
         (string.IsNullOrEmpty(TypeProfile) ? string.Empty : $"[{TypeProfile}]") +
         (string.IsNullOrEmpty(TargetProfile) ? string.Empty : $"({TargetProfile})");
+
 }
