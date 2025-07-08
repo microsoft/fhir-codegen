@@ -16,6 +16,29 @@ namespace Microsoft.Health.Fhir.Comparison.Extensions;
 
 public static class DbContentExtensions
 {
+    public static int UpdateCollatedTypeStructureKeys(
+        this IDbConnection dbConnection,
+        int FhirPackageKey,
+        string? dbTableName = null,
+        string? structureDbTableName = null)
+    {
+        dbTableName ??= "CollatedTypes";
+        structureDbTableName ??= "Structures";
+
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = $$$"""
+            UPDATE {{{dbTableName}}}
+            SET
+                TypeStructureKey = S.Key
+            FROM {{{structureDbTableName}}} S
+            WHERE {{{dbTableName}}}.TypeName = S.Id
+            AND {{{dbTableName}}}.FhirPackageKey = S.FhirPackageKey
+            AND {{{dbTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
+            """;
+
+        return command.ExecuteNonQuery();
+    }
+
     public static int UpdateElementTypeStructureKeys(
         this IDbConnection dbConnection,
         int FhirPackageKey,
@@ -32,6 +55,7 @@ public static class DbContentExtensions
                 TypeStructureKey = S.Key
             FROM {{{structureDbTableName}}} S
             WHERE {{{dbTableName}}}.TypeName = S.Id
+            AND {{{dbTableName}}}.FhirPackageKey = S.FhirPackageKey
             AND {{{dbTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
             """;
 

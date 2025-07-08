@@ -18,25 +18,20 @@ namespace Microsoft.Health.Fhir.Comparison.Models;
 
 [CgSQLiteTable(tableName: "ExtensionSubstitutions")]
 [CgSQLiteIndex(nameof(SourceElementId))]
-public partial class DbExtensionSubstitution
+public partial class DbExtensionSubstitution : DbRecordBase
 {
-    [CgSQLiteKey]
-    public int Key { get; set; } = -1;
-
     public required string ReplacementUrl { get; set; }
     public required string SourceElementId { get; set; }
     public required string Context { get; set; }
 }
 
 [CgSQLiteBaseClass]
-public abstract class DbPackageContent
+public abstract class DbPackageContent : DbRecordBase
 {
-    [CgSQLiteKey]
-    public int Key { get; set; } = -1;
-
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int FhirPackageKey { get; set; }
 }
+
 
 [CgSQLiteBaseClass]
 public abstract class DbCanonicalResource : DbPackageContent

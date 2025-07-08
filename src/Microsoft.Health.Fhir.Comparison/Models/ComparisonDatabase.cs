@@ -44,7 +44,6 @@ internal static partial class ContentDatabaseLogMessages
 
 public class ComparisonDatabase : IDisposable
 {
-    private const string _canonicalRootCrossVersion = "http://hl7.org/fhir/uv/xver/";
     private bool _disposedValue;
 
     private ILoggerFactory? _loggerFactory;
@@ -69,25 +68,6 @@ public class ComparisonDatabase : IDisposable
     private string _dbName;
 
     private IDbConnection _dbConnection;
-
-    private int _dbValueSetIndex = 0;
-    private int _dbConceptIndex = 0;
-    private int _dbStructureIndex = 0;
-    private int _dbElementIndex = 0;
-    private int _dbCollatedTypeIndex = 0;
-    private int _dbElementTypeIndex = 0;
-    private int _dbElementAdditionalBindingIndex = 0;
-    private int _dbValueSetComparisonIndex = 0;
-    private int _dbConceptComparisonIndex = 0;
-    private int _dbUnresolvedConceptComparisonIndex = 0;
-    private int _dbStructureComparisonIndex = 0;
-    private int _dbUnresolvedStructureComparisonIndex = 0;
-    private int _dbCollatedTypeComparisonIndex = 0;
-    private int _dbElementTypeComparisonIndex = 0;
-    private int _dbElementTypeGroupComparisonIndex = 0;
-    private int _dbElementComparisonIndex = 0;
-    private int _dbUnresolvedElementComparisonIndex = 0;
-    private int _dbExtensionSubstitutionIndex = 0;
 
     public ComparisonDatabase(
         DefinitionCollection[] definitions,
@@ -200,49 +180,34 @@ public class ComparisonDatabase : IDisposable
 
     public IDbConnection DbConnection => _dbConnection;
 
-    public int GetValueSetKey() => Interlocked.Increment(ref _dbValueSetIndex);
-    public int GetConceptKey() => Interlocked.Increment(ref _dbConceptIndex);
-    public int GetStructureKey() => Interlocked.Increment(ref _dbStructureIndex);
-    public int GetElementKey() => Interlocked.Increment(ref _dbElementIndex);
-    public int GetCollatedTypeKey() => Interlocked.Increment(ref _dbCollatedTypeIndex);
-    public int GetElementTypeKey() => Interlocked.Increment(ref _dbElementTypeIndex);
-    public int GetElementAdditionalBindingsKey() => Interlocked.Increment(ref _dbElementAdditionalBindingIndex);
-    public int GetValueSetComparisonKey() => Interlocked.Increment(ref _dbValueSetComparisonIndex);
-    public int GetConceptComparisonKey() => Interlocked.Increment(ref _dbConceptComparisonIndex);
-    public int GetUnresolvedConceptComparisonKey() => Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex);
-    public int GetStructureComparisonKey() => Interlocked.Increment(ref _dbStructureComparisonIndex);
-    public int GetUnresolvedStructureComparisonKey() => Interlocked.Increment(ref _dbUnresolvedStructureComparisonIndex);
-    public int GetCollatedTypeComparisonKey() => Interlocked.Increment(ref _dbCollatedTypeComparisonIndex);
-    public int GetElementTypeComparisonKey() => Interlocked.Increment(ref _dbElementTypeComparisonIndex);
-    public int GetElementComparisonKey() => Interlocked.Increment(ref _dbElementComparisonIndex);
-    public int GetUnresolvedElementComparisonKey() => Interlocked.Increment(ref _dbUnresolvedElementComparisonIndex);
-    public int GetExtensionSubstitutionKey() => Interlocked.Increment(ref _dbExtensionSubstitutionIndex);
-
     private void getCurrentIndexValues()
     {
         try
         {
-            _dbValueSetIndex = DbValueSet.SelectMaxKey(_dbConnection) ?? 0;
-            _dbConceptIndex = DbValueSetConcept.SelectMaxKey(_dbConnection) ?? 0;
-            _dbStructureIndex = DbStructureDefinition.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementIndex = DbElement.SelectMaxKey(_dbConnection) ?? 0;
-            _dbCollatedTypeIndex = DbCollatedType.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementTypeIndex = DbElementType.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementAdditionalBindingIndex = DbElementAdditionalBinding.SelectMaxKey(_dbConnection) ?? 0;
+            DbFhirPackage.LoadMaxKey(_dbConnection);
+            DbFhirPackageComparisonPair.LoadMaxKey(_dbConnection);
 
-            _dbValueSetComparisonIndex = DbValueSetComparison.SelectMaxKey(_dbConnection) ?? 0;
-            _dbConceptComparisonIndex = DbValueSetConceptComparison.SelectMaxKey(_dbConnection) ?? 0;
-            _dbUnresolvedConceptComparisonIndex = DbUnresolvedConceptComparison.SelectMaxKey(_dbConnection) ?? 0;
+            DbValueSet.LoadMaxKey(_dbConnection);
+            DbValueSetConcept.LoadMaxKey(_dbConnection);
+            DbStructureDefinition.LoadMaxKey(_dbConnection);
+            DbElement.LoadMaxKey(_dbConnection);
+            DbElementType.LoadMaxKey(_dbConnection);
+            DbCollatedType.LoadMaxKey(_dbConnection);
+            DbElementAdditionalBinding.LoadMaxKey(_dbConnection);
 
-            _dbStructureComparisonIndex = DbStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
-            _dbUnresolvedStructureComparisonIndex = DbUnresolvedStructureComparison.SelectMaxKey(_dbConnection) ?? 0;
+            DbValueSetComparison.LoadMaxKey(_dbConnection);
+            DbValueSetConceptComparison.LoadMaxKey(_dbConnection);
+            DbUnresolvedConceptComparison.LoadMaxKey(_dbConnection);
 
-            _dbCollatedTypeComparisonIndex = DbCollatedTypeComparison.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementTypeComparisonIndex = DbElementTypeComparison.SelectMaxKey(_dbConnection) ?? 0;
-            _dbElementComparisonIndex = DbElementComparison.SelectMaxKey(_dbConnection) ?? 0;
-            _dbUnresolvedElementComparisonIndex = DbUnresolvedElementComparison.SelectMaxKey(_dbConnection) ?? 0;
+            DbStructureComparison.LoadMaxKey(_dbConnection);
+            DbUnresolvedStructureComparison.LoadMaxKey(_dbConnection);
 
-            _dbExtensionSubstitutionIndex = DbExtensionSubstitution.SelectMaxKey(_dbConnection) ?? 0;
+            DbElementComparison.LoadMaxKey(_dbConnection);
+            DbElementTypeComparison.LoadMaxKey(_dbConnection);
+            DbCollatedTypeComparison.LoadMaxKey(_dbConnection);
+            DbUnresolvedElementComparison.LoadMaxKey(_dbConnection);
+
+            DbExtensionSubstitution.LoadMaxKey(_dbConnection);
         }
         catch (Exception ex)
         {
@@ -311,14 +276,14 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
-                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb));
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
+                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb));
                     DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb));
                     DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
                     DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
-                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb));
-                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
+                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
+                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
 
                     DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
@@ -338,14 +303,14 @@ public class ComparisonDatabase : IDisposable
 
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
-                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb));
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
+                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb));
                     DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb));
                     DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
                     DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
-                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb));
-                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
                     DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
+                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
+                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb));
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
 
                     DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
@@ -377,14 +342,14 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
-                    DbCollatedType.DropTable(db);
                     DbElementType.DropTable(db);
+                    DbCollatedType.DropTable(db);
                     DbElementAdditionalBinding.DropTable(db);
                     DbStructureComparison.DropTable(db);
                     DbUnresolvedStructureComparison.DropTable(db);
+                    DbElementComparison.DropTable(db);
                     DbElementTypeComparison.DropTable(db);
                     DbCollatedTypeComparison.DropTable(db);
-                    DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
 
                     DbExtensionSubstitution.DropTable(db);
@@ -404,14 +369,14 @@ public class ComparisonDatabase : IDisposable
 
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
-                    DbCollatedType.DropTable(db);
                     DbElementType.DropTable(db);
+                    DbCollatedType.DropTable(db);
                     DbElementAdditionalBinding.DropTable(db);
                     DbStructureComparison.DropTable(db);
                     DbUnresolvedStructureComparison.DropTable(db);
+                    DbElementComparison.DropTable(db);
                     DbElementTypeComparison.DropTable(db);
                     DbCollatedTypeComparison.DropTable(db);
-                    DbElementComparison.DropTable(db);
                     DbUnresolvedElementComparison.DropTable(db);
 
                     DbExtensionSubstitution.DropTable(db);
@@ -444,11 +409,13 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
                     DbElementType.CreateTable(db);
+                    DbCollatedType.CreateTable(db);
                     DbElementAdditionalBinding.CreateTable(db);
                     DbStructureComparison.CreateTable(db);
                     DbUnresolvedStructureComparison.CreateTable(db);
-                    DbCollatedTypeComparison.CreateTable(db);
                     DbElementComparison.CreateTable(db);
+                    DbElementTypeComparison.CreateTable(db);
+                    DbCollatedTypeComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
                 }
                 break;
@@ -466,12 +433,14 @@ public class ComparisonDatabase : IDisposable
 
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
+                    DbCollatedType.CreateTable(db);
                     DbElementType.CreateTable(db);
                     DbElementAdditionalBinding.CreateTable(db);
                     DbStructureComparison.CreateTable(db);
                     DbUnresolvedStructureComparison.CreateTable(db);
-                    DbCollatedTypeComparison.CreateTable(db);
                     DbElementComparison.CreateTable(db);
+                    DbElementTypeComparison.CreateTable(db);
+                    DbCollatedTypeComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
 
                     DbExtensionSubstitution.CreateTable(db);
@@ -485,14 +454,14 @@ public class ComparisonDatabase : IDisposable
         List<DbExtensionSubstitution> substitutions = [
             new()
             {
-                Key = GetExtensionSubstitutionKey(),
+                Key = DbExtensionSubstitution.GetIndex(),
                 ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/patient-animal",
                 SourceElementId = "Patient.animal",
                 Context = "Patient",
             },
             new()
             {
-                Key = GetExtensionSubstitutionKey(),
+                Key = DbExtensionSubstitution.GetIndex(),
                 ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/conceptmap-notarget-comment",
                 SourceElementId = "ConceptMap.group.element.target.comment",
                 Context = "ConceptMap.group.element",
@@ -791,7 +760,7 @@ public class ComparisonDatabase : IDisposable
                     // create our comparison record
                     sdComparison = new()
                     {
-                        Key = Interlocked.Increment(ref _dbStructureComparisonIndex),
+                        Key = DbStructureComparison.GetIndex(),
                         InverseComparisonKey = inverseSdComparison?.Key,
                         PackageComparisonKey = dbPackagePair.Key,
                         SourceFhirPackageKey = sourceDbPackage.Key,
@@ -815,6 +784,7 @@ public class ComparisonDatabase : IDisposable
                         IsGenerated = true,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
+                        ReviewType = null,
                         TechnicalMessage = tm.Comment,
                         UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbSd.Name} to {targetDbPackage.ShortName}:{targetDbSd.Name}",
                         IsIdentical = null,
@@ -954,7 +924,7 @@ public class ComparisonDatabase : IDisposable
                 {
                     sdComparison = new()
                     {
-                        Key = Interlocked.Increment(ref _dbStructureComparisonIndex),
+                        Key = DbStructureComparison.GetIndex(),
                         PackageComparisonKey = dbPackagePair.Key,
                         SourceFhirPackageKey = sourceDbPackage.Key,
                         TargetFhirPackageKey = targetDbPackage.Key,
@@ -977,6 +947,7 @@ public class ComparisonDatabase : IDisposable
                         IsGenerated = false,
                         LastReviewedBy = null,
                         LastReviewedOn = null,
+                        ReviewType = null,
                         TechnicalMessage = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
                         UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbSd.Name} to {targetDbPackage.ShortName}:{targetDbSd.Name}",
                         IsIdentical = null,
@@ -1013,7 +984,7 @@ public class ComparisonDatabase : IDisposable
             {
                 unresolvedSdComparison = new()
                 {
-                    Key = Interlocked.Increment(ref _dbUnresolvedStructureComparisonIndex),
+                    Key = DbUnresolvedStructureComparison.GetIndex(),
                     PackageComparisonKey = dbPackagePair.Key,
                     SourceFhirPackageKey = sourceDbPackage.Key,
                     TargetFhirPackageKey = targetDbPackage.Key,
@@ -1149,7 +1120,7 @@ public class ComparisonDatabase : IDisposable
 
                 DbUnresolvedElementComparison unresolved = new()
                 {
-                    Key = Interlocked.Increment(ref _dbUnresolvedElementComparisonIndex),
+                    Key = DbUnresolvedElementComparison.GetIndex(),
                     PackageComparisonKey = dbPackagePair.Key,
                     SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
                     SourceStructureKey = sourceDbSd?.Key,
@@ -1184,7 +1155,7 @@ public class ComparisonDatabase : IDisposable
 
                 DbUnresolvedElementComparison unresolved = new()
                 {
-                    Key = Interlocked.Increment(ref _dbUnresolvedElementComparisonIndex),
+                    Key = DbUnresolvedElementComparison.GetIndex(),
                     PackageComparisonKey = dbPackagePair.Key,
                     SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
                     SourceStructureKey = sourceDbSd.Key,
@@ -1223,7 +1194,7 @@ public class ComparisonDatabase : IDisposable
             // create our record
             DbElementComparison resolved = new()
             {
-                Key = Interlocked.Increment(ref _dbElementComparisonIndex),
+                Key = DbElementComparison.GetIndex(),
                 InverseComparisonKey = inverseComparison?.Key,
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
@@ -1314,7 +1285,7 @@ public class ComparisonDatabase : IDisposable
 
                             DbUnresolvedStructureComparison dbUnresolvedSdComparison = new()
                             {
-                                Key = Interlocked.Increment(ref _dbUnresolvedStructureComparisonIndex),
+                                Key = DbUnresolvedStructureComparison.GetIndex(),
                                 PackageComparisonKey = dbPackagePair.Key,
                                 SourceFhirPackageKey = sourceDbPackage.Key,
                                 TargetFhirPackageKey = targetDbPackage.Key,
@@ -1353,7 +1324,7 @@ public class ComparisonDatabase : IDisposable
                         // create our record
                         DbStructureComparison dbSdComparison = new()
                         {
-                            Key = Interlocked.Increment(ref _dbStructureComparisonIndex),
+                            Key = DbStructureComparison.GetIndex(),
                             PackageComparisonKey = dbPackagePair.Key,
                             SourceFhirPackageKey = sourceDbPackage.Key,
                             TargetFhirPackageKey = targetDbPackage.Key,
@@ -1376,6 +1347,7 @@ public class ComparisonDatabase : IDisposable
                             IsGenerated = false,
                             LastReviewedBy = null,
                             LastReviewedOn = null,
+                            ReviewType = null,
                             TechnicalMessage = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
                             UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbSd.Name} to {targetDbPackage.ShortName}:{targetDbSd.Name}",
                             IsIdentical = null,
@@ -1430,7 +1402,7 @@ public class ComparisonDatabase : IDisposable
             // create our canonical comparison record
             DbValueSetComparison dbVsComparison = new()
             {
-                Key = Interlocked.Increment(ref _dbValueSetComparisonIndex),
+                Key = DbValueSetComparison.GetIndex(),
                 InverseComparisonKey = inverseComparison?.Key,
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = sourceDbPackage.Key,
@@ -1596,7 +1568,7 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbUnresolvedConceptComparison unresolvedNoMap = new()
                     {
-                        Key = Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex),
+                        Key = DbUnresolvedConceptComparison.GetIndex(),
                         PackageComparisonKey = dbPackagePair.Key,
                         SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
                         SourceValueSetKey = sourceDbVs.Key,
@@ -1634,7 +1606,7 @@ public class ComparisonDatabase : IDisposable
 
                 DbValueSetConceptComparison nonMappedComparison = new()
                 {
-                    Key = Interlocked.Increment(ref _dbConceptComparisonIndex),
+                    Key = DbValueSetConceptComparison.GetIndex(),
                     PackageComparisonKey = dbPackagePair.Key,
                     SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
                     SourceValueSetKey = sourceDbVs.Key,
@@ -1679,7 +1651,7 @@ public class ComparisonDatabase : IDisposable
 
                 DbUnresolvedConceptComparison unresolvedComparison = new()
                 {
-                    Key = Interlocked.Increment(ref _dbUnresolvedConceptComparisonIndex),
+                    Key = DbUnresolvedConceptComparison.GetIndex(),
                     PackageComparisonKey = dbPackagePair.Key,
                     SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
                     SourceValueSetKey = sourceDbVs.Key,
@@ -1717,7 +1689,7 @@ public class ComparisonDatabase : IDisposable
 
             DbValueSetConceptComparison mappedComparison = new()
             {
-                Key = Interlocked.Increment(ref _dbConceptComparisonIndex),
+                Key = DbValueSetConceptComparison.GetIndex(),
                 InverseComparisonKey = inverseComparison?.Key,
                 PackageComparisonKey = dbPackagePair.Key,
                 SourceFhirPackageKey = dbPackagePair.SourcePackageKey,
@@ -1951,7 +1923,7 @@ public class ComparisonDatabase : IDisposable
                 // still add a metadata record
                 DbValueSet vsmExcluded = new()
                 {
-                    Key = Interlocked.Increment(ref _dbValueSetIndex),
+                    Key = DbValueSet.GetIndex(),
                     FhirPackageKey = pm.Key,
                     Id = uvs.Id,
                     VersionedUrl = versionedUrl,
@@ -1986,7 +1958,7 @@ public class ComparisonDatabase : IDisposable
 
             DbValueSet dbVs = new()
             {
-                Key = Interlocked.Increment(ref _dbValueSetIndex),
+                Key = DbValueSet.GetIndex(),
                 FhirPackageKey = pm.Key,
                 Id = vs.Id,
                 VersionedUrl = versionedUrl,
@@ -2041,7 +2013,7 @@ public class ComparisonDatabase : IDisposable
                 // create a new content record
                 DbValueSetConcept dbConcept = new()
                 {
-                    Key = Interlocked.Increment(ref _dbConceptIndex),
+                    Key = DbValueSetConcept.GetIndex(),
                     FhirPackageKey = pm.Key,
                     ValueSetKey = dbVs.Key,
                     System = fc.System,
@@ -2095,7 +2067,7 @@ public class ComparisonDatabase : IDisposable
                     // still add a metadata record
                     DbStructureDefinition sdmExcluded = new()
                     {
-                        Key = Interlocked.Increment(ref _dbStructureIndex),
+                        Key = DbStructureDefinition.GetIndex(),
                         FhirPackageKey = pm.Key,
                         Id = sd.Id,
                         VersionedUrl = sd.Url + "|" + sd.Version,
@@ -2121,7 +2093,7 @@ public class ComparisonDatabase : IDisposable
                 // create a new metadata record
                 DbStructureDefinition dbStructure = new()
                 {
-                    Key = Interlocked.Increment(ref _dbStructureIndex),
+                    Key = DbStructureDefinition.GetIndex(),
                     FhirPackageKey = pm.Key,
                     Id = sd.Id,
                     VersionedUrl = sd.Url + "|" + sd.Version,
@@ -2150,7 +2122,6 @@ public class ComparisonDatabase : IDisposable
         }
 
         // save changes
-
         _logger.LogInformation($"Inserting Structures for {pm.PackageId}@{pm.PackageVersion} into database...");
 
         _dbConnection.Insert(dbStructures.Values);
@@ -2171,6 +2142,9 @@ public class ComparisonDatabase : IDisposable
         int affectedRows;
 
         // after all the records are inserted, execute any remaining key-resolution queries
+        affectedRows = _dbConnection.UpdateCollatedTypeStructureKeys(pm.Key);
+        _logger.LogInformation($" <<< updated {affectedRows} Collated Type Structure Keys");
+
         affectedRows = _dbConnection.UpdateElementTypeStructureKeys(pm.Key);
         _logger.LogInformation($" <<< updated {affectedRows} Element Type Structure Keys");
 
@@ -2179,12 +2153,12 @@ public class ComparisonDatabase : IDisposable
 
         return;
 
-        // TODO(ginoc): For now, exclude profiles and logical models - we will want them for generic packages, but do not care for core
+        // TODO(ginoc): For now, exclude extensions, profiles, and logical models - we will want them for generic packages, but do not care for core
         (IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) => [
             (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
             (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
             (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
-            (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
+            //(dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
             //(dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
             //(dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
             ];
@@ -2199,7 +2173,7 @@ public class ComparisonDatabase : IDisposable
             StructureDefinition sd,
             ElementDefinition ed)
         {
-            int elementKey = Interlocked.Increment(ref _dbElementIndex);
+            int elementKey = DbElement.GetIndex();
 
             // check for children
             int childCount = sd.cgElements(
@@ -2226,7 +2200,7 @@ public class ComparisonDatabase : IDisposable
                 {
                     collatedType = new()
                     {
-                        Key = Interlocked.Increment(ref _dbCollatedTypeIndex),
+                        Key = DbCollatedType.GetIndex(),
                         FhirPackageKey = dbStructure.FhirPackageKey,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
@@ -2250,7 +2224,7 @@ public class ComparisonDatabase : IDisposable
 
                     DbElementType et = new()
                     {
-                        Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                        Key = DbElementType.GetIndex(),
                         FhirPackageKey = dbStructure.FhirPackageKey,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
@@ -2273,7 +2247,7 @@ public class ComparisonDatabase : IDisposable
                         string tl = literalForType(tr.cgName(), null, tp.Value);
                         DbElementType et = new()
                         {
-                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            Key = DbElementType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
@@ -2298,7 +2272,7 @@ public class ComparisonDatabase : IDisposable
                         string tl = literalForType(tr.cgName(), p.Value, null);
                         DbElementType et = new()
                         {
-                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            Key = DbElementType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
@@ -2323,7 +2297,7 @@ public class ComparisonDatabase : IDisposable
                         string tl = literalForType(tr.cgName(), p.Value, tp.Value);
                         DbElementType et = new()
                         {
-                            Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                            Key = DbElementType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
@@ -2349,7 +2323,7 @@ public class ComparisonDatabase : IDisposable
                     {
                         collatedType = new()
                         {
-                            Key = Interlocked.Increment(ref _dbCollatedTypeIndex),
+                            Key = DbCollatedType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
@@ -2363,7 +2337,7 @@ public class ComparisonDatabase : IDisposable
 
                     DbElementType et = new()
                     {
-                        Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                        Key = DbElementType.GetIndex(),
                         FhirPackageKey = dbStructure.FhirPackageKey,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
@@ -2384,7 +2358,7 @@ public class ComparisonDatabase : IDisposable
                     {
                         collatedType = new()
                         {
-                            Key = Interlocked.Increment(ref _dbCollatedTypeIndex),
+                            Key = DbCollatedType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
@@ -2398,7 +2372,7 @@ public class ComparisonDatabase : IDisposable
 
                     DbElementType et = new()
                     {
-                        Key = Interlocked.Increment(ref _dbElementTypeIndex),
+                        Key = DbElementType.GetIndex(),
                         FhirPackageKey = dbStructure.FhirPackageKey,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
@@ -2422,7 +2396,7 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbElementAdditionalBinding dbAdditionalBinding = new()
                     {
-                        Key = Interlocked.Increment(ref _dbElementAdditionalBindingIndex),
+                        Key = DbElementAdditionalBinding.GetIndex(),
                         FhirPackageKey = pm.Key,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
@@ -2449,7 +2423,12 @@ public class ComparisonDatabase : IDisposable
             // build our collated type literals
             foreach ((string typeName, DbCollatedType collatedType) in currentCollatedTypes)
             {
-                List<string> literalComponents = literalAccumulator[typeName];
+                if (!literalAccumulator.TryGetValue(typeName, out List<string>? literalComponents))
+                {
+                    literalComponents = [];
+                    literalAccumulator.Add(typeName, literalComponents);
+                }
+
                 if (literalComponents.Count == 0)
                 {
                     collatedType.CollatedLiteral = typeName; // no components, just the type name

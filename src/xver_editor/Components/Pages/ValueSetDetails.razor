@@ -1044,7 +1044,7 @@ Class="vs-dialog-container">
         // create a new value set comparison
         DbValueSetComparison vsComparison = new()
         {
-            Key = Xver.ComparisonDb.GetValueSetComparisonKey(),
+            Key = DbValueSetComparison.GetIndex(),
             PackageComparisonKey = packagePair.Key,
             SourceFhirPackageKey = packagePair.SourcePackageKey,
             TargetFhirPackageKey = packagePair.TargetPackageKey,

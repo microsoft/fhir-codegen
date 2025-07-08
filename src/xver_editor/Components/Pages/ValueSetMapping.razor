@@ -1014,7 +1014,7 @@ Class="concept-dialog-container">
             if (mapLRComparison == null)
             {
                 mapLRComparison = DbValueSetConceptComparison.EmptyCopy;
-                mapLRComparison.Key = Xver.ComparisonDb.GetConceptComparisonKey();
+                mapLRComparison.Key = DbValueSetConceptComparison.GetIndex();
                 addingLR = true;
             }
 
@@ -1051,7 +1051,7 @@ Class="concept-dialog-container">
             if (mapRLComparison == null)
             {
                 mapRLComparison = DbValueSetConceptComparison.EmptyCopy;
-                mapRLComparison.Key = Xver.ComparisonDb.GetConceptComparisonKey();
+                mapRLComparison.Key = DbValueSetConceptComparison.GetIndex();
                 addingRL = true;
             }
 
@@ -1353,7 +1353,7 @@ Class="concept-dialog-container">
         // create a new value set comparison
         DbValueSetComparison vsComparison = new()
             {
-                Key = Xver.ComparisonDb.GetValueSetComparisonKey(),
+                Key = DbValueSetComparison.GetIndex(),
                 PackageComparisonKey = packagePair.Key,
                 SourceFhirPackageKey = packagePair.SourcePackageKey,
                 TargetFhirPackageKey = packagePair.TargetPackageKey,

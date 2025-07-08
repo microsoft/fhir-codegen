@@ -165,10 +165,8 @@ public static class DbComparisonCellExtensions
 
 
 [CgSQLiteTable(tableName: "PackageComparisonPairs")]
-public partial class DbFhirPackageComparisonPair
+public partial class DbFhirPackageComparisonPair : DbRecordBase
 {
-    [CgSQLiteKey]
-    public int Key { get; set; } = -1;
     public int InverseComparisonKey { get; set; } = -1;
 
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
@@ -198,11 +196,8 @@ public interface IDbPackageComparisonContent
 }
 
 [CgSQLiteBaseClass]
-public abstract class DbPackageComparisonContent
+public abstract class DbPackageComparisonContent : DbRecordBase
 {
-    [CgSQLiteKey]
-    public int Key { get; set; } = -1;
-
     public int? InverseComparisonKey { get; set; } = -1;
 
     [CgSQLiteForeignKey(referenceTable: "PackageComparisonPairs", referenceColumn: nameof(DbFhirPackageComparisonPair.Key))]
@@ -386,6 +381,14 @@ public partial class DbUnresolvedConceptComparison : DbPackageComparisonContent
     public required bool? NoMap { get; set; }
 }
 
+public enum StructureReviewTypeCodes
+{
+    None,
+    StructureMappings,
+    ElementMappings,
+    Complete,
+}
+
 [CgSQLiteTable(tableName: "StructureComparisons")]
 [CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceStructureKey))]
 [CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
@@ -413,6 +416,8 @@ public partial class DbStructureComparison : DbPackageComparisonContent, IDbPack
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
     public required bool? IsIdentical { get; set; }
+
+    public required StructureReviewTypeCodes? ReviewType { get; set; }
 
     [CgSQLiteIgnore]
     public int SourceContentKey => SourceStructureKey;

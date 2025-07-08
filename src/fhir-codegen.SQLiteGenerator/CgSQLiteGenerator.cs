@@ -460,7 +460,11 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     public partial {{{decForGenCategory(genCategory)}}} {{{className}}}
                     {
                         public static string DefaultTableName => "{{{tableName}}}";
-
+                        {{{(pkPropType == "int" ? "internal static int _indexValue = 0;" : string.Empty)}}}
+                        {{{(pkPropType == "int" ? "public static int GetIndex() => Interlocked.Increment(ref _indexValue);" : string.Empty)}}}
+                        {{{(pkPropType == "long" ? "internal static long _indexValue = 0;" : string.Empty)}}}
+                        {{{(pkPropType == "long" ? "public static long GetIndex() => Interlocked.Increment(ref _indexValue);" : string.Empty)}}}
+                    
                         public static bool CreateTable(IDbConnection dbConnection, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
@@ -491,6 +495,23 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return true;
                         }
 
+                        public static void LoadMaxKey(IDbConnection dbConnection, string? dbTableName = null)
+                        {
+                            dbTableName ??= "{{{tableName}}}";
+                    
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"SELECT MAX({{{(pkColName == null ? "ROWID" : pkColName)}}}) FROM {dbTableName}";
+                    
+                            object? result = command.ExecuteScalar();
+                            if (result is {{{(pkColName == null ? "int" : pkPropType)}}} value)
+                            {
+                                _indexValue = value;
+                            }
+                            else if (result is long l)
+                            {
+                                _indexValue = {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                            }
+                        }
 
                         public static {{{(pkColName == null ? "int" : pkPropType)}}}? SelectMaxKey(IDbConnection dbConnection, string? dbTableName = null)
                         {

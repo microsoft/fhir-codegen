@@ -1120,7 +1120,7 @@ Class="ed-dialog-container">
             if (mapLRComparison == null)
             {
                 mapLRComparison = DbElementComparison.EmptyCopy;
-                mapLRComparison.Key = Xver.ComparisonDb.GetElementComparisonKey();
+                mapLRComparison.Key = DbElementComparison.GetIndex();
                 addingLR = true;
             }
 
@@ -1164,7 +1164,7 @@ Class="ed-dialog-container">
             if (mapRLComparison == null)
             {
                 mapRLComparison = DbElementComparison.EmptyCopy;
-                mapRLComparison.Key = Xver.ComparisonDb.GetElementComparisonKey();
+                mapRLComparison.Key = DbElementComparison.GetIndex();
                 addingRL = true;
             }
 
@@ -1450,7 +1450,7 @@ Class="ed-dialog-container">
         // create a new value set comparison
         DbStructureComparison sdComparison = new()
         {
-            Key = Xver.ComparisonDb.GetStructureComparisonKey(),
+            Key = DbStructureComparison.GetIndex(),
             PackageComparisonKey = packagePair.Key,
             SourceFhirPackageKey = packagePair.SourcePackageKey,
             TargetFhirPackageKey = packagePair.TargetPackageKey,
@@ -1473,22 +1473,25 @@ Class="ed-dialog-container">
             IsGenerated = false,
             LastReviewedOn = null,
             LastReviewedBy = null,
+            ReviewType = null,
             TechnicalMessage = null,
             UserMessage = null,
             IsIdentical = false,
         };
 
-        DbComparisonCache<DbStructureComparison> sdComparisons = new();
-        DbComparisonCache<DbElementComparison> elementComparisons = new();
-        DbComparisonCache<DbCollatedTypeComparison> elementTypeComparisons = new();
+        DbComparisonCache<DbStructureComparison> sdComparisonCache = new();
+        DbComparisonCache<DbElementComparison> edComparisonCache = new();
+        DbComparisonCache<DbCollatedTypeComparison> collatedTypeComparisonCache = new();
+        DbComparisonCache<DbElementTypeComparison> typeComparisonCache = new();
 
-        sdComparisons.CacheAdd(sdComparison);
+        sdComparisonCache.CacheAdd(sdComparison);
 
         // run through the built-in comparison testing
         Xver.Comparer.DoStructureComparison(
-            sdComparisons,
-            elementComparisons,
-            elementTypeComparisons,
+            sdComparisonCache,
+            edComparisonCache,
+            collatedTypeComparisonCache,
+            typeComparisonCache,
             _packages[sourcePackageIndex],
             sourceSd,
             _packages[targetPackageIndex],
@@ -1498,17 +1501,21 @@ Class="ed-dialog-container">
             reversePair);
 
         // apply our changes
-        sdComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
-        sdComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
-        sdComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+        sdComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
+        sdComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
+        sdComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
 
-        elementComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
-        elementComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
-        elementComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+        edComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
+        edComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
+        edComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
 
-        elementTypeComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
-        elementTypeComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
-        elementTypeComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+        collatedTypeComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
+        collatedTypeComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
+        collatedTypeComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
+
+        typeComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
+        typeComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
+        typeComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
 
         // force reload of our UI contents
         LoadStructure(true);

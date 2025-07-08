@@ -9,11 +9,8 @@ using fhir_codegen.SQLiteGenerator;
 namespace Microsoft.Health.Fhir.Comparison.Models;
 
 [CgSQLiteTable(tableName: "FhirPackages")]
-public partial class DbFhirPackage
+public partial class DbFhirPackage : DbRecordBase
 {
-    [CgSQLiteKey]
-    public int Key { get; set; } = -1;
-
     public required string Name { get; set; } = null!;
     public required string PackageId { get; set; } = null!;
     public required string PackageVersion { get; set; } = null!;
