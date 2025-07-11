@@ -381,12 +381,12 @@ public partial class DbUnresolvedConceptComparison : DbPackageComparisonContent
     public required bool? NoMap { get; set; }
 }
 
-public enum StructureReviewTypeCodes
+public enum StructureReviewTypeCodes : int
 {
-    None,
-    StructureMappings,
-    ElementMappings,
-    Complete,
+    None = 0,
+    StructureMappings = 1,
+    ElementMappings = 2,
+    Complete = 3,
 }
 
 [CgSQLiteTable(tableName: "StructureComparisons")]

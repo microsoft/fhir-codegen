@@ -473,12 +473,13 @@ public partial class FhirDbComparer
         // iterate across the forward comparisons
         foreach (DbStructureComparison forwardComparison in forwardComparisons)
         {
-            if (forwardComparison.LastReviewedOn != null)
+            if ((forwardComparison.LastReviewedOn != null) &&
+                (forwardComparison.ReviewType == StructureReviewTypeCodes.Complete))
             {
                 continue;
             }
 
-            // get the target value set for this comparison
+            // resolve the target for this comparison
             DbStructureDefinition targetSd = DbStructureDefinition.SelectSingle(
                 _db,
                 Key: forwardComparison.TargetStructureKey)
@@ -502,6 +503,7 @@ public partial class FhirDbComparer
         return;
     }
 
+
     public void DoStructureComparison(
         DbComparisonCache<DbStructureComparison> sdComparisonCache,
         DbComparisonCache<DbElementComparison> edComparisonCache,
@@ -515,47 +517,11 @@ public partial class FhirDbComparer
         DbFhirPackageComparisonPair forwardPair,
         DbFhirPackageComparisonPair reversePair)
     {
-        // look for an inverse comparison
-        DbStructureComparison? inverseComparison = null;
-
-        if ((forwardComparison.InverseComparisonKey != null) &&
-            (forwardComparison.InverseComparisonKey != -1))
-        {
-            inverseComparison = sdComparisonCache.Get((int)forwardComparison.InverseComparisonKey) ??
-                DbStructureComparison.SelectSingle(
-                _db,
-                Key: forwardComparison.InverseComparisonKey);
-        }
-
-        if (inverseComparison == null)
-        {
-            inverseComparison = sdComparisonCache.Get(targetSd.Key, forwardComparison.SourceStructureKey) ??
-                DbStructureComparison.SelectSingle(
-                    _db,
-                    PackageComparisonKey: reversePair.Key,
-                    SourceFhirPackageKey: targetPackage.Key,
-                    SourceStructureKey: forwardComparison.TargetStructureKey,
-                    TargetFhirPackageKey: sourcePackage.Key,
-                    TargetStructureKey: forwardComparison.SourceStructureKey);
-        }
-
-        if (inverseComparison == null)
-        {
-            inverseComparison = invert(forwardComparison, reversePair);
-            sdComparisonCache.CacheAdd(inverseComparison);
-        }
-
-        if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
-        {
-            forwardComparison.InverseComparisonKey = inverseComparison.Key;
-            sdComparisonCache.Changed(forwardComparison);
-        }
-
-        if (inverseComparison.InverseComparisonKey != forwardComparison.Key)
-        {
-            inverseComparison.InverseComparisonKey = forwardComparison.Key;
-            sdComparisonCache.Changed(inverseComparison);
-        }
+        DbStructureComparison inverseComparison = findOrCreateInverse(
+            forwardComparison,
+            sdComparisonCache,
+            forwardPair,
+            reversePair);
 
         // process this comparison
         List<DbElementComparison> sdElementComparisons = doElementComparisons(
@@ -584,6 +550,13 @@ public partial class FhirDbComparer
         {
             inverseComparison.IsIdentical = forwardComparison.IsIdentical;
             sdComparisonCache.Changed(inverseComparison);
+        }
+
+        // if we are flagged as reviewed, we do not want to update the structure comparison
+        if ((forwardComparison.LastReviewedOn != null) &&
+            (forwardComparison.ReviewType > StructureReviewTypeCodes.None))
+        {
+            return;
         }
 
         if (aggregateStructureRelationships(forwardComparison, sourceSd, targetSd))
@@ -685,6 +658,58 @@ public partial class FhirDbComparer
         sdComparisonCache.Changed(forwardComparison);
     }
 
+
+    private DbStructureComparison findOrCreateInverse(
+        DbStructureComparison forwardComparison,
+        DbComparisonCache<DbStructureComparison> sdComparisonCache,
+        DbFhirPackageComparisonPair forwardPair,
+        DbFhirPackageComparisonPair reversePair)
+    {
+        // look for an inverse comparison
+        DbStructureComparison? inverseComparison = null;
+
+        if ((forwardComparison.InverseComparisonKey != null) &&
+            (forwardComparison.InverseComparisonKey != -1))
+        {
+            inverseComparison = sdComparisonCache.Get((int)forwardComparison.InverseComparisonKey) ??
+                DbStructureComparison.SelectSingle(
+                _db,
+                Key: forwardComparison.InverseComparisonKey);
+        }
+
+        if ((inverseComparison == null) &&
+            (forwardComparison.TargetStructureKey != null))
+        {
+            inverseComparison = sdComparisonCache.Get(forwardComparison.TargetStructureKey!.Value, forwardComparison.SourceStructureKey) ??
+                DbStructureComparison.SelectSingle(
+                    _db,
+                    PackageComparisonKey: reversePair.Key,
+                    SourceFhirPackageKey: reversePair.SourcePackageKey,
+                    SourceStructureKey: forwardComparison.TargetStructureKey,
+                    TargetFhirPackageKey: reversePair.TargetPackageKey,
+                    TargetStructureKey: forwardComparison.SourceStructureKey);
+        }
+
+        if (inverseComparison == null)
+        {
+            inverseComparison = invert(forwardComparison, reversePair);
+            sdComparisonCache.CacheAdd(inverseComparison);
+        }
+
+        if (forwardComparison.InverseComparisonKey != inverseComparison.Key)
+        {
+            forwardComparison.InverseComparisonKey = inverseComparison.Key;
+            sdComparisonCache.Changed(forwardComparison);
+        }
+
+        if (inverseComparison.InverseComparisonKey != forwardComparison.Key)
+        {
+            inverseComparison.InverseComparisonKey = forwardComparison.Key;
+            sdComparisonCache.Changed(inverseComparison);
+        }
+
+        return inverseComparison;
+    }
 
     public bool AggregateStructureRelationships(DbStructureComparison sdComparison)
     {
