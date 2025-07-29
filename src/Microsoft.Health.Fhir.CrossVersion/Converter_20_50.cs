@@ -16,6 +16,7 @@ public class Converter_20_50
     internal Annotation_20_50 _annotation;
     internal Attachment_20_50 _attachment;
     internal BackboneElement_20_50 _backboneElement;
+    internal Bundle_20_50 _bundle;
     internal CapabilityStatement_20_50 _capabilityStatement;
     internal CodeableConcept_20_50 _codeableConcept;
     internal CodeSystem_20_50 _codeSystem;
@@ -66,6 +67,7 @@ public class Converter_20_50
         _annotation = new(this);
         _attachment = new(this);
         _backboneElement = new(this);
+        _bundle = new(this);
         _capabilityStatement = new(this);
         _codeableConcept = new(this);
         _codeSystem = new(this);

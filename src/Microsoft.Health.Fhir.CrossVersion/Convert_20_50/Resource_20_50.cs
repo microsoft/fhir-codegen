@@ -20,6 +20,9 @@ public class Resource_20_50 : ICrossVersionProcessor<Resource>
     {
         switch (node.GetResourceTypeIndicator())
         {
+            case "Bundle":
+                return _converter._bundle.Extract(node);
+
             case "Conformance":
                 return _converter._capabilityStatement.Extract(node);
 

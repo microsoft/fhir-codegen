@@ -429,6 +429,18 @@ public class ConfigRoot : ICodeGenConfig
 
         object? parsed = parseResult.GetValueForOption(opt.CliOption);
 
+        if (typeof(T).IsEnum == true)
+        {
+            string? strVal = parsed?.ToString();
+
+            if (strVal == null)
+            {
+                return defaultValue;
+            }
+
+            return (T)Enum.Parse(typeof(T), strVal, true) ?? defaultValue;
+        }
+
         if (parsed is System.CommandLine.Parsing.Token t)
         {
             switch (defaultValue)

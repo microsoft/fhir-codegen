@@ -99,7 +99,7 @@ public class ServerConnector : IDisposable
             }
 
             if ((!TryGetFhirJson(url, out statusCode, out json)) ||
-                (statusCode != System.Net.HttpStatusCode.OK))
+                (statusCode.IsSuccessful() == false))
             {
                 Console.WriteLine($"Request to {url} failed! Returned: {statusCode}");
                 json = string.Empty;
@@ -389,7 +389,7 @@ public class ServerConnector : IDisposable
         // check instantiates for canonical CapabilityStatement resources
         foreach (string canonical in capabilities.Instantiates)
         {
-            if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences))
+            if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences, "CapabilityStatement"))
             {
                 unresolvedCanonicals.Add(canonical);
             }
@@ -398,7 +398,7 @@ public class ServerConnector : IDisposable
         // check imports for canonical CapabilityStatement resources
         foreach (string canonical in capabilities.Imports)
         {
-            if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences))
+            if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences, "CapabilityStatement"))
             {
                 unresolvedCanonicals.Add(canonical);
             }
@@ -407,7 +407,7 @@ public class ServerConnector : IDisposable
         // check implementationGuide for canonical ImplementationGuide resources
         foreach (string canonical in capabilities.ImplementationGuide)
         {
-            if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences))
+            if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences, "ImplementationGuide"))
             {
                 unresolvedCanonicals.Add(canonical);
             }
@@ -421,7 +421,7 @@ public class ServerConnector : IDisposable
             { 
                 // check the profile for canonical StructureDefinition resources
                 if (!string.IsNullOrEmpty(resource.Profile) &&
-                    !TryResolveCanonical(resource.Profile, definitionCollection, resolveExternalReferences))
+                    !TryResolveCanonical(resource.Profile, definitionCollection, resolveExternalReferences, "StructureDefinition"))
                 {
                     unresolvedCanonicals.Add(resource.Profile);
                 }
@@ -429,7 +429,7 @@ public class ServerConnector : IDisposable
                 // check each supportedProfile for canonical StructureDefinition resources
                 foreach (string canonical in resource.SupportedProfile)
                 {
-                    if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences))
+                    if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences, "StructureDefinition"))
                     {
                         unresolvedCanonicals.Add(canonical);
                     }
@@ -440,7 +440,7 @@ public class ServerConnector : IDisposable
                 {
                     // check definition for canonical SearchParameter resources
                     if (!string.IsNullOrEmpty(searchParam.Definition) &&
-                        !TryResolveCanonical(searchParam.Definition, definitionCollection, resolveExternalReferences))
+                        !TryResolveCanonical(searchParam.Definition, definitionCollection, resolveExternalReferences, "SearchParameter"))
                     {
                         unresolvedCanonicals.Add(searchParam.Definition);
                     }
@@ -451,7 +451,7 @@ public class ServerConnector : IDisposable
                 {
                     // check definition for canonical OperationDefinition resources
                     if (!string.IsNullOrEmpty(operation.Definition) &&
-                        !TryResolveCanonical(operation.Definition, definitionCollection, resolveExternalReferences))
+                        !TryResolveCanonical(operation.Definition, definitionCollection, resolveExternalReferences, "OperationDefinition"))
                     {
                         unresolvedCanonicals.Add(operation.Definition);
                     }
@@ -463,7 +463,7 @@ public class ServerConnector : IDisposable
             {
                 // check definition for canonical SearchParameter resources
                 if (!string.IsNullOrEmpty(searchParam.Definition) &&
-                    !TryResolveCanonical(searchParam.Definition, definitionCollection, resolveExternalReferences))
+                    !TryResolveCanonical(searchParam.Definition, definitionCollection, resolveExternalReferences, "SearchParameter"))
                 {
                     unresolvedCanonicals.Add(searchParam.Definition);
                 }
@@ -474,7 +474,7 @@ public class ServerConnector : IDisposable
             {
                 // check definition for canonical OperationDefinition resources
                 if (!string.IsNullOrEmpty(operation.Definition) &&
-                    !TryResolveCanonical(operation.Definition, definitionCollection, resolveExternalReferences))
+                    !TryResolveCanonical(operation.Definition, definitionCollection, resolveExternalReferences, "OperationDefinition"))
                 {
                     unresolvedCanonicals.Add(operation.Definition);
                 }
@@ -483,7 +483,7 @@ public class ServerConnector : IDisposable
             // check each compartment for canonical CompartmentDefinition resources
             foreach (string canonical in rest.Compartment)
             {
-                if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences))
+                if (!TryResolveCanonical(canonical, definitionCollection, resolveExternalReferences, "CompartmentDefinition"))
                 {
                     unresolvedCanonicals.Add(canonical);
                 }
@@ -511,7 +511,7 @@ public class ServerConnector : IDisposable
         {
             // check profile for canonical StructureDefinition resources
             if (!string.IsNullOrEmpty(document.Profile) &&
-                !TryResolveCanonical(document.Profile, definitionCollection, resolveExternalReferences))
+                !TryResolveCanonical(document.Profile, definitionCollection, resolveExternalReferences, "StructureDefinition"))
             {
                 unresolvedCanonicals.Add(document.Profile);
             }
@@ -523,7 +523,8 @@ public class ServerConnector : IDisposable
     public bool TryResolveCanonical(
         string canonicalUrl,
         DefinitionCollection definitionCollection,
-        bool resolveExternalReferences)
+        bool resolveExternalReferences,
+        string? resourceType = null)
     {
         // check to see if we can already resolve this (e.g., in a package we have loaded)
         if (definitionCollection.CanResolveCanonicalUri(canonicalUrl))
@@ -561,7 +562,7 @@ public class ServerConnector : IDisposable
         if (modified.StartsWith("http://www.hl7.org", StringComparison.OrdinalIgnoreCase))
         {
             // try swapping to hl7.org
-            modified = string.Concat("http://hl7.org", modified[16..]);
+            modified = string.Concat("http://hl7.org", modified[18..]);
 
             if (definitionCollection.CanResolveCanonicalUri(modified))
             {
@@ -638,12 +639,58 @@ public class ServerConnector : IDisposable
                 : string.Concat(_fhirUrl, "/", canonicalUrl);
         }
 
+        string json = "";
+        HttpStatusCode statusCode;
+        bool successful = false;
+
+        // if we have a resource type, we can ask the server if it can resolve the canonical
+        if (!string.IsNullOrEmpty(resourceType))
+        {
+            string serverResolveUrl;
+            if (_fhirUrl.EndsWith('/'))
+            {
+                serverResolveUrl = string.Concat(_fhirUrl, resourceType, "?url=", WebUtility.UrlEncode(canonicalUrl));
+            }
+            else
+            {
+                serverResolveUrl = string.Concat(_fhirUrl, "/", resourceType, "?url=", WebUtility.UrlEncode(canonicalUrl));
+            }
+
+            if (TryGetFhirJson(serverResolveUrl, out statusCode, out string searchJson) &&
+                statusCode.IsSuccessful())
+            {
+
+                object? oBundle = parseResource(searchJson);
+                if ((oBundle != null) &&
+                    (oBundle is Bundle bundle) &&
+                    (bundle.Entry.Count > 0) &&
+                    (bundle.Entry[0].Resource != null))
+                {
+
+                    // add this canonical to the definition collection
+                    definitionCollection.AddResource(
+                        bundle.Entry[0].Resource,
+                        _serverFhirVersion ?? FhirReleases.FhirSequenceCodes.Unknown,
+                        "codegen.local",
+                        "0.0.0",
+                        canonicalUrl);
+
+                    return true;
+                }
+            }
+        }
+
         // first try the original canonical URL
-        if (!TryGetFhirJson(url, out HttpStatusCode statusCode, out string json) ||
-            (!statusCode.IsSuccessful()))
+        if (!successful &&
+            TryGetFhirJson(url, out statusCode, out json) &&
+            statusCode.IsSuccessful())
+        {
+            successful = true;
+        }
+
+        if (!successful)
         {
             // try the same process with our modified version
-
             if (modified.StartsWith("http", StringComparison.Ordinal))
             {
                 url = modified;
@@ -661,42 +708,19 @@ public class ServerConnector : IDisposable
                     : _fhirUrl + "/" + modified;
             }
 
-            if (!TryGetFhirJson(url, out statusCode, out json) ||
-                (!statusCode.IsSuccessful()))
+            if (TryGetFhirJson(url, out statusCode, out json) &&
+                statusCode.IsSuccessful())
             {
-                // nothing more to try
-                return false;
+                successful = true;
             }
         }
 
-        if (string.IsNullOrEmpty(json))
+        if ((!successful) || (string.IsNullOrEmpty(json)))
         {
             return false;
         }
 
-        object? r;
-
-        switch (_serverFhirVersion)
-        {
-            case FhirReleases.FhirSequenceCodes.DSTU2:
-                r = _packageLoader.ParseContents20("application/fhir+json", json);
-                break;
-
-            case FhirReleases.FhirSequenceCodes.STU3:
-                r = _packageLoader.ParseContents30("application/fhir+json", json);
-                break;
-
-            case FhirReleases.FhirSequenceCodes.R4:
-            case FhirReleases.FhirSequenceCodes.R4B:
-                r = _packageLoader.ParseContents43("application/fhir+json", json);
-                break;
-
-            case FhirReleases.FhirSequenceCodes.R5:
-            default:
-                r = _packageLoader.ParseContentsPoco("application/fhir+json", json);
-                break;
-        }
-
+        object? r = parseResource(json);
         if (r == null)
         {
             return false;
@@ -711,6 +735,16 @@ public class ServerConnector : IDisposable
             canonicalUrl);
 
         return true;
+
+        object? parseResource(string json) => _serverFhirVersion switch
+        {
+            FhirReleases.FhirSequenceCodes.DSTU2 => _packageLoader.ParseContents20("application/fhir+json", content: json),
+            FhirReleases.FhirSequenceCodes.STU3 => _packageLoader.ParseContents30("application/fhir+json", content: json),
+            FhirReleases.FhirSequenceCodes.R4 => _packageLoader.ParseContents43("application/fhir+json", content: json),
+            FhirReleases.FhirSequenceCodes.R4B => _packageLoader.ParseContents43("application/fhir+json", content: json),
+            FhirReleases.FhirSequenceCodes.R5 => _packageLoader.ParseContentsPoco("application/fhir+json", content: json),
+            _ => _packageLoader.ParseContentsPoco("application/fhir+json", content: json),
+        };
     }
 
     /// <summary>Attempts to FHIR get JSON.</summary>

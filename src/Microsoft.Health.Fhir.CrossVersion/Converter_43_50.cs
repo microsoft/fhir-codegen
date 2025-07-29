@@ -16,6 +16,7 @@ public class Converter_43_50
     internal Annotation_43_50 _annotation;
     internal Attachment_43_50 _attachment;
     internal BackboneElement_43_50 _backboneElement;
+    internal Bundle_43_50 _bundle;
     internal CapabilityStatement_43_50 _capabilityStatement;
     internal CodeableConcept_43_50 _codeableConcept;
     internal CodeableReference_43_50 _codeableReference;
@@ -72,6 +73,7 @@ public class Converter_43_50
         _annotation = new(this);
         _attachment = new(this);
         _backboneElement = new(this);
+        _bundle = new(this);
         _capabilityStatement = new(this);
         _codeableConcept = new(this);
         _codeableReference = new(this);
