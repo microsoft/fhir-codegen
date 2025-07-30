@@ -311,6 +311,9 @@ public partial class XVerProcessor
         }
     }
 
+    private static string getPackageId(DbFhirPackage? sourcePackage, DbFhirPackage targetPackage) => sourcePackage == null
+        ? $"hl7.fhir.uv.xver.{targetPackage.ShortName.ToLowerInvariant()}"
+        : $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{targetPackage.ShortName.ToLowerInvariant()}";
 
     private void writeXverValueSets(
         List<DbFhirPackage> packages,
@@ -326,8 +329,10 @@ public partial class XVerProcessor
         {
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
+            string packageId = getPackageId(focusPackage, targetPackage);
+
             // build a path for this direction
-            string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            string dir = Path.Combine(fhirDir, packageId);
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -389,8 +394,10 @@ public partial class XVerProcessor
 
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
+            string packageId = getPackageId(focusPackage, targetPackage);
+
             // build a path for this direction
-            string dir = Path.Combine(fhirDir, focusPackage.ShortName + "-for-" + targetPackage.ShortName);
+            string dir = Path.Combine(fhirDir, packageId);
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -402,7 +409,7 @@ public partial class XVerProcessor
                 Directory.CreateDirectory(dir);
             }
 
-            // write the value set to a file
+            // write the structure to a file
             string filename = $"StructureDefinition-{sd.Id}.json";
 
             string path = Path.Combine(dir, filename);

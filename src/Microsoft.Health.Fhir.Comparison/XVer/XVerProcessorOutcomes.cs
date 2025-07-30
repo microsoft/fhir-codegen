@@ -159,16 +159,17 @@ public partial class XVerProcessor
                 DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
                 string packageFor = $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}";
+                string packageId = getPackageId(sourcePackage, targetPackage);
                 string htmlDir;
                 string mdDir;
                 if (createdDirs.Contains(packageFor))
                 {
-                    htmlDir = Path.Combine(fhirDir, packageFor, "package", "doc");
+                    htmlDir = Path.Combine(fhirDir, packageId, "package", "doc");
                     mdDir = Path.Combine(docsDir, packageFor);
                 }
                 else
                 {
-                    htmlDir = Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}");
+                    htmlDir = Path.Combine(fhirDir, packageId);
                     if (!Directory.Exists(htmlDir))
                     {
                         Directory.CreateDirectory(htmlDir);

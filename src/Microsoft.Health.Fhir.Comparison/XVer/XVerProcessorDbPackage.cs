@@ -76,7 +76,9 @@ public partial class XVerProcessor
         // iterate over the support packages
         foreach (PackageXverSupport packageSupport in packageSupports)
         {
-            string dir = Path.Combine(fhirDir, packageSupport.Package.ShortName);
+            string packageId = getPackageId(null, packageSupport.Package);
+
+            string dir = Path.Combine(fhirDir, packageId);
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -97,14 +99,12 @@ public partial class XVerProcessor
                 }
 
                 internalDependencies.Add((
-                    $"hl7.fhir.uv.xver-{sourcePackage.Package.ShortName.ToLowerInvariant()}.{packageSupport.Package.ShortName.ToLowerInvariant()}",
+                    getPackageId(sourcePackage.Package, packageSupport.Package),
                     _crossDefinitionVersion));
             }
 
             // get the list of index informations that *target* this version
             List<XverPackageIndexInfo> packageIndexInfos = allPackageIndexInfos.Where(ii => ii.TargetPackageSupport.Package.Key == packageSupport.Package.Key).ToList();
-
-            string packageId = $"hl7.fhir.uv.xver.{packageSupport.Package.ShortName.ToLowerInvariant()}";
 
             // build and write the ImplementationGuide resource for the combination package (single source and target)
             {
@@ -227,7 +227,7 @@ public partial class XVerProcessor
                 continue;
             }
 
-            string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{targetSupport.Package.ShortName.ToLowerInvariant()}";
+            string packageId = getPackageId(sourcePackage, targetSupport.Package);
 
             XverPackageIndexInfo indexInfo = new()
             {
@@ -257,7 +257,7 @@ public partial class XVerProcessor
                 }
 
                 string filename = $"ImplementationGuide-{packageId}.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), igJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), igJson);
             }
 
             // build and write the package.manifest.json file
@@ -273,14 +273,14 @@ public partial class XVerProcessor
                     """;
 
                 string filename = "package.manifest.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), pmJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), pmJson);
             }
 
             // build and write the .index.json file
             {
                 string indexJson = getIndexJson(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo);
                 string filename = ".index.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), indexJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), indexJson);
             }
 
             // build and write the package.json file
@@ -321,7 +321,7 @@ public partial class XVerProcessor
                     """;
 
                 string filename = "package.json";
-                File.WriteAllText(Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{targetSupport.Package.ShortName}", "package", filename), packageJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), packageJson);
             }
         }
 
