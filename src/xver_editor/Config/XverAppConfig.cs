@@ -494,12 +494,12 @@ public class XverAppConfig: ICodeGenConfig
                         CrossVersionDbPath = GetOpt(parseResult, opt, CrossVersionDbPath);
                         if (string.IsNullOrEmpty(CrossVersionDbPath))
                         {
-                            CrossVersionDbPath = FindRelativeFile(string.Empty, "fhir-comparison.db");
+                            CrossVersionDbPath = FindRelativeFile(string.Empty, "fhir-comparison.sqlite");
                         }
 
                         if (string.IsNullOrEmpty(CrossVersionDbPath))
                         {
-                            throw new FileNotFoundException($"Database is required! Use the --db option, Comparison_Database_Path environment variable, or run in a directory with a 'fhir-comparison.db' file.");
+                            throw new FileNotFoundException($"Database is required! Use the --db option, Comparison_Database_Path environment variable, or run in a directory with a 'fhir-comparison.sqlite' file.");
                         }
                     }
                     break;

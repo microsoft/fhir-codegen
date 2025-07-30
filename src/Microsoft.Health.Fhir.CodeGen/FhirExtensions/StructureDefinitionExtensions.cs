@@ -154,6 +154,34 @@ public static class StructureDefinitionExtensions
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool cgIsExperimental(this StructureDefinition sd) => sd.Experimental ?? false;
 
+    //private static List<string> getExtStringValues(this StructureDefinition sd, string extUrl)
+    //{
+    //    IEnumerable<Extension> exts = sd.GetExtensions(extUrl);
+    //    return exts
+    //        .Where(e => e.Value != null)
+    //        .Select<Extension, string>(e => e.Value!.ToString()!)
+    //        .ToList();
+    //}
+
+    private static string? getExtStringValuesJoined(this StructureDefinition sd, string extUrl)
+    {
+        IEnumerable<Extension> exts = sd.GetExtensions(extUrl);
+        List<string?> values = exts.Select(e => e.Value?.ToString()).ToList();
+        return values.Count == 0
+            ? null
+            : string.Join(", ", values.Where(v => !string.IsNullOrEmpty(v)));
+    }
+
+    /// <summary>
+    /// Gets the list of interfaces that this definition implements.
+    /// </summary>
+    /// <param name="sd"></param>
+    /// <returns></returns>
+    public static string? cgImplementsJoined(this StructureDefinition sd)
+    {
+        return sd.getExtStringValuesJoined(CommonDefinitions.ExtUrlImplements);
+    }
+
     /// <summary>Gets the Work Group responsible for this definition.</summary>
     /// <param name="sd">The SD to act on.</param>
     /// <returns>A string.</returns>

@@ -150,23 +150,23 @@ public partial class XVerProcessor
         {
             // need to create a definition collection with the matching core package so that we can build everything
             string packageDirective = $"{package.PackageId}#{package.PackageVersion}";
+            
+            //// create a loader because these are all different FHIR core versions
+            //using CodeGen.Loader.PackageLoader loader = new(_config, new()
+            //{
+            //    JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            //});
 
-            // create a loader because these are all different FHIR core versions
-            using CodeGen.Loader.PackageLoader loader = new(_config, new()
-            {
-                JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
-            });
-
-            DefinitionCollection coreDc = loader.LoadPackages([packageDirective]).Result
-                ?? throw new Exception($"Could not load package: {packageDirective}");
+            //DefinitionCollection coreDc = loader.LoadPackages([packageDirective]).Result
+            //    ?? throw new Exception($"Could not load package: {packageDirective}");
 
             PackageXverSupport packageSupport = new()
             {
                 PackageIndex = index,
                 Package = package,
                 BasicElements = [],
-                CoreDC = coreDc,
-                SnapshotGenerator = new(coreDc),
+                //CoreDC = coreDc,
+                //SnapshotGenerator = new(coreDc),
             };
 
             packageSupports.Add(packageSupport);
@@ -272,37 +272,41 @@ public partial class XVerProcessor
         // write all of our outcome lists
         writeXverOutcomes(packageSupports, xverOutcomes, outputDir);
 
-        // make the make package tgz files
-        foreach (DbFhirPackage focusPackage in packages)
+        if ((_config.XverExportForPublisher == false) &&
+            (_config.XverGenerateNpms == true))
         {
-            // TODO: until verified, only write R4 and later packages
-            if ((focusPackage.ShortName == "R2") ||
-                (focusPackage.ShortName == "R3"))
+            // make the make package tgz files
+            foreach (DbFhirPackage focusPackage in packages)
             {
-                continue;
-            }
-
-            string validationPackageId = $"hl7.fhir.uv.xver.{focusPackage.ShortName.ToLowerInvariant()}";
-
-            // create the validation package
-            createTgzFromDirectory(
-                Path.Combine(fhirDir, focusPackage.ShortName),
-                Path.Combine(fhirDir, $"{validationPackageId}.{_crossDefinitionVersion}.tgz"));
-
-            // look for all combination packages, using the focus as the target
-            foreach (DbFhirPackage sourcePackage in packages)
-            {
-                if (sourcePackage.Key == focusPackage.Key)
+                // TODO: until verified, only write R4 and later packages
+                if ((focusPackage.ShortName == "R2") ||
+                    (focusPackage.ShortName == "R3"))
                 {
                     continue;
                 }
 
-                string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{focusPackage.ShortName.ToLowerInvariant()}";
+                string validationPackageId = $"hl7.fhir.uv.xver.{focusPackage.ShortName.ToLowerInvariant()}";
 
                 // create the validation package
                 createTgzFromDirectory(
-                    Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{focusPackage.ShortName}"),
-                    Path.Combine(fhirDir, $"{packageId}.{_crossDefinitionVersion}.tgz"));
+                    Path.Combine(fhirDir, focusPackage.ShortName),
+                    Path.Combine(fhirDir, $"{validationPackageId}.{_crossDefinitionVersion}.tgz"));
+
+                // look for all combination packages, using the focus as the target
+                foreach (DbFhirPackage sourcePackage in packages)
+                {
+                    if (sourcePackage.Key == focusPackage.Key)
+                    {
+                        continue;
+                    }
+
+                    string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{focusPackage.ShortName.ToLowerInvariant()}";
+
+                    // create the validation package
+                    createTgzFromDirectory(
+                        Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{focusPackage.ShortName}"),
+                        Path.Combine(fhirDir, $"{packageId}.{_crossDefinitionVersion}.tgz"));
+                }
             }
         }
     }
@@ -363,22 +367,25 @@ public partial class XVerProcessor
                 continue;
             }
 
-            try
+            if (_config.XverGenerateSnapshots)
             {
-                if (sd.Snapshot == null)
+                try
                 {
-                    // create a new snapshot
-                    sd.Snapshot = new StructureDefinition.SnapshotComponent();
-                }
+                    if (sd.Snapshot == null)
+                    {
+                        // create a new snapshot
+                        sd.Snapshot = new StructureDefinition.SnapshotComponent();
+                    }
 
-                // a valid snapshot will always have at least the root element
-                if (sd.Snapshot.Element.Count == 0)
-                {
-                    //sd.Snapshot.Element = packageSupports[targetPackageId].SnapshotGenerator?.GenerateAsync(sd).Result ?? [];
-                    sd.Snapshot.Element = generatorsById[targetPackageId]?.FirstOrDefault()?.GenerateAsync(sd).Result ?? [];
+                    // a valid snapshot will always have at least the root element
+                    if (sd.Snapshot.Element.Count == 0)
+                    {
+                        //sd.Snapshot.Element = packageSupports[targetPackageId].SnapshotGenerator?.GenerateAsync(sd).Result ?? [];
+                        sd.Snapshot.Element = generatorsById[targetPackageId]?.FirstOrDefault()?.GenerateAsync(sd).Result ?? [];
+                    }
                 }
+                catch (Exception) { }
             }
-            catch (Exception) { }
 
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
@@ -1280,7 +1287,7 @@ public partial class XVerProcessor
             Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Name = sdId.Replace('-', '_').Replace('.', '_'),
             Version = _crossDefinitionVersion,
-            FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(targetPackageSupport!.CoreDC!.FhirVersionLiteral) ?? FHIRVersion.N5_0_0,
+            FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(targetPackageSupport!.Package.PackageVersion) ?? FHIRVersion.N5_0_0,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
             Description = $"This cross-version extension represents {element.Path} from {sd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
@@ -1899,7 +1906,8 @@ public partial class XVerProcessor
                 // if we can't find anything that matches, see if this structure exists in the target
                 string name = element.Path.Split('.')[0];
 
-                if ((targetPackageSupport.CoreDC?.ComplexTypesByName.ContainsKey(name) == true) ||
+                if ((DbStructureDefinition.SelectCount(_db!.DbConnection, FhirPackageKey: targetPackageSupport.Package.Key, Id: name) != 0) ||
+                    (targetPackageSupport.CoreDC?.ComplexTypesByName.ContainsKey(name) == true) ||
                     (targetPackageSupport.CoreDC?.ResourcesByName.ContainsKey(name) == true))
                 {
                     contextElementPaths.Add(name);

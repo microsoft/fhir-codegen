@@ -156,7 +156,7 @@ public partial class XVerProcessor
             ? Path.Combine(_config.CrossVersionMapSourcePath, "db")
             : _config.CrossVersionDbPath;
 
-        if (path.EndsWith(".db"))
+        if (path.EndsWith(".sqlite") || path.EndsWith(".db"))
         {
             _dbPath = Path.GetDirectoryName(path) ?? path;
             _dbName = Path.GetFileName(path) ?? path;
@@ -241,6 +241,11 @@ public partial class XVerProcessor
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 break;
 
+            case "discover":
+                LoadDatabase(_config.ReloadDatabase, true);
+                BuildComparisonPairs();
+                break;
+
             case "compare":
                 LoadDatabase(_config.ReloadDatabase, true);
                 CompareInDatabase();
@@ -279,6 +284,7 @@ public partial class XVerProcessor
             default:
                 LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
+                BuildComparisonPairs();
                 CompareInDatabase();
                 WriteDocsFromDatabase();
                 WriteFhirFromDatabase();
@@ -338,7 +344,23 @@ public partial class XVerProcessor
     }
 
     /// <summary>
-    /// Runs the comparison process in the loaded database for the specified artifact type.
+    /// Builds the comparison pairs in the loaded database, can filter by artifact type.
+    /// </summary>
+    /// <param name="artifactFilter"></param>
+    /// <exception cref="Exception"></exception>
+    public void BuildComparisonPairs(FhirArtifactClassEnum? artifactFilter = null)
+    {
+        if (_db == null)
+        {
+            throw new Exception("Cannot build comparison pairs without a loaded database!");
+        }
+
+        FhirDbComparer dbComparer = new(_db, _config.LogFactory);
+        dbComparer.BuildComparisonPairs(artifactFilter, _config.ComparisonPairFilterKeys);
+    }
+
+    /// <summary>
+    /// Runs the comparison process in the loaded database, can filter by artifact type.
     /// </summary>
     /// <param name="artifactFilter">Optional artifact type filter.</param>
     public void CompareInDatabase(FhirArtifactClassEnum? artifactFilter = null)

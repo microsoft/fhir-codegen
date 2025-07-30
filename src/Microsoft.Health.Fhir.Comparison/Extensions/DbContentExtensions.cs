@@ -16,24 +16,75 @@ namespace Microsoft.Health.Fhir.Comparison.Extensions;
 
 public static class DbContentExtensions
 {
-    public static int UpdateCollatedTypeStructureKeys(
+    public static int ConceptCountWithLiteralMatches(
         this IDbConnection dbConnection,
-        int FhirPackageKey,
-        string? dbTableName = null,
-        string? structureDbTableName = null)
+        int vsKeyA,
+        int vsKeyB,
+        string? conceptTableName = null)
     {
-        dbTableName ??= "CollatedTypes";
-        structureDbTableName ??= "Structures";
+        conceptTableName ??= "Concepts";
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
-            UPDATE {{{dbTableName}}}
+            SELECT COUNT(C1.Key)
+            FROM {{{conceptTableName}}} C1
+            JOIN {{{conceptTableName}}} C2 ON C1.Code = C2.Code
+            WHERE C1.ValueSetKey = {{{vsKeyA}}}
+            AND C2.ValueSetKey = {{{vsKeyB}}}
+            """;
+
+        return Convert.ToInt32(command.ExecuteScalar());
+    }
+
+    public static int ElementCountThatLookIdentical(
+        this IDbConnection dbConnection,
+        int structureKeyA,
+        int structureKeyB,
+        string? elementTableName = null)
+    {
+        elementTableName ??= "Elements";
+
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = $$$"""
+            SELECT COUNT(E1.Key)
+            FROM {{{elementTableName}}} E1
+            JOIN {{{elementTableName}}} E2 ON E1.Id = E2.Id
+            WHERE E1.StructureKey = {{{structureKeyA}}}
+            AND E2.StructureKey = {{{structureKeyB}}}
+            AND (
+                E1.MinCardinality != E2.MinCardinality
+                OR E1.MaxCardinality != E2.MaxCardinality
+                OR E1.FullCollatedTypeLiteral != E2.FullCollatedTypeLiteral
+                OR (
+                    (E1.ValueSetBindingStrength is NULL AND E2.ValueSetBindingStrength is NOT NULL)
+                    or (E1.ValueSetBindingStrength is NOT NULL AND E2.ValueSetBindingStrength is NULL)
+                    or (E1.ValueSetBindingStrength != E2.ValueSetBindingStrength)
+                    )
+                OR E1.IsModifier != E2.IsModifier
+                )
+            """;
+
+        return Convert.ToInt32(command.ExecuteScalar());
+    }
+
+    public static int UpdateCollatedTypeStructureKeys(
+        this IDbConnection dbConnection,
+        int FhirPackageKey,
+        string? collatedTypeTableName = null,
+        string? structureTableName = null)
+    {
+        collatedTypeTableName ??= "CollatedTypes";
+        structureTableName ??= "Structures";
+
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = $$$"""
+            UPDATE {{{collatedTypeTableName}}}
             SET
                 TypeStructureKey = S.Key
-            FROM {{{structureDbTableName}}} S
-            WHERE {{{dbTableName}}}.TypeName = S.Id
-            AND {{{dbTableName}}}.FhirPackageKey = S.FhirPackageKey
-            AND {{{dbTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
+            FROM {{{structureTableName}}} S
+            WHERE {{{collatedTypeTableName}}}.TypeName = S.Id
+            AND {{{collatedTypeTableName}}}.FhirPackageKey = S.FhirPackageKey
+            AND {{{collatedTypeTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
             """;
 
         return command.ExecuteNonQuery();
@@ -42,21 +93,21 @@ public static class DbContentExtensions
     public static int UpdateElementTypeStructureKeys(
         this IDbConnection dbConnection,
         int FhirPackageKey,
-        string? dbTableName = null,
-        string? structureDbTableName = null)
+        string? elementTypeTableName = null,
+        string? structureTableName = null)
     {
-        dbTableName ??= "ElementTypes";
-        structureDbTableName ??= "Structures";
+        elementTypeTableName ??= "ElementTypes";
+        structureTableName ??= "Structures";
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
-            UPDATE {{{dbTableName}}}
+            UPDATE {{{elementTypeTableName}}}
             SET
                 TypeStructureKey = S.Key
-            FROM {{{structureDbTableName}}} S
-            WHERE {{{dbTableName}}}.TypeName = S.Id
-            AND {{{dbTableName}}}.FhirPackageKey = S.FhirPackageKey
-            AND {{{dbTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
+            FROM {{{structureTableName}}} S
+            WHERE {{{elementTypeTableName}}}.TypeName = S.Id
+            AND {{{elementTypeTableName}}}.FhirPackageKey = S.FhirPackageKey
+            AND {{{elementTypeTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
             """;
 
         return command.ExecuteNonQuery();

@@ -98,6 +98,7 @@ internal static class LaunchUtils
             ConfigurationType = typeof(ConfigXVer),
             SubCommands = [
                 ("create-db", "Create package comparison database file"),
+                ("discover", "Build skeleton comparison records (do not perform comparisons)"),
                 ("compare", "Run a comparison and update the database"),
                 ("compare-vs", "Run a comparison of ValueSet data and update the database"),
                 ("compare-sd", "Run a comparison of Structure data and update the database"),

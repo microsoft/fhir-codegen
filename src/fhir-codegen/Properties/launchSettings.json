@@ -105,6 +105,11 @@
             "commandLineArgs": "generate Info --output-path ..\\..\\generated --output-filename Info_R5.txt -p hl7.fhir.r5.core@5.0.0 -p hl7.fhir.r5.expansions#5.0.0",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "OpenApi Candle R4": {
+            "commandName": "Project",
+            "commandLineArgs": "generate OpenApi --fhir-server-url http://localhost:5826/fhir/r4 -p hl7.fhir.r4.core#4.0.1 --output-dir ..\\..\\temp\\OAS --format yaml --include-experimental --schema-level names --metadata true --multi-file false --single-responses false --resolve-server-canonicals true --resolve-external-canonicals true --basic-scopes-only true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "Shorthand IG US Core": {
             "commandName": "Project",
             "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
@@ -178,6 +183,11 @@
         "XVer create-db": {
             "commandName": "Project",
             "commandLineArgs": "xver create-db --max-expansion-size 8000 -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2  -c hl7.fhir.r4.core@4.0.1 -c hl7.fhir.r4b.core@4.3.0 -c hl7.fhir.r5.core@5.0.0 --auto-load-expansions --resolve-dependencies true",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
+        "XVer discover": {
+            "commandName": "Project",
+            "commandLineArgs": "xver discover",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "XVer compare-db": {

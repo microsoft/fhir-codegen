@@ -58,11 +58,9 @@ public partial class XVerProcessor
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to create tgz {outputTgzFile} from source {sourceDirectory}");
+            Console.WriteLine($"Failed to create tgz {outputTgzFile} from source {sourceDirectory}: {ex.Message}");
         }
     }
-
-
 
     /// <summary>
     /// Writes the ImplementationGuide, manifest, index, and package.json files for each validation package.

@@ -13,6 +13,249 @@ namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public partial class FhirDbComparer
 {
+    private void buildStructureComparisonPairsForSource(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        DbFhirPackageComparisonPair packageForwardPair,
+        DbFhirPackageComparisonPair packageReversePair,
+        bool allowUpdates = true)
+    {
+        _sdComparisonCache.Clear();
+
+        List<DbStructureDefinition> sourceStructures = DbStructureDefinition.SelectList(_db, FhirPackageKey: sourcePackage.Key);
+        _logger.LogInformation($" <<< processing {sourcePackage.ShortName} Structures, count: {sourceStructures.Count}");
+
+        // iterate over each structure in the source package
+        foreach (DbStructureDefinition sourceSd in sourceStructures)
+        {
+            // skip structures we know we will not process
+            if (XVerProcessor._exclusionSet.Contains(sourceSd.UnversionedUrl))
+            {
+                continue;
+            }
+
+            _logger.LogInformation($" <<< processing Structure {sourceSd.VersionedUrl}");
+
+            // check for existing comparisons
+            List<DbStructureComparison> cachedForwardComparisons = _sdComparisonCache.ForSource(sourceSd.Key)
+                .Where(c => c.TargetFhirPackageKey == targetPackage.Key)
+                .ToList();
+
+            List<DbStructureComparison> cachedReverseComparisons = _sdComparisonCache.ForTarget(sourceSd.Key)
+                .Where(c => c.SourceFhirPackageKey == targetPackage.Key)
+                .ToList();
+
+            List<DbStructureComparison> dbForwardComparisons = DbStructureComparison.SelectList(
+                _db,
+                PackageComparisonKey: packageForwardPair.Key,
+                SourceStructureKey: sourceSd.Key);
+
+            List<DbStructureComparison> dbReverseComparisons = DbStructureComparison.SelectList(
+                _db,
+                PackageComparisonKey: packageReversePair.Key,
+                TargetStructureKey: sourceSd.Key);
+
+            Dictionary<int, DbStructureComparison> forwardComparisons = cachedForwardComparisons.ToDictionary(c => c.TargetStructureKey ?? 0);
+            foreach (DbStructureComparison vsc in dbForwardComparisons)
+            {
+                if (!forwardComparisons.ContainsKey(vsc.TargetStructureKey ?? 0))
+                {
+                    forwardComparisons[vsc.TargetStructureKey ?? 0] = vsc;
+                }
+            }
+
+            Dictionary<int, DbStructureComparison> reverseComparisons = cachedReverseComparisons.ToDictionary(c => c.SourceStructureKey);
+            foreach (DbStructureComparison vsc in dbReverseComparisons)
+            {
+                if (!reverseComparisons.ContainsKey(vsc.SourceStructureKey))
+                {
+                    reverseComparisons[vsc.SourceStructureKey] = vsc;
+                }
+            }
+
+            // if we found zero comparisons, try to infer some
+            if ((forwardComparisons.Count == 0) &&
+                (reverseComparisons.Count == 0))
+            {
+                string techMessage = "Inferred comparison based on ";
+
+                List<DbStructureDefinition> potentialTargets = DbStructureDefinition.SelectList(_db, FhirPackageKey: targetPackage.Key, UnversionedUrl: sourceSd.UnversionedUrl);
+                if (potentialTargets.Count != 0)
+                {
+                    techMessage += $" unversioned URL match from source: `{sourceSd.UnversionedUrl}`";
+                }
+                else
+                {
+                    potentialTargets = DbStructureDefinition.SelectList(_db, FhirPackageKey: targetPackage.Key, Name: sourceSd.Name);
+
+                    if (potentialTargets.Count != 0)
+                    {
+                        techMessage += $" Name match from source: `{sourceSd.Name}`";
+                    }
+                    else
+                    {
+                        potentialTargets = DbStructureDefinition.SelectList(_db, FhirPackageKey: targetPackage.Key, Id: sourceSd.Id);
+
+                        if (potentialTargets.Count != 0)
+                        {
+                            techMessage += $" Id match from source: {sourceSd.Id}";
+                        }
+                    }
+                }
+
+                foreach (DbStructureDefinition targetSd in potentialTargets)
+                {
+                    // create this comparison
+                    DbStructureComparison sdc = new()
+                    {
+                        Key = DbStructureComparison.GetIndex(),
+                        PackageComparisonKey = packageForwardPair.Key,
+                        SourceFhirPackageKey = sourcePackage.Key,
+                        TargetFhirPackageKey = targetPackage.Key,
+                        SourceStructureKey = sourceSd.Key,
+                        SourceCanonicalVersioned = sourceSd.VersionedUrl,
+                        SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
+                        SourceVersion = sourceSd.Version,
+                        SourceName = sourceSd.Name,
+                        TargetStructureKey = targetSd.Key,
+                        TargetCanonicalVersioned = targetSd.VersionedUrl,
+                        TargetCanonicalUnversioned = targetSd.UnversionedUrl,
+                        TargetVersion = targetSd.Version,
+                        TargetName = targetSd.Name,
+                        CompositeName = ComparisonDatabase.GetCompositeName(sourcePackage, sourceSd, targetPackage, targetSd),
+                        SourceOverviewConceptMapUrl = null,
+                        SourceStructureFmlUrl = null,
+                        Relationship = null,
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
+                        IsGenerated = true,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
+                        ReviewType = null,
+                        TechnicalMessage = techMessage,
+                        UserMessage = null,
+                        IsIdentical = null,
+                    };
+
+                    _sdComparisonCache.CacheAdd(sdc);
+                    cachedForwardComparisons.Add(sdc);
+                }
+            }
+
+            // ensure that all forward comparisons have a reverse comparison
+            foreach ((int targetKey, DbStructureComparison forward) in forwardComparisons)
+            {
+                // if our comparison target key is zero, it is an unmapped comparison
+                if (targetKey == 0)
+                {
+                    continue;
+                }
+
+                // check to see if we have a known reverse comparison
+                if (reverseComparisons.ContainsKey(targetKey))
+                {
+                    continue;
+                }
+
+                // create an inverse comparison
+                DbStructureComparison reverse = invert(forward, packageReversePair);
+                reverseComparisons.Add(targetKey, reverse);
+                _sdComparisonCache.CacheAdd(reverse);
+
+                // update the forward comparison to point to the reverse
+                forward.InverseComparisonKey = reverse.Key;
+                _sdComparisonCache.CacheUpdate(forward);
+
+                // resolve the target structure definition
+                DbStructureDefinition? targetSd = DbStructureDefinition.SelectSingle(
+                    _db,
+                    Key: targetKey,
+                    FhirPackageKey: targetPackage.Key);
+
+                if (targetSd == null)
+                {
+                    continue;
+                }
+
+                // can check for identical Structure Definitions here
+                if ((sourceSd.SnapshotCount == targetSd.SnapshotCount) &&
+                    (sourceSd.DifferentialCount == targetSd.DifferentialCount) &&
+                    (_db.ElementCountThatLookIdentical(sourceSd.Key, targetKey) == int.Max(sourceSd.SnapshotCount, sourceSd.DifferentialCount)))
+                {
+                    forward.IsIdentical = true;
+                    forward.Relationship = CMR.Equivalent;
+                    _sdComparisonCache.CacheUpdate(forward);
+
+                    reverse.IsIdentical = true;
+                    reverse.Relationship = CMR.Equivalent;
+                    _sdComparisonCache.CacheUpdate(reverse);
+                }
+            }
+
+            // ensure that all reverse comparisons have a forward comparison
+            foreach ((int reverseSourceKey, DbStructureComparison reverse) in reverseComparisons)
+            {
+                // if our comparison source key is zero, it is an unmapped comparison
+                if (reverseSourceKey == 0)
+                {
+                    continue;
+                }
+
+                // check to see if we have a known forward comparison
+                if (forwardComparisons.ContainsKey(reverseSourceKey))
+                {
+                    continue;
+                }
+
+                // create an inverse comparison
+                DbStructureComparison forward = invert(reverse, packageForwardPair);
+                forwardComparisons.Add(reverseSourceKey, forward);
+                _sdComparisonCache.CacheAdd(forward);
+
+                // update the reverse comparison to point to the forward
+                reverse.InverseComparisonKey = forward.Key;
+                _sdComparisonCache.CacheUpdate(reverse);
+
+                // resolve the target structure definition
+                DbStructureDefinition? targetSd = DbStructureDefinition.SelectSingle(
+                    _db,
+                    Key: reverseSourceKey,
+                    FhirPackageKey: targetPackage.Key);
+
+                if (targetSd == null)
+                {
+                    continue;
+                }
+
+                // can check for identical Structure Definitions here
+                if ((sourceSd.SnapshotCount == targetSd.SnapshotCount) &&
+                    (sourceSd.DifferentialCount == targetSd.DifferentialCount) &&
+                    (_db.ElementCountThatLookIdentical(sourceSd.Key, reverseSourceKey) == int.Max(sourceSd.SnapshotCount, sourceSd.DifferentialCount)))
+                {
+                    forward.IsIdentical = true;
+                    forward.Relationship = CMR.Equivalent;
+                    forward.TechnicalMessage += " All elements have 'identical' matches in source and target";
+                    forward.UserMessage = "The structures appear identical - they have the same number of" +
+                        " elements, with matching Ids, Cardinalities, Types, and primary bindings. Note that" +
+                        " it is still possible that changes in meanings of elements could occur.";
+                    _sdComparisonCache.CacheUpdate(forward);
+
+                    reverse.IsIdentical = true;
+                    reverse.Relationship = CMR.Equivalent;
+                    reverse.TechnicalMessage += " All elements have 'identical' matches in source and target";
+                    reverse.UserMessage = "The structures appear identical - they have the same number of" +
+                        " elements, with matching Ids, Cardinalities, Types, and primary bindings. Note that" +
+                        " it is still possible that changes in meanings of elements could occur.";
+                    _sdComparisonCache.CacheUpdate(reverse);
+                }
+            }
+        }
+
+        // apply database changes
+        _sdComparisonCache.ComparisonsToAdd.Insert(_db);
+        _sdComparisonCache.ComparisonsToUpdate.Update(_db);
+        _sdComparisonCache.ComparisonsToDelete.Delete(_db);
+    }
 
     public (DbStructureComparison? inverted, bool? changed) UpdateInversion(
         DbStructureComparison forwardComparison,
@@ -334,140 +577,11 @@ public partial class FhirDbComparer
             forwardComparisons.Add(c);
         }
 
-        // if there are none, see if we can find an equivalent value set to compare with in the target
+        // if we have no comparisons, there is nothing to do (matches found in discovery phase)
         if (forwardComparisons.Count == 0)
         {
-            switch (sourceSd.ArtifactClass)
-            {
-                // if this is a primitive type, manually create the known relationships from FhirTypeMappings
-                case FhirArtifactClassEnum.PrimitiveType:
-                    {
-                        foreach (FhirTypeMappings.CodeGenTypeMapping tm in FhirTypeMappings.PrimitiveMappings)
-                        {
-                            if (tm.SourceType != sourceSd.Name)
-                            {
-                                continue;
-                            }
-
-                            DbStructureDefinition? primitiveSource = DbStructureDefinition.SelectSingle(_db, FhirPackageKey: sourcePackage.Key, Name: tm.SourceType);
-                            if (primitiveSource == null)
-                            {
-                                continue;
-                            }
-
-                            DbStructureDefinition? primitiveTarget = DbStructureDefinition.SelectSingle(_db, FhirPackageKey: targetPackage.Key, Name: tm.TargetType);
-                            if (primitiveTarget == null)
-                            {
-                                continue;
-                            }
-
-                            // add this forward mapping
-                            DbStructureComparison pc = new()
-                            {
-                                Key = DbStructureComparison.GetIndex(),
-                                PackageComparisonKey = forwardPair.Key,
-                                SourceFhirPackageKey = sourcePackage.Key,
-                                TargetFhirPackageKey = targetPackage.Key,
-                                SourceStructureKey = primitiveSource.Key,
-                                SourceCanonicalVersioned = primitiveSource.VersionedUrl,
-                                SourceCanonicalUnversioned = primitiveSource.UnversionedUrl,
-                                SourceVersion = primitiveSource.Version,
-                                SourceName = primitiveSource.Name,
-                                TargetStructureKey = primitiveTarget.Key,
-                                TargetCanonicalVersioned = primitiveTarget.VersionedUrl,
-                                TargetCanonicalUnversioned = primitiveTarget.UnversionedUrl,
-                                TargetVersion = primitiveTarget.Version,
-                                TargetName = primitiveTarget.Name,
-                                CompositeName = ComparisonDatabase.GetCompositeName(sourcePackage, primitiveSource, targetPackage, primitiveTarget),
-                                SourceOverviewConceptMapUrl = null,
-                                SourceStructureFmlUrl = null,
-                                Relationship = tm.Relationship,
-                                ConceptDomainRelationship = tm.ConceptDomainRelationship,
-                                ValueDomainRelationship = tm.ValueDomainRelationship,
-                                IsGenerated = true,
-                                LastReviewedBy = null,
-                                LastReviewedOn = null,
-                                ReviewType = null,
-                                TechnicalMessage = tm.Comment,
-                                UserMessage = null,
-                                IsIdentical = null,
-                            };
-
-                            _sdComparisonCache.CacheAdd(pc);
-                            forwardComparisons.Add(pc);
-                        }
-                    }
-                    break;
-
-                // check to see if we can find a match to this in the target package
-                default:
-                    {
-                        string message = "Inferred comparison based on ";
-
-                        List<DbStructureDefinition> potentialTargets = DbStructureDefinition.SelectList(_db, FhirPackageKey: targetPackage.Key, UnversionedUrl: sourceSd.UnversionedUrl);
-                        if (potentialTargets.Count != 0)
-                        {
-                            message += $" unversioned URL match from source: `{sourceSd.UnversionedUrl}`";
-                        }
-                        else
-                        {
-                            potentialTargets = DbStructureDefinition.SelectList(_db, FhirPackageKey: targetPackage.Key, Name: sourceSd.Name);
-
-                            if (potentialTargets.Count != 0)
-                            {
-                                message += $" Name match from source: `{sourceSd.Name}`";
-                            }
-                            else
-                            {
-                                potentialTargets = DbStructureDefinition.SelectList(_db, FhirPackageKey: targetPackage.Key, Id: sourceSd.Id);
-
-                                if (potentialTargets.Count != 0)
-                                {
-                                    message += $" Id match from source: {sourceSd.Id}";
-                                }
-                            }
-                        }
-
-                        foreach (DbStructureDefinition targetSd in potentialTargets)
-                        {
-                            // create this comparison
-                            DbStructureComparison sdc = new()
-                            {
-                                Key = DbStructureComparison.GetIndex(),
-                                PackageComparisonKey = forwardPair.Key,
-                                SourceFhirPackageKey = sourcePackage.Key,
-                                TargetFhirPackageKey = targetPackage.Key,
-                                SourceStructureKey = sourceSd.Key,
-                                SourceCanonicalVersioned = sourceSd.VersionedUrl,
-                                SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
-                                SourceVersion = sourceSd.Version,
-                                SourceName = sourceSd.Name,
-                                TargetStructureKey = targetSd.Key,
-                                TargetCanonicalVersioned = targetSd.VersionedUrl,
-                                TargetCanonicalUnversioned = targetSd.UnversionedUrl,
-                                TargetVersion = targetSd.Version,
-                                TargetName = targetSd.Name,
-                                CompositeName = ComparisonDatabase.GetCompositeName(sourcePackage, sourceSd, targetPackage, targetSd),
-                                SourceOverviewConceptMapUrl = null,
-                                SourceStructureFmlUrl = null,
-                                Relationship = null,
-                                ConceptDomainRelationship = null,
-                                ValueDomainRelationship = null,
-                                IsGenerated = true,
-                                LastReviewedBy = null,
-                                LastReviewedOn = null,
-                                ReviewType = null,
-                                TechnicalMessage = message,
-                                UserMessage = null,
-                                IsIdentical = null,
-                            };
-
-                            _sdComparisonCache.CacheAdd(sdc);
-                            forwardComparisons.Add(sdc);
-                        }
-                    }
-                    break;
-            }
+            _logger.LogInformation($"No forward comparisons found for {sourcePackage.ShortName}:{sourceSd.Name} to {targetPackage.ShortName}");
+            return;
         }
 
         // iterate across the forward comparisons

@@ -45,6 +45,9 @@ public abstract class DbCanonicalResource : DbPackageContent
     public required string? Title { get; set; }
     public required string? Description { get; set; }
     public required string? Purpose { get; set; }
+    public required string? StandardStatus { get; set; }
+    public required string? WorkGroup { get; set; }
+    public required int? FhirMaturity { get; set; }
 }
 
 
@@ -219,6 +222,8 @@ public partial class DbStructureDefinition : DbCanonicalResource
 
     public required int SnapshotCount { get; set; }
     public required int DifferentialCount { get; set; }
+
+    public required string? Implements { get; set; }
 
     [CgSQLiteIgnore]
     public string UiDisplay

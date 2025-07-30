@@ -44,7 +44,7 @@ public class XVerService : IXverService
         string dbPath;
         string dbFile;
 
-        if (path.EndsWith(".db"))
+        if (path.EndsWith(".sqlite"))
         {
             if (!File.Exists(path))
             {
@@ -61,13 +61,13 @@ public class XVerService : IXverService
                 return (false, $"Database directory not found: {path}");
             }
 
-            if (!File.Exists(Path.Combine(path, "fhir-comparison.db")))
+            if (!File.Exists(Path.Combine(path, "fhir-comparison.sqlite")))
             {
-                return (false, $"Database file not specified and fhir-comparison.db not found in path: {path}");
+                return (false, $"Database file not specified and fhir-comparison.sqlite not found in path: {path}");
             }
 
             dbPath = Path.GetDirectoryName(path) ?? "/";
-            dbFile = "fhir-comparison.db";
+            dbFile = "fhir-comparison.sqlite";
         }
 
         _dbFilename = Path.Combine(dbPath, dbFile);

@@ -27,6 +27,8 @@ public partial class FhirDbComparer
         DbComparisonCache<DbStructureComparison> sdComparisonCache,
         DbComparisonCache<DbCollatedTypeComparison> collatedTypeComparisonCache,
         DbComparisonCache<DbElementTypeComparison> typeComparisonCache,
+        DbFhirPackageComparisonPair packageForwardPair,
+        DbFhirPackageComparisonPair packageReversePair,
         DbElementComparison elementComparison,
         DbFhirPackage sourcePackage,
         DbElement sourceElement,
@@ -160,7 +162,7 @@ public partial class FhirDbComparer
                 SourceElementKey = sourceElement.Key,
                 SourceTypeKey = sourceType.Key,
                 SourceTypeLiteral = sourceType.Literal,
-                TargetElementKey = targetElement?.Key,
+                TargetElementKey = targetElement.Key,
                 TargetTypeKey = targetType?.Key,
                 TargetTypeLiteral = targetType?.Literal,
                 NoMap = targetType == null,
@@ -182,13 +184,37 @@ public partial class FhirDbComparer
 
         // create collated type comparison from individual comparisons
         DbCollatedTypeComparison collatedComparison = createCollatedTypeComparison(
-            elementComparison, sourcePackage, sourceElement, targetPackage, targetElement,
-            individualTypeComparisons, sourceCollatedTypeList, targetCollatedTypeList);
+            elementComparison,
+            sourcePackage,
+            sourceElement,
+            targetPackage,
+            targetElement,
+            individualTypeComparisons,
+            sourceCollatedTypeList,
+            targetCollatedTypeList);
 
         // update individual comparisons with collated comparison key
         foreach (DbElementTypeComparison typeComparison in individualTypeComparisons)
         {
             typeComparison.CollatedTypeComparisonKey = collatedComparison.Key;
+        }
+
+        // check for an inverse collated comparison
+        if ((elementComparison.InverseComparisonKey != null) &&
+            (elementComparison.InverseComparisonKey != -1))
+        {
+            DbCollatedTypeComparison? collatedInverse = DbCollatedTypeComparison.SelectSingle(
+                _db,
+                PackageComparisonKey: packageReversePair.Key,
+                ElementComparisonKey: elementComparison.InverseComparisonKey);
+
+            if (collatedInverse != null)
+            {
+                collatedComparison.InverseComparisonKey = collatedInverse.Key;
+
+                collatedInverse.InverseComparisonKey = collatedComparison.Key;
+                collatedTypeComparisonCache.Changed(collatedInverse);
+            }
         }
 
         // add to caches
@@ -406,7 +432,7 @@ public partial class FhirDbComparer
             TargetFhirPackageKey = targetPackage.Key,
             PackageComparisonKey = elementComparison.PackageComparisonKey,
             UserMessage = string.Join(" ", userMessages),
-            TechnicalMessage = $"Collated comparison of {individualTypeComparisons.Count} type pairs",
+            TechnicalMessage = $"Collated comparison of {individualTypeComparisons.Count} type pairs: {string.Join(", ", individualTypeComparisons.Select(tc => "`" + tc.SourceTypeLiteral + ":" + tc.TargetTypeLiteral + "`"))}",
             Relationship = calculateOverallRelationship(conceptDomainRelationship, valueDomainRelationship),
             IsGenerated = true,
             LastReviewedBy = null,

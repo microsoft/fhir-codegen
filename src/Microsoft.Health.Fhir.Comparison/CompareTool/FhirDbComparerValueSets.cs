@@ -13,6 +13,247 @@ namespace Microsoft.Health.Fhir.Comparison.CompareTool;
 
 public partial class FhirDbComparer
 {
+    private void buildValueSetComparisonPairsForSource(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        DbFhirPackageComparisonPair packageForwardPair,
+        DbFhirPackageComparisonPair packageReversePair,
+        bool allowUpdates = true)
+    {
+        _vsComparisonCache.Clear();
+
+        List<DbValueSet> sourceValueSets = DbValueSet.SelectList(_db, FhirPackageKey: sourcePackage.Key);
+        _logger.LogInformation($" <<< processing {sourcePackage.ShortName} ValueSets, count: {sourceValueSets.Count}");
+
+        // iterate over each value set in the source package
+        foreach (DbValueSet sourceVs in sourceValueSets)
+        {
+            // skip value sets we know we will not process
+            if (XVerProcessor._exclusionSet.Contains(sourceVs.UnversionedUrl))
+            {
+                continue;
+            }
+
+            _logger.LogInformation($" <<< processing ValueSet {sourceVs.VersionedUrl}");
+
+            // check for existing comparisons
+            List<DbValueSetComparison> cachedForwardComparisons = _vsComparisonCache.ForSource(sourceVs.Key)
+                .Where(c => c.TargetFhirPackageKey == targetPackage.Key)
+                .ToList();
+
+            List<DbValueSetComparison> cachedReverseComparisons = _vsComparisonCache.ForTarget(sourceVs.Key)
+                .Where(c => c.SourceFhirPackageKey == targetPackage.Key)
+                .ToList();
+
+            List<DbValueSetComparison> dbForwardComparisons = DbValueSetComparison.SelectList(
+                _db,
+                PackageComparisonKey: packageForwardPair.Key,
+                SourceValueSetKey: sourceVs.Key);
+
+            List<DbValueSetComparison> dbReverseComparisons = DbValueSetComparison.SelectList(
+                _db,
+                PackageComparisonKey: packageReversePair.Key,
+                TargetValueSetKey: sourceVs.Key);
+
+            Dictionary<int, DbValueSetComparison> forwardComparisons = cachedForwardComparisons.ToDictionary(c => c.TargetValueSetKey ?? 0);
+            foreach (DbValueSetComparison vsc in dbForwardComparisons)
+            {
+                if (!forwardComparisons.ContainsKey(vsc.TargetValueSetKey ?? 0))
+                {
+                    forwardComparisons[vsc.TargetValueSetKey ?? 0] = vsc;
+                }
+            }
+
+            Dictionary<int, DbValueSetComparison> reverseComparisons = cachedReverseComparisons.ToDictionary(c => c.SourceValueSetKey);
+            foreach (DbValueSetComparison vsc in dbReverseComparisons)
+            {
+                if (!reverseComparisons.ContainsKey(vsc.SourceValueSetKey))
+                {
+                    reverseComparisons[vsc.SourceValueSetKey] = vsc;
+                }
+            }
+
+            // if we found zero comparisons, try to infer some
+            if ((forwardComparisons.Count == 0) &&
+                (reverseComparisons.Count == 0))
+            {
+                string techMessage = "Inferred comparison based on ";
+
+                List<DbValueSet> potentialTargets = DbValueSet.SelectList(_db, FhirPackageKey: targetPackage.Key, UnversionedUrl: sourceVs.UnversionedUrl);
+                if (potentialTargets.Count != 0)
+                {
+                    techMessage += $" unversioned URL match from source: `{sourceVs.UnversionedUrl}`";
+                }
+                else
+                {
+                    potentialTargets = DbValueSet.SelectList(_db, FhirPackageKey: targetPackage.Key, Name: sourceVs.Name);
+
+                    if (potentialTargets.Count != 0)
+                    {
+                        techMessage += $" Name match from source: `{sourceVs.Name}`";
+                    }
+                    else
+                    {
+                        potentialTargets = DbValueSet.SelectList(_db, FhirPackageKey: targetPackage.Key, Id: sourceVs.Id);
+
+                        if (potentialTargets.Count != 0)
+                        {
+                            techMessage += $" Id match from source: {sourceVs.Id}";
+                        }
+                    }
+                }
+
+                foreach (DbValueSet targetVs in potentialTargets)
+                {
+                    // create this comparison
+                    DbValueSetComparison vsc = new()
+                    {
+                        Key = DbValueSetComparison.GetIndex(),
+                        PackageComparisonKey = packageForwardPair.Key,
+                        SourceFhirPackageKey = sourcePackage.Key,
+                        TargetFhirPackageKey = targetPackage.Key,
+                        SourceValueSetKey = sourceVs.Key,
+                        SourceCanonicalVersioned = sourceVs.VersionedUrl,
+                        SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
+                        SourceVersion = sourceVs.Version,
+                        SourceName = sourceVs.Name,
+                        TargetValueSetKey = targetVs.Key,
+                        TargetCanonicalVersioned = targetVs.VersionedUrl,
+                        TargetCanonicalUnversioned = targetVs.UnversionedUrl,
+                        TargetVersion = targetVs.Version,
+                        TargetName = targetVs.Name,
+                        CompositeName = ComparisonDatabase.GetCompositeName(sourcePackage, sourceVs, targetPackage, targetVs),
+                        SourceConceptMapUrl = null,
+                        SourceConceptMapAdditionalUrls = null,
+                        Relationship = null,
+                        IsGenerated = true,
+                        LastReviewedBy = null,
+                        LastReviewedOn = null,
+                        TechnicalMessage = techMessage,
+                        UserMessage = $"Value Set {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`)" +
+                            $" maps to {targetPackage.ShortName}:{targetVs.Name} (`{targetVs.VersionedUrl}`)",
+                        IsIdentical = false,
+                        CodesAreIdentical = false,
+                    };
+
+                    _vsComparisonCache.CacheAdd(vsc);
+                    cachedForwardComparisons.Add(vsc);
+                }
+            }
+
+            // ensure that all forward comparisons have a reverse comparison
+            foreach ((int targetKey, DbValueSetComparison forward) in forwardComparisons)
+            {
+                // if our comparison target key is zero, it is an unmapped comparison
+                if (targetKey == 0)
+                {
+                    continue;
+                }
+
+                // check to see if we have a known reverse comparison
+                if (reverseComparisons.ContainsKey(targetKey))
+                {
+                    continue;
+                }
+
+                // create an inverse comparison
+                DbValueSetComparison reverse = invert(forward, packageReversePair);
+                reverseComparisons.Add(targetKey, reverse);
+                _vsComparisonCache.CacheAdd(reverse);
+
+                // update the forward comparison to point to the reverse
+                forward.InverseComparisonKey = reverse.Key;
+                _vsComparisonCache.CacheUpdate(forward);
+
+                // resolve the target value set
+                DbValueSet? targetVs = DbValueSet.SelectSingle(
+                    _db,
+                    Key: targetKey,
+                    FhirPackageKey: targetPackage.Key);
+
+                if (targetVs == null)
+                {
+                    continue;
+                }
+
+                // can check for identical Value Sets here
+                if ((sourceVs.ConceptCount == targetVs.ConceptCount) &&
+                    (_db.ConceptCountWithLiteralMatches(sourceVs.Key, targetKey) == sourceVs.ConceptCount))
+                {
+                    forward.IsIdentical = true;
+                    forward.Relationship = CMR.Equivalent;
+                    _vsComparisonCache.CacheUpdate(forward);
+
+                    reverse.IsIdentical = true;
+                    reverse.Relationship = CMR.Equivalent;
+                    _vsComparisonCache.CacheUpdate(reverse);
+                }
+            }
+
+            // ensure that all reverse comparisons have a forward comparison
+            foreach ((int reverseSourceKey, DbValueSetComparison reverse) in reverseComparisons)
+            {
+                // if our comparison source key is zero, it is an unmapped comparison
+                if (reverseSourceKey == 0)
+                {
+                    continue;
+                }
+
+                // check to see if we have a known forward comparison
+                if (forwardComparisons.ContainsKey(reverseSourceKey))
+                {
+                    continue;
+                }
+
+                // create an inverse comparison
+                DbValueSetComparison forward = invert(reverse, packageForwardPair);
+                forwardComparisons.Add(reverseSourceKey, forward);
+                _vsComparisonCache.CacheAdd(forward);
+
+                // update the reverse comparison to point to the forward
+                reverse.InverseComparisonKey = forward.Key;
+                _vsComparisonCache.CacheUpdate(reverse);
+
+                // resolve the target value set
+                DbValueSet? targetVs = DbValueSet.SelectSingle(
+                    _db,
+                    Key: reverseSourceKey,
+                    FhirPackageKey: targetPackage.Key);
+
+                if (targetVs == null)
+                {
+                    continue;
+                }
+
+                // can check for identical Value Sets here
+                if ((sourceVs.ConceptCount == targetVs.ConceptCount) &&
+                    (_db.ConceptCountWithLiteralMatches(sourceVs.Key, reverseSourceKey) == sourceVs.ConceptCount))
+                {
+                    forward.IsIdentical = true;
+                    forward.Relationship = CMR.Equivalent;
+                    forward.TechnicalMessage += " All concepts have literal matches in source and target";
+                    forward.UserMessage = "The value sets appear identical - they have the same number of" +
+                        " concepts and all concepts are literal matches between versions. Note that the" +
+                        " changes in meanings of concepts could still occur.";
+                    _vsComparisonCache.CacheUpdate(forward);
+
+                    reverse.IsIdentical = true;
+                    reverse.Relationship = CMR.Equivalent;
+                    reverse.TechnicalMessage += " All concepts have literal matches in source and target";
+                    reverse.UserMessage = "The value sets appear identical - they have the same number of" +
+                        " concepts and all concepts are literal matches between versions. Note that the" +
+                        " changes in meanings of concepts could still occur.";
+                    _vsComparisonCache.CacheUpdate(reverse);
+                }
+            }
+        }
+
+        // apply database changes
+        _vsComparisonCache.ComparisonsToAdd.Insert(_db);
+        _vsComparisonCache.ComparisonsToUpdate.Update(_db);
+        _vsComparisonCache.ComparisonsToDelete.Delete(_db);
+    }
+
 
     public void DoValueSetComparison(
         DbComparisonCache<DbValueSetComparison> vsComparisonCache,
@@ -211,71 +452,11 @@ public partial class FhirDbComparer
             forwardComparisons.Add(c);
         }
 
-        // if there are none, see if we can find an equivalent value set to compare with in the target
+        // if we have no comparisons, there is nothing to do (matches found in discovery phase)
         if (forwardComparisons.Count == 0)
         {
-            string techMessage = "Inferred comparison based on ";
-
-            List<DbValueSet> potentialTargets = DbValueSet.SelectList(_db, FhirPackageKey: targetPackage.Key, UnversionedUrl: sourceVs.UnversionedUrl);
-            if (potentialTargets.Count != 0)
-            {
-                techMessage += $" unversioned URL match from source: `{sourceVs.UnversionedUrl}`";
-            }
-            else
-            {
-                potentialTargets = DbValueSet.SelectList(_db, FhirPackageKey: targetPackage.Key, Name: sourceVs.Name);
-
-                if (potentialTargets.Count != 0)
-                {
-                    techMessage += $" Name match from source: `{sourceVs.Name}`";
-                }
-                else
-                {
-                    potentialTargets = DbValueSet.SelectList(_db, FhirPackageKey: targetPackage.Key, Id: sourceVs.Id);
-
-                    if (potentialTargets.Count != 0)
-                    {
-                        techMessage += $" Id match from source: {sourceVs.Id}";
-                    }
-                }
-            }
-
-            foreach (DbValueSet targetVs in potentialTargets)
-            {
-                // create this comparison
-                DbValueSetComparison vsc = new()
-                {
-                    Key = DbValueSetComparison.GetIndex(),
-                    PackageComparisonKey = forwardPair.Key,
-                    SourceFhirPackageKey = sourcePackage.Key,
-                    TargetFhirPackageKey = targetPackage.Key,
-                    SourceValueSetKey = sourceVs.Key,
-                    SourceCanonicalVersioned = sourceVs.VersionedUrl,
-                    SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
-                    SourceVersion = sourceVs.Version,
-                    SourceName = sourceVs.Name,
-                    TargetValueSetKey = targetVs.Key,
-                    TargetCanonicalVersioned = targetVs.VersionedUrl,
-                    TargetCanonicalUnversioned = targetVs.UnversionedUrl,
-                    TargetVersion = targetVs.Version,
-                    TargetName = targetVs.Name,
-                    CompositeName = ComparisonDatabase.GetCompositeName(sourcePackage, sourceVs, targetPackage, targetVs),
-                    SourceConceptMapUrl = null,
-                    SourceConceptMapAdditionalUrls = null,
-                    Relationship = null,
-                    IsGenerated = true,
-                    LastReviewedBy = null,
-                    LastReviewedOn = null,
-                    TechnicalMessage = techMessage,
-                    UserMessage = $"Value Set {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`)" +
-                        $" maps to {targetPackage.ShortName}:{targetVs.Name} (`{targetVs.VersionedUrl}`)",
-                    IsIdentical = false,
-                    CodesAreIdentical = false,
-                };
-
-                _vsComparisonCache.CacheAdd(vsc);
-                forwardComparisons.Add(vsc);
-            }
+            _logger.LogInformation($"No forward comparisons found for {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`) to {targetPackage.ShortName}");
+            return;
         }
 
         // iterate across the forward comparisons

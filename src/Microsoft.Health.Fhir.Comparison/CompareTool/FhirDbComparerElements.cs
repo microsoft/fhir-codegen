@@ -262,6 +262,8 @@ public partial class FhirDbComparer
                         sdComparisonCache,
                         collatedTypeComparisonCache,
                         typeComparisonCache,
+                        forwardPair,
+                        reversePair,
                         elementComparison,
                         sourcePackage,
                         sourceElement,

@@ -108,6 +108,120 @@ public partial class FhirDbComparer
         _db = db.DbConnection;
     }
 
+    public void BuildComparisonPairs(
+        FhirArtifactClassEnum? artifactFilter = null,
+        HashSet<int>? comparisonPairFilterSet = null,
+        bool allowUpdates = true)
+    {
+        Dictionary<int, DbFhirPackage> packages = DbFhirPackage.SelectDict(_db);
+
+        // iterate over each FHIR Package we have
+        foreach (DbFhirPackage sourcePackage in packages.Values)
+        {
+            _logger.LogInformation($"Processing source package {sourcePackage.Key}: {sourcePackage.PackageId}@{sourcePackage.PackageVersion}");
+
+            // iterate over each target package
+            foreach (DbFhirPackage targetPackage in packages.Values)
+            {
+                // skip the same package (not a pair)
+                if (sourcePackage.Key == targetPackage.Key)
+                {
+                    continue;
+                }
+
+                // skip pairs that are not in the filters, if we have any
+                if ((comparisonPairFilterSet != null) &&
+                    (comparisonPairFilterSet.Count != 0) &&
+                    !comparisonPairFilterSet.Contains(sourcePackage.Key) &&
+                    !comparisonPairFilterSet.Contains(targetPackage.Key))
+                {
+                    continue;
+                }
+
+                _logger.LogInformation($"Processing target package {targetPackage.Key}: {targetPackage.PackageId}@{targetPackage.PackageVersion}");
+
+                // get the forward and packageReversePair package comparison pairs
+                (DbFhirPackageComparisonPair packageForwardPair, DbFhirPackageComparisonPair packageReversePair) = getCreateOrUpdatePackagePair(sourcePackage, targetPackage);
+
+                // if we have an artifact filter, check for Value Sets
+                if ((artifactFilter == null) ||
+                    (artifactFilter == FhirArtifactClassEnum.ValueSet))
+                {
+                    buildValueSetComparisonPairsForSource(
+                        sourcePackage,
+                        targetPackage,
+                        packageForwardPair,
+                        packageReversePair,
+                        allowUpdates);
+                }
+
+                // if we have an artifact filter, check for Structures
+                if ((artifactFilter == null) ||
+                    (artifactFilter == FhirArtifactClassEnum.PrimitiveType) ||
+                    (artifactFilter == FhirArtifactClassEnum.ComplexType) ||
+                    (artifactFilter == FhirArtifactClassEnum.Resource) ||
+                    (artifactFilter == FhirArtifactClassEnum.Profile) ||
+                    (artifactFilter == FhirArtifactClassEnum.Extension))
+                {
+                    buildStructureComparisonPairsForSource(
+                        sourcePackage,
+                        targetPackage,
+                        packageForwardPair,
+                        packageReversePair,
+                        allowUpdates);
+                }
+            }
+        }
+    }
+
+    private (DbFhirPackageComparisonPair forward, DbFhirPackageComparisonPair reverse) getCreateOrUpdatePackagePair(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage)
+    {
+        DbFhirPackageComparisonPair? packageForwardPair = DbFhirPackageComparisonPair.SelectSingle(
+            _db,
+            SourcePackageKey: sourcePackage.Key,
+            TargetPackageKey: targetPackage.Key);
+
+        if (packageForwardPair == null)
+        {
+            // create a new pair
+            packageForwardPair = new()
+            {
+                SourcePackageKey = sourcePackage.Key,
+                SourcePackageShortName = sourcePackage.ShortName,
+                TargetPackageKey = targetPackage.Key,
+                TargetPackageShortName = targetPackage.ShortName,
+            };
+            packageForwardPair.Insert(_db);
+        }
+
+        DbFhirPackageComparisonPair? packageReversePair = DbFhirPackageComparisonPair.SelectSingle(
+            _db,
+            SourcePackageKey: packageForwardPair.TargetPackageKey,
+            TargetPackageKey: packageForwardPair.SourcePackageKey);
+
+        if (packageReversePair == null)
+        {
+            packageReversePair = invert(packageForwardPair);
+            packageReversePair.Insert(_db);
+        }
+
+        if (packageReversePair.InverseComparisonKey != packageForwardPair.Key)
+        {
+            packageReversePair.InverseComparisonKey = packageForwardPair.Key;
+            packageReversePair.Update(_db);
+        }
+
+        if (packageForwardPair.InverseComparisonKey != packageReversePair.Key)
+        {
+            packageForwardPair.InverseComparisonKey = packageReversePair.Key;
+            packageForwardPair.Update(_db);
+        }
+
+        return (packageForwardPair, packageReversePair);
+    }
+
     public void Compare(
         FhirArtifactClassEnum? artifactFilter = null,
         HashSet<int>? comparisonPairFilterSet = null,
@@ -122,45 +236,27 @@ public partial class FhirDbComparer
             
             List<(DbFhirPackageComparisonPair forward, DbFhirPackageComparisonPair reverse)> bidirectionalPairs = [];
 
-            foreach (DbFhirPackageComparisonPair pf in DbFhirPackageComparisonPair.SelectList(_db, SourcePackageKey: sourcePackage.Key))
+            foreach (DbFhirPackageComparisonPair packageForwardPair in DbFhirPackageComparisonPair.SelectList(_db, SourcePackageKey: sourcePackage.Key))
             {
                 // skip pairs that are not in the filter
                 if ((comparisonPairFilterSet != null) &&
                     (comparisonPairFilterSet.Count != 0) &&
-                    !comparisonPairFilterSet.Contains(pf.Key))
+                    !comparisonPairFilterSet.Contains(packageForwardPair.Key))
                 {
                     continue;
                 }
 
-                DbFhirPackageComparisonPair? reverse = DbFhirPackageComparisonPair.SelectSingle(
+                DbFhirPackageComparisonPair? packageReversePair = DbFhirPackageComparisonPair.SelectSingle(
                     _db,
-                    SourcePackageKey: pf.TargetPackageKey,
-                    TargetPackageKey: pf.SourcePackageKey);
+                    SourcePackageKey: packageForwardPair.TargetPackageKey,
+                    TargetPackageKey: packageForwardPair.SourcePackageKey);
 
-                if (reverse != null)
+                if (packageReversePair == null)
                 {
-                    if (pf.InverseComparisonKey != reverse.Key)
-                    {
-                        pf.InverseComparisonKey = reverse.Key;
-                        pf.Update(_db);
-                    }
-
-                    if (reverse.InverseComparisonKey != pf.Key)
-                    {
-                        reverse.InverseComparisonKey = pf.Key;
-                        reverse.Update(_db);
-                    }
-
-                    bidirectionalPairs.Add((pf, reverse));
-                    continue;
+                    throw new Exception($"Failed to resolve reverse comparison pair for {packageForwardPair.Key}");
                 }
 
-                reverse = invert(pf);
-                reverse.Insert(_db);
-                pf.InverseComparisonKey = reverse.Key;
-                pf.Update(_db);
-
-                bidirectionalPairs.Add((pf, reverse));
+                bidirectionalPairs.Add((packageForwardPair, packageReversePair));
             }
 
             // consistency check
@@ -262,6 +358,7 @@ public partial class FhirDbComparer
                         {
                             // grab our target package
                             DbFhirPackage targetPackage = packages[forward.TargetPackageKey];
+
                             doStructureComparisons(
                                 sourcePackage,
                                 sourceSd,

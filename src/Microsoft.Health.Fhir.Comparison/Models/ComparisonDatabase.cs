@@ -110,26 +110,26 @@ public class ComparisonDatabase : IDisposable
             switch (definitions.Length)
             {
                 case 1:
-                    _dbName = $"{definitions[0].MainPackageId.ToPascalCase()}-V{definitions[0].MainPackageVersion.Replace('.', '_')}.db";
+                    _dbName = $"{definitions[0].MainPackageId.ToPascalCase()}-V{definitions[0].MainPackageVersion.Replace('.', '_')}.sqlite";
                     break;
                 case 2:
                     {
                         if (_isVersionComparison)
                         {
-                            _dbName = string.Join('_', definitions.Select(dc => $"V{dc.MainPackageVersion.Replace('.', '_')}")) + ".db";
+                            _dbName = string.Join('_', definitions.Select(dc => $"V{dc.MainPackageVersion.Replace('.', '_')}")) + ".sqlite";
                         }
                         else if (_isCoreComparison)
                         {
-                            _dbName = string.Join('_', definitions.Select(dc => $"{dc.FhirSequence.ToRLiteral()}")) + ".db";
+                            _dbName = string.Join('_', definitions.Select(dc => $"{dc.FhirSequence.ToRLiteral()}")) + ".sqlite";
                         }
                         else
                         {
-                            _dbName = string.Join('_', definitions.Select(dc => $"{dc.MainPackageId.ToPascalCase()}-V{dc.MainPackageVersion.Replace('.', '_')}")) + ".db";
+                            _dbName = string.Join('_', definitions.Select(dc => $"{dc.MainPackageId.ToPascalCase()}-V{dc.MainPackageVersion.Replace('.', '_')}")) + ".sqlite";
                         }
                     }
                     break;
                 default:
-                    _dbName = "fhir-comparison.db";
+                    _dbName = "fhir-comparison.sqlite";
                     break;
             }
         }
@@ -1934,6 +1934,9 @@ public class ComparisonDatabase : IDisposable
                     Title = uvs.Title,
                     Description = uvs.Description,
                     Purpose = uvs.Purpose,
+                    StandardStatus = uvs.cgStandardStatus(),
+                    WorkGroup = uvs.cgWorkGroup(),
+                    FhirMaturity = uvs.cgMaturityLevel(),
                     IsExcluded = isExcluded,
                     CanExpand = canExpand,
                     ConceptCount = 0,
@@ -1969,6 +1972,9 @@ public class ComparisonDatabase : IDisposable
                 Title = vs.Title,
                 Description = vs.Description,
                 Purpose = vs.Purpose,
+                StandardStatus = vs.cgStandardStatus(),
+                WorkGroup = vs.cgWorkGroup(),
+                FhirMaturity = vs.cgMaturityLevel(),
                 IsExcluded = isExcluded,
                 CanExpand = canExpand,
                 ConceptCount = 0,
@@ -2061,6 +2067,8 @@ public class ComparisonDatabase : IDisposable
         {
             foreach (StructureDefinition sd in structures)
             {
+                string? sdImplements = sd.cgImplementsJoined();
+
                 // will not further process value sets we know we will not process
                 if (_exclusionSet.Contains(sd.Url))
                 {
@@ -2078,11 +2086,15 @@ public class ComparisonDatabase : IDisposable
                         Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
                         Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
                         Purpose = sd.Purpose,
+                        StandardStatus = sd.cgStandardStatus(),
+                        WorkGroup = sd.cgWorkGroup(),
+                        FhirMaturity = sd.cgMaturityLevel(),
                         Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                         ArtifactClass = cgClass,
                         Message = "Manually excluded",
                         SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
                         DifferentialCount = sd.Differential?.Element.Count ?? 0,
+                        Implements = sdImplements,
                     };
 
                     dbStructures.Add(sd.Id, sdmExcluded);
@@ -2104,11 +2116,15 @@ public class ComparisonDatabase : IDisposable
                     Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
                     Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
                     Purpose = sd.Purpose,
+                    StandardStatus = sd.cgStandardStatus(),
+                    WorkGroup = sd.cgWorkGroup(),
+                    FhirMaturity = sd.cgMaturityLevel(),
                     Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                     ArtifactClass = cgClass,
                     Message = string.Empty,
                     SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
                     DifferentialCount = sd.Differential?.Element.Count ?? 0,
+                    Implements = sdImplements,
                 };
 
                 dbStructures.Add(sd.Id, dbStructure);

@@ -40,7 +40,7 @@ public class ConfigSql : ConfigRoot
     private static ConfigurationOption ExportDatabaseNameParameter => new()
     {
         Name = "Export_Database_Name",
-        DefaultValue = "export.db",
+        DefaultValue = "export.sqlite",
         CliOption = new System.CommandLine.Option<string>("--export-db-name", "Name of the database to generate.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
