@@ -77,12 +77,7 @@ public partial class XVerProcessor
         foreach (PackageXverSupport packageSupport in packageSupports)
         {
             string packageId = getPackageId(null, packageSupport.Package);
-
-            string dir = Path.Combine(fhirDir, packageId);
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
+            string dir = createExportPackageDir(fhirDir, null, packageSupport.Package);
 
             dir = Path.Combine(dir, "package");
             if (!Directory.Exists(dir))

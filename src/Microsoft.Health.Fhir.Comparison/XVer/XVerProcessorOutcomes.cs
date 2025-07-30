@@ -158,76 +158,119 @@ public partial class XVerProcessor
                 DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
                 DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
-                string packageFor = $"{sourcePackage.ShortName}-for-{targetPackage.ShortName}";
                 string packageId = getPackageId(sourcePackage, targetPackage);
                 string htmlDir;
                 string mdDir;
-                if (createdDirs.Contains(packageFor))
+
+                if (createdDirs.Contains(packageId))
                 {
-                    htmlDir = Path.Combine(fhirDir, packageId, "package", "doc");
-                    mdDir = Path.Combine(docsDir, packageFor);
+                    if (_config.XverExportForPublisher)
+                    {
+                        htmlDir = string.Empty;
+                        mdDir = Path.Combine(fhirDir, packageId, "input", "pagecontent");
+                    }
+                    else
+                    {
+                        htmlDir = Path.Combine(fhirDir, packageId, "package", "doc");
+                        mdDir = Path.Combine(docsDir, packageId);
+                    }
                 }
                 else
                 {
-                    htmlDir = Path.Combine(fhirDir, packageId);
-                    if (!Directory.Exists(htmlDir))
+                    if (_config.XverExportForPublisher)
                     {
-                        Directory.CreateDirectory(htmlDir);
+                        htmlDir = string.Empty;
+                        mdDir = Path.Combine(fhirDir, packageId, "input", "pagecontent");
+                    }
+                    else
+                    {
+                        htmlDir = Path.Combine(fhirDir, packageId);
+                        if (!Directory.Exists(htmlDir))
+                        {
+                            Directory.CreateDirectory(htmlDir);
+                        }
+
+                        htmlDir = Path.Combine(htmlDir, "package");
+                        if (!Directory.Exists(htmlDir))
+                        {
+                            Directory.CreateDirectory(htmlDir);
+                        }
+
+                        htmlDir = Path.Combine(htmlDir, "doc");
+                        if (!Directory.Exists(htmlDir))
+                        {
+                            Directory.CreateDirectory(htmlDir);
+                        }
+
+                        mdDir = Path.Combine(docsDir, packageId);
+                        if (!Directory.Exists(mdDir))
+                        {
+                            Directory.CreateDirectory(mdDir);
+                        }
                     }
 
-                    htmlDir = Path.Combine(htmlDir, "package");
-                    if (!Directory.Exists(htmlDir))
-                    {
-                        Directory.CreateDirectory(htmlDir);
-                    }
-
-                    htmlDir = Path.Combine(htmlDir, "doc");
-                    if (!Directory.Exists(htmlDir))
-                    {
-                        Directory.CreateDirectory(htmlDir);
-                    }
-
-                    mdDir = Path.Combine(docsDir, packageFor);
-                    if (!Directory.Exists(mdDir))
-                    {
-                        Directory.CreateDirectory(mdDir);
-                    }
-
-                    createdDirs.Add(packageFor);
+                    createdDirs.Add(packageId);
                 }
 
-                // create a filename for this structure's md file
-                string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
-                string htmlFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.html";
-
-                // open our files
-                using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(mdDir, mdFilename), false, false);
-                using ExportStreamWriter htmlWriter = createHtmlWriter(Path.Combine(htmlDir, htmlFilename), false, false);
-
-                // write a header
-                mdWriter.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}");
-                htmlWriter.WriteLine($"<h2>Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}</h2>");
-
-                mdWriter.WriteLine();
-                mdWriter.WriteLine("| Source Element | Usage | Target |");
-                mdWriter.WriteLine("| -------------- | ----- | ------ |");
-
-                htmlWriter.WriteLine();
-                htmlWriter.WriteLine("<table border=\"1\">");
-                htmlWriter.WriteLine("<tr><th>Source Element</th><th>Usage</th><th>Target</th></tr>");
-
-                // iterate over the elements of this structure in element order
-                foreach (XverOutcome outcome in outcomes.OrderBy(xo => xo.SourceElementFieldOrder))
+                if (_config.XverExportForPublisher)
                 {
-                    string target = outcome.ReplacementExtensionUrl ?? outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-";
-                    mdWriter.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {target} |");
-                    htmlWriter.WriteLine($"<tr><td>{outcome.SourceElementId}</td><td>{outcome.OutcomeCode}</td><td>{target}</td></tr>");
+                    // create a filename for this structure's md file
+                    string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
+
+                    // open our files
+                    using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(mdDir, mdFilename), false, false);
+
+                    // write a header
+                    mdWriter.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}");
+
+                    mdWriter.WriteLine();
+                    mdWriter.WriteLine("| Source Element | Usage | Target |");
+                    mdWriter.WriteLine("| -------------- | ----- | ------ |");
+
+                    // iterate over the elements of this structure in element order
+                    foreach (XverOutcome outcome in outcomes.OrderBy(xo => xo.SourceElementFieldOrder))
+                    {
+                        string target = outcome.ReplacementExtensionUrl ?? outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-";
+                        mdWriter.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {target} |");
+                    }
+
+                    mdWriter.Close();
                 }
+                else
+                {
+                    // create a filename for this structure's md file
+                    string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
+                    string htmlFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.html";
 
-                htmlWriter.WriteLine("</table>");
+                    // open our files
+                    using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(mdDir, mdFilename), false, false);
+                    using ExportStreamWriter htmlWriter = createHtmlWriter(Path.Combine(htmlDir, htmlFilename), false, false);
 
-                mdWriter.Close();
-                htmlWriter.Close();
+                    // write a header
+                    mdWriter.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}");
+                    htmlWriter.WriteLine($"<h2>Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}</h2>");
+
+                    mdWriter.WriteLine();
+                    mdWriter.WriteLine("| Source Element | Usage | Target |");
+                    mdWriter.WriteLine("| -------------- | ----- | ------ |");
+
+                    htmlWriter.WriteLine();
+                    htmlWriter.WriteLine("<table border=\"1\">");
+                    htmlWriter.WriteLine("<tr><th>Source Element</th><th>Usage</th><th>Target</th></tr>");
+
+                    // iterate over the elements of this structure in element order
+                    foreach (XverOutcome outcome in outcomes.OrderBy(xo => xo.SourceElementFieldOrder))
+                    {
+                        string target = outcome.ReplacementExtensionUrl ?? outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-";
+                        mdWriter.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {target} |");
+                        htmlWriter.WriteLine($"<tr><td>{outcome.SourceElementId}</td><td>{outcome.OutcomeCode}</td><td>{target}</td></tr>");
+                    }
+
+                    htmlWriter.WriteLine("</table>");
+
+                    mdWriter.Close();
+                    htmlWriter.Close();
+                }
             }
         }
     }

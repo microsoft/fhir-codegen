@@ -1,35 +1,38 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.CommandLine;
+using System.Data;
+using System.Data.Common;
+using System.Diagnostics;
+using System.Formats.Tar;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Utility;
+using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
-using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
-using System.CommandLine;
-using System.Linq;
-using System.Data.Common;
-using System.Collections.Concurrent;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.Comparison.Models;
-using System.Xml.Linq;
-using System.Data;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Snapshot;
+using Octokit;
 using static System.Net.Mime.MediaTypeNames;
-using Hl7.FhirPath.Sprache;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
-using System.IO;
-using System.IO.Compression;
-using System.Formats.Tar;
 
 namespace Microsoft.Health.Fhir.Comparison.XVer;
 
@@ -86,6 +89,9 @@ public partial class XVerProcessor
         /// </summary>
         public List<ImplementationGuide.ResourceComponent> IgValueSets { get; set; } = [];
     }
+
+    private static Dictionary<string, string> _publisherScripts = [];
+    private static Lock _publisherScriptsLock = new();
 
     /// <summary>
     /// Generates cross-version FHIR artifacts from the loaded database, including ValueSets, StructureDefinitions, and ImplementationGuides.
@@ -262,12 +268,32 @@ public partial class XVerProcessor
 
             writeXverStructures(packageSupports, focusPackageIndex, xverExtensions, fhirDir);
 
-            List<XverPackageIndexInfo> focusedIndexInfos = writeXverSinglePackageSupportFiles(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, fhirDir);
-            allIndexInfos.AddRange(focusedIndexInfos);
+            if (_config.XverExportForPublisher)
+            {
+                // write the publisher config files
+                writePublisherSinglePackageConfig(packageSupports, focusPackageIndex, fhirDir);
+            }
+            else
+            {
+                List<XverPackageIndexInfo> focusedIndexInfos = writeXverSinglePackageSupportFiles(
+                    packageSupports,
+                    focusPackageIndex,
+                    xverValueSets,
+                    xverExtensions,
+                    fhirDir);
+                allIndexInfos.AddRange(focusedIndexInfos);
+            }
         }
 
         // write our combined package support files
-        writeXverValidationPackageSupportFiles(packageSupports, allIndexInfos, fhirDir);
+        if (_config.XverExportForPublisher)
+        {
+            writePublisherValidationPackageConfig(packageSupports, allIndexInfos, fhirDir);
+        }
+        else
+        {
+            writeXverValidationPackageSupportFiles(packageSupports, allIndexInfos, fhirDir);
+        }
 
         // write all of our outcome lists
         writeXverOutcomes(packageSupports, xverOutcomes, outputDir);
@@ -315,6 +341,826 @@ public partial class XVerProcessor
         ? $"hl7.fhir.uv.xver.{targetPackage.ShortName.ToLowerInvariant()}"
         : $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{targetPackage.ShortName.ToLowerInvariant()}";
 
+    /// <summary>
+    /// Determines whether a file should be skipped when copying from the GitHub repository.
+    /// </summary>
+    /// <param name="filePath">The relative file path from the repository root.</param>
+    /// <returns>True if the file should be skipped, false otherwise.</returns>
+    private static bool ShouldSkipFile(string filePath)
+    {
+        // Skip hidden files and directories
+        if (filePath.StartsWith(".") || filePath.Contains("/."))
+        {
+            return true;
+        }
+
+        // skip repository README
+        if (filePath.Equals("README.md", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
+        // Skip common binary file extensions
+        string[] skipExtensions = { ".exe", ".dll", ".bin", ".jar", ".zip", ".tar", ".gz", ".7z", 
+                                   ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico", ".svg",
+                                   ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx" };
+        
+        string extension = Path.GetExtension(filePath).ToLowerInvariant();
+        if (skipExtensions.Contains(extension))
+        {
+            return true;
+        }
+
+        // Skip node_modules and other common directories
+        string[] skipDirectories = { "node_modules/", ".git/", ".vs/", ".vscode/", "bin/", "obj/" };
+        foreach (string skipDir in skipDirectories)
+        {
+            if (filePath.Contains(skipDir))
+            {
+                return true;
+            }
+        }
+
+        // Skip very large files (> 1MB) - these are likely not useful for IG publishing
+        // Note: We can't check file size here since we only have the path, 
+        // but we'll handle this in the fetch method
+
+        return false;
+    }
+
+    
+    /// <summary>
+    /// Fetches all files from the HL7 ig-publisher-scripts GitHub repository.
+    /// </summary>
+    /// <returns>A dictionary where keys are relative file paths and values are file contents.</returns>
+    private Dictionary<string, string> getCurrentPublisherScripts()
+    {
+        const string owner = "HL7";
+        const string repo = "ig-publisher-scripts";
+
+        lock (_publisherScriptsLock)
+        {
+            if (_publisherScripts.Count > 0)
+            {
+                _logger.LogInformation("Using cached publisher scripts from GitHub repository: {Owner}/{Repo}", owner, repo);
+                return _publisherScripts;
+            }
+
+            try
+            {
+                _logger.LogInformation("Fetching files from GitHub repository: {Owner}/{Repo}", owner, repo);
+
+                GitHubClient client = new(new ProductHeaderValue("fhir-codegen"));
+
+                // Get the repository contents recursively
+                List<RepositoryContent> contents = getRepositoryContentsRecursive(client, owner, repo);
+
+                foreach (RepositoryContent content in contents)
+                {
+                    if (content.Type == ContentType.File && !ShouldSkipFile(content.Path))
+                    {
+                        try
+                        {
+                            // Skip files larger than 1MB
+                            if (content.Size > 1024 * 1024)
+                            {
+                                _logger.LogDebug("Skipping large file: {Path} ({Size} bytes)", content.Path, content.Size);
+                                continue;
+                            }
+
+                            // Get the file content
+                            byte[] fileContent = client.Repository.Content.GetRawContent(owner, repo, content.Path).Result;
+                            string contentString = System.Text.Encoding.UTF8.GetString(fileContent);
+
+                            _publisherScripts[content.Path] = contentString;
+                            _logger.LogDebug("Fetched file: {Path}", content.Path);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogWarning(ex, "Failed to fetch file content for: {Path}", content.Path);
+                        }
+                    }
+                    else if (content.Type == ContentType.File)
+                    {
+                        _logger.LogDebug("Skipping file: {Path}", content.Path);
+                    }
+                }
+
+                _logger.LogInformation("Successfully fetched {Count} files from GitHub repository", _publisherScripts.Count);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to fetch files from GitHub repository: {Owner}/{Repo}", owner, repo);
+            }
+        }
+        return _publisherScripts;
+    }
+
+    /// <summary>
+    /// Recursively gets all contents from a GitHub repository.
+    /// </summary>
+    private List<RepositoryContent> getRepositoryContentsRecursive(GitHubClient client, string owner, string repo, string? path = null)
+    {
+        List<RepositoryContent> allContents = [];
+        
+        try
+        {
+            IReadOnlyList<RepositoryContent> contents = path == null
+                ? client.Repository.Content.GetAllContents(owner, repo).Result
+                : client.Repository.Content.GetAllContents(owner, repo, path).Result;
+            
+            foreach (var content in contents)
+            {
+                if (content.Type == ContentType.File)
+                {
+                    allContents.Add(content);
+                }
+                else if (content.Type == ContentType.Dir && !ShouldSkipFile(content.Path))
+                {
+                    // Recursively get directory contents
+                    List<RepositoryContent> subContents = getRepositoryContentsRecursive(client, owner, repo, content.Path);
+                    allContents.AddRange(subContents);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to get repository contents for path: {Path}", path);
+        }
+        
+        return allContents;
+    }
+
+    private string createExportPackageDir(string fhirDir, DbFhirPackage? sourcePackage, DbFhirPackage targetPackage)
+    {
+        if (!Directory.Exists(fhirDir))
+        {
+            Directory.CreateDirectory(fhirDir);
+        }
+
+        string packageId = getPackageId(sourcePackage, targetPackage);
+
+        string dir = Path.Combine(fhirDir, packageId);
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        if (_config.XverExportForPublisher)
+        {
+            string inputDir = Path.Combine(dir, "input");
+            if (!Directory.Exists(inputDir))
+            {
+                Directory.CreateDirectory(inputDir);
+            }
+
+            string pagesDir = Path.Combine(inputDir, "pagecontent");
+            if (!Directory.Exists(pagesDir))
+            {
+                Directory.CreateDirectory(pagesDir);
+            }
+
+            string resourcesDir = Path.Combine(inputDir, "resources");
+            if (!Directory.Exists(resourcesDir))
+            {
+                Directory.CreateDirectory(resourcesDir);
+            }
+
+            string vocabDir = Path.Combine(inputDir, "vocabulary");
+            if (!Directory.Exists(vocabDir))
+            {
+                Directory.CreateDirectory(vocabDir);
+            }
+        }
+        else
+        {
+            string packageSubDir = Path.Combine(dir, "package");
+            if (!Directory.Exists(packageSubDir))
+            {
+                Directory.CreateDirectory(packageSubDir);
+            }
+        }
+
+        return dir;
+    }
+
+    private void writePublisherValidationPackageConfig(
+        List<PackageXverSupport> packageSupports,
+        List<XverPackageIndexInfo> allPackageIndexInfos,
+        string fhirDir)
+    {
+        // Fetch files from GitHub repository
+        Dictionary<string, string> githubFiles = getCurrentPublisherScripts();
+
+        // iterate over the support packages
+        foreach (PackageXverSupport targetSupport in packageSupports)
+        {
+            DbFhirPackage targetPackage = targetSupport.Package;
+            string packageId = getPackageId(null, targetPackage);
+            string dir = createExportPackageDir(fhirDir, null, targetPackage);
+
+            List<(string packageId, string packageVersion)> internalDependencies = [];
+            foreach (PackageXverSupport sourcePackage in packageSupports)
+            {
+                if (sourcePackage.Package.Key == targetPackage.Key)
+                {
+                    continue;
+                }
+
+                internalDependencies.Add((
+                    getPackageId(sourcePackage.Package, targetPackage),
+                    _crossDefinitionVersion));
+            }
+
+
+            // write GitHub repository files to the output directory
+            if (githubFiles.Count > 0)
+            {
+                _logger.LogInformation("Writing {Count} files from GitHub repository to {dir}", githubFiles.Count, dir);
+
+                foreach ((string filePath, string fileContent) in githubFiles)
+                {
+                    try
+                    {
+                        string fullPath = Path.Combine(dir, filePath);
+                        string? directory = Path.GetDirectoryName(fullPath);
+
+                        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
+
+                        File.WriteAllText(fullPath, fileContent);
+                        _logger.LogDebug("Wrote GitHub file to: {FullPath}", fullPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogWarning(ex, "Failed to write GitHub file: {FilePath}", filePath);
+                    }
+                }
+
+                _logger.LogInformation("Successfully wrote GitHub repository files to {FhirDir}", fhirDir);
+            }
+            else
+            {
+                _logger.LogWarning("No files were fetched from GitHub repository");
+            }
+
+            {
+                string filename = Path.Combine(dir, "ig.ini");
+                string contents = $$$"""
+                    [IG]
+                    ig = fsh-generated/resources/ImplementationGuide-{{{packageId}}}.json
+                    template = fhir.base.template#current
+                    """;
+                File.WriteAllText(filename, contents);
+            }
+
+            {
+                string additionalDependencies = internalDependencies.Count == 0
+                    ? string.Empty
+                    : string.Join("\n\t", internalDependencies.Select(pi => $"{pi.packageId} : {pi.packageVersion}"));
+
+                string filename = Path.Combine(dir, "sushi-config.yaml");
+                string contents = $$$"""
+                    # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
+                    # │  The properties below are used to create the ImplementationGuide resource. The most commonly   │
+                    # │  used properties are included. For a list of all supported properties and their functions,     │
+                    # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    id: {{{packageId}}}
+                    canonical: http://hl7.org/fhir/uv/xver
+                    name: {{{packageId}}}
+                    title: FHIR Cross-Version Extensions validation package for FHIR {{{targetPackage.ShortName}}}
+                    description: All cross-version extensions available in FHIR {{{targetPackage.ShortName}}}
+                    status: draft # draft | active | retired | unknown
+                    version: {{{_crossDefinitionVersion}}}
+                    fhirVersion: {{{targetPackage.PackageVersion}}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
+                    copyrightYear: 2025+
+                    releaseLabel: trial-use
+                    license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+                    jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
+                    publisher:
+                        name: HL7 International / FHIR Infrastructure
+                        url: http://www.hl7.org/Special/committees/fiwg
+                        # email: test@example.org
+
+                    # The dependencies property corresponds to IG.dependsOn. The key is the
+                    # package id and the value is the version (or dev/current). For advanced
+                    # use cases, the value can be an object with keys for id, uri, and version.
+                    #
+                    dependencies:
+                        {{{targetSupport.Package.PackageId}}} : {{{targetSupport.Package.PackageVersion}}}
+                        hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 6.3.0
+                        hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 5.2.0
+                        hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : current
+                        {{{additionalDependencies}}}
+
+                    #   hl7.fhir.us.core: 3.1.0
+                    #   hl7.fhir.us.mcode:
+                    #     id: mcode
+                    #     uri: http://hl7.org/fhir/us/mcode/ImplementationGuide/hl7.fhir.us.mcode
+                    #     version: 1.0.0
+                    #
+                    #
+                    # The pages property corresponds to IG.definition.page. SUSHI can
+                    # auto-generate the page list, but if the author includes pages in
+                    # this file, it is assumed that the author will fully manage the
+                    # pages section and SUSHI will not generate any page entries.
+                    # The page file name is used as the key. If title is not provided,
+                    # then the title will be generated from the file name.  If a
+                    # generation value is not provided, it will be inferred from the
+                    # file name extension.  Any subproperties that are valid filenames
+                    # with supported extensions (e.g., .md/.xml) will be treated as
+                    # sub-pages.
+                    #
+                    # pages:
+                    #   index.md:
+                    #     title: Example Home
+                    #   implementation.xml:
+                    #   examples.xml:
+                    #     title: Examples Overview
+                    #     simpleExamples.xml:
+                    #     complexExamples.xml:
+                    #
+                    #
+                    # The parameters property represents IG.definition.parameter. Rather
+                    # than a list of code/value pairs (as in the ImplementationGuide
+                    # resource), the code is the YAML key. If a parameter allows repeating
+                    # values, the value in the YAML should be a sequence/array.
+                    # For parameters defined by core FHIR see:
+                    # http://build.fhir.org/codesystem-guide-parameter-code.html
+                    # For parameters defined by the FHIR Tools IG see:
+                    # http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
+                    #
+                    # parameters:
+                    #   excludettl: true
+                    #   validation: [allow-any-extensions, no-broken-links]
+                    parameters:
+                        apply-wg: true
+                        default-wg: true
+                        show-inherited-invariants: false
+                        usage-stats-opt-out: true
+                        shownav: 'true'
+
+                    extension:
+                        - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+                            valueCode: trial-use
+                        - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
+                            valueCode: fhir
+                    #
+                    # ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
+                    # │ The menu property will be used to generate the input/menu.xml file. The menu is represented    │
+                    # │ as a simple structure where the YAML key is the menu item name and the value is the URL.       │
+                    # │ The IG publisher currently only supports one level deep on sub-menus. To provide a             │
+                    # │ custom menu.xml file, do not include this property and include a `menu.xml` file in            │
+                    # │ input/includes. To use a provided input/includes/menu.xml file, delete the "menu"              │
+                    # │ property below.                                                                                │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    menu:
+                      Home: index.html
+                      Artifacts: artifacts.html
+
+                    # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
+                    # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
+                    # │  resource. These properties are less commonly needed than those above.                         │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    #
+                    # Those who need more control or want to add additional details to the contact values can use
+                    # contact directly and follow the format outlined in the ImplementationGuide resource and
+                    # ContactDetail.
+                    #
+                    # contact:
+                    #   - name: Bob Smith
+                    #     telecom:
+                    #       - system: email # phone | fax | email | pager | url | sms | other
+                    #         value: bobsmith@example.org
+                    #         use: work
+                    #
+                    #
+                    # The global property corresponds to the IG.global property, but it
+                    # uses the type as the YAML key and the profile as its value. Since
+                    # FHIR does not explicitly disallow more than one profile per type,
+                    # neither do we; the value can be a single profile URL or an array
+                    # of profile URLs. If a value is an id or name, SUSHI will replace
+                    # it with the correct canonical when generating the IG JSON.
+                    #
+                    # global:
+                    #   Patient: http://example.org/fhir/StructureDefinition/my-patient-profile
+                    #   Encounter: http://example.org/fhir/StructureDefinition/my-encounter-profile
+                    #
+                    #
+                    # The resources property corresponds to IG.definition.resource.
+                    # SUSHI can auto-generate all of the resource entries based on
+                    # the FSH definitions and/or information in any user-provided
+                    # JSON or XML resource files. If the generated entries are not
+                    # sufficient or complete, however, the author can add entries
+                    # here. If the reference matches a generated entry, it will
+                    # replace the generated entry. If it doesn't match any generated
+                    # entries, it will be added to the generated entries. The format
+                    # follows IG.definition.resource with the following differences:
+                    #   * use IG.definition.resource.reference.reference as the YAML key.
+                    #   * if the key is an id or name, SUSHI will replace it with the
+                    #     correct URL when generating the IG JSON.
+                    #   * specify "omit" to omit a FSH-generated resource from the
+                    #     resource list.
+                    #   * if the exampleCanonical is an id or name, SUSHI will replace
+                    #     it with the correct canonical when generating the IG JSON.
+                    #   * groupingId can be used, but top-level groups syntax may be a
+                    #     better option (see below).
+                    # The following are simple examples to demonstrate what this might
+                    # look like:
+                    #
+                    # resources:
+                    #   Patient/my-example-patient:
+                    #     name: My Example Patient
+                    #     description: An example Patient
+                    #     exampleBoolean: true
+                    #   Patient/bad-example: omit
+                    #
+                    #
+                    # Groups can control certain aspects of the IG generation.  The IG
+                    # documentation recommends that authors use the default groups that
+                    # are provided by the templating framework, but if authors want to
+                    # use their own instead, they can use the mechanism below.  This will
+                    # create IG.definition.grouping entries and associate the individual
+                    # resource entries with the corresponding groupIds. If a resource
+                    # is specified by id or name, SUSHI will replace it with the correct
+                    # URL when generating the IG JSON.
+                    #
+                    # groups:
+                    #   GroupA:
+                    #     name: Group A
+                    #     description: The Alpha Group
+                    #     resources:
+                    #     - StructureDefinition/animal-patient
+                    #     - StructureDefinition/arm-procedure
+                    #   GroupB:
+                    #     name: Group B
+                    #     description: The Beta Group
+                    #     resources:
+                    #     - StructureDefinition/bark-control
+                    #     - StructureDefinition/bee-sting
+                    #
+                    #
+                    # The ImplementationGuide resource defines several other properties
+                    # not represented above. These properties can be used as-is and
+                    # should follow the format defined in ImplementationGuide:
+                    # * date
+                    # * meta
+                    # * implicitRules
+                    # * language
+                    # * text
+                    # * contained
+                    # * extension
+                    # * modifierExtension
+                    # * experimental
+                    # * useContext
+                    # * copyright
+                    # * packageId
+                    #
+                    #
+                    # ╭──────────────────────────────────────────SUSHI flags───────────────────────────────────────────╮
+                    # │  The flags below configure aspects of how SUSHI processes FSH.                                 │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    # The FSHOnly flag indicates if only FSH resources should be exported.
+                    # If set to true, no IG related content will be generated.
+                    # The default value for this property is false.
+                    #
+                    # FSHOnly: false
+                    #
+                    #
+                    # When set to true, the "short" and "definition" field on the root element of an Extension will
+                    # be set to the "Title" and "Description" of that Extension. Default is true.
+                    #
+                    # applyExtensionMetadataToRoot: true
+                    #
+                    #
+                    # The instanceOptions property is used to configure certain aspects of how SUSHI processes instances.
+                    # See the individual option definitions below for more detail.
+                    #
+                    instanceOptions:
+                        # When set to true, slices must be referred to by name and not only by a numeric index in order to be used
+                        # in an Instance's assignment rule. All slices appear in the order in which they are specified in FSH rules.
+                        # While SUSHI defaults to false for legacy reasons, manualSliceOrding is recommended for new projects.
+                        manualSliceOrdering: true # true | false
+
+                        # Determines for which types of Instances SUSHI will automatically set meta.profile
+                        # if InstanceOf references a profile:
+                        #
+                        # setMetaProfile: always # always | never | inline-only | standalone-only
+                        #
+                        #
+                        # Determines for which types of Instances SUSHI will automatically set id
+                        # if InstanceOf references a profile:
+                        #
+                        # setId: always # always | standalone-only
+                    """;
+                File.WriteAllText(filename, contents);
+            }
+        }
+    }
+
+    private void writePublisherSinglePackageConfig(
+        List<PackageXverSupport> packageSupports,
+        int focusPackageIndex,
+        string fhirDir)
+    {
+        DbFhirPackage sourcePackage = packageSupports[focusPackageIndex].Package;
+
+        // Fetch files from GitHub repository
+        Dictionary<string, string> githubFiles = getCurrentPublisherScripts();
+
+        foreach (PackageXverSupport targetSupport in packageSupports)
+        {
+            DbFhirPackage targetPackage = targetSupport.Package;
+            string packageId = getPackageId(sourcePackage, targetPackage);
+            string dir = createExportPackageDir(fhirDir, sourcePackage, targetPackage);
+
+            // write GitHub repository files to the output directory
+            if (githubFiles.Count > 0)
+            {
+                _logger.LogInformation("Writing {Count} files from GitHub repository to {dir}", githubFiles.Count, dir);
+
+                foreach ((string filePath, string fileContent) in githubFiles)
+                {
+                    try
+                    {
+                        string fullPath = Path.Combine(dir, filePath);
+                        string? directory = Path.GetDirectoryName(fullPath);
+
+                        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
+
+                        File.WriteAllText(fullPath, fileContent);
+                        _logger.LogDebug("Wrote GitHub file to: {FullPath}", fullPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogWarning(ex, "Failed to write GitHub file: {FilePath}", filePath);
+                    }
+                }
+
+                _logger.LogInformation("Successfully wrote GitHub repository files to {FhirDir}", fhirDir);
+            }
+            else
+            {
+                _logger.LogWarning("No files were fetched from GitHub repository");
+            }
+
+            {
+                string filename = Path.Combine(dir, "ig.ini");
+                string contents = $$$"""
+                    [IG]
+                    ig = fsh-generated/resources/ImplementationGuide-{{{packageId}}}.json
+                    template = fhir.base.template#current
+                    """;
+                File.WriteAllText(filename, contents);
+            }
+
+            {
+                string filename = Path.Combine(dir, "sushi-config.yaml");
+                string contents = $$$"""
+                    # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
+                    # │  The properties below are used to create the ImplementationGuide resource. The most commonly   │
+                    # │  used properties are included. For a list of all supported properties and their functions,     │
+                    # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    id: {{{packageId}}}
+                    canonical: http://hl7.org/fhir/{{{sourcePackage.FhirVersionShort}}}
+                    name: {{{packageId}}}
+                    title: FHIR Cross-Version Extensions package for FHIR {{{targetPackage.ShortName}}} from FHIR {{{sourcePackage.ShortName}}}
+                    description: The cross-version extensions available in FHIR {{{targetPackage.ShortName}}} from FHIR {{{sourcePackage.ShortName}}}
+                    status: draft # draft | active | retired | unknown
+                    version: {{{_crossDefinitionVersion}}}
+                    fhirVersion: {{{targetPackage.PackageVersion}}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
+                    copyrightYear: 2025+
+                    releaseLabel: trial-use
+                    license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+                    jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
+                    publisher:
+                        name: HL7 International / FHIR Infrastructure
+                        url: http://www.hl7.org/Special/committees/fiwg
+                        # email: test@example.org
+
+                    # The dependencies property corresponds to IG.dependsOn. The key is the
+                    # package id and the value is the version (or dev/current). For advanced
+                    # use cases, the value can be an object with keys for id, uri, and version.
+                    #
+                    dependencies:
+                        {{{targetSupport.Package.PackageId}}} : {{{targetSupport.Package.PackageVersion}}}
+                        hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 6.3.0
+                        hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 5.2.0
+                        hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : current
+
+                    #   hl7.fhir.us.core: 3.1.0
+                    #   hl7.fhir.us.mcode:
+                    #     id: mcode
+                    #     uri: http://hl7.org/fhir/us/mcode/ImplementationGuide/hl7.fhir.us.mcode
+                    #     version: 1.0.0
+                    #
+                    #
+                    # The pages property corresponds to IG.definition.page. SUSHI can
+                    # auto-generate the page list, but if the author includes pages in
+                    # this file, it is assumed that the author will fully manage the
+                    # pages section and SUSHI will not generate any page entries.
+                    # The page file name is used as the key. If title is not provided,
+                    # then the title will be generated from the file name.  If a
+                    # generation value is not provided, it will be inferred from the
+                    # file name extension.  Any subproperties that are valid filenames
+                    # with supported extensions (e.g., .md/.xml) will be treated as
+                    # sub-pages.
+                    #
+                    # pages:
+                    #   index.md:
+                    #     title: Example Home
+                    #   implementation.xml:
+                    #   examples.xml:
+                    #     title: Examples Overview
+                    #     simpleExamples.xml:
+                    #     complexExamples.xml:
+                    #
+                    #
+                    # The parameters property represents IG.definition.parameter. Rather
+                    # than a list of code/value pairs (as in the ImplementationGuide
+                    # resource), the code is the YAML key. If a parameter allows repeating
+                    # values, the value in the YAML should be a sequence/array.
+                    # For parameters defined by core FHIR see:
+                    # http://build.fhir.org/codesystem-guide-parameter-code.html
+                    # For parameters defined by the FHIR Tools IG see:
+                    # http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
+                    #
+                    # parameters:
+                    #   excludettl: true
+                    #   validation: [allow-any-extensions, no-broken-links]
+                    parameters:
+                        apply-wg: true
+                        default-wg: true
+                        show-inherited-invariants: false
+                        usage-stats-opt-out: true
+                        shownav: 'true'
+
+                    extension:
+                        - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+                            valueCode: trial-use
+                        - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
+                            valueCode: fhir
+                    #
+                    # ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
+                    # │ The menu property will be used to generate the input/menu.xml file. The menu is represented    │
+                    # │ as a simple structure where the YAML key is the menu item name and the value is the URL.       │
+                    # │ The IG publisher currently only supports one level deep on sub-menus. To provide a             │
+                    # │ custom menu.xml file, do not include this property and include a `menu.xml` file in            │
+                    # │ input/includes. To use a provided input/includes/menu.xml file, delete the "menu"              │
+                    # │ property below.                                                                                │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    menu:
+                      Home: index.html
+                      Lookups: lookups.html
+                      Artifacts: artifacts.html
+
+                    # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
+                    # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
+                    # │  resource. These properties are less commonly needed than those above.                         │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    #
+                    # Those who need more control or want to add additional details to the contact values can use
+                    # contact directly and follow the format outlined in the ImplementationGuide resource and
+                    # ContactDetail.
+                    #
+                    # contact:
+                    #   - name: Bob Smith
+                    #     telecom:
+                    #       - system: email # phone | fax | email | pager | url | sms | other
+                    #         value: bobsmith@example.org
+                    #         use: work
+                    #
+                    #
+                    # The global property corresponds to the IG.global property, but it
+                    # uses the type as the YAML key and the profile as its value. Since
+                    # FHIR does not explicitly disallow more than one profile per type,
+                    # neither do we; the value can be a single profile URL or an array
+                    # of profile URLs. If a value is an id or name, SUSHI will replace
+                    # it with the correct canonical when generating the IG JSON.
+                    #
+                    # global:
+                    #   Patient: http://example.org/fhir/StructureDefinition/my-patient-profile
+                    #   Encounter: http://example.org/fhir/StructureDefinition/my-encounter-profile
+                    #
+                    #
+                    # The resources property corresponds to IG.definition.resource.
+                    # SUSHI can auto-generate all of the resource entries based on
+                    # the FSH definitions and/or information in any user-provided
+                    # JSON or XML resource files. If the generated entries are not
+                    # sufficient or complete, however, the author can add entries
+                    # here. If the reference matches a generated entry, it will
+                    # replace the generated entry. If it doesn't match any generated
+                    # entries, it will be added to the generated entries. The format
+                    # follows IG.definition.resource with the following differences:
+                    #   * use IG.definition.resource.reference.reference as the YAML key.
+                    #   * if the key is an id or name, SUSHI will replace it with the
+                    #     correct URL when generating the IG JSON.
+                    #   * specify "omit" to omit a FSH-generated resource from the
+                    #     resource list.
+                    #   * if the exampleCanonical is an id or name, SUSHI will replace
+                    #     it with the correct canonical when generating the IG JSON.
+                    #   * groupingId can be used, but top-level groups syntax may be a
+                    #     better option (see below).
+                    # The following are simple examples to demonstrate what this might
+                    # look like:
+                    #
+                    # resources:
+                    #   Patient/my-example-patient:
+                    #     name: My Example Patient
+                    #     description: An example Patient
+                    #     exampleBoolean: true
+                    #   Patient/bad-example: omit
+                    #
+                    #
+                    # Groups can control certain aspects of the IG generation.  The IG
+                    # documentation recommends that authors use the default groups that
+                    # are provided by the templating framework, but if authors want to
+                    # use their own instead, they can use the mechanism below.  This will
+                    # create IG.definition.grouping entries and associate the individual
+                    # resource entries with the corresponding groupIds. If a resource
+                    # is specified by id or name, SUSHI will replace it with the correct
+                    # URL when generating the IG JSON.
+                    #
+                    # groups:
+                    #   GroupA:
+                    #     name: Group A
+                    #     description: The Alpha Group
+                    #     resources:
+                    #     - StructureDefinition/animal-patient
+                    #     - StructureDefinition/arm-procedure
+                    #   GroupB:
+                    #     name: Group B
+                    #     description: The Beta Group
+                    #     resources:
+                    #     - StructureDefinition/bark-control
+                    #     - StructureDefinition/bee-sting
+                    #
+                    #
+                    # The ImplementationGuide resource defines several other properties
+                    # not represented above. These properties can be used as-is and
+                    # should follow the format defined in ImplementationGuide:
+                    # * date
+                    # * meta
+                    # * implicitRules
+                    # * language
+                    # * text
+                    # * contained
+                    # * extension
+                    # * modifierExtension
+                    # * experimental
+                    # * useContext
+                    # * copyright
+                    # * packageId
+                    #
+                    #
+                    # ╭──────────────────────────────────────────SUSHI flags───────────────────────────────────────────╮
+                    # │  The flags below configure aspects of how SUSHI processes FSH.                                 │
+                    # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+                    # The FSHOnly flag indicates if only FSH resources should be exported.
+                    # If set to true, no IG related content will be generated.
+                    # The default value for this property is false.
+                    #
+                    # FSHOnly: false
+                    #
+                    #
+                    # When set to true, the "short" and "definition" field on the root element of an Extension will
+                    # be set to the "Title" and "Description" of that Extension. Default is true.
+                    #
+                    # applyExtensionMetadataToRoot: true
+                    #
+                    #
+                    # The instanceOptions property is used to configure certain aspects of how SUSHI processes instances.
+                    # See the individual option definitions below for more detail.
+                    #
+                    instanceOptions:
+                        # When set to true, slices must be referred to by name and not only by a numeric index in order to be used
+                        # in an Instance's assignment rule. All slices appear in the order in which they are specified in FSH rules.
+                        # While SUSHI defaults to false for legacy reasons, manualSliceOrding is recommended for new projects.
+                        manualSliceOrdering: true # true | false
+
+                        # Determines for which types of Instances SUSHI will automatically set meta.profile
+                        # if InstanceOf references a profile:
+                        #
+                        # setMetaProfile: always # always | never | inline-only | standalone-only
+                        #
+                        #
+                        # Determines for which types of Instances SUSHI will automatically set id
+                        # if InstanceOf references a profile:
+                        #
+                        # setId: always # always | standalone-only
+                    """;
+                File.WriteAllText(filename, contents);
+            }
+        }
+    }
+
     private void writeXverValueSets(
         List<DbFhirPackage> packages,
         int focusPackageIndex,
@@ -329,16 +1175,11 @@ public partial class XVerProcessor
         {
             DbFhirPackage targetPackage = packageDict[targetPackageId];
 
-            string packageId = getPackageId(focusPackage, targetPackage);
+            string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
 
-            // build a path for this direction
-            string dir = Path.Combine(fhirDir, packageId);
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            dir = Path.Combine(dir, "package");
+            dir = _config.XverExportForPublisher
+                ? Path.Combine(dir, "input", "vocabulary")
+                : Path.Combine(dir, "package");
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -397,13 +1238,11 @@ public partial class XVerProcessor
             string packageId = getPackageId(focusPackage, targetPackage);
 
             // build a path for this direction
-            string dir = Path.Combine(fhirDir, packageId);
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
+            string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
 
-            dir = Path.Combine(dir, "package");
+            dir = _config.XverExportForPublisher
+                ? Path.Combine(dir, "input", "extensions")
+                : Path.Combine(dir, "package");
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
@@ -967,263 +1806,6 @@ public partial class XVerProcessor
             return new HashSet<string>(extValueTypes.Select(et => et.TypeName!));
         }
     }
-
-    //private void buildXverStructures(
-    //    Dictionary<(int sourceElementKey, int targetPackageId), StructureDefinition> xverExtensions,
-    //    List<PackageXverSupport> packageSupports,
-    //    int sourcePackageIndex,
-    //    HashSet<string> allowedExtensionTypes,
-    //    Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
-    //    DbStructureDefinition sourceSd,
-    //    Dictionary<int, List<DbGraphSd.DbElementRow>>? elementProjectionDict = null,
-    //    HashSet<int>? elementsWithoutEquivalent = null,
-    //    int currentPackageIndex = -1,
-    //    int targetPackageIndex = -1)
-    //{
-    //    if (elementProjectionDict == null)
-    //    {
-    //        // build a graph for this structure
-    //        DbGraphSd sdGraph = new()
-    //        {
-    //            DB = _db!.DbConnection,
-    //            Packages = packageSupports.Select(ps => ps.Package).ToList(),
-    //            KeySd = sourceSd,
-    //        };
-
-    //        // build a dictionary of all element projections, by element key
-    //        elementProjectionDict = [];
-    //        foreach (DbGraphSd.DbSdRow sdRow in sdGraph.Projection)
-    //        {
-    //            foreach (DbGraphSd.DbElementRow sdElementRow in sdRow.Projection)
-    //            {
-    //                if (sdElementRow.KeyCell == null)
-    //                {
-    //                    continue;
-    //                }
-
-    //                if (!elementProjectionDict.TryGetValue(sdElementRow.KeyCell.Element.Key, out List<DbGraphSd.DbElementRow>? elementList))
-    //                {
-    //                    elementList = [];
-    //                    elementProjectionDict.Add(sdElementRow.KeyCell.Element.Key, elementList);
-    //                }
-
-    //                elementList.Add(sdElementRow);
-    //            }
-    //        }
-    //    }
-
-    //    // check for starting conditions
-    //    if ((currentPackageIndex == -1) ||
-    //        (targetPackageIndex == -1))
-    //    {
-    //        // if we are not the last package, build upwards
-    //        if (sourcePackageIndex < (packageSupports.Count - 1))
-    //        {
-    //            buildXverStructures(
-    //                xverExtensions,
-    //                packageSupports,
-    //                sourcePackageIndex,
-    //                allowedExtensionTypes,
-    //                xverValueSets,
-    //                sourceSd,
-    //                elementProjectionDict,
-    //                elementsWithoutEquivalent,
-    //                currentPackageIndex: sourcePackageIndex,
-    //                targetPackageIndex: sourcePackageIndex + 1);
-    //        }
-
-    //        // if we are not the first package, build downwards
-    //        if (sourcePackageIndex > 0)
-    //        {
-    //            buildXverStructures(
-    //                xverExtensions,
-    //                packageSupports,
-    //                sourcePackageIndex,
-    //                allowedExtensionTypes,
-    //                xverValueSets,
-    //                sourceSd,
-    //                elementProjectionDict,
-    //                elementsWithoutEquivalent,
-    //                currentPackageIndex: sourcePackageIndex,
-    //                targetPackageIndex: sourcePackageIndex - 1);
-    //        }
-
-    //        // done
-    //        return;
-    //    }
-
-    //    // resolve the basic element hash for testing
-    //    bool testingRight = currentPackageIndex < targetPackageIndex;
-    //    bool testingLeft = !testingRight;
-    //    elementsWithoutEquivalent ??= [];
-
-    //    DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
-    //    DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
-
-    //    // check for the entire structure being unmapped (e.g., new resource)
-    //    bool isUnmappedStructure = !elementProjectionDict.Values.Any(rows => rows.Any(row => row[targetPackage] != null));
-
-    //    // if this is an unmapped structure, the entire structure is unmapped
-    //    if (isUnmappedStructure)
-    //    {
-    //        // resolve the root row
-    //        DbGraphSd.DbElementRow rootRow = elementProjectionDict
-    //            .Values
-    //            .First(rows => rows.Any(row => row.KeyCell?.Element.ResourceFieldOrder == 0))
-    //            .First();
-
-
-    //        StructureDefinition sd = createExtensionSd(
-    //            packageSupports[sourcePackageIndex],
-    //            packageSupports[targetPackageIndex],
-    //            sourceSd,
-    //            rootRow.KeyCell!.Element,
-    //            elementProjectionDict);
-
-
-    //        /*
-    //            * TODO:
-    //            * - filter target types based on allowed types (HashSet)
-    //            * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
-    //            * - make complex extensions based on elements in the tree
-    //            * - filter top-level structures/elements for new types (only allow entire structures)
-    //            * - determine correct targets
-    //            */
-
-    //        //// create a new snapshot
-    //        //sd.Snapshot = new StructureDefinition.SnapshotComponent();
-
-
-    //        // add this element extension to the dictionary
-    //        xverExtensions.Add((rootRow.KeyCell!.Element.Key, targetPackage.Key), sd);
-
-
-    //    }
-    //    else
-    //    {
-    //        Dictionary<int, int> includedChildCounts = [];
-    //        List<DbGraphSd.DbElementCell> cellsNeedingExtensions = [];
-
-    //        // iterate over the projections, sorted by the key cell resource field order
-    //        foreach ((int sourceElementKey, List<DbGraphSd.DbElementRow> elementProjections) in elementProjectionDict.OrderBy(kvp => kvp.Value.First().KeyCell!.Element.ResourceFieldOrder))
-    //        {
-    //            // skip testing if we know this element has already mapped out - always must generate
-    //            if (elementsWithoutEquivalent.Contains(sourceElementKey))
-    //            {
-    //                continue;
-    //            }
-
-    //            // check to see if we have any equivalent mappings
-    //            if (testingRight &&
-    //                elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
-    //            {
-    //                continue;
-    //            }
-
-    //            if (testingLeft &&
-    //                elementProjections.Any((DbGraphSd.DbElementRow elementRow) => elementRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
-    //            {
-    //                continue;
-    //            }
-
-    //            // add this element as not directly equivalent
-    //            elementsWithoutEquivalent.Add(sourceElementKey);
-
-    //            cellsNeedingExtensions.Add(elementProjections[0].KeyCell!);
-
-    //            // resolve the element to build the parent id
-    //            DbElement element = elementProjections[0].KeyCell?.Element ?? throw new Exception($"Failed to resolve element for {sourceElementKey} in {sourceSd.Name}!");
-
-    //            // if this is not the root element, track the unmapped child count for later comparison
-    //            if (element.ParentElementKey != null)
-    //            {
-    //                if (!includedChildCounts.TryGetValue((int)element.ParentElementKey, out int includedChildCount))
-    //                {
-    //                    includedChildCount = 0;
-    //                }
-
-    //                includedChildCount++;
-    //                includedChildCounts[(int)element.ParentElementKey] = includedChildCount;
-    //            }
-
-    //            string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
-
-    //            StructureDefinition sd = new()
-    //            {
-    //                Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/{sdId}",
-    //                Id = sdId,
-    //                Version = _crossDefinitionVersion,
-    //                Name = sdId,
-    //                Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
-    //                Status = PublicationStatus.Draft,
-    //                Experimental = false,
-    //                DateElement = new FhirDateTime(DateTimeOffset.Now),
-    //                Description = $"This cross-version extension represents the {element.Path} element from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
-    //            };
-
-    //            /*
-    //             * TODO:
-    //             * - filter target types based on allowed types (HashSet)
-    //             * - map types that do not exist based on their mappings (e.g., R2:Quantity <-> R3:SimpleQuantity)
-    //             * - make complex extensions based on elements in the tree
-    //             * - filter top-level structures/elements for new types (only allow entire structures)
-    //             * - determine correct targets
-    //             */
-
-    //            // add this element extension to the dictionary
-    //            xverExtensions.Add((element.Key, targetPackage.Key), sd);
-    //        }
-
-    //        Dictionary<int, (DbGraphSd.DbElementCell elementCell, StructureDefinition extensionSd)> proposedExtensionsByKey = [];
-
-    //        // iterate over our list of elements we are including, sorted by resource field order
-    //        foreach (DbGraphSd.DbElementCell elementCell in cellsNeedingExtensions.OrderBy(ec => ec.Element.ResourceFieldOrder))
-    //        {
-    //            // TODO(ginoc)
-    //        }
-    //    }
-
-
-
-    //    // check for continuing to the next package to the right
-    //    if (testingRight &&
-    //        (targetPackageIndex < packageSupports.Count - 1))
-    //    {
-    //        // build the value set for this package
-    //        buildXverStructures(
-    //            xverExtensions,
-    //            packageSupports,
-    //            sourcePackageIndex,
-    //            allowedExtensionTypes,
-    //            xverValueSets,
-    //            sourceSd,
-    //            elementProjectionDict,
-    //            elementsWithoutEquivalent,
-    //            currentPackageIndex: targetPackageIndex,
-    //            targetPackageIndex: targetPackageIndex + 1);
-    //    }
-
-    //    // check for continuing to the next package to the left
-    //    if (testingLeft &&
-    //        (targetPackageIndex > 0))
-    //    {
-    //        // build the value set for this package
-    //        buildXverStructures(
-    //            xverExtensions,
-    //            packageSupports,
-    //            sourcePackageIndex,
-    //            allowedExtensionTypes,
-    //            xverValueSets,
-    //            sourceSd,
-    //            elementProjectionDict,
-    //            elementsWithoutEquivalent,
-    //            currentPackageIndex: targetPackageIndex,
-    //            targetPackageIndex: targetPackageIndex - 1);
-    //    }
-
-    //    return;
-    //}
-
 
     private StructureDefinition? createExtensionSd(
         int sourceIndex,
