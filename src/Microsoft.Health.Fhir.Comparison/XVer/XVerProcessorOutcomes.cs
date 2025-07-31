@@ -119,11 +119,11 @@ public partial class XVerProcessor
     }
 
 
-
     private void writeXverOutcomes(
         List<PackageXverSupport> packageSupports,
         Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
-        string outputDir)
+        string outputDir,
+        out Dictionary<string, List<(string structureName, string filename)>> packageMdList)
     {
         HashSet<string> createdDirs = [];
 
@@ -143,6 +143,9 @@ public partial class XVerProcessor
         {
             Directory.CreateDirectory(docsDir);
         }
+
+        Dictionary<string, (string sourceVersion, string targetVersion)> packageVersions = [];
+        packageMdList = [];
 
         // iterate over each structure in each source package
         foreach (((int sourcePackageIndex, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
@@ -177,6 +180,9 @@ public partial class XVerProcessor
                 }
                 else
                 {
+                    packageMdList.Add(packageId, []);
+                    packageVersions.Add(packageId, (sourcePackage.PackageVersion, targetPackage.PackageVersion));
+
                     if (_config.XverExportForPublisher)
                     {
                         htmlDir = string.Empty;
@@ -216,6 +222,8 @@ public partial class XVerProcessor
                 {
                     // create a filename for this structure's md file
                     string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
+
+                    packageMdList[packageId].Add((sourceStructureName, mdFilename[..^3]));
 
                     // open our files
                     using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(mdDir, mdFilename), false, false);
@@ -271,6 +279,35 @@ public partial class XVerProcessor
                     mdWriter.Close();
                     htmlWriter.Close();
                 }
+            }
+        }
+
+        // if we are exporting for the publisher, we need to create a single index file per package
+        if (_config.XverExportForPublisher)
+        {
+            foreach ((string packageId, List<(string structureName, string filename)> mdFiles) in packageMdList)
+            {
+                if (mdFiles.Count == 0)
+                {
+                    continue; // no files for this package, skip it
+                }
+
+                (string sourceVersion, string targetVersion) = packageVersions[packageId];
+
+                // create the index file
+                using ExportStreamWriter indexWriter = createMarkdownWriter(Path.Combine(fhirDir, packageId, "input", "pagecontent", "lookup.md"), false, false);
+                indexWriter.WriteLine($"### FHIR {packageId} Cross-Version Artifact Lookup");
+                indexWriter.WriteLine();
+                indexWriter.WriteLine("The following table links to documentation for the source version of FHIR, for implementers to understand if there is an extension for the element they are trying to use.");
+                indexWriter.WriteLine($"These are structures defined in FHIR {sourceVersion} (the source package), with applicable usage as mapped into FHIR {targetVersion} (the target package).");
+                indexWriter.WriteLine();
+                indexWriter.WriteLine($"| {sourceVersion} Structure | Lookup File |");
+                indexWriter.WriteLine("| --------- | ----------- |");
+                foreach ((string structureName, string filename) in mdFiles.OrderBy(x => x.structureName))
+                {
+                    indexWriter.WriteLine($"| {structureName} | [{filename}]({filename}.html) |");
+                }
+                indexWriter.Close();
             }
         }
     }

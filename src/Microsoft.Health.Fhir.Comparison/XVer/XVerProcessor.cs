@@ -97,7 +97,7 @@ internal static class XVerExtensions
 /// </summary>
 public partial class XVerProcessor
 {
-    private string _crossDefinitionVersion = "0.7.0";
+    private string _crossDefinitionVersion = "0.0.1-snapshot-2";
 
     /// <summary>
     /// The directions for comparison (Up and Down).
