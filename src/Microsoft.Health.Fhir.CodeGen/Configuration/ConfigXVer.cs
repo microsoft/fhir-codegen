@@ -225,6 +225,25 @@ public class ConfigXVer : ConfigRoot
     };
 
     [ConfigOption(
+        ArgName = "--xver-include-scripts",
+        EnvName = "Xver_Include_Scripts",
+        ArgArity = "0..1",
+        Description = "Set to include scripts in the XVer artifacts.")]
+    public bool XverIncludeScripts { get; set; } = true;
+    private static ConfigurationOption XverIncludeScriptsParameter => new()
+    {
+        Name = "Xver_Include_Scripts",
+        EnvVarName = "Xver_Include_Scripts",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--xver-include-scripts", "Set to include scripts in the XVer artifacts.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+
+    [ConfigOption(
         ArgName = "--no-output",
         EnvName = "No_Output",
         ArgArity = "0..1",
@@ -292,6 +311,7 @@ public class ConfigXVer : ConfigRoot
         XverGenerateSnapshotsParameter,
         XverAllowComparisonUpdatesParameter,
         XverExportForPublisherParameter,
+        XverIncludeScriptsParameter,
         NoOutputParameter,
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
@@ -344,6 +364,9 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Xver_Export_For_Publisher":
                     XverExportForPublisher = GetOpt(parseResult, opt, XverExportForPublisher);
+                    break;
+                case "Xver_Include_Scripts":
+                    XverIncludeScripts = GetOpt(parseResult, opt, XverIncludeScripts);
                     break;
                 case "No_Output":
                     NoOutput = GetOpt(parseResult, opt, NoOutput);

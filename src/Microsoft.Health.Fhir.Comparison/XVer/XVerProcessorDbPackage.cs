@@ -353,6 +353,11 @@ public partial class XVerProcessor
     /// <returns>A dictionary where keys are relative file paths and values are file contents.</returns>
     private Dictionary<string, string> getCurrentPublisherScripts()
     {
+        if (_config.XverIncludeScripts == false)
+        {
+            return [];
+        }
+
         const string owner = "HL7";
         const string repo = "ig-publisher-scripts";
 
@@ -488,6 +493,12 @@ public partial class XVerProcessor
             if (!Directory.Exists(extensionsDir))
             {
                 Directory.CreateDirectory(extensionsDir);
+            }
+
+            string profilesDir = Path.Combine(inputDir, "profiles");
+            if (!Directory.Exists(profilesDir))
+            {
+                Directory.CreateDirectory(profilesDir);
             }
 
             string resourcesDir = Path.Combine(inputDir, "resources");
@@ -683,6 +694,7 @@ public partial class XVerProcessor
                         shownav: 'true'
                         path-resources:
                             - input/extensions/*
+                            - input/profiles/*
                             - input/resources/*
                             - input/vocabulary/*
 
@@ -872,7 +884,8 @@ public partial class XVerProcessor
     private void writePublisherSinglePackageConfig(
         List<PackageXverSupport> packageSupports,
         int focusPackageIndex,
-        string fhirDir)
+        string fhirDir,
+        Dictionary<string, List<(string structureName, string filename)>> packageMdList)
     {
         DbFhirPackage sourcePackage = packageSupports[focusPackageIndex].Package;
 
@@ -929,6 +942,14 @@ public partial class XVerProcessor
             }
 
             {
+                string lookupPages = string.Empty;
+                if (packageMdList.TryGetValue(packageId, out List<(string structureName, string lookupFilename)>? packageMdFiles))
+                {
+                    lookupPages = packageMdFiles.Count == 0
+                        ? string.Empty
+                        : string.Join("\n", packageMdFiles.Select(p => $"\t{p.lookupFilename}:\n\t\ttitle: Lookup for {p.structureName}"));
+                }
+
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
                     # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
@@ -990,6 +1011,7 @@ public partial class XVerProcessor
                             title: Downloads
                         changelog.md:
                             title: Change Log
+                    {{{lookupPages}}}
                     #
                     #
                     # The parameters property represents IG.definition.parameter. Rather
@@ -1012,6 +1034,7 @@ public partial class XVerProcessor
                         shownav: 'true'
                         path-resources:
                             - input/extensions/*
+                            - input/profiles/*
                             - input/resources/*
                             - input/vocabulary/*
                                         
