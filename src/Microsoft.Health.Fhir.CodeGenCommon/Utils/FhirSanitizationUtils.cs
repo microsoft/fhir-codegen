@@ -456,6 +456,13 @@ public abstract partial class FhirSanitizationUtils
         return _regexAsciiEscaping.Replace(value, string.Empty);
     }
 
+    /// <summary>
+    /// Transforms the given value to a valid name for a FHIR resource or element.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string ReformatIdForName(string value) => char.ToUpperInvariant(value[0]) + value[1..].Replace('-', '_').Replace('.', '_');
+
     /// <summary>Sanitize for property.</summary>
     /// <param name="value">        The value.</param>
     /// <param name="reservedWords">The reserved words.</param>

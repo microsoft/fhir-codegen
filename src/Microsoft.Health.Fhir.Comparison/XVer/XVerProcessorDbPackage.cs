@@ -44,16 +44,20 @@ public partial class XVerProcessor
             * Modifier element -> Backbone element (not modifier) : modifier extension
             * Modifier element -> Primitive-type element (not modifier) : modifier extension, context moves up a level
             * Modifier element -> Primitive-type element (array, not modifier) : currently unresolvable, but also has not happened yet
-        * Fix canonical targets that do not exist (use `alternate-canonical` extension)
-        * Fix reference targets that do not exist (use `Basic` as target)
+        * Fix: canonical targets that do not exist (use `alternate-canonical` extension)
+        * Fix: reference targets that do not exist (use `Basic` as target)
         * Define profiles for `Basic` resources to represent undefined resource types
         * Define profiles for existing resources to represent other versions of the same resource type
         * Define cross-version value sets for *all* (expandable) referenced value sets instead of just required-binding ones
-        * Fix `.url` appearing twice in snapshots
-        * Fix some elements being out-of-order in snapshots
-        * Fix `_datatype` being out-of-order in some extensions (see R5:`SubscriptionStatus.eventsSinceSubscriptionStart`)
-        * Fix slicing discriminator being `closed` instead of `open` in some cases
-        * Fix `StructureDefinition.name` must begin with a capital letter (`sdf-0` / `cnl-0`)
+        * Fix: `.url` appearing twice in snapshots
+        * Fix: some elements being out-of-order in snapshots
+        * Fix: `_datatype` being out-of-order in some extensions (see R5:`SubscriptionStatus.eventsSinceSubscriptionStart`)
+        * Fix: slicing discriminator being `closed` instead of `open` in some cases
+        * Fix: `StructureDefinition.name` must begin with a capital letter (`sdf-0` / `cnl-0`)
+        * Fix: `ValueSet.name` must begin with a capital letter (`sdf-0` / `cnl-0`)
+        * Fix: cross-version profiles for `Basic` resources had incorrect root extension slice names
+        * Fix: cross-version profiles for `Basic` resource were missing `sliceName` on the `extension` element
+        * Fix: cross-version profiles for `Basic` should use *pattern* instead of *fixed* for the `code` element (avoid over-constraining the value)
 
         ### 0.0.1-snapshot-1
 
@@ -942,13 +946,19 @@ public partial class XVerProcessor
             }
 
             {
-                string lookupPages = string.Empty;
+                List<(string filename, string title)> pages = [
+                    ("index.md", "Home"),
+                    ("lookup.md", "Artifact Lookup"),
+                    ("downloads.md", "Downloads"),
+                    ("changelog.md", "Change Log"),
+                    ];
+
                 if (packageMdList.TryGetValue(packageId, out List<(string structureName, string lookupFilename)>? packageMdFiles))
                 {
-                    lookupPages = packageMdFiles.Count == 0
-                        ? string.Empty
-                        : string.Join("\n", packageMdFiles.Select(p => $"\t{p.lookupFilename}:\n\t\ttitle: Lookup for {p.structureName}"));
+                    pages.AddRange(packageMdFiles.Select(p => ($"{p.lookupFilename}.md", $"Lookup for {p.structureName}")));
                 }
+
+                string pagesYaml = string.Join("\n", pages.Select(p => $"    {p.filename}:\n        title: {p.title}"));
 
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
@@ -1003,15 +1013,7 @@ public partial class XVerProcessor
                     # sub-pages.
                     #
                     pages:
-                        index.md:
-                            title: Home
-                        lookup.md:
-                            title: Artifact Lookup
-                        downloads.md:
-                            title: Downloads
-                        changelog.md:
-                            title: Change Log
-                    {{{lookupPages}}}
+                    {{{pagesYaml}}}
                     #
                     #
                     # The parameters property represents IG.definition.parameter. Rather

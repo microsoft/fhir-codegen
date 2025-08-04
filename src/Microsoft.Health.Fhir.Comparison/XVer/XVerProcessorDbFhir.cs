@@ -9,7 +9,9 @@ using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
+using Microsoft.Health.Fhir.Comparison.Extensions;
 using Microsoft.Health.Fhir.Comparison.Models;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
@@ -240,10 +242,15 @@ public partial class XVerProcessor
             Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets = buildXverValueSets(packages, focusPackageIndex);
 
             writeXverValueSets(packages, focusPackageIndex, xverValueSets, fhirDir);
-            //writeFhirValueSets(packages, i, packageComparisonPairs, fhirDir, differentialVsBySourceKey);
 
             Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions = [];
             Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles = [];
+
+            // build the structure graph so that we can resolve targets in references
+            //Dictionary<int, DbGraphSd> sdGraphs = [];
+            //addStructureGraphs(packages[focusPackageIndex].Key, FhirArtifactClassEnum.ComplexType, packages, sdGraphs);
+            //addStructureGraphs(packages[focusPackageIndex].Key, FhirArtifactClassEnum.Resource, packages, sdGraphs);
+
             buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverProfiles, xverOutcomes, FhirArtifactClassEnum.ComplexType);
             buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverProfiles, xverOutcomes, FhirArtifactClassEnum.Resource);
 
@@ -322,6 +329,36 @@ public partial class XVerProcessor
                         Path.Combine(fhirDir, $"{packageId}.{_crossDefinitionVersion}.tgz"));
                 }
             }
+        }
+    }
+
+    private void addStructureGraphs(
+        int fhirPackageKey,
+        FhirArtifactClassEnum artifactClass,
+        List<DbFhirPackage> packages,
+        Dictionary<int, DbGraphSd> sdGraphs)
+    {
+        List<DbStructureDefinition> structures = DbStructureDefinition.SelectList(
+            _db!.DbConnection,
+            FhirPackageKey: fhirPackageKey,
+            ArtifactClass: artifactClass);
+
+        foreach (DbStructureDefinition sd in structures)
+        {
+            if (sdGraphs.ContainsKey(sd.Key))
+            {
+                continue;
+            }
+
+            // build a graph for this structure
+            DbGraphSd sdGraph = new()
+            {
+                DB = _db!.DbConnection,
+                Packages = packages,
+                KeySd = sd,
+            };
+
+            sdGraphs.Add(sd.Key, sdGraph);
         }
     }
 
@@ -972,17 +1009,16 @@ public partial class XVerProcessor
         {
             Id = profileId,
             Url = $"http://hl7.org/fhir/{targetPackage.FhirVersionShort}/StructureDefinition/{profileId}",
-            Name = char.ToUpperInvariant(profileId[0]) + profileId[1..].Replace('-', '_').Replace('.', '_'),
+            Name = FhirSanitizationUtils.ReformatIdForName(profileId),
             Version = _crossDefinitionVersion,
             FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(targetPackage.PackageVersion) ?? FHIRVersion.N5_0_0,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version Profile for {sourcePackage.ShortName}.{sourceStructure.Name} for use in FHIR {targetPackage.ShortName}",
             Description = $"This cross-version profile on the {targetPackage.ShortName}.{targetStructureName} resource can be used to represent a FHIR {sourcePackage.ShortName}.{sourceStructure.Name} resource.",
-            Status = PublicationStatus.Draft,
+            Status = PublicationStatus.Active,
             Experimental = false,
             Kind = StructureDefinition.StructureDefinitionKind.Resource,
             Abstract = false,
-            Context = extSd.Context,
             Type = targetStructureName,
             BaseDefinition = $"http://hl7.org/fhir/StructureDefinition/{targetStructureName}",
             Derivation = StructureDefinition.TypeDerivationRule.Constraint,
@@ -1011,11 +1047,15 @@ public partial class XVerProcessor
                             Min = 0,
                             Max = "*",
                         },
+                        Min = 1,
+                        Max = "*",
                     },
                     new ElementDefinition()
                     {
-                        ElementId = $"Basic.extension:{targetStructureName}",
+                        ElementId = $"Basic.extension:{sourceStructure.Id}",
                         Path = "Basic.extension",
+                        SliceName = sourceStructure.Id,
+                        Short = $"Cross-version extension for {sourceStructure.Name} from {sourcePackage.ShortName} for use in FHIR {targetPackage.ShortName}",
                         Min = 1,
                         Max = "1",
                         Base = new ElementDefinition.BaseComponent()
@@ -1036,7 +1076,7 @@ public partial class XVerProcessor
                     {
                         ElementId = "Basic.code",
                         Path = "Basic.code",
-                        Fixed = new CodeableConcept("http://hl7.org/fhir/fhir-types", sourceStructure.Id),
+                        Pattern = new CodeableConcept("http://hl7.org/fhir/fhir-types", sourceStructure.Id),
                         Base = new ElementDefinition.BaseComponent()
                         {
                             Path = "Basic.code",
@@ -1120,13 +1160,13 @@ public partial class XVerProcessor
             Id = sdId,
             //Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
-            Name = char.ToUpperInvariant(sdId[0]) + sd.Id[1..].Replace('-', '_').Replace('.', '_'),
+            Name = FhirSanitizationUtils.ReformatIdForName(sdId),
             Version = _crossDefinitionVersion,
             FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(targetPackageSupport!.Package.PackageVersion) ?? FHIRVersion.N5_0_0,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version Extension for {sourcePackage.ShortName}.{element.Path} for use in FHIR {targetPackage.ShortName}",
             Description = $"This cross-version extension represents {element.Path} from {sd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
-            Status = PublicationStatus.Draft,
+            Status = PublicationStatus.Active,
             Experimental = false,
             Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
             Abstract = false,
@@ -1518,7 +1558,7 @@ public partial class XVerProcessor
 
             // consolidate profiles
             List<string> typeProfiles = collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
-            List<string> targetProfiles = [];   //  collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>();
+            HashSet<string> targetProfiles = [];   //  collectedValueTypes[typeName].Select(t => t.TargetProfile).Where(t => t != null)!.ToList<string>();
 
             // build our target profiles - if the target resource is available, we can use that, otherwise use the profile we are creating
             foreach (string? tp in collectedValueTypes[typeName].Select(t => t.TargetProfile))
@@ -1528,20 +1568,28 @@ public partial class XVerProcessor
                     continue;
                 }
 
-                // if we have the target type, just add it
-                if (DbStructureDefinition.SelectCount(_db!.DbConnection, FhirPackageKey: targetPackageSupport.Package.Key, UnversionedUrl: tp) != 0)
+                // get the mapped structure URLs for the target package
+                List<string> mappedUrls = _db!.DbConnection.GetMappedStructureUrls(sourcePackageSupport.Package.Key, tp, targetPackageSupport.Package.Key);
+
+                foreach (string unversionedUrl in mappedUrls)
                 {
-                    targetProfiles.Add(tp);
-                    continue;
+                    targetProfiles.Add(unversionedUrl);
                 }
 
-                string tpTypeName = tp.Split('/')[^1];
-                string profileUrl = $"{targetPackageSupport.Package.CanonicalUrl}" +
-                    $"/{targetPackageSupport.Package.FhirVersionShort}" +
-                    $"/StructureDefinition" +
-                    $"/{sourcePackageSupport.Package.ShortName}-{tpTypeName}-for-{targetPackageSupport.Package.ShortName}";
+                //// if we have the target type, just add it
+                //if (DbStructureDefinition.SelectCount(_db!.DbConnection, FhirPackageKey: targetPackageSupport.Package.Key, UnversionedUrl: tp) != 0)
+                //{
+                //    targetProfiles.Add(tp);
+                //    continue;
+                //}
 
-                targetProfiles.Add(profileUrl);
+                //string tpTypeName = tp.Split('/')[^1];
+                //string profileUrl = $"{targetPackageSupport.Package.CanonicalUrl}" +
+                //    $"/{targetPackageSupport.Package.FhirVersionShort}" +
+                //    $"/StructureDefinition" +
+                //    $"/{sourcePackageSupport.Package.ShortName}-{tpTypeName}-for-{targetPackageSupport.Package.ShortName}";
+
+                //targetProfiles.Add(profileUrl);
             }
 
             // remove any quantity type profiles that got promoted
@@ -1995,12 +2043,12 @@ public partial class XVerProcessor
 
         ValueSet vs = new()
         {
-            Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/ValueSet/{vsId}",
+            Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{vsId}",
             Id = vsId,
             Version = _crossDefinitionVersion,
-            Name = char.ToUpperInvariant(vsId[0]) + vsId[1..],
+            Name = FhirSanitizationUtils.ReformatIdForName(vsId),
             Title = $"Cross-version VS for {sourcePackage.ShortName}.{sourceVs.Name} for use in FHIR {targetPackage.ShortName}",
-            Status = PublicationStatus.Draft,
+            Status = PublicationStatus.Active,
             Experimental = false,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Description = $"This cross-version ValueSet represents concepts from {sourceVs.VersionedUrl} for use in FHIR {targetPackage.ShortName}." +
