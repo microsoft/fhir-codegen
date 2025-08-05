@@ -48,7 +48,7 @@ public partial class XVerProcessor
         * Fix: reference targets that do not exist (use `Basic` as target)
         * Define profiles for `Basic` resources to represent undefined resource types
         * Define profiles for existing resources to represent other versions of the same resource type
-        * Define cross-version value sets for *all* (expandable) referenced value sets instead of just required-binding ones
+        * Define cross-version value sets for all expandable and not-excluded value sets instead of only ones with `required` bindings
         * Fix: `.url` appearing twice in snapshots
         * Fix: some elements being out-of-order in snapshots
         * Fix: `_datatype` being out-of-order in some extensions (see R5:`SubscriptionStatus.eventsSinceSubscriptionStart`)
@@ -58,6 +58,10 @@ public partial class XVerProcessor
         * Fix: cross-version profiles for `Basic` resources had incorrect root extension slice names
         * Fix: cross-version profiles for `Basic` resource were missing `sliceName` on the `extension` element
         * Fix: cross-version profiles for `Basic` should use *pattern* instead of *fixed* for the `code` element (avoid over-constraining the value)
+        * Added `changelog.md` file to generated packages (see XVerProcessorDbPackage.cs)
+        * Added `lookup.md` file to generated single-version packages as index file for all resource lookups
+        * Fix: sushi-config.yaml `name` property was not properly formatted (`ig-0`)
+        * Added `ignoreWarnings.txt` file to generated packages to suppress known non-critical warnings during IG publishing
 
         ### 0.0.1-snapshot-1
 
@@ -136,11 +140,18 @@ public partial class XVerProcessor
         == Suppressed Messages ==
 
         # 01. Extension names and ids are shortened to avoid exceeding 64 character limit
-        Conformance resource % - the canonical URL (%) does not match the URL (%)
-        Resource id/url mismatch: %
+        RESOURCE_ID_MISMATCH
+        RESOURCE_CANONICAL_MISMATCH
+        
+        # 02. Code systems are verified correct, not being found by publisher
+        Type_Specific_Checks_DT_URL_Resolve
+        VALUESET_INCLUDE_INVALID_CONCEPT_CODE_VER
 
-        # 99. Cross-Version Value Sets use Code Systems from other versions
-        Value set % not found
+        # 03. The Canonicals of the ValueSets are correct, not being found by publisher
+        TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
+
+        # 04. We are not building examples for every element
+        The Implementation Guide contains no examples for this extension
         """;
 
     /// <summary>
@@ -624,10 +635,10 @@ public partial class XVerProcessor
                     # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
                     id: {{{packageId}}}
                     canonical: http://hl7.org/fhir/uv/xver
-                    name: {{{packageId}}}
+                    name: {{{FhirSanitizationUtils.ReformatIdForName(packageId)}}}
                     title: Cross-Version Extensions validation package for FHIR {{{targetPackage.ShortName}}}
                     description: All cross-version extensions available in FHIR {{{targetPackage.ShortName}}}
-                    status: draft # draft | active | retired | unknown
+                    status: active # draft | active | retired | unknown
                     version: {{{_crossDefinitionVersion}}}
                     fhirVersion: {{{targetPackage.PackageVersion}}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
                     copyrightYear: 2025+
@@ -969,10 +980,10 @@ public partial class XVerProcessor
                     # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
                     id: {{{packageId}}}
                     canonical: http://hl7.org/fhir/{{{sourcePackage.FhirVersionShort}}}
-                    name: {{{packageId}}}
+                    name: {{{FhirSanitizationUtils.ReformatIdForName(packageId)}}}
                     title: FHIR Cross-Version Extensions package for FHIR {{{targetPackage.ShortName}}} from FHIR {{{sourcePackage.ShortName}}}
                     description: The cross-version extensions available in FHIR {{{targetPackage.ShortName}}} from FHIR {{{sourcePackage.ShortName}}}
-                    status: draft # draft | active | retired | unknown
+                    status: active # draft | active | retired | unknown
                     version: {{{_crossDefinitionVersion}}}
                     fhirVersion: {{{targetPackage.PackageVersion}}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
                     copyrightYear: 2025+

@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
@@ -595,6 +596,20 @@ public partial class XVerProcessor
             // iterate over the elements of our structure
             foreach (DbElement element in DbElement.SelectList(_db!.DbConnection, StructureKey: sd.Key, orderByProperties: [nameof(DbElement.ResourceFieldOrder)]))
             {
+                // do not build extensions for simple-type elements (e.g., Element.id, Extension.url, etc.)
+                if (element.IsSimpleType == true)
+                {
+                    continue;
+                }
+
+                // do not build extensions for extension or base elements
+                switch (element.FullCollatedTypeLiteral)
+                {
+                    case "Extension":
+                    case "Base":
+                        continue;
+                }
+
                 // resolve the projection rows for this element
                 List<DbGraphSd.DbElementRow> elementProjection = elementProjectionDict[element.Key];
 
@@ -1107,14 +1122,14 @@ public partial class XVerProcessor
         DbFhirPackage sourcePackage = sourcePackageSupport.Package;
         DbFhirPackage targetPackage = targetPackageSupport.Package;
 
-        HashSet<string> basicElementPaths = targetPackageSupport.BasicElements;
-
         //string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
         string sdId = $"ext-{sourcePackage.ShortName}-{collapsePathForId(element.Path)}";
 
         bool isRootElement = element.ResourceFieldOrder == 0;
         int elementPathLen = element.Path.Length;
 
+        bool isExtensionOnBasic = false;
+        List<DbElement> contextElements = [];
         List<StructureDefinition.ContextComponent> contexts = [];
 
         // if our source element is a resource or datatype, we can only apply it to the basic resource
@@ -1125,12 +1140,24 @@ public partial class XVerProcessor
                 Type = StructureDefinition.ExtensionContextType.Element,
                 Expression = "Basic",
             });
+
+            DbElement? basicElement = DbElement.SelectSingle(
+                _db!.DbConnection,
+                FhirPackageKey: targetPackage.Key,
+                Id: "Basic");
+
+            if (basicElement != null)
+            {
+                // add the basic element to the context elements
+                contextElements.Add(basicElement);
+                isExtensionOnBasic = true;
+            }
         }
         else
         {
             HashSet<string> contextElementPaths = [];
 
-            discoverContexts(contextElementPaths, sourceIndex, targetIndex, targetPackageSupport, element, elementProjectionDict);
+            contextElements = discoverContexts(contextElementPaths, sourceIndex, targetIndex, targetPackageSupport, element, elementProjectionDict);
 
             if (contextElementPaths.Count != 0)
             {
@@ -1183,7 +1210,7 @@ public partial class XVerProcessor
         Dictionary<int, string> extPathByElementKey = [];
 
         // add this element to the structure, including the child elements
-        addElementToExtension(
+        ExtElementBuilderRecord? extRec = addElementToExtension(
             extSd,
             "Extension",
             "Extension",
@@ -1193,90 +1220,87 @@ public partial class XVerProcessor
             sd,
             element,
             relevantComparisons,
-            xverValueSets);
+            xverValueSets,
+            contextElements,
+            isExtensionOnBasic);
 
-        // fix the URL in the definition (needs to be last element)
-        extSd.Differential.Element.Add(new()
+        if (extRec == null)
         {
-            ElementId = "Extension.url",
-            Path = "Extension.url",
-            Min = 1,
-            Max = "1",
-            Fixed = new FhirUri(extSd.Url)
-        });
+            // we should not be in a scenario where we do not have any properties
+            throw new Exception($"Extension build for {extSd.Id} failed!");
+        }
+
+        addExtRecToSd(extSd, extRec, true);
 
         return extSd;
     }
 
-
-    private void addElementToExtension(
-        StructureDefinition extSd,
-        string extElementId,
-        string extElementPath,
-        string? sliceName,
-        PackageXverSupport sourcePackageSupport,
-        PackageXverSupport targetPackageSupport,
-        DbStructureDefinition sd,
-        DbElement element,
-        List<DbElementComparison> relevantComparisons,
-        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
+    private void addExtRecToSd(StructureDefinition sd, ExtElementBuilderRecord extRec, bool addRootElement = false)
     {
-        // do not build extensions for extension or base elements
-        switch (element.FullCollatedTypeLiteral)
+        if (addRootElement)
         {
-            case "Extension":
-            case "Base":
-                return;
-        }
-
-        // skip id elements, they are part of every element and do not need to be written
-        if (extElementId.EndsWith(".extension:id", StringComparison.Ordinal))
-        {
-            return;
-        }
-
-        HashSet<string> basicElementPaths = targetPackageSupport.BasicElements;
-
-        // check to see if this element is in the 'basic' resource of this version (do not add)
-        if ((element.Path.Length > sd.Name.Length) &&
-            basicElementPaths.Contains(element.Path.Substring(sd.Name.Length)))
-        {
-            return;
-        }
-
-        int sourceCol = sourcePackageSupport.PackageIndex;
-        int targetCol = targetPackageSupport.PackageIndex;
-
-        string? reason = relevantComparisons.Count == 0
-            ? null
-            : string.Join(' ', relevantComparisons.Select(c => c.UserMessage ?? string.Empty));
-
-        (string? edShortText, string? edDefinition, string? edComment) = getTextForExtensionElement(element, reason);
-
-        ElementDefinition extEd = new()
-        {
-            ElementId = extElementId,
-            Path = extElementPath,
-            SliceName = sliceName,
-            Short = edShortText,
-            Definition = edDefinition,
-            Comment = edComment,
-            Min = element.MinCardinality,
-            Max = element.MaxCardinalityString,
-            IsModifier = element.IsModifier,
-            IsModifierReason = element.IsModifierReason
-                ?? (element.IsModifier == true ? $"This extension is a modifier because the target element {element.Id} is flagged IsModifier" : null),
-        };
-
-        extSd.Differential.Element.Add(extEd);
-
-        // if there are no child elements, we are done
-        if (element.ChildElementCount != 0)
-        {
-            ElementDefinition edForChildren = new()
+            ElementDefinition rootElement = new()
             {
-                ElementId = extElementId + ".extension",
-                Path = extElementPath + ".extension",
+                ElementId = extRec.ElementId,
+                Path = extRec.Path,
+                Short = extRec.ShortText,
+                Definition = extRec.Definition,
+                Comment = extRec.Comment,
+                Min = extRec.SourceElement.MinCardinality,
+                Max = extRec.SourceElement.MaxCardinalityString,
+                Base = new()
+                {
+                    Path = "Extension",
+                    Min = 0,
+                    Max = "*",
+                },
+                IsModifier = extRec.SourceElement.IsModifier,
+                IsModifierReason = extRec.SourceElement.IsModifierReason
+                    ?? (extRec.SourceElement.IsModifier == true ? $"This extension is a modifier because the target element {extRec.SourceElement.Id} is flagged IsModifier" : null),
+            };
+
+            sd.Differential.Element.Add(rootElement);
+        }
+        else if (extRec.SliceName != null)
+        {
+            // add the primary slice
+            ElementDefinition sliceElement = new()
+            {
+                ElementId = extRec.ElementId,
+                Path = extRec.Path,
+                SliceName = extRec.SliceName,
+                Short = extRec.ShortText,
+                Definition = extRec.Definition,
+                Comment = extRec.Comment,
+                Min = extRec.SourceElement.MinCardinality,
+                Max = extRec.SourceElement.MaxCardinalityString,
+                Base = new()
+                {
+                    Path = "Extension.extension",
+                    Min = 0,
+                    Max = "*",
+                }
+            };
+
+            sd.Differential.Element.Add(sliceElement);
+        }
+
+        bool hasDatatypeExtension = (extRec.DatatypeSliceElement != null) && (extRec.DatatypeValueElement != null);
+
+        // if there are any extensions, we need to build the slicing element
+        if ((extRec.Extensions.Count > 0) ||
+            hasDatatypeExtension)
+        {
+            sd.Differential.Element.Add(new()
+            {
+                ElementId = extRec.ElementId + ".extension",
+                Path = extRec.Path + ".extension",
+                Base = new()
+                {
+                    Path = "Extension.extension",
+                    Min = 0,
+                    Max = "*",
+                },
                 Slicing = new()
                 {
                     Discriminator = [
@@ -1288,25 +1312,134 @@ public partial class XVerProcessor
                     Ordered = false,
                     Rules = ElementDefinition.SlicingRules.Closed,
                 },
-                Min = 0,
+                Min = extRec.Extensions.Sum(ebr => ebr.SourceElement.MinCardinality),
                 Max = "*",
-            };
+            });
+        }
 
-            // if we have child extensions, we cannot have a value
-            extSd.Differential.Element.Add(edForChildren);
+        // recursively add any extensions
+        foreach (ExtElementBuilderRecord child in extRec.Extensions)
+        {
+            addExtRecToSd(sd, child);
+        }
 
-            int minRequired = 0;
+        // if we have a datatype slice and value, we need to add them
+        if (hasDatatypeExtension)
+        {
+            sd.Differential.Element.Add(extRec.DatatypeSliceElement);
+            sd.Differential.Element.Add(extRec.DatatypeValueElement);
+        }
 
+        // add the URL element (always required)
+        sd.Differential.Element.Add(new()
+        {
+            ElementId = extRec.ElementId + ".url",
+            Path = extRec.Path + ".url",
+            Base = new()
+            {
+                Path = "Extension.url",
+                Min = 1,
+                Max = "1",
+            },
+            Min = 1,
+            Max = "1",
+            Fixed = new FhirUri(extRec.Url),
+        });
+
+        // if there is a value element, we need to add it
+        if (extRec.ValueElement != null)
+        {
+            sd.Differential.Element.Add(extRec.ValueElement);
+        }
+    }
+
+    private record class ExtElementBuilderRecord
+    {
+        public required DbElement SourceElement { get; set; }
+        public required string? UserMessages { get; set; }
+        public required string ShortText { get; set; }
+        public required string Definition { get; set; }
+        public required string? Comment { get; set; }
+        public required string Url { get; set; }
+        public required string ElementId { get; set; }
+        public required string Path { get; set; }
+        public required string? SliceName { get; set; }
+        public ElementDefinition? ValueElement { get; set; } = null;
+        public List<ExtElementBuilderRecord> Extensions { get; set; } = [];
+        public ElementDefinition? DatatypeSliceElement { get; set; } = null;
+        public ElementDefinition? DatatypeValueElement { get; set; } = null;
+        public List<string> ExtendedDatatypeNames = [];
+    }
+
+
+    private ExtElementBuilderRecord? addElementToExtension(
+        StructureDefinition extSd,
+        string extElementId,
+        string extElementPath,
+        string? sliceName,
+        PackageXverSupport sourcePackageSupport,
+        PackageXverSupport targetPackageSupport,
+        DbStructureDefinition sd,
+        DbElement element,
+        List<DbElementComparison> relevantComparisons,
+        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        List<DbElement>? contextElements,
+        bool isExtensionOnBasic)
+    {
+        // do not build extensions for extension or base elements
+        switch (element.FullCollatedTypeLiteral)
+        {
+            case "Extension":
+            case "Base":
+                return null;
+        }
+
+        // skip id elements, they are part of every element and do not need to be written
+        if (extElementId.EndsWith(".extension:id", StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        // check to see if this element is in the 'basic' resource of this version (do not add)
+        if ((isExtensionOnBasic == true) &&
+            (sliceName != null) &&
+            (element.Path.Length > sd.Name.Length) &&
+            targetPackageSupport.BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
+        {
+            return null;
+        }
+
+        (string? edShortText, string? edDefinition, string? edComment) = getTextForExtensionElement(
+            element,
+            relevantComparisons.Count == 0 ? null : string.Join(' ', relevantComparisons.Select(c => c.UserMessage ?? string.Empty)));
+
+        ExtElementBuilderRecord extBuilderRec = new()
+        {
+            SourceElement = element,
+            UserMessages = relevantComparisons.Count == 0 ? null : string.Join(' ', relevantComparisons.Select(c => c.UserMessage ?? string.Empty)),
+            ShortText = edShortText ?? $"Cross-version extension for {element.Name} from {sd.VersionedUrl} for use in FHIR {targetPackageSupport.Package.ShortName}",
+            Definition = edDefinition ?? $"This cross-version extension represents {element.Path} from {sd.VersionedUrl} for use in FHIR {targetPackageSupport.Package.ShortName}.",
+            Comment = edComment,
+            Url = sliceName == null ? extSd.Url : sliceName,
+            ElementId = extElementId,
+            Path = extElementPath,
+            SliceName = sliceName,
+        };
+
+        int sourceCol = sourcePackageSupport.PackageIndex;
+        int targetCol = targetPackageSupport.PackageIndex;
+
+        // if there are child elements, process them
+        if (element.ChildElementCount != 0)
+        {
             // iterate over our child elements and add them
             foreach (DbElement childElement in DbElement.SelectList(
                 _db!.DbConnection,
                 ParentElementKey: element.Key,
                 orderByProperties: [nameof(DbElement.ResourceFieldOrder)]))
             {
-                minRequired += childElement.MinCardinality;
-
                 // add this child element to the extension
-                addElementToExtension(
+                ExtElementBuilderRecord? child = addElementToExtension(
                     extSd,
                     $"{extElementId}.extension:{childElement.Name}",
                     $"{extElementPath}.extension",
@@ -1316,33 +1449,27 @@ public partial class XVerProcessor
                     sd,
                     childElement,
                     relevantComparisons,
-                    xverValueSets);
+                    xverValueSets,
+                    null,
+                    isExtensionOnBasic);
+
+                if (child != null)
+                {
+                    extBuilderRec.Extensions.Add(child);
+                }
             }
 
-            //extSd.Differential.Element.Add(new()
-            //{
-            //    ElementId = extElementId + ".value[x]",
-            //    Path = extElementPath + ".value[x]",
-            //    Max = "0",
-            //});
-
-            edForChildren.Min = minRequired;
-
-            return;
+            // don't have to do anything past processing children
+            return extBuilderRec;
         }
 
-        //bool addedEdExt = false;
-
-        bool addedEdValue = false;
-        //bool addedEdValueExtension = false;
-        //ElementDefinition? extEdValueExtension = null;
         ElementDefinition extensionEdValue = new()
         {
             ElementId = extElementId + ".value[x]",
             Path = extElementPath + ".value[x]",
-            Short = edShortText,
-            Definition = edDefinition,
-            Comment = edComment,
+            Short = extBuilderRec.ShortText,
+            Definition = extBuilderRec.Definition,
+            Comment = extBuilderRec.Comment,
             Base = new()
             {
                 Path = "Extension.value[x]",
@@ -1448,7 +1575,7 @@ public partial class XVerProcessor
                 extSd,
                 element,
                 sourcePackageSupport,
-                ref extensionDatatypeValueElement,
+                ref extBuilderRec,
                 extElementId,           //extElementId + ".value[x].extension",
                 extElementPath,         //extElementPath + ".value[x].extension",
                 typeName);
@@ -1468,7 +1595,7 @@ public partial class XVerProcessor
             DbElement etRootElement = DbElement.SelectSingle(_db!.DbConnection, StructureKey: etSd.Key, ResourceFieldOrder: 0)
                 ?? throw new Exception($"Failed to resolve the root element of {etSd.Name} ({etSd.Key})");
 
-            // get the elements for this structure
+            // get the child elements for the structure
             List<DbElement> etElements = DbElement.SelectList(
                 _db!.DbConnection,
                 StructureKey: etSd.Key,
@@ -1478,7 +1605,7 @@ public partial class XVerProcessor
             // iterate over the elements to add them to the extension
             foreach (DbElement etElement in etElements)
             {
-                addElementToExtension(
+                ExtElementBuilderRecord? childRec = addElementToExtension(
                     extSd,
                     $"{extElementId}.extension:{etElement.Name}",
                     $"{extElementPath}.extension",
@@ -1488,7 +1615,14 @@ public partial class XVerProcessor
                     sd,
                     etElement,
                     relevantComparisons,
-                    xverValueSets);
+                    xverValueSets,
+                    null,
+                    isExtensionOnBasic);
+
+                if (childRec != null)
+                {
+                    extBuilderRec.Extensions.Add(childRec);
+                }
             }
         }
 
@@ -1501,11 +1635,7 @@ public partial class XVerProcessor
             }
 
             // add the value element if we are supposed to
-            if (!addedEdValue)
-            {
-                extSd.Differential.Element.Add(extensionEdValue);
-                addedEdValue = true;
-            }
+            extBuilderRec.ValueElement = extensionEdValue;
 
             // consolidate profiles
             List<string> typeProfiles = collectedValueTypes.Contains(typeName) ? collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>() : [];
@@ -1531,7 +1661,7 @@ public partial class XVerProcessor
                         extSd,
                         element,
                         sourcePackageSupport,
-                        ref extensionDatatypeValueElement,
+                        ref extBuilderRec,
                         extElementId,           //extElementId + ".value[x].extension",
                         extElementPath,         //extElementPath + ".value[x].extension",
                         rt);
@@ -1539,6 +1669,29 @@ public partial class XVerProcessor
             }
 
             usedTypes.Add(typeName);
+        }
+
+        HashSet<string> contextReferenceTargets = [];
+        if (contextElements != null)
+        {
+            // add the context elements to the extension
+            foreach (DbElement contextElement in contextElements)
+            {
+                // get any reference element types for this element
+                List<DbElementType> referenceTypes = DbElementType.SelectList(
+                    _db!.DbConnection,
+                    ElementKey: contextElement.Key,
+                    TypeName: "Reference");
+
+                foreach (DbElementType rt in referenceTypes)
+                {
+                    // if we have a target profile, add it to the extension
+                    if (!string.IsNullOrEmpty(rt.TargetProfile))
+                    {
+                        contextReferenceTargets.Add(rt.TargetProfile);
+                    }
+                }
+            }
         }
 
         // process allowed and replaceable types
@@ -1550,11 +1703,7 @@ public partial class XVerProcessor
             }
 
             // add the value element if we are supposed to
-            if (!addedEdValue)
-            {
-                extSd.Differential.Element.Add(extensionEdValue);
-                addedEdValue = true;
-            }
+            extBuilderRec.ValueElement = extensionEdValue;
 
             // consolidate profiles
             List<string> typeProfiles = collectedValueTypes[typeName].Select(t => t.TypeProfile).Where(t => t != null)!.ToList<string>();
@@ -1573,23 +1722,14 @@ public partial class XVerProcessor
 
                 foreach (string unversionedUrl in mappedUrls)
                 {
+                    // only add targets that do not exist on the context reference targets
+                    if (contextReferenceTargets.Contains(unversionedUrl))
+                    {
+                        continue;
+                    }
+
                     targetProfiles.Add(unversionedUrl);
                 }
-
-                //// if we have the target type, just add it
-                //if (DbStructureDefinition.SelectCount(_db!.DbConnection, FhirPackageKey: targetPackageSupport.Package.Key, UnversionedUrl: tp) != 0)
-                //{
-                //    targetProfiles.Add(tp);
-                //    continue;
-                //}
-
-                //string tpTypeName = tp.Split('/')[^1];
-                //string profileUrl = $"{targetPackageSupport.Package.CanonicalUrl}" +
-                //    $"/{targetPackageSupport.Package.FhirVersionShort}" +
-                //    $"/StructureDefinition" +
-                //    $"/{sourcePackageSupport.Package.ShortName}-{tpTypeName}-for-{targetPackageSupport.Package.ShortName}";
-
-                //targetProfiles.Add(profileUrl);
             }
 
             // remove any quantity type profiles that got promoted
@@ -1624,7 +1764,7 @@ public partial class XVerProcessor
                         extSd,
                         element,
                         sourcePackageSupport,
-                        ref extensionDatatypeValueElement,
+                        ref extBuilderRec,
                         extElementId,           //extElementId + ".value[x].extension",
                         extElementPath,         //extElementPath + ".value[x].extension",
                         rt);
@@ -1643,11 +1783,7 @@ public partial class XVerProcessor
             }
 
             // add the value element if we are supposed to
-            if (!addedEdValue)
-            {
-                extSd.Differential.Element.Add(extensionEdValue);
-                addedEdValue = true;
-            }
+            extBuilderRec.ValueElement = extensionEdValue;
 
             // create a new type reference
             ElementDefinition.TypeRefComponent? edValueType = new()
@@ -1664,7 +1800,7 @@ public partial class XVerProcessor
                     extSd,
                     element,
                     sourcePackageSupport,
-                    ref extensionDatatypeValueElement,
+                    ref extBuilderRec,
                     extElementId,           //extElementId + ".value[x].extension",
                     extElementPath,         //extElementPath + ".value[x].extension",
                     rt);
@@ -1673,7 +1809,7 @@ public partial class XVerProcessor
             usedTypes.Add(typeName);
         }
 
-        return;
+        return extBuilderRec;
     }
 
 
@@ -1681,15 +1817,15 @@ public partial class XVerProcessor
         StructureDefinition extSd,
         DbElement sourceDbElement,
         PackageXverSupport sourcePackageSupport,
-        ref ElementDefinition? extensionDatatypeValueElement,
+        ref ExtElementBuilderRecord extBuilderRecord,
         string parentId,
         string parentPath,
         string typeName)
     {
         // if we don't have the element already, we need to create the whole set
-        if (extensionDatatypeValueElement == null)
+        if (extBuilderRecord.DatatypeValueElement == null)
         {
-            extSd.Differential.Element.Add(new()
+            extBuilderRecord.DatatypeSliceElement = new()
             {
                 ElementId = parentId + ".extension:_datatype",
                 Path = parentPath + ".extension",
@@ -1699,15 +1835,15 @@ public partial class XVerProcessor
                 Min = 0,
                 Max = "1",
                 Type = [
-                        new()
-                        {
-                            Code = "Extension",
-                            Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
-                        }
-                    ],
-            });
+                    new()
+                    {
+                        Code = "Extension",
+                        Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
+                    }
+                ],
+            };
 
-            extensionDatatypeValueElement = new()
+            extBuilderRecord.DatatypeValueElement = new()
             {
                 ElementId = parentId + ".extension:_datatype.value[x]",
                 Path = parentPath + ".extension.value[x]",
@@ -1721,27 +1857,28 @@ public partial class XVerProcessor
                     Max = "1",
                 },
                 Type = [
-                        new()
-                            {
-                                Code = "string",
-                            }
-                    ],
+                    new()
+                        {
+                            Code = "string",
+                        }
+                ],
                 Fixed = new FhirString(typeName),
             };
 
-            extSd.Differential.Element.Add(extensionDatatypeValueElement);
+            extBuilderRecord.ExtendedDatatypeNames = [typeName];
 
             // done
             return;
         }
 
         // need to add this type
-        extensionDatatypeValueElement.Fixed = null;
-        extensionDatatypeValueElement.Comment += "|" + typeName;
+        extBuilderRecord.ExtendedDatatypeNames.Add(typeName);
+        extBuilderRecord.DatatypeValueElement.Fixed = null;
+        extBuilderRecord.DatatypeValueElement.Comment += "|" + typeName;
     }
 
 
-    private void discoverContexts(
+    private List<DbElement> discoverContexts(
         HashSet<string> contextElementPaths,
         int sourceIndex,
         int targetIndex,
@@ -1750,6 +1887,8 @@ public partial class XVerProcessor
         Dictionary<int, List<DbGraphSd.DbElementRow>> elementProjectionDict)
 
     {
+        List<DbElement> contextElements = [];
+
         // iterate over the element projection rows
         foreach ((DbGraphSd.DbElementRow elementRow, int elementRowNumber) in elementProjectionDict[element.Key].Select((r, i) => (r, i)))
         {
@@ -1785,6 +1924,7 @@ public partial class XVerProcessor
                         DbGraphSd.DbElementCell? parentCell = parentRow[targetIndex];
                         if (parentCell != null)
                         {
+                            contextElements.Add(parentCell.Element);
                             contextElementPaths.Add(parentCell.Element.Path);
                             addedSomething = true;
                             break;
@@ -1796,6 +1936,7 @@ public partial class XVerProcessor
                             if (contextCell.Element.ResourceFieldOrder == 0)
                             {
                                 // add this as the context
+                                contextElements.Add(contextCell.Element);
                                 contextElementPaths.Add(contextCell.Element.Path);
                                 addedSomething = true;
                                 break;
@@ -1818,11 +1959,21 @@ public partial class XVerProcessor
                     (targetPackageSupport.CoreDC?.ResourcesByName.ContainsKey(name) == true))
                 {
                     contextElementPaths.Add(name);
+                    DbElement? dbElement = DbElement.SelectSingle(
+                        _db!.DbConnection,
+                        FhirPackageKey: targetPackageSupport.Package.Key,
+                        Id: name);
+                    if (dbElement != null)
+                    {
+                        contextElements.Add(dbElement);
+                    }
                 }
 
                 // if we do not find *anything* that matches, the caller will default by adding Element
             }
         }
+
+        return contextElements;
     }
 
 
@@ -1933,12 +2084,20 @@ public partial class XVerProcessor
         // get the list of value sets in this version that have a required binding
         List<DbValueSet> valueSets = DbValueSet.SelectList(
             _db!.DbConnection,
-            FhirPackageKey: sourcePackage.Key,
-            StrongestBindingCore: BindingStrength.Required);
+            FhirPackageKey: sourcePackage.Key);
 
         // iterate over the value sets
         foreach (DbValueSet vs in valueSets)
         {
+            // skip excluded content and value sets that cannot expand
+            if (_exclusionSet.Contains(vs.UnversionedUrl) ||
+                _exclusionSet.Contains(vs.VersionedUrl) ||
+                (vs.CanExpand == false) ||
+                (vs.IsExcluded == true))
+            {
+                continue;
+            }
+
             // build a graph for this value set
             DbGraphVs vsGraph = new()
             {
