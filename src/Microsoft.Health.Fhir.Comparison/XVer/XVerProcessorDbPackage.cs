@@ -35,6 +35,10 @@ namespace Microsoft.Health.Fhir.Comparison.XVer;
 
 public partial class XVerProcessor
 {
+    private const string _thoPackageVersion = "6.5.0";
+    private const string _extensionsPackVersion = "5.3.0-ballot-tc1";
+    private const string _toolsPackageVersion = "0.8.0";
+
     private const string _xverChangelogMd = $$$"""
 
         ### 0.0.1-snapshot-2
@@ -270,6 +274,13 @@ public partial class XVerProcessor
                     ? string.Empty
                     : (", " + string.Join(", ", internalDependencies.Select(pi => $"\"{pi.packageId}\" : \"{pi.packageVersion}\"")));
 
+                string packageSuffix = packageSupport.Package.ShortName.ToLowerInvariant();
+
+                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
+                string toolsPackageSuffix = packageSupport.Package.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
+                    ? "r4"
+                    : packageSupport.Package.ShortName.ToLowerInvariant();
+
                 string packageJson = $$$"""
                     {
                         "name" : "{{{packageId}}}",
@@ -286,9 +297,9 @@ public partial class XVerProcessor
                         "fhirVersions" : ["{{{packageSupport.Package.PackageVersion}}}"],
                         "dependencies" : {
                             "{{{packageSupport.Package.PackageId}}}" : "{{{packageSupport.Package.PackageVersion}}}",
-                            "hl7.terminology.{{{packageSupport.Package.ShortName.ToLowerInvariant()}}}" : "6.3.0",
-                            "hl7.fhir.uv.extensions.{{{packageSupport.Package.ShortName.ToLowerInvariant()}}}" : "5.2.0",
-                            "hl7.fhir.uv.tools.{{{packageSupport.Package.ShortName.ToLowerInvariant()}}}" : "latest"
+                            "hl7.terminology.{{{packageSuffix}}}" : "{{{_thoPackageVersion}}}",
+                            "hl7.fhir.uv.extensions.{{{packageSuffix}}}" : "{{{_extensionsPackVersion}}}",
+                            "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}" : "{{{_toolsPackageVersion}}}"
                             {{{additionalDependencies}}}
                         },
                         "author" : "HL7 International / FHIR Infrastructure",
@@ -626,6 +637,13 @@ public partial class XVerProcessor
                         : string.Join("\n", packageMdFiles.Select(p => $"\t{p.lookupFilename}:\n\t\ttitle: Lookup for {p.structureName}"));
                 }
 
+                string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
+
+                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
+                string toolsPackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
+                    ? "r4"
+                    : targetPackage.ShortName.ToLowerInvariant();
+
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
                     # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
@@ -655,10 +673,10 @@ public partial class XVerProcessor
                     # use cases, the value can be an object with keys for id, uri, and version.
                     #
                     dependencies:
-                        # {{{targetSupport.Package.PackageId}}} : {{{targetSupport.Package.PackageVersion}}}
-                        hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 6.3.0
-                        hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 5.2.0
-                        hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : latest
+                        # {{{targetPackage.PackageId}}} : {{{targetPackage.PackageVersion}}}
+                        hl7.terminology.{{{packageSuffix}}} : {{{_thoPackageVersion}}}
+                        hl7.fhir.uv.extensions.{{{packageSuffix}}} : {{{_extensionsPackVersion}}}
+                        hl7.fhir.uv.tools.{{{toolsPackageSuffix}}} : {{{_toolsPackageVersion}}}
                         {{{additionalDependencies}}}
 
                     #   hl7.fhir.us.core: 3.1.0
@@ -971,6 +989,13 @@ public partial class XVerProcessor
 
                 string pagesYaml = string.Join("\n", pages.Select(p => $"    {p.filename}:\n        title: {p.title}"));
 
+                string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
+
+                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
+                string toolsPackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
+                    ? "r4"
+                    : targetPackage.ShortName.ToLowerInvariant();
+
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
                     # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
@@ -1000,10 +1025,10 @@ public partial class XVerProcessor
                     # use cases, the value can be an object with keys for id, uri, and version.
                     #
                     dependencies:
-                        # {{{targetSupport.Package.PackageId}}} : {{{targetSupport.Package.PackageVersion}}}
-                        hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 6.3.0
-                        hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : 5.2.0
-                        hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}} : latest
+                        # {{{targetPackage.PackageId}}} : {{{targetPackage.PackageVersion}}}
+                        hl7.terminology.{{{packageSuffix}}} : {{{_thoPackageVersion}}}
+                        hl7.fhir.uv.extensions.{{{packageSuffix}}} : {{{_extensionsPackVersion}}}
+                        hl7.fhir.uv.tools.{{{toolsPackageSuffix}}} : {{{_toolsPackageVersion}}}
 
                     #   hl7.fhir.us.core: 3.1.0
                     #   hl7.fhir.us.mcode:
@@ -1321,6 +1346,13 @@ public partial class XVerProcessor
 
             // build and write the package.json file
             {
+                string packageSuffix = targetSupport.Package.ShortName.ToLowerInvariant();
+
+                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
+                string toolsPackageSuffix = targetSupport.Package.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
+                    ? "r4"
+                    : targetSupport.Package.ShortName.ToLowerInvariant();
+
                 string packageJson = $$$"""
                     {
                         "name" : "{{{packageId}}}",
@@ -1337,9 +1369,9 @@ public partial class XVerProcessor
                         "fhirVersions" : ["{{{targetSupport.Package.PackageVersion}}}"],
                         "dependencies" : {
                             "{{{targetSupport.Package.PackageId}}}" : "{{{targetSupport.Package.PackageVersion}}}",
-                            "hl7.terminology.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "6.3.0",
-                            "hl7.fhir.uv.extensions.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "5.2.0",
-                            "hl7.fhir.uv.tools.{{{targetSupport.Package.ShortName.ToLowerInvariant()}}}" : "latest"
+                            "hl7.terminology.{{{packageSuffix}}}" : "{{{_thoPackageVersion}}}",
+                            "hl7.fhir.uv.extensions.{{{packageSuffix}}}" : "{{{_extensionsPackVersion}}}",
+                            "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}" : "{{{_toolsPackageVersion}}}"
                         },
                         "author" : "HL7 International / FHIR Infrastructure",
                         "maintainers" : [
@@ -1567,7 +1599,7 @@ public partial class XVerProcessor
                     ElementId = "hl7tx",
                     Uri = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
                     PackageId = "hl7.terminology.r5",
-                    Version = "6.3.0",
+                    Version = _thoPackageVersion,
                     Extension = [
                         new()
                         {
@@ -1581,14 +1613,14 @@ public partial class XVerProcessor
                     ElementId = "hl7_fhir_uv_extensions",
                     Uri = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
                     PackageId = "hl7.fhir.uv.extensions.r5",
-                    Version = "5.2.0",
+                    Version = _extensionsPackVersion,
                 },
                 new()
                 {
                     ElementId = "hl7_fhir_uv_tools",
                     Uri = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                     PackageId = "hl7.fhir.uv.tools.r5",
-                    Version = "latest",
+                    Version = _toolsPackageVersion,
                 },
             ],
             Definition = new()
@@ -1720,7 +1752,7 @@ public partial class XVerProcessor
                     ElementId = "hl7tx",
                     Uri = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
                     PackageId = "hl7.terminology.r5",
-                    Version = "6.3.0",
+                    Version = _thoPackageVersion,
                     Extension = [
                         new()
                         {
@@ -1734,14 +1766,14 @@ public partial class XVerProcessor
                     ElementId = "hl7_fhir_uv_extensions",
                     Uri = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
                     PackageId = "hl7.fhir.uv.extensions.r5",
-                    Version = "5.2.0",
+                    Version = _extensionsPackVersion,
                 },
                 new()
                 {
                     ElementId = "hl7_fhir_uv_tools",
                     Uri = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                     PackageId = "hl7.fhir.uv.tools.r5",
-                    Version = "latest",
+                    Version = _toolsPackageVersion,
                 },
             ],
             Definition = new()
@@ -1833,6 +1865,13 @@ public partial class XVerProcessor
                 """);
         }
 
+        string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
+
+        // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
+        string toolsPackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
+            ? "r4"
+            : targetPackage.ShortName.ToLowerInvariant();
+
         string igJson = $$$"""
             {
               "resourceType" : "ImplementationGuide",
@@ -1877,20 +1916,20 @@ public partial class XVerProcessor
                   "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
                 }],
                 "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-                "packageId" : "hl7.terminology.{{{targetPackage.ShortName.ToLowerInvariant()}}}",
-                "version" : "6.3.0"
+                "packageId" : "hl7.terminology.{{{packageSuffix}}}",
+                "version" : "{{{_thoPackageVersion}}}"
               },
               {
                 "id" : "hl7_fhir_uv_extensions",
                 "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
-                "packageId" : "hl7.fhir.uv.extensions.{{{targetPackage.ShortName.ToLowerInvariant()}}}",
-                "version" : "5.2.0"
+                "packageId" : "hl7.fhir.uv.extensions.{{{packageSuffix}}}",
+                "version" : "{{{_extensionsPackVersion}}}"
               },
               {
                 "id" : "hl7_fhir_uv_tools",
                 "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
-                "packageId" : "hl7.fhir.uv.tools.{{{targetPackage.ShortName.ToLowerInvariant()}}}",
-                "version" : "latest"
+                "packageId" : "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}",
+                "version" : "{{{_toolsPackageVersion}}}"
               }],
               "definition" : {
                 "resource" : [
@@ -1940,6 +1979,13 @@ public partial class XVerProcessor
             resources = string.Empty;
         }
 
+        string packageSuffix = package.ShortName.ToLowerInvariant();
+
+        // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
+        string toolsPackageSuffix = package.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
+            ? "r4"
+            : package.ShortName.ToLowerInvariant();
+
         string igJson = $$$"""
             {
               "resourceType" : "ImplementationGuide",
@@ -1984,20 +2030,20 @@ public partial class XVerProcessor
                   "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
                 }],
                 "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-                "packageId" : "hl7.terminology.{{{package.ShortName.ToLowerInvariant()}}}",
-                "version" : "6.3.0"
+                "packageId" : "hl7.terminology.{{{packageSuffix}}}",
+                "version" : "{{{_thoPackageVersion}}}"
               },
               {
                 "id" : "hl7_fhir_uv_extensions",
                 "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
-                "packageId" : "hl7.fhir.uv.extensions.{{{package.ShortName.ToLowerInvariant()}}}",
-                "version" : "5.2.0"
+                "packageId" : "hl7.fhir.uv.extensions.{{{packageSuffix}}}",
+                "version" : "{{{_extensionsPackVersion}}}"
               },
               {
                 "id" : "hl7_fhir_uv_tools",
                 "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
-                "packageId" : "hl7.fhir.uv.tools.{{{package.ShortName.ToLowerInvariant()}}}",
-                "version" : "latest"
+                "packageId" : "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}",
+                "version" : "{{{_toolsPackageVersion}}}"
               }{{{additionalDependencies}}}
               ]{{{resources}}}
             }
