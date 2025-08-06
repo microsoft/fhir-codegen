@@ -138,6 +138,12 @@ public partial class FhirDbComparer
                     continue;
                 }
 
+                // only process neighboring packages
+                if (CodeGenCommon.Packaging.FhirReleases.GetReleaseDistance(sourcePackage.DefinitionFhirSequence, targetPackage.DefinitionFhirSequence) > 1)
+                {
+                    continue;
+                }
+
                 _logger.LogInformation($"Processing target package {targetPackage.Key}: {targetPackage.PackageId}@{targetPackage.PackageVersion}");
 
                 // get the forward and packageReversePair package comparison pairs

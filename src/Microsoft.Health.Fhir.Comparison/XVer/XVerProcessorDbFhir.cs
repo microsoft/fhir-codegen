@@ -1492,7 +1492,20 @@ public partial class XVerProcessor
             }
             else
             {
-                vsUrl = element.BindingValueSet;
+                List<(string unversionedUrl, string version)> mappedUrls = _db!.DbConnection.GetMappedValueSetUrls(
+                    sourcePackageSupport.Package.Key,
+                    element.BindingValueSet,
+                    targetPackageSupport.Package.Key);
+
+                if (mappedUrls.Count == 0)
+                {
+                    // nothing else to do
+                    vsUrl = element.BindingValueSet;
+                }
+                else
+                {
+                    vsUrl = mappedUrls[0].unversionedUrl + "|" + mappedUrls[0].version;
+                }
             }
 
             extensionEdValue.Binding = new()
@@ -1566,7 +1579,6 @@ public partial class XVerProcessor
         }
 
         HashSet<string> usedTypes = [];
-        ElementDefinition? extensionDatatypeValueElement = null;
 
         // process mapped types (extension before value)
         foreach (string typeName in extMappedTypes)

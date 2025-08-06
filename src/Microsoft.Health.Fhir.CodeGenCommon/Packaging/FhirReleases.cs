@@ -184,6 +184,10 @@ public static class FhirReleases
         { "hl7.fhir.r6.core", FhirSequenceCodes.R6 },
     }.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
 
+    public static int GetReleaseDistance(FhirSequenceCodes a, FhirSequenceCodes b) => a > b
+        ? (a - b)
+        : (b - a);
+
     /// <summary>Check if a FHIR release version is unavailable (e.g., a superseded patch).</summary>
     /// <param name="version">The version string.</param>
     /// <returns>True if it succeeds, false if it fails.</returns>

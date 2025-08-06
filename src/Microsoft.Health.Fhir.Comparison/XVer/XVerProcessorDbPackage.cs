@@ -66,6 +66,7 @@ public partial class XVerProcessor
         * Added `lookup.md` file to generated single-version packages as index file for all resource lookups
         * Fix: sushi-config.yaml `name` property was not properly formatted (`ig-0`)
         * Added `ignoreWarnings.txt` file to generated packages to suppress known non-critical warnings during IG publishing
+        * Fix: ValueSets that have `equivalent` definitions in target versions were referencing the source version number
 
         ### 0.0.1-snapshot-1
 
@@ -580,7 +581,6 @@ public partial class XVerProcessor
                     _crossDefinitionVersion));
             }
 
-
             // write GitHub repository files to the output directory
             if (githubFiles.Count > 0)
             {
@@ -927,6 +927,12 @@ public partial class XVerProcessor
 
         foreach (PackageXverSupport targetSupport in packageSupports)
         {
+            // skip self - no comparison
+            if (targetSupport.Package.Key == sourcePackage.Key)
+            {
+                continue;
+            }
+
             DbFhirPackage targetPackage = targetSupport.Package;
             string packageId = getPackageId(sourcePackage, targetPackage);
             string dir = createExportPackageDir(fhirDir, sourcePackage, targetPackage);
