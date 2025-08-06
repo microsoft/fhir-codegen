@@ -726,11 +726,12 @@ public partial class XVerProcessor
                         usage-stats-opt-out: true
                         shownav: 'true'
                         pin-canonicals: pin-all
-                        path-resource:
-                            - input/extensions/*
-                            - input/profiles/*
-                            - input/resources/*
-                            - input/vocabulary/*
+                        # These are standard directories, they do not need to be specified
+                        # path-resource:
+                        #     - input/extensions/*
+                        #     - input/profiles/*
+                        #     - input/resources/*
+                        #     - input/vocabulary/*
 
                     extension:
                         - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
@@ -1077,11 +1078,12 @@ public partial class XVerProcessor
                         show-inherited-invariants: false
                         usage-stats-opt-out: true
                         shownav: 'true'
-                        path-resource:
-                            - input/extensions/*
-                            - input/profiles/*
-                            - input/resources/*
-                            - input/vocabulary/*
+                        # These are standard directories, they do not need to be specified
+                        # path-resource:
+                        #     - input/extensions/*
+                        #     - input/profiles/*
+                        #     - input/resources/*
+                        #     - input/vocabulary/*
                                         
                     extension:
                         - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
