@@ -1499,14 +1499,46 @@ public partial class XVerProcessor
 
                 if (mappedUrls.Count == 0)
                 {
+                    // try to get a matching VS
+                    DbValueSet? targetVs = DbValueSet.SelectSingle(
+                        _db!.DbConnection,
+                        FhirPackageKey: targetPackageSupport.Package.Key,
+                        UnversionedUrl: element.BindingValueSet);
+
+                    targetVs ??= DbValueSet.SelectSingle(
+                        _db!.DbConnection,
+                        FhirPackageKey: targetPackageSupport.Package.Key,
+                        VersionedUrl: element.BindingValueSet);
+
+                    if (targetVs == null)
+                    {
+                        DbValueSet? sourceVs = DbValueSet.SelectSingle(
+                            _db!.DbConnection,
+                            Key: element.BindingValueSetKey);
+
+                        if (sourceVs != null)
+                        {
+                            targetVs = DbValueSet.SelectSingle(
+                                _db!.DbConnection,
+                                FhirPackageKey: targetPackageSupport.Package.Key,
+                                Id: sourceVs.Id);
+                        }
+                    }
+
+                    // if we have a target VS, use it
+                    if (targetVs != null)
+                    {
+                        vsUrl = targetVs.UnversionedUrl + "|" + targetVs.Version;
+                    }
                     // if this is an example binding, just leave it unbound
-                    if (element.ValueSetBindingStrength == BindingStrength.Extensible)
+                    else if (element.ValueSetBindingStrength == BindingStrength.Extensible)
                     {
                         vsUrl = null;
                     }
                     else
                     {
-                        // use the original binding value set URL - it will cause publisher warnings, but there is nothing else to do
+                        // TODO: use the original binding value set URL - it is likely unexpandable
+                        // Note that this will cause publisher warnings, but we do not have a strategy for resolving yet
                         vsUrl = element.BindingValueSet;
                     }
                 }
