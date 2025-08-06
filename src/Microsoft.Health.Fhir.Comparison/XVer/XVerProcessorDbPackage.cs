@@ -725,7 +725,8 @@ public partial class XVerProcessor
                         show-inherited-invariants: false
                         usage-stats-opt-out: true
                         shownav: 'true'
-                        path-resources:
+                        pin-canonicals: pin-all
+                        path-resource:
                             - input/extensions/*
                             - input/profiles/*
                             - input/resources/*

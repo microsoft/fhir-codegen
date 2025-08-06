@@ -1483,7 +1483,7 @@ public partial class XVerProcessor
         if ((element.ValueSetBindingStrength != null) &&
             (element.BindingValueSet != null))
         {
-            string vsUrl;
+            string? vsUrl = null;
 
             if ((element.BindingValueSetKey != null) &&
                 xverValueSets.TryGetValue((element.BindingValueSetKey.Value, targetPackageSupport.Package.Key), out ValueSet? vs))
@@ -1499,8 +1499,16 @@ public partial class XVerProcessor
 
                 if (mappedUrls.Count == 0)
                 {
-                    // nothing else to do
-                    vsUrl = element.BindingValueSet;
+                    // if this is an example binding, just leave it unbound
+                    if (element.ValueSetBindingStrength == BindingStrength.Extensible)
+                    {
+                        vsUrl = null;
+                    }
+                    else
+                    {
+                        // use the original binding value set URL - it will cause publisher warnings, but there is nothing else to do
+                        vsUrl = element.BindingValueSet;
+                    }
                 }
                 else
                 {
@@ -1508,12 +1516,15 @@ public partial class XVerProcessor
                 }
             }
 
-            extensionEdValue.Binding = new()
+            if (vsUrl != null)
             {
-                Strength = element.ValueSetBindingStrength,
-                Description = element.BindingDescription,
-                ValueSet = vsUrl,
-            };
+                extensionEdValue.Binding = new()
+                {
+                    Strength = element.ValueSetBindingStrength,
+                    Description = element.BindingDescription,
+                    ValueSet = vsUrl,
+                };
+            }
         }
 
         // build the value types
