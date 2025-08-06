@@ -627,14 +627,14 @@ public partial class XVerProcessor
             {
                 string additionalDependencies = internalDependencies.Count == 0
                     ? string.Empty
-                    : string.Join("\n\t", internalDependencies.Select(pi => $"{pi.packageId} : {pi.packageVersion}"));
+                    : string.Join("\n    ", internalDependencies.Select(pi => $"{pi.packageId} : {pi.packageVersion}"));
 
                 string lookupPages = string.Empty;
                 if (packageMdList.TryGetValue(packageId, out List<(string structureName, string lookupFilename)>? packageMdFiles))
                 {
                     lookupPages = packageMdFiles.Count == 0
                         ? string.Empty
-                        : string.Join("\n", packageMdFiles.Select(p => $"\t{p.lookupFilename}:\n\t\ttitle: Lookup for {p.structureName}"));
+                        : string.Join("\n", packageMdFiles.Select(p => $"    {p.lookupFilename}:\n        title: Lookup for {p.structureName}"));
                 }
 
                 string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
@@ -1077,7 +1077,7 @@ public partial class XVerProcessor
                         show-inherited-invariants: false
                         usage-stats-opt-out: true
                         shownav: 'true'
-                        path-resources:
+                        path-resource:
                             - input/extensions/*
                             - input/profiles/*
                             - input/resources/*
