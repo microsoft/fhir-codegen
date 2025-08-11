@@ -220,4 +220,5 @@ public static class DbContentExtensions
             return (a == b) || ((a == null) && (b == null));
         }
     }
+
 }

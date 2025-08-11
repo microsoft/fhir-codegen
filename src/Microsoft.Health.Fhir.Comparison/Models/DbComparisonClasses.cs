@@ -179,7 +179,7 @@ public partial class DbFhirPackageComparisonPair : DbRecordBase
 
     public required string TargetPackageShortName { get; set; }
 
-    public DateTime ProccessedAt { get; set; } = DateTime.UtcNow;
+    public DateTime ProcessedAt { get; set; } = DateTime.UtcNow;
 }
 
 

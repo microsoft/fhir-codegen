@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Data;
@@ -237,7 +238,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         List<string> createColLines = [];
         List<string> createFKLines = [];
-        List<(string name, string propType, string shortRead, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum)> tableColInfo = [];
+        List<(string name, string propType, string shortRead, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum, bool useJson)> tableColInfo = [];
 
         foreach (MemberDeclarationSyntax member in members)
         {
@@ -261,12 +262,14 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 continue;
             }
 
+            Type memberType = pds.GetType();
             string propName = pds.Identifier.ToString();
 
             TypeInfo propTypeInfo = pModel.GetTypeInfo(pds.Type);
             string propTypeName = pds.Type.ToString();
+            INamedTypeSymbol? namedTypeSymbol = propTypeInfo.Type is INamedTypeSymbol ints ? ints : null;
 
-            bool nullable = propTypeName.EndsWith("?");
+            bool nullable = propTypeName.EndsWith("?") || (namedTypeSymbol?.NullableAnnotation == NullableAnnotation.Annotated);
             if (nullable)
             {
                 propTypeName = propTypeName.Substring(0, propTypeName.Length - 1);
@@ -296,54 +299,104 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 pkColIndex = tableColInfo.Count;
             }
 
+            // check for any kind of non-scalar type
+            bool memberIsNonScalar = memberType.IsArray || (memberType.IsGenericType && typeof(IEnumerable<object>).IsAssignableFrom(memberType));
+
             // check for type nullability
             //bool nullable = Nullable.GetUnderlyingType(member.) != null;
             //bool nullable = new NullabilityInfoContext().Create(prop).WriteState is NullabilityState.Nullable;
 
+            string? jsonTypeName = null;
             string? enumTypeName = null;
             bool memberIsEnum = false;
 
-            if ((propTypeInfo.Type is INamedTypeSymbol ints) &&
+            if ((namedTypeSymbol != null) &&
                 (
-                    (ints.TypeKind == TypeKind.Enum) ||
-                    ((ints.TypeArguments.Length != 0) && (ints.TypeArguments[0].TypeKind == TypeKind.Enum)) ||
-                    (ints.TypeKind == TypeKind.Struct) && (ints.TypeArguments.Length != 0) && ints.TypeArguments[0].ContainingNamespace.Name.StartsWith("HL7")
+                    (namedTypeSymbol.TypeKind == TypeKind.Enum) ||
+                    ((namedTypeSymbol.TypeArguments.Length != 0) && (namedTypeSymbol.TypeArguments[0].TypeKind == TypeKind.Enum)) ||
+                    (namedTypeSymbol.TypeKind == TypeKind.Struct) && (namedTypeSymbol.TypeArguments.Length != 0) && namedTypeSymbol.TypeArguments[0].ContainingNamespace.Name.StartsWith("HL7")
                 ))
             {
                 memberIsEnum = true;
 
                 // grab the enum type name
-                if (ints.TypeKind == TypeKind.Enum)
+                if (namedTypeSymbol.TypeKind == TypeKind.Enum)
                 {
-                    if (ints.ContainingType == null)
+                    if (namedTypeSymbol.ContainingType == null)
                     {
-                        enumTypeName = $"{ints.ContainingNamespace}.{ints.Name}";
+                        enumTypeName = $"{namedTypeSymbol.ContainingNamespace}.{namedTypeSymbol.Name}";
                     }
                     else
                     {
-                        enumTypeName = $"{ints.ContainingType.ContainingNamespace}.{ints.ContainingType.Name}.{ints.Name}";
+                        enumTypeName = $"{namedTypeSymbol.ContainingType.ContainingNamespace}.{namedTypeSymbol.ContainingType.Name}.{namedTypeSymbol.Name}";
                     }
                 }
-                else if (ints.TypeArguments.Length != 0)
+                else if (namedTypeSymbol.TypeArguments.Length != 0)
                 {
-                    if (ints.TypeArguments[0].ContainingType == null)
+                    if (namedTypeSymbol.TypeArguments[0].ContainingType == null)
                     {
-                        enumTypeName = $"{ints.TypeArguments[0].ContainingNamespace}.{ints.TypeArguments[0].Name}";
+                        enumTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}";
                     }
                     else
                     {
-                        enumTypeName = $"{ints.TypeArguments[0].ContainingType.ContainingNamespace}.{ints.TypeArguments[0].ContainingType.Name}.{ints.TypeArguments[0].Name}";
+                        enumTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingType.ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].ContainingType.Name}.{namedTypeSymbol.TypeArguments[0].Name}";
                     }
                 }
                 else
                 {
-                    enumTypeName = ints.Name;
+                    enumTypeName = namedTypeSymbol.Name;
+                }
+            }
+            else if (namedTypeSymbol != null)
+            {
+                if (namedTypeSymbol.TypeArguments.Length != 0)
+                {
+                    if (namedTypeSymbol.Name.Contains("List"))
+                    {
+                        if (namedTypeSymbol.TypeArguments[0].ContainingType == null)
+                        {
+                            jsonTypeName = $"System.Collections.Generic.List<{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}>";
+                        }
+                        else
+                        {
+                            jsonTypeName = $"System.Collections.Generic.List<{namedTypeSymbol.TypeArguments[0].ContainingType.ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].ContainingType.Name}.{namedTypeSymbol.TypeArguments[0].Name}>";
+                        }
+                    }
+                    else
+                    {
+                        if (namedTypeSymbol.TypeArguments[0].ContainingType == null)
+                        {
+                            jsonTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}";
+                        }
+                        else
+                        {
+                            jsonTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingType.ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].ContainingType.Name}.{namedTypeSymbol.TypeArguments[0].Name}";
+                        }
+                    }
+                }
+                else
+                {
+                    if (namedTypeSymbol.ContainingType == null)
+                    {
+                        jsonTypeName = $"{namedTypeSymbol.ContainingNamespace}.{namedTypeSymbol.Name}";
+                    }
+                    else
+                    {
+                        jsonTypeName = $"{namedTypeSymbol.ContainingType.ContainingNamespace}.{namedTypeSymbol.ContainingType.Name}.{namedTypeSymbol.Name}";
+                    }
+                }
+
+                if (nullable)
+                {
+                    jsonTypeName += "?";
                 }
             }
 
+            bool useJson = !memberIsEnum && !_sqliteTypeMap.ContainsKey(propTypeName);
+
             // add our column line
             createColLines.Add(
-                $"{pds.Identifier.ToString()} {getSqlType(propTypeName, memberIsEnum)}" +
+                $"{pds.Identifier.ToString()} {getSqlType(propTypeName, memberIsEnum, useJson)}" +
                 $"{(isPrimaryKey ? getPkDirective(pkPropType) : string.Empty)}" +
                 $"{((nullable || isPrimaryKey) ? string.Empty : " NOT NULL")}");
 
@@ -384,8 +437,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
-                    memberIsEnum
-                    ));
+                    memberIsEnum,
+                    useJson));
             }
             else if (!nullable && _sqliteReadDirectives.TryGetValue(propTypeName, out readFormat))
             {
@@ -397,8 +450,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
-                    memberIsEnum
-                    ));
+                    memberIsEnum,
+                    useJson));
             }
             else if (memberIsEnum)
             {
@@ -417,21 +470,36 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
-                    memberIsEnum
-                    ));
+                    memberIsEnum,
+                    useJson));
             }
             else
             {
+                // tableColInfo.Add((
+                //     pds.Identifier.ToString(),
+                //     propTypeName,
+                //     $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
+                //     $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
+                //     isPrimaryKey,
+                //     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
+                //     nullable,
+                //     memberIsEnum
+                //     ));
+
                 tableColInfo.Add((
                     pds.Identifier.ToString(),
                     propTypeName,
-                    $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
-                    $"// ERROR: could not determine retrieval directive for type {propName}:{propTypeName}",
+                    nullable
+                        ? string.Format(_sqliteNullableReadDirectives["JSON"].Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName)
+                        : string.Format(_sqliteReadDirectives["JSON"].Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName),
+                    nullable
+                        ? string.Format(_sqliteNullableReadDirectives["JSON"], pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName)
+                        : string.Format(_sqliteReadDirectives["JSON"], pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName),
                     isPrimaryKey,
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
-                    memberIsEnum
-                    ));
+                    memberIsEnum,
+                    useJson));
             }
         }
 
@@ -452,6 +520,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     using System.Collections.Generic;
                     using System.Data;
                     using System.Text;
+                    using System.Text.Json;
                 
                     namespace {{{classNamespace}}};
                 
@@ -1036,7 +1105,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getFnFilterParams(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
             {
                 yield return $"{propType}? {name} = null";
 
@@ -1049,7 +1118,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getFnFilterArgs(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
             {
                 yield return name;
 
@@ -1062,7 +1131,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getConditionLines(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
             {
                 yield return $"if ({name} != null)";
                 yield return "{";
@@ -1075,6 +1144,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 if (isEnum)
                 {
                     yield return $"    {name}Param.Value = {name}.ToString();";
+                }
+                else if (useJson)
+                {
+                    yield return $"    {name}Param.Value = JsonSerializer.Serialize({name});";
                 }
                 else
                 {
@@ -1117,7 +1190,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 executeCommand = true;
             }
 
-            foreach ((string name, string _, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum) in tableColInfo)
+            foreach ((string name, string _, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
             {
                 // do not insert identity key values
                 if (isIdentity && !includeIdentity)
@@ -1145,6 +1218,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         {
                             yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name}.ToString();";
                         }
+                        else if (useJson)
+                        {
+                            yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : JsonSerializer.Serialize(value.{name});";
+                        }
                         else
                         {
                             yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name};";
@@ -1155,6 +1232,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         if (isEnum)
                         {
                             yield return $"{name}Param.Value = value.{name}.ToString();";
+                        }
+                        else if (useJson)
+                        {
+                            yield return $"{name}Param.Value = JsonSerializer.Serialize(value.{name});";
                         }
                         else
                         {
@@ -1202,9 +1283,23 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     /// <summary>
     /// Gets the SQL type for a given type.
     /// </summary>
-    private static string getSqlType(string type, bool isEnum = false) => isEnum
-        ? _sqliteTypeMap["enum"]
-        : _sqliteTypeMap.TryGetValue(type, out string? name) ? name : "TEXT";
+    /// <remarks>
+    /// Explicitly fetch the 'enum' type for anything that is an enum so we don't have to worry about indexing *all* the various enum types
+    /// </remarks>
+    private static string getSqlType(string type, bool isEnum = false, bool useJson = false)
+    {
+        if (isEnum)
+        {
+            return _sqliteTypeMap["enum"];
+        }
+
+        if (useJson)
+        {
+            return _sqliteTypeMap["JSON"];
+        }
+
+        return _sqliteTypeMap.TryGetValue(type, out string? name) ? name : "TEXT";
+    }
 
     private static Dictionary<string, string> _sqliteReadDirectives = new()
     {
@@ -1230,6 +1325,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "(uint){0} = {1}.GetInt32({2})" },
         { "ulong", "(ulong){0} = {1}.GetInt64({2})" },
         { "Uri", "{0} = new Uri({1}.GetString({2}))" },
+        { "JSON", "{0} = JsonSerializer.Deserialize<{3}>({1}.GetString({2}))" },
     };
 
     private static Dictionary<string, string> _sqliteNullableReadDirectives = new()
@@ -1256,6 +1352,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "(uint){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt32({2})" },
         { "ulong", "(ulong){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt64({2})" },
         { "Uri", "{0} = {1}.IsDBNull({2}) ? null : new Uri({1}.GetString({2}))" },
+        { "JSON", "{0} = {1}.IsDBNull({2}) ? null : JsonSerializer.Deserialize<{3}>({1}.GetString({2}))" },
     };
 
     // Mapping pulled from https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/types
@@ -1283,6 +1380,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "INTEGER" },
         { "ulong", "INTEGER" },
         { "Uri", "TEXT" },
+        { "JSON", "TEXT" },
     };
 
 }

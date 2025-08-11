@@ -25,38 +25,12 @@ public partial class DbExtensionSubstitution : DbRecordBase
     public required string Context { get; set; }
 }
 
-[CgSQLiteBaseClass]
-public abstract class DbPackageContent : DbRecordBase
-{
-    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
-    public required int FhirPackageKey { get; set; }
-}
-
-
-[CgSQLiteBaseClass]
-public abstract class DbCanonicalResource : DbPackageContent
-{
-    public required string Id { get; set; }
-    public required string VersionedUrl { get; set; }
-    public required string UnversionedUrl { get; set; }
-    public required string Name { get; set; }
-    public required string Version { get; set; }
-    public required Hl7.Fhir.Model.PublicationStatus? Status { get; set; }
-    public required string? Title { get; set; }
-    public required string? Description { get; set; }
-    public required string? Purpose { get; set; }
-    public required string? StandardStatus { get; set; }
-    public required string? WorkGroup { get; set; }
-    public required int? FhirMaturity { get; set; }
-}
-
-
 [CgSQLiteTable(tableName: "ValueSets")]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(StrongestBindingCore))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
-public partial class DbValueSet : DbCanonicalResource
+public partial class DbValueSet : DbMetadataResource
 {
     public required bool CanExpand { get; set; }
     public required bool? HasEscapeValveCode { get; set; }
@@ -213,7 +187,7 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
-public partial class DbStructureDefinition : DbCanonicalResource
+public partial class DbStructureDefinition : DbMetadataResource
 {
     public required string? Comment { get; set; }
     public required string? Message { get; set; }
@@ -463,4 +437,100 @@ public partial class DbElementType : DbPackageContent
         (string.IsNullOrEmpty(TypeProfile) ? string.Empty : $"[{TypeProfile}]") +
         (string.IsNullOrEmpty(TargetProfile) ? string.Empty : $"({TargetProfile})");
 
+}
+
+[CgSQLiteTable(tableName: "CodeSystems")]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
+public partial class DbCodeSystem : DbMetadataResource
+{
+    public required bool? IsCaseSensitive { get; set; }
+    public required string? ValueSetVersioned { get; set; }
+    public required string? ValueSetUnversioned { get; set; }
+    public required string? HierarchyMeaning { get; set; }
+    public required bool? IsCompositional { get; set; }
+    public required bool? VersionNeeded { get; set; }
+    public required Hl7.Fhir.Model.CodeSystemContentMode Content { get; set; }
+    public required string? SupplementsVersioned { get; set; }
+    public required string? SupplementsUnversioned { get; set; }
+    public required int? Count { get; set; }
+
+    [CgSQLiteIgnore]
+    public string UiDisplay
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return "-";
+            }
+            return $"{Name}: {VersionedUrl}";
+        }
+    }
+    [CgSQLiteIgnore]
+    public string UiDisplayLong
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return "-";
+            }
+            return $"{Name}: {VersionedUrl}, Concepts: {Count}" +
+                (string.IsNullOrEmpty(Description) ? string.Empty : " - " + Description);
+        }
+    }
+}
+
+[CgSQLiteTable(tableName: "CodeSystemConcepts")]
+[CgSQLiteIndex(nameof(CodeSystemKey))]
+[CgSQLiteIndex(nameof(CodeSystemKey), nameof(Order))]
+public partial class DbCodeSystemConcept : DbPackageContent
+{
+    [CgSQLiteForeignKey(referenceTable: "CodeSystems", referenceColumn: nameof(DbCodeSystem.Key))]
+    public required int CodeSystemKey { get; set; }
+    public required int Order { get; set; }
+    public required int RelativeOrder { get; set; }
+    public required string Code { get; set; }
+    public required string? Display { get; set; }
+    public required string? Definition { get; set; }
+    public required string? Designations { get; set; }
+    public required string? Properties { get; set; }
+    public required int? ParentConceptKey { get; set; }
+}
+
+[CgSQLiteTable(tableName: "CodeSystemCodeProperties")]
+[CgSQLiteIndex(nameof(CodeSystemPropertyDefinitionKey))]
+public partial class DbCodeSystemConceptProperty : DbPackageContent
+{
+    [CgSQLiteForeignKey(referenceTable: "CodeSystemPropertyDefinitions", referenceColumn: nameof(DbCodeSystemPropertyDefinition.Key))]
+    public required int CodeSystemPropertyDefinitionKey { get; set; }
+    public required string Code { get; set; }
+    public required Hl7.Fhir.Model.CodeSystem.PropertyType Type { get; set; }
+    public required string Value { get; set; }
+}
+
+[CgSQLiteTable(tableName: "CodeSystemPropertyDefinitions")]
+[CgSQLiteIndex(nameof(CodeSystemKey))]
+public partial class DbCodeSystemPropertyDefinition : DbPackageContent
+{
+    [CgSQLiteForeignKey(referenceTable: "CodeSystems", referenceColumn: nameof(DbCodeSystem.Key))]
+    public required int CodeSystemKey { get; set; }
+    public required string Code { get; set; }
+    public required string? Uri { get; set; }
+    public required string? Description { get; set; }
+    public required Hl7.Fhir.Model.CodeSystem.PropertyType Type { get; set; }
+}
+
+[CgSQLiteTable(tableName: "CodeSystemFilters")]
+[CgSQLiteIndex(nameof(CodeSystemKey))]
+public partial class DbCodeSystemFilter : DbPackageContent
+{
+    [CgSQLiteForeignKey(referenceTable: "CodeSystems", referenceColumn: nameof(DbCodeSystem.Key))]
+    public required int CodeSystemKey { get; set; }
+    public required string Code { get; set; }
+    public required string? Description { get; set; }
+    public required string Operators { get; set; }
+    public required string Value { get; set; }
 }

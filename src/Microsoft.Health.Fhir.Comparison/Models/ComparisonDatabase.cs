@@ -29,7 +29,6 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.Comparison.Extensions;
 using Microsoft.Health.Fhir.Comparison.Models;
-using Newtonsoft.Json.Linq;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
@@ -187,8 +186,15 @@ public class ComparisonDatabase : IDisposable
             DbFhirPackage.LoadMaxKey(_dbConnection);
             DbFhirPackageComparisonPair.LoadMaxKey(_dbConnection);
 
+            DbCodeSystem.LoadMaxKey(_dbConnection);
+            DbCodeSystemPropertyDefinition.LoadMaxKey(_dbConnection);
+            DbCodeSystemFilter.LoadMaxKey(_dbConnection);
+            DbCodeSystemConcept.LoadMaxKey(_dbConnection);
+            DbCodeSystemConceptProperty.LoadMaxKey(_dbConnection);
+
             DbValueSet.LoadMaxKey(_dbConnection);
             DbValueSetConcept.LoadMaxKey(_dbConnection);
+
             DbStructureDefinition.LoadMaxKey(_dbConnection);
             DbElement.LoadMaxKey(_dbConnection);
             DbElementType.LoadMaxKey(_dbConnection);
@@ -258,6 +264,16 @@ public class ComparisonDatabase : IDisposable
     {
         switch (processFilter)
         {
+            case FhirArtifactClassEnum.CodeSystem:
+                {
+                    DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
+                    DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
+                    DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
+                    DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
+                    DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
+                }
+                break;
+
             case FhirArtifactClassEnum.ValueSet:
                 {
                     DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
@@ -295,6 +311,12 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb));
                     DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb));
 
+                    DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
+                    DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
+                    DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
+                    DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
+                    DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
+
                     DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
                     DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
                     DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
@@ -325,6 +347,16 @@ public class ComparisonDatabase : IDisposable
     {
         switch (processFilter)
         {
+            case FhirArtifactClassEnum.CodeSystem:
+                {
+                    DbCodeSystem.DropTable(db);
+                    DbCodeSystemPropertyDefinition.DropTable(db);
+                    DbCodeSystemFilter.DropTable(db);
+                    DbCodeSystemConcept.DropTable(db);
+                    DbCodeSystemConceptProperty.DropTable(db);
+                }
+                break;
+
             case FhirArtifactClassEnum.ValueSet:
                 {
                     DbValueSet.DropTable(db);
@@ -361,6 +393,12 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.DropTable(db);
                     DbFhirPackageComparisonPair.DropTable(db);
 
+                    DbCodeSystem.DropTable(db);
+                    DbCodeSystemPropertyDefinition.DropTable(db);
+                    DbCodeSystemFilter.DropTable(db);
+                    DbCodeSystemConcept.DropTable(db);
+                    DbCodeSystemConceptProperty.DropTable(db);
+
                     DbValueSet.DropTable(db);
                     DbValueSetConcept.DropTable(db);
                     DbValueSetComparison.DropTable(db);
@@ -391,6 +429,16 @@ public class ComparisonDatabase : IDisposable
     {
         switch (processFilter)
         {
+            case FhirArtifactClassEnum.CodeSystem:
+                {
+                    DbCodeSystem.CreateTable(db);
+                    DbCodeSystemPropertyDefinition.CreateTable(db);
+                    DbCodeSystemFilter.CreateTable(db);
+                    DbCodeSystemConcept.CreateTable(db);
+                    DbCodeSystemConceptProperty.CreateTable(db);
+                }
+                break;
+
             case FhirArtifactClassEnum.ValueSet:
                 {
                     DbValueSet.CreateTable(db);
@@ -424,6 +472,12 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbFhirPackage.CreateTable(db);
                     DbFhirPackageComparisonPair.CreateTable(db);
+
+                    DbCodeSystem.CreateTable(db);
+                    DbCodeSystemPropertyDefinition.CreateTable(db);
+                    DbCodeSystemFilter.CreateTable(db);
+                    DbCodeSystemConcept.CreateTable(db);
+                    DbCodeSystemConceptProperty.CreateTable(db);
 
                     DbValueSet.CreateTable(db);
                     DbValueSetConcept.CreateTable(db);
@@ -559,7 +613,7 @@ public class ComparisonDatabase : IDisposable
                     SourcePackageShortName = leftDbPackage.ShortName,
                     TargetPackageKey = rightDbPackage.Key,
                     TargetPackageShortName = rightDbPackage.ShortName,
-                    ProccessedAt = DateTime.UtcNow,
+                    ProcessedAt = DateTime.UtcNow,
                 };
 
                 _dbConnection.Insert(dbPairLtoR);
@@ -579,7 +633,7 @@ public class ComparisonDatabase : IDisposable
                     SourcePackageShortName = rightDbPackage.ShortName,
                     TargetPackageKey = leftDbPackage.Key,
                     TargetPackageShortName = leftDbPackage.ShortName,
-                    ProccessedAt = DateTime.UtcNow,
+                    ProcessedAt = DateTime.UtcNow,
                 };
 
                 _dbConnection.Insert(dbPairRtoL);
@@ -624,7 +678,7 @@ public class ComparisonDatabase : IDisposable
         DbComparisonCache<DbCollatedTypeComparison> collatedTypeComparisons = new();
         DbComparisonCache<DbElementTypeComparison> typeComparisons = new();
 
-        List<DbUnresolvedConceptComparison> uresolvedConceptComparisons = [];
+        List<DbUnresolvedConceptComparison> unresolvedConceptComparisons = [];
         List<DbUnresolvedStructureComparison> unresolvedSdComparisons = [];
         List<DbUnresolvedElementComparison> unresolvedElementComparisons = [];
 
@@ -699,8 +753,8 @@ public class ComparisonDatabase : IDisposable
         _dbConnection.Insert(conceptComparisons.ComparisonsToAdd);
         _logger.LogInformation($" <<< added {conceptComparisons.Count} ValueSet Concept Comparisons");
 
-        _dbConnection.Insert(uresolvedConceptComparisons);
-        _logger.LogInformation($" <<< added {uresolvedConceptComparisons.Count} Unresolved ValueSet Concept Comparisons");
+        _dbConnection.Insert(unresolvedConceptComparisons);
+        _logger.LogInformation($" <<< added {unresolvedConceptComparisons.Count} Unresolved ValueSet Concept Comparisons");
 
         _dbConnection.Insert(sdComparisons.ComparisonsToAdd);
         _logger.LogInformation($" <<< added {sdComparisons.Count} Structure Comparisons");
@@ -1596,7 +1650,7 @@ public class ComparisonDatabase : IDisposable
                         LastReviewedOn = null,
                     };
 
-                    uresolvedConceptComparisons.Add(unresolvedNoMap);
+                    unresolvedConceptComparisons.Add(unresolvedNoMap);
 
                     ////dbPackagePair.InvalidImportedConceptComparisons.Add(invalidComparison);
                     //dbVsComparison.InvalidImportedComparisons.Add(invalidComparison);
@@ -1679,7 +1733,7 @@ public class ComparisonDatabase : IDisposable
                     LastReviewedOn = null,
                 };
 
-                uresolvedConceptComparisons.Add(unresolvedComparison);
+                unresolvedConceptComparisons.Add(unresolvedComparison);
 
                 return;
             }
@@ -1734,9 +1788,9 @@ public class ComparisonDatabase : IDisposable
 
     public static string GetCompositeName(
         DbFhirPackage sourceDbPackage,
-        DbCanonicalResource sourceDbCanonical,
+        DbMetadataResource sourceDbCanonical,
         DbFhirPackage targetDbPackage,
-        DbCanonicalResource? targetDbCanonical)
+        DbMetadataResource? targetDbCanonical)
     {
         if (targetDbCanonical == null)
         {
@@ -1790,6 +1844,9 @@ public class ComparisonDatabase : IDisposable
             // get the package metadata for this definition collection
             DbFhirPackage pm = DbFhirPackage.SelectSingle(_dbConnection, PackageId: dc.MainPackageId, PackageVersion: dc.MainPackageVersion)
                     ?? throw new Exception($"Package {dc.MainPackageId}@{dc.MainPackageVersion} was not found in the database!");
+
+            // load our code systems
+            addCodeSystemsToDb(pm, dc, _exclusionSet);
 
             // load our value sets
             addValueSetsToDb(pm, dc, _exclusionSet, _escapeValveCodes);
@@ -1847,6 +1904,65 @@ public class ComparisonDatabase : IDisposable
         //        command.ExecuteNonQuery();
         //    }
         //}
+
+        return;
+    }
+
+    private void addCodeSystemsToDb(
+        DbFhirPackage pm,
+        DefinitionCollection dc,
+        HashSet<string> _exclusionSet)
+    {
+        List<DbCodeSystem> dbCodeSystems = [];
+        List<DbCodeSystemFilter> dbCodeSystemFilters = [];
+        List<DbCodeSystemPropertyDefinition> dbCodeSystemPropertyDefinitions = [];
+        List<DbCodeSystemConcept> allDbConcepts = [];
+        List<DbCodeSystemConceptProperty> allDbConceptProperties = [];
+
+        // iterate over the code systems in the definition collection
+        foreach ((string codeSystemUrl, CodeSystem cs) in dc.CodeSystemsByUrl.OrderBy(kvp => kvp.Key))
+        {
+            DbCodeSystem? existingDbCs = DbCodeSystem.SelectSingle(
+                _dbConnection,
+                FhirPackageKey: pm.Key,
+                UnversionedUrl: codeSystemUrl);
+
+            // check to see if this code system already exists
+            if (existingDbCs != null)
+            {
+                continue;
+            }
+
+            bool isExcluded = _exclusionSet.Contains(codeSystemUrl);
+
+            // will not further process value sets we know we will not process
+            if (isExcluded || (cs == null))
+            {
+                // todo: still add a metadata record
+
+                continue;
+            }
+
+            // todo: add the code system to the list
+            // todo: add filters to the list
+            // todo: add property definitions to the list
+            // todo: add concepts to the list
+                // todo: add concept properties (for each concept) to the list
+
+        }
+
+        _logger.LogInformation($"Inserting CodeSystems for {pm.PackageId}@{pm.PackageVersion} into database...");
+
+        _dbConnection.Insert(dbCodeSystems);
+        _logger.LogInformation($" <<< added {dbCodeSystems.Count} CodeSystems");
+
+        // todo: insert filters
+        // todo: insert property definitions
+
+        _dbConnection.Insert(allDbConcepts);
+        _logger.LogInformation($" <<< added {allDbConcepts.Count} CodeSystem Concepts");
+
+        // todo: insert concept properties
 
         return;
     }
@@ -1930,6 +2046,8 @@ public class ComparisonDatabase : IDisposable
                     UnversionedUrl = unversionedUrl,
                     Name = uvs.Name,
                     Version = vsVersion,
+                    VersionAlgorithmString = (uvs.VersionAlgorithm != null) && (uvs.VersionAlgorithm is FhirString vsmVaFs) ? vsmVaFs.Value : null,
+                    VersionAlgorithmCoding = (uvs.VersionAlgorithm != null) && (uvs.VersionAlgorithm is Coding vsmVaC) ? vsmVaC : null,
                     Status = uvs.Status,
                     Title = uvs.Title,
                     Description = uvs.Description,
@@ -1937,6 +2055,25 @@ public class ComparisonDatabase : IDisposable
                     StandardStatus = uvs.cgStandardStatus(),
                     WorkGroup = uvs.cgWorkGroup(),
                     FhirMaturity = uvs.cgMaturityLevel(),
+                    IsExperimental = uvs.Experimental,
+                    LastChangedDate = uvs.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                    Publisher = uvs.Publisher,
+                    Copyright = uvs.Copyright,
+                    CopyrightLabel = uvs.CopyrightLabel,
+                    ApprovalDate = uvs.ApprovalDate,
+                    LastReviewDate = uvs.LastReviewDate,
+                    EffectivePeriodStart = uvs.EffectivePeriod?.StartElement?.ToDateTimeOffset(TimeSpan.Zero),
+                    EffectivePeriodEnd = uvs.EffectivePeriod?.EndElement?.ToDateTimeOffset(TimeSpan.Zero),
+                    Topic = uvs.Topic,
+                    RelatedArtifacts = uvs.RelatedArtifact,
+                    Jurisdictions = uvs.Jurisdiction,
+                    UseContexts = uvs.UseContext,
+                    Contacts = uvs.Contact,
+                    Authors = uvs.Author,
+                    Editors = uvs.Editor,
+                    Reviewers = uvs.Reviewer,
+                    Endorsers = uvs.Endorser,
+                    RootExtensions = uvs.Extension,
                     IsExcluded = isExcluded,
                     CanExpand = canExpand,
                     ConceptCount = 0,
@@ -1968,6 +2105,8 @@ public class ComparisonDatabase : IDisposable
                 UnversionedUrl = unversionedUrl,
                 Name = vs.Name,
                 Version = vsVersion,
+                VersionAlgorithmString = (vs.VersionAlgorithm != null) && (vs.VersionAlgorithm is FhirString vsVaFs) ? vsVaFs.Value : null,
+                VersionAlgorithmCoding = (vs.VersionAlgorithm != null) && (vs.VersionAlgorithm is Coding vsVaC) ? vsVaC : null,
                 Status = vs.Status,
                 Title = vs.Title,
                 Description = vs.Description,
@@ -1975,6 +2114,25 @@ public class ComparisonDatabase : IDisposable
                 StandardStatus = vs.cgStandardStatus(),
                 WorkGroup = vs.cgWorkGroup(),
                 FhirMaturity = vs.cgMaturityLevel(),
+                IsExperimental = vs.Experimental,
+                LastChangedDate = vs.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                Publisher = vs.Publisher,
+                Copyright = vs.Copyright,
+                CopyrightLabel = vs.CopyrightLabel,
+                ApprovalDate = vs.ApprovalDate,
+                LastReviewDate = vs.LastReviewDate,
+                EffectivePeriodStart = vs.EffectivePeriod?.StartElement?.ToDateTimeOffset(TimeSpan.Zero),
+                EffectivePeriodEnd = vs.EffectivePeriod?.EndElement?.ToDateTimeOffset(TimeSpan.Zero),
+                Topic = vs.Topic,
+                RelatedArtifacts = vs.RelatedArtifact,
+                Jurisdictions = vs.Jurisdiction,
+                UseContexts = vs.UseContext,
+                Contacts = vs.Contact,
+                Authors = vs.Author,
+                Editors = vs.Editor,
+                Reviewers = vs.Reviewer,
+                Endorsers = vs.Endorser,
+                RootExtensions = vs.Extension,
                 IsExcluded = isExcluded,
                 CanExpand = canExpand,
                 ConceptCount = 0,
@@ -2082,6 +2240,8 @@ public class ComparisonDatabase : IDisposable
                         UnversionedUrl = sd.Url,
                         Name = FhirSanitizationUtils.SanitizeForProperty(sd.Name, replacements: []),
                         Version = sd.Version,
+                        VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdeVaFs) ? sdeVaFs.Value : null,
+                        VersionAlgorithmCoding = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is Coding sdeVaC) ? sdeVaC : null,
                         Status = sd.Status,
                         Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
                         Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
@@ -2089,6 +2249,25 @@ public class ComparisonDatabase : IDisposable
                         StandardStatus = sd.cgStandardStatus(),
                         WorkGroup = sd.cgWorkGroup(),
                         FhirMaturity = sd.cgMaturityLevel(),
+                        IsExperimental = sd.Experimental,
+                        LastChangedDate = sd.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                        Publisher = sd.Publisher,
+                        Copyright = sd.Copyright,
+                        CopyrightLabel = sd.CopyrightLabel,
+                        ApprovalDate = null,
+                        LastReviewDate = null,
+                        EffectivePeriodStart = null,
+                        EffectivePeriodEnd = null,
+                        Topic = null,
+                        RelatedArtifacts = null,
+                        Jurisdictions = sd.Jurisdiction,
+                        UseContexts = sd.UseContext,
+                        Contacts = sd.Contact,
+                        Authors = null,
+                        Editors = null,
+                        Reviewers = null,
+                        Endorsers = null,
+                        RootExtensions = sd.Extension,
                         Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                         ArtifactClass = cgClass,
                         Message = "Manually excluded",
@@ -2112,6 +2291,8 @@ public class ComparisonDatabase : IDisposable
                     UnversionedUrl = sd.Url,
                     Name = sd.Name,
                     Version = sd.Version,
+                    VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdVaFs) ? sdVaFs.Value : null,
+                    VersionAlgorithmCoding = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is Coding sdVaC) ? sdVaC : null,
                     Status = sd.Status,
                     Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
                     Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
@@ -2119,6 +2300,25 @@ public class ComparisonDatabase : IDisposable
                     StandardStatus = sd.cgStandardStatus(),
                     WorkGroup = sd.cgWorkGroup(),
                     FhirMaturity = sd.cgMaturityLevel(),
+                    IsExperimental = sd.Experimental,
+                    LastChangedDate = sd.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                    Publisher = sd.Publisher,
+                    Copyright = sd.Copyright,
+                    CopyrightLabel = sd.CopyrightLabel,
+                    ApprovalDate = null,
+                    LastReviewDate = null,
+                    EffectivePeriodStart = null,
+                    EffectivePeriodEnd = null,
+                    Topic = null,
+                    RelatedArtifacts = null,
+                    Jurisdictions = sd.Jurisdiction,
+                    UseContexts = sd.UseContext,
+                    Contacts = sd.Contact,
+                    Authors = null,
+                    Editors = null,
+                    Reviewers = null,
+                    Endorsers = null,
+                    RootExtensions = sd.Extension,
                     Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
                     ArtifactClass = cgClass,
                     Message = string.Empty,
