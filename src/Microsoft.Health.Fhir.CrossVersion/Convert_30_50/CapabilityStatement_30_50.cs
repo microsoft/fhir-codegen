@@ -670,7 +670,7 @@ public class CapabilityStatement_30_50 : ICrossVersionProcessor<CapabilityStatem
 					break;
 
 				case "definition":
-					current.DefinitionElement = new ResourceReference(node.Text);
+					current.DefinitionElement = _converter._reference.Extract(node);
 					break;
 
 				// process inherited elements
@@ -832,11 +832,11 @@ public class CapabilityStatement_30_50 : ICrossVersionProcessor<CapabilityStatem
 					break;
 
 				case "request":
-					current.RequestElement = new ResourceReference(node.Text);
+					current.RequestElement = _converter._reference.Extract(node);
 					break;
 
 				case "response":
-					current.ResponseElement = new ResourceReference(node.Text);
+					current.ResponseElement = _converter._reference.Extract(node);
 					break;
 
 				case "documentation":

@@ -64,7 +64,7 @@ public class Identifier_20_50 : ICrossVersionProcessor<Identifier>, ICrossVersio
 				break;
 
 			case "assigner":
-				current.Assigner = new ResourceReference(node.Text);
+				current.Assigner = _converter._reference.Extract(node);
 				break;
 
 			// process inherited elements

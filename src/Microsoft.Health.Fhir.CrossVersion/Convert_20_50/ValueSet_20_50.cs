@@ -120,7 +120,17 @@ public class ValueSet_20_50 : ICrossVersionProcessor<ValueSet>, ICrossVersionExt
 				break;
 
 			case "useContext":
-				current.UseContext.Add(_converter._usageContext.Extract(node));
+                {
+                    (UsageContext? useContext, CodeableConcept? jurisdiction) = _converter._usageContext.Extract(node);
+                    if (useContext != null)
+                    {
+                        current.UseContext.Add(useContext);
+                    }
+                    if (jurisdiction != null)
+                    {
+                        current.Jurisdiction.Add(jurisdiction);
+                    }
+                }
 				break;
 
 			case "jurisdiction":

@@ -32,7 +32,7 @@ public class Annotation_20_50 : ICrossVersionProcessor<Annotation>, ICrossVersio
 		switch (node.Name)
 		{
 			case "authorReference":
-				current.Author = new ResourceReference(node.Text);
+				current.Author = _converter._reference.Extract(node);
 				break;
 
 			case "authorString":

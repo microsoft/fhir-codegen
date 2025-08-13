@@ -22,8 +22,12 @@ public partial class DbFhirPackage : DbRecordBase
 
     [CgSQLiteIgnore]
     public string NpmId => (string.IsNullOrEmpty(PackageId) && string.IsNullOrEmpty(PackageVersion))
-    ? string.Empty
-    : $"{PackageId}@{PackageVersion}";
+        ? string.Empty
+        : $"{PackageId}@{PackageVersion}";
 
+    [CgSQLiteIgnore]
+    public string CacheFolderName => (string.IsNullOrEmpty(PackageId) && string.IsNullOrEmpty(PackageVersion))
+        ? string.Empty
+        : $"{PackageId}#{PackageVersion}";
 }
 

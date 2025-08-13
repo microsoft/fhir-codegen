@@ -232,7 +232,7 @@ public class Extension_30_50 : ICrossVersionProcessor<Extension>, ICrossVersionE
 				break;
 
 			case "valueReference":
-				current.Value = new ResourceReference(node.Text);
+				current.Value = _converter._reference.Extract(node);
 				break;
 
 			case "valueSampledData":

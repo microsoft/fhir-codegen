@@ -8,50 +8,48 @@ using Hl7.Fhir.Model;
 
 namespace Microsoft.Health.Fhir.CrossVersion.Convert_20_50;
 
-public class UsageContext_20_50 : ICrossVersionProcessor<UsageContext>, ICrossVersionExtractor<UsageContext>
+public class UsageContext_20_50 // : ICrossVersionProcessor<UsageContext>  //, ICrossVersionExtractor<UsageContext>
 {
+    /* list pulled from:
+     * - github.com:hapifhir/org.hl7.fhir.core
+     * - org.hl7.fhir.convertors\src\main\java\org\hl7\fhir\convertors\conv10_50\VersionConvertor_10_50.java
+     * - boolean isJurisdiction(@Nonnull CodeableConcept t)
+     */
+    private static HashSet<string> _jurisdictionSystems = [
+        "http://unstats.un.org/unsd/methods/m49/m49.htm",
+        "urn:iso:std:iso:3166",
+        "https://www.usps.com/",
+    ];
+
 	private Converter_20_50 _converter;
 	internal UsageContext_20_50(Converter_20_50 converter)
 	{
 		_converter = converter;
 	}
 
-	public UsageContext Extract(ISourceNode node)
+	public (UsageContext? useContext, CodeableConcept? jurisdiction) Extract(ISourceNode node)
 	{
-		UsageContext v = new();
-		foreach (ISourceNode child in node.Children())
-		{
-			Process(child, v);
-		}
+        // DSTU2 useContext elements were just CodeableConcept type
+        CodeableConcept cc = _converter._codeableConcept.Extract(node);
 
-		return v;
-	}
+        // check to see if this is a jurisdiction
+        if ((cc.Coding.Count > 0) &&
+            cc.Coding.Any(c => _jurisdictionSystems.Contains(c.System)))
+        {
+            return (null, cc);
+        }
 
-	public void Process(ISourceNode node, UsageContext current)
-	{
-		switch (node.Name)
-		{
-			case "code":
-				current.Code = _converter._coding.Extract(node);
-				break;
+        if (cc.Coding.Count == 0)
+        {
+            throw new Exception("UseContext with no codings!");
+        }
 
-			case "valueCodeableConcept":
-				current.Value = _converter._codeableConcept.Extract(node);
-				break;
+        UsageContext uc = new()
+        {
+            Code = cc.Coding[0],
+            Value = cc,
+        };
 
-			case "valueQuantity":
-				current.Value = _converter._quantity.Extract(node);
-				break;
-
-			case "valueRange":
-				current.Value = _converter._range.Extract(node);
-				break;
-
-			// process inherited elements
-			default:
-				_converter._element.Process(node, current);
-				break;
-
-		}
+        return (uc, null);
 	}
 }

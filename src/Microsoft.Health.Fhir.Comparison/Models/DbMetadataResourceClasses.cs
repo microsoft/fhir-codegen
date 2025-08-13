@@ -31,6 +31,7 @@ public abstract class DbMetadataResource : DbPackageContent
     public required string? Title { get; set; }
     public required string? Description { get; set; }
     public required string? Purpose { get; set; }
+    public required Hl7.Fhir.Model.Narrative? Narrative { get; set; }
     public required string? StandardStatus { get; set; }
     public required string? WorkGroup { get; set; }
     public required int? FhirMaturity { get; set; }

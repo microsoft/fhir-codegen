@@ -439,6 +439,8 @@ public partial class DbElementType : DbPackageContent
 
 }
 
+// 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
 [CgSQLiteTable(tableName: "CodeSystems")]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
@@ -448,10 +450,10 @@ public partial class DbCodeSystem : DbMetadataResource
     public required bool? IsCaseSensitive { get; set; }
     public required string? ValueSetVersioned { get; set; }
     public required string? ValueSetUnversioned { get; set; }
-    public required string? HierarchyMeaning { get; set; }
+    public required Hl7.Fhir.Model.CodeSystem.CodeSystemHierarchyMeaning? HierarchyMeaning { get; set; }
     public required bool? IsCompositional { get; set; }
     public required bool? VersionNeeded { get; set; }
-    public required Hl7.Fhir.Model.CodeSystemContentMode Content { get; set; }
+    public required Hl7.Fhir.Model.CodeSystemContentMode? Content { get; set; }
     public required string? SupplementsVersioned { get; set; }
     public required string? SupplementsUnversioned { get; set; }
     public required int? Count { get; set; }
@@ -485,27 +487,32 @@ public partial class DbCodeSystem : DbMetadataResource
 
 [CgSQLiteTable(tableName: "CodeSystemConcepts")]
 [CgSQLiteIndex(nameof(CodeSystemKey))]
-[CgSQLiteIndex(nameof(CodeSystemKey), nameof(Order))]
+[CgSQLiteIndex(nameof(CodeSystemKey), nameof(FlatOrder))]
 public partial class DbCodeSystemConcept : DbPackageContent
 {
     [CgSQLiteForeignKey(referenceTable: "CodeSystems", referenceColumn: nameof(DbCodeSystem.Key))]
     public required int CodeSystemKey { get; set; }
-    public required int Order { get; set; }
+    public required int FlatOrder { get; set; }
     public required int RelativeOrder { get; set; }
     public required string Code { get; set; }
     public required string? Display { get; set; }
     public required string? Definition { get; set; }
-    public required string? Designations { get; set; }
-    public required string? Properties { get; set; }
+    public required List<Hl7.Fhir.Model.CodeSystem.DesignationComponent> Designations { get; set; }
+    public required List<Hl7.Fhir.Model.CodeSystem.ConceptPropertyComponent> Properties { get; set; }
     public required int? ParentConceptKey { get; set; }
+    public required int ChildConceptCount { get; set; }
 }
 
 [CgSQLiteTable(tableName: "CodeSystemCodeProperties")]
 [CgSQLiteIndex(nameof(CodeSystemPropertyDefinitionKey))]
 public partial class DbCodeSystemConceptProperty : DbPackageContent
 {
+    [CgSQLiteForeignKey(referenceTable: "CodeSystemConcepts", referenceColumn: nameof(DbCodeSystemConcept.Key))]
+    public required int CodeSystemConceptKey { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "CodeSystemPropertyDefinitions", referenceColumn: nameof(DbCodeSystemPropertyDefinition.Key))]
     public required int CodeSystemPropertyDefinitionKey { get; set; }
+
     public required string Code { get; set; }
     public required Hl7.Fhir.Model.CodeSystem.PropertyType Type { get; set; }
     public required string Value { get; set; }
@@ -534,3 +541,4 @@ public partial class DbCodeSystemFilter : DbPackageContent
     public required string Operators { get; set; }
     public required string Value { get; set; }
 }
+#endif

@@ -394,7 +394,7 @@ public class ElementDefinition_30_50 : ICrossVersionProcessor<ElementDefinition>
 				break;
 
 			case "defaultValueReference":
-				current.DefaultValue = new ResourceReference(node.Text);
+				current.DefaultValue = _converter._reference.Extract(node);
 				break;
 
 			case "defaultValueSampledData":
@@ -626,7 +626,7 @@ public class ElementDefinition_30_50 : ICrossVersionProcessor<ElementDefinition>
 				break;
 
 			case "fixedReference":
-				current.Fixed = new ResourceReference(node.Text);
+				current.Fixed = _converter._reference.Extract(node);
 				break;
 
 			case "fixedSampledData":
@@ -842,7 +842,7 @@ public class ElementDefinition_30_50 : ICrossVersionProcessor<ElementDefinition>
 				break;
 
 			case "patternReference":
-				current.Pattern = new ResourceReference(node.Text);
+				current.Pattern = _converter._reference.Extract(node);
 				break;
 
 			case "patternSampledData":
@@ -1450,7 +1450,7 @@ public class ElementDefinition_30_50 : ICrossVersionProcessor<ElementDefinition>
 					break;
 
 				case "valueReference":
-					current.Value = new ResourceReference(node.Text);
+					current.Value = _converter._reference.Extract(node);
 					break;
 
 				case "valueSampledData":

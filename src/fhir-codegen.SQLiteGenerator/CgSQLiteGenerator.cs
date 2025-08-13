@@ -46,6 +46,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             "CgSQLiteGeneratorAttributes.g.cs",
             SourceText.From(GeneratorAttributes.CgAttributes, Encoding.UTF8)));
 
+        context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
+            "CgFhirUtils.g.cs",
+            SourceText.From(GeneratorFhirUtils.CgFhirUtils, Encoding.UTF8)));
+
         IncrementalValuesProvider<ClassDeclarationSyntax> cDeclarations = context.SyntaxProvider
             .CreateSyntaxProvider(
                 predicate: static (s, _) => IsSyntaxTargetClassDec(s),
@@ -213,6 +217,17 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         }
     }
 
+    private record struct TableColInfoRec(
+        string name,
+        string propType,
+        string shortRead,
+        string readerDirective,
+        bool isPrimaryKey,
+        bool isIdentity,
+        bool isNullable,
+        bool isEnum,
+        bool useJson,
+        bool isArray);
 
     private void execute(
         Compilation compilation,
@@ -235,10 +250,11 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         string? pkColName = null;
         string? pkPropType = null;
         bool pkIsIdentity = false;
+        bool anyColIsJson = false;
 
         List<string> createColLines = [];
         List<string> createFKLines = [];
-        List<(string name, string propType, string shortRead, string readerDirective, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum, bool useJson)> tableColInfo = [];
+        List<TableColInfoRec> tableColInfo = [];
 
         foreach (MemberDeclarationSyntax member in members)
         {
@@ -351,15 +367,19 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             {
                 if (namedTypeSymbol.TypeArguments.Length != 0)
                 {
-                    if (namedTypeSymbol.Name.Contains("List"))
+                    if (namedTypeSymbol.Name.Contains("List") ||
+                        namedTypeSymbol.Name.Contains("Enumerable"))
                     {
+                        memberIsNonScalar = true;
                         if (namedTypeSymbol.TypeArguments[0].ContainingType == null)
                         {
-                            jsonTypeName = $"System.Collections.Generic.List<{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}>";
+                            //jsonTypeName = $"System.Collections.Generic.List<{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}>";
+                            jsonTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}";
                         }
                         else
                         {
-                            jsonTypeName = $"System.Collections.Generic.List<{namedTypeSymbol.TypeArguments[0].ContainingType.ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].ContainingType.Name}.{namedTypeSymbol.TypeArguments[0].Name}>";
+                            //jsonTypeName = $"System.Collections.Generic.List<{namedTypeSymbol.TypeArguments[0].ContainingType.ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].ContainingType.Name}.{namedTypeSymbol.TypeArguments[0].Name}>";
+                            jsonTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingType.ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].ContainingType.Name}.{namedTypeSymbol.TypeArguments[0].Name}";
                         }
                     }
                     else
@@ -386,17 +406,17 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     }
                 }
 
-                if (nullable)
-                {
-                    jsonTypeName += "?";
-                }
+                //if (nullable)
+                //{
+                //    jsonTypeName += "?";
+                //}
             }
 
             bool useJson = !memberIsEnum && !_sqliteTypeMap.ContainsKey(propTypeName);
 
             // add our column line
             createColLines.Add(
-                $"{pds.Identifier.ToString()} {getSqlType(propTypeName, memberIsEnum, useJson)}" +
+                $"{pds.Identifier.ToString()} {getSqlType(propTypeName, memberIsEnum, useJson, memberIsNonScalar)}" +
                 $"{(isPrimaryKey ? getPkDirective(pkPropType) : string.Empty)}" +
                 $"{((nullable || isPrimaryKey) ? string.Empty : " NOT NULL")}");
 
@@ -429,7 +449,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             // create the select retrieval pair
             if (nullable && _sqliteNullableReadDirectives.TryGetValue(propTypeName, out string? readFormat))
             {
-                tableColInfo.Add((
+                tableColInfo.Add(new (
                     propName,
                     propTypeName,
                     string.Format(readFormat.Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count),
@@ -438,11 +458,12 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
                     memberIsEnum,
-                    useJson));
+                    useJson,
+                    memberIsNonScalar));
             }
             else if (!nullable && _sqliteReadDirectives.TryGetValue(propTypeName, out readFormat))
             {
-                tableColInfo.Add((
+                tableColInfo.Add(new (
                     propName,
                     propTypeName,
                     string.Format(readFormat.Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count),
@@ -451,14 +472,15 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
                     memberIsEnum,
-                    useJson));
+                    useJson,
+                    memberIsNonScalar));
             }
             else if (memberIsEnum)
             {
                 //// build the reader directive for the enum type
                 //string ef = $"Enum.TryParse(reader.GetString({tableColInfo.Count}), out {propName});";
 
-                tableColInfo.Add((
+                tableColInfo.Add(new (
                     propName,
                     propTypeName,
                     nullable
@@ -471,7 +493,28 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
                     memberIsEnum,
-                    useJson));
+                    useJson,
+                    memberIsNonScalar));
+            }
+            else if (memberIsNonScalar)
+            {
+                anyColIsJson = true;
+
+                tableColInfo.Add(new(
+                    pds.Identifier.ToString(),
+                    propTypeName,
+                    nullable
+                        ? string.Format(_sqliteNullableReadDirectives["JSON[]"].Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName)
+                        : string.Format(_sqliteReadDirectives["JSON[]"].Remove(0, 6), pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName),
+                    nullable
+                        ? string.Format(_sqliteNullableReadDirectives["JSON[]"], pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName)
+                        : string.Format(_sqliteReadDirectives["JSON[]"], pds.Identifier.ToString(), "reader", tableColInfo.Count, jsonTypeName),
+                    isPrimaryKey,
+                    isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
+                    nullable,
+                    memberIsEnum,
+                    useJson,
+                    memberIsNonScalar));
             }
             else
             {
@@ -486,7 +529,9 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 //     memberIsEnum
                 //     ));
 
-                tableColInfo.Add((
+                anyColIsJson = true;
+
+                tableColInfo.Add(new(
                     pds.Identifier.ToString(),
                     propTypeName,
                     nullable
@@ -499,7 +544,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     isPrimaryKey && (propTypeName == "int" || propTypeName == "long"),
                     nullable,
                     memberIsEnum,
-                    useJson));
+                    useJson,
+                    memberIsNonScalar));
             }
         }
 
@@ -521,6 +567,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     using System.Data;
                     using System.Text;
                     using System.Text.Json;
+                    using fhir_codegen.SQLiteGenerator;
                 
                     namespace {{{classNamespace}}};
                 
@@ -564,25 +611,32 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return true;
                         }
 
-                        public static void LoadMaxKey(IDbConnection dbConnection, string? dbTableName = null)
+                        public static void LoadMaxKey(IDbConnection dbConnection, string? dbTableName = null, int defaultValue = 0)
                         {
                             dbTableName ??= "{{{tableName}}}";
                     
                             IDbCommand command = dbConnection.CreateCommand();
                             command.CommandText = $"SELECT MAX({{{(pkColName == null ? "ROWID" : pkColName)}}}) FROM {dbTableName}";
-                    
-                            object? result = command.ExecuteScalar();
-                            if (result is {{{(pkColName == null ? "int" : pkPropType)}}} value)
+
+                            try
                             {
-                                _indexValue = value;
+                                object? result = command.ExecuteScalar();
+                                if (result is {{{(pkColName == null ? "int" : pkPropType)}}} value)
+                                {
+                                    _indexValue = value;
+                                }
+                                else if (result is long l)
+                                {
+                                    _indexValue = {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                                }
                             }
-                            else if (result is long l)
+                            catch (Exception)
                             {
-                                _indexValue = {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                                _indexValue = defaultValue;
                             }
                         }
 
-                        public static {{{(pkColName == null ? "int" : pkPropType)}}}? SelectMaxKey(IDbConnection dbConnection, string? dbTableName = null)
+                        public static {{{(pkColName == null ? "int" : pkPropType)}}}? SelectMaxKey(IDbConnection dbConnection, string? dbTableName = null, int defaultValue = 0)
                         {
                             dbTableName ??= "{{{tableName}}}";
                     
@@ -610,7 +664,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
 
                             bool addedCondition = false;
-
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                    
                             {{{string.Join(_line_2, getConditionLines(true))}}}
 
                             using (IDataReader reader = command.ExecuteReader())
@@ -636,7 +691,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
                     
                             bool addedCondition = false;
-                    
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
                             {{{string.Join(_line_2, getConditionLines(true))}}}
 
                             if ((orderByProperties != null) && (orderByProperties.Length > 0))
@@ -675,7 +731,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
                     
                             bool addedCondition = false;
-                    
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
                             {{{string.Join(_line_2, getConditionLines(true))}}}
 
                             {{{(pkColName == null ? "int rowId = 0;" : string.Empty)}}}
@@ -700,7 +757,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             command.CommandText = $"SELECT COUNT({{{(pkColName == null ? "*" : pkColName)}}}) FROM {dbTableName}";
                     
                             bool addedCondition = false;
-                    
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
                             {{{string.Join(_line_2, getConditionLines(true))}}}
 
                             object? result = command.ExecuteScalar();
@@ -720,6 +778,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         {
                             dbTableName ??= "{{{tableName}}}";
                             {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -742,7 +802,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static void Insert(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
-                            
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                                
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -771,7 +832,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static void Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
-                            
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                                
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -800,7 +862,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
-                    
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -822,7 +885,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static void Update(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
-                            
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                                
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -865,7 +929,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
-                    
+                                        
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -888,7 +952,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static void Delete(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
                         {
                             dbTableName ??= "{{{tableName}}}";
-                            
+                                                
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -927,7 +991,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         public static void Delete(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                         {
                             dbTableName ??= "{{{tableName}}}";
-                    
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
                             using (IDbTransaction transaction = dbConnection.BeginTransaction())
                             {
                                 IDbCommand command = dbConnection.CreateCommand();
@@ -1105,64 +1170,86 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         IEnumerable<string> getFnFilterParams(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
+            foreach (TableColInfoRec rec in tableColInfo)
             {
-                yield return $"{propType}? {name} = null";
+                yield return $"{rec.propType}? {rec.name} = null";
 
-                if (isNullable)
+                if (rec.isNullable)
                 {
-                    yield return $"bool {name}IsNull = false";
+                    yield return $"bool {rec.name}IsNull = false";
                 }
             }
         }
 
         IEnumerable<string> getFnFilterArgs(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
+            foreach (TableColInfoRec rec in tableColInfo)
             {
-                yield return name;
+                yield return rec.name;
 
-                if (isNullable)
+                if (rec.isNullable)
                 {
-                    yield return $"{name}IsNull";
+                    yield return $"{rec.name}IsNull";
                 }
             }
         }
 
         IEnumerable<string> getConditionLines(bool includeNullFilter)
         {
-            foreach ((string name, string propType, string _, string _, bool _, bool _, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
+            foreach (TableColInfoRec rec in tableColInfo)
             {
-                yield return $"if ({name} != null)";
+                yield return $"if ({rec.name} != null)";
                 yield return "{";
-                yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{name} = ${name}\";";
+                yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{rec.name} = ${rec.name}\";";
                 yield return "    addedCondition = true;";
                 yield return string.Empty;
-                yield return $"    IDbDataParameter {name}Param = command.CreateParameter();";
-                yield return $"    {name}Param.ParameterName = \"${name}\";";
+                yield return $"    IDbDataParameter {rec.name}Param = command.CreateParameter();";
+                yield return $"    {rec.name}Param.ParameterName = \"${rec.name}\";";
 
-                if (isEnum)
+                if (rec.isEnum)
                 {
-                    yield return $"    {name}Param.Value = {name}.ToString();";
+                    yield return $"    {rec.name}Param.Value = {rec.name}.ToString();";
                 }
-                else if (useJson)
+                else if (rec.useJson)
                 {
-                    yield return $"    {name}Param.Value = JsonSerializer.Serialize({name});";
+                    //yield return $"    {name}Param.Value = JsonSerializer.Serialize({name});";
+                    //if (rec.isArray)
+                    //{
+                    //    if (rec.isNullable)
+                    //    {
+                    //        yield return $"    {rec.name}Param.Value = CgFhirUtils.SerializeArrayForDb({rec.name}, true);";
+                    //    }
+                    //    else
+                    //    {
+                    //        yield return $"    {rec.name}Param.Value = CgFhirUtils.SerializeArrayForDb({rec.name}, false);";
+                    //    }
+                    //}
+                    //else
+                    //{
+                        if (rec.isNullable)
+                        {
+                            yield return $"    {rec.name}Param.Value = CgFhirUtils.TrySerializeForDb({rec.name}, out dbJson) ? dbJson : DBNull.Value;";
+                        }
+                        else
+                        {
+                            yield return $"    {rec.name}Param.Value = CgFhirUtils.TrySerializeForDb({rec.name}, out dbJson) ? dbJson : string.Empty;";
+                        }
+                    //}
                 }
                 else
                 {
-                    yield return $"    {name}Param.Value = {name};";
+                    yield return $"    {rec.name}Param.Value = {rec.name};";
                 }
 
-                yield return $"    command.Parameters.Add({name}Param);";
+                yield return $"    command.Parameters.Add({rec.name}Param);";
                 yield return "}";
                 yield return string.Empty;
 
-                if (includeNullFilter && isNullable)
+                if (includeNullFilter && rec.isNullable)
                 {
-                    yield return $"if ({name}IsNull)";
+                    yield return $"if ({rec.name}IsNull)";
                     yield return "{";
-                    yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{name} IS NULL\";";
+                    yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{rec.name} IS NULL\";";
                     yield return "    addedCondition = true;";
                     yield return "}";
                     yield return string.Empty;
@@ -1190,56 +1277,76 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 executeCommand = true;
             }
 
-            foreach ((string name, string _, string _, string _, bool isPrimaryKey, bool isIdentity, bool isNullable, bool isEnum, bool useJson) in tableColInfo)
+            foreach (TableColInfoRec rec in tableColInfo)
             {
                 // do not insert identity key values
-                if (isIdentity && !includeIdentity)
+                if (rec.isIdentity && !includeIdentity)
                 {
                     continue;
                 }
-                else if (identityOnly && !isIdentity)
+                else if (identityOnly && !rec.isIdentity)
                 {
                     continue;
                 }
 
                 if (createParameters == true)
                 {
-                    yield return $"IDbDataParameter {name}Param = command.CreateParameter();";
+                    yield return $"IDbDataParameter {rec.name}Param = command.CreateParameter();";
 
-                    yield return $"{name}Param.ParameterName = \"${name}\";";
-                    yield return $"command.Parameters.Add({name}Param);";
+                    yield return $"{rec.name}Param.ParameterName = \"${rec.name}\";";
+                    yield return $"command.Parameters.Add({rec.name}Param);";
                 }
-
+                
                 if (instantiateParameters == true)
                 {
-                    if (isNullable == true)
+                    if (rec.isNullable == true)
                     {
-                        if (isEnum)
+                        if (rec.isEnum)
                         {
-                            yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name}.ToString();";
+                            yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : value.{rec.name}.ToString();";
                         }
-                        else if (useJson)
+                        else if (rec.useJson)
                         {
-                            yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : JsonSerializer.Serialize(value.{name});";
+                            //yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : JsonSerializer.Serialize(value.{rec.name});";
+                            //if (rec.isArray)
+                            //{
+                            //    yield return $"{rec.name}Param.Value = ((value.{rec.name} == null) || !value.{rec.name}.Any()) ? DBNull.Value : CgFhirUtils.SerializeArrayForDb(value.{rec.name}, true);";
+                            //}
+                            //else
+                            //{
+                                //yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : (CgFhirUtils.SerializeForDb(value.{rec.name}, true) ?? DBNull.Value);";
+                                yield return $"{rec.name}Param.Value = CgFhirUtils.TrySerializeForDb(value.{rec.name}, out dbJson) ? dbJson : DBNull.Value;";
+                            //}
+
                         }
                         else
                         {
-                            yield return $"{name}Param.Value = (value.{name} == null) ? DBNull.Value : value.{name};";
+                            yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : value.{rec.name};";
                         }
                     }
                     else
                     {
-                        if (isEnum)
+                        if (rec.isEnum)
                         {
-                            yield return $"{name}Param.Value = value.{name}.ToString();";
+                            yield return $"{rec.name}Param.Value = value.{rec.name}.ToString();";
                         }
-                        else if (useJson)
+                        else if (rec.useJson)
                         {
-                            yield return $"{name}Param.Value = JsonSerializer.Serialize(value.{name});";
+                            //yield return $"{rec.name}Param.Value = JsonSerializer.Serialize(value.{rec.name});";
+
+                            //if (rec.isArray)
+                            //{
+                            //    yield return $"{rec.name}Param.Value = CgFhirUtils.SerializeArrayForDb(value.{rec.name}, false);";
+                            //}
+                            //else
+                            //{
+                                //yield return $"{rec.name}Param.Value = CgFhirUtils.SerializeForDb(value.{rec.name}, false);";
+                                yield return $"{rec.name}Param.Value = CgFhirUtils.TrySerializeForDb(value.{rec.name}, out dbJson) ? dbJson : string.Empty;";
+                            //}
                         }
                         else
                         {
-                            yield return $"{name}Param.Value = value.{name};";
+                            yield return $"{rec.name}Param.Value = value.{rec.name};";
                         }
                     }
                 }
@@ -1286,7 +1393,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     /// <remarks>
     /// Explicitly fetch the 'enum' type for anything that is an enum so we don't have to worry about indexing *all* the various enum types
     /// </remarks>
-    private static string getSqlType(string type, bool isEnum = false, bool useJson = false)
+    private static string getSqlType(string type, bool isEnum = false, bool useJson = false, bool isArray = false)
     {
         if (isEnum)
         {
@@ -1295,7 +1402,9 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         if (useJson)
         {
-            return _sqliteTypeMap["JSON"];
+            return isArray
+                ? _sqliteTypeMap["JSON[]"]
+                : _sqliteTypeMap["JSON"];
         }
 
         return _sqliteTypeMap.TryGetValue(type, out string? name) ? name : "TEXT";
@@ -1325,7 +1434,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "(uint){0} = {1}.GetInt32({2})" },
         { "ulong", "(ulong){0} = {1}.GetInt64({2})" },
         { "Uri", "{0} = new Uri({1}.GetString({2}))" },
-        { "JSON", "{0} = JsonSerializer.Deserialize<{3}>({1}.GetString({2}))" },
+        { "JSON", "{0} = CgFhirUtils.ParseFromDb<{3}>({1}.GetString({2})) ?? new {3}()" },
+        //{ "JSON", "{0} = CgFhirUtils.ParseFromDb({1}.GetString({2}), typeof({3})) ?? new {3}()" },
+        { "JSON[]", "{0} = CgFhirUtils.ParseArrayFromDb<{3}>({1}.GetString({2})) ?? new List<{3}>()" },
+        //{ "JSON[]", "{0} = CgFhirUtils.ParseArrayFromDb({1}.GetString({2}), typeof({3})) ?? new List<{3}>()" },
     };
 
     private static Dictionary<string, string> _sqliteNullableReadDirectives = new()
@@ -1352,7 +1464,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "uint", "(uint){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt32({2})" },
         { "ulong", "(ulong){0} = {1}.IsDBNull({2}) ? null : {1}.GetInt64({2})" },
         { "Uri", "{0} = {1}.IsDBNull({2}) ? null : new Uri({1}.GetString({2}))" },
-        { "JSON", "{0} = {1}.IsDBNull({2}) ? null : JsonSerializer.Deserialize<{3}>({1}.GetString({2}))" },
+        { "JSON", "{0} = {1}.IsDBNull({2}) ? null : CgFhirUtils.ParseFromDb<{3}>({1}.GetString({2}))" },
+        //{ "JSON", "{0} = {1}.IsDBNull({2}) ? null : CgFhirUtils.ParseFromDb({1}.GetString({2}), typeof({3}))" },
+        { "JSON[]", "{0} = {1}.IsDBNull({2}) ? null : CgFhirUtils.ParseArrayFromDb<{3}>({1}.GetString({2}))" },
+        //{ "JSON[]", "{0} = {1}.IsDBNull({2}) ? null : CgFhirUtils.ParseArrayFromDb({1}.GetString({2}), typeof({3}))" },
     };
 
     // Mapping pulled from https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/types
@@ -1381,6 +1496,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "ulong", "INTEGER" },
         { "Uri", "TEXT" },
         { "JSON", "TEXT" },
+        { "JSON[]", "TEXT" },
     };
 
 }

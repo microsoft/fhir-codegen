@@ -24,6 +24,7 @@ using Microsoft.Health.Fhir.CodeGen._ForPackages;
 using Microsoft.Health.Fhir.CodeGen.Utils;
 using Microsoft.Extensions.Logging;
 using Hl7.Fhir.ElementModel;
+using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -635,7 +636,8 @@ public partial class PackageLoader : IDisposable
     public async Task<DefinitionCollection?> LoadPackages(
         IEnumerable<string> packages,
         DefinitionCollection? definitions = null,
-        string? fhirVersion = null)
+        string? fhirVersion = null,
+        HashSet<FhirArtifactClassEnum>? loadFilterOverride = null)
     {
         string? requestedFhirVersion = fhirVersion;
 
@@ -644,14 +646,16 @@ public partial class PackageLoader : IDisposable
             return null;
         }
 
+        HashSet<FhirArtifactClassEnum> artifactFilter = loadFilterOverride ?? new (_rootConfiguration.LoadStructures);
+
         // we need to filter structures post parsing if we are not loading all known types
-        bool filterStructureDefinitions = !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.PrimitiveType) ||
-                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ComplexType) ||
-                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Resource) ||
-                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Extension) ||
-                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Profile) ||
-                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.LogicalModel) ||
-                                          !_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Interface);
+        bool filterStructureDefinitions = !artifactFilter.Contains(FhirArtifactClassEnum.PrimitiveType) ||
+                                          !artifactFilter.Contains(FhirArtifactClassEnum.ComplexType) ||
+                                          !artifactFilter.Contains(FhirArtifactClassEnum.Resource) ||
+                                          !artifactFilter.Contains(FhirArtifactClassEnum.Extension) ||
+                                          !artifactFilter.Contains(FhirArtifactClassEnum.Profile) ||
+                                          !artifactFilter.Contains(FhirArtifactClassEnum.LogicalModel) ||
+                                          !artifactFilter.Contains(FhirArtifactClassEnum.Interface);
 
         foreach (string inputDirective in packages)
         {
@@ -986,14 +990,14 @@ public partial class PackageLoader : IDisposable
                 switch (rt)
                 {
                     case "CodeSystem":
-                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.CodeSystem))
+                        if (!artifactFilter.Contains(FhirArtifactClassEnum.CodeSystem))
                         {
                             continue;
                         }
                         break;
 
                     case "ValueSet":
-                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ValueSet))
+                        if (!artifactFilter.Contains(FhirArtifactClassEnum.ValueSet))
                         {
                             continue;
                         }
@@ -1001,27 +1005,27 @@ public partial class PackageLoader : IDisposable
 
                     case "StructureDefinition":
                         // note: structure definitions can be one of several types and need to be filtered again after parsing
-                        if (_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.PrimitiveType) ||
-                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ComplexType) ||
-                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Resource) ||
-                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Extension) ||
-                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Profile) ||
-                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.LogicalModel) ||
-                            _rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Interface))
+                        if (artifactFilter.Contains(FhirArtifactClassEnum.PrimitiveType) ||
+                            artifactFilter.Contains(FhirArtifactClassEnum.ComplexType) ||
+                            artifactFilter.Contains(FhirArtifactClassEnum.Resource) ||
+                            artifactFilter.Contains(FhirArtifactClassEnum.Extension) ||
+                            artifactFilter.Contains(FhirArtifactClassEnum.Profile) ||
+                            artifactFilter.Contains(FhirArtifactClassEnum.LogicalModel) ||
+                            artifactFilter.Contains(FhirArtifactClassEnum.Interface))
                         {
                             break;
                         }
                         continue;
 
                     case "SearchParameter":
-                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.SearchParameter))
+                        if (!artifactFilter.Contains(FhirArtifactClassEnum.SearchParameter))
                         {
                             continue;
                         }
                         break;
 
                     case "OperationDefinition":
-                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Operation))
+                        if (!artifactFilter.Contains(FhirArtifactClassEnum.Operation))
                         {
                             continue;
                         }
@@ -1029,21 +1033,21 @@ public partial class PackageLoader : IDisposable
 
                     case "Conformance":
                     case "CapabilityStatement":
-                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.CapabilityStatement))
+                        if (!artifactFilter.Contains(FhirArtifactClassEnum.CapabilityStatement))
                         {
                             continue;
                         }
                         break;
 
                     case "ImplementationGuide":
-                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.ImplementationGuide))
+                        if (!artifactFilter.Contains(FhirArtifactClassEnum.ImplementationGuide))
                         {
                             continue;
                         }
                         break;
 
                     case "CompartmentDefinition":
-                        if (!_rootConfiguration.LoadStructures.Contains(FhirArtifactClassEnum.Compartment))
+                        if (!artifactFilter.Contains(FhirArtifactClassEnum.Compartment))
                         {
                             continue;
                         }
@@ -1116,7 +1120,7 @@ public partial class PackageLoader : IDisposable
                     // filter for structure types we are not processing
                     if (filterStructureDefinitions && r is StructureDefinition sd)
                     {
-                        if (!_rootConfiguration.LoadStructures.Contains(sd.cgArtifactClass()))
+                        if (!artifactFilter.Contains(sd.cgArtifactClass()))
                         {
                             // skip this artifact
                             continue;

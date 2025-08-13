@@ -108,8 +108,18 @@ public class CompartmentDefinition_20_50 : ICrossVersionProcessor<CompartmentDef
 				break;
 
 			case "useContext":
-				current.UseContext.Add(_converter._usageContext.Extract(node));
-				break;
+                {
+                    (UsageContext? useContext, CodeableConcept? jurisdiction) = _converter._usageContext.Extract(node);
+                    if (useContext != null)
+                    {
+                        current.UseContext.Add(useContext);
+                    }
+                    //if (jurisdiction != null)
+                    //{
+                    //    current.Jurisdiction.Add(jurisdiction);
+                    //}
+                }
+                break;
 
 			case "jurisdiction":
 				// element CompartmentDefinition.jurisdiction has been removed in the target spec

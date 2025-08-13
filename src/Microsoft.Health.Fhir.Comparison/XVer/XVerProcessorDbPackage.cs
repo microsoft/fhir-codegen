@@ -720,7 +720,7 @@ public partial class XVerProcessor
                     #   excludettl: true
                     #   validation: [allow-any-extensions, no-broken-links]
                     parameters:
-                        apply-wg: true
+                        apply-wg: false
                         default-wg: true
                         show-inherited-invariants: false
                         usage-stats-opt-out: true
@@ -1073,7 +1073,7 @@ public partial class XVerProcessor
                     #   excludettl: true
                     #   validation: [allow-any-extensions, no-broken-links]
                     parameters:
-                        apply-wg: true
+                        apply-wg: false
                         default-wg: true
                         show-inherited-invariants: false
                         usage-stats-opt-out: true

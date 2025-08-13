@@ -108,8 +108,18 @@ public class CapabilityStatement_20_50 : ICrossVersionProcessor<CapabilityStatem
 				break;
 
 			case "useContext":
-				current.UseContext.Add(_converter._usageContext.Extract(node));
-				break;
+                {
+                    (UsageContext? useContext, CodeableConcept? jurisdiction) = _converter._usageContext.Extract(node);
+                    if (useContext != null)
+                    {
+                        current.UseContext.Add(useContext);
+                    }
+                    if (jurisdiction != null)
+                    {
+                        current.Jurisdiction.Add(jurisdiction);
+                    }
+                }
+                break;
 
 			case "jurisdiction":
 				current.Jurisdiction.Add(_converter._codeableConcept.Extract(node));
@@ -642,7 +652,7 @@ public class CapabilityStatement_20_50 : ICrossVersionProcessor<CapabilityStatem
 					break;
 
 				case "definition":
-					current.DefinitionElement = new ResourceReference(node.Text);
+					current.DefinitionElement = _converter._reference.Extract(node);
 					break;
 
 				// process inherited elements
@@ -796,11 +806,11 @@ public class CapabilityStatement_20_50 : ICrossVersionProcessor<CapabilityStatem
 					break;
 
 				case "request":
-					current.RequestElement = new ResourceReference(node.Text);
+					current.RequestElement = _converter._reference.Extract(node);
 					break;
 
 				case "response":
-					current.ResponseElement = new ResourceReference(node.Text);
+					current.ResponseElement = _converter._reference.Extract(node);
 					break;
 
 				case "documentation":

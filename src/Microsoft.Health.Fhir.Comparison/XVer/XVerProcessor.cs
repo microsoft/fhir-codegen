@@ -105,7 +105,7 @@ public partial class XVerProcessor
     internal static readonly ComparisonDirection[] _directions = [ComparisonDirection.Up, ComparisonDirection.Down];
 
     /// <summary>
-    /// Set of ValueSet URLs to exclude from processing.
+    /// Set of ValueSet and CodeSystem URLs to exclude from processing.
     /// </summary>
     internal static readonly HashSet<string> _exclusionSet =
     [
@@ -286,7 +286,7 @@ public partial class XVerProcessor
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 BuildComparisonPairs();
                 CompareInDatabase();
-                WriteDocsFromDatabase();
+                //WriteDocsFromDatabase();
                 WriteFhirFromDatabase();
                 break;
         }
@@ -399,6 +399,7 @@ public partial class XVerProcessor
         /// Gets or sets the core definition collection.
         /// </summary>
         public DefinitionCollection? CoreDC { get; set; } = null;
+        public DefinitionCollection? CodeSystemDc { get; set; } = null;
         /// <summary>
         /// Gets or sets the snapshot generator.
         /// </summary>

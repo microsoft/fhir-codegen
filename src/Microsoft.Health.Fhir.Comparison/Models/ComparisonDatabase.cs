@@ -186,11 +186,14 @@ public class ComparisonDatabase : IDisposable
             DbFhirPackage.LoadMaxKey(_dbConnection);
             DbFhirPackageComparisonPair.LoadMaxKey(_dbConnection);
 
+// 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
             DbCodeSystem.LoadMaxKey(_dbConnection);
             DbCodeSystemPropertyDefinition.LoadMaxKey(_dbConnection);
             DbCodeSystemFilter.LoadMaxKey(_dbConnection);
             DbCodeSystemConcept.LoadMaxKey(_dbConnection);
             DbCodeSystemConceptProperty.LoadMaxKey(_dbConnection);
+#endif
 
             DbValueSet.LoadMaxKey(_dbConnection);
             DbValueSetConcept.LoadMaxKey(_dbConnection);
@@ -266,11 +269,14 @@ public class ComparisonDatabase : IDisposable
         {
             case FhirArtifactClassEnum.CodeSystem:
                 {
+                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
                     DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
                     DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
                     DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
                     DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
                     DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
+#endif
                 }
                 break;
 
@@ -311,12 +317,14 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb));
                     DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb));
 
+                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
                     DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
                     DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
                     DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
                     DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
                     DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
-
+#endif
                     DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
                     DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
                     DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
@@ -349,11 +357,14 @@ public class ComparisonDatabase : IDisposable
         {
             case FhirArtifactClassEnum.CodeSystem:
                 {
+                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
                     DbCodeSystem.DropTable(db);
                     DbCodeSystemPropertyDefinition.DropTable(db);
                     DbCodeSystemFilter.DropTable(db);
                     DbCodeSystemConcept.DropTable(db);
                     DbCodeSystemConceptProperty.DropTable(db);
+#endif
                 }
                 break;
 
@@ -393,12 +404,14 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.DropTable(db);
                     DbFhirPackageComparisonPair.DropTable(db);
 
+                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
                     DbCodeSystem.DropTable(db);
                     DbCodeSystemPropertyDefinition.DropTable(db);
                     DbCodeSystemFilter.DropTable(db);
                     DbCodeSystemConcept.DropTable(db);
                     DbCodeSystemConceptProperty.DropTable(db);
-
+#endif
                     DbValueSet.DropTable(db);
                     DbValueSetConcept.DropTable(db);
                     DbValueSetComparison.DropTable(db);
@@ -431,11 +444,14 @@ public class ComparisonDatabase : IDisposable
         {
             case FhirArtifactClassEnum.CodeSystem:
                 {
+                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
                     DbCodeSystem.CreateTable(db);
                     DbCodeSystemPropertyDefinition.CreateTable(db);
                     DbCodeSystemFilter.CreateTable(db);
                     DbCodeSystemConcept.CreateTable(db);
                     DbCodeSystemConceptProperty.CreateTable(db);
+#endif
                 }
                 break;
 
@@ -473,12 +489,14 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.CreateTable(db);
                     DbFhirPackageComparisonPair.CreateTable(db);
 
+                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
                     DbCodeSystem.CreateTable(db);
                     DbCodeSystemPropertyDefinition.CreateTable(db);
                     DbCodeSystemFilter.CreateTable(db);
                     DbCodeSystemConcept.CreateTable(db);
                     DbCodeSystemConceptProperty.CreateTable(db);
-
+#endif
                     DbValueSet.CreateTable(db);
                     DbValueSetConcept.CreateTable(db);
                     DbValueSetComparison.CreateTable(db);
@@ -605,18 +623,21 @@ public class ComparisonDatabase : IDisposable
                 SourcePackageKey: leftDbPackage.Key,
                 TargetPackageKey: rightDbPackage.Key);
 
+            bool insertLtoR = false;
+            bool insertRtoL = false;
+
             if (dbPairLtoR == null)
             {
+                insertLtoR = true;
                 dbPairLtoR = new()
                 {
+                    Key = DbFhirPackageComparisonPair.GetIndex(),
                     SourcePackageKey = leftDbPackage.Key,
                     SourcePackageShortName = leftDbPackage.ShortName,
                     TargetPackageKey = rightDbPackage.Key,
                     TargetPackageShortName = rightDbPackage.ShortName,
                     ProcessedAt = DateTime.UtcNow,
                 };
-
-                _dbConnection.Insert(dbPairLtoR);
             }
 
             // check for a package pair for right-to-left comparison
@@ -627,8 +648,11 @@ public class ComparisonDatabase : IDisposable
 
             if (dbPairRtoL == null)
             {
+                insertRtoL = true;
                 dbPairRtoL = new()
                 {
+                    Key = DbFhirPackageComparisonPair.GetIndex(),
+                    InverseComparisonKey = dbPairLtoR.Key,
                     SourcePackageKey = rightDbPackage.Key,
                     SourcePackageShortName = rightDbPackage.ShortName,
                     TargetPackageKey = leftDbPackage.Key,
@@ -636,8 +660,30 @@ public class ComparisonDatabase : IDisposable
                     ProcessedAt = DateTime.UtcNow,
                 };
 
+                dbPairLtoR.InverseComparisonKey = dbPairRtoL.Key;
+            }
+
+            dbPairLtoR.InverseComparisonKey = dbPairRtoL.Key;
+            dbPairRtoL.InverseComparisonKey = dbPairLtoR.Key;
+
+            if (insertLtoR)
+            {
+                _dbConnection.Insert(dbPairLtoR);
+            }
+            else
+            {
+                _dbConnection.Update(dbPairLtoR);
+            }
+
+            if (insertRtoL)
+            {
                 _dbConnection.Insert(dbPairRtoL);
             }
+            else
+            {
+                _dbConnection.Update(dbPairRtoL);
+            }
+
         }
 
         loadKnownSubstitutions();
@@ -1845,9 +1891,11 @@ public class ComparisonDatabase : IDisposable
             DbFhirPackage pm = DbFhirPackage.SelectSingle(_dbConnection, PackageId: dc.MainPackageId, PackageVersion: dc.MainPackageVersion)
                     ?? throw new Exception($"Package {dc.MainPackageId}@{dc.MainPackageVersion} was not found in the database!");
 
+            // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
             // load our code systems
             addCodeSystemsToDb(pm, dc, _exclusionSet);
-
+#endif
             // load our value sets
             addValueSetsToDb(pm, dc, _exclusionSet, _escapeValveCodes);
 
@@ -1908,6 +1956,8 @@ public class ComparisonDatabase : IDisposable
         return;
     }
 
+    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
     private void addCodeSystemsToDb(
         DbFhirPackage pm,
         DefinitionCollection dc,
@@ -1935,19 +1985,171 @@ public class ComparisonDatabase : IDisposable
 
             bool isExcluded = _exclusionSet.Contains(codeSystemUrl);
 
-            // will not further process value sets we know we will not process
+            // will not further process code systems we know we will not process
             if (isExcluded || (cs == null))
             {
-                // todo: still add a metadata record
+                if (cs == null)
+                {
+                    continue;
+                }
+
+                // still add a metadata record for excluded or null code systems
+                DbCodeSystem excludedDbCodeSystem = new()
+                {
+                    Key = DbCodeSystem.GetIndex(),
+                    FhirPackageKey = pm.Key,
+                    Id = cs.Id,
+                    VersionedUrl = cs.Url + (string.IsNullOrEmpty(cs.Version) ? "" : "|" + cs.Version),
+                    UnversionedUrl = cs.Url ?? codeSystemUrl,
+                    Name = cs.Name ?? cs.Id,
+                    Version = cs.Version ?? pm.PackageVersion,
+                    VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString cseVaFs) ? cseVaFs.Value : null,
+                    VersionAlgorithmCoding = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is Coding cseVaC) ? cseVaC : null,
+                    Status = cs.Status,
+                    Title = cs.Title,
+                    Description = cs.Description,
+                    Purpose = cs.Purpose,
+                    Narrative = cs.Text,
+                    StandardStatus = cs.cgStandardStatus(),
+                    WorkGroup = cs.cgWorkGroup(),
+                    FhirMaturity = cs.cgMaturityLevel(),
+                    IsExperimental = cs.Experimental,
+                    LastChangedDate = cs.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                    Publisher = cs.Publisher,
+                    Copyright = cs.Copyright,
+                    CopyrightLabel = cs.CopyrightLabel,
+                    ApprovalDate = cs.ApprovalDate,
+                    LastReviewDate = cs.LastReviewDate,
+                    EffectivePeriodStart = cs.EffectivePeriod?.StartElement?.ToDateTimeOffset(TimeSpan.Zero),
+                    EffectivePeriodEnd = cs.EffectivePeriod?.EndElement?.ToDateTimeOffset(TimeSpan.Zero),
+                    Topic = cs.Topic,
+                    RelatedArtifacts = cs.RelatedArtifact,
+                    Jurisdictions = cs.Jurisdiction,
+                    UseContexts = cs.UseContext,
+                    Contacts = cs.Contact,
+                    Authors = cs.Author,
+                    Editors = cs.Editor,
+                    Reviewers = cs.Reviewer,
+                    Endorsers = cs.Endorser,
+                    RootExtensions = cs.Extension,
+                    IsCaseSensitive = cs.CaseSensitive,
+                    ValueSetVersioned = cs.ValueSet,
+                    ValueSetUnversioned = string.IsNullOrEmpty(cs.ValueSet) ? null : cs.ValueSet?.Split('|')[0],
+                    HierarchyMeaning = cs.HierarchyMeaning,
+                    IsCompositional = cs.Compositional,
+                    VersionNeeded = cs.VersionNeeded,
+                    Content = cs.Content,
+                    SupplementsVersioned = cs.Supplements,
+                    SupplementsUnversioned = string.IsNullOrEmpty(cs.Supplements) ? null : cs.Supplements?.Split('|')[0],
+                    Count = 0, // no concepts processed for excluded items
+                };
+
+                dbCodeSystems.Add(excludedDbCodeSystem);
 
                 continue;
             }
 
-            // todo: add the code system to the list
-            // todo: add filters to the list
-            // todo: add property definitions to the list
-            // todo: add concepts to the list
-                // todo: add concept properties (for each concept) to the list
+            // create the DbCodeSystem record
+            DbCodeSystem dbCodeSystem = new()
+            {
+                Key = DbCodeSystem.GetIndex(),
+                FhirPackageKey = pm.Key,
+                Id = cs.Id,
+                VersionedUrl = cs.Url + (string.IsNullOrEmpty(cs.Version) ? "" : "|" + cs.Version),
+                UnversionedUrl = cs.Url ?? codeSystemUrl,
+                Name = cs.Name ?? cs.Id,
+                Version = cs.Version ?? pm.PackageVersion,
+                VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString csVaFs) ? csVaFs.Value : null,
+                VersionAlgorithmCoding = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is Coding csVaC) ? csVaC : null,
+                Status = cs.Status,
+                Title = cs.Title,
+                Description = cs.Description,
+                Purpose = cs.Purpose,
+                Narrative = cs.Text,
+                StandardStatus = cs.cgStandardStatus(),
+                WorkGroup = cs.cgWorkGroup(),
+                FhirMaturity = cs.cgMaturityLevel(),
+                IsExperimental = cs.Experimental,
+                LastChangedDate = cs.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                Publisher = cs.Publisher,
+                Copyright = cs.Copyright,
+                CopyrightLabel = cs.CopyrightLabel,
+                ApprovalDate = cs.ApprovalDate,
+                LastReviewDate = cs.LastReviewDate,
+                EffectivePeriodStart = cs.EffectivePeriod?.StartElement?.ToDateTimeOffset(TimeSpan.Zero),
+                EffectivePeriodEnd = cs.EffectivePeriod?.EndElement?.ToDateTimeOffset(TimeSpan.Zero),
+                Topic = cs.Topic,
+                RelatedArtifacts = cs.RelatedArtifact,
+                Jurisdictions = cs.Jurisdiction,
+                UseContexts = cs.UseContext,
+                Contacts = cs.Contact,
+                Authors = cs.Author,
+                Editors = cs.Editor,
+                Reviewers = cs.Reviewer,
+                Endorsers = cs.Endorser,
+                RootExtensions = cs.Extension,
+                IsCaseSensitive = cs.CaseSensitive,
+                ValueSetVersioned = cs.ValueSet,
+                ValueSetUnversioned = string.IsNullOrEmpty(cs.ValueSet) ? null : cs.ValueSet?.Split('|')[0],
+                HierarchyMeaning = cs.HierarchyMeaning,
+                IsCompositional = cs.Compositional,
+                VersionNeeded = cs.VersionNeeded,
+                Content = cs.Content,
+                SupplementsVersioned = cs.Supplements,
+                SupplementsUnversioned = string.IsNullOrEmpty(cs.Supplements) ? null : cs.Supplements?.Split('|')[0],
+                Count = cs.Count,
+            };
+
+            dbCodeSystems.Add(dbCodeSystem);
+
+            // add defined filters to the list
+            foreach (CodeSystem.FilterComponent filter in cs.Filter)
+            {
+                DbCodeSystemFilter dbFilter = new()
+                {
+                    Key = DbCodeSystemFilter.GetIndex(),
+                    FhirPackageKey = pm.Key,
+                    CodeSystemKey = dbCodeSystem.Key,
+                    Code = filter.Code,
+                    Description = filter.Description,
+                    Operators = string.Join("|", filter.Operator?.Select(op => op.GetLiteral()) ?? []),
+                    Value = filter.Value,
+                };
+
+                dbCodeSystemFilters.Add(dbFilter);
+            }
+
+            // add property definitions to the list
+            foreach (CodeSystem.PropertyComponent? property in cs.Property)
+            {
+                DbCodeSystemPropertyDefinition dbPropertyDefinition = new()
+                {
+                    Key = DbCodeSystemPropertyDefinition.GetIndex(),
+                    FhirPackageKey = pm.Key,
+                    CodeSystemKey = dbCodeSystem.Key,
+                    Code = property.Code,
+                    Uri = property.Uri,
+                    Description = property.Description,
+                    Type = property.Type ?? Hl7.Fhir.Model.CodeSystem.PropertyType.Code,
+                };
+
+                dbCodeSystemPropertyDefinitions.Add(dbPropertyDefinition);
+            }
+            // add concepts to the list (handling hierarchy)
+            List<DbCodeSystemConcept> conceptsForThisCodeSystem = [];
+            List<DbCodeSystemConceptProperty> conceptPropertiesForThisCodeSystem = [];
+            
+            // create a lookup for property definitions by code for this code system
+            ILookup<string, DbCodeSystemPropertyDefinition> propertyDefsByCode = dbCodeSystemPropertyDefinitions
+                .Where(pd => pd.CodeSystemKey == dbCodeSystem.Key)
+                .ToLookup(pd => pd.Code);
+
+            int globalOrder = allDbConcepts.Count;
+            processConceptHierarchy(cs.Concept, dbCodeSystem.Key, pm.Key, null, 0, ref globalOrder, 
+                conceptsForThisCodeSystem, conceptPropertiesForThisCodeSystem, propertyDefsByCode);
+
+            allDbConcepts.AddRange(conceptsForThisCodeSystem);
+            allDbConceptProperties.AddRange(conceptPropertiesForThisCodeSystem);
 
         }
 
@@ -1956,16 +2158,130 @@ public class ComparisonDatabase : IDisposable
         _dbConnection.Insert(dbCodeSystems);
         _logger.LogInformation($" <<< added {dbCodeSystems.Count} CodeSystems");
 
-        // todo: insert filters
-        // todo: insert property definitions
+        _dbConnection.Insert(dbCodeSystemFilters);
+        _logger.LogInformation($" <<< added {dbCodeSystemFilters.Count} CodeSystem Filters");
+
+        _dbConnection.Insert(dbCodeSystemPropertyDefinitions);
+        _logger.LogInformation($" <<< added {dbCodeSystemPropertyDefinitions.Count} CodeSystem Property Definitions");
 
         _dbConnection.Insert(allDbConcepts);
         _logger.LogInformation($" <<< added {allDbConcepts.Count} CodeSystem Concepts");
 
-        // todo: insert concept properties
+        _dbConnection.Insert(allDbConceptProperties);
+        _logger.LogInformation($" <<< added {allDbConceptProperties.Count} CodeSystem Concept Properties");
 
         return;
     }
+
+    private void processConceptHierarchy(
+        IList<CodeSystem.ConceptDefinitionComponent> concepts,
+        int codeSystemKey,
+        int fhirPackageKey,
+        int? parentConceptKey,
+        int relativeOrder,
+        ref int globalOrder,
+        List<DbCodeSystemConcept> allConcepts,
+        List<DbCodeSystemConceptProperty> allConceptProperties,
+        ILookup<string, DbCodeSystemPropertyDefinition> propertyDefsByCode)
+    {
+        foreach (CodeSystem.ConceptDefinitionComponent concept in concepts)
+        {
+            // skip concepts without valid codes - I have no way of correctly passing them through
+            if (string.IsNullOrEmpty(concept.Code))
+            {
+                continue;
+            }
+
+            // create the DbCodeSystemConcept record
+            DbCodeSystemConcept dbConcept = new()
+            {
+                Key = DbCodeSystemConcept.GetIndex(),
+                FhirPackageKey = fhirPackageKey,
+                CodeSystemKey = codeSystemKey,
+                FlatOrder = globalOrder++,
+                RelativeOrder = relativeOrder,
+                Code = concept.Code,
+                Display = concept.Display,
+                Definition = concept.Definition,
+                Designations = concept.Designation,
+                Properties = concept.Property,
+                ParentConceptKey = parentConceptKey,
+                ChildConceptCount = concept.Concept?.Count ?? 0,
+            };
+
+            allConcepts.Add(dbConcept);
+
+            // process concept properties
+            foreach (CodeSystem.ConceptPropertyComponent conceptProperty in concept.Property)
+            {
+                // find the corresponding property definition
+                DbCodeSystemPropertyDefinition? propertyDef = propertyDefsByCode[conceptProperty.Code].FirstOrDefault();
+                if (propertyDef != null)
+                {
+                    DbCodeSystemConceptProperty dbConceptProperty = new()
+                    {
+                        Key = DbCodeSystemConceptProperty.GetIndex(),
+                        FhirPackageKey = fhirPackageKey,
+                        CodeSystemConceptKey = dbConcept.Key,
+                        CodeSystemPropertyDefinitionKey = propertyDef.Key,
+                        Code = conceptProperty.Code,
+                        Type = getPropertyTypeFromValue(conceptProperty.Value),
+                        Value = getPropertyValueString(conceptProperty.Value),
+                    };
+
+                    allConceptProperties.Add(dbConceptProperty);
+                }
+            }
+
+            // recursively process child concepts
+            if (concept.Concept?.Count > 0)
+            {
+                processConceptHierarchy(
+                    concept.Concept,
+                    codeSystemKey,
+                    fhirPackageKey,
+                    dbConcept.Key,
+                    0, // reset relative order for children
+                    ref globalOrder,
+                    allConcepts,
+                    allConceptProperties,
+                    propertyDefsByCode);
+            }
+
+            relativeOrder++;
+        }
+    }
+
+    private static Hl7.Fhir.Model.CodeSystem.PropertyType getPropertyTypeFromValue(DataType? value)
+    {
+        return value switch
+        {
+            Code => Hl7.Fhir.Model.CodeSystem.PropertyType.Code,
+            Coding => Hl7.Fhir.Model.CodeSystem.PropertyType.Coding,
+            FhirString => Hl7.Fhir.Model.CodeSystem.PropertyType.String,
+            Integer => Hl7.Fhir.Model.CodeSystem.PropertyType.Integer,
+            FhirBoolean => Hl7.Fhir.Model.CodeSystem.PropertyType.Boolean,
+            FhirDateTime => Hl7.Fhir.Model.CodeSystem.PropertyType.DateTime,
+            FhirDecimal => Hl7.Fhir.Model.CodeSystem.PropertyType.Decimal,
+            _ => Hl7.Fhir.Model.CodeSystem.PropertyType.Code
+        };
+    }
+
+    private static string getPropertyValueString(DataType? value)
+    {
+        return value switch
+        {
+            Code c => c.Value ?? "",
+            FhirString s => s.Value ?? "",
+            Integer i => i.Value?.ToString() ?? "",
+            FhirBoolean b => b.Value?.ToString() ?? "",
+            FhirDateTime dt => dt.Value ?? "",
+            FhirDecimal d => d.Value?.ToString() ?? "",
+            Coding coding => $"{coding.System}|{coding.Code}|{coding.Display}",
+            _ => value?.ToString() ?? ""
+        };
+    }
+#endif
 
     private void doValueSetPostProcessing(HashSet<string> _escapeValveCodes)
     {
@@ -2052,6 +2368,7 @@ public class ComparisonDatabase : IDisposable
                     Title = uvs.Title,
                     Description = uvs.Description,
                     Purpose = uvs.Purpose,
+                    Narrative = uvs.Text,
                     StandardStatus = uvs.cgStandardStatus(),
                     WorkGroup = uvs.cgWorkGroup(),
                     FhirMaturity = uvs.cgMaturityLevel(),
@@ -2111,6 +2428,7 @@ public class ComparisonDatabase : IDisposable
                 Title = vs.Title,
                 Description = vs.Description,
                 Purpose = vs.Purpose,
+                Narrative = vs.Text,
                 StandardStatus = vs.cgStandardStatus(),
                 WorkGroup = vs.cgWorkGroup(),
                 FhirMaturity = vs.cgMaturityLevel(),
@@ -2246,6 +2564,7 @@ public class ComparisonDatabase : IDisposable
                         Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
                         Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
                         Purpose = sd.Purpose,
+                        Narrative = sd.Text,
                         StandardStatus = sd.cgStandardStatus(),
                         WorkGroup = sd.cgWorkGroup(),
                         FhirMaturity = sd.cgMaturityLevel(),
@@ -2297,6 +2616,7 @@ public class ComparisonDatabase : IDisposable
                     Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
                     Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
                     Purpose = sd.Purpose,
+                    Narrative = sd.Text,
                     StandardStatus = sd.cgStandardStatus(),
                     WorkGroup = sd.cgWorkGroup(),
                     FhirMaturity = sd.cgMaturityLevel(),

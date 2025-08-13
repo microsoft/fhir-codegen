@@ -50,7 +50,7 @@ public partial class FhirDbComparer
                 TargetFhirPackageKey: targetPackage.Key);
 
             // build an estimated target id
-            string possibleTargetId = sourceElement.Id.Replace(sourceSd.Name, targetSd.Name, StringComparison.Ordinal);
+            string possibleTargetId = sourceElement.Id.Replace(sourceSd.Name!, targetSd.Name, StringComparison.Ordinal);
 
             // if there are no existing comparisons, see if we can find a matching element
             if ((comparisons.Count == 0) &&

@@ -269,11 +269,11 @@ public class ImplementationGuide_30_50 : ICrossVersionProcessor<ImplementationGu
 					break;
 
 				case "sourceReference":
-					current.Source = new ResourceReference(node.Text);
+					current.Source = _converter._reference.Extract(node);
 					break;
 
 				case "exampleFor":
-					current.ExampleForElement = new ResourceReference(node.Text);
+					current.ExampleForElement = _converter._reference.Extract(node);
 					break;
 
 				// process inherited elements

@@ -104,8 +104,18 @@ public class OperationDefinition_20_50 : ICrossVersionProcessor<OperationDefinit
 				break;
 
 			case "useContext":
-				current.UseContext.Add(_converter._usageContext.Extract(node));
-				break;
+                {
+                    (UsageContext? useContext, CodeableConcept? jurisdiction) = _converter._usageContext.Extract(node);
+                    if (useContext != null)
+                    {
+                        current.UseContext.Add(useContext);
+                    }
+                    if (jurisdiction != null)
+                    {
+                        current.Jurisdiction.Add(jurisdiction);
+                    }
+                }
+                break;
 
 			case "jurisdiction":
 				current.Jurisdiction.Add(_converter._codeableConcept.Extract(node));

@@ -9,6 +9,8 @@ using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
@@ -139,12 +141,16 @@ public partial class XVerProcessor
         {
             // need to create a definition collection with the matching core package so that we can build everything
             string packageDirective = $"{package.PackageId}#{package.PackageVersion}";
-            
-            //// create a loader because these are all different FHIR core versions
-            //using CodeGen.Loader.PackageLoader loader = new(_config, new()
-            //{
-            //    JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
-            //});
+
+            // create a loader because these are all different FHIR core versions
+            using CodeGen.Loader.PackageLoader loader = new(_config, new()
+            {
+                JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            });
+
+            //// need to load the CodeSystems from each package
+            //DefinitionCollection codeSystemCollection = loader.LoadPackages([packageDirective], loadFilterOverride: [FhirArtifactClassEnum.CodeSystem]).Result
+            //    ?? throw new Exception($"Failed to load CodeSystems for export of package: {packageDirective}");
 
             //DefinitionCollection coreDc = loader.LoadPackages([packageDirective]).Result
             //    ?? throw new Exception($"Could not load package: {packageDirective}");
@@ -154,6 +160,7 @@ public partial class XVerProcessor
                 PackageIndex = index,
                 Package = package,
                 BasicElements = [],
+                //CodeSystemDc = codeSystemCollection,
                 //CoreDC = coreDc,
                 //SnapshotGenerator = new(coreDc),
             };
@@ -267,6 +274,15 @@ public partial class XVerProcessor
                     fhirDir);
                 allIndexInfos.AddRange(focusedIndexInfos);
             }
+
+            // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
+            // write the source code systems for this package
+            writeXverSourceCodeSystemsFromDb(packages, focusPackageIndex, fhirDir);
+#else
+            // copy the source code systems into the target package directories
+            writeXverSourceCodeSystems(packageSupports, focusPackageIndex, fhirDir);
+#endif
         }
 
         // write all of our outcome lists
@@ -362,6 +378,285 @@ public partial class XVerProcessor
             sdGraphs.Add(sd.Key, sdGraph);
         }
     }
+
+    private string? getLocalPackageDirectory(string directive)
+    {
+        if (string.IsNullOrEmpty(directive))
+        {
+            return null;
+        }
+
+        // check to see if we think this is a directory
+        if ((directive.IndexOfAny(Path.GetInvalidPathChars()) == -1) &&
+            (directive.Contains('/') || directive.Contains('\\') || directive.Contains('~')))
+        {
+            // check to see if we can find the directory
+            string resolvedDir = CodeGen.Utils.FileSystemUtils.FindRelativeDir(".", directive, false);
+            if (!string.IsNullOrEmpty(resolvedDir))
+            {
+                return resolvedDir;
+            }
+        }
+
+        if (directive.Contains('@'))
+        {
+            directive = directive.Replace('@', '#');
+        }
+
+        string fhirPackageDir = _config.FhirCacheDirectory ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".fhir", "packages");
+
+        string packageDir = Path.Combine(fhirPackageDir, directive, "package");
+
+        if (Directory.Exists(packageDir))
+        {
+            return packageDir;
+        }
+
+        return null;
+    }
+
+
+    private void writeXverSourceCodeSystems(
+        List<PackageXverSupport> packageSupports,
+        int focusPackageIndex,
+        string fhirDir)
+    {
+        DbFhirPackage focusPackage = packageSupports[focusPackageIndex].Package;
+
+        // iterate over the target packages
+        foreach (PackageXverSupport targetSupport in packageSupports)
+        {
+            if (focusPackage.Key == targetSupport.Package.Key)
+            {
+                continue;
+            }
+
+            DbFhirPackage targetPackage = targetSupport.Package;
+
+            // make sure we have a code system collection for the target package
+            //DefinitionCollection dc = targetSupport.CodeSystemDc ?? targetSupport.CoreDC ?? 
+
+            // try to resolve the source directory
+            string? sourceDir = getLocalPackageDirectory(focusPackage.CacheFolderName);
+
+            if (sourceDir == null)
+            {
+                // nothing to do
+                continue;
+            }
+
+            string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
+            dir = _config.XverExportForPublisher
+                ? Path.Combine(dir, "input", "vocabulary")
+                : Path.Combine(dir, "package");
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            // traverse the source directory code systems
+            foreach (string sourceFilename in Directory.EnumerateFiles(sourceDir, "CodeSystem-*.json", SearchOption.TopDirectoryOnly))
+            {
+                // build our target filename
+                string targetFilename = Path.Combine(dir, Path.GetFileName(sourceFilename));
+
+                if (File.Exists(targetFilename))
+                {
+                    // already exists, skip
+                    continue;
+                }
+
+                // copy the file to the target directory
+                try
+                {
+                    File.Copy(sourceFilename, targetFilename);
+                    _logger.LogInformation($"Copied source CodeSystem file {sourceFilename} to {targetFilename}");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, $"Failed to copy source CodeSystem file {sourceFilename} to {targetFilename}");
+                }
+            }
+        }
+    }
+
+
+    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
+#if !XVER_CS_DISABLED
+    private void writeXverSourceCodeSystemsFromDb(
+        List<DbFhirPackage> packages,
+        int focusPackageIndex,
+        string fhirDir)
+    {
+        DbFhirPackage focusPackage = packages[focusPackageIndex];
+
+        // iterate over the target packages
+        foreach (DbFhirPackage targetPackage in packages)
+        {
+            if (focusPackage.Key == targetPackage.Key)
+            {
+                continue;
+            }
+
+            string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
+            dir = _config.XverExportForPublisher
+                ? Path.Combine(dir, "input", "vocabulary")
+                : Path.Combine(dir, "package");
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+
+            // get the list of code systems in the source package
+            List<DbCodeSystem> codeSystems = DbCodeSystem.SelectList(
+                _db!.DbConnection,
+                FhirPackageKey: focusPackage.Key);
+
+            // iterate over the code systems to them
+            foreach (DbCodeSystem dbCs in codeSystems)
+            {
+                // create the FHIR CodeSystem
+                CodeSystem fhirCs = new()
+                {
+                    Id = dbCs.Id,
+                    Url = dbCs.UnversionedUrl,
+                    Name = dbCs.Name,
+                    Version = dbCs.Version,
+                    VersionAlgorithm =
+                        (dbCs.VersionAlgorithmString != null)
+                        ? new FhirString(dbCs.VersionAlgorithmString)
+                        : (dbCs.VersionAlgorithmCoding != null)
+                        ? dbCs.VersionAlgorithmCoding
+                        : null,
+                    Status = dbCs.Status,
+                    Title = dbCs.Title,
+                    Description = dbCs.Description,
+                    Purpose = dbCs.Purpose,
+                    Text = dbCs.Narrative,
+                    Experimental = dbCs.IsExperimental,
+                    DateElement = (dbCs.LastChangedDate != null) ? new FhirDateTime(dbCs.LastChangedDate.Value) : null,
+                    Publisher = dbCs.Publisher,
+                    Copyright = dbCs.Copyright,
+                    CopyrightLabel = dbCs.CopyrightLabel,
+                    ApprovalDate = dbCs.ApprovalDate,
+                    LastReviewDate = dbCs.LastReviewDate,
+                    EffectivePeriod = (dbCs.EffectivePeriodStart != null || dbCs.EffectivePeriodEnd != null)
+                        ? new Period()
+                        {
+                            StartElement = (dbCs.EffectivePeriodStart != null) ? new FhirDateTime(dbCs.EffectivePeriodStart.Value) : null,
+                            EndElement = (dbCs.EffectivePeriodEnd != null) ? new FhirDateTime(dbCs.EffectivePeriodEnd.Value) : null,
+                        }
+                        : null,
+                    Topic = dbCs.Topic,
+                    RelatedArtifact = dbCs.RelatedArtifacts,
+                    Jurisdiction = dbCs.Jurisdictions,
+                    UseContext = dbCs.UseContexts,
+                    Contact = dbCs.Contacts,
+                    Author = dbCs.Authors,
+                    Editor = dbCs.Editors,
+                    Reviewer = dbCs.Reviewers,
+                    CaseSensitive = dbCs.IsCaseSensitive,
+                    ValueSet = dbCs.ValueSetVersioned,
+                    HierarchyMeaning = dbCs.HierarchyMeaning,
+                    Compositional = dbCs.IsCompositional,
+                    VersionNeeded = dbCs.VersionNeeded,
+                    Content = dbCs.Content,
+                    Supplements = dbCs.SupplementsVersioned,
+                    Count = dbCs.Count,
+                };
+
+                // add standard extensions
+                if (dbCs.RootExtensions != null)
+                {
+                    foreach (Hl7.Fhir.Model.Extension ext in dbCs.RootExtensions)
+                    {
+                        fhirCs.Extension.Add(ext);
+                    }
+                }
+
+                // add filters
+                List<DbCodeSystemFilter> csFilters = DbCodeSystemFilter.SelectList(
+                    _db!.DbConnection,
+                    CodeSystemKey: dbCs.Key);
+
+                foreach (DbCodeSystemFilter dbFilter in csFilters)
+                {
+                    fhirCs.Filter.Add(new CodeSystem.FilterComponent()
+                    {
+                        Code = dbFilter.Code,
+                        Description = dbFilter.Description,
+                        Operator = dbFilter.Operators.Split('|').Select(op => EnumUtility.ParseLiteral<FilterOperator>(op, true)).ToList(),
+                        Value = dbFilter.Value,
+                    });
+                }
+
+                // add property definitions
+                List<DbCodeSystemPropertyDefinition> csPropertyDefinitions = DbCodeSystemPropertyDefinition.SelectList(
+                    _db!.DbConnection,
+                    CodeSystemKey: dbCs.Key);
+
+                foreach (DbCodeSystemPropertyDefinition dbPropDef in csPropertyDefinitions)
+                {
+                    fhirCs.Property.Add(new CodeSystem.PropertyComponent()
+                    {
+                        Code = dbPropDef.Code,
+                        Uri = dbPropDef.Uri,
+                        Description = dbPropDef.Description,
+                        Type = dbPropDef.Type,
+                    });
+                }
+
+                // recursively add concepts
+                addDbCodeSystemConcepts(fhirCs.Concept, dbCs.Key);
+
+                // write the code system to a file
+                string filename = $"CodeSystem-{fhirCs.Id}.json";
+                string path = Path.Combine(dir, filename);
+                File.WriteAllText(path, fhirCs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            }
+        }
+    }
+
+    private void addDbCodeSystemConcepts(
+        List<CodeSystem.ConceptDefinitionComponent> concepts,
+        int dbCsKey,
+        int? parentConceptKey = null)
+    {
+        List<DbCodeSystemConcept> dbConcepts = (parentConceptKey == null)
+            ? DbCodeSystemConcept.SelectList(
+                _db!.DbConnection,
+                CodeSystemKey: dbCsKey,
+                ParentConceptKeyIsNull: true,
+                orderByProperties: [nameof(DbCodeSystemConcept.FlatOrder)])
+            : DbCodeSystemConcept.SelectList(
+                _db!.DbConnection,
+                CodeSystemKey: dbCsKey,
+                ParentConceptKey: parentConceptKey.Value,
+                orderByProperties: [nameof(DbCodeSystemConcept.FlatOrder)]);
+
+        foreach (DbCodeSystemConcept dbConcept in dbConcepts)
+        {
+            // create the concept
+            CodeSystem.ConceptDefinitionComponent fhirConcept = new CodeSystem.ConceptDefinitionComponent()
+            {
+                Code = dbConcept.Code,
+                Display = dbConcept.Display,
+                Definition = dbConcept.Definition,
+                Designation = dbConcept.Designations,
+                Property = dbConcept.Properties,
+            };
+
+            concepts.Add(fhirConcept);
+
+            // recursively add child concepts
+            if (dbConcept.ChildConceptCount != 0)
+            {
+                addDbCodeSystemConcepts(fhirConcept.Concept, dbCsKey, dbConcept.Key);
+            }
+        }
+    }
+#endif
 
     private static string getPackageId(DbFhirPackage? sourcePackage, DbFhirPackage targetPackage) => sourcePackage == null
         ? $"hl7.fhir.uv.xver.{targetPackage.ShortName.ToLowerInvariant()}"
@@ -1122,7 +1417,7 @@ public partial class XVerProcessor
         DbFhirPackage sourcePackage = sourcePackageSupport.Package;
         DbFhirPackage targetPackage = targetPackageSupport.Package;
 
-        //string sdId = $"{sourcePackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
+        //string sdId = $"{focusPackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
         string sdId = $"ext-{sourcePackage.ShortName}-{collapsePathForId(element.Path)}";
 
         bool isRootElement = element.ResourceFieldOrder == 0;
@@ -1185,7 +1480,7 @@ public partial class XVerProcessor
         StructureDefinition extSd = new()
         {
             Id = sdId,
-            //Url = $"http://hl7.org/fhir/uv/xver/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
+            //Url = $"http://hl7.org/fhir/uv/xver/{focusPackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Name = FhirSanitizationUtils.ReformatIdForName(sdId),
             Version = _crossDefinitionVersion,
@@ -2251,7 +2546,7 @@ public partial class XVerProcessor
         DbFhirPackage sourcePackage = packages[sourcePackageIndex];
         DbFhirPackage targetPackage = packages[targetPackageIndex];
 
-        //string sourceDashTarget = $"{sourcePackage.ShortName}-{targetPackage.ShortName}";
+        //string sourceDashTarget = $"{focusPackage.ShortName}-{targetPackage.ShortName}";
         string vsId = $"{sourcePackage.ShortName}-{sourceVs.Id}-for-{targetPackage.ShortName}";
         //string vsId = $"{sourceDashTarget}-{sourceVs.Id}";
 

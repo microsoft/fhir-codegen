@@ -112,8 +112,18 @@ public class ConceptMap_20_50 : ICrossVersionProcessor<ConceptMap>, ICrossVersio
 				break;
 
 			case "useContext":
-				current.UseContext.Add(_converter._usageContext.Extract(node));
-				break;
+                {
+                    (UsageContext? useContext, CodeableConcept? jurisdiction) = _converter._usageContext.Extract(node);
+                    if (useContext != null)
+                    {
+                        current.UseContext.Add(useContext);
+                    }
+                    if (jurisdiction != null)
+                    {
+                        current.Jurisdiction.Add(jurisdiction);
+                    }
+                }
+                break;
 
 			case "jurisdiction":
 				current.Jurisdiction.Add(_converter._codeableConcept.Extract(node));
@@ -140,7 +150,7 @@ public class ConceptMap_20_50 : ICrossVersionProcessor<ConceptMap>, ICrossVersio
 				break;
 
 			case "sourceReference":
-				current.SourceScope = new ResourceReference(node.Text);
+				current.SourceScope = _converter._reference.Extract(node);
 				break;
 
 			case "targetUri":
@@ -148,7 +158,7 @@ public class ConceptMap_20_50 : ICrossVersionProcessor<ConceptMap>, ICrossVersio
 				break;
 
 			case "targetReference":
-				current.TargetScope = new ResourceReference(node.Text);
+				current.TargetScope = _converter._reference.Extract(node);
 				break;
 
 			case "group":

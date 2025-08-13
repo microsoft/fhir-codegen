@@ -96,8 +96,18 @@ public class ImplementationGuide_20_50 : ICrossVersionProcessor<ImplementationGu
 				break;
 
 			case "useContext":
-				current.UseContext.Add(_converter._usageContext.Extract(node));
-				break;
+                {
+                    (UsageContext? useContext, CodeableConcept? jurisdiction) = _converter._usageContext.Extract(node);
+                    if (useContext != null)
+                    {
+                        current.UseContext.Add(useContext);
+                    }
+                    if (jurisdiction != null)
+                    {
+                        current.Jurisdiction.Add(jurisdiction);
+                    }
+                }
+                break;
 
 			case "jurisdiction":
 				current.Jurisdiction.Add(_converter._codeableConcept.Extract(node));
@@ -269,11 +279,11 @@ public class ImplementationGuide_20_50 : ICrossVersionProcessor<ImplementationGu
 					break;
 
 				case "sourceReference":
-					current.Source = new ResourceReference(node.Text);
+					current.Source = _converter._reference.Extract(node);
 					break;
 
 				case "exampleFor":
-					current.ExampleForElement = new ResourceReference(node.Text);
+					current.ExampleForElement = _converter._reference.Extract(node);
 					break;
 
 				// process inherited elements

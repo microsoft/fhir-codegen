@@ -140,7 +140,7 @@ public class ConceptMap_30_50 : ICrossVersionProcessor<ConceptMap>, ICrossVersio
 				break;
 
 			case "sourceReference":
-				current.SourceScope = new ResourceReference(node.Text);
+				current.SourceScope = _converter._reference.Extract(node);
 				break;
 
 			case "targetUri":
@@ -148,7 +148,7 @@ public class ConceptMap_30_50 : ICrossVersionProcessor<ConceptMap>, ICrossVersio
 				break;
 
 			case "targetReference":
-				current.TargetScope = new ResourceReference(node.Text);
+				current.TargetScope = _converter._reference.Extract(node);
 				break;
 
 			case "group":
