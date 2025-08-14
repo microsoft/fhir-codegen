@@ -11,6 +11,7 @@ using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
 using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
@@ -506,7 +507,6 @@ public partial class XVerProcessor
             {
                 Directory.CreateDirectory(dir);
             }
-
 
             // get the list of code systems in the source package
             List<DbCodeSystem> codeSystems = DbCodeSystem.SelectList(
@@ -2442,7 +2442,6 @@ public partial class XVerProcessor
             // skip excluded content and value sets that cannot expand
             if (_exclusionSet.Contains(vs.UnversionedUrl) ||
                 _exclusionSet.Contains(vs.VersionedUrl) ||
-                (vs.CanExpand == false) ||
                 (vs.IsExcluded == true))
             {
                 continue;
@@ -2458,23 +2457,27 @@ public partial class XVerProcessor
 
             // build a dictionary of all concept projections, by concept key
             Dictionary<int, List<DbGraphVs.DbVsConceptRow>> conceptProjectionDict = [];
-            foreach (DbGraphVs.DbVsRow vsRow in vsGraph.Projection)
+
+            if (vs.CanExpand)
             {
-                List<DbGraphVs.DbVsConceptRow> conceptProjections = vsRow.Projection;
-                foreach (DbGraphVs.DbVsConceptRow vsConceptRow in conceptProjections)
+                foreach (DbGraphVs.DbVsRow vsRow in vsGraph.Projection)
                 {
-                    if (vsConceptRow.KeyCell == null)
+                    List<DbGraphVs.DbVsConceptRow> conceptProjections = vsRow.Projection;
+                    foreach (DbGraphVs.DbVsConceptRow vsConceptRow in conceptProjections)
                     {
-                        continue;
-                    }
+                        if (vsConceptRow.KeyCell == null)
+                        {
+                            continue;
+                        }
 
-                    if (!conceptProjectionDict.TryGetValue(vsConceptRow.KeyCell.Concept.Key, out List<DbGraphVs.DbVsConceptRow>? conceptList))
-                    {
-                        conceptList = [];
-                        conceptProjectionDict.Add(vsConceptRow.KeyCell.Concept.Key, conceptList);
-                    }
+                        if (!conceptProjectionDict.TryGetValue(vsConceptRow.KeyCell.Concept.Key, out List<DbGraphVs.DbVsConceptRow>? conceptList))
+                        {
+                            conceptList = [];
+                            conceptProjectionDict.Add(vsConceptRow.KeyCell.Concept.Key, conceptList);
+                        }
 
-                    conceptList.Add(vsConceptRow);
+                        conceptList.Add(vsConceptRow);
+                    }
                 }
             }
 
@@ -2559,6 +2562,8 @@ public partial class XVerProcessor
             Title = $"Cross-version VS for {sourcePackage.ShortName}.{sourceVs.Name} for use in FHIR {targetPackage.ShortName}",
             Status = PublicationStatus.Active,
             Experimental = false,
+            UseContext = sourceVs.UseContexts,
+            Jurisdiction = sourceVs.Jurisdictions,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Description = $"This cross-version ValueSet represents concepts from {sourceVs.VersionedUrl} for use in FHIR {targetPackage.ShortName}." +
                     $" Concepts not present here have direct `equivalent` mappings crossing all versions from {sourcePackage.ShortName} to {targetPackage.ShortName}.",
@@ -2573,83 +2578,110 @@ public partial class XVerProcessor
             },
         };
 
-        Dictionary<string, ValueSet.ConceptSetComponent> composeIncludes = [];
-
-        // if we have an existing VS, start with the compose and expansion from that one (note that nonEquivalentConceptKeys will already be populated)
-        if (xverVs != null)
+        // check to see if we should set various root extensions
+        if (sourceVs.FhirMaturity != null)
         {
-            vs.Compose = (ValueSet.ComposeComponent)xverVs.Compose.DeepCopy();
-            foreach (ValueSet.ConceptSetComponent composeInclude in vs.Compose.Include)
-            {
-                composeIncludes.Add(composeInclude.System + "|" + composeInclude.Version, composeInclude);
-            }
-
-            vs.Expansion = (ValueSet.ExpansionComponent)xverVs.Expansion.DeepCopy();
+            vs.AddExtension(CommonDefinitions.ExtUrlFmm, new Integer(sourceVs.FhirMaturity));
         }
 
-        // iterate over the projections
-        foreach ((int sourceConceptKey, List<DbGraphVs.DbVsConceptRow> conceptProjections) in conceptProjectionDict)
+        if (sourceVs.WorkGroup != null)
         {
-            // skip if we know this concept has already mapped out
-            if (conceptsWithoutEquivalent.Contains(sourceConceptKey))
+            vs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new FhirString(sourceVs.WorkGroup));
+        }
+
+        // check for unexpandable value sets (use the compose)
+        if ((sourceVs.CanExpand == false) ||
+            (conceptProjectionDict.Count == 0))
+        {
+            // use the existing compose
+            vs.Compose = sourceVs.Compose;
+
+            // will not have an expansion
+            vs.Expansion = null;
+
+            // add this value set to the dictionary
+            xverValueSets.Add((sourceVs.Key, targetPackage.Key), vs);
+        }
+        else
+        {
+            Dictionary<string, ValueSet.ConceptSetComponent> composeIncludes = [];
+
+            // if we have an existing VS, start with the compose and expansion from that one (note that nonEquivalentConceptKeys will already be populated)
+            if (xverVs != null)
             {
-                continue;
+                vs.Compose = (ValueSet.ComposeComponent)xverVs.Compose.DeepCopy();
+                foreach (ValueSet.ConceptSetComponent composeInclude in vs.Compose.Include)
+                {
+                    composeIncludes.Add(composeInclude.System + "|" + composeInclude.Version, composeInclude);
+                }
+
+                vs.Expansion = (ValueSet.ExpansionComponent)xverVs.Expansion.DeepCopy();
             }
 
-            // check to see if we have any equivalent mappings
-            if (testingRight &&
-                conceptProjections.Any((DbGraphVs.DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+            // iterate over the projections
+            foreach ((int sourceConceptKey, List<DbGraphVs.DbVsConceptRow> conceptProjections) in conceptProjectionDict)
             {
-                continue;
-            }
+                // skip if we know this concept has already mapped out
+                if (conceptsWithoutEquivalent.Contains(sourceConceptKey))
+                {
+                    continue;
+                }
 
-            if (testingLeft &&
-                conceptProjections.Any((DbGraphVs.DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
-            {
-                continue;
-            }
+                // check to see if we have any equivalent mappings
+                if (testingRight &&
+                    conceptProjections.Any((DbGraphVs.DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.RightComparison?.Relationship == CMR.Equivalent))
+                {
+                    continue;
+                }
 
-            // add this concept as not directly equivalent
-            conceptsWithoutEquivalent.Add(sourceConceptKey);
+                if (testingLeft &&
+                    conceptProjections.Any((DbGraphVs.DbVsConceptRow vsConceptRow) => vsConceptRow[currentPackageIndex]?.LeftComparison?.Relationship == CMR.Equivalent))
+                {
+                    continue;
+                }
 
-            // check to see if we have this concept
-            DbValueSetConcept concept = conceptProjections[0].KeyCell?.Concept ?? throw new Exception($"Failed to resolve concept for {sourceConceptKey} in {sourceVs.Name}!");
+                // add this concept as not directly equivalent
+                conceptsWithoutEquivalent.Add(sourceConceptKey);
 
-            string composeKey = concept.System + "|" + concept.SystemVersion;
+                // check to see if we have this concept
+                DbValueSetConcept concept = conceptProjections[0].KeyCell?.Concept ?? throw new Exception($"Failed to resolve concept for {sourceConceptKey} in {sourceVs.Name}!");
 
-            if (!composeIncludes.TryGetValue(composeKey, out ValueSet.ConceptSetComponent? composeInclude))
-            {
-                // create a new include for this concept
-                composeInclude = new()
+                string composeKey = concept.System + "|" + concept.SystemVersion;
+
+                if (!composeIncludes.TryGetValue(composeKey, out ValueSet.ConceptSetComponent? composeInclude))
+                {
+                    // create a new include for this concept
+                    composeInclude = new()
+                    {
+                        System = concept.System,
+                        Version = concept.SystemVersion,
+                        Concept = [],
+                    };
+                    composeIncludes.Add(composeKey, composeInclude);
+                    vs.Compose.Include.Add(composeInclude);
+                }
+
+                composeInclude.Concept.Add(new()
+                {
+                    Code = concept.Code,
+                    Display = concept.Display,
+                });
+
+                // add this concept to the expansion
+                vs.Expansion.Contains.Add(new()
                 {
                     System = concept.System,
                     Version = concept.SystemVersion,
-                    Concept = [],
-                };
-                composeIncludes.Add(composeKey, composeInclude);
-                vs.Compose.Include.Add(composeInclude);
+                    Code = concept.Code,
+                    Display = concept.Display,
+                });
             }
 
-            composeInclude.Concept.Add(new()
+            // add this value set to the dictionary if it has any concepts
+            if (vs.Expansion.Contains.Count > 0)
             {
-                Code = concept.Code,
-                Display = concept.Display,
-            });
-
-            // add this concept to the expansion
-            vs.Expansion.Contains.Add(new()
-            {
-                System = concept.System,
-                Version = concept.SystemVersion,
-                Code = concept.Code,
-                Display = concept.Display,
-            });
-        }
-
-        // add this value set to the dictionary if it has any concepts
-        if (vs.Expansion.Contains.Count > 0)
-        {
-            xverValueSets.Add((sourceVs.Key, targetPackage.Key), vs);
+                xverValueSets.Add((sourceVs.Key, targetPackage.Key), vs);
+            }
         }
 
         // check for continuing to the next package to the right

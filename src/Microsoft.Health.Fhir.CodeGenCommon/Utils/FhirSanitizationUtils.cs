@@ -49,7 +49,16 @@ public abstract partial class FhirSanitizationUtils
     private static readonly Regex _regexAsciiEscaping = new Regex("[^ -~]+", RegexOptions.Compiled);
 #endif
 
+#if NET8_0_OR_GREATER
+    [GeneratedRegex(@"\[\[\[(\S*?)\]\]\]")]
+    private static partial Regex RegexTripleBracketLink();
 
+    /// <summary>The RegEx for FHIR 'special' link escaping.</summary>
+    private static readonly Regex _regexTripleBracketLink = RegexTripleBracketLink();
+#else
+    /// <summary>The RegEx for FHIR 'special' link escaping.</summary>
+    private static readonly Regex _regexTripleBracketLink = new Regex(@"\[\[\[(\S*?)\]\]\]", RegexOptions.Compiled);
+#endif
 
     /// <summary>(Immutable) The underscore.</summary>
     public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
@@ -462,6 +471,34 @@ public abstract partial class FhirSanitizationUtils
     /// <param name="value"></param>
     /// <returns></returns>
     public static string ReformatIdForName(string value) => char.ToUpperInvariant(value[0]) + value[1..].Replace('-', '_').Replace('.', '_');
+
+    public static string? ProcessFhirMdLinks(string? value, string fhirSequenceLabel)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return value;
+        }
+
+        // Replace [[[Token]]] with anchor to the FHIR spec page for the current version
+        string cleaned = _regexTripleBracketLink.Replace(
+            value,
+            m =>
+            {
+                string token = m.Groups[1].Value;
+                int hashIndex = token.IndexOf('#');
+                if (hashIndex != -1)
+                {
+                    // It's a fragment link, so preserve the fragment
+                    return $"[{token}](https://hl7.org/fhir/{fhirSequenceLabel}/{token[0..^hashIndex]}.html{token[hashIndex]})";
+                    //return $"<a href=\"https://hl7.org/fhir/{fhirSequenceLabel}/{token[0..^hashIndex]}.html{token[hashIndex]}\">{token}</a>";
+                }
+
+                return $"[{token}](https://hl7.org/fhir/{fhirSequenceLabel}/{token}.html)";
+                //return $"<a href=\"https://hl7.org/fhir/{fhirSequenceLabel}/{token}.html\">{token}</a>";
+            });
+
+        return cleaned;
+    }
 
     /// <summary>Sanitize for property.</summary>
     /// <param name="value">        The value.</param>

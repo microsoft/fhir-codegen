@@ -51,6 +51,7 @@ public partial class DbValueSet : DbMetadataResource
     public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCode { get; set; }
     public required Hl7.Fhir.Model.BindingStrength? StrongestBindingExtendedCoding { get; set; }
 
+    public required Hl7.Fhir.Model.ValueSet.ComposeComponent? Compose { get; set; }
 
     [CgSQLiteIgnore]
     public string UiDisplay

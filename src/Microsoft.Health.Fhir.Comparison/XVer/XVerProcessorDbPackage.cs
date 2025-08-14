@@ -67,6 +67,13 @@ public partial class XVerProcessor
         * Fix: sushi-config.yaml `name` property was not properly formatted (`ig-0`)
         * Added `ignoreWarnings.txt` file to generated packages to suppress known non-critical warnings during IG publishing
         * Fix: ValueSets that have `equivalent` definitions in target versions were referencing the source version number
+        * Added porting of source `CodeSystem` resources from core packages
+        * Fix: replacing of 'special' FHIR links formatted as `[[[{structure[#fragment]}]]]` by converting to version-specific markdown links
+        * Added generation of unexpandable value sets by copying the source `ValueSet.compose` element to an XVer ValueSet
+        * Added `useContext` from source ValueSets to equivalent XVer ValueSets
+        * Added `jurisdiction` from source ValueSets to equivalent XVer ValueSets
+        * Fix: DSTU2 `usageContext` elements were not loading correctly
+        * Fix: DSTU2 `usageContext` element processing was not categorizing jurisdiction values correctly (now moving those values to `jurisdiction` elements)
 
         ### 0.0.1-snapshot-1
 

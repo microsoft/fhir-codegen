@@ -6,7 +6,9 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.Models;
@@ -16,6 +18,31 @@ namespace Microsoft.Health.Fhir.Comparison.Extensions;
 
 public static class DbContentExtensions
 {
+    public static string? ProcessFhirMdLinks(
+        this string? input,
+        string fhirVersionLiteral)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return input;
+        }
+        return FhirSanitizationUtils.ProcessFhirMdLinks(input, fhirVersionLiteral);
+    }
+
+    public static Narrative? ProcessFhirMdLinks(this Narrative? input, string fhirVersionLiteral)
+    {
+        if ((input == null) || string.IsNullOrEmpty(input.Div))
+        {
+            return input;
+        }
+
+        return new Narrative
+        {
+            Status = input.Status,
+            Div = FhirSanitizationUtils.ProcessFhirMdLinks(input.Div, fhirVersionLiteral),
+        };
+    }
+
     public static int ConceptCountWithLiteralMatches(
         this IDbConnection dbConnection,
         int vsKeyA,

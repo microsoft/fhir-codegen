@@ -1969,6 +1969,8 @@ public class ComparisonDatabase : IDisposable
         List<DbCodeSystemConcept> allDbConcepts = [];
         List<DbCodeSystemConceptProperty> allDbConceptProperties = [];
 
+        string fhirVersionLiteral = pm.DefinitionFhirSequence.ToString();
+
         // iterate over the code systems in the definition collection
         foreach ((string codeSystemUrl, CodeSystem cs) in dc.CodeSystemsByUrl.OrderBy(kvp => kvp.Key))
         {
@@ -2006,10 +2008,10 @@ public class ComparisonDatabase : IDisposable
                     VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString cseVaFs) ? cseVaFs.Value : null,
                     VersionAlgorithmCoding = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is Coding cseVaC) ? cseVaC : null,
                     Status = cs.Status,
-                    Title = cs.Title,
-                    Description = cs.Description,
-                    Purpose = cs.Purpose,
-                    Narrative = cs.Text,
+                    Title = cs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Description = cs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Purpose = cs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Narrative = cs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
                     StandardStatus = cs.cgStandardStatus(),
                     WorkGroup = cs.cgWorkGroup(),
                     FhirMaturity = cs.cgMaturityLevel(),
@@ -2062,10 +2064,10 @@ public class ComparisonDatabase : IDisposable
                 VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString csVaFs) ? csVaFs.Value : null,
                 VersionAlgorithmCoding = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is Coding csVaC) ? csVaC : null,
                 Status = cs.Status,
-                Title = cs.Title,
-                Description = cs.Description,
-                Purpose = cs.Purpose,
-                Narrative = cs.Text,
+                Title = cs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
+                Description = cs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
+                Purpose = cs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
+                Narrative = cs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
                 StandardStatus = cs.cgStandardStatus(),
                 WorkGroup = cs.cgWorkGroup(),
                 FhirMaturity = cs.cgMaturityLevel(),
@@ -2145,8 +2147,17 @@ public class ComparisonDatabase : IDisposable
                 .ToLookup(pd => pd.Code);
 
             int globalOrder = allDbConcepts.Count;
-            processConceptHierarchy(cs.Concept, dbCodeSystem.Key, pm.Key, null, 0, ref globalOrder, 
-                conceptsForThisCodeSystem, conceptPropertiesForThisCodeSystem, propertyDefsByCode);
+            processConceptHierarchy(
+                cs.Concept,
+                dbCodeSystem.Key,
+                pm.Key,
+                null,
+                0,
+                ref globalOrder, 
+                conceptsForThisCodeSystem,
+                conceptPropertiesForThisCodeSystem,
+                propertyDefsByCode,
+                fhirVersionLiteral);
 
             allDbConcepts.AddRange(conceptsForThisCodeSystem);
             allDbConceptProperties.AddRange(conceptPropertiesForThisCodeSystem);
@@ -2182,7 +2193,8 @@ public class ComparisonDatabase : IDisposable
         ref int globalOrder,
         List<DbCodeSystemConcept> allConcepts,
         List<DbCodeSystemConceptProperty> allConceptProperties,
-        ILookup<string, DbCodeSystemPropertyDefinition> propertyDefsByCode)
+        ILookup<string, DbCodeSystemPropertyDefinition> propertyDefsByCode,
+        string fhirVersionLiteral)
     {
         foreach (CodeSystem.ConceptDefinitionComponent concept in concepts)
         {
@@ -2202,7 +2214,7 @@ public class ComparisonDatabase : IDisposable
                 RelativeOrder = relativeOrder,
                 Code = concept.Code,
                 Display = concept.Display,
-                Definition = concept.Definition,
+                Definition = concept.Definition.ProcessFhirMdLinks(fhirVersionLiteral),
                 Designations = concept.Designation,
                 Properties = concept.Property,
                 ParentConceptKey = parentConceptKey,
@@ -2245,7 +2257,8 @@ public class ComparisonDatabase : IDisposable
                     ref globalOrder,
                     allConcepts,
                     allConceptProperties,
-                    propertyDefsByCode);
+                    propertyDefsByCode,
+                    fhirVersionLiteral);
             }
 
             relativeOrder++;
@@ -2306,6 +2319,8 @@ public class ComparisonDatabase : IDisposable
         List<DbValueSet> dbValueSets = [];
         List<DbValueSetConcept> allDbConcepts = [];
 
+        string fhirVersionLiteral = pm.DefinitionFhirSequence.ToString();
+
         // iterate over the value sets in the definition collection
         foreach ((string unversionedUrl, string[] versions) in dc.ValueSetVersions.OrderBy(kvp => kvp.Key))
         {
@@ -2365,10 +2380,10 @@ public class ComparisonDatabase : IDisposable
                     VersionAlgorithmString = (uvs.VersionAlgorithm != null) && (uvs.VersionAlgorithm is FhirString vsmVaFs) ? vsmVaFs.Value : null,
                     VersionAlgorithmCoding = (uvs.VersionAlgorithm != null) && (uvs.VersionAlgorithm is Coding vsmVaC) ? vsmVaC : null,
                     Status = uvs.Status,
-                    Title = uvs.Title,
-                    Description = uvs.Description,
-                    Purpose = uvs.Purpose,
-                    Narrative = uvs.Text,
+                    Title = uvs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Description = uvs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Purpose = uvs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Narrative = uvs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
                     StandardStatus = uvs.cgStandardStatus(),
                     WorkGroup = uvs.cgWorkGroup(),
                     FhirMaturity = uvs.cgMaturityLevel(),
@@ -2406,6 +2421,7 @@ public class ComparisonDatabase : IDisposable
                     StrongestBindingExtended = strongestBindingExtended,
                     StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength ebseCode) ? ebseCode : null,
                     StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength ebseCoding) ? ebseCoding : null,
+                    Compose = uvs.Compose,
                 };
 
                 dbValueSets.Add(vsmExcluded);
@@ -2425,10 +2441,10 @@ public class ComparisonDatabase : IDisposable
                 VersionAlgorithmString = (vs.VersionAlgorithm != null) && (vs.VersionAlgorithm is FhirString vsVaFs) ? vsVaFs.Value : null,
                 VersionAlgorithmCoding = (vs.VersionAlgorithm != null) && (vs.VersionAlgorithm is Coding vsVaC) ? vsVaC : null,
                 Status = vs.Status,
-                Title = vs.Title,
-                Description = vs.Description,
-                Purpose = vs.Purpose,
-                Narrative = vs.Text,
+                Title = vs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
+                Description = vs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
+                Purpose = vs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
+                Narrative = vs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
                 StandardStatus = vs.cgStandardStatus(),
                 WorkGroup = vs.cgWorkGroup(),
                 FhirMaturity = vs.cgMaturityLevel(),
@@ -2466,6 +2482,7 @@ public class ComparisonDatabase : IDisposable
                 StrongestBindingExtended = strongestBindingExtended,
                 StrongestBindingExtendedCode = extendedBindingStrengthByType.TryGetValue("code", out BindingStrength bseCode) ? bseCode : null,
                 StrongestBindingExtendedCoding = extendedBindingStrengthByType.TryGetValue("Coding", out BindingStrength bseCoding) ? bseCoding : null,
+                Compose = vs.Compose,
             };
 
             dbValueSets.Add(dbVs);
@@ -2538,6 +2555,8 @@ public class ComparisonDatabase : IDisposable
         List<DbElementType> dbElementTypes = [];
         List<DbElementAdditionalBinding> dbAdditionalBindings = [];
 
+        string fhirVersionLiteral = pm.DefinitionFhirSequence.ToString();
+
         // iterate over the types of structures
         foreach ((IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass) in getStructures(dc))
         {
@@ -2561,10 +2580,10 @@ public class ComparisonDatabase : IDisposable
                         VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdeVaFs) ? sdeVaFs.Value : null,
                         VersionAlgorithmCoding = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is Coding sdeVaC) ? sdeVaC : null,
                         Status = sd.Status,
-                        Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
-                        Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
-                        Purpose = sd.Purpose,
-                        Narrative = sd.Text,
+                        Title = (sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short).ProcessFhirMdLinks(fhirVersionLiteral),
+                        Description = (sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition).ProcessFhirMdLinks(fhirVersionLiteral),
+                        Purpose = sd.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
+                        Narrative = sd.Text.ProcessFhirMdLinks(fhirVersionLiteral),
                         StandardStatus = sd.cgStandardStatus(),
                         WorkGroup = sd.cgWorkGroup(),
                         FhirMaturity = sd.cgMaturityLevel(),
@@ -2587,7 +2606,7 @@ public class ComparisonDatabase : IDisposable
                         Reviewers = null,
                         Endorsers = null,
                         RootExtensions = sd.Extension,
-                        Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
+                        Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment.ProcessFhirMdLinks(fhirVersionLiteral),
                         ArtifactClass = cgClass,
                         Message = "Manually excluded",
                         SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
@@ -2613,10 +2632,10 @@ public class ComparisonDatabase : IDisposable
                     VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdVaFs) ? sdVaFs.Value : null,
                     VersionAlgorithmCoding = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is Coding sdVaC) ? sdVaC : null,
                     Status = sd.Status,
-                    Title = sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short,
-                    Description = sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition,
-                    Purpose = sd.Purpose,
-                    Narrative = sd.Text,
+                    Title = (sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short).ProcessFhirMdLinks(fhirVersionLiteral),
+                    Description = (sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition).ProcessFhirMdLinks(fhirVersionLiteral),
+                    Purpose = sd.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Narrative = sd.Text.ProcessFhirMdLinks(fhirVersionLiteral),
                     StandardStatus = sd.cgStandardStatus(),
                     WorkGroup = sd.cgWorkGroup(),
                     FhirMaturity = sd.cgMaturityLevel(),
@@ -2639,7 +2658,7 @@ public class ComparisonDatabase : IDisposable
                     Reviewers = null,
                     Endorsers = null,
                     RootExtensions = sd.Extension,
-                    Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment,
+                    Comment = (sd.Snapshot?.Element.FirstOrDefault()?.Comment).ProcessFhirMdLinks(fhirVersionLiteral),
                     ArtifactClass = cgClass,
                     Message = string.Empty,
                     SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
@@ -2940,8 +2959,8 @@ public class ComparisonDatabase : IDisposable
                         Purpose = additional.Purpose,
                         BindingValueSet = additional.ValueSet,
                         BindingValueSetKey = string.IsNullOrEmpty(additional.ValueSet) ? null : DbValueSet.SelectSingle(_dbConnection, FhirPackageKey: pm.Key, UnversionedUrl: additional.ValueSet)?.Key,
-                        Documentation = additional.Documentation,
-                        ShortDocumentation = additional.ShortDoco,
+                        Documentation = additional.Documentation.ProcessFhirMdLinks(fhirVersionLiteral),
+                        ShortDocumentation = additional.ShortDoco.ProcessFhirMdLinks(fhirVersionLiteral),
                         CollatedUsageContexts = additional.Usage.Count == 0
                             ? null
                             : string.Join(", ", additional.Usage.Select(uc => uc.Code.System + "#" + uc.Code.Code + ": `" + uc.Value.ToString() + "`")),
@@ -3004,8 +3023,8 @@ public class ComparisonDatabase : IDisposable
                 Path = ed.Path,
                 ChildElementCount = childCount,
                 Name = ed.cgName(),
-                Short = ed.Short,
-                Definition = ed.Definition,
+                Short = ed.Short.ProcessFhirMdLinks(fhirVersionLiteral),
+                Definition = ed.Definition.ProcessFhirMdLinks(fhirVersionLiteral),
                 MinCardinality = ed.cgCardinalityMin(),
                 MaxCardinality = ed.cgCardinalityMax(),
                 MaxCardinalityString = ed.Max ?? "*",
