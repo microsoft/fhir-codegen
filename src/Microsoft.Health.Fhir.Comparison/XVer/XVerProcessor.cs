@@ -399,7 +399,6 @@ public partial class XVerProcessor
         /// Gets or sets the core definition collection.
         /// </summary>
         public DefinitionCollection? CoreDC { get; set; } = null;
-        public DefinitionCollection? CodeSystemDc { get; set; } = null;
         /// <summary>
         /// Gets or sets the snapshot generator.
         /// </summary>

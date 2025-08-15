@@ -60,6 +60,18 @@ public abstract partial class FhirSanitizationUtils
     private static readonly Regex _regexTripleBracketLink = new Regex(@"\[\[\[(\S*?)\]\]\]", RegexOptions.Compiled);
 #endif
 
+#if NET8_0_OR_GREATER
+    [GeneratedRegex(@"<a\s+href=[""']([^""']+)[""']>([^<]+)</a>")]
+    private static partial Regex RegexHtmlAnchor();
+
+    /// <summary>The RegEx for finding HTML Anchors.</summary>
+    private static readonly Regex _regexHtmlAnchor = RegexHtmlAnchor();
+#else
+    /// <summary>The RegEx for finding HTML Anchors.</summary>
+    private static readonly Regex _regexHtmlAnchor = new Regex(@"<a\s+href=[""']([^""']+)[""']>([^<]+)</a>", RegexOptions.Compiled);
+#endif
+
+
     /// <summary>(Immutable) The underscore.</summary>
     public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
     {
@@ -472,7 +484,7 @@ public abstract partial class FhirSanitizationUtils
     /// <returns></returns>
     public static string ReformatIdForName(string value) => char.ToUpperInvariant(value[0]) + value[1..].Replace('-', '_').Replace('.', '_');
 
-    public static string? ProcessFhirMdLinks(string? value, string fhirSequenceLabel)
+    public static string? ProcessFhirSpecialMdLinks(string? value, string fhirSequenceLabel)
     {
         if (string.IsNullOrEmpty(value))
         {
@@ -495,6 +507,45 @@ public abstract partial class FhirSanitizationUtils
 
                 return $"[{token}](https://hl7.org/fhir/{fhirSequenceLabel}/{token}.html)";
                 //return $"<a href=\"https://hl7.org/fhir/{fhirSequenceLabel}/{token}.html\">{token}</a>";
+            });
+
+        return cleaned;
+    }
+
+    public static string? ProcessFhirHtmlLinks(string? value, string fhirSequenceLabel)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return value;
+        }
+
+        // Replace <a href="{link}">{label}</a> with a markdown link, check for expected relative links in core specs
+        string cleaned = _regexHtmlAnchor.Replace(
+            value,
+            m =>
+            {
+                string link = m.Groups[1].Value;
+                string label = m.Groups[2].Value;
+
+                string prefix = link.StartsWith("http", StringComparison.OrdinalIgnoreCase)
+                    ? string.Empty
+                    : "https://hl7.org/fhir/";
+
+                string fragment = string.Empty;
+
+                int hashIndex = link.IndexOf('#');
+                if (hashIndex != -1)
+                {
+                    // It's a fragment link, so preserve the fragment
+                    fragment = link[hashIndex..];
+                    link = link[0..^hashIndex];
+                }
+
+                string suffix = link.EndsWith(".html", StringComparison.OrdinalIgnoreCase) || link.EndsWith(".htm", StringComparison.OrdinalIgnoreCase)
+                    ? string.Empty
+                    : ".html";
+
+                return $"[{label}]({prefix}{link}{suffix}{fragment})";
             });
 
         return cleaned;

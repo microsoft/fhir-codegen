@@ -186,14 +186,11 @@ public class ComparisonDatabase : IDisposable
             DbFhirPackage.LoadMaxKey(_dbConnection);
             DbFhirPackageComparisonPair.LoadMaxKey(_dbConnection);
 
-// 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
             DbCodeSystem.LoadMaxKey(_dbConnection);
             DbCodeSystemPropertyDefinition.LoadMaxKey(_dbConnection);
             DbCodeSystemFilter.LoadMaxKey(_dbConnection);
             DbCodeSystemConcept.LoadMaxKey(_dbConnection);
             DbCodeSystemConceptProperty.LoadMaxKey(_dbConnection);
-#endif
 
             DbValueSet.LoadMaxKey(_dbConnection);
             DbValueSetConcept.LoadMaxKey(_dbConnection);
@@ -269,14 +266,11 @@ public class ComparisonDatabase : IDisposable
         {
             case FhirArtifactClassEnum.CodeSystem:
                 {
-                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
                     DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
                     DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
                     DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
                     DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
                     DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
-#endif
                 }
                 break;
 
@@ -317,14 +311,12 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb));
                     DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb));
 
-                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
                     DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
                     DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
                     DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
                     DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
                     DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
-#endif
+
                     DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
                     DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
                     DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
@@ -357,14 +349,11 @@ public class ComparisonDatabase : IDisposable
         {
             case FhirArtifactClassEnum.CodeSystem:
                 {
-                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
                     DbCodeSystem.DropTable(db);
                     DbCodeSystemPropertyDefinition.DropTable(db);
                     DbCodeSystemFilter.DropTable(db);
                     DbCodeSystemConcept.DropTable(db);
                     DbCodeSystemConceptProperty.DropTable(db);
-#endif
                 }
                 break;
 
@@ -404,14 +393,12 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.DropTable(db);
                     DbFhirPackageComparisonPair.DropTable(db);
 
-                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
                     DbCodeSystem.DropTable(db);
                     DbCodeSystemPropertyDefinition.DropTable(db);
                     DbCodeSystemFilter.DropTable(db);
                     DbCodeSystemConcept.DropTable(db);
                     DbCodeSystemConceptProperty.DropTable(db);
-#endif
+
                     DbValueSet.DropTable(db);
                     DbValueSetConcept.DropTable(db);
                     DbValueSetComparison.DropTable(db);
@@ -444,14 +431,11 @@ public class ComparisonDatabase : IDisposable
         {
             case FhirArtifactClassEnum.CodeSystem:
                 {
-                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
                     DbCodeSystem.CreateTable(db);
                     DbCodeSystemPropertyDefinition.CreateTable(db);
                     DbCodeSystemFilter.CreateTable(db);
                     DbCodeSystemConcept.CreateTable(db);
                     DbCodeSystemConceptProperty.CreateTable(db);
-#endif
                 }
                 break;
 
@@ -489,14 +473,12 @@ public class ComparisonDatabase : IDisposable
                     DbFhirPackage.CreateTable(db);
                     DbFhirPackageComparisonPair.CreateTable(db);
 
-                    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
                     DbCodeSystem.CreateTable(db);
                     DbCodeSystemPropertyDefinition.CreateTable(db);
                     DbCodeSystemFilter.CreateTable(db);
                     DbCodeSystemConcept.CreateTable(db);
                     DbCodeSystemConceptProperty.CreateTable(db);
-#endif
+
                     DbValueSet.CreateTable(db);
                     DbValueSetConcept.CreateTable(db);
                     DbValueSetComparison.CreateTable(db);
@@ -1891,11 +1873,9 @@ public class ComparisonDatabase : IDisposable
             DbFhirPackage pm = DbFhirPackage.SelectSingle(_dbConnection, PackageId: dc.MainPackageId, PackageVersion: dc.MainPackageVersion)
                     ?? throw new Exception($"Package {dc.MainPackageId}@{dc.MainPackageVersion} was not found in the database!");
 
-            // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
             // load our code systems
             addCodeSystemsToDb(pm, dc, _exclusionSet);
-#endif
+
             // load our value sets
             addValueSetsToDb(pm, dc, _exclusionSet, _escapeValveCodes);
 
@@ -1956,8 +1936,6 @@ public class ComparisonDatabase : IDisposable
         return;
     }
 
-    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
     private void addCodeSystemsToDb(
         DbFhirPackage pm,
         DefinitionCollection dc,
@@ -2008,10 +1986,10 @@ public class ComparisonDatabase : IDisposable
                     VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString cseVaFs) ? cseVaFs.Value : null,
                     VersionAlgorithmCoding = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is Coding cseVaC) ? cseVaC : null,
                     Status = cs.Status,
-                    Title = cs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
-                    Description = cs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
-                    Purpose = cs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
-                    Narrative = cs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Title = cs.Title.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Description = cs.Description.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Purpose = cs.Purpose.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Narrative = cs.Text.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
                     StandardStatus = cs.cgStandardStatus(),
                     WorkGroup = cs.cgWorkGroup(),
                     FhirMaturity = cs.cgMaturityLevel(),
@@ -2064,10 +2042,10 @@ public class ComparisonDatabase : IDisposable
                 VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString csVaFs) ? csVaFs.Value : null,
                 VersionAlgorithmCoding = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is Coding csVaC) ? csVaC : null,
                 Status = cs.Status,
-                Title = cs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
-                Description = cs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
-                Purpose = cs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
-                Narrative = cs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
+                Title = cs.Title.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                Description = cs.Description.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                Purpose = cs.Purpose.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                Narrative = cs.Text.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
                 StandardStatus = cs.cgStandardStatus(),
                 WorkGroup = cs.cgWorkGroup(),
                 FhirMaturity = cs.cgMaturityLevel(),
@@ -2214,7 +2192,7 @@ public class ComparisonDatabase : IDisposable
                 RelativeOrder = relativeOrder,
                 Code = concept.Code,
                 Display = concept.Display,
-                Definition = concept.Definition.ProcessFhirMdLinks(fhirVersionLiteral),
+                Definition = concept.Definition.ProcessFhirSpecialMdLinks(fhirVersionLiteral).ProcessFhirHtmlLinks(fhirVersionLiteral),
                 Designations = concept.Designation,
                 Properties = concept.Property,
                 ParentConceptKey = parentConceptKey,
@@ -2294,7 +2272,6 @@ public class ComparisonDatabase : IDisposable
             _ => value?.ToString() ?? ""
         };
     }
-#endif
 
     private void doValueSetPostProcessing(HashSet<string> _escapeValveCodes)
     {
@@ -2380,10 +2357,10 @@ public class ComparisonDatabase : IDisposable
                     VersionAlgorithmString = (uvs.VersionAlgorithm != null) && (uvs.VersionAlgorithm is FhirString vsmVaFs) ? vsmVaFs.Value : null,
                     VersionAlgorithmCoding = (uvs.VersionAlgorithm != null) && (uvs.VersionAlgorithm is Coding vsmVaC) ? vsmVaC : null,
                     Status = uvs.Status,
-                    Title = uvs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
-                    Description = uvs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
-                    Purpose = uvs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
-                    Narrative = uvs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Title = uvs.Title.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Description = uvs.Description.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Purpose = uvs.Purpose.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Narrative = uvs.Text.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
                     StandardStatus = uvs.cgStandardStatus(),
                     WorkGroup = uvs.cgWorkGroup(),
                     FhirMaturity = uvs.cgMaturityLevel(),
@@ -2441,10 +2418,10 @@ public class ComparisonDatabase : IDisposable
                 VersionAlgorithmString = (vs.VersionAlgorithm != null) && (vs.VersionAlgorithm is FhirString vsVaFs) ? vsVaFs.Value : null,
                 VersionAlgorithmCoding = (vs.VersionAlgorithm != null) && (vs.VersionAlgorithm is Coding vsVaC) ? vsVaC : null,
                 Status = vs.Status,
-                Title = vs.Title.ProcessFhirMdLinks(fhirVersionLiteral),
-                Description = vs.Description.ProcessFhirMdLinks(fhirVersionLiteral),
-                Purpose = vs.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
-                Narrative = vs.Text.ProcessFhirMdLinks(fhirVersionLiteral),
+                Title = vs.Title.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                Description = vs.Description.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                Purpose = vs.Purpose.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                Narrative = vs.Text.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
                 StandardStatus = vs.cgStandardStatus(),
                 WorkGroup = vs.cgWorkGroup(),
                 FhirMaturity = vs.cgMaturityLevel(),
@@ -2580,10 +2557,10 @@ public class ComparisonDatabase : IDisposable
                         VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdeVaFs) ? sdeVaFs.Value : null,
                         VersionAlgorithmCoding = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is Coding sdeVaC) ? sdeVaC : null,
                         Status = sd.Status,
-                        Title = (sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short).ProcessFhirMdLinks(fhirVersionLiteral),
-                        Description = (sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition).ProcessFhirMdLinks(fhirVersionLiteral),
-                        Purpose = sd.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
-                        Narrative = sd.Text.ProcessFhirMdLinks(fhirVersionLiteral),
+                        Title = (sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short).ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                        Description = (sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition).ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                        Purpose = sd.Purpose.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                        Narrative = sd.Text.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
                         StandardStatus = sd.cgStandardStatus(),
                         WorkGroup = sd.cgWorkGroup(),
                         FhirMaturity = sd.cgMaturityLevel(),
@@ -2606,7 +2583,7 @@ public class ComparisonDatabase : IDisposable
                         Reviewers = null,
                         Endorsers = null,
                         RootExtensions = sd.Extension,
-                        Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment.ProcessFhirMdLinks(fhirVersionLiteral),
+                        Comment = sd.Snapshot?.Element.FirstOrDefault()?.Comment.ProcessFhirSpecialMdLinks(fhirVersionLiteral).ProcessFhirHtmlLinks(fhirVersionLiteral),
                         ArtifactClass = cgClass,
                         Message = "Manually excluded",
                         SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
@@ -2632,10 +2609,10 @@ public class ComparisonDatabase : IDisposable
                     VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdVaFs) ? sdVaFs.Value : null,
                     VersionAlgorithmCoding = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is Coding sdVaC) ? sdVaC : null,
                     Status = sd.Status,
-                    Title = (sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short).ProcessFhirMdLinks(fhirVersionLiteral),
-                    Description = (sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition).ProcessFhirMdLinks(fhirVersionLiteral),
-                    Purpose = sd.Purpose.ProcessFhirMdLinks(fhirVersionLiteral),
-                    Narrative = sd.Text.ProcessFhirMdLinks(fhirVersionLiteral),
+                    Title = (sd.Title ?? sd.Snapshot?.Element.FirstOrDefault()?.Short).ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Description = (sd.Description ?? sd.Snapshot?.Element.FirstOrDefault()?.Definition).ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Purpose = sd.Purpose.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                    Narrative = sd.Text.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
                     StandardStatus = sd.cgStandardStatus(),
                     WorkGroup = sd.cgWorkGroup(),
                     FhirMaturity = sd.cgMaturityLevel(),
@@ -2658,7 +2635,7 @@ public class ComparisonDatabase : IDisposable
                     Reviewers = null,
                     Endorsers = null,
                     RootExtensions = sd.Extension,
-                    Comment = (sd.Snapshot?.Element.FirstOrDefault()?.Comment).ProcessFhirMdLinks(fhirVersionLiteral),
+                    Comment = (sd.Snapshot?.Element.FirstOrDefault()?.Comment).ProcessFhirSpecialMdLinks(fhirVersionLiteral).ProcessFhirHtmlLinks(fhirVersionLiteral),
                     ArtifactClass = cgClass,
                     Message = string.Empty,
                     SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
@@ -2959,8 +2936,8 @@ public class ComparisonDatabase : IDisposable
                         Purpose = additional.Purpose,
                         BindingValueSet = additional.ValueSet,
                         BindingValueSetKey = string.IsNullOrEmpty(additional.ValueSet) ? null : DbValueSet.SelectSingle(_dbConnection, FhirPackageKey: pm.Key, UnversionedUrl: additional.ValueSet)?.Key,
-                        Documentation = additional.Documentation.ProcessFhirMdLinks(fhirVersionLiteral),
-                        ShortDocumentation = additional.ShortDoco.ProcessFhirMdLinks(fhirVersionLiteral),
+                        Documentation = additional.Documentation.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                        ShortDocumentation = additional.ShortDoco.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
                         CollatedUsageContexts = additional.Usage.Count == 0
                             ? null
                             : string.Join(", ", additional.Usage.Select(uc => uc.Code.System + "#" + uc.Code.Code + ": `" + uc.Value.ToString() + "`")),
@@ -3023,8 +3000,8 @@ public class ComparisonDatabase : IDisposable
                 Path = ed.Path,
                 ChildElementCount = childCount,
                 Name = ed.cgName(),
-                Short = ed.Short.ProcessFhirMdLinks(fhirVersionLiteral),
-                Definition = ed.Definition.ProcessFhirMdLinks(fhirVersionLiteral),
+                Short = ed.Short.ProcessFhirSpecialMdLinks(fhirVersionLiteral),
+                Definition = ed.Definition.ProcessFhirSpecialMdLinks(fhirVersionLiteral).ProcessFhirHtmlLinks(fhirVersionLiteral),
                 MinCardinality = ed.cgCardinalityMin(),
                 MaxCardinality = ed.cgCardinalityMax(),
                 MaxCardinalityString = ed.Max ?? "*",

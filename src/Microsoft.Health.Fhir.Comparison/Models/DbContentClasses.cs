@@ -440,8 +440,6 @@ public partial class DbElementType : DbPackageContent
 
 }
 
-// 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
 [CgSQLiteTable(tableName: "CodeSystems")]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
@@ -542,4 +540,3 @@ public partial class DbCodeSystemFilter : DbPackageContent
     public required string Operators { get; set; }
     public required string Value { get; set; }
 }
-#endif

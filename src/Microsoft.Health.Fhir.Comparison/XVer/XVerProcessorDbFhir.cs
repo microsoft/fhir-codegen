@@ -10,6 +10,7 @@ using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
@@ -17,6 +18,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.Comparison.Extensions;
 using Microsoft.Health.Fhir.Comparison.Models;
+using Octokit;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
 
@@ -149,10 +151,6 @@ public partial class XVerProcessor
                 JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
             });
 
-            //// need to load the CodeSystems from each package
-            //DefinitionCollection codeSystemCollection = loader.LoadPackages([packageDirective], loadFilterOverride: [FhirArtifactClassEnum.CodeSystem]).Result
-            //    ?? throw new Exception($"Failed to load CodeSystems for export of package: {packageDirective}");
-
             //DefinitionCollection coreDc = loader.LoadPackages([packageDirective]).Result
             //    ?? throw new Exception($"Could not load package: {packageDirective}");
 
@@ -161,7 +159,6 @@ public partial class XVerProcessor
                 PackageIndex = index,
                 Package = package,
                 BasicElements = [],
-                //CodeSystemDc = codeSystemCollection,
                 //CoreDC = coreDc,
                 //SnapshotGenerator = new(coreDc),
             };
@@ -276,14 +273,8 @@ public partial class XVerProcessor
                 allIndexInfos.AddRange(focusedIndexInfos);
             }
 
-            // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
             // write the source code systems for this package
             writeXverSourceCodeSystemsFromDb(packages, focusPackageIndex, fhirDir);
-#else
-            // copy the source code systems into the target package directories
-            writeXverSourceCodeSystems(packageSupports, focusPackageIndex, fhirDir);
-#endif
         }
 
         // write all of our outcome lists
@@ -416,74 +407,6 @@ public partial class XVerProcessor
         return null;
     }
 
-
-    private void writeXverSourceCodeSystems(
-        List<PackageXverSupport> packageSupports,
-        int focusPackageIndex,
-        string fhirDir)
-    {
-        DbFhirPackage focusPackage = packageSupports[focusPackageIndex].Package;
-
-        // iterate over the target packages
-        foreach (PackageXverSupport targetSupport in packageSupports)
-        {
-            if (focusPackage.Key == targetSupport.Package.Key)
-            {
-                continue;
-            }
-
-            DbFhirPackage targetPackage = targetSupport.Package;
-
-            // make sure we have a code system collection for the target package
-            //DefinitionCollection dc = targetSupport.CodeSystemDc ?? targetSupport.CoreDC ?? 
-
-            // try to resolve the source directory
-            string? sourceDir = getLocalPackageDirectory(focusPackage.CacheFolderName);
-
-            if (sourceDir == null)
-            {
-                // nothing to do
-                continue;
-            }
-
-            string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
-            dir = _config.XverExportForPublisher
-                ? Path.Combine(dir, "input", "vocabulary")
-                : Path.Combine(dir, "package");
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            // traverse the source directory code systems
-            foreach (string sourceFilename in Directory.EnumerateFiles(sourceDir, "CodeSystem-*.json", SearchOption.TopDirectoryOnly))
-            {
-                // build our target filename
-                string targetFilename = Path.Combine(dir, Path.GetFileName(sourceFilename));
-
-                if (File.Exists(targetFilename))
-                {
-                    // already exists, skip
-                    continue;
-                }
-
-                // copy the file to the target directory
-                try
-                {
-                    File.Copy(sourceFilename, targetFilename);
-                    _logger.LogInformation($"Copied source CodeSystem file {sourceFilename} to {targetFilename}");
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, $"Failed to copy source CodeSystem file {sourceFilename} to {targetFilename}");
-                }
-            }
-        }
-    }
-
-
-    // 2025.08.12 - need to copy CodeSystems directly - serializing/parsing is problematic for portions
-#if !XVER_CS_DISABLED
     private void writeXverSourceCodeSystemsFromDb(
         List<DbFhirPackage> packages,
         int focusPackageIndex,
@@ -498,6 +421,8 @@ public partial class XVerProcessor
             {
                 continue;
             }
+
+            string packageId = getPackageId(focusPackage, targetPackage);
 
             string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
             dir = _config.XverExportForPublisher
@@ -571,7 +496,17 @@ public partial class XVerProcessor
                 {
                     foreach (Hl7.Fhir.Model.Extension ext in dbCs.RootExtensions)
                     {
-                        fhirCs.Extension.Add(ext);
+                        switch (ext.Url)
+                        {
+                            case CommonDefinitions.ExtUrlPackageSource:
+                                fhirCs.cgAddPackageSource(packageId, _crossDefinitionVersion, null);
+                                break;
+
+                            default:
+                                // copy any extensions we have not specifically handled
+                                fhirCs.Extension.Add(ext);
+                                break;
+                        }
                     }
                 }
 
@@ -656,7 +591,6 @@ public partial class XVerProcessor
             }
         }
     }
-#endif
 
     private static string getPackageId(DbFhirPackage? sourcePackage, DbFhirPackage targetPackage) => sourcePackage == null
         ? $"hl7.fhir.uv.xver.{targetPackage.ShortName.ToLowerInvariant()}"
@@ -1313,6 +1247,7 @@ public partial class XVerProcessor
     {
         // TODO: add profiles for other resource types
         string targetStructureName = "Basic";       // extSd.Context.First().Expression;
+        string xverPackageId = getPackageId(sourcePackage, targetPackage);
 
         string profileId = $"{sourcePackage.ShortName}-{sourceStructure.Name}-for-{targetPackage.ShortName}";
         StructureDefinition profileSd = new()
@@ -1398,7 +1333,7 @@ public partial class XVerProcessor
             },
         };
 
-
+        profileSd.cgAddPackageSource(xverPackageId, _crossDefinitionVersion, null);
 
         return profileSd;
     }
@@ -1416,6 +1351,8 @@ public partial class XVerProcessor
     {
         DbFhirPackage sourcePackage = sourcePackageSupport.Package;
         DbFhirPackage targetPackage = targetPackageSupport.Package;
+
+        string xverPackageId = getPackageId(sourcePackage, targetPackage);
 
         //string sdId = $"{focusPackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
         string sdId = $"ext-{sourcePackage.ShortName}-{collapsePathForId(element.Path)}";
@@ -1501,6 +1438,8 @@ public partial class XVerProcessor
                 Element = [],
             },
         };
+
+        extSd.cgAddPackageSource(xverPackageId, _crossDefinitionVersion, null);
 
         Dictionary<int, string> extPathByElementKey = [];
 
@@ -2549,6 +2488,8 @@ public partial class XVerProcessor
         DbFhirPackage sourcePackage = packages[sourcePackageIndex];
         DbFhirPackage targetPackage = packages[targetPackageIndex];
 
+        string xverPackageId = getPackageId(sourcePackage, targetPackage);
+
         //string sourceDashTarget = $"{focusPackage.ShortName}-{targetPackage.ShortName}";
         string vsId = $"{sourcePackage.ShortName}-{sourceVs.Id}-for-{targetPackage.ShortName}";
         //string vsId = $"{sourceDashTarget}-{sourceVs.Id}";
@@ -2584,10 +2525,12 @@ public partial class XVerProcessor
             vs.AddExtension(CommonDefinitions.ExtUrlFmm, new Integer(sourceVs.FhirMaturity));
         }
 
-        if (sourceVs.WorkGroup != null)
+        if (!string.IsNullOrEmpty(sourceVs.WorkGroup))
         {
             vs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new FhirString(sourceVs.WorkGroup));
         }
+
+        vs.cgAddPackageSource(xverPackageId, _crossDefinitionVersion, null);
 
         // check for unexpandable value sets (use the compose)
         if ((sourceVs.CanExpand == false) ||

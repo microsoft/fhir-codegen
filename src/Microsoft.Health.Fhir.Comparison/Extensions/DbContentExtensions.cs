@@ -18,7 +18,7 @@ namespace Microsoft.Health.Fhir.Comparison.Extensions;
 
 public static class DbContentExtensions
 {
-    public static string? ProcessFhirMdLinks(
+    public static string? ProcessFhirSpecialMdLinks(
         this string? input,
         string fhirVersionLiteral)
     {
@@ -26,10 +26,10 @@ public static class DbContentExtensions
         {
             return input;
         }
-        return FhirSanitizationUtils.ProcessFhirMdLinks(input, fhirVersionLiteral);
+        return FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input, fhirVersionLiteral);
     }
 
-    public static Narrative? ProcessFhirMdLinks(this Narrative? input, string fhirVersionLiteral)
+    public static Narrative? ProcessFhirSpecialMdLinks(this Narrative? input, string fhirVersionLiteral)
     {
         if ((input == null) || string.IsNullOrEmpty(input.Div))
         {
@@ -39,8 +39,19 @@ public static class DbContentExtensions
         return new Narrative
         {
             Status = input.Status,
-            Div = FhirSanitizationUtils.ProcessFhirMdLinks(input.Div, fhirVersionLiteral),
+            Div = FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input.Div, fhirVersionLiteral),
         };
+    }
+
+    public static string? ProcessFhirHtmlLinks(
+        this string? input,
+        string fhirVersionLiteral)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return input;
+        }
+        return FhirSanitizationUtils.ProcessFhirHtmlLinks(input, fhirVersionLiteral);
     }
 
     public static int ConceptCountWithLiteralMatches(

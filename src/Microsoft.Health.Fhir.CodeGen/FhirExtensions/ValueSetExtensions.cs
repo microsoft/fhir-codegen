@@ -16,32 +16,11 @@ namespace Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 public static class ValueSetExtensions
 {
     /// <summary>
-    /// Gets the standards status of this definition (e.g., trial-use, normative).
-    /// </summary>
-    /// <param name="vs">The ValueSet to act on.</param>
-    /// <returns>A string representing the standards status.</returns>
-    public static string cgStandardStatus(this ValueSet vs) => vs.GetExtensionValue<Code>(CommonDefinitions.ExtUrlStandardStatus)?.ToString() ?? string.Empty;
-
-    /// <summary>
-    /// Gets the FHIR Maturity Model (FMM) level of this definition, or 0 if not specified.
-    /// </summary>
-    /// <param name="vs">The ValueSet to act on.</param>
-    /// <returns>An int representing the FMM level.</returns>
-    public static int? cgMaturityLevel(this ValueSet vs) => vs.GetExtensionValue<Integer>(CommonDefinitions.ExtUrlFmm)?.Value;
-
-    /// <summary>
     /// Gets a flag indicating if this definition is experimental.
     /// </summary>
     /// <param name="vs">The ValueSet to act on.</param>
     /// <returns>True if the definition is experimental, false otherwise.</returns>
     public static bool cgIsExperimental(this ValueSet vs) => vs.Experimental ?? false;
-
-    /// <summary>
-    /// Gets the Work Group responsible for this definition.
-    /// </summary>
-    /// <param name="vs">The ValueSet to act on.</param>
-    /// <returns>A string representing the Work Group.</returns>
-    public static string cgWorkGroup(this ValueSet vs) => vs.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlWorkGroup)?.Value ?? string.Empty;
 
     /// <summary>
     /// Gets the versioned URL of the ValueSet.

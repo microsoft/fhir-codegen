@@ -74,6 +74,8 @@ public partial class XVerProcessor
         * Added `jurisdiction` from source ValueSets to equivalent XVer ValueSets
         * Fix: DSTU2 `usageContext` elements were not loading correctly
         * Fix: DSTU2 `usageContext` element processing was not categorizing jurisdiction values correctly (now moving those values to `jurisdiction` elements)
+        * Fix: XVer ValueSets and CodeSystems were being exported with an empty `structuredefinition-wg` extension
+        * Fix: Checking `definition` and `comment` elements for HTML Anchor links and converting them to markdown links
 
         ### 0.0.1-snapshot-1
 
@@ -153,17 +155,43 @@ public partial class XVerProcessor
 
         # 01. Extension names and ids are shortened to avoid exceeding 64 character limit
         RESOURCE_ID_MISMATCH
+        Resource id/url mismatch: %
+
         RESOURCE_CANONICAL_MISMATCH
+        Conformance resource % - the canonical URL (%) does not match the URL (%)
         
         # 02. Code systems are verified correct, not being found by publisher
         Type_Specific_Checks_DT_URL_Resolve
+        No definition could be found for URL value 'http://terminology.hl7.org/CodeSystem/designation-usage'
+
         VALUESET_INCLUDE_INVALID_CONCEPT_CODE_VER
 
-        # 03. The Canonicals of the ValueSets are correct, not being found by publisher
+        # 03. These are the 'default' ValueSets from ported CodeSystem resources. Currently we do not *want* to define them.
         TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
+        A definition could not be found for Canonical URL %
 
         # 04. We are not building examples for every element
         The Implementation Guide contains no examples for this extension
+
+        # 05. We are faithfully reproducing existing Code Systems and cannot address these
+        CODESYSTEM_CONCEPT_NO_DEFINITION
+        CODESYSTEM_CONCEPT_NO_DISPLAY
+        CODESYSTEM_CS_COMPLETE_AND_EMPTY
+        CODESYSTEM_CS_HL7_MISSING_ELEMENT_SHOULD
+        CODESYSTEM_PROPERTY_BAD_INTERNAL_REFERENCE
+        CODESYSTEM_PROPERTY_CODE_DEFAULT_WARNING
+        CODESYSTEM_PROPERTY_UNKNOWN_CODE
+        CODESYSTEM_PROPERTY_URI_INVALID
+        CODESYSTEM_THO_CHECK
+        CodeSystem_CS_VS_WrongSystem
+        The extension http://hl7.org/fhir/StructureDefinition/codesystem-use-markdown|% is deprecated with the note: 'This extension is deprecated as the Terminology Infrastructure work group felt there wasn't a use case for the extension'
+        The extension http://hl7.org/fhir/StructureDefinition/valueset-special-status|% is deprecated with the note: 'This extension is deprecated as Terminology Infrastructure was unable to determine a use for it'
+        Reference to draft CodeSystem %
+
+        # 06. We cannot change bindings from the core specification
+        The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated with the note: 'Use additionalBinding extension or element instead'
+
+
         """;
 
     /// <summary>
