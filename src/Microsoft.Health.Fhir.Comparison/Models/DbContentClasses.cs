@@ -25,6 +25,39 @@ public partial class DbExtensionSubstitution : DbRecordBase
     public required string Context { get; set; }
 }
 
+[CgSQLiteTable(tableName: "ExternalInclusions")]
+[CgSQLiteIndex(nameof(ResourceType))]
+public partial class  DbExternalInclusion : DbRecordBase
+{
+    public required Hl7.Fhir.Model.FHIRAllTypes ResourceType { get; set; }
+    public required string Id { get; set; }
+    public required string Name { get; set; }
+    public required string Version { get; set; }
+    public required bool OverrideVersion { get; set; }
+    public required string UnversionedUrl { get; set; }
+    public required string VersionedUrl { get; set; }
+    public required string Reason { get; set; }
+    public required string? IncludeInPackages { get; set; }
+    public required string Json { get; set; }
+
+    public List<string> GetIncludeInPackagesList() => IncludeInPackages?
+        .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+        .ToList()
+        ?? [];
+
+    public void SetIncludeInPackagesList(List<string> value)
+    {
+        if (value == null || value.Count == 0)
+        {
+            IncludeInPackages = null;
+        }
+        else
+        {
+            IncludeInPackages = string.Join(',', value);
+        }
+    }
+}
+
 [CgSQLiteTable(tableName: "ValueSets")]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(StrongestBindingCore))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]

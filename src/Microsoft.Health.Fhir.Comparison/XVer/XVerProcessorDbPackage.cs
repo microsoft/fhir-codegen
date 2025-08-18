@@ -76,6 +76,10 @@ public partial class XVerProcessor
         * Fix: DSTU2 `usageContext` element processing was not categorizing jurisdiction values correctly (now moving those values to `jurisdiction` elements)
         * Fix: XVer ValueSets and CodeSystems were being exported with an empty `structuredefinition-wg` extension
         * Fix: Checking `definition` and `comment` elements for HTML Anchor links and converting them to markdown links
+        * Added External Inclusions to support `http://terminology.hl7.org/CodeSystem/designation-usage`
+        * Added `ValueSet.compose` to generated XVer ValueSets.
+        * Fix: Generated value sets will no longer allow for `id` values longer than 64 characters.
+        * Added `publisher` and `contact` elements for definitional resources if none are present on canonical resources
 
         ### 0.0.1-snapshot-1
 
@@ -159,14 +163,16 @@ public partial class XVerProcessor
 
         RESOURCE_CANONICAL_MISMATCH
         Conformance resource % - the canonical URL (%) does not match the URL (%)
-        
+
+        ## Added support for external inclusions
         # 02. Code systems are verified correct, not being found by publisher
-        Type_Specific_Checks_DT_URL_Resolve
-        No definition could be found for URL value 'http://terminology.hl7.org/CodeSystem/designation-usage'
+        # Type_Specific_Checks_DT_URL_Resolve
+        # No definition could be found for URL value 'http://terminology.hl7.org/CodeSystem/designation-usage'
 
-        VALUESET_INCLUDE_INVALID_CONCEPT_CODE_VER
+        ## TODO: I think this was caused by not setting `ValueSet.compose` in the value sets
+        # VALUESET_INCLUDE_INVALID_CONCEPT_CODE_VER
 
-        # 03. These are the 'default' ValueSets from ported CodeSystem resources. Currently we do not *want* to define them.
+        # 03. These are the 'default' ValueSets from ported CodeSystem resources. We do not want to define them.
         TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
         A definition could not be found for Canonical URL %
 
@@ -175,22 +181,82 @@ public partial class XVerProcessor
 
         # 05. We are faithfully reproducing existing Code Systems and cannot address these
         CODESYSTEM_CONCEPT_NO_DEFINITION
+        HL7 Defined CodeSystems should ensure that every concept has a definition
+
         CODESYSTEM_CONCEPT_NO_DISPLAY
+        HL7 Defined CodeSystems should ensure that every concept has a display
+
         CODESYSTEM_CS_COMPLETE_AND_EMPTY
+        When a CodeSystem has content = 'complete', it doesnt make sense for there to be no concepts defined
+
         CODESYSTEM_CS_HL7_MISSING_ELEMENT_SHOULD
-        CODESYSTEM_PROPERTY_BAD_INTERNAL_REFERENCE
+        HL7 Defined CodeSystems SHOULD have a stated value for the hierarchyMeaning element so that users know the status and meaning of the code system clearly
+
+        ## TODO: I think this was caused by not setting `ValueSet.compose` in the value sets
+        # CODESYSTEM_PROPERTY_BAD_INTERNAL_REFERENCE
+        # The code '%' is not a valid code in this code system
+
         CODESYSTEM_PROPERTY_CODE_DEFAULT_WARNING
+        The type of property 'code' is 'code', but no ValueSet information was found, so the codes will be validated as internal codes
+
         CODESYSTEM_PROPERTY_UNKNOWN_CODE
+        This property has only a code ('%') and not a URI, so it has no clearly defined meaning in the terminology ecosystem
+
         CODESYSTEM_PROPERTY_URI_INVALID
+        The uri '%' for the property '%' implies a property with that URI exists in the CodeSystem FHIR Defined Concept Properties for http://hl7.org/fhir/concept-properties, or the code '%' does, but neither were found
+
         CODESYSTEM_THO_CHECK
+        Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
+
+        ## TODO: I think this is due to not creating the 'all system' ValueSets for source-ported CodeSystems, and I do not want to create them
         CodeSystem_CS_VS_WrongSystem
-        The extension http://hl7.org/fhir/StructureDefinition/codesystem-use-markdown|% is deprecated with the note: 'This extension is deprecated as the Terminology Infrastructure work group felt there wasn't a use case for the extension'
-        The extension http://hl7.org/fhir/StructureDefinition/valueset-special-status|% is deprecated with the note: 'This extension is deprecated as Terminology Infrastructure was unable to determine a use for it'
-        Reference to draft CodeSystem %
+
+        MSG_DRAFT
+        Reference to draft CodeSystem http://hl7.org/fhir/CodeSystem/knowledge-representation-level|5.0.0
+
+        VALIDATION_VAL_STATUS_INCONSISTENT
+        The resource status 'active' and the standards status 'draft' are not consistent
+        The resource status 'draft' and the standards status 'normative' are not consistent
+
+        VALIDATION_VAL_STATUS_INCONSISTENT_HINT
+        The resource status 'draft' and the standards status 'trial-use' may not be consistent and should be reviewed
 
         # 06. We cannot change bindings from the core specification
         The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated with the note: 'Use additionalBinding extension or element instead'
+        
+        # 07. We cannot honor inactive flags since we are porting existing values
+        VALUESET_BAD_FILTER_VALUE_VALID_CODE_INACTIVE
+        The code for the filter 'concept' is inactive %
 
+        # 08. We cannot change filters since we are porting existing values
+        VALUESET_BAD_FILTER_VALUE_VALID_CODE_CHANGE
+        The value for a filter based on property 'SCALE_TYP' must be a valid code from the system 'http://loinc.org', and 'Doc' is not (Unknown code 'Doc' in the CodeSystem 'http://loinc.org' version '2.80'). Note that this is change from the past; terminology servers are expected to still continue to support this filter
+        The value for a filter based on property 'parent' must be a valid code from the system 'http://loinc.org', and 'LP43571-6' is not (Unknown code 'LP43571-6' in the CodeSystem 'http://loinc.org' version '2.80'). Note that this is change from the past; terminology servers are expected to still continue to support this filter
+
+        # 09. These are bindings inherited from core and cannot be overridden here
+        MSG_DEPENDS_ON_DEPRECATED_NOTE
+        The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated with the note: 'Use additionalBinding extension or element instead'
+        The extension http://hl7.org/fhir/StructureDefinition/codesystem-use-markdown|% is deprecated with the note: 'This extension is deprecated as the Terminology Infrastructure work group felt there wasn't a use case for the extension'
+        The extension http://hl7.org/fhir/StructureDefinition/valueset-special-status|% is deprecated with the note: 'This extension is deprecated as Terminology Infrastructure was unable to determine a use for it'
+
+        # 10. We cannot change the experimental flag on any existing content
+        SD_ED_EXPERIMENTAL_BINDING
+        The definition for the element 'Extension.extension.extension.value[x]' binds to the value set '%' which is experimental, but this structure is not labeled as experimental
+
+        # 11. This URL should not have been used for an example code system, but it was and we cannot change it
+        A definition for CodeSystem 'http://acme.com/config/fhir/codesystems/internal' could not be found, so the code cannot be validated
+
+        # 12. FHIR-I is publishing this package, but we preserve the WG responsible for content where possible
+        VALIDATION_HL7_PUBLISHER_MISMATCH
+        The nominated WG '%' means that the publisher should be '%' but 'HL7 International / FHIR Infrastructure' was found
+
+        # 13. We cannot add display values to existing code systems that lack them
+        VALUESET_CONCEPT_DISPLAY_PRESENCE_MIXED
+        This include has some concepts with displays and some without - check that this is what is intended
+
+        # 14. We cannot change the semantic structure of any existing content
+        VALUESET_CONCEPT_DISPLAY_SCT_TAG_MIXED
+        This SNOMED-CT based include has some concepts with semantic tags (FSN terms) and some without (preferred terms) - check that this is what is intended %
 
         """;
 

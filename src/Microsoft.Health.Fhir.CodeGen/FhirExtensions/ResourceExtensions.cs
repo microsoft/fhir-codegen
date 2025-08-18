@@ -27,7 +27,7 @@ public static class ResourceExtensions
     /// </summary>
     /// <param name="vs">The ValueSet to act on.</param>
     /// <returns>A string representing the Work Group.</returns>
-    public static string cgWorkGroup(this DomainResource r)
+    public static string? cgWorkGroup(this DomainResource r)
     {
         IEnumerable<Extension> extensions = r.GetExtensions(CommonDefinitions.ExtUrlWorkGroup);
 
@@ -36,17 +36,17 @@ public static class ResourceExtensions
             switch (extension.Value)
             {
                 case FhirString fhirString:
-                    return fhirString.Value ?? string.Empty;
+                    return fhirString.Value;
                 case Code code:
-                    return code.Value ?? string.Empty;
+                    return code.Value;
                 case Markdown markdown:
-                    return markdown.Value ?? string.Empty;
+                    return markdown.Value;
                 default:
                     continue;
             }
         }
 
-        return string.Empty;
+        return null;
     }
 
     public static void cgAddPackageSource(this DomainResource r, string packageId, string? packageVersion, string? packageUri)

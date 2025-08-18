@@ -341,71 +341,6 @@ public partial class XVerProcessor
         }
     }
 
-    private void addStructureGraphs(
-        int fhirPackageKey,
-        FhirArtifactClassEnum artifactClass,
-        List<DbFhirPackage> packages,
-        Dictionary<int, DbGraphSd> sdGraphs)
-    {
-        List<DbStructureDefinition> structures = DbStructureDefinition.SelectList(
-            _db!.DbConnection,
-            FhirPackageKey: fhirPackageKey,
-            ArtifactClass: artifactClass);
-
-        foreach (DbStructureDefinition sd in structures)
-        {
-            if (sdGraphs.ContainsKey(sd.Key))
-            {
-                continue;
-            }
-
-            // build a graph for this structure
-            DbGraphSd sdGraph = new()
-            {
-                DB = _db!.DbConnection,
-                Packages = packages,
-                KeySd = sd,
-            };
-
-            sdGraphs.Add(sd.Key, sdGraph);
-        }
-    }
-
-    private string? getLocalPackageDirectory(string directive)
-    {
-        if (string.IsNullOrEmpty(directive))
-        {
-            return null;
-        }
-
-        // check to see if we think this is a directory
-        if ((directive.IndexOfAny(Path.GetInvalidPathChars()) == -1) &&
-            (directive.Contains('/') || directive.Contains('\\') || directive.Contains('~')))
-        {
-            // check to see if we can find the directory
-            string resolvedDir = CodeGen.Utils.FileSystemUtils.FindRelativeDir(".", directive, false);
-            if (!string.IsNullOrEmpty(resolvedDir))
-            {
-                return resolvedDir;
-            }
-        }
-
-        if (directive.Contains('@'))
-        {
-            directive = directive.Replace('@', '#');
-        }
-
-        string fhirPackageDir = _config.FhirCacheDirectory ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".fhir", "packages");
-
-        string packageDir = Path.Combine(fhirPackageDir, directive, "package");
-
-        if (Directory.Exists(packageDir))
-        {
-            return packageDir;
-        }
-
-        return null;
-    }
 
     private void writeXverSourceCodeSystemsFromDb(
         List<DbFhirPackage> packages,
@@ -431,6 +366,24 @@ public partial class XVerProcessor
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
+            }
+
+            // write any external inclusion code systems
+            List<DbExternalInclusion> externalInclusions = DbExternalInclusion.SelectList(
+                _db!.DbConnection,
+                ResourceType: Hl7.Fhir.Model.FHIRAllTypes.CodeSystem);
+
+            foreach (DbExternalInclusion inclusion in externalInclusions)
+            {
+                // check to see if we should be including this
+                if ((inclusion.IncludeInPackages == null) ||
+                    inclusion.GetIncludeInPackagesList().Contains(focusPackage.NpmId, StringComparer.OrdinalIgnoreCase))
+                {
+                    // write the code system to a file
+                    string filename = $"CodeSystem-{inclusion.Id}.json";
+                    string path = Path.Combine(dir, filename);
+                    File.WriteAllText(path, inclusion.Json);
+                }
             }
 
             // get the list of code systems in the source package
@@ -491,6 +444,8 @@ public partial class XVerProcessor
                     Count = dbCs.Count,
                 };
 
+                string? wg = null;
+
                 // add standard extensions
                 if (dbCs.RootExtensions != null)
                 {
@@ -498,6 +453,25 @@ public partial class XVerProcessor
                     {
                         switch (ext.Url)
                         {
+                            case CommonDefinitions.ExtUrlWorkGroup:
+                                {
+                                    switch (ext.Value)
+                                    {
+                                        case FhirString fhirString:
+                                            wg = fhirString.Value;
+                                            break;
+                                        case Hl7.Fhir.Model.Code code:
+                                            wg = code.Value;
+                                            break;
+                                        case Markdown markdown:
+                                            wg = markdown.Value;
+                                            break;
+                                        default:
+                                            continue;
+                                    }
+                                }
+                                break;
+
                             case CommonDefinitions.ExtUrlPackageSource:
                                 fhirCs.cgAddPackageSource(packageId, _crossDefinitionVersion, null);
                                 break;
@@ -508,6 +482,33 @@ public partial class XVerProcessor
                                 break;
                         }
                     }
+                }
+
+                // default to fhir infrastructure work group if none is present
+                wg ??= "fhir";
+
+                // add the work group extension
+                fhirCs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+                // ensure there is a publisher, use the WG if there is none
+                fhirCs.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+
+                // ensure there is a contact point - use the default for the WG if there is none
+                if ((fhirCs.Contact == null) || (fhirCs.Contact.Count == 0))
+                {
+                    fhirCs.Contact = [
+                        new()
+                        {
+                            Name = CommonDefinitions.WorkgroupNames[wg],
+                            Telecom = [
+                                new()
+                                {
+                                    System = ContactPoint.ContactPointSystem.Url,
+                                    Value = CommonDefinitions.WorkgroupUrls[wg],
+                                },
+                            ],
+                        }
+                    ];
                 }
 
                 // add filters
@@ -602,13 +603,16 @@ public partial class XVerProcessor
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         string fhirDir)
     {
-        Dictionary<int, DbFhirPackage> packageDict = packages.ToDictionary(p => p.Key);
+        //Dictionary<int, DbFhirPackage> packageDict = packages.ToDictionary(p => p.Key);
         DbFhirPackage focusPackage = packages[focusPackageIndex];
 
-        // iterate over the value sets
-        foreach (((int sourceVsKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        // iterate over the target packages
+        foreach (DbFhirPackage targetPackage in packages)
         {
-            DbFhirPackage targetPackage = packageDict[targetPackageId];
+            if (focusPackage.Key == targetPackage.Key)
+            {
+                continue;
+            }
 
             string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
 
@@ -620,11 +624,59 @@ public partial class XVerProcessor
                 Directory.CreateDirectory(dir);
             }
 
-            // write the value set to a file
-            string filename = $"ValueSet-{vs.Id}.json";
-            string path = Path.Combine(dir, filename);
-            File.WriteAllText(path, vs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            // write any external inclusion value sets
+            List<DbExternalInclusion> externalInclusions = DbExternalInclusion.SelectList(
+                _db!.DbConnection,
+                ResourceType: Hl7.Fhir.Model.FHIRAllTypes.ValueSet);
+
+            foreach (DbExternalInclusion inclusion in externalInclusions)
+            {
+                // check to see if we should be including this
+                if ((inclusion.IncludeInPackages == null) ||
+                    inclusion.GetIncludeInPackagesList().Contains(focusPackage.NpmId, StringComparer.OrdinalIgnoreCase))
+                {
+                    // write the value set to a file
+                    string filename = $"ValueSet-{inclusion.Id}.json";
+                    string path = Path.Combine(dir, filename);
+                    File.WriteAllText(path, inclusion.Json);
+                }
+            }
+
+            // iterate over the value sets
+            foreach (((int sourceVsKey, int targetPackageId), ValueSet vs) in xverValueSets)
+            {
+                if (targetPackageId != targetPackage.Key)
+                {
+                    continue;
+                }
+
+                // write the value set to a file
+                string filename = $"ValueSet-{vs.Id}.json";
+                string path = Path.Combine(dir, filename);
+                File.WriteAllText(path, vs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            }
         }
+
+        //// iterate over the value sets
+        //foreach (((int sourceVsKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        //{
+        //    DbFhirPackage targetPackage = packageDict[targetPackageId];
+
+        //    string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
+
+        //    dir = _config.XverExportForPublisher
+        //        ? Path.Combine(dir, "input", "vocabulary")
+        //        : Path.Combine(dir, "package");
+        //    if (!Directory.Exists(dir))
+        //    {
+        //        Directory.CreateDirectory(dir);
+        //    }
+
+        //    // write the value set to a file
+        //    string filename = $"ValueSet-{vs.Id}.json";
+        //    string path = Path.Combine(dir, filename);
+        //    File.WriteAllText(path, vs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+        //}
     }
 
     private void writeXverStructures(
@@ -1333,6 +1385,32 @@ public partial class XVerProcessor
             },
         };
 
+        string wg = CommonDefinitions.ResolveWorkgroup(extSd.cgWorkGroup(), "fhir");
+
+        // add the work group extension
+        extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+        // ensure there is a publisher, use the WG if there is none
+        extSd.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+
+        // ensure there is a contact point - use the default for the WG if there is none
+        if ((extSd.Contact == null) || (extSd.Contact.Count == 0))
+        {
+            extSd.Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames[wg],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls[wg],
+                        },
+                    ],
+                }
+            ];
+        }
+
         profileSd.cgAddPackageSource(xverPackageId, _crossDefinitionVersion, null);
 
         return profileSd;
@@ -1438,6 +1516,33 @@ public partial class XVerProcessor
                 Element = [],
             },
         };
+
+        // TODO: right now I am setting FHIR-I as the WG responsible since we are creating the extension - should we use the WG from the source resource?
+        string wg = "fhir";
+
+        // add the work group extension
+        extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+        // ensure there is a publisher, use the WG if there is none
+        extSd.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+
+        // ensure there is a contact point - use the default for the WG if there is none
+        if ((extSd.Contact == null) || (extSd.Contact.Count == 0))
+        {
+            extSd.Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames[wg],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls[wg],
+                        },
+                    ],
+                }
+            ];
+        }
 
         extSd.cgAddPackageSource(xverPackageId, _crossDefinitionVersion, null);
 
@@ -2491,12 +2596,36 @@ public partial class XVerProcessor
         string xverPackageId = getPackageId(sourcePackage, targetPackage);
 
         //string sourceDashTarget = $"{focusPackage.ShortName}-{targetPackage.ShortName}";
-        string vsId = $"{sourcePackage.ShortName}-{sourceVs.Id}-for-{targetPackage.ShortName}";
+        string vsIdLong = $"{sourcePackage.ShortName}-{sourceVs.Id}-for-{targetPackage.ShortName}";
+        string vsId;
         //string vsId = $"{sourceDashTarget}-{sourceVs.Id}";
+
+        if (vsIdLong.Length > 64)
+        {
+            string[] sourceIdComponents = sourceVs.Id.Split('-');
+            if (sourceIdComponents.Length > 2)
+            {
+                // use the first and last components completely, but abbreviate the middle components
+                vsId = $"{sourcePackage.ShortName}" +
+                    $"-{sourceIdComponents[0]}" +
+                    $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, 3)))}" +
+                    $"-{sourceIdComponents[^1]}" +
+                    $"-for-{targetPackage.ShortName}";
+            }
+            else
+            {
+                // truncate the source ID so it all fits
+                vsId = $"{sourcePackage.ShortName}-{sourceIdComponents[0].Substring(0, 50)}-for-{targetPackage.ShortName}";
+            }
+        }
+        else
+        {
+            vsId = vsIdLong;
+        }
 
         ValueSet vs = new()
         {
-            Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{vsId}",
+            Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{vsIdLong}",
             Id = vsId,
             Version = _crossDefinitionVersion,
             Name = FhirSanitizationUtils.ReformatIdForName(vsId),
@@ -2525,9 +2654,31 @@ public partial class XVerProcessor
             vs.AddExtension(CommonDefinitions.ExtUrlFmm, new Integer(sourceVs.FhirMaturity));
         }
 
-        if (!string.IsNullOrEmpty(sourceVs.WorkGroup))
+        // FHIR-I is the default WG responsible if none are specified
+        string wg = CommonDefinitions.ResolveWorkgroup(sourceVs.WorkGroup, "fhir");
+
+        // add the work group extension
+        vs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+        // ensure there is a publisher, use the WG if there is none
+        vs.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+
+        // ensure there is a contact point - use the default for the WG if there is none
+        if ((vs.Contact == null) || (vs.Contact.Count == 0))
         {
-            vs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new FhirString(sourceVs.WorkGroup));
+            vs.Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames[wg],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls[wg],
+                        },
+                    ],
+                }
+            ];
         }
 
         vs.cgAddPackageSource(xverPackageId, _crossDefinitionVersion, null);
@@ -2619,6 +2770,9 @@ public partial class XVerProcessor
                     Display = concept.Display,
                 });
             }
+
+            // add the compose includes to the value set
+            vs.Compose.Include = composeIncludes.Values.ToList();
 
             // add this value set to the dictionary if it has any concepts
             if (vs.Expansion.Contains.Count > 0)

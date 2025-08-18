@@ -214,6 +214,7 @@ public class ComparisonDatabase : IDisposable
             DbUnresolvedElementComparison.LoadMaxKey(_dbConnection);
 
             DbExtensionSubstitution.LoadMaxKey(_dbConnection);
+            DbExternalInclusion.LoadMaxKey(_dbConnection);
         }
         catch (Exception ex)
         {
@@ -271,6 +272,7 @@ public class ComparisonDatabase : IDisposable
                     DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
                     DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
                     DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
                 }
                 break;
 
@@ -281,6 +283,7 @@ public class ComparisonDatabase : IDisposable
                     DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
                     DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb));
                     DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb));
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
                 }
                 break;
 
@@ -303,6 +306,7 @@ public class ComparisonDatabase : IDisposable
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
 
                     DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
                 }
                 break;
 
@@ -336,6 +340,7 @@ public class ComparisonDatabase : IDisposable
                     DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
 
                     DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
                 }
                 break;
         }
@@ -354,6 +359,7 @@ public class ComparisonDatabase : IDisposable
                     DbCodeSystemFilter.DropTable(db);
                     DbCodeSystemConcept.DropTable(db);
                     DbCodeSystemConceptProperty.DropTable(db);
+                    DbExternalInclusion.DropTable(db);
                 }
                 break;
 
@@ -363,6 +369,7 @@ public class ComparisonDatabase : IDisposable
                     DbValueSetConcept.DropTable(db);
                     DbValueSetComparison.DropTable(db);
                     DbValueSetConceptComparison.DropTable(db);
+                    DbExternalInclusion.DropTable(db);
                 }
                 break;
 
@@ -385,6 +392,7 @@ public class ComparisonDatabase : IDisposable
                     DbUnresolvedElementComparison.DropTable(db);
 
                     DbExtensionSubstitution.DropTable(db);
+                    DbExternalInclusion.DropTable(db);
                 }
                 break;
 
@@ -418,6 +426,7 @@ public class ComparisonDatabase : IDisposable
                     DbUnresolvedElementComparison.DropTable(db);
 
                     DbExtensionSubstitution.DropTable(db);
+                    DbExternalInclusion.DropTable(db);
                 }
                 break;
         }
@@ -436,6 +445,7 @@ public class ComparisonDatabase : IDisposable
                     DbCodeSystemFilter.CreateTable(db);
                     DbCodeSystemConcept.CreateTable(db);
                     DbCodeSystemConceptProperty.CreateTable(db);
+                    DbExternalInclusion.CreateTable(db);
                 }
                 break;
 
@@ -445,6 +455,7 @@ public class ComparisonDatabase : IDisposable
                     DbValueSetConcept.CreateTable(db);
                     DbValueSetComparison.CreateTable(db);
                     DbValueSetConceptComparison.CreateTable(db);
+                    DbExternalInclusion.CreateTable(db);
                 }
                 break;
 
@@ -465,6 +476,7 @@ public class ComparisonDatabase : IDisposable
                     DbElementTypeComparison.CreateTable(db);
                     DbCollatedTypeComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
+                    DbExternalInclusion.CreateTable(db);
                 }
                 break;
 
@@ -498,6 +510,7 @@ public class ComparisonDatabase : IDisposable
                     DbUnresolvedElementComparison.CreateTable(db);
 
                     DbExtensionSubstitution.CreateTable(db);
+                    DbExternalInclusion.CreateTable(db);
                 }
                 break;
         }
@@ -530,6 +543,140 @@ public class ComparisonDatabase : IDisposable
         ];
 
         substitutions.Insert(_dbConnection);
+    }
+
+    private void loadKnownExternalInclusions()
+    {
+        List<DbExternalInclusion> inclusions = [
+            new()
+            {
+                Key = DbExternalInclusion.GetIndex(),
+                ResourceType = FHIRAllTypes.CodeSystem,
+                Id = "designation-usage",
+                Name = "Designation Usage",
+                Version = "4.2.0",
+                OverrideVersion = false,
+                UnversionedUrl = "http://terminology.hl7.org/CodeSystem/designation-usage",
+                VersionedUrl = "http://terminology.hl7.org/CodeSystem/designation-usage|4.2.0",
+                Reason = "This CodeSystem was only published in hl7.terminology@1.0.0. Currently working through resolution.",
+                IncludeInPackages = null,
+                Json = """
+                {
+                  "resourceType": "CodeSystem",
+                  "id": "designation-usage",
+                  "meta": {
+                    "profile": [
+                      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+                    ]
+                  },
+                  "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Designation Usage</h2><div><p>Preferred value set for Condition Categories.</p>\n</div><p>This code system http://terminology.hl7.org/CodeSystem/designation-usage defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">display<a name=\"designation-usage-display\"> </a></td><td>Display</td><td>A deisgnation suitable for display to an end-user</td></tr></table></div>"
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                      "valueCode": "fhir"
+                    }
+                  ],
+                  "url": "http://terminology.hl7.org/CodeSystem/designation-usage",
+                  "version": "4.2.0",
+                  "name": "DesignationUsage",
+                  "title": "Designation Usage",
+                  "status": "draft",
+                  "experimental": false,
+                  "date": "2020-05-09T12:49:00-04:00",
+                  "publisher": "FHIR Project team",
+                  "contact": [
+                    {
+                      "telecom": [
+                        {
+                          "system": "url",
+                          "value": "http://hl7.org/fhir"
+                        }
+                      ]
+                    }
+                  ],
+                  "description": "Preferred value set for Condition Categories.",
+                  "caseSensitive": true,
+                  "valueSet": "http://terminology.hl7.org/ValueSet/designation-usage",
+                  "content": "complete",
+                  "concept": [
+                    {
+                      "code": "display",
+                      "display": "Display",
+                      "definition": "A deisgnation suitable for display to an end-user"
+                    }
+                  ]
+                }
+                """,
+            },
+            new()
+            {
+                Key = DbExternalInclusion.GetIndex(),
+                ResourceType = FHIRAllTypes.ValueSet,
+                Id = "designation-usage",
+                Name = "Designation Usage",
+                Version = "4.1.0",
+                OverrideVersion = false,
+                UnversionedUrl = "http://terminology.hl7.org/ValueSet/designation-usage",
+                VersionedUrl = "http://terminology.hl7.org/ValueSet/designation-usage|4.1.0",
+                Reason = "This ValueSet was only published in hl7.terminology@1.0.0. Currently working through resolution.",
+                IncludeInPackages = null,
+                Json = """
+                {
+                  "resourceType": "ValueSet",
+                  "id": "designation-usage",
+                  "meta": {
+                    "profile": [
+                      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+                    ]
+                  },
+                  "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Designation Usage</h2><div><p>Preferred value set for Condition Categories.</p>\n</div><ul><li>Include all codes defined in <a href=\"CodeSystem-designation-usage.html\"><code>http://terminology.hl7.org/CodeSystem/designation-usage</code></a></li></ul></div>"
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                      "valueCode": "fhir"
+                    }
+                  ],
+                  "url": "http://terminology.hl7.org/ValueSet/designation-usage",
+                  "version": "4.1.0",
+                  "name": "DesignationUsage",
+                  "title": "Designation Usage",
+                  "status": "draft",
+                  "experimental": false,
+                  "date": "2020-02-23T20:41:39-05:00",
+                  "publisher": "HL7 (FHIR Project)",
+                  "contact": [
+                    {
+                      "telecom": [
+                        {
+                          "system": "url",
+                          "value": "http://hl7.org/fhir"
+                        },
+                        {
+                          "system": "email",
+                          "value": "fhir@lists.hl7.org"
+                        }
+                      ]
+                    }
+                  ],
+                  "description": "Preferred value set for Condition Categories.",
+                  "immutable": true,
+                  "compose": {
+                    "include": [
+                      {
+                        "system": "http://terminology.hl7.org/CodeSystem/designation-usage"
+                      }
+                    ]
+                  }
+                }
+                """,
+            }
+        ];
     }
 
     /// <summary>
@@ -669,6 +816,7 @@ public class ComparisonDatabase : IDisposable
         }
 
         loadKnownSubstitutions();
+        loadKnownExternalInclusions();
     }
 
     public bool TryLoadFhirCrossVersionMaps(string crossVersionMapSourcePath)
