@@ -18,7 +18,7 @@ namespace Microsoft.Health.Fhir.Comparison.Extensions;
 
 public static class DbContentExtensions
 {
-    public static string? ProcessFhirSpecialMdLinks(
+    public static string? ProcessCoreTextForLinks(
         this string? input,
         string fhirVersionLiteral)
     {
@@ -26,32 +26,32 @@ public static class DbContentExtensions
         {
             return input;
         }
-        return FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input, fhirVersionLiteral);
+
+        // Process special markdown links first, then HTML links, then core links.
+        string? output = FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input, fhirVersionLiteral);
+        output = FhirSanitizationUtils.ProcessFhirHtmlLinks(output, fhirVersionLiteral);
+        output = FhirSanitizationUtils.ProcessFhirCoreLinks(output, fhirVersionLiteral);
+
+        return output;
     }
 
-    public static Narrative? ProcessFhirSpecialMdLinks(this Narrative? input, string fhirVersionLiteral)
+    public static Narrative? ProcessCoreTextForLinks(this Narrative? input, string fhirVersionLiteral)
     {
         if ((input == null) || string.IsNullOrEmpty(input.Div))
         {
             return input;
         }
 
+        // Process special markdown links first, then HTML links, then core links.
+        string? output = FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input.Div, fhirVersionLiteral);
+        output = FhirSanitizationUtils.ProcessFhirHtmlLinks(output, fhirVersionLiteral);
+        output = FhirSanitizationUtils.ProcessFhirCoreLinks(output, fhirVersionLiteral);
+
         return new Narrative
         {
             Status = input.Status,
-            Div = FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input.Div, fhirVersionLiteral),
+            Div = output,
         };
-    }
-
-    public static string? ProcessFhirHtmlLinks(
-        this string? input,
-        string fhirVersionLiteral)
-    {
-        if (string.IsNullOrEmpty(input))
-        {
-            return input;
-        }
-        return FhirSanitizationUtils.ProcessFhirHtmlLinks(input, fhirVersionLiteral);
     }
 
     public static int ConceptCountWithLiteralMatches(

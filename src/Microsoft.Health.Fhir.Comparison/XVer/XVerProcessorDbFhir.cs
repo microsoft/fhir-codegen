@@ -485,13 +485,13 @@ public partial class XVerProcessor
                 }
 
                 // default to fhir infrastructure work group if none is present
-                wg ??= "fhir";
+                wg = CommonDefinitions.ResolveWorkgroup(wg, "fhir");
 
                 // add the work group extension
                 fhirCs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
 
                 // ensure there is a publisher, use the WG if there is none
-                fhirCs.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+                fhirCs.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
                 // ensure there is a contact point - use the default for the WG if there is none
                 if ((fhirCs.Contact == null) || (fhirCs.Contact.Count == 0))
@@ -1391,7 +1391,7 @@ public partial class XVerProcessor
         extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
 
         // ensure there is a publisher, use the WG if there is none
-        extSd.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+        extSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
         // ensure there is a contact point - use the default for the WG if there is none
         if ((extSd.Contact == null) || (extSd.Contact.Count == 0))
@@ -1524,7 +1524,7 @@ public partial class XVerProcessor
         extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
 
         // ensure there is a publisher, use the WG if there is none
-        extSd.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+        extSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
         // ensure there is a contact point - use the default for the WG if there is none
         if ((extSd.Contact == null) || (extSd.Contact.Count == 0))
@@ -2661,7 +2661,7 @@ public partial class XVerProcessor
         vs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
 
         // ensure there is a publisher, use the WG if there is none
-        vs.Publisher ??= CommonDefinitions.WorkgroupNames[wg];
+        vs.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
         // ensure there is a contact point - use the default for the WG if there is none
         if ((vs.Contact == null) || (vs.Contact.Count == 0))

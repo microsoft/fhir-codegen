@@ -152,34 +152,37 @@ public partial class XVerProcessor
         ### Global Profile Definitions
 
         {% include globals-table.xhtml %}
+
+        ### Cross-Version Analysis
+
+        {% include cross-version-analysis.xhtml %}
         """;
 
     private const string _xverIgnoreWarningsTxt = $$$"""
         == Suppressed Messages ==
 
-        # 01. Extension names and ids are shortened to avoid exceeding 64 character limit
+        # ==== 01. Extension names and ids are shortened to avoid exceeding 64 character limit ====
         RESOURCE_ID_MISMATCH
-        Resource id/url mismatch: %
+        ERROR: StructureDefinition.url: Resource id/url mismatch: %
 
         RESOURCE_CANONICAL_MISMATCH
-        Conformance resource % - the canonical URL (%) does not match the URL (%)
-
-        ## Added support for external inclusions
-        # 02. Code systems are verified correct, not being found by publisher
-        # Type_Specific_Checks_DT_URL_Resolve
-        # No definition could be found for URL value 'http://terminology.hl7.org/CodeSystem/designation-usage'
-
+        ERROR: StructureDefinition.where(url = '%'): Conformance resource % - the canonical URL (%) does not match the URL (%)
+        ERROR: %: URL Mismatch % vs $
+        
         ## TODO: I think this was caused by not setting `ValueSet.compose` in the value sets
         # VALUESET_INCLUDE_INVALID_CONCEPT_CODE_VER
 
-        # 03. These are the 'default' ValueSets from ported CodeSystem resources. We do not want to define them.
+        # ==== 03. These are the 'default' ValueSets from ported CodeSystem resources. We do not want to define them ====
         TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
         A definition could not be found for Canonical URL %
+        ERROR: CodeSystem/%: CodeSystem.valueSet: A definition could not be found for Canonical URL %
 
-        # 04. We are not building examples for every element
+        # ==== 04. We are not building examples for everything ====
         The Implementation Guide contains no examples for this extension
-
-        # 05. We are faithfully reproducing existing Code Systems and cannot address these
+        WARNING: StructureDefinition.where(url = %): The Implementation Guide contains no examples for this extension
+        WARNING: StructureDefinition.where(url = %): The Implementation Guide contains no examples for this profile
+ 
+        # ==== 05. We are faithfully reproducing existing Code Systems and cannot address these ====
         CODESYSTEM_CONCEPT_NO_DEFINITION
         HL7 Defined CodeSystems should ensure that every concept has a definition
 
@@ -217,44 +220,45 @@ public partial class XVerProcessor
         VALIDATION_VAL_STATUS_INCONSISTENT
         The resource status 'active' and the standards status 'draft' are not consistent
         The resource status 'draft' and the standards status 'normative' are not consistent
+        ERROR: % If a resource is not implementable, is marked as experimental or example, the standards status can only be 'informative', 'draft' or 'deprecated', not 'trial-use'.
 
         VALIDATION_VAL_STATUS_INCONSISTENT_HINT
         The resource status 'draft' and the standards status 'trial-use' may not be consistent and should be reviewed
 
-        # 06. We cannot change bindings from the core specification
+        # ==== 06. We cannot change bindings from the core specification ====
         The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated with the note: 'Use additionalBinding extension or element instead'
         
-        # 07. We cannot honor inactive flags since we are porting existing values
+        # ==== 07. We cannot honor inactive flags since we are porting existing values ====
         VALUESET_BAD_FILTER_VALUE_VALID_CODE_INACTIVE
         The code for the filter 'concept' is inactive %
 
-        # 08. We cannot change filters since we are porting existing values
+        # ==== 08. We cannot change filters since we are porting existing values ====
         VALUESET_BAD_FILTER_VALUE_VALID_CODE_CHANGE
         The value for a filter based on property 'SCALE_TYP' must be a valid code from the system 'http://loinc.org', and 'Doc' is not (Unknown code 'Doc' in the CodeSystem 'http://loinc.org' version '2.80'). Note that this is change from the past; terminology servers are expected to still continue to support this filter
         The value for a filter based on property 'parent' must be a valid code from the system 'http://loinc.org', and 'LP43571-6' is not (Unknown code 'LP43571-6' in the CodeSystem 'http://loinc.org' version '2.80'). Note that this is change from the past; terminology servers are expected to still continue to support this filter
 
-        # 09. These are bindings inherited from core and cannot be overridden here
+        # ==== 09. These are bindings inherited from core and cannot be overridden here ====
         MSG_DEPENDS_ON_DEPRECATED_NOTE
         The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated with the note: 'Use additionalBinding extension or element instead'
         The extension http://hl7.org/fhir/StructureDefinition/codesystem-use-markdown|% is deprecated with the note: 'This extension is deprecated as the Terminology Infrastructure work group felt there wasn't a use case for the extension'
         The extension http://hl7.org/fhir/StructureDefinition/valueset-special-status|% is deprecated with the note: 'This extension is deprecated as Terminology Infrastructure was unable to determine a use for it'
 
-        # 10. We cannot change the experimental flag on any existing content
+        # ==== 10. We cannot change the experimental flag on any existing content ====
         SD_ED_EXPERIMENTAL_BINDING
         The definition for the element 'Extension.extension.extension.value[x]' binds to the value set '%' which is experimental, but this structure is not labeled as experimental
 
-        # 11. This URL should not have been used for an example code system, but it was and we cannot change it
+        # ==== 11. This URL should not have been used for an example code system, but it was and we cannot change it ====
         A definition for CodeSystem 'http://acme.com/config/fhir/codesystems/internal' could not be found, so the code cannot be validated
 
-        # 12. FHIR-I is publishing this package, but we preserve the WG responsible for content where possible
+        # ==== 12. FHIR-I is publishing this package, but we preserve the WG responsible for content where possible ====
         VALIDATION_HL7_PUBLISHER_MISMATCH
         The nominated WG '%' means that the publisher should be '%' but 'HL7 International / FHIR Infrastructure' was found
 
-        # 13. We cannot add display values to existing code systems that lack them
+        # ==== 13. We cannot add display values to existing code systems that lack them ====
         VALUESET_CONCEPT_DISPLAY_PRESENCE_MIXED
         This include has some concepts with displays and some without - check that this is what is intended
 
-        # 14. We cannot change the semantic structure of any existing content
+        # ==== 14. We cannot change the semantic structure of any existing content ====
         VALUESET_CONCEPT_DISPLAY_SCT_TAG_MIXED
         This SNOMED-CT based include has some concepts with semantic tags (FSN terms) and some without (preferred terms) - check that this is what is intended %
 

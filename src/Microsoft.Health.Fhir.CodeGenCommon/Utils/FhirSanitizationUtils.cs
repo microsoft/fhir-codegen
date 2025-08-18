@@ -71,6 +71,18 @@ public abstract partial class FhirSanitizationUtils
     private static readonly Regex _regexHtmlAnchor = new Regex(@"<a\s+href=[""']([^""']+)[""']>([^<]+)</a>", RegexOptions.Compiled);
 #endif
 
+#if NET8_0_OR_GREATER
+    [GeneratedRegex(@"\[(?<label>[^\]]+)\]\((?!https?:\/\/)(?<link>[^)]+)\)", RegexOptions.IgnoreCase)]
+    private static partial Regex RegexRelativeMdLink();
+
+    /// <summary>The RegEx for finding relative Markdown links (excluding http/https).</summary>
+    private static readonly Regex _regexRelativeMdLink = RegexRelativeMdLink();
+#else
+    /// <summary>The RegEx for finding relative Markdown links (excluding http/https).</summary>
+    private static readonly Regex _regexRelativeMdLink = new Regex(@"\[(?<label>[^\]]+)\]\((?!https?:\/\/)(?<link>[^)]+)\)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+#endif
+
+
 
     /// <summary>(Immutable) The underscore.</summary>
     public static readonly Dictionary<char[], string> ReplacementsWithUnderscores = new(ReplacementComparer.Default)
@@ -546,6 +558,41 @@ public abstract partial class FhirSanitizationUtils
                     : ".html";
 
                 return $"[{label}]({prefix}{link}{suffix}{fragment})";
+            });
+
+        return cleaned;
+    }
+
+    public static string? ProcessFhirCoreLinks(string? value, string fhirSequenceLabel)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return value;
+        }
+
+        // Replace a relative markdown link with a fully-qualified one
+        string cleaned = _regexRelativeMdLink.Replace(
+            value,
+            m =>
+            {
+                string link = m.Groups["link"].Value;
+                string label = m.Groups["label"].Value;
+
+                string fragment = string.Empty;
+
+                int hashIndex = link.IndexOf('#');
+                if (hashIndex != -1)
+                {
+                    // It's a fragment link, so preserve the fragment
+                    fragment = link[hashIndex..];
+                    link = link[0..^hashIndex];
+                }
+
+                string suffix = link.EndsWith(".html", StringComparison.OrdinalIgnoreCase) || link.EndsWith(".htm", StringComparison.OrdinalIgnoreCase)
+                    ? string.Empty
+                    : ".html";
+
+                return $"[{label}](https://hl7.org/fhir/{link}{suffix}{fragment})";
             });
 
         return cleaned;
