@@ -493,8 +493,8 @@ public partial class XVerProcessor
                 // ensure there is a publisher, use the WG if there is none
                 fhirCs.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
-                // ensure there is a contact point - use the default for the WG if there is none
-                if ((fhirCs.Contact == null) || (fhirCs.Contact.Count == 0))
+                // ensure there is a contact point - use the default WG unless there are multiple entries
+                if ((fhirCs.Contact == null) || (fhirCs.Contact.Count < 2))
                 {
                     fhirCs.Contact = [
                         new()
@@ -1388,15 +1388,15 @@ public partial class XVerProcessor
         string wg = CommonDefinitions.ResolveWorkgroup(extSd.cgWorkGroup(), "fhir");
 
         // add the work group extension
-        extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+        profileSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
 
         // ensure there is a publisher, use the WG if there is none
-        extSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
+        profileSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
-        // ensure there is a contact point - use the default for the WG if there is none
-        if ((extSd.Contact == null) || (extSd.Contact.Count == 0))
+        // ensure there is a contact point - use the default WG unless there are multiple entries
+        if ((profileSd.Contact == null) || (profileSd.Contact.Count < 2))
         {
-            extSd.Contact = [
+            profileSd.Contact = [
                 new()
                 {
                     Name = CommonDefinitions.WorkgroupNames[wg],
@@ -1526,8 +1526,8 @@ public partial class XVerProcessor
         // ensure there is a publisher, use the WG if there is none
         extSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
-        // ensure there is a contact point - use the default for the WG if there is none
-        if ((extSd.Contact == null) || (extSd.Contact.Count == 0))
+        // ensure there is a contact point - use the default WG unless there are multiple entries
+        if ((extSd.Contact == null) || (extSd.Contact.Count < 2))
         {
             extSd.Contact = [
                 new()
@@ -2663,8 +2663,8 @@ public partial class XVerProcessor
         // ensure there is a publisher, use the WG if there is none
         vs.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
-        // ensure there is a contact point - use the default for the WG if there is none
-        if ((vs.Contact == null) || (vs.Contact.Count == 0))
+        // ensure there is a contact point - use the default WG unless there are multiple entries
+        if ((vs.Contact == null) || (vs.Contact.Count < 2))
         {
             vs.Contact = [
                 new()

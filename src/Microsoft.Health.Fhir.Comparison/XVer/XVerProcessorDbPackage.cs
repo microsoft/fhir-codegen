@@ -246,6 +246,7 @@ public partial class XVerProcessor
         # ==== 10. We cannot change the experimental flag on any existing content ====
         SD_ED_EXPERIMENTAL_BINDING
         The definition for the element 'Extension.extension.extension.value[x]' binds to the value set '%' which is experimental, but this structure is not labeled as experimental
+        INFORMATION: I%: ImplementationGuide.definition.parameter[0].code: Reference to experimental CodeSystem %
 
         # ==== 11. This URL should not have been used for an example code system, but it was and we cannot change it ====
         A definition for CodeSystem 'http://acme.com/config/fhir/codesystems/internal' could not be found, so the code cannot be validated
@@ -827,6 +828,8 @@ public partial class XVerProcessor
                     parameters:
                         apply-wg: false
                         default-wg: true
+                        apply-version: false
+                        default-version: true
                         show-inherited-invariants: false
                         usage-stats-opt-out: true
                         shownav: 'true'
@@ -1180,6 +1183,8 @@ public partial class XVerProcessor
                     parameters:
                         apply-wg: false
                         default-wg: true
+                        apply-version: false
+                        default-version: true
                         show-inherited-invariants: false
                         usage-stats-opt-out: true
                         shownav: 'true'
