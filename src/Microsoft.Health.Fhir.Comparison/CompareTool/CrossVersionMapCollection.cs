@@ -3328,7 +3328,7 @@ internal static class ElementDefinitionNavigatorExtensions
 {
     public static string DebugString(this ElementDefinitionNavigator Element, bool includeTypes = true)
     {
-        // return $"{Definition.Url}|{Definition.Version} # {Element.Path} ({String.Join(",", Element.Current.Type.Select(t => t.Code))})";
+        // return $"{Definition.CanonicalUrl}|{Definition.Version} # {Element.Path} ({String.Join(",", Element.Current.Type.Select(t => t.Code))})";
         if (includeTypes)
             return $"{Element.Path}|{Element.StructureDefinition.Version} ({String.Join(",", Element.Current.Type.Select(t =>
             {

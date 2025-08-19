@@ -14,6 +14,7 @@ using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.Comparison.Extensions;
@@ -47,15 +48,12 @@ public partial class XVerProcessor
         /// </summary>
         public required string PackageId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the list of JSON strings representing indexed structure definitions.
-        /// </summary>
-        public List<string> IndexStructureJsons { get; set; } = [];
+        public List<PackageContents.PackageFile> ExtensionIndexFiles { get; set; } = [];
+        public List<PackageContents.PackageFile> ProfileIndexFiles { get; set; } = [];
+        public List<PackageContents.PackageFile> CodeSystemIndexFiles { get; set; } = [];
+        public List<PackageContents.PackageFile> ValueSetIndexFiles { get; set; } = [];
 
-        /// <summary>
-        /// Gets or sets the list of JSON strings representing indexed value sets.
-        /// </summary>
-        public List<string> IndexValueSetJsons { get; set; } = [];
+        public PackageContents.PackageFile? IgIndexFile { get; set; } = null;
 
         /// <summary>
         /// Gets or sets the list of JSON strings for ImplementationGuide structure resources.
@@ -252,15 +250,13 @@ public partial class XVerProcessor
             Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions = [];
             Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles = [];
 
-            // build the structure graph so that we can resolve targets in references
-            //Dictionary<int, DbGraphSd> sdGraphs = [];
-            //addStructureGraphs(packages[focusPackageIndex].Key, FhirArtifactClassEnum.ComplexType, packages, sdGraphs);
-            //addStructureGraphs(packages[focusPackageIndex].Key, FhirArtifactClassEnum.Resource, packages, sdGraphs);
-
             buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverProfiles, xverOutcomes, FhirArtifactClassEnum.ComplexType);
             buildXverStructures(packageSupports, focusPackageIndex, xverValueSets, xverExtensions, xverProfiles, xverOutcomes, FhirArtifactClassEnum.Resource);
 
             writeXverStructures(packageSupports, focusPackageIndex, xverExtensions, xverProfiles, fhirDir);
+
+            // write the source code systems for this package
+            writeXverSourceCodeSystemsFromDb(packages, focusPackageIndex, fhirDir);
 
             if (!_config.XverExportForPublisher)
             {
@@ -269,12 +265,10 @@ public partial class XVerProcessor
                     focusPackageIndex,
                     xverValueSets,
                     xverExtensions,
+                    xverProfiles,
                     fhirDir);
                 allIndexInfos.AddRange(focusedIndexInfos);
             }
-
-            // write the source code systems for this package
-            writeXverSourceCodeSystemsFromDb(packages, focusPackageIndex, fhirDir);
         }
 
         // write all of our outcome lists
@@ -1495,7 +1489,7 @@ public partial class XVerProcessor
         StructureDefinition extSd = new()
         {
             Id = sdId,
-            //Url = $"http://hl7.org/fhir/uv/xver/{focusPackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
+            //CanonicalUrl = $"http://hl7.org/fhir/uv/xver/{focusPackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Name = FhirSanitizationUtils.ReformatIdForName(sdId),
             Version = _crossDefinitionVersion,

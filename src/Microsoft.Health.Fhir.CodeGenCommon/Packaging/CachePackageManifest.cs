@@ -21,15 +21,18 @@ public record class CachePackageManifest
     {
         /// <summary>Gets or sets the name.</summary>
         [JsonPropertyName("name")]
-        public string Name { get; init; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Name { get; init; } = null;
 
         /// <summary>Gets or sets the email.</summary>
         [JsonPropertyName("email")]
-        public string Email { get; init; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Email { get; init; } = null;
 
         /// <summary>Gets or sets URL of the document.</summary>
         [JsonPropertyName("url")]
-        public string Url { get; init; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Url { get; init; } = null;
     }
 
     /// <summary>Initializes a new instance of the CachePackageManifest class.</summary>
@@ -41,17 +44,17 @@ public record class CachePackageManifest
         Name = other.Name;
         Version = other.Version;
         CanonicalUrl = other.CanonicalUrl;
-        PublicationUrl = other.PublicationUrl;
-        Homepage = other.Homepage;
+        WebPublicationUrl = other.WebPublicationUrl;
+        HomepageUrl = other.HomepageUrl;
         Title = other.Title;
         Description = other.Description;
-        FhirVersions = other.FhirVersions.Select(v => v);
-        FhirVersionList = other.FhirVersionList.Select(v => v);
+        FhirVersions = other.FhirVersions?.Select(v => v);
+        FhirVersionList = other.FhirVersionList?.Select(v => v);
         Type = other.Type;
         Dependencies = other.Dependencies.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-        Keywords = other.Keywords.Select(k => k);
+        Keywords = other.Keywords?.Select(k => k);
         Author = other.Author;
-        Maintainers = other.Maintainers.Select(m => m with { });
+        Maintainers = other.Maintainers?.Select(m => m with { });
         License = other.License;
         Jurisdiction = other.Jurisdiction;
         Directories = other.Directories.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
@@ -70,29 +73,34 @@ public record class CachePackageManifest
 
     /// <summary>Gets the root canonical URL for this package.</summary>
     [JsonPropertyName("canonical")]
-    public string CanonicalUrl { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? CanonicalUrl { get; init; } = null;
 
     /// <summary>
     /// Gets where the human readable representation (e.g. IG) that represents this version of this
     /// package is published on the web (if there is such a thing).
     /// </summary>
     [JsonPropertyName("url")]
-    public string PublicationUrl { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? WebPublicationUrl { get; init; } = null;
 
     /// <summary>
     /// Gets the project homepage (e.g. where information about the project that produced the package
     /// can be found on the web).
     /// </summary>
     [JsonPropertyName("homepage")]
-    public string Homepage { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? HomepageUrl { get; init; } = null;
 
     /// <summary>Gets the title.</summary>
     [JsonPropertyName("title")]
-    public string Title { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Title { get; init; } = null;
 
     /// <summary>Gets the description.</summary>
     [JsonPropertyName("description")]
-    public string Description { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Description { get; init; } = null;
 
     /// <summary>Gets the FHIR versions.</summary>
     /// <remarks>
@@ -102,18 +110,20 @@ public record class CachePackageManifest
     /// balloted packages.
     /// </remarks>
     [JsonPropertyName("fhirVersions")]
-    public IEnumerable<string> FhirVersions { get; init; } = [];
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public IEnumerable<string>? FhirVersions { get; init; } = null;
 
     /// <summary>Gets or initializes a list of FHIR versions.</summary>
     /// <remarks>
     /// Older packages (including R4 release) use this.
     /// </remarks>
     [JsonPropertyName("fhir-version-list")]
-    public IEnumerable<string> FhirVersionList { get; init; } = [];
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public IEnumerable<string>? FhirVersionList { get; init; } = null;
 
     /// <summary>Gets the FHIR versions.</summary>
     [JsonIgnore]
-    public IEnumerable<string> AllFhirVersions => FhirVersions.Any() ? FhirVersions : FhirVersionList;
+    public IEnumerable<string> AllFhirVersions => (FhirVersions?.Any() == true) ? FhirVersions : (FhirVersionList ?? []);
 
     /// <summary>Gets the hint that provides guidance for the use of the package.</summary>
     /// <remarks>
@@ -139,7 +149,8 @@ public record class CachePackageManifest
     ///                specify a version)
     /// </remarks>
     [JsonPropertyName("type")]
-    public string Type { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Type { get; init; } = null;
 
     /// <summary>Gets or sets the package dependencies - keys are package names, values are package versions.</summary>
     [JsonPropertyName("dependencies")]
@@ -147,19 +158,23 @@ public record class CachePackageManifest
 
     /// <summary>Gets the keywords.</summary>
     [JsonPropertyName("keywords")]
-    public IEnumerable<string> Keywords { get; init; } = [];
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public IEnumerable<string>? Keywords { get; init; } = null;
 
     /// <summary>Gets or sets the author.</summary>
     [JsonPropertyName("author")]
-    public string Author { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Author { get; init; } = null;
 
     /// <summary>Gets or sets the maintainers.</summary>
     [JsonPropertyName("maintainers")]
-    public IEnumerable<PackageMaintainer> Maintainers { get; init; } = [];
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public IEnumerable<PackageMaintainer>? Maintainers { get; init; } = null;
 
     /// <summary>Gets or sets the SPDX-convention license name.</summary>
     [JsonPropertyName("license")]
-    public string License { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? License { get; init; } = null;
 
     /// <summary>Gets the jurisdiction.</summary>
     /// <remarks>
@@ -167,7 +182,8 @@ public record class CachePackageManifest
     /// fhir.tx.support.* package (fhir.tx.support.r3, fhir.tx.support.r4, ...)
     /// </remarks>
     [JsonPropertyName("jurisdiction")]
-    public string Jurisdiction { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Jurisdiction { get; init; } = null;
 
     /// <summary>
     /// Gets package directories - values are un-prefixed relative paths from the package directory
@@ -189,17 +205,18 @@ public record class CachePackageManifest
     ///  https://confluence.hl7.org/pages/viewpage.action?pageId=35718629#NPMPackageSpecification-Packagemanifest.
     /// </remarks>
     [JsonPropertyName("directories")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public Dictionary<string, string> Directories { get; init; } = [];
 
     /// <summary>Gets or sets the date.</summary>
     /// <remarks>TODO: not documented at https://confluence.hl7.org/pages/viewpage.action?pageId=35718629#NPMPackageSpecification-Packagemanifest </remarks>
     [JsonPropertyName("date")]
-    public string Date { get; init; } = string.Empty;
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Date { get; init; } = null;
 
     /// <summary>Gets or sets the tools version.</summary>
     /// <remarks>TODO: not documented at https://confluence.hl7.org/pages/viewpage.action?pageId=35718629#NPMPackageSpecification-Packagemanifest </remarks>
     [JsonPropertyName("tools-version")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? ToolsVersion { get; init; } = null;
-
-
 }

@@ -601,7 +601,7 @@ public class CrossVersionTests
     {
         if (e.Resource is IVersionableConformanceResource cr)
         {
-            // Console.WriteLine($"{e.Url} {cr.Name} | {cr.Version}");
+            // Console.WriteLine($"{e.CanonicalUrl} {cr.Name} | {cr.Version}");
         }
     }
 

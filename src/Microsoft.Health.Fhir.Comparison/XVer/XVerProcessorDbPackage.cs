@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using System.CommandLine;
 using System.Data;
 using System.Data.Common;
+using System.Drawing;
 using System.Formats.Tar;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
@@ -22,12 +26,15 @@ using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Language;
 using Microsoft.Health.Fhir.CodeGen.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
 using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 using Microsoft.Health.Fhir.Comparison.CompareTool;
 using Microsoft.Health.Fhir.Comparison.Models;
 using Octokit;
+using static System.Net.Mime.MediaTypeNames;
+using static ICSharpCode.SharpZipLib.Zip.FastZip;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
 
@@ -158,6 +165,180 @@ public partial class XVerProcessor
 
         {% include cross-version-analysis.xhtml %}
         """;
+
+    private readonly record struct XverIgDependencyRec
+    {
+        public required string PackageId { get; init; }
+        public required string PackageVersion { get; init; }
+        public required string CanonicalUrl { get; init; }
+        public required bool VersionSpecificPackages { get; init; }
+        public required bool HasR4B { get; init; }
+
+        public string AsYamlProp(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            if (!VersionSpecificPackages)
+            {
+                return $"{PackageId} : {PackageVersion}";
+            }
+
+            string suffix = (fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B)
+                ? "r4"
+                : fhirSequence.ToString().ToLowerInvariant();
+
+            return $"{PackageId}.{suffix} : {PackageVersion}";
+        }
+
+        public string AsJsonProp(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            if (!VersionSpecificPackages)
+            {
+                return $"\"{PackageId}\" : \"{PackageVersion}\"";
+            }
+
+            string suffix = (fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B)
+                ? "r4"
+                : fhirSequence.ToString().ToLowerInvariant();
+
+            return $"\"{PackageId}.{suffix}\" : \"{PackageVersion}\"";
+        }
+
+        public string AsJsonIgDependency(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            string dotSuffix;
+            if (!VersionSpecificPackages)
+            {
+                dotSuffix = string.Empty;
+            }
+            else if ((fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B))
+            {
+                dotSuffix = ".r4";
+            }
+            else
+            {
+                dotSuffix = "." + fhirSequence.ToString().ToLowerInvariant();
+            }
+
+            string packageId = PackageId + dotSuffix;
+            string id = packageId.Replace('.', '_');
+
+            return $$$"""{ "packageId":"{{{packageId}}}", "version":"{{{PackageVersion}}}", "uri":"{{{CanonicalUrl}}}", "id":"{{{id}}}" }""";
+        }
+    }
+
+    private static readonly List<XverIgDependencyRec> _xverDependencies = [
+        new()
+        {
+            PackageId = "hl7.terminology",
+            PackageVersion = "6.5.0",
+            CanonicalUrl = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",                // "http://terminology.hl7.org"
+            VersionSpecificPackages = true,
+            HasR4B = false,
+        },
+        new()
+        {
+            PackageId = "hl7.fhir.uv.extensions",
+            PackageVersion = "5.3.0-ballot-tc1",
+            CanonicalUrl = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",     // "http://hl7.org/fhir/extensions"
+            VersionSpecificPackages = true,
+            HasR4B = true,
+        },
+        new()
+        {
+            PackageId = "hl7.fhir.uv.tools",
+            PackageVersion = "0.8.0",
+            CanonicalUrl = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",                // "http://hl7.org/fhir/tools"
+            VersionSpecificPackages = true,
+            HasR4B = false,
+        }
+    ];
+
+    // codes described at: https://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
+    private static readonly List<(string code, string value)> _xverIgParameters = [
+        // apply-contact: if true, overwrite all canonical resource contact details with that found in the IG.
+        ("apply-contact", "false"),
+
+        // apply-context: if true, overwrite all canonical resource context details with that found in the IG.
+        ("apply-context", "false"),
+
+        // apply-copyright: if true, overwrite all canonical resource copyright details with that found in the IG.
+        ("apply-copyright", "true"),
+
+        // apply-jurisdiction: if true, overwrite all canonical resource jurisdiction details with that found in the IG.
+        ("apply-jurisdiction", "false"),
+
+        // apply-publisher: if true, overwrite all canonical resource publisher details with that found in the IG.
+        ("apply-publisher", "false"),
+
+        // apply-version: if true, overwrite all canonical resource version details with that found in the IG.
+        ("apply-version", "false"),
+
+        // apply-wg: if true, overwrite all canonical resource WG details with that found in the IG.
+        ("apply-wg", "false"),
+
+        // copyrightyear: The copyright year text to include in the implementation guide footer
+        ("copyrightyear", "2025+"),
+
+        // default-contact: if true, populate all canonical resources that don't specify their own contact details with that found in the IG. Ignored if apply-contact is true.
+        ("default-contact", "true"),
+
+        // default-context: if true, populate all canonical resources that don't specify their own context details with that found in the IG. Ignored if apply-context is true.
+        ("default-context", "false"),
+
+        // default-copyright: if true, populate all canonical resources that don't specify their own copyright details with that found in the IG. Ignored if apply-copyright is true.
+        //("default-copyright", "true"),
+
+        // default-jurisdiction: f true, populate all canonical resources that don't specify their own jurisdiction details with that found in the IG. Ignored if apply-jurisdiction is true.
+        ("default-jurisdiction", "true"),
+
+        // default-publisher: if true, populate all canonical resources that don't specify their own publisher details with that found in the IG. Ignored if apply-publisher is true.
+        ("default-publisher", "false"),
+
+        // default-version: if true, populate all canonical resources that don't specify their own version details with that found in the IG. Ignored if apply-version is true.
+        ("default-version", "true"),
+
+        // default-wg: if true, populate all canonical resources that don't specify their own WG details with that found in the IG. Ignored if apply-contact is true.
+        ("default-wg", "true"),
+
+        // excludemap: If true, causes the mapping tab to be excluded from all StructureDefinition artifact pages
+        ("excludemap", "true"),
+
+        // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
+        //("jira-code", ""),
+
+        // no-usage-check: No Warning in QA if there are extensions/profiles that are not used in this IG
+        ("no-usage-check", "true"),
+
+        /* pin-canonicals: Defines how the IG publisher treats unversioned canonical references. Possible values:
+         *   pin-none: no action is taken (default)
+         *   pin-all: any unversioned canonical references that can be resolved through the package dependencies will have |(version) appended to the canonical, where (version) is the latest available within the package dependencies
+         *   pin-multiples: pinning the canonical reference will only happen if there is multiple versions found in the package dependencies
+         */
+        ("pin-canonicals", "pin-all"),
+
+        // releaselabel: The release label at the top of the page. This is a text label with no fixed set of values that describes the status of the publication to users. Typical values might be 'STU X' or 'Normative Standard' or '2024 Edition'
+        ("releaselabel", "STU"),
+
+        // show-inherited-invariants: if true, render inherited constraints in the full details and invariants view
+        ("show-inherited-invariants", "false"),
+
+        // shownav: Determines whether the next/previous navigation tabs are shown in the header and footer
+        ("shownav", "true"),
+
+        // suppress-mappings: By default, snapshots inherit mappings, and the mappings are carried through. But many of them aren't useful, or desired, and can be suppressed by adding this parameter. The value is the URI found in StructureDefinition.mapping.uri. The special value '*' suppresses most of the mappings in the main specification
+        ("suppress-mappings", "true"),
+
+        // usage-stats-opt-out: If true, usage stats (information about extensions, value sets, and invariants being used) is not sent to fhir.org (see e.g. http://clinfhir.com/igAnalysis.html).
+        ("usage-stats-opt-out", "true"),
+
+        /* version-comparison:
+         * Control how the IG publisher does a comparison with a previously published version (see qa.html). Possible values:
+         *   {last} - compare with the last published version (whatever it's status) - this is the default if the parameter doesn't appear
+         *   {current} - compare with the last full published version
+         *   n/a - don't do any comparison
+         *   [v] - a previous version where [v] is the version
+         */
+        ("version-comparison", "n/a"),
+    ];
 
     private const string _xverIgnoreWarningsTxt = $$$"""
         == Suppressed Messages ==
@@ -371,62 +552,59 @@ public partial class XVerProcessor
 
             // build and write the .index.json file
             {
-                string indexJson = getIndexJson(packageSupport.Package, packageId, internalDependencies, packageIndexInfos);
+                PackageContents contentIndex = getPackageContentIndex(packageSupport.Package, packageId, internalDependencies, packageIndexInfos);
                 string filename = ".index.json";
-                File.WriteAllText(Path.Combine(dir, filename), indexJson);
+                File.WriteAllText(Path.Combine(dir, filename), JsonSerializer.Serialize(contentIndex));
             }
 
             // build and write the package.json file
             {
-                string additionalDependencies = internalDependencies.Count == 0
-                    ? string.Empty
-                    : (", " + string.Join(", ", internalDependencies.Select(pi => $"\"{pi.packageId}\" : \"{pi.packageVersion}\"")));
+                Dictionary<string, string> dependencies = new()
+                {
+                    { packageSupport.Package.PackageId,  packageSupport.Package.PackageVersion }
+                };
 
-                string packageSuffix = packageSupport.Package.ShortName.ToLowerInvariant();
+                foreach (XverIgDependencyRec xverDependency in _xverDependencies)
+                {
+                    dependencies.Add(xverDependency.PackageId, xverDependency.PackageVersion);
+                }
 
-                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
-                string toolsPackageSuffix = packageSupport.Package.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
-                    ? "r4"
-                    : packageSupport.Package.ShortName.ToLowerInvariant();
+                foreach ((string depPackageId, string depPackageVersion) in internalDependencies)
+                {
+                    dependencies.Add(depPackageId, depPackageVersion);
+                }
 
-                string packageJson = $$$"""
+                CachePackageManifest cpm = new()
+                {
+                    Name = packageId,
+                    Version = _crossDefinitionVersion,
+                    ToolsVersion = 3,
+                    Type = "IG",
+                    Date = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                    License = "CC0-1.0",
+                    CanonicalUrl = "http://hl7.org/fhir/uv/xver",
+                    WebPublicationUrl = "http://hl7.org/fhir/uv/xver",
+                    Title = $"XVer-{packageSupport.Package.ShortName}",
+                    Description = $"All Cross Version Extensions for FHIR {packageSupport.Package.ShortName}",
+                    Dependencies = dependencies,
+                    Author = CommonDefinitions.WorkgroupNames["fhir"],
+                    Maintainers = [
+                        new()
+                        {
+                            Name = CommonDefinitions.WorkgroupNames["fhir"],
+                            Url = CommonDefinitions.WorkgroupUrls["fhir"],
+                        }
+                    ],
+                    Directories = new()
                     {
-                        "name" : "{{{packageId}}}",
-                        "version" : "{{{_crossDefinitionVersion}}}",
-                        "tools-version" : 3,
-                        "type" : "IG",
-                        "date" : "{{{DateTime.Now.ToString("yyyyMMddHHmmss")}}}",
-                        "license" : "CC0-1.0",
-                        "canonical" : "http://hl7.org/fhir/uv/xver",
-                        "notForPublication" : true,
-                        "url" : "http://hl7.org/fhir/uv/xver",
-                        "title" : "XVer-{{{packageSupport.Package.ShortName}}}",
-                        "description" : "All Cross Version Extensions for FHIR {{{packageSupport.Package.ShortName}}}",
-                        "fhirVersions" : ["{{{packageSupport.Package.PackageVersion}}}"],
-                        "dependencies" : {
-                            "{{{packageSupport.Package.PackageId}}}" : "{{{packageSupport.Package.PackageVersion}}}",
-                            "hl7.terminology.{{{packageSuffix}}}" : "{{{_thoPackageVersion}}}",
-                            "hl7.fhir.uv.extensions.{{{packageSuffix}}}" : "{{{_extensionsPackVersion}}}",
-                            "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}" : "{{{_toolsPackageVersion}}}"
-                            {{{additionalDependencies}}}
-                        },
-                        "author" : "HL7 International / FHIR Infrastructure",
-                        "maintainers" : [
-                            {
-                                "name" : "HL7 International / FHIR Infrastructure",
-                                "url" : "http://www.hl7.org/Special/committees/fiwg"
-                            }
-                        ],
-                        "directories" : {
-                            "lib" : "package",
-                            "doc" : "doc"
-                        },
-                        "jurisdiction" : "http://unstats.un.org/unsd/methods/m49/m49.htm#001"
-                    }
-                    """;
+                        { "lib", "package" },
+                        { "doc", "doc" },
+                    },
+                    Jurisdiction = "http://unstats.un.org/unsd/methods/m49/m49.htm#001"
+                };
 
                 string filename = "package.json";
-                File.WriteAllText(Path.Combine(dir, filename), packageJson);
+                File.WriteAllText(Path.Combine(dir, filename), JsonSerializer.Serialize(cpm));
             }
         }
     }
@@ -746,6 +924,8 @@ public partial class XVerProcessor
 
                 string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
 
+                string igParams = string.Join("\n    ", _xverIgParameters.Select(cv => $"{cv.code} : {cv.value}"));
+
                 // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
                 string toolsPackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
                     ? "r4"
@@ -827,14 +1007,7 @@ public partial class XVerProcessor
                     #   excludettl: true
                     #   validation: [allow-any-extensions, no-broken-links]
                     parameters:
-                        apply-wg: false
-                        default-wg: true
-                        apply-version: false
-                        default-version: true
-                        show-inherited-invariants: false
-                        usage-stats-opt-out: true
-                        shownav: 'true'
-                        pin-canonicals: pin-all
+                        {{{igParams}}}
                         # These are standard directories, they do not need to be specified
                         # path-resource:
                         #     - input/extensions/*
@@ -1104,6 +1277,8 @@ public partial class XVerProcessor
                     pages.AddRange(packageMdFiles.Select(p => ($"{p.lookupFilename}.md", $"Lookup for {p.structureName}")));
                 }
 
+                string igParams = string.Join("\n    ", _xverIgParameters.Select(cv => $"{cv.code} : {cv.value}"));
+
                 string pagesYaml = string.Join("\n", pages.Select(p => $"    {p.filename}:\n        title: {p.title}"));
 
                 string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
@@ -1182,13 +1357,7 @@ public partial class XVerProcessor
                     #   excludettl: true
                     #   validation: [allow-any-extensions, no-broken-links]
                     parameters:
-                        apply-wg: false
-                        default-wg: true
-                        apply-version: false
-                        default-version: true
-                        show-inherited-invariants: false
-                        usage-stats-opt-out: true
-                        shownav: 'true'
+                        {{{igParams}}}
                         # These are standard directories, they do not need to be specified
                         # path-resource:
                         #     - input/extensions/*
@@ -1395,6 +1564,7 @@ public partial class XVerProcessor
         int focusPackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
+        Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles,
         string fhirDir)
     {
         List<XverPackageIndexInfo> infos = [];
@@ -1459,57 +1629,60 @@ public partial class XVerProcessor
 
             // build and write the .index.json file
             {
-                string indexJson = getIndexJson(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo);
+                PackageContents contentIndex = getPackageContentIndex(
+                    sourcePackage,
+                    targetSupport.Package,
+                    xverValueSets,
+                    xverExtensions,
+                    xverProfiles,
+                    indexInfo);
                 string filename = ".index.json";
-                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), indexJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), JsonSerializer.Serialize(contentIndex));
             }
 
             // build and write the package.json file
             {
-                string packageSuffix = targetSupport.Package.ShortName.ToLowerInvariant();
+                Dictionary<string, string> dependencies = new()
+                {
+                    { targetSupport.Package.PackageId,  targetSupport.Package.PackageVersion }
+                };
 
-                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
-                string toolsPackageSuffix = targetSupport.Package.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
-                    ? "r4"
-                    : targetSupport.Package.ShortName.ToLowerInvariant();
+                foreach (XverIgDependencyRec xverDependency in _xverDependencies)
+                {
+                    dependencies.Add(xverDependency.PackageId, xverDependency.PackageVersion);
+                }
 
-                string packageJson = $$$"""
+                CachePackageManifest cpm = new()
+                {
+                    Name = packageId,
+                    Version = _crossDefinitionVersion,
+                    ToolsVersion = 3,
+                    Type = "IG",
+                    Date = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                    License = "CC0-1.0",
+                    CanonicalUrl = "http://hl7.org/fhir/uv/xver",
+                    WebPublicationUrl = "http://hl7.org/fhir/uv/xver",
+                    Title = $"XVer-{sourcePackage.ShortName}-{targetSupport.Package.ShortName}",
+                    Description = $"Cross Version Extensions for using FHIR {sourcePackage.ShortName} in FHIR {targetSupport.Package.ShortName}",
+                    Dependencies = dependencies,
+                    Author = CommonDefinitions.WorkgroupNames["fhir"],
+                    Maintainers = [
+                        new()
+                        {
+                            Name = CommonDefinitions.WorkgroupNames["fhir"],
+                            Url = CommonDefinitions.WorkgroupUrls["fhir"],
+                        }
+                    ],
+                    Directories = new()
                     {
-                        "name" : "{{{packageId}}}",
-                        "version" : "{{{_crossDefinitionVersion}}}",
-                        "tools-version" : 3,
-                        "type" : "IG",
-                        "date" : "{{{DateTime.Now.ToString("yyyyMMddHHmmss")}}}",
-                        "license" : "CC0-1.0",
-                        "canonical" : "http://hl7.org/fhir/uv/xver",
-                        "notForPublication" : true,
-                        "url" : "http://hl7.org/fhir/uv/xver",
-                        "title" : "XVer-{{{sourcePackage.ShortName}}}-{{{targetSupport.Package.ShortName}}}",
-                        "description" : "Cross Version Extensions for using FHIR {{{sourcePackage.ShortName}}} in FHIR {{{targetSupport.Package.ShortName}}}",
-                        "fhirVersions" : ["{{{targetSupport.Package.PackageVersion}}}"],
-                        "dependencies" : {
-                            "{{{targetSupport.Package.PackageId}}}" : "{{{targetSupport.Package.PackageVersion}}}",
-                            "hl7.terminology.{{{packageSuffix}}}" : "{{{_thoPackageVersion}}}",
-                            "hl7.fhir.uv.extensions.{{{packageSuffix}}}" : "{{{_extensionsPackVersion}}}",
-                            "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}" : "{{{_toolsPackageVersion}}}"
-                        },
-                        "author" : "HL7 International / FHIR Infrastructure",
-                        "maintainers" : [
-                            {
-                                "name" : "HL7 International / FHIR Infrastructure",
-                                "url" : "http://www.hl7.org/Special/committees/fiwg"
-                            }
-                        ],
-                        "directories" : {
-                            "lib" : "package",
-                            "doc" : "doc"
-                        },
-                        "jurisdiction" : "http://unstats.un.org/unsd/methods/m49/m49.htm#001"
-                    }
-                    """;
+                        { "lib", "package" },
+                        { "doc", "doc" },
+                    },
+                    Jurisdiction = "http://unstats.un.org/unsd/methods/m49/m49.htm#001"
+                };
 
                 string filename = "package.json";
-                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), packageJson);
+                File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), JsonSerializer.Serialize(cpm));
             }
         }
 
@@ -1527,79 +1700,152 @@ public partial class XVerProcessor
     /// <param name="xverExtensions">A dictionary of cross-version <see cref="StructureDefinition"/>s (extensions), keyed by (source element key, target package id).</param>
     /// <param name="indexInfo">The <see cref="XverPackageIndexInfo"/> object to populate with index entries.</param>
     /// <returns>A JSON string representing the .index.json file for the cross-version package.</returns>
-    private string getIndexJson(
+    private PackageContents getPackageContentIndex(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
+        Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles,
         XverPackageIndexInfo indexInfo)
     {
-        // build the list of structures we are defining
-        foreach (((int sourceElementKey, int targetPackageId), (StructureDefinition sd, DbExtensionSubstitution? extensionSubstitution)) in xverExtensions)
+        if (indexInfo.ExtensionIndexFiles.Count == 0)
         {
-            if (targetPackageId != targetPackage.Key)
+            foreach (((int sourceElementKey, int targetPackageId), (StructureDefinition sd, DbExtensionSubstitution? extensionSubstitution)) in xverExtensions)
             {
-                continue;
-            }
-
-            if (extensionSubstitution != null)
-            {
-                continue;
-            }
-
-            indexInfo.IndexStructureJsons.Add($$$"""
+                if (targetPackageId != targetPackage.Key)
                 {
-                    "filename" : "StructureDefinition-{{{sd.Id}}}.json",
-                    "resourceType" : "StructureDefinition",
-                    "id" : "{{{sd.Id}}}",
-                    "url" : "{{{sd.Url}}}",
-                    "version" : "{{{_crossDefinitionVersion}}}",
-                    "kind" : "complex-type",
-                    "type" : "Extension",
-                    "derivation" : "constraint"
+                    continue;
                 }
-                """);
+
+                if (extensionSubstitution != null)
+                {
+                    continue;
+                }
+
+                indexInfo.ExtensionIndexFiles.Add(new()
+                {
+                    FileName = $"StructureDefinition-{sd.Id}.json",
+                    ResourceType = "StructureDefinition",
+                    Id = sd.Id,
+                    Url = sd.Url,
+                    Version = sd.Version ?? _crossDefinitionVersion,
+                    Kind = "complex-type",
+                    Type = "Extension",
+                    Derivation = "constraint"
+                });
+            }
         }
 
-        // build the list of value sets we are defining
-        foreach (((int sourceElementKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        if (indexInfo.ProfileIndexFiles.Count == 0)
         {
-            if (targetPackageId != targetPackage.Key)
+            foreach (((int sourceElementKey, int targetPackageId), StructureDefinition sd) in xverProfiles)
             {
-                continue;
-            }
-
-            indexInfo.IndexValueSetJsons.Add($$$"""
+                if (targetPackageId != targetPackage.Key)
                 {
-                    "filename" : "ValueSet-{{{vs.Id}}}.json",
-                    "resourceType" : "ValueSet",
-                    "id" : "{{{vs.Id}}}",
-                    "url" : "{{{vs.Url}}}",
-                    "version" : "{{{_crossDefinitionVersion}}}"
+                    continue;
                 }
-                """);
+
+                indexInfo.ProfileIndexFiles.Add(new()
+                {
+                    FileName = $"StructureDefinition-{sd.Id}.json",
+                    ResourceType = "StructureDefinition",
+                    Id = sd.Id,
+                    Url = sd.Url,
+                    Version = sd.Version ?? _crossDefinitionVersion,
+                    Kind = "resource",
+                    Type = sd.Type,
+                    Derivation = "constraint"
+                });
+            }
         }
 
-        string indexJson = $$$"""
+        if (indexInfo.CodeSystemIndexFiles.Count == 0)
+        {
+            // add external inclusion code systems
+            List<DbExternalInclusion> externalInclusions = DbExternalInclusion.SelectList(
+                _db!.DbConnection,
+                ResourceType: Hl7.Fhir.Model.FHIRAllTypes.CodeSystem);
+
+            foreach (DbExternalInclusion inclusion in externalInclusions)
             {
-                "index-version" : 2,
-                "files" : [
+                // check to see if we should be including this
+                if ((inclusion.IncludeInPackages == null) ||
+                    inclusion.GetIncludeInPackagesList().Contains(targetPackage.NpmId, StringComparer.OrdinalIgnoreCase))
+                {
+                    indexInfo.CodeSystemIndexFiles.Add(new()
                     {
-                        "filename" : "ImplementationGuide-{{{indexInfo.PackageId}}}.json",
-                        "resourceType" : "ImplementationGuide",
-                        "id" : "{{{indexInfo.PackageId}}}",
-                        "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/{{{indexInfo.PackageId}}}",
-                        "version" : "{{{_crossDefinitionVersion}}}"
-                    },
-                    {{{string.Join(", ", indexInfo.IndexStructureJsons)}}},
-                    {{{string.Join(", ", indexInfo.IndexValueSetJsons)}}}
-                ]
+                        FileName = $"CodeSystem-{inclusion.Id}.json",
+                        ResourceType = "CodeSystem",
+                        Id = inclusion.Id,
+                        Url = inclusion.UnversionedUrl,
+                        Version = inclusion.Version ?? _crossDefinitionVersion,
+                        ContentFlag = "complete",
+                    });
+                }
             }
-            """;
 
-        return indexJson;
+            // get the list of code systems in the source package
+            List<DbCodeSystem> codeSystems = DbCodeSystem.SelectList(
+                _db!.DbConnection,
+                FhirPackageKey: targetPackage.Key);
+
+            foreach (DbCodeSystem dbCs in codeSystems)
+            {
+                indexInfo.CodeSystemIndexFiles.Add(new()
+                {
+                    FileName = $"CodeSystem-{dbCs.Id}.json",
+                    ResourceType = "CodeSystem",
+                    Id = dbCs.Id,
+                    Url = dbCs.UnversionedUrl,
+                    Version = dbCs.Version ?? _crossDefinitionVersion,
+                    ContentFlag = "complete",
+                });
+            }
+        }
+
+        if (indexInfo.ValueSetIndexFiles.Count == 0)
+        {
+            // build the list of value sets we are defining
+            foreach (((int sourceElementKey, int targetPackageId), ValueSet vs) in xverValueSets)
+            {
+                if (targetPackageId != targetPackage.Key)
+                {
+                    continue;
+                }
+
+                indexInfo.ValueSetIndexFiles.Add(new()
+                {
+                    FileName = $"ValueSet-{vs.Id}.json",
+                    ResourceType = "ValueSet",
+                    Id = vs.Id,
+                    Url = vs.Url,
+                    Version = vs.Version ?? _crossDefinitionVersion,
+                });
+            }
+        }
+
+        // add our ImplementationGuide file
+        indexInfo.IgIndexFile ??= new()
+        {
+            FileName = $"ImplementationGuide-{indexInfo.PackageId}.json",
+            ResourceType = "ImplementationGuide",
+            Id = indexInfo.PackageId,
+            Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{indexInfo.PackageId}",
+            Version = _crossDefinitionVersion,
+        };
+
+        return new PackageContents
+        {
+            IndexVersion = 2,
+            Files = [
+                indexInfo.IgIndexFile!,
+                ..indexInfo.CodeSystemIndexFiles,
+                ..indexInfo.ValueSetIndexFiles,
+                ..indexInfo.ExtensionIndexFiles,
+                ..indexInfo.ProfileIndexFiles,
+            ],
+        };
     }
-
 
 
     /// <summary>
@@ -1612,46 +1858,28 @@ public partial class XVerProcessor
     /// <param name="targetInfos">A list of <see cref="XverPackageIndexInfo"/> objects containing index information for each target package.</param>
     /// <returns>A JSON string representing the .index.json file for the cross-version package.</returns>
 
-    private string getIndexJson(
+    private PackageContents getPackageContentIndex(
         DbFhirPackage package,
         string packageId,
         List<(string packageId, string packageVersion)> internalDependencies,
         List<XverPackageIndexInfo> targetInfos)
     {
-        if (internalDependencies.Count == 0)
-        {
-            return $$$"""
-            {
-                "index-version" : 2,
-                "files" : [
-                    {
-                        "filename" : "ImplementationGuide-{{{packageId}}}.json",
-                        "resourceType" : "ImplementationGuide",
-                        "id" : "{{{packageId}}}",
-                        "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/{{{packageId}}}",
-                        "version" : "{{{_crossDefinitionVersion}}}"
-                    }
-                ]
-            }
-            """;
-        }
 
-        return $$$"""
-            {
-                "index-version" : 2,
-                "files" : [
-                    {
-                        "filename" : "ImplementationGuide-{{{packageId}}}.json",
-                        "resourceType" : "ImplementationGuide",
-                        "id" : "{{{packageId}}}",
-                        "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/{{{packageId}}}",
-                        "version" : "{{{_crossDefinitionVersion}}}"
-                    },
-                    {{{string.Join(", ", targetInfos.SelectMany(ii => ii.IndexStructureJsons))}}},
-                    {{{string.Join(", ", targetInfos.SelectMany(ii => ii.IndexValueSetJsons))}}}
-                ]
-            }
-            """;
+        // add our ImplementationGuide file
+        PackageContents.PackageFile igIndexFile = new()
+        {
+            FileName = $"ImplementationGuide-{packageId}.json",
+            ResourceType = "ImplementationGuide",
+            Id = packageId,
+            Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{packageId}",
+            Version = _crossDefinitionVersion,
+        };
+
+        return new PackageContents
+        {
+            IndexVersion = 2,
+            Files = [igIndexFile],
+        };
     }
 
     private string getIgJsonR5(
