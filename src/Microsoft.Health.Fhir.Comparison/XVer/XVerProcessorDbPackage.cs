@@ -80,6 +80,7 @@ public partial class XVerProcessor
         * Added `ValueSet.compose` to generated XVer ValueSets.
         * Fix: Generated value sets will no longer allow for `id` values longer than 64 characters.
         * Added `publisher` and `contact` elements for definitional resources if none are present on canonical resources
+        * Fix: hl7.terminology.r4b does not appear to be published on the same regularity as other versions - changed to the r4 package.
 
         ### 0.0.1-snapshot-1
 
@@ -1986,8 +1987,8 @@ public partial class XVerProcessor
 
         string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
 
-        // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
-        string toolsPackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
+        // hl7.fhir.uv.tools and hl7.terminology do not publish R4B specific packages since they are definitionally R4 packages
+        string hl7PackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
             ? "r4"
             : targetPackage.ShortName.ToLowerInvariant();
 
@@ -2035,7 +2036,7 @@ public partial class XVerProcessor
                   "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
                 }],
                 "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-                "packageId" : "hl7.terminology.{{{packageSuffix}}}",
+                "packageId" : "hl7.terminology.{{{hl7PackageSuffix}}}",
                 "version" : "{{{_thoPackageVersion}}}"
               },
               {
@@ -2047,7 +2048,7 @@ public partial class XVerProcessor
               {
                 "id" : "hl7_fhir_uv_tools",
                 "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
-                "packageId" : "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}",
+                "packageId" : "hl7.fhir.uv.tools.{{{hl7PackageSuffix}}}",
                 "version" : "{{{_toolsPackageVersion}}}"
               }],
               "definition" : {
