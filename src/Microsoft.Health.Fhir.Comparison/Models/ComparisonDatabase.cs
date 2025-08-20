@@ -677,6 +677,8 @@ public class ComparisonDatabase : IDisposable
                 """,
             }
         ];
+
+        inclusions.Insert(_dbConnection);
     }
 
     /// <summary>

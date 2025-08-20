@@ -188,6 +188,40 @@ public partial class XVerProcessor
             return $"{PackageId}.{suffix} : {PackageVersion}";
         }
 
+        public string AsSushiYaml(FhirReleases.FhirSequenceCodes fhirSequence, string levelIndent = "    ")
+        {
+            if (!VersionSpecificPackages)
+            {
+                if (!string.IsNullOrEmpty(CanonicalUrl))
+                {
+                    return $"""
+                        {levelIndent}{PackageId}:
+                        {levelIndent}{levelIndent}id: {PackageId.Replace('.', '_')}
+                        {levelIndent}{levelIndent}uri: {CanonicalUrl}
+                        {levelIndent}{levelIndent}version: {PackageVersion}
+                        """;
+                }
+
+                return $"{levelIndent}{PackageId} : {PackageVersion}";
+            }
+
+            string suffix = (fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B)
+                ? "r4"
+                : fhirSequence.ToString().ToLowerInvariant();
+
+            if (!string.IsNullOrEmpty(CanonicalUrl))
+            {
+                return $"""
+                    {levelIndent}{PackageId}.{suffix}:
+                    {levelIndent}{levelIndent}id: {(PackageId.Replace('.', '_') + "_" + suffix)}
+                    {levelIndent}{levelIndent}uri: {CanonicalUrl}
+                    {levelIndent}{levelIndent}version: {PackageVersion}
+                    """;
+            }
+
+            return $"{levelIndent}{PackageId}.{suffix} : {PackageVersion}";
+        }
+
         public string AsJsonProp(FhirReleases.FhirSequenceCodes fhirSequence)
         {
             if (!VersionSpecificPackages)
@@ -910,10 +944,6 @@ public partial class XVerProcessor
             }
 
             {
-                string additionalDependencies = internalDependencies.Count == 0
-                    ? string.Empty
-                    : string.Join("\n    ", internalDependencies.Select(pi => $"{pi.packageId} : {pi.packageVersion}"));
-
                 string lookupPages = string.Empty;
                 if (packageMdList.TryGetValue(packageId, out List<(string structureName, string lookupFilename)>? packageMdFiles))
                 {
@@ -922,14 +952,14 @@ public partial class XVerProcessor
                         : string.Join("\n", packageMdFiles.Select(p => $"    {p.lookupFilename}:\n        title: Lookup for {p.structureName}"));
                 }
 
-                string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
-
                 string igParams = string.Join("\n    ", _xverIgParameters.Select(cv => $"{cv.code} : {cv.value}"));
 
-                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
-                string toolsPackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
-                    ? "r4"
-                    : targetPackage.ShortName.ToLowerInvariant();
+                string dependencies = $"    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n" +
+                    string.Join('\n', _xverDependencies.Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
+
+                string additionalDependencies = (internalDependencies.Count == 0)
+                    ? string.Empty
+                    : string.Join("\n", internalDependencies.Select(pi => $"    {pi.packageId} : {pi.packageVersion}"));
 
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
@@ -951,8 +981,8 @@ public partial class XVerProcessor
                     license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
                     jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
                     publisher:
-                        name: HL7 International / FHIR Infrastructure
-                        url: http://www.hl7.org/Special/committees/fiwg
+                        name: {{{CommonDefinitions.WorkgroupNames["fhir"]}}}
+                        url: {{{CommonDefinitions.WorkgroupUrls["fhir"]}}}
                         # email: test@example.org
 
                     # The dependencies property corresponds to IG.dependsOn. The key is the
@@ -960,11 +990,8 @@ public partial class XVerProcessor
                     # use cases, the value can be an object with keys for id, uri, and version.
                     #
                     dependencies:
-                        # {{{targetPackage.PackageId}}} : {{{targetPackage.PackageVersion}}}
-                        hl7.terminology.{{{packageSuffix}}} : {{{_thoPackageVersion}}}
-                        hl7.fhir.uv.extensions.{{{packageSuffix}}} : {{{_extensionsPackVersion}}}
-                        hl7.fhir.uv.tools.{{{toolsPackageSuffix}}} : {{{_toolsPackageVersion}}}
-                        {{{additionalDependencies}}}
+                    {{{dependencies}}}
+                    {{{additionalDependencies}}}
 
                     #   hl7.fhir.us.core: 3.1.0
                     #   hl7.fhir.us.mcode:
@@ -1281,12 +1308,8 @@ public partial class XVerProcessor
 
                 string pagesYaml = string.Join("\n", pages.Select(p => $"    {p.filename}:\n        title: {p.title}"));
 
-                string packageSuffix = targetPackage.ShortName.ToLowerInvariant();
-
-                // TODO: hl7.fhir.uv.tools does not output an R4B package as of 0.8.0, remove this once it does
-                string toolsPackageSuffix = targetPackage.DefinitionFhirSequence == FhirReleases.FhirSequenceCodes.R4B
-                    ? "r4"
-                    : targetPackage.ShortName.ToLowerInvariant();
+                string dependencies = $"    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n" +
+                    string.Join('\n', _xverDependencies.Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
 
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
@@ -1308,8 +1331,8 @@ public partial class XVerProcessor
                     license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
                     jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
                     publisher:
-                        name: HL7 International / FHIR Infrastructure
-                        url: http://www.hl7.org/Special/committees/fiwg
+                        name: {{{CommonDefinitions.WorkgroupNames["fhir"]}}}
+                        url: {{{CommonDefinitions.WorkgroupUrls["fhir"]}}}
                         # email: test@example.org
 
                     # The dependencies property corresponds to IG.dependsOn. The key is the
@@ -1317,10 +1340,7 @@ public partial class XVerProcessor
                     # use cases, the value can be an object with keys for id, uri, and version.
                     #
                     dependencies:
-                        # {{{targetPackage.PackageId}}} : {{{targetPackage.PackageVersion}}}
-                        hl7.terminology.{{{packageSuffix}}} : {{{_thoPackageVersion}}}
-                        hl7.fhir.uv.extensions.{{{packageSuffix}}} : {{{_extensionsPackVersion}}}
-                        hl7.fhir.uv.tools.{{{toolsPackageSuffix}}} : {{{_toolsPackageVersion}}}
+                    {{{dependencies}}}
 
                     #   hl7.fhir.us.core: 3.1.0
                     #   hl7.fhir.us.mcode:
