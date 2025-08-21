@@ -42,10 +42,6 @@ namespace Microsoft.Health.Fhir.Comparison.XVer;
 
 public partial class XVerProcessor
 {
-    private const string _thoPackageVersion = "6.5.0";
-    private const string _extensionsPackVersion = "5.3.0-ballot-tc1";
-    private const string _toolsPackageVersion = "0.8.0";
-
     private const string _xverChangelogMd = $$$"""
 
         ### 0.0.1-snapshot-2
@@ -142,11 +138,6 @@ public partial class XVerProcessor
 
         * [Package](package.tgz)
 
-        ### Examples
-
-        * [JSON](examples.json.zip)
-        * [XML](examples.xml.zip)
-
         ### Downloadable Copy of this Specification
 
         A downloadable version of this IG is available so it can be hosted locally:
@@ -173,6 +164,7 @@ public partial class XVerProcessor
         public required string CanonicalUrl { get; init; }
         public required bool VersionSpecificPackages { get; init; }
         public required bool HasR4B { get; init; }
+        public required bool NeededForPublisher { get; init; }
 
         public string AsYamlProp(FhirReleases.FhirSequenceCodes fhirSequence)
         {
@@ -257,6 +249,34 @@ public partial class XVerProcessor
 
             return $$$"""{ "packageId":"{{{packageId}}}", "version":"{{{PackageVersion}}}", "uri":"{{{CanonicalUrl}}}", "id":"{{{id}}}" }""";
         }
+
+        public ImplementationGuide.DependsOnComponent AsIgDependsOn(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            string dotSuffix;
+            if (!VersionSpecificPackages)
+            {
+                dotSuffix = string.Empty;
+            }
+            else if ((fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B))
+            {
+                dotSuffix = ".r4";
+            }
+            else
+            {
+                dotSuffix = "." + fhirSequence.ToString().ToLowerInvariant();
+            }
+
+            string packageId = PackageId + dotSuffix;
+            string id = packageId.Replace('.', '_');
+
+            return new ImplementationGuide.DependsOnComponent
+            {
+                ElementId = id,
+                PackageId = packageId,
+                Version = PackageVersion,
+                Uri = CanonicalUrl,
+            };
+        }
     }
 
     private static readonly List<XverIgDependencyRec> _xverDependencies = [
@@ -267,6 +287,7 @@ public partial class XVerProcessor
             CanonicalUrl = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",                // "http://terminology.hl7.org"
             VersionSpecificPackages = true,
             HasR4B = false,
+            NeededForPublisher = false,
         },
         new()
         {
@@ -275,6 +296,7 @@ public partial class XVerProcessor
             CanonicalUrl = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",     // "http://hl7.org/fhir/extensions"
             VersionSpecificPackages = true,
             HasR4B = true,
+            NeededForPublisher = false,
         },
         new()
         {
@@ -283,6 +305,7 @@ public partial class XVerProcessor
             CanonicalUrl = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",                // "http://hl7.org/fhir/tools"
             VersionSpecificPackages = true,
             HasR4B = false,
+            NeededForPublisher = false,
         }
     ];
 
@@ -357,6 +380,13 @@ public partial class XVerProcessor
 
         // shownav: Determines whether the next/previous navigation tabs are shown in the header and footer
         ("shownav", "true"),
+
+        // special-url: If a canonical resource in the IG should actually have a URL that isn't the one implied by the canonical URL for the IG itself, it must be listed here explicitly (as well as defined in the resource itself). It must be listed here to stop it accidentally being different. Each canonical url must be listed in full as present on the resource; it is not possible to specify a pattern.
+        //("special-url", "http://terminology.hl7.org/CodeSystem/designation-usage"),
+        //("special-url", "http://terminology.hl7.org/ValueSet/designation-usage"),
+
+        // special-url-base: A common alternative base URL for multiple canonical resources in the IG. The entire Canonical URL must exactly match {special-url-base}/{type}/{id}
+        ("special-url-base", "http://terminology.hl7.org"),
 
         // suppress-mappings: By default, snapshots inherit mappings, and the mappings are carried through. But many of them aren't useful, or desired, and can be suppressed by adding this parameter. The value is the URI found in StructureDefinition.mapping.uri. The special value '*' suppresses most of the mappings in the main specification
         ("suppress-mappings", "true"),
@@ -478,6 +508,30 @@ public partial class XVerProcessor
         # ==== 14. We cannot change the semantic structure of any existing content ====
         VALUESET_CONCEPT_DISPLAY_SCT_TAG_MIXED
         This SNOMED-CT based include has some concepts with semantic tags (FSN terms) and some without (preferred terms) - check that this is what is intended %
+
+        # ==== 15. Pinning is configured ====
+        Pinned the version of %
+        INFORMATION: % Pinned the version of % to %
+
+        # ==== 16. `guide-parameter-code` is the correct CodeSystem for IG parameters ====
+        INFORMATION: ImplementationGuide/%: ImplementationGuide.%.code: Reference to experimental CodeSystem http://hl7.org/fhir/guide-parameter-code|5.0.0
+
+        # ==== 17. These definitions are not correct in the source version, but I cannot change them ====
+        ERROR: % It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.6.276' - use 'http://terminology.hl7.org/CodeSystem/GMDN'
+        INFORMATION: % A definition for CodeSystem 'urn:oid:2.16.840.1.113883.6.276' could not be found, so the code cannot be validated
+        WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.6.276 does not support batch validation (tx version Not Known), so the codes have not been validated
+        WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
+
+        ERROR: % It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.3.26.1.1' - use 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl'
+        ERROR: % ValueSet.compose.include[0].concept[0]: The code 'C106046' is not valid in the system urn:oid:2.16.840.1.113883.3.26.1.1 version 5.0.0 (C106046)
+        INFORMATION: % A definition for CodeSystem 'urn:oid:2.16.840.1.113883.3.26.1.1' version '5.0.0' could not be found, so the code cannot be validated. Valid versions: []
+        WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.3.26.1.1|5.0.0 does not support batch validation (tx version Not Known), so the codes have not been validated
+
+        ERROR: % It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.6.276' - use 'http://terminology.hl7.org/CodeSystem/GMDN'
+        INFORMATION: % A definition for CodeSystem 'urn:oid:2.16.840.1.113883.6.276' could not be found, so the code cannot be validated
+        WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.6.276 does not support batch validation (tx version Not Known), so the codes have not been validated
+        WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
+        
 
         """;
 
@@ -615,7 +669,7 @@ public partial class XVerProcessor
                     ToolsVersion = 3,
                     Type = "IG",
                     Date = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                    License = "CC0-1.0",
+                    License = EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0), //"CC0-1.0",
                     CanonicalUrl = "http://hl7.org/fhir/uv/xver",
                     WebPublicationUrl = "http://hl7.org/fhir/uv/xver",
                     Title = $"XVer-{packageSupport.Package.ShortName}",
@@ -955,7 +1009,7 @@ public partial class XVerProcessor
                 string igParams = string.Join("\n    ", _xverIgParameters.Select(cv => $"{cv.code} : {cv.value}"));
 
                 string dependencies = $"    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n" +
-                    string.Join('\n', _xverDependencies.Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
+                    string.Join('\n', _xverDependencies.Where(d => d.NeededForPublisher).Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
 
                 string additionalDependencies = (internalDependencies.Count == 0)
                     ? string.Empty
@@ -978,7 +1032,7 @@ public partial class XVerProcessor
                     fhirVersion: {{{targetPackage.PackageVersion}}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
                     copyrightYear: 2025+
                     releaseLabel: trial-use
-                    license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+                    license: {{{EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0)}}} # https://www.hl7.org/fhir/valueset-spdx-license.html
                     jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
                     publisher:
                         name: {{{CommonDefinitions.WorkgroupNames["fhir"]}}}
@@ -1309,7 +1363,7 @@ public partial class XVerProcessor
                 string pagesYaml = string.Join("\n", pages.Select(p => $"    {p.filename}:\n        title: {p.title}"));
 
                 string dependencies = $"    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n" +
-                    string.Join('\n', _xverDependencies.Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
+                    string.Join('\n', _xverDependencies.Where(d => d.NeededForPublisher).Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
 
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
@@ -1328,7 +1382,7 @@ public partial class XVerProcessor
                     fhirVersion: {{{targetPackage.PackageVersion}}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
                     copyrightYear: 2025+
                     releaseLabel: trial-use
-                    license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+                    license: {{{EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0)}}} # https://www.hl7.org/fhir/valueset-spdx-license.html
                     jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
                     publisher:
                         name: {{{CommonDefinitions.WorkgroupNames["fhir"]}}}
@@ -1679,7 +1733,7 @@ public partial class XVerProcessor
                     ToolsVersion = 3,
                     Type = "IG",
                     Date = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                    License = "CC0-1.0",
+                    License = EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0), //"CC0-1.0",
                     CanonicalUrl = "http://hl7.org/fhir/uv/xver",
                     WebPublicationUrl = "http://hl7.org/fhir/uv/xver",
                     Title = $"XVer-{sourcePackage.ShortName}-{targetSupport.Package.ShortName}",
@@ -1961,36 +2015,7 @@ public partial class XVerProcessor
             PackageId = indexInfo.PackageId,
             License = ImplementationGuide.SPDXLicense.CC01_0,
             FhirVersion = [FHIRVersion.N5_0_0],
-            DependsOn = [
-                new()
-                {
-                    ElementId = "hl7tx",
-                    Uri = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-                    PackageId = "hl7.terminology.r5",
-                    Version = _thoPackageVersion,
-                    Extension = [
-                        new()
-                        {
-                            Url = "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-                            Value = new Markdown("Automatically added as a dependency - all IGs depend on HL7 Terminology"),
-                        },
-                    ],
-                },
-                new()
-                {
-                    ElementId = "hl7_fhir_uv_extensions",
-                    Uri = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
-                    PackageId = "hl7.fhir.uv.extensions.r5",
-                    Version = _extensionsPackVersion,
-                },
-                new()
-                {
-                    ElementId = "hl7_fhir_uv_tools",
-                    Uri = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
-                    PackageId = "hl7.fhir.uv.tools.r5",
-                    Version = _toolsPackageVersion,
-                },
-            ],
+            DependsOn = _xverDependencies.Select(xd => xd.AsIgDependsOn(FhirReleases.FhirSequenceCodes.R5)).ToList(),
             Definition = new()
             {
                 Resource = [],
@@ -2114,36 +2139,7 @@ public partial class XVerProcessor
             PackageId = packageId,
             License = ImplementationGuide.SPDXLicense.CC01_0,
             FhirVersion = [FHIRVersion.N5_0_0],
-            DependsOn = [
-                new()
-                {
-                    ElementId = "hl7tx",
-                    Uri = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-                    PackageId = "hl7.terminology.r5",
-                    Version = _thoPackageVersion,
-                    Extension = [
-                        new()
-                        {
-                            Url = "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-                            Value = new Markdown("Automatically added as a dependency - all IGs depend on HL7 Terminology"),
-                        },
-                    ],
-                },
-                new()
-                {
-                    ElementId = "hl7_fhir_uv_extensions",
-                    Uri = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
-                    PackageId = "hl7.fhir.uv.extensions.r5",
-                    Version = _extensionsPackVersion,
-                },
-                new()
-                {
-                    ElementId = "hl7_fhir_uv_tools",
-                    Uri = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
-                    PackageId = "hl7.fhir.uv.tools.r5",
-                    Version = _toolsPackageVersion,
-                },
-            ],
+            DependsOn = _xverDependencies.Select(xd => xd.AsIgDependsOn(FhirReleases.FhirSequenceCodes.R5)).ToList(),
             Definition = new()
             {
                 Resource = [],
@@ -2275,7 +2271,7 @@ public partial class XVerProcessor
                 }]
               }],
               "packageId" : "{{{indexInfo.PackageId}}}",
-              "license" : "CC0-1.0",
+              "license" : "{{{EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0)}}}",
               "fhirVersion" : ["{{{targetPackage.PackageVersion}}}"],
               "dependsOn" : [{
                 "id" : "hl7tx",
@@ -2285,19 +2281,19 @@ public partial class XVerProcessor
                 }],
                 "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
                 "packageId" : "hl7.terminology.{{{hl7PackageSuffix}}}",
-                "version" : "{{{_thoPackageVersion}}}"
+                "version" : "latest"
               },
               {
                 "id" : "hl7_fhir_uv_extensions",
                 "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
                 "packageId" : "hl7.fhir.uv.extensions.{{{packageSuffix}}}",
-                "version" : "{{{_extensionsPackVersion}}}"
+                "version" : "latest"
               },
               {
                 "id" : "hl7_fhir_uv_tools",
                 "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                 "packageId" : "hl7.fhir.uv.tools.{{{hl7PackageSuffix}}}",
-                "version" : "{{{_toolsPackageVersion}}}"
+                "version" : "latest"
               }],
               "definition" : {
                 "resource" : [
@@ -2389,7 +2385,7 @@ public partial class XVerProcessor
                 }]
               }],
               "packageId" : "{{{packageId}}}",
-              "license" : "CC0-1.0",
+              "license" : "{{{EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0)}}}",
               "fhirVersion" : ["{{{package.PackageVersion}}}"],
               "dependsOn" : [{
                 "id" : "hl7tx",
@@ -2399,19 +2395,19 @@ public partial class XVerProcessor
                 }],
                 "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
                 "packageId" : "hl7.terminology.{{{packageSuffix}}}",
-                "version" : "{{{_thoPackageVersion}}}"
+                "version" : "latest"
               },
               {
                 "id" : "hl7_fhir_uv_extensions",
                 "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
                 "packageId" : "hl7.fhir.uv.extensions.{{{packageSuffix}}}",
-                "version" : "{{{_extensionsPackVersion}}}"
+                "version" : "latest"
               },
               {
                 "id" : "hl7_fhir_uv_tools",
                 "uri" : "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",
                 "packageId" : "hl7.fhir.uv.tools.{{{toolsPackageSuffix}}}",
-                "version" : "{{{_toolsPackageVersion}}}"
+                "version" : "latest"
               }{{{additionalDependencies}}}
               ]{{{resources}}}
             }

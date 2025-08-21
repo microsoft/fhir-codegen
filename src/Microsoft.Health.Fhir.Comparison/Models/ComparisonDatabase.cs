@@ -2425,14 +2425,27 @@ public class ComparisonDatabase : IDisposable
 
     private void doValueSetPostProcessing(HashSet<string> _escapeValveCodes)
     {
-        IDbCommand command = _dbConnection.CreateCommand();
-        command.CommandText = $"""
-            update {DbValueSet.DefaultTableName}
-            set HasEscapeValveCode = 1
-            where Key in (select distinct ValueSetKey from Concepts where Code in ({(string.Join(", ", _escapeValveCodes.Select(v => "'" + v + "'")))}) )
-            """;
+        {
+            IDbCommand command = _dbConnection.CreateCommand();
+            command.CommandText = $"""
+                update {DbValueSet.DefaultTableName}
+                set HasEscapeValveCode = 1
+                where Key in (select distinct ValueSetKey from Concepts where Code in ({(string.Join(", ", _escapeValveCodes.Select(v => "'" + v + "'")))}) )
+                """;
 
-        command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
+        }
+
+        {
+            IDbCommand command = _dbConnection.CreateCommand();
+            command.CommandText = $"""
+                update {DbValueSetConcept.DefaultTableName}
+                set System = 'http://hl7.org/fhir/sample-security-structural-roles'
+                where System = 'sample-security-structural-roles' and SystemVersion = '5.0.0'
+                """;
+
+            command.ExecuteNonQuery();
+        }
 
         return;
     }
