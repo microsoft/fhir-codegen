@@ -86,6 +86,9 @@ public partial class XVerProcessor
         * Fix: hl7.terminology.r4b does not appear to be published on the same regularity as other versions - changed to the r4 package.
         * Added `hl7.terminology@5.0.1` to source material for R5
         * Added automatic override of `STU3:ElementDefinition.binding.valueSet[x]` and `R4:ElementDefinition.binding.valueSet` as `equivalent` despite the type changes.
+        * Added mapping in `fhir-cross-version` repo for `DSTU2:Practitioner` to also map to `STU3:PractitionerRole`
+        * Added mapping in `fhir-cross-version` repo for `R4B:Media` to map to `R5:DocumentReference`
+        * Updated mapping in `fhir-cross-version` repo for `R4B:Questionnaire.item.type` to be *related to* `R5:Questionnaire.item.answerConstraint` (instead of *equivalent*).
 
         ### 0.0.1-snapshot-1
 
