@@ -214,7 +214,15 @@ public partial class XVerProcessor
                 JsonModel = CodeGen.Loader.LoaderOptions.JsonDeserializationModel.SystemTextJson,
             });
 
-            DefinitionCollection loaded = loader.LoadPackages([directive]).Result
+            List<string> loadDirectives = FhirReleases.TryGetSequence(directive, out FhirReleases.FhirSequenceCodes packageSequence)
+                ? packageSequence switch
+                {
+                    FhirReleases.FhirSequenceCodes.R5 => [ directive, "hl7.terminology@5.0.1"],
+                    _ => [ directive ]
+                }
+                : [directive];
+
+            DefinitionCollection loaded = loader.LoadPackages(loadDirectives).Result
                 ?? throw new Exception($"Could not load package: {directive}");
 
             definitions.Add(loaded);

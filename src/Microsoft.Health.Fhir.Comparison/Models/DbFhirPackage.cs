@@ -11,12 +11,14 @@ namespace Microsoft.Health.Fhir.Comparison.Models;
 [CgSQLiteTable(tableName: "FhirPackages")]
 public partial class DbFhirPackage : DbRecordBase
 {
-    public required string Name { get; set; } = null!;
-    public required string PackageId { get; set; } = null!;
-    public required string PackageVersion { get; set; } = null!;
-    public required string FhirVersionShort { get; set; } = null!;
-    public required string CanonicalUrl { get; set; } = null!;
-    public required string ShortName { get; set; } = null!;
+    public required string Name { get; set; }
+    public required string PackageId { get; set; }
+    public required string PackageVersion { get; set; }
+    public required string FhirVersionShort { get; set; }
+    public required string CanonicalUrl { get; set; }
+    public required string ShortName { get; set; }
+
+    public required string? Dependencies { get; set; }
 
     public required Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes DefinitionFhirSequence { get; set; } = Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes.Unknown;
 

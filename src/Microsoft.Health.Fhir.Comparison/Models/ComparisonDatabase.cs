@@ -718,6 +718,10 @@ public class ComparisonDatabase : IDisposable
                 shortName = $"{dc.MainPackageId.ToPascalCase()}-V{dc.MainPackageVersion.Replace('.', '_')}";
             }
 
+            List<string> deps = dc.Manifests.Keys
+                .Where(moniker => !moniker.StartsWith(dc.MainPackageId, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
             // add data about our packages
             if (DbFhirPackage.SelectSingle(_dbConnection, PackageId: dc.MainPackageId, PackageVersion: dc.MainPackageVersion) is not DbFhirPackage pm)
             {
@@ -730,6 +734,7 @@ public class ComparisonDatabase : IDisposable
                     FhirVersionShort = dc.FhirSequence.ToShortVersion(),
                     CanonicalUrl = dc.MainPackageCanonical,
                     DefinitionFhirSequence = dc.FhirSequence,
+                    Dependencies = deps.Count > 0 ? string.Join(",", deps) : null,
                 };
 
                 _dbConnection.Insert(pm);

@@ -84,6 +84,8 @@ public partial class XVerProcessor
         * Fix: Generated value sets will no longer allow for `id` values longer than 64 characters.
         * Added `publisher` and `contact` elements for definitional resources if none are present on canonical resources
         * Fix: hl7.terminology.r4b does not appear to be published on the same regularity as other versions - changed to the r4 package.
+        * Added `hl7.terminology@5.0.1` to source material for R5
+        * Added automatic override of `STU3:ElementDefinition.binding.valueSet[x]` and `R4:ElementDefinition.binding.valueSet` as `equivalent` despite the type changes.
 
         ### 0.0.1-snapshot-1
 
@@ -532,7 +534,6 @@ public partial class XVerProcessor
         WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.6.276 does not support batch validation (tx version Not Known), so the codes have not been validated
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
         
-
         """;
 
     /// <summary>

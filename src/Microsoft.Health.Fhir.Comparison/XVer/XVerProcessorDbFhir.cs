@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
@@ -2597,7 +2598,25 @@ public partial class XVerProcessor
         if (vsIdLong.Length > 64)
         {
             string[] sourceIdComponents = sourceVs.Id.Split('-');
-            if (sourceIdComponents.Length > 2)
+            if (sourceVs.Id.StartsWith("v3-", StringComparison.Ordinal) ||
+                sourceVs.Id.StartsWith("v2-", StringComparison.Ordinal))
+            {
+                // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+                string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
+                    .Select(m => m.Value)
+                    .ToArray();
+
+                // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+                // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+                vsId = $"{sourcePackage.ShortName}" +
+                    $"-{sourceIdComponents[0]}" +
+                    $"{pascalComponents[0]}" +
+                    $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                    $"{pascalComponents[^1]}" +
+                    $"-for-{targetPackage.ShortName}";
+
+            }
+            else if (sourceIdComponents.Length > 2)
             {
                 // use the first and last components completely, but abbreviate the middle components
                 vsId = $"{sourcePackage.ShortName}" +
@@ -2609,7 +2628,7 @@ public partial class XVerProcessor
             else
             {
                 // truncate the source ID so it all fits
-                vsId = $"{sourcePackage.ShortName}-{sourceIdComponents[0].Substring(0, 50)}-for-{targetPackage.ShortName}";
+                vsId = $"{sourcePackage.ShortName}-{sourceVs.Id.Substring(0, 50)}-for-{targetPackage.ShortName}";
             }
         }
         else

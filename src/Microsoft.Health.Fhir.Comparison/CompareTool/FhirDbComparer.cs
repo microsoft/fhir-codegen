@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
@@ -387,6 +388,8 @@ public partial class FhirDbComparer
             }
         }
 
+        doElementComparisonPostProcessing();
+
         return;
 
         FhirArtifactClassEnum[] getArtifactClassSequence() => [
@@ -396,6 +399,51 @@ public partial class FhirDbComparer
             FhirArtifactClassEnum.Profile,
             FhirArtifactClassEnum.LogicalModel,
             ];
+    }
+
+    private void doElementComparisonPostProcessing()
+    {
+        {
+            DbFhirPackage r3 = DbFhirPackage.SelectSingle(_db, DefinitionFhirSequence: CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes.STU3)
+                ?? throw new Exception("Failed to resolve FHIR Package STU3!");
+
+            DbFhirPackage r4 = DbFhirPackage.SelectSingle(_db, DefinitionFhirSequence: CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes.R4)
+                ?? throw new Exception("Failed to resolve FHIR Package R4!");
+
+            DbElementComparison? r3r4BindingVs = DbElementComparison.SelectSingle(
+                _db,
+                SourceFhirPackageKey: r3.Key,
+                TargetFhirPackageKey: r4.Key,
+                SourceElementToken: "ElementDefinition.binding.valueSet[x]",
+                TargetElementToken: "ElementDefinition.binding.valueSet");
+
+            if (r3r4BindingVs != null)
+            {
+                r3r4BindingVs.Relationship = CMR.Equivalent;
+                r3r4BindingVs.ValueDomainRelationship = CMR.Equivalent;
+                r3r4BindingVs.TechnicalMessage = "While the type of the element changed, all known contents are compatible.";
+                r3r4BindingVs.UserMessage = "The element type changed between STU3 and R4, but the contents are known compatible.";
+
+                r3r4BindingVs.Update(_db);
+            }
+
+            DbElementComparison? r4r3BindingVs = DbElementComparison.SelectSingle(
+                _db,
+                SourceFhirPackageKey: r4.Key,
+                TargetFhirPackageKey: r3.Key,
+                SourceElementToken: "ElementDefinition.binding.valueSet",
+                TargetElementToken: "ElementDefinition.binding.valueSet[x]");
+
+            if (r4r3BindingVs != null)
+            {
+                r4r3BindingVs.Relationship = CMR.Equivalent;
+                r4r3BindingVs.ValueDomainRelationship = CMR.Equivalent;
+                r4r3BindingVs.TechnicalMessage = "While the type of the element changed, all known contents are compatible.";
+                r4r3BindingVs.UserMessage = "The element type changed between STU3 and R4, but the contents are known compatible.";
+
+                r4r3BindingVs.Update(_db);
+            }
+        }
     }
 
 

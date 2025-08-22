@@ -214,17 +214,28 @@ public static class FhirReleases
             return true;
         }
 
-        if (literal.Contains('#'))
+        int index = literal.IndexOf('@');
+        if (index != -1)
         {
-            if (_fhirSequenceMap.TryGetValue(literal.Substring(0, literal.IndexOf('#')), out fhirSequence))
+            if (_fhirSequenceMap.TryGetValue(literal.Substring(0, index), out fhirSequence))
             {
                 return true;
             }
         }
 
-        if (literal.Contains('-'))
+        index = literal.IndexOf('#');
+        if (index != -1)
         {
-            if (_fhirSequenceMap.TryGetValue(literal.Substring(0, literal.IndexOf('-')), out fhirSequence))
+            if (_fhirSequenceMap.TryGetValue(literal.Substring(0, index), out fhirSequence))
+            {
+                return true;
+            }
+        }
+
+        index = literal.IndexOf('-');
+        if (index != -1)
+        {
+            if (_fhirSequenceMap.TryGetValue(literal.Substring(0, index), out fhirSequence))
             {
                 return true;
             }
