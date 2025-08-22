@@ -49,6 +49,49 @@ public static class ResourceExtensions
         return null;
     }
 
+    public static (string packageId, string? packageVersion, string? packageUri)? cgPackageSource(this DomainResource r)
+    {
+        Extension? psExt = r.GetExtension(CommonDefinitions.ExtUrlPackageSource);
+        if (psExt == null)
+        {
+            return null;
+        }
+
+        string? packageId = psExt.GetExtensionValue<Id>("packageId")?.Value;
+        string? packageVersion = psExt.GetExtensionValue<FhirString>("version")?.Value;
+        string? packageUri = psExt.GetExtensionValue<FhirUri>("uri")?.Value;
+        if (string.IsNullOrEmpty(packageId))
+        {
+            return null;
+        }
+
+        return (packageId!, packageVersion, packageUri);
+    }
+
+    public static string? cgPackageSourceAsMoniker(this DomainResource r)
+    {
+        Extension? psExt = r.GetExtension(CommonDefinitions.ExtUrlPackageSource);
+        if (psExt == null)
+        {
+            return null;
+        }
+
+        string? packageId = psExt.GetExtensionValue<Id>("packageId")?.Value;
+        string? packageVersion = psExt.GetExtensionValue<FhirString>("version")?.Value;
+
+        if (string.IsNullOrEmpty(packageId))
+        {
+            return null;
+        }
+
+        if (string.IsNullOrEmpty(packageVersion))
+        {
+            return packageId;
+        }
+
+        return packageId + "@" + packageVersion;
+    }
+
     public static void cgAddPackageSource(this DomainResource r, string packageId, string? packageVersion, string? packageUri)
     {
         if (string.IsNullOrEmpty(packageId))

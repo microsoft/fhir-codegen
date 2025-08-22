@@ -1216,11 +1216,11 @@ public class PackageComparer
         // add the compose includes
         foreach ((string key, ValueSet.ConceptSetComponent concept) in composeIncludes)
         {
-            string[] parts = key.Split('|');
+            int index = key.LastIndexOf('|');
             vs.Compose.Include.Add(new()
             {
-                System = parts[0],
-                Version = parts[1],
+                System = key[0..index],
+                Version = key[(index + 1)..],
                 Concept = concept.Concept,
             });
         }
@@ -2340,8 +2340,16 @@ public class PackageComparer
         _ => $"{_sourceRLiteral} `{sourceSd.Name}` maps as {r} to {_targetRLiteral} `{targetSd.Name}`.",
     };
 
-    private string UnversionedUrl(string url) => url.Contains('|') ? url.Split('|')[0] : url;
+    private string UnversionedUrl(string url)
+    {
+        int index = url.LastIndexOf('|');
+        if (index == -1)
+        {
+            return url;
+        }
 
+        return url[0..index];
+    }
 
     private Dictionary<string, List<PrimitiveTypeComparison>> ComparePrimitives(
         IReadOnlyDictionary<string, StructureDefinition> sourcePrimitives,
@@ -2959,8 +2967,11 @@ public class PackageComparer
                 // TODO(ginoc): For sanity right now, we assume that the value sets are from the matching releases
                 // at some point, we need to check specific versions in case there are explicit references
 
-                string unversionedLeft = sourceInfo.BindingValueSet.Split('|')[0];
-                string unversionedRight = targetInfo.BindingValueSet.Split('|')[0];
+                int leftPipeIndex = sourceInfo.BindingValueSet.LastIndexOf('|');
+                int rightPipeIndex = targetInfo.BindingValueSet.LastIndexOf('|');
+
+                string unversionedLeft = leftPipeIndex == -1 ? sourceInfo.BindingValueSet : sourceInfo.BindingValueSet[0..leftPipeIndex];
+                string unversionedRight = rightPipeIndex == -1 ? targetInfo.BindingValueSet : targetInfo.BindingValueSet[0..rightPipeIndex];
 
                 // if there is a code type, we need to perform a code-only comparison
                 if (sourceTypes.ContainsKey("code"))

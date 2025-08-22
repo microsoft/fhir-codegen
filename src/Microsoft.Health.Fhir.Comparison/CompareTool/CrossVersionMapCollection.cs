@@ -1427,8 +1427,11 @@ public class CrossVersionMapCollection
             }
         }
 
-        string unversionedSourceUrl = sourceScopeUrl.Contains('|') ? sourceScopeUrl.Split('|')[0] : sourceScopeUrl;
-        string unversionedTargetUrl = targetScopeUrl.Contains('|') ? targetScopeUrl.Split('|')[0] : targetScopeUrl;
+        int sourcePipeIndex = sourceScopeUrl.LastIndexOf('|');
+        int targetPipeIndex = targetScopeUrl.LastIndexOf('|');
+
+        string unversionedSourceUrl = sourcePipeIndex == -1 ? sourceScopeUrl : sourceScopeUrl[0..sourcePipeIndex];
+        string unversionedTargetUrl = targetPipeIndex == -1 ? targetScopeUrl : targetScopeUrl[0..targetPipeIndex];
 
         if (string.IsNullOrEmpty(sourceScopeUrl) || string.IsNullOrEmpty(targetScopeUrl))
         {

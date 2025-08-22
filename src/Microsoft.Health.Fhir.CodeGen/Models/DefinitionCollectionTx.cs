@@ -58,16 +58,15 @@ public partial class DefinitionCollection : IAsyncResourceResolver
     {
         Parameters p = [];
 
-        string[] components = uri.Split('|');
-
-        if (components.Length == 2)
+        int index = uri.LastIndexOf('|');
+        if (index == -1)
         {
-            p.Parameter.Add(new() { Name = "url", Value = new FhirUri(components[0]) });
-            p.Parameter.Add(new() { Name = "valueSetVersion", Value = new FhirString(components[1]) });
+            p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri) });
         }
         else
         {
-            p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri) });
+            p.Parameter.Add(new() { Name = "url", Value = new FhirUri(uri[0..index]) });
+            p.Parameter.Add(new() { Name = "valueSetVersion", Value = new FhirString(uri[(index +1)..]) });
         }
 
         p.Parameter.Add(new() { Name = "includeDesignations", Value = new FhirBoolean(false) });
@@ -181,9 +180,10 @@ public partial class DefinitionCollection : IAsyncResourceResolver
 
     public string? GetCanonicalVersion(string uri)
     {
-        if (uri.Contains('|'))
+        int index = uri.LastIndexOf('|');
+        if (index != -1)
         {
-            return uri.Substring(uri.LastIndexOf('|') + 1);
+            return uri[(index + 1)..];
         }
 
         string key;
@@ -208,9 +208,10 @@ public partial class DefinitionCollection : IAsyncResourceResolver
 
     public bool TryGetCanonicalVersion(string uri, [NotNullWhen(true)] out string? version)
     {
-        if (uri.Contains('|'))
+        int index = uri.LastIndexOf('|');
+        if (index != -1)
         {
-            version = uri.Substring(uri.LastIndexOf('|') + 1);
+            version = uri[(index + 1)..];
             return true;
         }
 
@@ -245,10 +246,11 @@ public partial class DefinitionCollection : IAsyncResourceResolver
         string key;
         string version = string.Empty;
 
-        if (uri.Contains('|'))
+        int index = uri.LastIndexOf('|');
+        if (index != -1)
         {
-            key = uri.Substring(0, uri.LastIndexOf('|'));
-            version = uri.Substring(uri.LastIndexOf('|') + 1);
+            key = uri[0..index];
+            version = uri[(index + 1)..];
         }
         else
         {
@@ -290,7 +292,9 @@ public partial class DefinitionCollection : IAsyncResourceResolver
             return System.Threading.Tasks.Task.FromResult(r);
         }
 
-        if (_allResources.TryGetValue(uri.Split('|')[0], out r))
+        int index = uri.LastIndexOf('|');
+        if ((index != -1) &&
+            _allResources.TryGetValue(uri[0..index], out r))
         {
             return System.Threading.Tasks.Task.FromResult(r);
         }

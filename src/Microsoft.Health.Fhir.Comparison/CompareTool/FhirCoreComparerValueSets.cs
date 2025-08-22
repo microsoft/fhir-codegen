@@ -609,7 +609,8 @@ public partial class FhirCoreComparer
             }
 
             string targetVersioned = targetCanonical.Value;
-            string targetUnversioned = targetVersioned.Split('|')[0];
+            int targetPipeIndex = targetVersioned.LastIndexOf('|');
+            string targetUnversioned = targetPipeIndex == -1 ? targetVersioned : targetVersioned[0..targetPipeIndex];
 
             // we can only process value sets we can expand
             if (!targetDc.TryExpandVs(targetVersioned, out ValueSet? targetVs, out string? expandMessage))

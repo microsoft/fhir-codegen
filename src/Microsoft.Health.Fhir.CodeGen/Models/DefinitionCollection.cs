@@ -1185,11 +1185,12 @@ public partial class DefinitionCollection
             string canonicalUrl;
             string version;
 
-            if (fullUrl.Contains('|'))
+            int index = fullUrl.LastIndexOf('|');
+
+            if (index != -1)
             {
-                string[] parts = fullUrl.Split('|');
-                canonicalUrl = parts[0];
-                version = parts[1];
+                canonicalUrl = fullUrl[..index];
+                version = fullUrl[(index + 1)..];
             }
             else
             {
@@ -1295,12 +1296,14 @@ public partial class DefinitionCollection
     /// <returns>A list of ConceptMaps.</returns>
     public List<ConceptMap> ConceptMapsForSource(string src)
     {
-        if (!src.Contains('|'))
+        int index = src.LastIndexOf('|');
+
+        if (index == -1)
         {
             return _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? srcMaps) ? srcMaps : [];
         }
 
-        string uvUrl = src.Split('|')[0];
+        string uvUrl = src[0..index];
 
         bool hasUnversionedMaps = _conceptMapsBySourceUrl.TryGetValue(uvUrl, out List<ConceptMap>? uvMaps);
         bool hasVersionedMaps = _conceptMapsBySourceUrl.TryGetValue(src, out List<ConceptMap>? vMaps);
@@ -1331,12 +1334,14 @@ public partial class DefinitionCollection
     /// <returns>A list of ConceptMaps.</returns>
     public List<ConceptMap> ConceptMapsForTarget(string target)
     {
-        if (!target.Contains('|'))
+        int index = target.LastIndexOf('|');
+
+        if (index == -1)
         {
             return _conceptMapsByTargetUrl.TryGetValue(target, out List<ConceptMap>? tgtMaps) ? tgtMaps : [];
         }
 
-        string uvUrl = target.Split('|')[0];
+        string uvUrl = target[0..index];
 
         bool hasUnversionedMaps = _conceptMapsByTargetUrl.TryGetValue(uvUrl, out List<ConceptMap>? uvMaps);
         bool hasVersionedMaps = _conceptMapsByTargetUrl.TryGetValue(target, out List<ConceptMap>? vMaps);
@@ -1778,11 +1783,18 @@ public partial class DefinitionCollection
         }
 
         string vsVersion = valueSet.Version ?? packageVersion;
-
         string vsUrl = valueSet.Url;
 
-        if (!vsUrl.Contains('|'))
+        int index = vsUrl.LastIndexOf('|');
+
+        if (index == -1)
         {
+            vsUrl = $"{vsUrl}|{vsVersion}";
+        }
+        // check for URLs that include pipes
+        else if (!vsUrl.EndsWith($"|{vsVersion}", StringComparison.Ordinal))
+        {
+            // if the version is not at the end, we need to add it
             vsUrl = $"{vsUrl}|{vsVersion}";
         }
 
@@ -1798,6 +1810,26 @@ public partial class DefinitionCollection
         }
 
         string unversioned = UnversionedUrlForVs(valueSet.Url);
+
+        // TODO: they actually meant to use the pipe character in the URL...
+        //// check the compse.include.system for using a canonical URL where it should not
+        //foreach (ValueSet.ConceptSetComponent csc in valueSet.Compose?.Include ?? [])
+        //{
+        //    int index = csc.System?.IndexOf('|') ?? -1;
+        //    if (index == -1)
+        //    {
+        //        continue;
+        //    }
+
+        //    // we only know that HL7 terminologies do not use vertical pipes
+        //    if (csc.System!.StartsWith("http://hl7.org", StringComparison.Ordinal) ||
+        //        csc.System!.StartsWith("http://terminology.hl7.org", StringComparison.Ordinal))
+        //    {
+        //        Console.WriteLine($"ValueSet {valueSet.Id} ({valueSet.Url}) has a compose.include.system with a version, fixing...");
+        //        csc.Version = csc.System[(index + 1)..];
+        //        csc.System = csc.System[0..index];
+        //    }
+        //}
 
         // check for value sets that are incorrectly flagged as limited expansions
         if (_notActuallyLimitedExpansions.Contains(vsUrl) ||
@@ -2308,25 +2340,8 @@ public partial class DefinitionCollection
             return;
         }
 
-        ext = new Extension()
-        {
-            Url = CommonDefinitions.ExtUrlPackageSource,
-            Extension =
-            [
-                new Extension()
-                {
-                    Url = "packageId",
-                    Value = new FhirString(packageId)
-                },
-                new Extension()
-                {
-                    Url = "version",
-                    Value = new FhirString(version)
-                }
-            ]
-        };
-
-        r.Extension.Add(ext);
+        // TODO: should add URI now that the extension includes it
+        r.cgAddPackageSource(packageId, version, null);
 
         if ((r is IVersionableConformanceResource vcr) && string.IsNullOrEmpty(vcr.Version))
         {

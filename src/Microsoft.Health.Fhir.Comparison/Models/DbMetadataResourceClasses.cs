@@ -54,6 +54,7 @@ public abstract class DbMetadataResource : DbPackageContent
     public required List<Hl7.Fhir.Model.ContactDetail>? Reviewers { get; set; }
     public required List<Hl7.Fhir.Model.ContactDetail>? Endorsers { get; set; }
     public required List<Hl7.Fhir.Model.Extension>? RootExtensions { get; set; }
+    public required string? SourcePackageMoniker { get; set; }
 }
 
 [CgSQLiteTable(tableName: "ResourceIdentifiers")]

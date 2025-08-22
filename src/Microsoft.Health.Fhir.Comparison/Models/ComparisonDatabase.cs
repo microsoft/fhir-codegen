@@ -2044,7 +2044,59 @@ public class ComparisonDatabase : IDisposable
         // do element post-processing
         doElementPostProcessing();
 
+        // do code-system post-processing
+        doCodeSystemPostProcessing();
+
         return true;
+    }
+
+
+    private void doCodeSystemPostProcessing()
+    {
+        DbFhirPackage? r5 = DbFhirPackage.SelectSingle(
+            _dbConnection,
+            PackageId: "hl7.fhir.r5.core");
+        
+        if (r5 != null)
+        {
+            IDbCommand command = _dbConnection.CreateCommand();
+            command.CommandText = $"""
+                delete from {DbCodeSystem.DefaultTableName}
+                where FhirPackageKey = {r5.Key}
+                and SourcePackageMoniker = 'hl7.terminology@5.1.0'
+                and UnversionedUrl not in (
+                    select distinct System
+                    from {DbValueSetConcept.DefaultTableName}
+                    where FhirPackageKey = {r5.Key}
+                    and ValueSetKey in (
+                        select distinct BindingValueSetKey
+                        from {DbElement.DefaultTableName}
+                        where FhirPackageKey = {r5.Key}
+                        and BindingValueSetKey is not null
+                    )
+                    and System is not null
+                )
+                """;
+            command.ExecuteNonQuery();
+
+            command = _dbConnection.CreateCommand();
+            command.CommandText = $"delete from {DbCodeSystemConcept.DefaultTableName} where CodeSystemKey not in (select Key from {DbCodeSystem.DefaultTableName})";
+            command.ExecuteNonQuery();
+
+            command = _dbConnection.CreateCommand();
+            command.CommandText = $"delete from {DbCodeSystemFilter.DefaultTableName} where CodeSystemKey not in (select Key from {DbCodeSystem.DefaultTableName})";
+            command.ExecuteNonQuery();
+
+            command = _dbConnection.CreateCommand();
+            command.CommandText = $"delete from {DbCodeSystemPropertyDefinition.DefaultTableName} where CodeSystemKey not in (select Key from {DbCodeSystem.DefaultTableName})";
+            command.ExecuteNonQuery();
+
+            command = _dbConnection.CreateCommand();
+            command.CommandText = $"delete from {DbCodeSystemConceptProperty.DefaultTableName} where CodeSystemPropertyDefinitionKey not in (select Key from {DbCodeSystemPropertyDefinition.DefaultTableName})";
+            command.ExecuteNonQuery();
+        }
+
+        return;
     }
 
     private void doElementPostProcessing()
@@ -2128,6 +2180,9 @@ public class ComparisonDatabase : IDisposable
                     continue;
                 }
 
+                int cseVsPipeIndex = string.IsNullOrEmpty(cs.ValueSet) ? -1 : cs.ValueSet.LastIndexOf('|');
+                int cseSuppPipeIndex = string.IsNullOrEmpty(cs.Supplements) ? -1 : cs.Supplements.LastIndexOf('|');
+
                 // still add a metadata record for excluded or null code systems
                 DbCodeSystem excludedDbCodeSystem = new()
                 {
@@ -2136,6 +2191,7 @@ public class ComparisonDatabase : IDisposable
                     Id = cs.Id,
                     VersionedUrl = cs.Url + (string.IsNullOrEmpty(cs.Version) ? "" : "|" + cs.Version),
                     UnversionedUrl = cs.Url ?? codeSystemUrl,
+                    SourcePackageMoniker = cs.cgPackageSourceAsMoniker(),
                     Name = cs.Name ?? cs.Id,
                     Version = cs.Version ?? pm.PackageVersion,
                     VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString cseVaFs) ? cseVaFs.Value : null,
@@ -2169,13 +2225,13 @@ public class ComparisonDatabase : IDisposable
                     RootExtensions = cs.Extension,
                     IsCaseSensitive = cs.CaseSensitive,
                     ValueSetVersioned = cs.ValueSet,
-                    ValueSetUnversioned = string.IsNullOrEmpty(cs.ValueSet) ? null : cs.ValueSet?.Split('|')[0],
+                    ValueSetUnversioned = string.IsNullOrEmpty(cs.ValueSet) ? null : (cseVsPipeIndex == -1 ? cs.ValueSet : cs.ValueSet[0..cseVsPipeIndex]),
                     HierarchyMeaning = cs.HierarchyMeaning,
                     IsCompositional = cs.Compositional,
                     VersionNeeded = cs.VersionNeeded,
                     Content = cs.Content,
                     SupplementsVersioned = cs.Supplements,
-                    SupplementsUnversioned = string.IsNullOrEmpty(cs.Supplements) ? null : cs.Supplements?.Split('|')[0],
+                    SupplementsUnversioned = string.IsNullOrEmpty(cs.Supplements) ? null : (cseSuppPipeIndex == -1 ? cs.Supplements : cs.Supplements[0..cseSuppPipeIndex]),
                     Count = 0, // no concepts processed for excluded items
                 };
 
@@ -2183,6 +2239,9 @@ public class ComparisonDatabase : IDisposable
 
                 continue;
             }
+
+            int csVsPipeIndex = string.IsNullOrEmpty(cs.ValueSet) ? -1 : cs.ValueSet.LastIndexOf('|');
+            int csSuppPipeIndex = string.IsNullOrEmpty(cs.Supplements) ? -1 : cs.Supplements.LastIndexOf('|');
 
             // create the DbCodeSystem record
             DbCodeSystem dbCodeSystem = new()
@@ -2192,6 +2251,7 @@ public class ComparisonDatabase : IDisposable
                 Id = cs.Id,
                 VersionedUrl = cs.Url + (string.IsNullOrEmpty(cs.Version) ? "" : "|" + cs.Version),
                 UnversionedUrl = cs.Url ?? codeSystemUrl,
+                SourcePackageMoniker = cs.cgPackageSourceAsMoniker(),
                 Name = cs.Name ?? cs.Id,
                 Version = cs.Version ?? pm.PackageVersion,
                 VersionAlgorithmString = (cs.VersionAlgorithm != null) && (cs.VersionAlgorithm is FhirString csVaFs) ? csVaFs.Value : null,
@@ -2225,13 +2285,13 @@ public class ComparisonDatabase : IDisposable
                 RootExtensions = cs.Extension,
                 IsCaseSensitive = cs.CaseSensitive,
                 ValueSetVersioned = cs.ValueSet,
-                ValueSetUnversioned = string.IsNullOrEmpty(cs.ValueSet) ? null : cs.ValueSet?.Split('|')[0],
+                ValueSetUnversioned = string.IsNullOrEmpty(cs.ValueSet) ? null : (csVsPipeIndex == -1 ? cs.ValueSet : cs.ValueSet[0..csVsPipeIndex]),
                 HierarchyMeaning = cs.HierarchyMeaning,
                 IsCompositional = cs.Compositional,
                 VersionNeeded = cs.VersionNeeded,
                 Content = cs.Content,
                 SupplementsVersioned = cs.Supplements,
-                SupplementsUnversioned = string.IsNullOrEmpty(cs.Supplements) ? null : cs.Supplements?.Split('|')[0],
+                SupplementsUnversioned = string.IsNullOrEmpty(cs.Supplements) ? null : (csSuppPipeIndex == -1 ? cs.Supplements : cs.Supplements[0..csSuppPipeIndex]),
                 Count = cs.Count,
             };
 
@@ -2520,6 +2580,7 @@ public class ComparisonDatabase : IDisposable
                     Id = uvs.Id,
                     VersionedUrl = versionedUrl,
                     UnversionedUrl = unversionedUrl,
+                    SourcePackageMoniker = uvs.cgPackageSourceAsMoniker(),
                     Name = uvs.Name,
                     Version = vsVersion,
                     VersionAlgorithmString = (uvs.VersionAlgorithm != null) && (uvs.VersionAlgorithm is FhirString vsmVaFs) ? vsmVaFs.Value : null,
@@ -2581,6 +2642,7 @@ public class ComparisonDatabase : IDisposable
                 Id = vs.Id,
                 VersionedUrl = versionedUrl,
                 UnversionedUrl = unversionedUrl,
+                SourcePackageMoniker = vs.cgPackageSourceAsMoniker(),
                 Name = vs.Name,
                 Version = vsVersion,
                 VersionAlgorithmString = (vs.VersionAlgorithm != null) && (vs.VersionAlgorithm is FhirString vsVaFs) ? vsVaFs.Value : null,
@@ -2720,6 +2782,7 @@ public class ComparisonDatabase : IDisposable
                         Id = sd.Id,
                         VersionedUrl = sd.Url + "|" + sd.Version,
                         UnversionedUrl = sd.Url,
+                        SourcePackageMoniker = sd.cgPackageSourceAsMoniker(),
                         Name = FhirSanitizationUtils.SanitizeForProperty(sd.Name, replacements: []),
                         Version = sd.Version,
                         VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdeVaFs) ? sdeVaFs.Value : null,
@@ -2772,6 +2835,7 @@ public class ComparisonDatabase : IDisposable
                     Id = sd.Id,
                     VersionedUrl = sd.Url + "|" + sd.Version,
                     UnversionedUrl = sd.Url,
+                    SourcePackageMoniker = sd.cgPackageSourceAsMoniker(),
                     Name = sd.Name,
                     Version = sd.Version,
                     VersionAlgorithmString = (sd.VersionAlgorithm != null) && (sd.VersionAlgorithm is FhirString sdVaFs) ? sdVaFs.Value : null,
