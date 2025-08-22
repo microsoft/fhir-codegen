@@ -537,7 +537,11 @@ public partial class XVerProcessor
         INFORMATION: % A definition for CodeSystem 'urn:oid:2.16.840.1.113883.6.276' could not be found, so the code cannot be validated
         WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.6.276 does not support batch validation (tx version Not Known), so the codes have not been validated
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
-        
+
+        # ==== 18. Source content should not have dupicate Resource.name values, but they do ====
+        WARNING: Jira file generation will not be correct because multiple artifacts have the same name (ignoring content in "()"): %
+        **WARNING** Jira file generation will not be correct because multiple artifacts have the same name (ignoring content in "()"): %
+
         """;
 
     /// <summary>
