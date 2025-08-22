@@ -1013,12 +1013,16 @@ public partial class XVerProcessor
 
                 string igParams = string.Join("\n    ", _xverIgParameters.Select(cv => $"{cv.code} : {cv.value}"));
 
-                string dependencies = $"    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n" +
-                    string.Join('\n', _xverDependencies.Where(d => d.NeededForPublisher).Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
+                List<string> deps = _xverDependencies
+                    .Where(d => d.NeededForPublisher)
+                    .Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence))
+                    .ToList();
 
-                string additionalDependencies = (internalDependencies.Count == 0)
-                    ? string.Empty
-                    : string.Join("\n", internalDependencies.Select(pi => $"    {pi.packageId} : {pi.packageVersion}"));
+                deps.AddRange(internalDependencies.Select(pi => $"    {pi.packageId} : {pi.packageVersion}"));
+
+                string dependencies = deps.Count > 0
+                    ? $"dependencies:\n    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n{string.Join('\n', deps)}"
+                    : string.Empty;
 
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
@@ -1048,9 +1052,7 @@ public partial class XVerProcessor
                     # package id and the value is the version (or dev/current). For advanced
                     # use cases, the value can be an object with keys for id, uri, and version.
                     #
-                    dependencies:
                     {{{dependencies}}}
-                    {{{additionalDependencies}}}
 
                     #   hl7.fhir.us.core: 3.1.0
                     #   hl7.fhir.us.mcode:
@@ -1367,8 +1369,11 @@ public partial class XVerProcessor
 
                 string pagesYaml = string.Join("\n", pages.Select(p => $"    {p.filename}:\n        title: {p.title}"));
 
-                string dependencies = $"    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n" +
-                    string.Join('\n', _xverDependencies.Where(d => d.NeededForPublisher).Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)));
+                List<string> deps = _xverDependencies.Where(d => d.NeededForPublisher).Select(d => d.AsSushiYaml(targetPackage.DefinitionFhirSequence)).ToList();
+
+                string dependencies = deps.Count > 0
+                    ? $"dependencies:\n    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n{string.Join('\n', deps)}"
+                    : string.Empty;
 
                 string filename = Path.Combine(dir, "sushi-config.yaml");
                 string contents = $$$"""
@@ -1398,7 +1403,6 @@ public partial class XVerProcessor
                     # package id and the value is the version (or dev/current). For advanced
                     # use cases, the value can be an object with keys for id, uri, and version.
                     #
-                    dependencies:
                     {{{dependencies}}}
 
                     #   hl7.fhir.us.core: 3.1.0
