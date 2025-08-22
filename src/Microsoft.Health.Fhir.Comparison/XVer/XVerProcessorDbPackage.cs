@@ -89,6 +89,7 @@ public partial class XVerProcessor
         * Added mapping in `fhir-cross-version` repo for `DSTU2:Practitioner` to also map to `STU3:PractitionerRole`
         * Added mapping in `fhir-cross-version` repo for `R4B:Media` to map to `R5:DocumentReference`
         * Updated mapping in `fhir-cross-version` repo for `R4B:Questionnaire.item.type` to be *related to* `R5:Questionnaire.item.answerConstraint` (instead of *equivalent*).
+        * Updated Lookup files to include links to source elements, target elements, basic elements, cross-version extensions, and substitution extensions.
 
         ### 0.0.1-snapshot-1
 

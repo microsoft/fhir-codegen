@@ -189,7 +189,7 @@ public partial class XVerProcessor
                     }
 
                     // add the path to the dictionary, but strip "Basic" from the front
-                    packageSupport.BasicElements.Add(element.Path.Substring(5));
+                    packageSupport.BasicElements.Add(element.Path.Substring(5), element.BasePath);
                 }
             }
 
@@ -897,6 +897,29 @@ public partial class XVerProcessor
                     int targetPackageIndex = currentIndex + 1;
                     DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
+                    // do not generate if this element is part of a mapped structure and has an equivalent in the target's basic resource definition
+                    if (structureMapsToBasic[targetPackageIndex] &&
+                        (element.ParentElementKey != null) &&
+                        packageSupports[targetPackageIndex].BasicElements.TryGetValue(element.Path.Substring(sd.Name.Length), out string? basicBasePath))
+                    {
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementBasePath = element.BasePath,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseBasicElement,
+                            TargetElementId = basicBasePath ?? "Basic" + element.Path.Substring(sd.Name.Length),
+                            TargetExtensionUrl = null,
+                            TargetExtensionId = null,
+                            TargetElementBasePath = null,
+                            ReplacementExtensionUrl = null,
+                        });
+                        continue;
+                    }
+
                     // if we already generated the parent of this element, flag it as added and move on
                     if ((element.ParentElementKey != null) &&
                         generatedElementKeys[targetPackageIndex].Contains(element.ParentElementKey.Value))
@@ -909,34 +932,18 @@ public partial class XVerProcessor
                             SourceStructureName = sd.Name,
                             SourceElementId = element.Id,
                             SourceElementFieldOrder = element.ResourceFieldOrder,
+                            SourceElementBasePath = element.BasePath,
                             TargetPackageKey = targetPackage.Key,
                             OutcomeCode = XverOutcomeCodes.UseExtensionFromAncestor,
                             TargetElementId = null,
+                            TargetElementBasePath = null,
                             TargetExtensionUrl = null,
+                            TargetExtensionId = null,
                             ReplacementExtensionUrl = null,
                         });
                         continue;
                     }
 
-                    // do not generate if this element is part of a mapped structure and has an equivalent in the target's basic resource definition
-                    if (structureMapsToBasic[targetPackageIndex] &&
-                        (element.ParentElementKey != null) &&
-                        packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
-                    {
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                        {
-                            SourcePackageKey = sourcePackage.Key,
-                            SourceStructureName = sd.Name,
-                            SourceElementId = element.Id,
-                            SourceElementFieldOrder = element.ResourceFieldOrder,
-                            TargetPackageKey = targetPackage.Key,
-                            OutcomeCode = XverOutcomeCodes.UseBasicElement,
-                            TargetElementId = null,
-                            TargetExtensionUrl = null,
-                            ReplacementExtensionUrl = null,
-                        });
-                        continue;
-                    }
 
                     List<DbElementComparison> comparisons = [];
 
@@ -980,11 +987,12 @@ public partial class XVerProcessor
                                 .Select(c => c!)
                                 .ToList();
 
+                            // TODO: one-of might also need an extension...
                             if (matchedCells.Count != 0)
                             {
                                 extensionNeeded = false;
                                 XverOutcomeCodes oc = matchedCells.Count > 1
-                                    ? XverOutcomeCodes.UseOneOfElements
+                                    ? XverOutcomeCodes.UseOneOf
                                     : matchedCells[0].RightCell?.Element.Id == element.Id
                                         ? XverOutcomeCodes.UseElementSameName
                                         : XverOutcomeCodes.UseElementRenamed;
@@ -994,11 +1002,14 @@ public partial class XVerProcessor
                                     SourcePackageKey = sourcePackage.Key,
                                     SourceStructureName = sd.Name,
                                     SourceElementId = element.Id,
+                                    SourceElementBasePath = element.BasePath,
                                     SourceElementFieldOrder = element.ResourceFieldOrder,
                                     TargetPackageKey = targetPackage.Key,
                                     OutcomeCode = oc,
                                     TargetElementId = string.Join(',', matchedCells.Select(c => c.RightCell?.Element.Id)),
+                                    TargetElementBasePath = string.Join(',', matchedCells.Select(c => c.RightCell?.Element.BasePath)),
                                     TargetExtensionUrl = null,
+                                    TargetExtensionId = null,
                                     ReplacementExtensionUrl = null,
                                 });
                             }
@@ -1051,11 +1062,14 @@ public partial class XVerProcessor
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureName = sd.Name,
                             SourceElementId = element.Id,
+                            SourceElementBasePath = element.BasePath,
                             SourceElementFieldOrder = element.ResourceFieldOrder,
                             TargetPackageKey = targetPackage.Key,
                             OutcomeCode = XverOutcomeCodes.UseExtension,
                             TargetElementId = null,
+                            TargetElementBasePath = null,
                             TargetExtensionUrl = extSd.Url,
+                            TargetExtensionId = extSd.Id,
                             ReplacementExtensionUrl = extSub?.ReplacementUrl
                         });
 
@@ -1077,6 +1091,29 @@ public partial class XVerProcessor
                     int targetPackageIndex = currentIndex - 1;
                     DbFhirPackage targetPackage = packageSupports[targetPackageIndex].Package;
 
+                    // do not generate if this element is equivalent in the target basic resource
+                    if (structureMapsToBasic[targetPackageIndex] &&
+                        (element.ParentElementKey != null) &&
+                        packageSupports[targetPackageIndex].BasicElements.TryGetValue(element.Path.Substring(sd.Name.Length), out string? basicBasePath))
+                    {
+                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
+                        {
+                            SourcePackageKey = sourcePackage.Key,
+                            SourceStructureName = sd.Name,
+                            SourceElementId = element.Id,
+                            SourceElementBasePath = element.BasePath,
+                            SourceElementFieldOrder = element.ResourceFieldOrder,
+                            TargetPackageKey = targetPackage.Key,
+                            OutcomeCode = XverOutcomeCodes.UseBasicElement,
+                            TargetElementId = "Basic" + element.Path.Substring(sd.Name.Length),
+                            TargetElementBasePath = basicBasePath ?? "Basic" + element.Path.Substring(sd.Name.Length),
+                            TargetExtensionUrl = null,
+                            TargetExtensionId = null,
+                            ReplacementExtensionUrl = null,
+                        });
+                        continue;
+                    }
+
                     // if we already generated the parent of this element, flag it as added and move on
                     if ((element.ParentElementKey != null) &&
                         generatedElementKeys[targetPackageIndex].Contains(element.ParentElementKey.Value))
@@ -1088,31 +1125,14 @@ public partial class XVerProcessor
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureName = sd.Name,
                             SourceElementId = element.Id,
+                            SourceElementBasePath = element.BasePath,
                             SourceElementFieldOrder = element.ResourceFieldOrder,
                             TargetPackageKey = targetPackage.Key,
                             OutcomeCode = XverOutcomeCodes.UseExtensionFromAncestor,
                             TargetElementId = null,
+                            TargetElementBasePath = null,
                             TargetExtensionUrl = null,
-                            ReplacementExtensionUrl = null,
-                        });
-                        continue;
-                    }
-
-                    // do not generate if this element is equivalent in the target basic resource
-                    if (structureMapsToBasic[targetPackageIndex] &&
-                        (element.ParentElementKey != null) &&
-                        packageSupports[targetPackageIndex].BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
-                    {
-                        xverOutcomes[(sourcePackageIndex, sd.Name)][targetPackageIndex].Add(new()
-                        {
-                            SourcePackageKey = sourcePackage.Key,
-                            SourceStructureName = sd.Name,
-                            SourceElementId = element.Id,
-                            SourceElementFieldOrder = element.ResourceFieldOrder,
-                            TargetPackageKey = targetPackage.Key,
-                            OutcomeCode = XverOutcomeCodes.UseBasicElement,
-                            TargetElementId = null,
-                            TargetExtensionUrl = null,
+                            TargetExtensionId = null,
                             ReplacementExtensionUrl = null,
                         });
                         continue;
@@ -1160,11 +1180,12 @@ public partial class XVerProcessor
                                 .Select(c => c!)
                                 .ToList();
 
+                            // TODO: one-of might also need an extension...
                             if (matchedCells.Count != 0)
                             {
                                 extensionNeeded = false;
                                 XverOutcomeCodes oc = matchedCells.Count > 1
-                                    ? XverOutcomeCodes.UseOneOfElements
+                                    ? XverOutcomeCodes.UseOneOf
                                     : matchedCells[0].LeftCell?.Element.Id == element.Id
                                         ? XverOutcomeCodes.UseElementSameName
                                         : XverOutcomeCodes.UseElementRenamed;
@@ -1174,11 +1195,14 @@ public partial class XVerProcessor
                                     SourcePackageKey = sourcePackage.Key,
                                     SourceStructureName = sd.Name,
                                     SourceElementId = element.Id,
+                                    SourceElementBasePath = element.BasePath,
                                     SourceElementFieldOrder = element.ResourceFieldOrder,
                                     TargetPackageKey = targetPackage.Key,
                                     OutcomeCode = oc,
                                     TargetElementId = string.Join(',', matchedCells.Select(c => c.LeftCell?.Element.Id)),
+                                    TargetElementBasePath = string.Join(',', matchedCells.Select(c => c.LeftCell?.Element.BasePath)),
                                     TargetExtensionUrl = null,
+                                    TargetExtensionId = null,
                                     ReplacementExtensionUrl = null,
                                 });
                             }
@@ -1231,11 +1255,14 @@ public partial class XVerProcessor
                             SourcePackageKey = sourcePackage.Key,
                             SourceStructureName = sd.Name,
                             SourceElementId = element.Id,
+                            SourceElementBasePath = element.BasePath,
                             SourceElementFieldOrder = element.ResourceFieldOrder,
                             TargetPackageKey = targetPackage.Key,
                             OutcomeCode = XverOutcomeCodes.UseExtension,
                             TargetElementId = null,
+                            TargetElementBasePath = null,
                             TargetExtensionUrl = extSd.Url,
+                            TargetExtensionId = extSd.Id,
                             ReplacementExtensionUrl = extSub?.ReplacementUrl,
                         });
 
@@ -1738,7 +1765,7 @@ public partial class XVerProcessor
         if ((isExtensionOnBasic == true) &&
             (sliceName != null) &&
             (element.Path.Length > sd.Name.Length) &&
-            targetPackageSupport.BasicElements.Contains(element.Path.Substring(sd.Name.Length)))
+            targetPackageSupport.BasicElements.ContainsKey(element.Path.Substring(sd.Name.Length)))
         {
             return null;
         }

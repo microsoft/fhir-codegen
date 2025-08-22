@@ -413,6 +413,17 @@ public static class FhirReleases
         _ => "Unknown"
     };
 
+    public static string ToWebUrlRoot(this FhirSequenceCodes sequence) => sequence switch
+    {
+        FhirSequenceCodes.DSTU2 => "https://hl7.org/fhir/DSTU2/",
+        FhirSequenceCodes.STU3 => "https://hl7.org/fhir/STU3/",
+        FhirSequenceCodes.R4 => "https://hl7.org/fhir/R4/",
+        FhirSequenceCodes.R4B => "https://hl7.org/fhir/R4B/",
+        FhirSequenceCodes.R5 => "https://hl7.org/fhir/R5/",
+        FhirSequenceCodes.R6 => "https://hl7.org/fhir/R6/",
+        _ => "https://hl7.org/fhir/"
+    };
+
     /// <summary>FHIR version to long version.</summary>
     /// <param name="version">[out] The version literal (e.g., DSTU2).</param>
     /// <returns>A string.</returns>

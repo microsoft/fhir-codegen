@@ -62,9 +62,9 @@ public partial class XVerProcessor
         /// </summary>
         UseBasicElement,
         /// <summary>
-        /// The element is mapped to one of several possible elements in the target version.
+        /// The element is mapped to one of several possible elements, and possibly an extension, in the target version.
         /// </summary>
-        UseOneOfElements,
+        UseOneOf,
     }
 
     /// <summary>
@@ -87,6 +87,8 @@ public partial class XVerProcessor
         /// </summary>
         public required string SourceElementId { get; init; }
 
+        public required string? SourceElementBasePath { get; init; }
+
         /// <summary>
         /// Gets the field order of the source element within the structure.
         /// </summary>
@@ -107,10 +109,17 @@ public partial class XVerProcessor
         /// </summary>
         public required string? TargetElementId { get; init; }
 
+        public required string? TargetElementBasePath { get; init; }
+
         /// <summary>
         /// Gets the URL of the target extension, if the mapping resulted in an extension.
         /// </summary>
         public required string? TargetExtensionUrl { get; init; }
+
+        /// <summary>
+        /// Gets the URL of the target extension, if the mapping resulted in an extension.
+        /// </summary>
+        public required string? TargetExtensionId { get; init; }
 
         /// <summary>
         /// Gets the URL of a replacement extension, if the mapping resulted in a substitution.
@@ -220,6 +229,9 @@ public partial class XVerProcessor
 
                 if (_config.XverExportForPublisher)
                 {
+                    string sourceBaseUrl = sourcePackage.DefinitionFhirSequence.ToWebUrlRoot();
+                    string targetBaseUrl = targetPackage.DefinitionFhirSequence.ToWebUrlRoot();
+
                     // create a filename for this structure's md file
                     string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
 
@@ -229,17 +241,37 @@ public partial class XVerProcessor
                     using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(mdDir, mdFilename), false, false);
 
                     // write a header
-                    mdWriter.WriteLine($"### Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}");
+                    mdWriter.WriteLine(
+                        $"### Lookup for [FHIR {sourcePackage.ShortName}]({sourceBaseUrl})" +
+                        $" [{sourceStructureName}]({sourceBaseUrl}{sourceStructureName}.html)" +
+                        $" for use in [FHIR {targetPackage.ShortName}]({targetBaseUrl})");
 
                     mdWriter.WriteLine();
-                    mdWriter.WriteLine("| Source Element | Usage | Target |");
+                    mdWriter.WriteLine($"| Source Element (FHIR {sourcePackage.ShortName}) | Usage | Target |");
                     mdWriter.WriteLine("| -------------- | ----- | ------ |");
 
                     // iterate over the elements of this structure in element order
                     foreach (XverOutcome outcome in outcomes.OrderBy(xo => xo.SourceElementFieldOrder))
                     {
-                        string target = outcome.ReplacementExtensionUrl ?? outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-";
-                        mdWriter.WriteLine($"| {outcome.SourceElementId} | {outcome.OutcomeCode} | {target} |");
+                        string target = outcome.OutcomeCode switch
+                        {
+                            XverOutcomeCodes.UseElementSameName => $"[{outcome.TargetElementId}]({targetBaseUrl}{outcome.TargetElementId!.Split('.')[0]}.html#resource)",
+                            XverOutcomeCodes.UseElementRenamed => $"[{outcome.TargetElementId}]({targetBaseUrl}{outcome.TargetElementId!.Split('.')[0]}.html#resource)",
+                            XverOutcomeCodes.UseExtension => outcome.ReplacementExtensionUrl != null
+                                ? $"[{outcome.ReplacementExtensionUrl}]({outcome.ReplacementExtensionUrl})"
+                                : $"[{outcome.TargetExtensionUrl}](StructureDefinition-{outcome.TargetExtensionId}.html)",
+                            XverOutcomeCodes.UseExtensionFromAncestor => "-",
+                            XverOutcomeCodes.UseBasicElement => $"[{outcome.TargetElementId}]({targetBaseUrl}{outcome.TargetElementId!.Split('.')[0]}.html#resource)",
+                            XverOutcomeCodes.UseOneOf => publisherOneOfText(outcome, targetBaseUrl),
+                            _ => "-"
+                        };
+
+                        //string target = outcome.ReplacementExtensionUrl ?? outcome.TargetElementId ?? outcome.TargetExtensionUrl ?? "-";
+                        mdWriter.WriteLine(
+                            $"| [{outcome.SourceElementId}]({sourceBaseUrl}{sourceStructureName}.html#resource) " +
+                            $"| `{outcome.OutcomeCode}` " +
+                            $"| {target} " +
+                            $"|");
                     }
 
                     mdWriter.Close();
@@ -309,6 +341,16 @@ public partial class XVerProcessor
                 }
                 indexWriter.Close();
             }
+        }
+
+        return;
+
+        string publisherOneOfText(XverOutcome outcome, string targetBaseUrl)
+        {
+            string[] oneOfElements = outcome.TargetElementId?.Split(',') ?? [];
+
+            return string.Join("<br />", oneOfElements.Select(e => $"[{e}]({targetBaseUrl}{e.Split('.')[0]}.html#resource)")) +
+                   (outcome.TargetExtensionUrl != null ? $"<br/>[{outcome.TargetExtensionUrl}]({outcome.TargetExtensionUrl})" : "");
         }
     }
 

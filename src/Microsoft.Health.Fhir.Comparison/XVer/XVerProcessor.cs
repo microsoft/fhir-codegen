@@ -398,7 +398,7 @@ public partial class XVerProcessor
         /// <summary>
         /// Gets the set of basic element paths.
         /// </summary>
-        public HashSet<string> BasicElements { get; init; } = [];
+        public Dictionary<string, string?> BasicElements { get; init; } = [];
         /// <summary>
         /// Gets the set of allowed extension types.
         /// </summary>
