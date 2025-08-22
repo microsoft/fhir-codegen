@@ -997,7 +997,7 @@ public partial class XVerProcessor
                 string contents = $$$"""
                     [IG]
                     ig = fsh-generated/resources/ImplementationGuide-{{{packageId}}}.json
-                    template = hl7.fhir.template#latest
+                    template = hl7.fhir.template
                     """;
                 File.WriteAllText(filename, contents);
             }
@@ -1345,7 +1345,7 @@ public partial class XVerProcessor
                 string contents = $$$"""
                     [IG]
                     ig = fsh-generated/resources/ImplementationGuide-{{{packageId}}}.json
-                    template = hl7.fhir.template#latest
+                    template = hl7.fhir.template
                     """;
                 File.WriteAllText(filename, contents);
             }
