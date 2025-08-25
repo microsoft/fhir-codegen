@@ -214,6 +214,7 @@ public static class CommonDefinitions
         { "tsmg", "Terminology Services Management Group (TSMG)" },
         { "us", "US Realm Steering Committee" },
         { "v2", "V2 Management Group" },
-        { "vocab", "Terminology Infrastructure" },
+        { "vocab", "HL7 International / Terminology Infrastructure" },
+        //{ "vocab", "Terminology Infrastructure" },
     };
 }

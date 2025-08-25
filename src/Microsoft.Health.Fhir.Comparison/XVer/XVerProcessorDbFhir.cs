@@ -439,6 +439,19 @@ public partial class XVerProcessor
                     Count = dbCs.Count,
                 };
 
+                // remove pre-R5 elements if we are in an earlier version
+                if (targetPackage.DefinitionFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+                {
+                    fhirCs.ApprovalDate = null;
+                    fhirCs.LastReviewDate = null;
+                    fhirCs.EffectivePeriod = null;
+                    fhirCs.Topic = null;
+                    fhirCs.Author = null;
+                    fhirCs.Editor = null;
+                    fhirCs.Reviewer = null;
+                    fhirCs.RelatedArtifact = null;
+                }
+
                 string? wg = null;
 
                 // add standard extensions
@@ -485,7 +498,7 @@ public partial class XVerProcessor
                 // add the work group extension
                 fhirCs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
 
-                // ensure there is a publisher, use the WG if there is none
+                // ensure the publisher matches the WG
                 fhirCs.Publisher = CommonDefinitions.WorkgroupNames[wg];
 
                 // ensure there is a contact point - use the default WG unless there are multiple entries

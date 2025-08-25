@@ -220,6 +220,66 @@ public static class ValueSetExtensions
         }
     }
 
+    public static IEnumerable<FhirConcept> cgGetFlatCodes(this ValueSet vs)
+    {
+        if ((vs.Expansion == null) || (vs.Expansion.Contains.Count == 0))
+        {
+            yield break;
+        }
+
+        List<FhirConcept> results = [];
+
+        foreach (ValueSet.ContainsComponent c in recurseContains(vs, vs.Expansion.Contains))
+        {
+            if (!string.IsNullOrEmpty(c.Code))
+            {
+                yield return conceptForContainsComponent(c, vs);
+            }
+        }
+
+        yield break;
+
+        /// <summary>
+        /// Recursively gets the FhirConcepts from the ContainsComponent.
+        /// </summary>
+        /// <param name="cc">The ContainsComponent to act on.</param>
+        /// <returns>An enumerable of FhirConcept representing the concepts.</returns>
+        IEnumerable<ValueSet.ContainsComponent> recurseContains(
+            ValueSet vs,
+            IEnumerable<ValueSet.ContainsComponent> components,
+            int depth = 0)
+        {
+            foreach (ValueSet.ContainsComponent c in components)
+            {
+                if (c.Contains.Count != 0)
+                {
+                    foreach (ValueSet.ContainsComponent nested in recurseContains(vs, c.Contains, depth + 1))
+                    {
+                        yield return nested;
+                    }
+                }
+
+                yield return c;
+            }
+        }
+
+        FhirConcept conceptForContainsComponent(ValueSet.ContainsComponent c, ValueSet vs)
+        {
+            // TODO(ginoc): pulling the version from the VS is not correct, but it works in the cases we are concerned about right now
+            return new FhirConcept
+            {
+                System = c.System,
+                Version = c.Version ?? vs.Version,
+                Code = c.Code,
+                Display = c.Display,
+                Definition = string.Empty,
+                IsAbstract = c.Abstract,
+                IsInactive = c.Inactive,
+                Properties = c.Property.Select(p => new FhirConcept.ConceptProperty { Code = p.Code, Value = p.Value.ToString() ?? string.Empty }).ToArray(),
+            };
+        }
+    }
+
 
     internal static CSDC? FindCode(this IEnumerable<CSDC> concepts, string code)
     {

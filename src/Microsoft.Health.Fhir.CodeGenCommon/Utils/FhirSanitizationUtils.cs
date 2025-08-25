@@ -61,14 +61,15 @@ public abstract partial class FhirSanitizationUtils
 #endif
 
 #if NET8_0_OR_GREATER
-    [GeneratedRegex(@"<a\s+href=[""']([^""']+)[""']>([^<]+)</a>")]
+    //[GeneratedRegex(@"<a\s+href=[""']([^""']+)[""']>([^<]+)</a>")]
+    [GeneratedRegex(@"<a[^>]+href=[""']([^""']+)[""']>([^<]+)</a>")]
     private static partial Regex RegexHtmlAnchor();
 
     /// <summary>The RegEx for finding HTML Anchors.</summary>
     private static readonly Regex _regexHtmlAnchor = RegexHtmlAnchor();
 #else
     /// <summary>The RegEx for finding HTML Anchors.</summary>
-    private static readonly Regex _regexHtmlAnchor = new Regex(@"<a\s+href=[""']([^""']+)[""']>([^<]+)</a>", RegexOptions.Compiled);
+    private static readonly Regex _regexHtmlAnchor = new Regex(@"<a[^>]+href=[""']([^""']+)[""']>([^<]+)</a>", RegexOptions.Compiled);
 #endif
 
 #if NET8_0_OR_GREATER

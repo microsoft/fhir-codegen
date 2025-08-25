@@ -58,6 +58,7 @@ public class CodeGenCodeSystemFilterProcessor
             result = applyFilter(result, properties, filter).ToList();
         }
 
+        // return our results
         return result;
     }
 
@@ -83,8 +84,9 @@ public class CodeGenCodeSystemFilterProcessor
         if (properties.Any(p => p.Code == SUBSUMEDBYCODE))
         {
             //first flatten the codes
-            IEnumerable<CSDC> flattened = concepts.cgGetFlat();
-            return applySubsumedByFilter(concepts, filter);
+            //IEnumerable<CSDC> flattened = concepts.cgGetFlat();
+            List<CSDC> flattened = getFlatConcepts(concepts);
+            return applySubsumedByFilter(flattened, filter);
         }
         else
         {
@@ -92,6 +94,23 @@ public class CodeGenCodeSystemFilterProcessor
             return applyFilterToANestedHierarchy(concepts, filter);
         }
     }
+
+    private static List<CSDC> getFlatConcepts(IEnumerable<CSDC> concepts, List<CSDC>? results = null)
+    {
+        results ??= [];
+
+        foreach (CSDC concept in concepts)
+        {
+            results.Add(concept);
+            if (concept.Concept.Count > 0)
+            {
+                _ = getFlatConcepts(concept.Concept, results);
+            }
+        }
+
+        return results;
+    }
+
 
 
     private static IEnumerable<CSDC> applyDescentantsOfFilterToANestedHierarchy(IEnumerable<CSDC> concepts, ValueSet.FilterComponent filter)

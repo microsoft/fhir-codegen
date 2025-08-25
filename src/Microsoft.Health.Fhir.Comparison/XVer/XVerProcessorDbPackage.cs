@@ -90,6 +90,9 @@ public partial class XVerProcessor
         * Added mapping in `fhir-cross-version` repo for `R4B:Media` to map to `R5:DocumentReference`
         * Updated mapping in `fhir-cross-version` repo for `R4B:Questionnaire.item.type` to be *related to* `R5:Questionnaire.item.answerConstraint` (instead of *equivalent*).
         * Updated Lookup files to include links to source elements, target elements, basic elements, cross-version extensions, and substitution extensions.
+        * Fix: some exported ValueSets had duplicate code definitions based on multiple subsumtion paths.
+        * Fix: additional suppression messages.
+        * Fix: updated `vocab` WG publisher to `HL7 International / Terminology Infrastructure`
 
         ### 0.0.1-snapshot-1
 
@@ -415,133 +418,213 @@ public partial class XVerProcessor
 
         # ==== 01. Extension names and ids are shortened to avoid exceeding 64 character limit ====
         RESOURCE_ID_MISMATCH
+        # ==== 01. Extension names and ids are shortened to avoid exceeding 64 character limit ====
         ERROR: StructureDefinition.url: Resource id/url mismatch: %
 
+        # ==== 01. Extension names and ids are shortened to avoid exceeding 64 character limit ====
         RESOURCE_CANONICAL_MISMATCH
+        # ==== 01. Extension names and ids are shortened to avoid exceeding 64 character limit ====
         ERROR: StructureDefinition.where(url = '%'): Conformance resource % - the canonical URL (%) does not match the URL (%)
+        # ==== 01. Extension names and ids are shortened to avoid exceeding 64 character limit ====
         ERROR: %: URL Mismatch % vs $
         
-        ## TODO: I think this was caused by not setting `ValueSet.compose` in the value sets
-        # VALUESET_INCLUDE_INVALID_CONCEPT_CODE_VER
-
-        # ==== 03. These are the 'default' ValueSets from ported CodeSystem resources. We do not want to define them ====
+        # ==== 02. These are the 'default' ValueSets from ported CodeSystem resources. We do not want to define them ====
         TYPE_SPECIFIC_CHECKS_DT_CANONICAL_RESOLVE
+        # ==== 02. These are the 'default' ValueSets from ported CodeSystem resources. We do not want to define them ====
         A definition could not be found for Canonical URL %
+        # ==== 02. These are the 'default' ValueSets from ported CodeSystem resources. We do not want to define them ====
         ERROR: CodeSystem/%: CodeSystem.valueSet: A definition could not be found for Canonical URL %
 
-        # ==== 04. We are not building examples for everything ====
+        # ==== 03. We are not building examples for everything ====
         The Implementation Guide contains no examples for this extension
+        # ==== 03. We are not building examples for everything ====
         WARNING: StructureDefinition.where(url = %): The Implementation Guide contains no examples for this extension
+        # ==== 03. We are not building examples for everything ====
         WARNING: StructureDefinition.where(url = %): The Implementation Guide contains no examples for this profile
  
-        # ==== 05. We are faithfully reproducing existing Code Systems and cannot address these ====
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_CONCEPT_NO_DEFINITION
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         HL7 Defined CodeSystems should ensure that every concept has a definition
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_CONCEPT_NO_DISPLAY
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         HL7 Defined CodeSystems should ensure that every concept has a display
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_CS_COMPLETE_AND_EMPTY
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         When a CodeSystem has content = 'complete', it doesnt make sense for there to be no concepts defined
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_CS_HL7_MISSING_ELEMENT_SHOULD
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         HL7 Defined CodeSystems SHOULD have a stated value for the hierarchyMeaning element so that users know the status and meaning of the code system clearly
 
-        ## TODO: I think this was caused by not setting `ValueSet.compose` in the value sets
-        # CODESYSTEM_PROPERTY_BAD_INTERNAL_REFERENCE
-        # The code '%' is not a valid code in this code system
-
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_PROPERTY_CODE_DEFAULT_WARNING
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         The type of property 'code' is 'code', but no ValueSet information was found, so the codes will be validated as internal codes
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_PROPERTY_UNKNOWN_CODE
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         This property has only a code ('%') and not a URI, so it has no clearly defined meaning in the terminology ecosystem
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_PROPERTY_URI_INVALID
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         The uri '%' for the property '%' implies a property with that URI exists in the CodeSystem FHIR Defined Concept Properties for http://hl7.org/fhir/concept-properties, or the code '%' does, but neither were found
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         CODESYSTEM_THO_CHECK
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-        ## TODO: I think this is due to not creating the 'all system' ValueSets for source-ported CodeSystems, and I do not want to create them
-        CodeSystem_CS_VS_WrongSystem
-
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         MSG_DRAFT
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         Reference to draft CodeSystem http://hl7.org/fhir/CodeSystem/knowledge-representation-level|5.0.0
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         VALIDATION_VAL_STATUS_INCONSISTENT
+
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         The resource status 'active' and the standards status 'draft' are not consistent
+
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         The resource status 'draft' and the standards status 'normative' are not consistent
+
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         ERROR: % If a resource is not implementable, is marked as experimental or example, the standards status can only be 'informative', 'draft' or 'deprecated', not 'trial-use'.
 
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         VALIDATION_VAL_STATUS_INCONSISTENT_HINT
+
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
         The resource status 'draft' and the standards status 'trial-use' may not be consistent and should be reviewed
 
-        # ==== 06. We cannot change bindings from the core specification ====
-        The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated with the note: 'Use additionalBinding extension or element instead'
-        
-        # ==== 07. We cannot honor inactive flags since we are porting existing values ====
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
+        WARNING: %: The property '%' has no definition in CodeSystem.property. Many terminology tools won't know what to do with it
+
+        # ==== 04. We are faithfully reproducing existing Code Systems and cannot address this ====
+        INFORMATION: %: CodeSystem: Review the All Codes Value Set - incomplete CodeSystems generally should not have an all codes value set specified
+
+        # ==== 05. Removed ===
+
+        # ==== 06. We cannot honor inactive flags since we are porting existing values ====
         VALUESET_BAD_FILTER_VALUE_VALID_CODE_INACTIVE
+        # ==== 06. We cannot honor inactive flags since we are porting existing values ====
         The code for the filter 'concept' is inactive %
 
-        # ==== 08. We cannot change filters since we are porting existing values ====
+        # ==== 07. We cannot change filters since we are porting existing values ====
         VALUESET_BAD_FILTER_VALUE_VALID_CODE_CHANGE
+        # ==== 07. We cannot change filters since we are porting existing values ====
         The value for a filter based on property 'SCALE_TYP' must be a valid code from the system 'http://loinc.org', and 'Doc' is not (Unknown code 'Doc' in the CodeSystem 'http://loinc.org' version '2.80'). Note that this is change from the past; terminology servers are expected to still continue to support this filter
+        # ==== 07. We cannot change filters since we are porting existing values ====
         The value for a filter based on property 'parent' must be a valid code from the system 'http://loinc.org', and 'LP43571-6' is not (Unknown code 'LP43571-6' in the CodeSystem 'http://loinc.org' version '2.80'). Note that this is change from the past; terminology servers are expected to still continue to support this filter
 
-        # ==== 09. These are bindings inherited from core and cannot be overridden here ====
+        # ==== 08. These are warnings in profiles based on elements inherited from core and cannot be overridden ====
         MSG_DEPENDS_ON_DEPRECATED_NOTE
         The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated with the note: 'Use additionalBinding extension or element instead'
+        # ==== 08. These are warnings in profiles based on elements inherited from core and cannot be overridden ====
+        INFORMATION: CodeSystem/concept-properties: %: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|% is deprecated
+        # ==== 08. These are warnings in profiles based on elements inherited from core and cannot be overridden ====
         The extension http://hl7.org/fhir/StructureDefinition/codesystem-use-markdown|% is deprecated with the note: 'This extension is deprecated as the Terminology Infrastructure work group felt there wasn't a use case for the extension'
+        # ==== 08. These are warnings in profiles based on elements inherited from core and cannot be overridden ====
+        INFORMATION: CodeSystem/concept-properties: %: The extension http://hl7.org/fhir/StructureDefinition/codesystem-use-markdown|% is deprecated
+        # ==== 08. These are warnings in profiles based on elements inherited from core and cannot be overridden ====
         The extension http://hl7.org/fhir/StructureDefinition/valueset-special-status|% is deprecated with the note: 'This extension is deprecated as Terminology Infrastructure was unable to determine a use for it'
-
-        # ==== 10. We cannot change the experimental flag on any existing content ====
+        # ==== 08. These are warnings in profiles based on elements inherited from core and cannot be overridden ====
+        INFORMATION: CodeSystem/concept-properties: %: The extension http://hl7.org/fhir/StructureDefinition/valueset-special-status|% is deprecated
+        
+        # ==== 09. We cannot change the experimental flag on any existing content ====
         SD_ED_EXPERIMENTAL_BINDING
+        # ==== 09. We cannot change the experimental flag on any existing content ====
         The definition for the element 'Extension.extension.extension.value[x]' binds to the value set '%' which is experimental, but this structure is not labeled as experimental
+        # ==== 09. We cannot change the experimental flag on any existing content ====
         INFORMATION: I%: ImplementationGuide.definition.parameter[0].code: Reference to experimental CodeSystem %
 
-        # ==== 11. This URL should not have been used for an example code system, but it was and we cannot change it ====
+        # ==== 10. This URL should not have been used for an example code system, but it was and we cannot change it ====
         A definition for CodeSystem 'http://acme.com/config/fhir/codesystems/internal' could not be found, so the code cannot be validated
 
-        # ==== 12. FHIR-I is publishing this package, but we preserve the WG responsible for content where possible ====
+        # ==== 11. FHIR-I is publishing this package, but we preserve the WG responsible for content where possible ====
         VALIDATION_HL7_PUBLISHER_MISMATCH
         The nominated WG '%' means that the publisher should be '%' but 'HL7 International / FHIR Infrastructure' was found
 
-        # ==== 13. We cannot add display values to existing code systems that lack them ====
+        # ==== 12. We cannot add display values to existing code systems that lack them ====
         VALUESET_CONCEPT_DISPLAY_PRESENCE_MIXED
         This include has some concepts with displays and some without - check that this is what is intended
 
-        # ==== 14. We cannot change the semantic structure of any existing content ====
+        # ==== 13. We cannot change the semantic structure of any existing content ====
         VALUESET_CONCEPT_DISPLAY_SCT_TAG_MIXED
         This SNOMED-CT based include has some concepts with semantic tags (FSN terms) and some without (preferred terms) - check that this is what is intended %
 
-        # ==== 15. Pinning is configured ====
+        # ==== 14. Pinning is configured ====
         Pinned the version of %
+        # ==== 14. Pinning is configured ====
         INFORMATION: % Pinned the version of % to %
 
-        # ==== 16. `guide-parameter-code` is the correct CodeSystem for IG parameters ====
+        # ==== 15. `guide-parameter-code` is the correct CodeSystem for IG parameters ====
         INFORMATION: ImplementationGuide/%: ImplementationGuide.%.code: Reference to experimental CodeSystem http://hl7.org/fhir/guide-parameter-code|5.0.0
 
-        # ==== 17. These definitions are not correct in the source version, but I cannot change them ====
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         ERROR: % It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.6.276' - use 'http://terminology.hl7.org/CodeSystem/GMDN'
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         INFORMATION: % A definition for CodeSystem 'urn:oid:2.16.840.1.113883.6.276' could not be found, so the code cannot be validated
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.6.276 does not support batch validation (tx version Not Known), so the codes have not been validated
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
 
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         ERROR: % It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.3.26.1.1' - use 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl'
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         ERROR: % ValueSet.compose.include[0].concept[0]: The code 'C106046' is not valid in the system urn:oid:2.16.840.1.113883.3.26.1.1 version 5.0.0 (C106046)
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         INFORMATION: % A definition for CodeSystem 'urn:oid:2.16.840.1.113883.3.26.1.1' version '5.0.0' could not be found, so the code cannot be validated. Valid versions: []
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.3.26.1.1|5.0.0 does not support batch validation (tx version Not Known), so the codes have not been validated
 
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         ERROR: % It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.6.276' - use 'http://terminology.hl7.org/CodeSystem/GMDN'
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         INFORMATION: % A definition for CodeSystem 'urn:oid:2.16.840.1.113883.6.276' could not be found, so the code cannot be validated
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         WARNING: % The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.6.276 does not support batch validation (tx version Not Known), so the codes have not been validated
+        # ==== 16. These definitions are not correct in the source version, but I cannot change them ====
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
 
-        # ==== 18. Source content should not have dupicate Resource.name values, but they do ====
+        # ==== 17. Source content should not have duplicate Resource.name values, but they do ====
         WARNING: Jira file generation will not be correct because multiple artifacts have the same name (ignoring content in "()"): %
+        # ==== 17. Source content should not have duplicate Resource.name values, but they do ====
         **WARNING** Jira file generation will not be correct because multiple artifacts have the same name (ignoring content in "()"): %
 
+        # ==== 18. We are not re-exporting the 'all system' value sets for ported code systems ====
+        ERROR: %: CodeSystem: CodeSystem % has an 'all system' value set of %, but the value set doesn't have a matching system (%)
+
+        # ==== 19. Ported CodeSystems need to use their original URLs, even though they are published in version-specific packages and do not match the `special-url` format ====
+        ERROR: %: URL Mismatch http://hl7.org/fhir/1.0/CodeSystem/% vs http://hl7.org/fhir/%
+        
+        # ==== 19. Ported CodeSystems need to use their original URLs, even though they are published in version-specific packages and do not match the `special-url` format ====
+        ERROR: %: URL Mismatch http://hl7.org/fhir/2.0/CodeSystem/% vs http://hl7.org/fhir/%
+        
+        # ==== 19. Ported CodeSystems need to use their original URLs, even though they are published in version-specific packages and do not match the `special-url` format ====
+        ERROR: %: URL Mismatch http://hl7.org/fhir/3.0/CodeSystem/% vs http://hl7.org/fhir/%
+        
+        # ==== 19. Ported CodeSystems need to use their original URLs, even though they are published in version-specific packages and do not match the `special-url` format ====
+        ERROR: %: URL Mismatch http://hl7.org/fhir/4.0/CodeSystem/% vs http://hl7.org/fhir/%
+        
+        # ==== 19. Ported CodeSystems need to use their original URLs, even though they are published in version-specific packages and do not match the `special-url` format ====
+        ERROR: %: URL Mismatch http://hl7.org/fhir/4.3/CodeSystem/% vs http://hl7.org/fhir/%
+        
+        # ==== 19. Ported CodeSystems need to use their original URLs, even though they are published in version-specific packages and do not match the `special-url` format ====
+        ERROR: %: URL Mismatch http://hl7.org/fhir/5.0/CodeSystem/% vs http://hl7.org/fhir/%
+        
+        # ==== 19. Ported CodeSystems need to use their original URLs, even though they are published in version-specific packages and do not match the `special-url` format ====
+        ERROR: %: URL Mismatch http://hl7.org/fhir/6.0/CodeSystem/% vs http://hl7.org/fhir/%
+        
         """;
 
     /// <summary>

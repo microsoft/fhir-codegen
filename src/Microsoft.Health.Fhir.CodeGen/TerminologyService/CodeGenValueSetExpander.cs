@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime;
 using System.Text;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Hl7.Fhir.Utility;
-using System.Xml.Linq;
-using Tasks = System.Threading.Tasks;
-using Microsoft.Health.Fhir.CodeGen.Models;
-using System.Runtime;
 using Hl7.FhirPath.Sprache;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.Models;
+using Tasks = System.Threading.Tasks;
 
 namespace Microsoft.Health.Fhir.CodeGen.TerminologyService;
 
@@ -118,8 +120,52 @@ public class CodeGenValueSetExpander
         await handleInclude(source, inclusionChain).ConfigureAwait(false);
         await handleExclude(source, inclusionChain).ConfigureAwait(false);
 
-        //This is expensive, but we should not have any duplicates
-        //TODO something like: source.Expansion.Contains = source.Expansion.Contains.Distinct
+        // get the flat list of all codes in the expansion
+        IEnumerable<FhirConcept> uniqueCodes = source.cgGetFlatCodes();
+
+        // remove duplicates, prefer any with a display
+        HashSet<(string system, string code, string display)> unique = new HashSet<(string system, string code, string display)>(
+            uniqueCodes.GroupBy(c => c.Code)
+                .Select(g => g.OrderByDescending(c => c.Display != null).First())
+                .Select(fc => (fc.System, fc.Code, fc.Display)));
+
+        removeNonUnique(source.Expansion.Contains, unique);
+
+        return;
+
+        void removeNonUnique(List<ValueSet.ContainsComponent> components, HashSet<(string system, string code, string display)> unique)
+        {
+            HashSet<ValueSet.ContainsComponent> toRemove = [];
+
+            // check all components
+            foreach (ValueSet.ContainsComponent component in components)
+            {
+                bool shouldRemove = false;
+
+                if (!string.IsNullOrEmpty(component.Code))
+                {
+                    if (!unique.Contains((component.System, component.Code, component.Display)))
+                    {
+                        shouldRemove = true;
+                    }
+                }
+
+                if (component.Contains.Count != 0)
+                {
+                    removeNonUnique(component.Contains, unique);
+                }
+
+                if (shouldRemove &&
+                    (component.Contains.Count == 0))
+                {
+                    toRemove.Add(component);
+                }
+            }
+
+
+            // remove any empty components
+            components.RemoveAll(c => toRemove.Contains(c));
+        }
     }
 
 
@@ -240,6 +286,26 @@ public class CodeGenValueSetExpander
         }
         else if (conceptSet.Concept.Count != 0)
         {
+            // TODO: we need to pull display values from the codesystem if they are not specified here.
+            //// iterate over the concept set concepts and build the expansion
+            //List<ValueSet.ContainsComponent> setContains = [];
+            //foreach (ValueSet.ConceptReferenceComponent concept in conceptSet.Concept)
+            //{
+            //    if (string.IsNullOrEmpty(concept.Code))
+            //    {
+            //        throw Error.InvalidOperation($"Encountered a ConceptSet with an empty code");
+            //    }
+
+            //    // We cannot validate the codes here, because we might be dealing with a codesystem that is not
+            //    // present in our definition collection. So we just add the codes as-is.
+            //    setContains.Add(ContainsSetExtensions.BuildContainsComponent(
+            //        conceptSet.System,
+            //        conceptSet.Version,
+            //        concept.Code,
+            //        concept.Display ?? string.Empty,
+            //        _settings.IncludeDesignations == true ? concept.Designation : null));
+            //}
+
             IEnumerable<ValueSet.ContainsComponent> convertedConcepts = conceptSet.Concept
                 .Select(c => ContainsSetExtensions.BuildContainsComponent(
                         conceptSet.System,
