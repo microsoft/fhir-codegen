@@ -2512,6 +2512,35 @@ public class ComparisonDatabase : IDisposable
             command.ExecuteNonQuery();
         }
 
+        {
+            // update display values from code systems where possible
+            IDbCommand command = _dbConnection.CreateCommand();
+            command.CommandText = $"""
+                UPDATE {DbValueSetConcept.DefaultTableName} 
+                SET Display = (
+                    SELECT csc.Display 
+                    FROM {DbCodeSystem.DefaultTableName} cs
+                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.Key = csc.CodeSystemKey
+                    WHERE {DbValueSetConcept.DefaultTableName}.FhirPackageKey = cs.FhirPackageKey 
+                      AND {DbValueSetConcept.DefaultTableName}.System = cs.UnversionedUrl 
+                      AND {DbValueSetConcept.DefaultTableName}.SystemVersion = cs.Version
+                      AND {DbValueSetConcept.DefaultTableName}.Code = csc.Code
+                )
+                WHERE {DbValueSetConcept.DefaultTableName}.Display IS NULL
+                  AND EXISTS (
+                    SELECT 1 
+                    FROM {DbCodeSystem.DefaultTableName} cs
+                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.Key = csc.CodeSystemKey
+                    WHERE {DbValueSetConcept.DefaultTableName}.FhirPackageKey = cs.FhirPackageKey 
+                      AND {DbValueSetConcept.DefaultTableName}.System = cs.UnversionedUrl 
+                      AND {DbValueSetConcept.DefaultTableName}.SystemVersion = cs.Version
+                      AND {DbValueSetConcept.DefaultTableName}.Code = csc.Code
+                  )
+                """;
+
+            command.ExecuteNonQuery();
+        }
+
         return;
     }
 

@@ -120,51 +120,71 @@ public class CodeGenValueSetExpander
         await handleInclude(source, inclusionChain).ConfigureAwait(false);
         await handleExclude(source, inclusionChain).ConfigureAwait(false);
 
-        // get the flat list of all codes in the expansion
-        IEnumerable<FhirConcept> uniqueCodes = source.cgGetFlatCodes();
+        removeDuplicatesFromExpansion(source);
+    }
 
-        // remove duplicates, prefer any with a display
-        HashSet<(string system, string code, string display)> unique = new HashSet<(string system, string code, string display)>(
-            uniqueCodes.GroupBy(c => c.Code)
-                .Select(g => g.OrderByDescending(c => c.Display != null).First())
-                .Select(fc => (fc.System, fc.Code, fc.Display)));
+    private record class ExpansionTrackRecord
+    {
+        public required ValueSet.ContainsComponent ToKeep { get; set; }
+        public required List<ValueSet.ContainsComponent> ToKeepParent { get; set; } = [];
+        public List<(ValueSet.ContainsComponent toRemove, List<ValueSet.ContainsComponent> toRemoveParent)> ToRemove { get; init; } = [];
+    }
 
-        removeNonUnique(source.Expansion.Contains, unique);
+    private void removeDuplicatesFromExpansion(ValueSet vs)
+    {
+        if (vs.Expansion == null)
+        {
+            return;
+        }
+
+        Dictionary<(string system, string code), ExpansionTrackRecord> tracker = [];
+
+        track(vs.Expansion.Contains);
+
+        // remove all duplicates that were tracked
+        foreach (ExpansionTrackRecord rec in tracker.Values)
+        {
+            foreach ((ValueSet.ContainsComponent toRemove, List<ValueSet.ContainsComponent> toRemoveParent) in rec.ToRemove)
+            {
+                toRemoveParent.Remove(toRemove);
+            }
+        }
 
         return;
 
-        void removeNonUnique(List<ValueSet.ContainsComponent> components, HashSet<(string system, string code, string display)> unique)
+        void track(List<ValueSet.ContainsComponent> components)
         {
-            HashSet<ValueSet.ContainsComponent> toRemove = [];
-
-            // check all components
             foreach (ValueSet.ContainsComponent component in components)
             {
-                bool shouldRemove = false;
-
                 if (!string.IsNullOrEmpty(component.Code))
                 {
-                    if (!unique.Contains((component.System, component.Code, component.Display)))
+                    (string system, string code) key = (component.System, component.Code);
+
+                    if (tracker.TryGetValue(key, out ExpansionTrackRecord? rec))
                     {
-                        shouldRemove = true;
+                        // check to see if one has a display and the other not, if so, keep the one with a display
+                        if (!string.IsNullOrEmpty(rec.ToKeep.Display) ||
+                            string.IsNullOrEmpty(component.Display))
+                        {
+                            rec.ToRemove.Add((component, components));
+                        }
+                        else
+                        {
+                            rec.ToRemove.Add((rec.ToKeep, rec.ToKeepParent));
+                            rec.ToKeep = component;
+                            rec.ToKeepParent = components;
+                        }
+                    }
+                    else
+                    {
+                        tracker[key] = new ExpansionTrackRecord() { ToKeep = component, ToKeepParent = components, };
                     }
                 }
-
                 if (component.Contains.Count != 0)
                 {
-                    removeNonUnique(component.Contains, unique);
-                }
-
-                if (shouldRemove &&
-                    (component.Contains.Count == 0))
-                {
-                    toRemove.Add(component);
+                    track(component.Contains);
                 }
             }
-
-
-            // remove any empty components
-            components.RemoveAll(c => toRemove.Contains(c));
         }
     }
 
