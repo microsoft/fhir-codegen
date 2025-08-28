@@ -96,6 +96,7 @@ public partial class XVerProcessor
             throw new Exception("Cannot generate FHIR artifacts without a loaded database!");
         }
 
+        outputDir ??= _config.OutputDirectory;
         outputDir ??= _config.CrossVersionMapSourcePath;
 
         // check for no output location
