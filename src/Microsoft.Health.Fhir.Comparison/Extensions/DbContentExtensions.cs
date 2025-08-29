@@ -18,6 +18,33 @@ namespace Microsoft.Health.Fhir.Comparison.Extensions;
 
 public static class DbContentExtensions
 {
+    public static bool ElementHasNonPrimitiveTypes(
+        this IDbConnection dbConnection,
+        DbElement element,
+        string? elementTypeTableName = null,
+        string? structureTypeTableName = null)
+    {
+        elementTypeTableName ??= DbElementType.DefaultTableName;
+        structureTypeTableName ??= DbStructureDefinition.DefaultTableName;
+
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = $$$"""
+            SELECT COUNT(Key)
+            FROM {{{elementTypeTableName}}}
+            WHERE ElementKey = {{{element.Key}}}
+            AND TypeName NOT IN (
+                SELECT DISTINCT Id
+                FROM {{{structureTypeTableName}}}
+                where FhirPackageKey = {{{element.FhirPackageKey}}}
+                AND ArtifactClass = 'PrimitiveType'
+            )
+            """;
+
+        int count = Convert.ToInt32(command.ExecuteScalar());
+
+        return count > 0;
+    }
+
     public static string? ProcessCoreTextForLinks(
         this string? input,
         string fhirVersionLiteral)
@@ -60,7 +87,7 @@ public static class DbContentExtensions
         int vsKeyB,
         string? conceptTableName = null)
     {
-        conceptTableName ??= "Concepts";
+        conceptTableName ??= DbValueSetConcept.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
@@ -80,7 +107,7 @@ public static class DbContentExtensions
         int structureKeyB,
         string? elementTableName = null)
     {
-        elementTableName ??= "Elements";
+        elementTableName ??= DbElement.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
@@ -111,8 +138,8 @@ public static class DbContentExtensions
         string? collatedTypeTableName = null,
         string? structureTableName = null)
     {
-        collatedTypeTableName ??= "CollatedTypes";
-        structureTableName ??= "Structures";
+        collatedTypeTableName ??= DbCollatedType.DefaultTableName;
+        structureTableName ??= DbStructureDefinition.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
@@ -134,8 +161,8 @@ public static class DbContentExtensions
         string? elementTypeTableName = null,
         string? structureTableName = null)
     {
-        elementTypeTableName ??= "ElementTypes";
-        structureTableName ??= "Structures";
+        elementTypeTableName ??= DbElementType.DefaultTableName;
+        structureTableName ??= DbStructureDefinition.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
@@ -156,7 +183,7 @@ public static class DbContentExtensions
         int FhirPackageKey,
         string? dbTableName = null)
     {
-        dbTableName ??= "Elements";
+        dbTableName ??= DbElement.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""

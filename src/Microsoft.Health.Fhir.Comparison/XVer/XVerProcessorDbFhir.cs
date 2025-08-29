@@ -96,8 +96,15 @@ public partial class XVerProcessor
             throw new Exception("Cannot generate FHIR artifacts without a loaded database!");
         }
 
-        outputDir ??= _config.OutputDirectory;
-        outputDir ??= _config.CrossVersionMapSourcePath;
+        // prefer the map path if it is set
+        if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
+        {
+            outputDir = _config.CrossVersionMapSourcePath;
+        }
+        else
+        {
+            outputDir ??= _config.OutputDirectory;
+        }
 
         // check for no output location
         if (string.IsNullOrEmpty(outputDir))
@@ -1528,6 +1535,71 @@ public partial class XVerProcessor
             });
         }
 
+        bool allowModifier = false;
+
+        // if the extension wants to be a modifier, check the contexts
+        if (element.IsModifier == true)
+        {
+            allowModifier = true;
+
+            /*
+             * Determine if this extension should really be a modifier based on context:
+             *  * Modifier element -> Modifier element : extension
+             *  * Modifier element -> Backbone element (not modifier) : modifier extension
+             *  * Modifier element -> Primitive-type element (not modifier) : modifier extension, context moves up a level
+             *  * Modifier element -> Primitive-type element (array, not modifier) : currently unresolvable, but also has not happened yet
+             */
+
+            List<(DbElement original, DbElement replacement)> ctxElementReplacements = [];
+            foreach (DbElement contextElement in contextElements)
+            {
+                // check if the source element is a modifier - do not need a modifier extension
+                if (contextElement.IsModifier)
+                {
+                    allowModifier = false;
+                    continue;
+                }
+
+                // check to see if the context element has children, can stay how it is
+                if (contextElement.ChildElementCount > 0)
+                {
+                    continue;
+                }
+
+                // if element has ONLY primitive types, we need to move the context up a level
+                if (_db!.DbConnection.ElementHasNonPrimitiveTypes(contextElement) == false)
+                {
+                    if (contextElement.ParentElementKey == null)
+                    {
+                        throw new Exception($"Cannot have a root element with only primitive types!");
+                    }
+
+                    DbElement replacement = DbElement.SelectSingle(_db!.DbConnection, Key: contextElement.ParentElementKey)
+                        ?? throw new Exception($"Could not resolve Element: {contextElement.ParentElementKey} (parent of Element: {element.Key} - '{element.Id}')");
+
+                    ctxElementReplacements.Add((contextElement, replacement));
+                }
+            }
+
+            // resolve any context replacements
+            if (ctxElementReplacements.Count != 0)
+            {
+                foreach ((DbElement original, DbElement replacement) in ctxElementReplacements)
+                {
+                    // look for the matching extension context
+                    foreach (StructureDefinition.ContextComponent ctx in contexts)
+                    {
+                        if (ctx.Expression != original.Path)
+                        {
+                            continue;
+                        }
+
+                        ctx.Expression = replacement.Path;
+                    }
+                }
+            }
+        }
+
         StructureDefinition extSd = new()
         {
             Id = sdId,
@@ -1582,8 +1654,6 @@ public partial class XVerProcessor
 
         extSd.cgAddPackageSource(xverPackageId, _crossDefinitionVersion, null);
 
-        Dictionary<int, string> extPathByElementKey = [];
-
         // add this element to the structure, including the child elements
         ExtElementBuilderRecord? extRec = addElementToExtension(
             extSd,
@@ -1605,15 +1675,24 @@ public partial class XVerProcessor
             throw new Exception($"Extension build for {extSd.Id} failed!");
         }
 
-        addExtRecToSd(extSd, extRec, true);
+        addExtRecToSd(extSd, extRec, allowModifier, true);
 
         return extSd;
     }
 
-    private void addExtRecToSd(StructureDefinition sd, ExtElementBuilderRecord extRec, bool addRootElement = false)
+    private void addExtRecToSd(StructureDefinition sd, ExtElementBuilderRecord extRec, bool allowModifier, bool addRootElement = false)
     {
         if (addRootElement)
         {
+            bool? isMod = allowModifier == false
+                ? null
+                : extRec.SourceElement.IsModifier;
+
+            string? modReason = isMod != true
+                ? null
+                : extRec.SourceElement.IsModifierReason
+                    ?? $"This extension is a modifier because the target element {extRec.SourceElement.Id} is flagged IsModifier";
+
             ElementDefinition rootElement = new()
             {
                 ElementId = extRec.ElementId,
@@ -1629,9 +1708,8 @@ public partial class XVerProcessor
                     Min = 0,
                     Max = "*",
                 },
-                IsModifier = extRec.SourceElement.IsModifier,
-                IsModifierReason = extRec.SourceElement.IsModifierReason
-                    ?? (extRec.SourceElement.IsModifier == true ? $"This extension is a modifier because the target element {extRec.SourceElement.Id} is flagged IsModifier" : null),
+                IsModifier = isMod,
+                IsModifierReason = modReason,
             };
 
             sd.Differential.Element.Add(rootElement);
@@ -1695,7 +1773,7 @@ public partial class XVerProcessor
         // recursively add any extensions
         foreach (ExtElementBuilderRecord child in extRec.Extensions)
         {
-            addExtRecToSd(sd, child);
+            addExtRecToSd(sd, child, allowModifier);
         }
 
         // if we have a datatype slice and value, we need to add them
@@ -2320,7 +2398,7 @@ public partial class XVerProcessor
         List<DbElement> contextElements = [];
 
         // iterate over the element projection rows
-        foreach ((DbGraphSd.DbElementRow elementRow, int elementRowNumber) in elementProjectionDict[element.Key].Select((r, i) => (r, i)))
+        foreach (DbGraphSd.DbElementRow elementRow in elementProjectionDict[element.Key])
         {
             // extract the element cell for this target
             DbGraphSd.DbElementCell? eCell = elementRow[targetIndex];
@@ -2328,6 +2406,7 @@ public partial class XVerProcessor
             // if the cell is not null, use the target path from the cell
             if (eCell != null)
             {
+                contextElements.Add(eCell.Element);
                 contextElementPaths.Add(eCell.Element.Path);
                 continue;
             }
@@ -2342,10 +2421,10 @@ public partial class XVerProcessor
 
                 if (elementProjectionDict.TryGetValue(key, out List<DbGraphSd.DbElementRow>? parentRows))
                 {
-                    foreach ((DbGraphSd.DbElementRow parentRow, int parentRowNumber) in parentRows.Select((r, i) => (r, i)))
+                    foreach (DbGraphSd.DbElementRow parentRow in parentRows)
                     {
                         // only match the equivalent row number
-                        if (parentRowNumber != elementRowNumber)
+                        if (parentRow.SdRowRowId != elementRow.SdRowRowId)
                         {
                             continue;
                         }
@@ -2354,8 +2433,11 @@ public partial class XVerProcessor
                         DbGraphSd.DbElementCell? parentCell = parentRow[targetIndex];
                         if (parentCell != null)
                         {
-                            contextElements.Add(parentCell.Element);
-                            contextElementPaths.Add(parentCell.Element.Path);
+                            if (!contextElementPaths.Contains(parentCell.Element.Path))
+                            {
+                                contextElements.Add(parentCell.Element);
+                                contextElementPaths.Add(parentCell.Element.Path);
+                            }
                             addedSomething = true;
                             break;
                         }
@@ -2366,8 +2448,11 @@ public partial class XVerProcessor
                             if (contextCell.Element.ResourceFieldOrder == 0)
                             {
                                 // add this as the context
-                                contextElements.Add(contextCell.Element);
-                                contextElementPaths.Add(contextCell.Element.Path);
+                                if (!contextElementPaths.Contains(contextCell.Element.Path))
+                                {
+                                    contextElements.Add(contextCell.Element);
+                                    contextElementPaths.Add(contextCell.Element.Path);
+                                }
                                 addedSomething = true;
                                 break;
                             }
@@ -2388,14 +2473,17 @@ public partial class XVerProcessor
                     (targetPackageSupport.CoreDC?.ComplexTypesByName.ContainsKey(name) == true) ||
                     (targetPackageSupport.CoreDC?.ResourcesByName.ContainsKey(name) == true))
                 {
-                    contextElementPaths.Add(name);
-                    DbElement? dbElement = DbElement.SelectSingle(
-                        _db!.DbConnection,
-                        FhirPackageKey: targetPackageSupport.Package.Key,
-                        Id: name);
-                    if (dbElement != null)
+                    if (!contextElementPaths.Contains(name))
                     {
-                        contextElements.Add(dbElement);
+                        contextElementPaths.Add(name);
+                        DbElement? dbElement = DbElement.SelectSingle(
+                            _db!.DbConnection,
+                            FhirPackageKey: targetPackageSupport.Package.Key,
+                            Id: name);
+                        if (dbElement != null)
+                        {
+                            contextElements.Add(dbElement);
+                        }
                     }
                 }
 

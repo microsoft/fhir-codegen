@@ -371,6 +371,12 @@ public partial class XVerProcessor
         // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
         //("jira-code", ""),
 
+        // no-expansions-files: Do not create the `expansions.*` files
+        ("no-expansions-files", "true"),
+
+        // no-ig-database: Do not create the package.db file
+        ("no-ig-database", "true"),
+
         // no-usage-check: No Warning in QA if there are extensions/profiles that are not used in this IG
         ("no-usage-check", "true"),
 

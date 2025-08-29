@@ -560,6 +560,7 @@ public class DbGraphSd
         public DbElementCell? KeyCell => _graph._keyCol >= 0 ? _cells[_graph._keyCol] : null;
         public DbElementCell?[] Cells => _cells;
         public int Length => _cells.Length;
+        public Guid SdRowRowId => _sdRow.RowId;
 
         public (bool, bool) HasNeigbors(int index)
         {
