@@ -142,6 +142,9 @@ public class LangSQLite : ILanguage
 
         // add structures and elements
         addStructures(package, dc);
+
+        // add search parameters
+        addSearchParameters(package, dc);
     }
 
     private void getCurrentIndexes()
@@ -163,6 +166,9 @@ public class LangSQLite : ILanguage
         CgDbElementAdditionalBinding.LoadMaxKey(_db);
         CgDbElementCollatedType.LoadMaxKey(_db);
         CgDbElementType.LoadMaxKey(_db);
+
+        CgDbSearchParameter.LoadMaxKey(_db);
+        CgDbSearchParameterComponent.LoadMaxKey(_db);
     }
 
     private CgDbPackage? removeExistingPackageContent(DefinitionCollection dc)
@@ -195,6 +201,9 @@ public class LangSQLite : ILanguage
         CgDbElementCollatedType.Delete(_db, PackageKey: existing.Key);
         CgDbElementType.Delete(_db, PackageKey: existing.Key);
 
+        CgDbSearchParameter.Delete(_db, PackageKey: existing.Key);
+        CgDbSearchParameterComponent.Delete(_db, PackageKey: existing.Key);
+
         // return the existing package so we can load contents in-place instead of creating a new one
         return existing;
     }
@@ -218,6 +227,9 @@ public class LangSQLite : ILanguage
         CgDbElementAdditionalBinding.CreateTable(_db);
         CgDbElementCollatedType.CreateTable(_db);
         CgDbElementType.CreateTable(_db);
+
+        CgDbSearchParameter.CreateTable(_db);
+        CgDbSearchParameterComponent.CreateTable(_db);
     }
 
     private string determineDatabaseFilename()
@@ -1427,5 +1439,130 @@ public class LangSQLite : ILanguage
             """;
 
         return command.ExecuteNonQuery();
+    }
+
+    private void addSearchParameters(
+        CgDbPackage package,
+        DefinitionCollection dc)
+    {
+        List<CgDbSearchParameter> dbSearchParameters = [];
+        List<CgDbSearchParameterComponent> dbSearchParameterComponents = [];
+
+        // iterate over the search parameters
+        foreach (SearchParameter sp in dc.SearchParametersByUrl.Values)
+        {
+            // will not further process search parameters we know we will not process
+            if (_exclusionSet.Contains(sp.Url))
+            {
+                continue;
+            }
+
+            // check for this record already existing
+            if (CgDbSearchParameter.SelectSingle(_db, PackageKey: package.Key, UnversionedUrl: sp.Url) != null)
+            {
+                continue;
+            }
+
+            string url = sp.Url;
+            string version = string.IsNullOrEmpty(sp.Version)
+                ? package.PackageVersion
+                : sp.Version;
+
+            if (url.EndsWith("|" + version))
+            {
+                url = url.Substring(0, url.Length - (version.Length + 1));
+            }
+
+            // create a new metadata record
+            CgDbSearchParameter dbSp = new()
+            {
+                Key = CgDbSearchParameter.GetIndex(),
+                PackageKey = package.Key,
+                Id = sp.Id,
+                VersionedUrl = url + "|" + version,
+                UnversionedUrl = url,
+                Version = version,
+                VersionAlgorithmString = (sp.VersionAlgorithm != null) && (sp.VersionAlgorithm is FhirString cseVaFs) ? cseVaFs.Value : null,
+                VersionAlgorithmCoding = (sp.VersionAlgorithm != null) && (sp.VersionAlgorithm is Coding cseVaC) ? cseVaC : null,
+                SourcePackageMoniker = sp.cgPackageSourceAsMoniker(),
+                Name = sp.Name,
+                Status = sp.Status,
+                Title = processTextForLinks(sp.Title, package),
+                Description = processTextForLinks(sp.Description, package),
+                Purpose = processTextForLinks(sp.Purpose, package),
+                Narrative = processTextForLinks(sp.Text, package),
+                StandardStatus = sp.cgStandardStatus(),
+                WorkGroup = sp.cgWorkGroup(),
+                FhirMaturity = sp.cgMaturityLevel(),
+                IsExperimental = sp.Experimental,
+                Copyright = sp.Copyright,
+                CopyrightLabel = sp.CopyrightLabel,
+                ApprovalDate = null,
+                LastReviewDate = null,
+                EffectivePeriodStart = null,
+                EffectivePeriodEnd = null,
+                Topic = null,
+                RelatedArtifacts = null,
+                Jurisdictions = sp.Jurisdiction,
+                UseContexts = sp.UseContext,
+                Authors = null,
+                Editors = null,
+                Reviewers = null,
+                Endorsers = null,
+                RootExtensions = sp.Extension,
+
+                DerivedFromCanonical = sp.DerivedFrom,
+                Code = sp.Code,
+                SearchType = sp.Type,
+                Expression = sp.Expression,
+                ProcessingMode = sp.ProcessingMode,
+                SearchParameterConstraint = sp.Constraint,
+                MultipleOr = sp.MultipleOr,
+                MultipleAnd = sp.MultipleAnd,
+                ComponentCount = sp.Component.Count,
+                Contacts = sp.Contact,
+                LastChangedDate = sp.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                Publisher = sp.Publisher,
+
+                AliasCodes = null,
+                BaseResources = string.Empty,
+                ReferenceTargets = null,
+                Comparators = null,
+                Modifiers = null,
+                ChainableSearchParameters = null,
+            };
+
+            // set list-based properties (overrides previous nulls)
+            dbSp.AliasCodeList = [];        // TODO: added in R6
+            dbSp.BaseResourceList = sp.Base.Select(br => br.ToString()!).ToList();
+            dbSp.ReferenceTargetList = sp.Target.Select(t => t.ToString()!).ToList();
+            dbSp.ComparatorList = sp.ComparatorElement;
+            dbSp.ModifierList = sp.ModifierElement;
+            dbSp.ChainableSearchParameterList = sp.Chain.ToList();
+
+            dbSearchParameters.Add(dbSp);
+
+            // iterate over any chaining components
+            foreach (SearchParameter.ComponentComponent comp in sp.Component)
+            {
+                CgDbSearchParameterComponent dbComp = new()
+                {
+                    Key = CgDbSearchParameterComponent.GetIndex(),
+                    PackageKey = package.Key,
+                    SearchParameterKey = dbSp.Key,
+                    DefinitionCanonical = comp.Definition,
+                    Expression = comp.Expression,
+                };
+                dbSearchParameterComponents.Add(dbComp);
+            }
+        }
+
+        Console.WriteLine($"Inserting SearchParameters for {package.PackageId}@{package.PackageVersion} into database...");
+
+        _db.Insert(dbSearchParameters);
+        Console.WriteLine($" <<< added {dbSearchParameters.Count} SearchParameters");
+
+        _db.Insert(dbSearchParameterComponents);
+        Console.WriteLine($" <<< added {dbSearchParameterComponents.Count} SearchParameter Components");
     }
 }

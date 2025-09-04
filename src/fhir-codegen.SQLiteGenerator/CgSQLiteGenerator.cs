@@ -941,10 +941,11 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                     true,
                                     pkIsIdentity ? pkColName : null,
                                     pkPropType,
+                                    executeCommand: true,
                                     includeIdentity: true,
                                     identityOnly: true,
                                     setIdentity: false))}}}
-                    
+
                                 transaction.Commit();
                             }
                         }
@@ -1001,6 +1002,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 bool addedCondition = false;
                     
                                 {{{string.Join(_line_2, getConditionLines(true))}}}
+
+                                command.ExecuteNonQuery();
 
                                 transaction.Commit();
                             }
