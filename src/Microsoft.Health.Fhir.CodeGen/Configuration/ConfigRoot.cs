@@ -146,7 +146,7 @@ public class ConfigRoot : ICodeGenConfig
         Name = "OutputFilename",
         EnvVarName = "Output_Filename",
         DefaultValue = string.Empty,
-        CliOption = new System.CommandLine.Option<string>("--output-filename", "Filename to write output.")
+        CliOption = new System.CommandLine.Option<string>(["--output-filename", "--output-file"], "Filename to write output.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
             IsRequired = false,

@@ -44,8 +44,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\ReleasePublish.yaml = .github\workflows\ReleasePublish.yaml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fhir-codegen-app", "src\fhir-codegen-app\fhir-codegen-app.csproj", "{3E0B1F04-FA35-41FA-8C10-247F93F594D4}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "fhir-codegen-shared", "src\fhir-codegen-shared\fhir-codegen-shared.shproj", "{63A0038D-41D5-4642-813D-74A31E63623B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Health.Fhir.Comparison", "src\Microsoft.Health.Fhir.Comparison\Microsoft.Health.Fhir.Comparison.csproj", "{2E64B1FE-DE11-416F-9996-E8DD730C8AFA}"
@@ -69,6 +67,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "commands", "commands", "{81
 	ProjectSection(SolutionItems) = preProject
 		.claude\commands\spec-generate.md = .claude\commands\spec-generate.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fhir-codegen.LangSQLite", "src\fhir-codegen.LangSQLite\fhir-codegen.LangSQLite.csproj", "{9E7D3F81-3930-4663-8770-32BAE4EB3828}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -108,10 +108,6 @@ Global
 		{8327D398-57D6-4C42-978B-E1C416AC6601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8327D398-57D6-4C42-978B-E1C416AC6601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8327D398-57D6-4C42-978B-E1C416AC6601}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E0B1F04-FA35-41FA-8C10-247F93F594D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E0B1F04-FA35-41FA-8C10-247F93F594D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E0B1F04-FA35-41FA-8C10-247F93F594D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E0B1F04-FA35-41FA-8C10-247F93F594D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E64B1FE-DE11-416F-9996-E8DD730C8AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E64B1FE-DE11-416F-9996-E8DD730C8AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E64B1FE-DE11-416F-9996-E8DD730C8AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -124,6 +120,10 @@ Global
 		{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2F4E9BA-1F1A-49B8-BADB-14EF52737A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E7D3F81-3930-4663-8770-32BAE4EB3828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7D3F81-3930-4663-8770-32BAE4EB3828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7D3F81-3930-4663-8770-32BAE4EB3828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7D3F81-3930-4663-8770-32BAE4EB3828}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,7 +139,6 @@ Global
 		SolutionGuid = {17802D6E-34A0-472E-9041-76E54F463711}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{3e0b1f04-fa35-41fa-8c10-247f93f594d4}*SharedItemsImports = 5
 		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{63a0038d-41d5-4642-813d-74a31e63623b}*SharedItemsImports = 13
 		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{cc4d5356-bd06-48a8-b329-7c372201549a}*SharedItemsImports = 5
 		src\fhir-codegen-shared\fhir-codegen-shared.projitems*{d2f4e9ba-1f1a-49b8-badb-14ef52737a49}*SharedItemsImports = 5

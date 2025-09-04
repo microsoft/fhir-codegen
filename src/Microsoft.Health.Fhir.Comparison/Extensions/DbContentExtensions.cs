@@ -45,7 +45,7 @@ public static class DbContentExtensions
         return count > 0;
     }
 
-    public static string? ProcessCoreTextForLinks(
+    internal static string? ProcessCoreTextForLinks(
         this string? input,
         string fhirVersionLiteral)
     {
@@ -56,13 +56,13 @@ public static class DbContentExtensions
 
         // Process special markdown links first, then HTML links, then core links.
         string? output = FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input, fhirVersionLiteral);
-        output = FhirSanitizationUtils.ProcessFhirHtmlLinks(output, fhirVersionLiteral);
+        output = FhirSanitizationUtils.ProcessEmbeddedHtmlLinks(output);
         output = FhirSanitizationUtils.ProcessFhirCoreLinks(output, fhirVersionLiteral);
 
         return output;
     }
 
-    public static Narrative? ProcessCoreTextForLinks(this Narrative? input, string fhirVersionLiteral)
+    internal static Narrative? ProcessCoreTextForLinks(this Narrative? input, string fhirVersionLiteral)
     {
         if ((input == null) || string.IsNullOrEmpty(input.Div))
         {
@@ -71,7 +71,7 @@ public static class DbContentExtensions
 
         // Process special markdown links first, then HTML links, then core links.
         string? output = FhirSanitizationUtils.ProcessFhirSpecialMdLinks(input.Div, fhirVersionLiteral);
-        output = FhirSanitizationUtils.ProcessFhirHtmlLinks(output, fhirVersionLiteral);
+        output = FhirSanitizationUtils.ProcessEmbeddedHtmlLinks(output);
         output = FhirSanitizationUtils.ProcessFhirCoreLinks(output, fhirVersionLiteral);
 
         return new Narrative

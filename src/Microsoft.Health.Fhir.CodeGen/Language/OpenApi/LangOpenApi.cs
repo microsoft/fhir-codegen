@@ -18,6 +18,10 @@ using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
 namespace Microsoft.Health.Fhir.CodeGen.Language.OpenApi;
 
 /// <summary>Class used to export OpenAPI definitions.</summary>
+/// <remarks>
+/// TODO: Migrate to Microsoft.OpenApi v2
+/// https://github.com/microsoft/OpenAPI.NET/blob/main/docs/upgrade-guide-2.md#introduction
+/// </remarks>
 public class LangOpenApi : ILanguage
 {
     private const string _languageName = "OpenApi";

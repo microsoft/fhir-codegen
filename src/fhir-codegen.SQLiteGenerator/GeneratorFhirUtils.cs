@@ -6,6 +6,7 @@ namespace fhir_codegen.SQLiteGenerator;
 
 public class GeneratorFhirUtils
 {
+    private const string _protectionModifier = "internal";
 
     internal const string CgFhirUtils = $$$"""
         //------------------------------------------------------------------------------
@@ -28,7 +29,7 @@ public class GeneratorFhirUtils
                         
         namespace fhir_codegen.SQLiteGenerator
         {
-            public static class CgFhirUtils
+            {{{_protectionModifier}}} static class CgFhirUtils
             {
                 private static JsonSerializerOptions _options = new JsonSerializerOptions()
                     .ForFhir(ModelInfo.ModelInspector)

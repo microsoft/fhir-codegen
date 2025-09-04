@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
@@ -72,5 +73,17 @@ public static partial class FhirPackageUtils
     public static bool PackageIsFhirCore(string packageName)
     {
         return _matchCorePackageOnly.IsMatch(packageName);
+    }
+
+    public static string GetShortName(string packageName, string packageVersion)
+    {
+        string version = packageVersion.Replace('.', '_');
+
+        if (packageName.StartsWith("hl7.fhir.", StringComparison.OrdinalIgnoreCase))
+        {
+            return packageName["hl7.fhir.".Length..].ToPascalCase() + "_" + version;
+        }
+
+        return packageName.ToPascalCase() + "_" + version;
     }
 }

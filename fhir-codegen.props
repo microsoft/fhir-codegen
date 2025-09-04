@@ -12,7 +12,7 @@
 		<FileVersion>$([System.DateTime]::Now.ToString("'3.'yyyy.MMdd.HHmm"))</FileVersion>
 		<Authors>GinoCanessa</Authors>
 		<Company>Microsoft Corporation</Company>
-        <Copyright>Copyright 2019-2024</Copyright>
+        <Copyright>Copyright 2019-2025</Copyright>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/Microsoft/fhir-codegen</RepositoryUrl>
 		<NeutralLanguage>en</NeutralLanguage>

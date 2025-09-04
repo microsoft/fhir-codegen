@@ -525,7 +525,7 @@ public abstract partial class FhirSanitizationUtils
         return cleaned;
     }
 
-    public static string? ProcessFhirHtmlLinks(string? value, string fhirSequenceLabel)
+    public static string? ProcessEmbeddedHtmlLinks(string? value)
     {
         if (string.IsNullOrEmpty(value))
         {
@@ -594,6 +594,41 @@ public abstract partial class FhirSanitizationUtils
                     : ".html";
 
                 return $"[{label}](https://hl7.org/fhir/{link}{suffix}{fragment})";
+            });
+
+        return cleaned;
+    }
+
+    public static string? ProcessRelativeMdLinks(string? value, string url)
+    {
+        if (string.IsNullOrEmpty(value))
+        {
+            return value;
+        }
+
+        // Replace a relative markdown link with a fully-qualified one
+        string cleaned = _regexRelativeMdLink.Replace(
+            value,
+            m =>
+            {
+                string link = m.Groups["link"].Value;
+                string label = m.Groups["label"].Value;
+
+                string fragment = string.Empty;
+
+                int hashIndex = link.IndexOf('#');
+                if (hashIndex != -1)
+                {
+                    // It's a fragment link, so preserve the fragment
+                    fragment = link[hashIndex..];
+                    link = link[0..^hashIndex];
+                }
+
+                string suffix = link.EndsWith(".html", StringComparison.OrdinalIgnoreCase) || link.EndsWith(".htm", StringComparison.OrdinalIgnoreCase)
+                    ? string.Empty
+                    : ".html";
+
+                return $"[{label}]({url}{link}{suffix}{fragment})";
             });
 
         return cleaned;

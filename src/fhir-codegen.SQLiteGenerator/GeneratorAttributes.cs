@@ -27,13 +27,14 @@ public class GeneratorAttributes
         _cgSQLiteTable,
         ];
 
+    private const string _protectionModifier = "internal";
 
     internal const string CgAttributes = $$$"""
         #nullable enable
         namespace fhir_codegen.SQLiteGenerator
         {
             [System.AttributeUsage(System.AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-            public class {{{_cgSQLiteBaseClass}}} : System.Attribute
+            {{{_protectionModifier}}} class {{{_cgSQLiteBaseClass}}} : System.Attribute
             {
                 public {{{_cgSQLiteBaseClass}}}()
                 {
@@ -41,7 +42,7 @@ public class GeneratorAttributes
             }
 
             [System.AttributeUsage(System.AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-            public class {{{_cgSQLiteTable}}} : System.Attribute
+            {{{_protectionModifier}}} class {{{_cgSQLiteTable}}} : System.Attribute
             {
                 public string? TableName { get; set; }
                 public bool DynamicTableNames { get; set; }
@@ -54,7 +55,7 @@ public class GeneratorAttributes
             }
 
             [System.AttributeUsage(System.AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
-            public class {{{_cgSQLiteIndex}}} : System.Attribute
+            {{{_protectionModifier}}} class {{{_cgSQLiteIndex}}} : System.Attribute
             {
                 public string[] Columns { get; set; }
         
@@ -65,7 +66,7 @@ public class GeneratorAttributes
             }
         
             [System.AttributeUsage(System.AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-            public class {{{_cgSQLiteKey}}} : System.Attribute
+            {{{_protectionModifier}}} class {{{_cgSQLiteKey}}} : System.Attribute
             {
                 public bool AutoIncrement { get; set; }
                 public {{{_cgSQLiteKey}}}(bool autoIncrement = true)
@@ -75,7 +76,7 @@ public class GeneratorAttributes
             }
 
             [System.AttributeUsage(System.AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
-            public class {{{_cgSQLiteForeignKey}}} : System.Attribute
+            {{{_protectionModifier}}} class {{{_cgSQLiteForeignKey}}} : System.Attribute
             {
                 public string? ReferenceTable { get; set; }
                 public string? ReferenceColumn { get; set; }
@@ -87,7 +88,7 @@ public class GeneratorAttributes
             }
 
             [System.AttributeUsage(System.AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
-            public class {{{_cgSQLiteIgnore}}} : System.Attribute
+            {{{_protectionModifier}}} class {{{_cgSQLiteIgnore}}} : System.Attribute
             {
                 public {{{_cgSQLiteIgnore}}}()
                 {
