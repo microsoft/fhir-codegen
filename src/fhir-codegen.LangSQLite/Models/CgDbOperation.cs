@@ -27,7 +27,7 @@ public partial class CgDbOperation : CgDbMetadataResourceBase
     {
         set
         {
-            ResourceTypes = (value == null || value.Count == 0) ? string.Empty : string.Join(',', value);
+            ResourceTypes = (value == null || value.Count == 0) ? null : string.Join(',', value);
         }
         get
         {

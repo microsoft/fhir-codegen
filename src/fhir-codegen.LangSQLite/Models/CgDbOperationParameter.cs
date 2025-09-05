@@ -24,7 +24,7 @@ public partial class CgDbOperationParameter : CgDbPackageContentBase
     {
         set
         {
-            Scopes = (value == null || value.Count == 0) ? string.Empty : string.Join(',', value);
+            Scopes = (value == null || value.Count == 0) ? null : string.Join(',', value);
         }
         get
         {
@@ -52,7 +52,7 @@ public partial class CgDbOperationParameter : CgDbPackageContentBase
     {
         set
         {
-            AllowedTypes = (value == null || value.Count == 0) ? string.Empty : string.Join(',', value);
+            AllowedTypes = (value == null || value.Count == 0) ? null : string.Join(',', value);
         }
         get
         {
@@ -76,7 +76,7 @@ public partial class CgDbOperationParameter : CgDbPackageContentBase
     {
         set
         {
-            TargetProfileCanonicals = (value == null || value.Count == 0) ? string.Empty : string.Join(',', value);
+            TargetProfileCanonicals = (value == null || value.Count == 0) ? null : string.Join(',', value);
         }
         get
         {
