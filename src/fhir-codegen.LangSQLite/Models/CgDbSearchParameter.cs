@@ -42,7 +42,7 @@ public partial class CgDbSearchParameter : CgDbMetadataResourceBase
 
     public required string BaseResources { get; set; }
     [CgSQLiteIgnore]
-    public List<string> BaseResourceList
+    public List<Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VersionIndependentResourceTypesAll>> BaseResourceList
     {
         set
         {
@@ -58,6 +58,8 @@ public partial class CgDbSearchParameter : CgDbMetadataResourceBase
                 .Split(',')
                 .Select(v => v.Trim())
                 .Where(v => !string.IsNullOrEmpty(v))
+                .Select(v => EnumUtility.ParseLiteral<Hl7.Fhir.Model.VersionIndependentResourceTypesAll>(v))
+                .Select(v => new Hl7.Fhir.Model.Code<Hl7.Fhir.Model.VersionIndependentResourceTypesAll>(v))
                 .ToList();
         }
     }

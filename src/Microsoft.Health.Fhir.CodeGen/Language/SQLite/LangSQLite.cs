@@ -145,6 +145,9 @@ public class LangSQLite : ILanguage
 
         // add search parameters
         addSearchParameters(package, dc);
+
+        // add operation definitions
+        addOperations(package, dc);
     }
 
     private void getCurrentIndexes()
@@ -169,6 +172,9 @@ public class LangSQLite : ILanguage
 
         CgDbSearchParameter.LoadMaxKey(_db);
         CgDbSearchParameterComponent.LoadMaxKey(_db);
+
+        CgDbOperation.LoadMaxKey(_db);
+        CgDbOperationParameter.LoadMaxKey(_db);
     }
 
     private CgDbPackage? removeExistingPackageContent(DefinitionCollection dc)
@@ -204,6 +210,9 @@ public class LangSQLite : ILanguage
         CgDbSearchParameter.Delete(_db, PackageKey: existing.Key);
         CgDbSearchParameterComponent.Delete(_db, PackageKey: existing.Key);
 
+        CgDbOperation.Delete(_db, PackageKey: existing.Key);
+        CgDbOperationParameter.Delete(_db, PackageKey: existing.Key);
+
         // return the existing package so we can load contents in-place instead of creating a new one
         return existing;
     }
@@ -230,6 +239,9 @@ public class LangSQLite : ILanguage
 
         CgDbSearchParameter.CreateTable(_db);
         CgDbSearchParameterComponent.CreateTable(_db);
+
+        CgDbOperation.CreateTable(_db);
+        CgDbOperationParameter.CreateTable(_db);
     }
 
     private string determineDatabaseFilename()
@@ -1451,14 +1463,8 @@ public class LangSQLite : ILanguage
         // iterate over the search parameters
         foreach (SearchParameter sp in dc.SearchParametersByUrl.Values)
         {
-            // will not further process search parameters we know we will not process
+            // skip anything in the exclusion set
             if (_exclusionSet.Contains(sp.Url))
-            {
-                continue;
-            }
-
-            // check for this record already existing
-            if (CgDbSearchParameter.SelectSingle(_db, PackageKey: package.Key, UnversionedUrl: sp.Url) != null)
             {
                 continue;
             }
@@ -1471,6 +1477,12 @@ public class LangSQLite : ILanguage
             if (url.EndsWith("|" + version))
             {
                 url = url.Substring(0, url.Length - (version.Length + 1));
+            }
+
+            // check for this record already existing
+            if (CgDbSearchParameter.SelectSingle(_db, PackageKey: package.Key, UnversionedUrl: url) != null)
+            {
+                continue;
             }
 
             // create a new metadata record
@@ -1534,7 +1546,7 @@ public class LangSQLite : ILanguage
 
             // set list-based properties (overrides previous nulls)
             dbSp.AliasCodeList = [];        // TODO: added in R6
-            dbSp.BaseResourceList = sp.Base.Select(br => br.ToString()!).ToList();
+            dbSp.BaseResourceList = sp.BaseElement;
             dbSp.ReferenceTargetList = sp.Target.Select(t => t.ToString()!).ToList();
             dbSp.ComparatorList = sp.ComparatorElement;
             dbSp.ModifierList = sp.ModifierElement;
@@ -1564,5 +1576,159 @@ public class LangSQLite : ILanguage
 
         _db.Insert(dbSearchParameterComponents);
         Console.WriteLine($" <<< added {dbSearchParameterComponents.Count} SearchParameter Components");
+    }
+
+    private void addOperations(
+        CgDbPackage package,
+        DefinitionCollection dc)
+    {
+        List<CgDbOperation> dbOperations = [];
+        List<CgDbOperationParameter> dbOperationParameters = [];
+
+        // iterate over the search parameters
+        foreach (OperationDefinition op in dc.OperationsByUrl.Values)
+        {
+            // skip anything in the exclusion set
+            if (_exclusionSet.Contains(op.Url))
+            {
+                continue;
+            }
+
+            string url = op.Url;
+            string version = string.IsNullOrEmpty(op.Version)
+                ? package.PackageVersion
+                : op.Version;
+
+            if (url.EndsWith("|" + version))
+            {
+                url = url.Substring(0, url.Length - (version.Length + 1));
+            }
+
+            // check for this record already existing
+            if (CgDbOperation.SelectSingle(_db, PackageKey: package.Key, UnversionedUrl: url) != null)
+            {
+                continue;
+            }
+
+            // create a new metadata record
+            CgDbOperation dbOp = new()
+            {
+                Key = CgDbOperation.GetIndex(),
+                PackageKey = package.Key,
+                Id = op.Id,
+                VersionedUrl = url + "|" + version,
+                UnversionedUrl = url,
+                Version = version,
+                VersionAlgorithmString = (op.VersionAlgorithm != null) && (op.VersionAlgorithm is FhirString cseVaFs) ? cseVaFs.Value : null,
+                VersionAlgorithmCoding = (op.VersionAlgorithm != null) && (op.VersionAlgorithm is Coding cseVaC) ? cseVaC : null,
+                SourcePackageMoniker = op.cgPackageSourceAsMoniker(),
+                Name = op.Name,
+                Status = op.Status,
+                Title = processTextForLinks(op.Title, package),
+                Description = processTextForLinks(op.Description, package),
+                Purpose = processTextForLinks(op.Purpose, package),
+                Narrative = processTextForLinks(op.Text, package),
+                StandardStatus = op.cgStandardStatus(),
+                WorkGroup = op.cgWorkGroup(),
+                FhirMaturity = op.cgMaturityLevel(),
+                IsExperimental = op.Experimental,
+                Copyright = op.Copyright,
+                CopyrightLabel = op.CopyrightLabel,
+                ApprovalDate = null,
+                LastReviewDate = null,
+                EffectivePeriodStart = null,
+                EffectivePeriodEnd = null,
+                Topic = null,
+                RelatedArtifacts = null,
+                Jurisdictions = op.Jurisdiction,
+                UseContexts = op.UseContext,
+                Authors = null,
+                Editors = null,
+                Reviewers = null,
+                Endorsers = null,
+                RootExtensions = op.Extension,
+
+                Contacts = op.Contact,
+                LastChangedDate = op.DateElement?.ToDateTimeOffset(TimeSpan.Zero),
+                Publisher = op.Publisher,
+
+                Kind = op.Kind ?? OperationDefinition.OperationKind.Operation,
+                AffectsState = op.AffectsState,
+                Synchronicity = null,                       // TODO: Added in R6, ValueSet in Extensions package
+                Code = op.Code,
+                Comment = processTextForLinks(op.Comment, package),
+                BaseCanonical = op.Base,
+                ResourceTypes = null,
+                InvokeOnSystem = op.System ?? false,
+                InvokeOnType = op.Type ?? false,
+                InvokeOnInstance = op.Instance ?? false,
+                InputProfileCanonical = op.InputProfile,
+                OutputProfileCanonical = op.OutputProfile,
+                ParameterCount = op.Parameter.Count,
+                Overloads = op.Overload.Count == 0 ? null : op.Overload,
+            };
+
+            // set list-based properties (overrides previous nulls)
+            dbOp.ResourceTypeList = op.ResourceElement;
+
+            int parameterIndex = 0;
+            addOpParams(dbOp.Key, op.Parameter, ref parameterIndex);
+
+            dbOperations.Add(dbOp);
+        }
+
+        Console.WriteLine($"Inserting OperationDefinitions for {package.PackageId}@{package.PackageVersion} into database...");
+
+        _db.Insert(dbOperations);
+        Console.WriteLine($" <<< added {dbOperations.Count} OperationDefinitions");
+
+        _db.Insert(dbOperationParameters);
+        Console.WriteLine($" <<< added {dbOperationParameters.Count} OperationParameter Components");
+
+        return;
+
+        void addOpParams(int opKey, List<OperationDefinition.ParameterComponent> opParams, ref int operationParamIndex, int? parentParamKey = null)
+        {
+            int localOrder = 0;
+
+            foreach (OperationDefinition.ParameterComponent? param in opParams)
+            {
+                CgDbOperationParameter dbOpParam = new()
+                {
+                    Key = CgDbOperationParameter.GetIndex(),
+                    PackageKey = package.Key,
+                    OperationKey = opKey,
+                    Name = param.Name,
+                    Use = param.Use ?? OperationParameterUse.In,
+                    Scopes = null,
+                    Min = param.Min ?? 0,
+                    Max = param.Max ?? "*",
+                    Documentation = processTextForLinks(param.Documentation, package),
+                    Type = param.Type?.ToString(),
+                    AllowedTypes = null,
+                    TargetProfileCanonicals = null,
+                    SearchType = param.SearchType,
+                    BindingStrength = param.Binding?.Strength,
+                    BindingValueSetCanonical = param.Binding?.ValueSet,
+                    ReferencedFrom = param.ReferencedFrom.Count == 0 ? null : param.ReferencedFrom,
+                    ParentParameterKey = parentParamKey,
+                    ChildParameterCount = param.Part.Count,
+                    OperationParameterOrder = operationParamIndex++,
+                    ParameterPartOrder = localOrder++,
+                };
+
+                dbOpParam.ScopeList = param.ScopeElement;
+                dbOpParam.AllowedTypeList = param.AllowedTypeElement;
+                dbOpParam.TargetProfileCanonicalList = param.TargetProfile.ToList();
+
+                dbOperationParameters.Add(dbOpParam);
+
+                // add any nested parameters
+                if (param.Part.Count > 0)
+                {
+                    addOpParams(opKey, param.Part, ref operationParamIndex, dbOpParam.Key);
+                }
+            }
+        }
     }
 }
