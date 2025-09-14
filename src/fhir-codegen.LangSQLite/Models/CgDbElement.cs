@@ -57,6 +57,8 @@ public partial class CgDbElement : CgDbPackageContentBase
     public required bool IsModifier { get; set; }
     public required string? IsModifierReason { get; set; }
 
+    public required string? StandardStatus { get; set; }
+
 
     [CgSQLiteIgnore]
     public string UiDisplay
@@ -142,5 +144,6 @@ public partial class CgDbElement : CgDbPackageContentBase
         IsSimpleType = false,
         IsModifier = false,
         IsModifierReason = null,
+        StandardStatus = null,
     };
 }
