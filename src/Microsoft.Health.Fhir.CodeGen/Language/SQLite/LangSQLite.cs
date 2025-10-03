@@ -128,6 +128,7 @@ public class LangSQLite : ILanguage
                 ShortName = shortName,
                 Dependencies = deps.Count > 0 ? string.Join(",", deps) : null,
                 DefinitionFhirSequence = dc.FhirSequence,
+                ProcessDate = DateTimeOffset.UtcNow,
             };
 
             // insert the package now for sanity

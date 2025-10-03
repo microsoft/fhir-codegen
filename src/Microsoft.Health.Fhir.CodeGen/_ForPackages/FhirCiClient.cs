@@ -437,19 +437,55 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
         /// </summary>
         /// <param name="qaRecs">The list of <see cref="FhirCiQaRecord"/>.</param>
         /// <returns>The generated <see cref="PackageListing"/>.</returns>
-        private PackageListing? listingFromQaRecs(List<FhirCiQaRecord> qaRecs)
+        private PackageListing? listingFromQaRecs(List<FhirCiQaRecord> qaRecs, string? versionDiscriminator = null)
         {
             PackageListing? listing = null;
+
+            int dollarIndex = versionDiscriminator?.IndexOf('$') ?? -1;
+            int plusIndex = versionDiscriminator?.IndexOf('+') ?? -1;
+
+            string? branch = versionDiscriminator switch
+            {
+                null => null,
+                "current" => null,
+                _ => dollarIndex > 0 ? versionDiscriminator![dollarIndex..] : versionDiscriminator,
+            };
+
+            string? requestedTag = null;
+
+            if (plusIndex > 0)
+            {
+                requestedTag = versionDiscriminator![plusIndex..];
+            }
 
             // iterate over the records in our dictionary - sort by status so that 'active' comes before 'retired'
             foreach (FhirCiQaRecord qa in qaRecs.OrderBy(qa => qa.Status))
             {
+                (string? qaRecBranchName, bool isDefaultBranch) = GetBranchNameRepoLiteral(qa.RepositoryUrl);
+
+                if (branch == null)
+                {
+                    switch (qaRecBranchName?.ToLowerInvariant())
+                    {
+                        case null:
+                        case "main":
+                        case "master":
+                            break;
+                        default:
+                            continue;
+                    }
+                }
+                else if (!branch.Equals(qaRecBranchName, StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
                 listing ??= new()
                 {
                     Id = qa.PackageId,
                     Name = qa.Name,
                     Description = $"CI Build of {qa.PackageId}",
-                    DistTags = null,
+                    DistTags = [],
                     Versions = new(),
                 };
 
@@ -461,6 +497,23 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
                 if (listing.Versions!.ContainsKey(versionLiteral))
                 {
                     continue;
+                }
+
+                string tag = branch == null
+                    ? "current"
+                    : "current$" + branch;
+
+                // add the full tag if we have it
+                if (!listing.DistTags!.ContainsKey(tag))
+                {
+                    listing.DistTags.Add(tag, versionLiteral);
+                }
+
+                // check for default branches to add them as well
+                if (isDefaultBranch &&
+                    (!listing.DistTags.ContainsKey("current")))
+                {
+                    listing.DistTags.Add("current", versionLiteral);
                 }
 
                 listing.Versions.Add(versionLiteral, new()
@@ -477,34 +530,34 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
                 });
             }
 
-            if ((listing?.DistTags == null) && (listing?.Versions?.Count > 0))
-            {
-                listing.DistTags ??= new();
+            //if ((listing?.DistTags == null) && (listing?.Versions?.Count > 0))
+            //{
+            //    listing.DistTags ??= new();
 
-                foreach (FhirCiQaRecord qa in qaRecs.OrderBy(qa => qa.BuildDateIso ?? qa.BuildDate))
-                {
-                    (string? branchName, bool isDefaultBranch) = GetBranchNameRepoLiteral(qa.RepositoryUrl);
+            //    foreach (FhirCiQaRecord qa in qaRecs.OrderBy(qa => qa.BuildDateIso ?? qa.BuildDate))
+            //    {
+            //        (string? branchName, bool isDefaultBranch) = GetBranchNameRepoLiteral(qa.RepositoryUrl);
 
-                    string tag = branchName == null
-                        ? "current"
-                        : "current$" + branchName;
+            //        string tag = branchName == null
+            //            ? "current"
+            //            : "current$" + branchName;
 
-                    string versionLiteral = buildVersionString(qa);
+            //        string versionLiteral = buildVersionString(qa);
 
-                    // add the full tag if we have it
-                    if (!listing.DistTags.ContainsKey(tag))
-                    {
-                        listing.DistTags.Add(tag, versionLiteral);
-                    }
+            //        // add the full tag if we have it
+            //        if (!listing.DistTags.ContainsKey(tag))
+            //        {
+            //            listing.DistTags.Add(tag, versionLiteral);
+            //        }
 
-                    // check for default branches to add them as well
-                    if (isDefaultBranch &&
-                        (!listing.DistTags.ContainsKey("current")))
-                    {
-                        listing.DistTags.Add("current", versionLiteral);
-                    }
-                }
-            }
+            //        // check for default branches to add them as well
+            //        if (isDefaultBranch &&
+            //            (!listing.DistTags.ContainsKey("current")))
+            //        {
+            //            listing.DistTags.Add("current", versionLiteral);
+            //        }
+            //    }
+            //}
 
             return listing;
         }
@@ -743,36 +796,41 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
                 return null;
             }
 
-            // no version resolves to the 'current' tag by default
-            string requestedVersion = versionDiscriminator switch
+            PackageListing? listing = listingFromQaRecs(qaRecs, versionDiscriminator);
+            if ((listing?.Versions?.Count ?? 0) == 1)
             {
-                null => "current",
-                _ => versionDiscriminator,
-            };
-
-            // check for using a tag and resolve it to a version
-            if (!requestedVersion.Contains('+'))
-            {
-                PackageListing? listing = listingFromQaRecs(qaRecs);
-
-                if (listing != null)
+                string? matchingUrl = listing!.Versions!.Values.First().Url;
+                FhirCiQaRecord? matchingRec = qaRecs.FirstOrDefault(qar => qar.Url == matchingUrl);
+                if (matchingRec != null)
                 {
-                    // check for a tag
-                    if ((listing.DistTags?.TryGetValue(requestedVersion, out string? tagVersion) == true) &&
-                        (listing.Versions?.TryGetValue(tagVersion, out PackageRelease? _) == true))
-                    {
-                        requestedVersion = tagVersion;
-                    }
-                    // check for a branch name
-                    else if ((listing.DistTags?.TryGetValue("current$" + requestedVersion, out tagVersion) == true) &&
-                             (listing.Versions?.TryGetValue(tagVersion, out PackageRelease? _) == true))
-                    {
-                        requestedVersion = tagVersion;
-                    }
+                    return matchingRec;
                 }
             }
 
-            string[] rvComponents = requestedVersion.Split('+');
+            //string? requestedVersion = null;
+
+            //// check for using a tag and resolve it to a version
+            //if ((versionDiscriminator == null) ||
+            //    !versionDiscriminator.Contains('+'))
+            //{
+            //    if (listing != null)
+            //    {
+            //        // check for a tag
+            //        if ((listing.DistTags?.TryGetValue("current", out string? tagVersion) == true) &&
+            //            (listing.Versions?.TryGetValue(tagVersion, out PackageRelease? _) == true))
+            //        {
+            //            requestedVersion = tagVersion;
+            //        }
+            //        // check for a branch name
+            //        else if ((listing.DistTags?.TryGetValue("current$" + versionDiscriminator, out tagVersion) == true) &&
+            //                 (listing.Versions?.TryGetValue(tagVersion, out PackageRelease? _) == true))
+            //        {
+            //            requestedVersion = tagVersion;
+            //        }
+            //    }
+            //}
+
+            string[] rvComponents = versionDiscriminator?.Split('+') ?? [];
 
             if ((rvComponents.Length > 1) &&
                 DateTimeOffset.TryParseExact(
@@ -822,9 +880,18 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
             int igUrlIndex = qa.RepositoryUrl?.IndexOf("/qa.json", StringComparison.Ordinal) ?? -1;
             string url = igUrlIndex == -1 ? qa.RepositoryUrl! : qa.RepositoryUrl!.Substring(0, igUrlIndex);
 
-            url += url.EndsWith('/')
-                ? "package.tgz"
-                : "/package.tgz";
+            if (qa.PackageId?.StartsWith("hl7.fhir.r", StringComparison.OrdinalIgnoreCase) ?? false)
+            {
+                url += url.EndsWith('/')
+                    ? $"{qa.PackageId}.tgz"
+                    : $"/{qa.PackageId}.tgz";
+            }
+            else
+            {
+                url += url.EndsWith('/')
+                    ? "package.tgz"
+                    : "/package.tgz";
+            }
 
             if (!url.StartsWith("http"))
             {
@@ -1049,11 +1116,18 @@ namespace Microsoft.Health.Fhir.CodeGen._ForPackages
                 await cache.Delete(taggedReference);
             }
 
-            // download happens via the resolved version
-            byte[] data = await downloadPackage(resolvedReference, qa);
+            try
+            {
+                // download happens via the resolved version
+                byte[] data = await downloadPackage(resolvedReference, qa);
 
-            // install happens via the tagged version
-            await cache.Install(taggedReference, data);
+                // install happens via the tagged version
+                await cache.Install(taggedReference, data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Could not install {reference.Moniker} from the CI server: {ex.Message}", ex);
+            }
         }
 
         #region IDisposable

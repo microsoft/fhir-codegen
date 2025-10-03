@@ -473,7 +473,14 @@ public partial class PackageLoader : IDisposable
                     byte[] data = await pc.GetPackage(packageReference);
 
                     // try to install this package
-                    await _cache.Install(packageReference, data);
+                    try
+                    {
+                        await _cache.Install(packageReference, data);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Failed to install {packageReference.Moniker}: {ex.Message}", ex);
+                    }
 
                     // only need to install from first hit
                     return true;
@@ -770,6 +777,7 @@ public partial class PackageLoader : IDisposable
 
                     case VersionHandlingTypes.ContinuousIntegration:
                         // always trigger install/update for CI builds
+                        packageReference.Scope = FhirCiClient.FhirCiScope;
                         needsInstall = true;
                         break;
 

@@ -26,6 +26,8 @@ public partial class CgDbPackage : CgDbBase
 
     public required Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes DefinitionFhirSequence { get; set; } = Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes.Unknown;
 
+    public required DateTimeOffset? ProcessDate { get; set; }
+
     [CgSQLiteIgnore]
     public string NpmId => (string.IsNullOrEmpty(PackageId) && string.IsNullOrEmpty(PackageVersion))
         ? string.Empty

@@ -255,6 +255,11 @@
             "commandLineArgs": "generate sqlite --output-file ..\\..\\temp\\fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r5.core@5.0.0 --auto-load-expansions",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "SQLite R6": {
+            "commandName": "Project",
+            "commandLineArgs": "generate sqlite --output-file ..\\..\\temp\\fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r6.core@current --auto-load-expansions false",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "http": {
             "commandName": "Project",
             "launchBrowser": true,
