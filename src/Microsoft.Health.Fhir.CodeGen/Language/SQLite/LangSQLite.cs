@@ -1381,6 +1381,7 @@ public class LangSQLite : ILanguage
                 IsSimpleType = ed.cgIsSimple(),
                 IsModifier = ed.IsModifier == true,
                 IsModifierReason = ed.IsModifierReason,
+                StandardStatus = ed.cgStandardStatus(),
             };
 
             dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);

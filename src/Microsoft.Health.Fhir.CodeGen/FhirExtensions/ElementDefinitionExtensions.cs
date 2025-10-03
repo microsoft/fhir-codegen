@@ -74,6 +74,13 @@ public static class ElementDefinitionExtensions
 
     //public static string cgRelativeId(this ElementDefinition ed) => string.Join(".", ed.ElementId.Split('.')[1..]);
 
+    /// <summary>
+    /// Gets the standards status of this definition (e.g., trial-use, normative).
+    /// </summary>
+    /// <param name="vs">The ValueSet to act on.</param>
+    /// <returns>A string representing the standards status.</returns>
+    public static string cgStandardStatus(this ElementDefinition r) => r.GetExtensionValue<Code>(CommonDefinitions.ExtUrlStandardStatus)?.ToString() ?? string.Empty;
+
     /// <summary>Gets the full path of the base definition.</summary>
     public static string cgBasePath(this ElementDefinition ed) => ed.Base?.Path ?? string.Empty;
 
