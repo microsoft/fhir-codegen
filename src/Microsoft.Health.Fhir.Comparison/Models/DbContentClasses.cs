@@ -11,6 +11,8 @@ using System.Xml.Linq;
 using fhir_codegen.SQLiteGenerator;
 using Hl7.Fhir.ElementModel.Types;
 using Microsoft.Data.Sqlite;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 
 namespace Microsoft.Health.Fhir.Comparison.Models;
@@ -22,6 +24,7 @@ public partial class DbExtensionSubstitution : DbRecordBase
 {
     public required string ReplacementUrl { get; set; }
     public required string SourceElementId { get; set; }
+    public required Microsoft.Health.Fhir.CodeGenCommon.Packaging.FhirReleases.FhirSequenceCodes SourceVersion { get; set; }
     public required string Context { get; set; }
 }
 

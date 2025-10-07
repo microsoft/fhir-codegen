@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
 
 namespace Microsoft.Health.Fhir.CodeGenCommon.Packaging;
@@ -18,7 +19,7 @@ public static partial class FhirPackageUtils
 #if NET8_0_OR_GREATER
     /// <summary>Test if a name matches known core packages.</summary>
     /// <returns>A RegEx.</returns>
-    [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core|expansions|examples|search|elements|corexml)$")]
+    [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core|corexml|elements|examples|expansions|search)$")]
     public static partial Regex MatchFhirReleasePackageNames();
 
     /// <summary>
@@ -33,6 +34,26 @@ public static partial class FhirPackageUtils
     /// <returns>A regular expression.</returns>
     private static readonly Regex _matchFhirReleasePackageNames =
         new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core|expansions|examples|search|elements|corexml)$", RegexOptions.Compiled);
+#endif
+
+#if NET8_0_OR_GREATER
+    [GeneratedRegex("^hl7\\.fhir\\.r\\d+[A-Za-z]?$")]
+    public static partial Regex MatchFhirReleasePartialNames();
+
+    private static Regex _matchFhirReleasePartialNames = MatchFhirReleasePartialNames();
+#else
+    private static readonly Regex _matchFhirReleasePartialNames =
+        new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?$", RegexOptions.Compiled);
+#endif
+
+#if NET8_0_OR_GREATER
+    [GeneratedRegex("^\\S*\\.r\\d+[A-Za-z]?$")]
+    public static partial Regex MatchEndsInFhirRelease();
+
+    private static Regex _matchEndsInFhirRelease = MatchEndsInFhirRelease();
+#else
+    private static readonly Regex _matchEndsInFhirRelease =
+        new Regex("^\\S*\\.r\\d+[A-Za-z]?$", RegexOptions.Compiled);
 #endif
 
 #if NET8_0_OR_GREATER
@@ -52,28 +73,27 @@ public static partial class FhirPackageUtils
     private static readonly Regex _matchCorePackageOnly = new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.core$", RegexOptions.Compiled);
 #endif
 
-    public static bool PackageIsFhirRelease(string packageName)
+    public static bool PackageIsFhirRelease(string packageId)
     {
-        string name = packageName;
-
-        if (name.StartsWith("@", StringComparison.Ordinal))
+        if (_matchFhirReleasePackageNames.IsMatch(packageId))
         {
-            name = name[1..];
+            return true;
         }
 
-        name = name.Contains('@')
-            ? name.Split('@')[0]
-            : name.Contains('#')
-            ? name.Split('#')[0]
-            : name;
+        int delimiterLoc = packageId.IndexOfAny(['#', '@']);
+        if (delimiterLoc == -1)
+        {
+            return false;
+        }
 
-        return _matchFhirReleasePackageNames.IsMatch(name);
+        return _matchFhirReleasePackageNames.IsMatch(packageId[0..(delimiterLoc-1)]);
     }
 
-    public static bool PackageIsFhirCore(string packageName)
-    {
-        return _matchCorePackageOnly.IsMatch(packageName);
-    }
+    public static bool PackageIsFhirCore(string packageId) => _matchCorePackageOnly.IsMatch(packageId);
+
+    public static bool PackageIsFhirCorePartial(string packageId) => _matchFhirReleasePartialNames.IsMatch(packageId);
+
+    public static bool PackageEndsWithFhirVersion(string packageId) => _matchEndsInFhirRelease.IsMatch(packageId);
 
     public static string GetShortName(string packageName, string packageVersion)
     {

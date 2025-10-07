@@ -14,6 +14,11 @@ public class PackageHttpMessageHandler : HttpMessageHandler
 {
     public ITestOutputHelper? _testOutputHelper = null;
 
+    protected override HttpResponseMessage Send(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        return SendAsync(request, cancellationToken).GetAwaiter().GetResult();
+    }
+
     /// <summary>Send an HTTP request as an asynchronous operation.</summary>
     /// <param name="request">          The HTTP request message to send.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -22,141 +27,143 @@ public class PackageHttpMessageHandler : HttpMessageHandler
         HttpRequestMessage request,
         CancellationToken cancellationToken)
     {
-        switch (request.RequestUri?.AbsoluteUri)
+        if (request.RequestUri == null)
+        {
+            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.BadRequest)
+            {
+                Content = new StringContent("Request URI is null"),
+            });
+        }
+
+        string protocol = request.RequestUri.Scheme;
+        string url = request.RequestUri.AbsoluteUri[protocol.Length..].ToLowerInvariant();
+
+        switch (url)
         {
             // r4 core
-            case "http://packages.fhir.org/hl7.fhir.r4.core":
+            case "://packages.fhir.org/hl7.fhir.r4.core":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-r4-core-primary.json"));
                 }
-            case "http://packages2.fhir.org/packages/hl7.fhir.r4.core":
+            case "://packages2.fhir.org/packages/hl7.fhir.r4.core":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-r4-core-secondary.json"));
                 }
-            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.r4&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages.fhir.org/catalog?op=find&name=hl7.fhir.r4&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-r4-primary.json"));
                 }
-            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.r4&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.r4&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-r4-secondary.json"));
                 }
-            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.r4.core&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages.fhir.org/catalog?op=find&name=hl7.fhir.r4.core&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-r4-core-primary.json"));
                 }
-            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.r4.core&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.r4.core&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-r4-core-secondary.json"));
                 }
 
             // us core
-            case "http://packages.fhir.org/hl7.fhir.us.core":
+            case "://packages.fhir.org/hl7.fhir.us.core":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-us-core-primary.json"));
                 }
-            case "http://packages2.fhir.org/packages/hl7.fhir.us.core":
+            case "://packages2.fhir.org/packages/hl7.fhir.us.core":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-us-core-secondary.json"));
                 }
-            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.us.core&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages.fhir.org/catalog?op=find&name=hl7.fhir.us.core&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-us-core-primary.json"));
                 }
-            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.us.core&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.us.core&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-us-core-secondary.json"));
                 }
 
             // backport IG
-            case "http://packages.fhir.org/hl7.fhir.uv.subscriptions-backport":
+            case "://packages.fhir.org/hl7.fhir.uv.subscriptions-backport":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-backport-primary.json"));
                 }
-            case "http://packages.fhir.org/hl7.fhir.uv.subscriptions-backport.r4":
+            case "://packages.fhir.org/hl7.fhir.uv.subscriptions-backport.r4":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-backport-primary-r4.json"));
                 }
-            case "http://packages.fhir.org/hl7.fhir.uv.subscriptions-backport.r4b":
+            case "://packages.fhir.org/hl7.fhir.uv.subscriptions-backport.r4b":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-backport-primary-r4b.json"));
                 }
-            case "http://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport":
+            case "://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-backport-secondary.json"));
                 }
-            case "http://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport.r4":
+            case "://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport.r4":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-backport-secondary-r4.json"));
                 }
-            case "http://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport.r4b":
+            case "://packages2.fhir.org/packages/hl7.fhir.uv.subscriptions-backport.r4b":
                 {
                     return Task.FromResult(JsonFile("TestData/package-info-backport-secondary-r4b.json"));
                 }
-            case "http://build.fhir.org/ig/HL7/subscriptions-backport/package.manifest.json":
-            case "https://build.fhir.org/ig/HL7/subscriptions-backport/package.manifest.json":
-            case "http://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.manifest.json":
-            case "https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.manifest.json":
+            case "://build.fhir.org/ig/HL7/subscriptions-backport/package.manifest.json":
+            case "://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.manifest.json":
                 {
                     return Task.FromResult(JsonFile("TestData/manifest-backport.json"));
                 }
-            case "http://build.fhir.org/ig/HL7/subscriptions-backport/package.r4.manifest.json":
-            case "https://build.fhir.org/ig/HL7/subscriptions-backport/package.r4.manifest.json":
-            case "http://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4.manifest.json":
-            case "https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4.manifest.json":
+            case "://build.fhir.org/ig/HL7/subscriptions-backport/package.r4.manifest.json":
+            case "://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4.manifest.json":
                 {
                     return Task.FromResult(JsonFile("TestData/manifest-backport-r4.json"));
                 }
-            case "http://build.fhir.org/ig/HL7/subscriptions-backport/package.r4b.manifest.json":
-            case "https://build.fhir.org/ig/HL7/subscriptions-backport/package.r4b.manifest.json":
-            case "http://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4b.manifest.json":
-            case "https://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4b.manifest.json":
+            case "://build.fhir.org/ig/HL7/subscriptions-backport/package.r4b.manifest.json":
+            case "://build.fhir.org/ig/HL7/subscriptions-backport/branches/a-branch/package.r4b.manifest.json":
                 {
                     return Task.FromResult(JsonFile("TestData/manifest-backport-r4b.json"));
                 }
-            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-backport-primary.json"));
                 }
-            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-backport-secondary.json"));
                 }
-            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-backport-primary-r4.json"));
                 }
-            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-backport-secondary-r4.json"));
                 }
-            case "http://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4b&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages.fhir.org/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4b&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-backport-primary-r4b.json"));
                 }
-            case "http://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4b&pkgcanonical=&canonical=&fhirversion=":
+            case "://packages2.fhir.org/packages/catalog?op=find&name=hl7.fhir.uv.subscriptions-backport.r4b&pkgcanonical=&canonical=&fhirversion=":
                 {
                     return Task.FromResult(JsonFile("TestData/catalog-backport-secondary-r4b.json"));
                 }
 
             // IHE PDQM
-            case "https://profiles.ihe.net/ITI/PDQm/package.manifest.json":
+            case "://profiles.ihe.net/iti/pdqm/package.manifest.json":
                 {
                     return Task.FromResult(JsonFile("TestData/manifest-ihe-pdqm.json"));
                 }
 
             // qas.json
-            case "http://build.fhir.org/ig/qas.json":
-            case "https://build.fhir.org/ig/qas.json":
+            case "://build.fhir.org/ig/qas.json":
                 {
                     return Task.FromResult(JsonFile("TestData/qas-full.json"));
                 }
 
             // ci core versions
-            case "http://build.fhir.org/version.info":
-            case "https://build.fhir.org/version.info":
-            case "http://build.fhir.org/branches/branch/version.info":
-            case "https://build.fhir.org/branches/branch/version.info":
+            case "://build.fhir.org/version.info":
+            case "://build.fhir.org/branches/branch/version.info":
                 {
                     return Task.FromResult(IniFile("TestData/version.info"));
                 }
@@ -164,7 +171,7 @@ public class PackageHttpMessageHandler : HttpMessageHandler
             // ci backport manifests
 
             //// URL-based directive resolution
-            //case "https://hl7.org/fhir/uv/subscriptions-backport/version.info":
+            //case "://hl7.org/fhir/uv/subscriptions-backport/version.info":
             //    {
 
             //    }

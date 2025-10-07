@@ -85,7 +85,7 @@ public sealed class NpmRepositoryConverter : JsonConverter<IReadOnlyList<NpmRepo
         string? url = null;
         string? directory = directorySuffix;
 
-        // Local paths: /some/dir, ./some/dir, ../some/dir, ~/some/dir
+        // LocalBuild paths: /some/dir, ./some/dir, ../some/dir, ~/some/dir
         if (span.StartsWith("/") || span.StartsWith("./") || span.StartsWith("../") || span.StartsWith("~/"))
         {
             directory = span.ToString();

@@ -308,7 +308,7 @@ public record class PackageManifest
     /// FHIR-specific
     /// </remarks>
     [JsonPropertyName("notForPublication")]
-    public bool? NotForPublications { get; init; } = null;
+    public bool? NotForPublication { get; init; } = null;
 
     /// <summary>
     /// For packages that have forced version literals (e.g., dev), the underlying version

@@ -524,6 +524,7 @@ public class ComparisonDatabase : IDisposable
                 Key = DbExtensionSubstitution.GetIndex(),
                 ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/patient-animal",
                 SourceElementId = "Patient.animal",
+                SourceVersion = FhirReleases.FhirSequenceCodes.DSTU2,
                 Context = "Patient",
             },
             new()
@@ -531,8 +532,17 @@ public class ComparisonDatabase : IDisposable
                 Key = DbExtensionSubstitution.GetIndex(),
                 ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/conceptmap-notarget-comment",
                 SourceElementId = "ConceptMap.group.element.target.comment",
+                SourceVersion = FhirReleases.FhirSequenceCodes.R5,
                 Context = "ConceptMap.group.element",
             },
+            new()
+            {
+                Key = DbExtensionSubstitution.GetIndex(),
+                ReplacementUrl = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding",
+                SourceElementId = "ElementDefinition.binding.additional",
+                SourceVersion = FhirReleases.FhirSequenceCodes.R5,
+                Context = "ElementDefinition.binding",
+            }
             //new()
             //{
             //    Key = GetExtensionSubstitutionKey(),
