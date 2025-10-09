@@ -62,8 +62,36 @@ public record class FhirCiQaRecord
     [JsonPropertyName("maxMemory")]
     public long? MaxMemoryUsedToBuild { get; init; } = null;
 
+    private string? repositoryUrl = null;
     [JsonPropertyName("repo")]
-    public string? RepositoryUrl { get; init; } = null;
+    public string? RepositoryUrl
+    {
+        get => repositoryUrl;
+        init
+        {
+            repositoryUrl = value;
+            (string org, string project, string? branch)? parsed = ParseGitHubRepo();
+            if (parsed != null)
+            {
+                ghOrg = parsed?.org;
+                ghProject = parsed?.project;
+                ghBranch = parsed?.branch;
+            }
+        }
+    }
+
+    private string? ghOrg = null;
+    private string? ghProject = null;
+    private string? ghBranch = null;
+
+    [JsonIgnore]
+    public string? GitHubOrg => ghOrg;
+
+    [JsonIgnore]
+    public string? GitHubProject => ghProject;
+
+    [JsonIgnore]
+    public string? GitHubBranch => ghBranch;
 
 
     public (string org, string project, string? branch)? ParseGitHubRepo()

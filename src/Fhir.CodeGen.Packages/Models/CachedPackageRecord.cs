@@ -14,5 +14,5 @@ public record class CachedPackageRecord
 
     public required PackageManifest? Manifest { get; init; }
 
-    public required object? FileIndex { get; init; }
+    public required PackageIndex? FileIndex { get; init; }
 }

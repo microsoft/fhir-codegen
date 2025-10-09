@@ -10,12 +10,17 @@ namespace Fhir.CodeGen.Packages.Tests;
 
 internal static class FullManifestExpectations
 {
+    internal const int _Simplifier = 1;
+    internal const int _Packages2 = 2;
+    internal const int _CiServer = 3;
+
     internal record class ExpectedDistTag(string Tag, string Version);
 
     internal record class FullManifestExpectationRecord
     {
         public required string? LocalPackageJsonFilename { get; init; }
-        public required PackageRegistryRecord.RegistryTypeCodes? RegistrySource { get; init; }
+        public required int? RegistryDiscriminator { get; init; }
+        public required RegistryEndpointRecord.RegistryTypeCodes? RegistryType { get; init; }
         public required string PackageName { get; init; }
         public required bool HasDescription { get; init; }
         public required int VersionCount { get; init; }
@@ -39,7 +44,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-backport-primary.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirPrimary,
+            RegistryDiscriminator = _Simplifier,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.uv.subscriptions-backport",
             HasDescription = true,
             VersionCount = 3,
@@ -77,7 +83,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-backport-primary-r4.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirPrimary,
+            RegistryDiscriminator = _Simplifier,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.uv.subscriptions-backport.r4",
             HasDescription = true,
             VersionCount = 1,
@@ -99,7 +106,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-backport-primary-r4b.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirPrimary,
+            RegistryDiscriminator = _Simplifier,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.uv.subscriptions-backport.r4b",
             HasDescription = true,
             VersionCount = 1,
@@ -120,7 +128,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-backport-secondary.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirSecondary,
+            RegistryDiscriminator = _Packages2,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.uv.subscriptions-backport",
             HasDescription = true,
             VersionCount = 3,
@@ -162,7 +171,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-backport-secondary-r4.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirSecondary,
+            RegistryDiscriminator = _Packages2,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.uv.subscriptions-backport.r4",
             HasDescription = true,
             VersionCount = 1,
@@ -184,7 +194,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-backport-secondary-r4b.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirSecondary,
+            RegistryDiscriminator = _Packages2,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.uv.subscriptions-backport.r4b",
             HasDescription = true,
             VersionCount = 1,
@@ -206,7 +217,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-us-core-primary.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirPrimary,
+            RegistryDiscriminator = _Simplifier,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.us.core",
             HasDescription = true,
             VersionCount = 19,
@@ -216,7 +228,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-us-core-secondary.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirSecondary,
+            RegistryDiscriminator = _Packages2,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.us.core",
             HasDescription = true,
             VersionCount = 19,
@@ -226,7 +239,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-r4-core-primary.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirPrimary,
+            RegistryDiscriminator = _Simplifier,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.r4.core",
             HasDescription = true,
             VersionCount = 1,
@@ -236,7 +250,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = "package-info-r4-core-secondary.json",
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirSecondary,
+            RegistryDiscriminator = _Packages2,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.r4.core",
             HasDescription = true,
             VersionCount = 1,
@@ -246,7 +261,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = null,
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirPrimary,
+            RegistryDiscriminator = _Simplifier,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.r4",
             HasDescription = true,
             VersionCount = -1,
@@ -255,7 +271,8 @@ internal static class FullManifestExpectations
         new()
         {
             LocalPackageJsonFilename = null,
-            RegistrySource = PackageRegistryRecord.RegistryTypeCodes.FhirSecondary,
+            RegistryDiscriminator = _Packages2,
+            RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
             PackageName = "hl7.fhir.r4",
             HasDescription = true,
             VersionCount = -1,

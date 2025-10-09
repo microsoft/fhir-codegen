@@ -39,10 +39,11 @@ public partial record class FhirSemVer
 
     public bool IsValid { get; init; } = true;
 
-    public bool MajorIsWildcard => (Major == null);
-    public bool MinorIsWildcard => (Minor == null);
-    public bool PatchIsWildcard => (Patch == null);
-    public bool IsPrerelease => (PreRelease != null);
+    public bool MajorIsWildcard => (Major is null);
+    public bool MinorIsWildcard => (Minor is null);
+    public bool PatchIsWildcard => (Patch is null);
+    public bool IsPrerelease => (PreRelease is not null);
+    public bool IsFullyQualified => (Major is not null) && (Minor is not null) && (Patch is not null);
 
 
     public override string ToString()
@@ -88,6 +89,18 @@ public partial record class FhirSemVer
         }
 
         SourceString = semVerString;
+
+        // check for 'latest' literal - not actually SemVer, but convert to a wildcard
+        if (semVerString.Equals("latest", StringComparison.OrdinalIgnoreCase))
+        {
+            Major = null;
+            Minor = null;
+            Patch = null;
+            PreRelease = null;
+            BuildMetadata = null;
+            IsValid = true;
+            return;
+        }
 
         // check for the presence of an `*` wildcard, which is terminal and results in non-parseable SemVer
         if (semVerString.Contains('*'))
@@ -233,9 +246,11 @@ public partial record class FhirSemVer
         BuildMetadata = match.Groups["buildmetadata"].Success ? match.Groups["buildmetadata"].Value : null;
     }
 
-    public bool Satisfies(FhirSemVer other)
+    public bool Satisfies(FhirSemVer? other)
     {
-        if (other == null || !other.IsValid || !IsValid)
+        if ((other is null) ||
+            !other.IsValid ||
+            !IsValid)
         {
             return false;
         }
@@ -283,9 +298,11 @@ public partial record class FhirSemVer
         return true;
     }
 
-    public bool IsSatisfiedBy(FhirSemVer other)
+    public bool IsSatisfiedBy(FhirSemVer? other)
     {
-        if (other == null || !other.IsValid || !IsValid)
+        if ((other is null) ||
+            !other.IsValid ||
+            !IsValid)
         {
             return false;
         }
@@ -296,7 +313,8 @@ public partial record class FhirSemVer
 
 public class FhirSemVerComparer :
     IEqualityComparer, IComparer,
-    IEqualityComparer<FhirSemVer>, IComparer<FhirSemVer>
+    //IEqualityComparer<FhirSemVer>, IComparer<FhirSemVer>,
+    IEqualityComparer<FhirSemVer?>, IComparer<FhirSemVer?>
 {
     // "final[N]" - a stable release, where N is optional and only used to distinguish between multiple final releases (e.g., for errata)
     // "ballot[N]" - a frozen release used in the ballot process

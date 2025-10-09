@@ -10,8 +10,8 @@ namespace Fhir.CodeGen.Packages.RegistryClients;
 
 public abstract class RegistryClientBase
 {
-    internal HttpClient _httpClient = null!;
-    internal PackageRegistryRecord _registryRecord = null!;
+    protected HttpClient _httpClient = null!;
+    protected RegistryEndpointRecord _registryEndpoint = null!;
 
     public virtual bool SupportsFindByName => false;
 
@@ -26,7 +26,9 @@ public abstract class RegistryClientBase
         string? fhirVersion = null) => throw new NotImplementedException();
     public virtual FullPackageManifest? GetFullManifest(string packageId) => throw new NotImplementedException();
 
-    internal (string? result, HttpStatusCode status) doJsonGet(Uri requestUri)
+    public (HttpStatusCode status, string? result) GetJsonContent(Uri requestUri) => GetContent(requestUri, "application/json");
+
+    public (HttpStatusCode status, string? result) GetContent(Uri requestUri, string acceptMimeType)
     {
         HttpRequestMessage request = new()
         {
@@ -34,24 +36,24 @@ public abstract class RegistryClientBase
             RequestUri = requestUri,
         };
 
-        if (_registryRecord.AuthHeaderValue is not null)
+        if (_registryEndpoint.AuthHeaderValue is not null)
         {
-            request.Headers.Add("Authorization", _registryRecord.AuthHeaderValue);
+            request.Headers.Add("Authorization", _registryEndpoint.AuthHeaderValue);
         }
 
-        if (_registryRecord.CustomHeaders is not null)
+        if (_registryEndpoint.CustomHeaders is not null)
         {
-            foreach ((string headerName, string headerValue) in _registryRecord.CustomHeaders)
+            foreach ((string headerName, string headerValue) in _registryEndpoint.CustomHeaders)
             {
                 request.Headers.Add(headerName, headerValue);
             }
         }
 
-        request.Headers.Add("Accept", "application/json");
+        request.Headers.Add("Accept", acceptMimeType);
 
-        if (_registryRecord.UserAgent is not null)
+        if (_registryEndpoint.UserAgent is not null)
         {
-            request.Headers.Add("User-Agent", _registryRecord.UserAgent);
+            request.Headers.Add("User-Agent", _registryEndpoint.UserAgent);
         }
         else
         {
@@ -61,9 +63,50 @@ public abstract class RegistryClientBase
         HttpResponseMessage response = _httpClient.Send(request);
         if (response.IsSuccessStatusCode)
         {
-            return (response.Content.ReadAsStringAsync().Result, response.StatusCode);
+            return (response.StatusCode, response.Content.ReadAsStringAsync().Result);
         }
 
-        return (null, response.StatusCode);
+        return (response.StatusCode, null);
+    }
+
+    public (HttpStatusCode status, Stream? content) GetHttpStream(Uri requestUri)
+    {
+        HttpRequestMessage request = new()
+        {
+            Method = HttpMethod.Get,
+            RequestUri = requestUri,
+        };
+
+        if (_registryEndpoint.AuthHeaderValue is not null)
+        {
+            request.Headers.Add("Authorization", _registryEndpoint.AuthHeaderValue);
+        }
+
+        if (_registryEndpoint.CustomHeaders is not null)
+        {
+            foreach ((string headerName, string headerValue) in _registryEndpoint.CustomHeaders)
+            {
+                request.Headers.Add(headerName, headerValue);
+            }
+        }
+
+        request.Headers.Add("Accept", "application/json");
+
+        if (_registryEndpoint.UserAgent is not null)
+        {
+            request.Headers.Add("User-Agent", _registryEndpoint.UserAgent);
+        }
+        else
+        {
+            request.Headers.Add("User-Agent", "Fhir.CodeGen.Packages");
+        }
+
+        HttpResponseMessage response = _httpClient.Send(request);
+        if (response.IsSuccessStatusCode)
+        {
+            return (response.StatusCode, response.Content.ReadAsStream());
+        }
+
+        return (response.StatusCode, null);
     }
 }

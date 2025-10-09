@@ -35,12 +35,26 @@ public record class PackageManifest
         public bool? Optional { get; init; } = null;
     }
 
-
     [JsonPropertyName("name")]
     public required string Name { get; init; }
 
+    private string versionLiteral = null!;
+
     [JsonPropertyName("version")]
-    public required string Version { get; init; }
+    public required string Version
+    {
+        get => versionLiteral;
+        init
+        {
+            versionLiteral = value;
+            parsedVersion = new(value);
+        }
+    }
+
+    private FhirSemVer parsedVersion = null!;
+
+    [JsonIgnore]
+    public FhirSemVer ParsedVersion => parsedVersion;
 
     /// <summary>
     /// Directories in the package that contain specific types of files.

@@ -14,7 +14,6 @@ namespace Fhir.CodeGen.Packages.Tests;
 
 public class FullPackageManifestTests
 {
-
     internal ILookup<string, FullManifestExpectationRecord> _fullManifestExpectationLookup;
 
     public FullPackageManifestTests()
@@ -118,7 +117,7 @@ public class FullPackageManifestTests
             }
             else
             {
-                versionManifest.Distribution.ShaSum!.ShouldBe(versionExpectations.ShaSum);
+                versionManifest.Distribution.ShaSum!.ToLowerInvariant().ShouldBe(versionExpectations.ShaSum.ToLowerInvariant());
             }
 
             if (versionExpectations.Url == null)

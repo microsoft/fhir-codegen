@@ -6,51 +6,50 @@ using System.Threading.Tasks;
 
 namespace Fhir.CodeGen.Packages.Models;
 
-public record class PackageRegistryRecord
+public record class RegistryEndpointRecord
 {
-    public static readonly PackageRegistryRecord FhirPrimaryRegistry = new()
+    public static readonly RegistryEndpointRecord FhirPrimaryRegistry = new()
     {
-        RegistryType = RegistryTypeCodes.FhirPrimary,
-        ServerUrl = "https://packages.fhir.org/",
+        RegistryType = RegistryTypeCodes.FhirNpm,
+        Url = "https://packages.fhir.org/",
     };
 
-    public static readonly PackageRegistryRecord FhirSecondaryRegistry = new()
+    public static readonly RegistryEndpointRecord FhirSecondaryRegistry = new()
     {
-        RegistryType = RegistryTypeCodes.FhirSecondary,
-        ServerUrl = "https://packages2.fhir.org/packages",
+        RegistryType = RegistryTypeCodes.FhirNpm,
+        Url = "https://packages2.fhir.org/packages",
     };
 
-    public static readonly PackageRegistryRecord FhirCiRegistry = new()
+    public static readonly RegistryEndpointRecord FhirCiRegistry = new()
     {
         RegistryType = RegistryTypeCodes.FhirCi,
-        ServerUrl = "https://build.fhir.org/"
+        Url = "https://build.fhir.org/"
     };
 
-    public static readonly List<PackageRegistryRecord> DefaultRegistries = [
-        FhirPrimaryRegistry,
+    public static readonly List<RegistryEndpointRecord> DefaultEndpoints = [
         FhirSecondaryRegistry,
+        FhirPrimaryRegistry,
         FhirCiRegistry,
     ];
 
     public enum RegistryTypeCodes
     {
-        Unknown,
-        FhirPrimary,
-        FhirSecondary,
+        FhirNpm,
         FhirCi,
         FhirHttp,
         Npm,
+        //CacheOnly,
     }
 
     private string url = null!;
 
-    public required string ServerUrl
+    public required string Url
     {
         get => url;
         init
         {
             if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("ServerUrl cannot be null or whitespace", nameof(ServerUrl));
+                throw new ArgumentException("ServerUrl cannot be null or whitespace", nameof(Url));
 
             if (value.EndsWith('/') ||
                 value.Contains('?'))

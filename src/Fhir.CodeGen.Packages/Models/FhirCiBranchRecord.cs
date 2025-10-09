@@ -22,6 +22,9 @@ public record class FhirCiBranchRecord
     [JsonPropertyName("url")]
     public string? Url { get; init; } = null;
 
+    [JsonPropertyName("mod_time")]
+    public DateTimeOffset? LastModified { get; init; } = null;
+
     /// <summary>The file/directory mode.</summary>
     /// <remarks>This looks like a flag, but I cannot find documentation on values.</remarks>
     [JsonPropertyName("mode")]

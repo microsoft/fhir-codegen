@@ -32,7 +32,6 @@ public record class PackageDirective
         NonSemVer,
     }
 
-
     /// <summary>Initializes a new instance of the <see cref="PackageDirective"/> class.</summary>
     public PackageDirective() { }
 
@@ -57,6 +56,7 @@ public record class PackageDirective
         VersionType = other.VersionType;
         DeclaredWithAlias = other.DeclaredWithAlias;
         NpmAlias = other.NpmAlias;
+        RequestedCiBranch = other.RequestedCiBranch;
         RegistryResolutions = other.RegistryResolutions.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
         FhirCiResolution = other.FhirCiResolution;
         FullPackageManifests = other.FullPackageManifests.ToDictionary(kvp => kvp.Key, kvp => kvp.Value with { });
@@ -69,7 +69,21 @@ public record class PackageDirective
     /// <summary>Gets or sets the identifier of the package.</summary>
     public string? PackageId { get; set; } = null;
 
-    public string? RequestedVersion { get; set; } = null;
+    private string? _requestedVersion = null;
+    private FhirSemVer? _requestedAsSemVer = null;
+    public string? RequestedVersion
+    {
+        get => _requestedVersion;
+        set
+        {
+            _requestedVersion = value;
+            if (value is not null)
+            {
+                _requestedAsSemVer = new(value);
+            }
+        }
+    }
+    public FhirSemVer? RequestedVersionParsed => _requestedAsSemVer;
 
     public FhirSemVer? ResolvedVersion { get; set; } = null;
 
@@ -88,19 +102,19 @@ public record class PackageDirective
 
     public string? RequestedCiBranch { get; set; } = null;
 
-    public Dictionary<PackageRegistryRecord, PackageManifest> RegistryResolutions { get; set; } = [];
+    public Dictionary<RegistryEndpointRecord, PackageManifest> RegistryResolutions { get; set; } = [];
 
     public FhirCiQaRecord? FhirCiResolution { get; set; } = null;
 
 
     /// <summary>The manifests.</summary>
-    public Dictionary<PackageRegistryRecord, FullPackageManifest> FullPackageManifests = [];
+    public Dictionary<RegistryEndpointRecord, FullPackageManifest> FullPackageManifests = [];
 
     /// <summary>The catalog entries.</summary>
     /// <remarks>
     /// Note these records contain *very* limited data
     /// </remarks>
-    public Dictionary<PackageRegistryRecord, Dictionary<string, RegistryCatalogRecord>> CatalogEntries = [];
+    public Dictionary<RegistryEndpointRecord, Dictionary<string, RegistryCatalogRecord>> CatalogEntries = [];
 
     private void parseDirective(string directive)
     {
@@ -108,7 +122,7 @@ public record class PackageDirective
 
         // first, check for an alias
         int aliasLiteralLoc = span.IndexOf("@npm:", StringComparison.Ordinal);
-        if (aliasLiteralLoc < 0)
+        if (aliasLiteralLoc > 0)
         {
             NpmAlias = directive[0..aliasLiteralLoc];
             DeclaredWithAlias = true;
@@ -147,6 +161,9 @@ public record class PackageDirective
             NameType = DirectiveNameTypeCodes.GuideWithoutSuffix;
         }
 
+        // try to parse via SemVer
+        FhirSemVer? parsed = new(RequestedVersion);
+
         // determine the type of version request
         switch (RequestedVersion.ToLowerInvariant())
         {
@@ -156,10 +173,12 @@ public record class PackageDirective
 
             case "dev":
                 VersionType = DirectiveVersionCodes.LocalBuild;
+                FhirCacheVersion = parsed;
                 break;
 
             case "current":
                 VersionType = DirectiveVersionCodes.CiBuild;
+                FhirCacheVersion = parsed;
                 break;
 
             case "*":
@@ -172,11 +191,18 @@ public record class PackageDirective
                     {
                         VersionType = DirectiveVersionCodes.CiBuild;
                         RequestedCiBranch = RequestedVersion[8..];
+                        FhirCacheVersion = parsed;
                     }
-                    else if (RequestedVersion.Contains('*') ||
-                        RequestedVersion.Contains(".x", StringComparison.OrdinalIgnoreCase))
+                    else if (!parsed.IsValid)
                     {
-                        VersionType = DirectiveVersionCodes.Wildcard;
+                        VersionType = DirectiveVersionCodes.NonSemVer;
+                        FhirCacheVersion = parsed;
+                    }
+                    else if (parsed.IsFullyQualified)
+                    {
+                        VersionType = DirectiveVersionCodes.Exact;
+                        ResolvedVersion = parsed;
+                        FhirCacheVersion = parsed;
                     }
                     else
                     {

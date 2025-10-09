@@ -14,7 +14,7 @@ namespace Fhir.CodeGen.Packages.Models;
 /// <remarks>
 /// This class is a union of the properties and a custom JSON converter is used to handle the differences in casing/naming.
 /// Catalog search includes the root packages and FHIR-version-specific ones.
-/// Standard API does not include version information, so Registry Package Information must be
+/// Standard API does not include version information, so Registry CacheDirective Information must be
 /// retrieved for each package name in order to discover versions.
 /// Note that the registries use different casing conventions for property names and include different properties.
 /// </remarks>
@@ -107,4 +107,11 @@ public record class RegistryCatalogRecord
 
     [JsonIgnore]
     internal bool? UpperCaseNames { get; init; } = null;
+
+    [JsonIgnore]
+    public string? GitHubOrg { get; init; } = null;
+    [JsonIgnore]
+    public string? GitHubProject { get; init; } = null;
+    [JsonIgnore]
+    public string? GitHubBranch { get; init; } = null;
 }

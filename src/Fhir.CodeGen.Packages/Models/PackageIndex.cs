@@ -9,6 +9,22 @@ namespace Fhir.CodeGen.Packages.Models;
 
 public record class PackageIndex
 {
+    public record class ConceptMapUriPairRecord
+    {
+        /// <summary>
+        /// ConceptMap source URI
+        /// </summary>
+        [JsonPropertyName("source")]
+        public string? Source { get; init; } = null;
+
+        /// <summary>
+        /// ConceptMap target URI
+        /// </summary>
+        [JsonPropertyName("target")]
+        public string? Target { get; init; } = null;
+    }
+
+
     public record class IndexFile
     {
         /// <summary>
@@ -64,6 +80,48 @@ public record class PackageIndex
         /// </summary>
         [JsonPropertyName("content")]
         public string? DeclaredContent { get; init; } = null;
+
+        /// <summary>
+        /// relative path from the root to the file
+        /// </summary>
+        [JsonPropertyName("filepath")]
+        public string? FilePath { get; init; } = null;
+
+        /// <summary>
+        /// Whether a structure has a snapshot already
+        /// </summary>
+        [JsonPropertyName("hasSnapshot")]
+        public bool? HasSnapshot { get; init; } = null;
+
+        /// <summary>
+        /// Whether a ValueSet already has an expansion
+        /// </summary>
+        [JsonPropertyName("hasExpansion")]
+        public bool? HasExpansion { get; init; } = null;
+
+        /// <summary>
+        /// The implicit (complete) ValueSet for a CodeSystem, if one exists and is known
+        /// </summary>
+        [JsonPropertyName("valuesetCodeSystem")]
+        public string? ImplicitValueSet { get; init; } = null;
+
+        /// <summary>
+        /// The source and target URIs for a ConceptMap, if known
+        /// </summary>
+        [JsonPropertyName("conceptMapUris")]
+        public ConceptMapUriPairRecord? ConceptMapUriPair { get; init; } = null;
+
+        /// <summary>
+        /// Unique ids within a Naming System
+        /// </summary>
+        [JsonPropertyName("namingSystemUniqueId")]
+        public List<string>? NamingSystemIds { get; init; } = null;
+
+        /// <summary>
+        /// StructureDefinition deriviation, if applicable and known
+        /// </summary>
+        [JsonPropertyName("derivation")]
+        public string? Derivation { get; init; } = null;
     }
 
     [JsonPropertyName("index-version")]
