@@ -1,6 +1,6 @@
 ﻿@page "/structuremapping/{FhirPackageKey:int}/{StructureKey:int}"
 
-@using Microsoft.Health.Fhir.Comparison.Models
+@using Fhir.CodeGen.Comparison.Models
 @using xver_editor.Services
 @using Microsoft.FluentUI.AspNetCore.Components
 @using System.Diagnostics.CodeAnalysis
@@ -1599,17 +1599,17 @@ Class="ed-dialog-container">
             allStructures = DbStructureDefinition.SelectList(
                 Xver.DbConnection,
                 FhirPackageKey: _packages[packageIndex].Key,
-                ArtifactClass: Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType);
+                ArtifactClass: Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.PrimitiveType);
 
             allStructures.AddRange(DbStructureDefinition.SelectList(
                 Xver.DbConnection,
                 FhirPackageKey: _packages[packageIndex].Key,
-                ArtifactClass: Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType));
+                ArtifactClass: Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.ComplexType));
 
             allStructures.AddRange(DbStructureDefinition.SelectList(
                 Xver.DbConnection,
                 FhirPackageKey: _packages[packageIndex].Key,
-                ArtifactClass: Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.Resource));
+                ArtifactClass: Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.Resource));
 
             filteredStructures = allStructures.AsQueryable();
         }

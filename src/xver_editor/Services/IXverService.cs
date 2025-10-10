@@ -1,6 +1,6 @@
 ﻿using System.Data;
-using Microsoft.Health.Fhir.Comparison.CompareTool;
-using Microsoft.Health.Fhir.Comparison.Models;
+using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Comparison.Models;
 
 namespace xver_editor.Services;
 

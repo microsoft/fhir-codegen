@@ -1,6 +1,6 @@
 ﻿@page "/structures/{FhirPackageKey:int}"
 
-@using Microsoft.Health.Fhir.Comparison.Models
+@using Fhir.CodeGen.Comparison.Models
 @using xver_editor.Services
 @using Microsoft.FluentUI.AspNetCore.Components
 @using System.Diagnostics.CodeAnalysis
@@ -307,7 +307,7 @@
 
     private bool TestItem(SdRecForUi item)
     {
-        if (_exlcludePrimitives && (item.Sd.ArtifactClass == Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType))
+        if (_exlcludePrimitives && (item.Sd.ArtifactClass == Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.PrimitiveType))
         {
             return false;
         }

@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Health.Fhir.Comparison.CompareTool;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
-using Microsoft.Health.Fhir.CodeGen.Loader;
-using Microsoft.Health.Fhir.CodeGen.Models;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Lib.Configuration;
+using Fhir.CodeGen.Lib.Loader;
+using Fhir.CodeGen.Lib.Models;
+using Fhir.CodeGen.Common.Packaging;
 //using Terminal.Gui;
-using static Microsoft.Health.Fhir.Comparison.CompareTool.PackageComparer;
+using static Fhir.CodeGen.Comparison.CompareTool.PackageComparer;
 
 namespace fhir_codegen;
 

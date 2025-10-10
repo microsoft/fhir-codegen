@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.CommandLine.Parsing;
-using Microsoft.Health.Fhir.CodeGen.Extensions;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Fhir.CodeGen.Lib.Extensions;
+using Fhir.CodeGen.Lib.Configuration;
 using Hl7.Fhir.Model;
 
 namespace xver_editor.Config;

@@ -50,7 +50,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fhir.CodeGen.Packages\Fhir.CodeGen.Packages.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
+    <ProjectReference Include="..\Fhir.CodeGen.Common\Fhir.CodeGen.Common.csproj" />
   </ItemGroup>
 
   <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">

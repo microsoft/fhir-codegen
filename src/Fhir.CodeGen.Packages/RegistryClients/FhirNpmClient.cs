@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Packages.Models;
 using Hl7.Fhir.Rest;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Common.Packaging;
 
 namespace Fhir.CodeGen.Packages.RegistryClients;
 

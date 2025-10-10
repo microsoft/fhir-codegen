@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.Health.Fhir.CodeGenCommon\Microsoft.Health.Fhir.CodeGenCommon.csproj" />
-    <ProjectReference Include="..\Microsoft.Health.Fhir.Comparison\Microsoft.Health.Fhir.Comparison.csproj" />
+    <ProjectReference Include="..\Fhir.CodeGen.Common\Fhir.CodeGen.Common.csproj" />
+    <ProjectReference Include="..\Fhir.CodeGen.Comparison\Fhir.CodeGen.Comparison.csproj" />
   </ItemGroup>
 
   <Import Project="..\fhir-codegen-shared\fhir-codegen-shared.projitems" Label="Shared" />

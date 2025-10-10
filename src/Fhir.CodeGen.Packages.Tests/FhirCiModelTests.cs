@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Packages.Models;
 using Fhir.CodeGen.Packages.Tests.Extensions;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Common.Packaging;
 using Shouldly;
 
 namespace Fhir.CodeGen.Packages.Tests;

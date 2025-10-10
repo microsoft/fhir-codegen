@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Packages.Models;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Common.Packaging;
 
 namespace Fhir.CodeGen.Packages.RegistryClients;
 

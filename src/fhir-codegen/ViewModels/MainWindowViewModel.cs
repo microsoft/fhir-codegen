@@ -18,7 +18,7 @@ using fhir_codegen.Models;
 using fhir_codegen.Views;
 using Material.Icons;
 using Material.Styles.Themes;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Fhir.CodeGen.Lib.Configuration;
 
 namespace fhir_codegen.ViewModels;
 

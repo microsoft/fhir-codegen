@@ -8,7 +8,7 @@ using xver_editor.Config;
 using fhir_codegen_shared;
 using System.CommandLine;
 using Antlr4.Runtime.Misc;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Fhir.CodeGen.Lib.Configuration;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using System.Threading;

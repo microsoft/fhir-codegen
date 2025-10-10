@@ -18,7 +18,7 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 using Fhir.CodeGen.Packages.CacheClients;
 using Fhir.CodeGen.Packages.Models;
 using Material.Icons;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Fhir.CodeGen.Lib.Configuration;
 
 namespace fhir_codegen.ViewModels;
 

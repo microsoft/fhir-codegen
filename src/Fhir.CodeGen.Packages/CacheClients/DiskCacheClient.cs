@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Fhir.CodeGen.Packages.Models;
 using Fhir.CodeGen.Packages.RegistryClients;
 using Hl7.Fhir.Rest;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Common.Packaging;
 
 namespace Fhir.CodeGen.Packages.CacheClients;
 

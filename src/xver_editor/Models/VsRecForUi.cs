@@ -1,4 +1,4 @@
-﻿using Microsoft.Health.Fhir.Comparison.Models;
+﻿using Fhir.CodeGen.Comparison.Models;
 using System.Diagnostics.CodeAnalysis;
 
 namespace xver_editor.Models;

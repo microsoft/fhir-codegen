@@ -13,25 +13,25 @@ Project source code is hosted on [GitHub](https://github.com/microsoft/fhir-code
 All projects are currently built on .Net 8.0 and tested on multiple platforms, though Windows is the primary development platform. The
 .Net 8.0 SDK and runtimes are available for free at: https://dotnet.microsoft.com/en-us/download .
 
-## Microsoft.Health.Fhir.CodeGenCommon
+## Fhir.CodeGen.Common
 
 This project is a class library that contains the common (normalized) models used in these projects.  The project is lightweight with
 minimal dependencies and used to ensure that additional projects and external development have access to models.
 
-Detailed information about the models can be found in the [Common Models Documentation](https://microsoft.github.io/fhir-codegen/api/Microsoft.Health.Fhir.CodeGenCommon.Models.html).
+Detailed information about the models can be found in the [Common Models Documentation](https://microsoft.github.io/fhir-codegen/api/Fhir.CodeGen.Common.Models.html).
 
-## Microsoft.Health.Fhir.CrossVersion
+## Fhir.CodeGen.CrossVersionLoader
 
 This project is a class library that provides *basic* support for loading specifications from multiple versions of FHIR. The library is scoped
 to the needs of this project and is not intended to be a full FHIR library. It is incomplete in support, though we do plan on expanding in the
 future.
 
-## Microsoft.Health.Fhir.MappingLanguage
+## Fhir.CodeGen.MappingLanguage
 
 This project is a class library that provides support for working with the FHIR Mapping Language (FML). Today, content is focused on parsing FML
 and providing useful abstractions for consumption.
 
-## Microsoft.Health.Fhir.CodeGen
+## Fhir.CodeGen.Lib
 
 This project is a class library that contains the logic used to process FHIR specifications.  For example, this project contains the code to:
 * download packages,

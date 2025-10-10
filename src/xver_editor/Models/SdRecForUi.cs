@@ -1,4 +1,4 @@
-﻿using Microsoft.Health.Fhir.Comparison.Models;
+﻿using Fhir.CodeGen.Comparison.Models;
 using System.Diagnostics.CodeAnalysis;
 
 namespace xver_editor.Models;
@@ -90,17 +90,17 @@ public record class SdRecForUi
 
         switch (Sd.ArtifactClass)
         {
-            case Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.PrimitiveType:
+            case Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.PrimitiveType:
                 {
                     return fhirUrlRoot + "datatypes.html#" + Sd.Name;
                 }
 
-            case Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.ComplexType:
+            case Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.ComplexType:
                 {
                     return fhirUrlRoot + "metadatatypes.html#" + Sd.Name;
                 }
 
-            case Microsoft.Health.Fhir.CodeGenCommon.Models.FhirArtifactClassEnum.Resource:
+            case Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.Resource:
                 {
                     return fhirUrlRoot + Sd.Name + ".html";
                 }
