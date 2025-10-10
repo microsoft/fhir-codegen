@@ -12,7 +12,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Fhir.CodeGen.Packages.RegistryClients;
 
-public class FhirNpmClient : RegistryClientBase, IRegistryClient
+public class FhirNpmClient : RegistryClientBase, IPackageRegistryClient
 {
     private static readonly List<PackageDirective.DirectiveNameTypeCodes> _supportedNameTypes = [
         PackageDirective.DirectiveNameTypeCodes.CoreFull,
@@ -118,16 +118,10 @@ public class FhirNpmClient : RegistryClientBase, IRegistryClient
             return null;
         }
 
-        // check to see if this is of a type we can process
-        switch (directive.VersionType)
+        if (!_supportedVersionTypes.Contains(directive.VersionType))
         {
-            case PackageDirective.DirectiveVersionCodes.Exact:
-            case PackageDirective.DirectiveVersionCodes.Latest:
-            case PackageDirective.DirectiveVersionCodes.Wildcard:
-                break;
-            default:
-                Console.WriteLine($"Cannot resolve package directive '{directive.RequestedDirective}' of type '{directive.VersionType}' using FHIR NPM registry - ignoring request.");
-                return null;
+            Console.WriteLine($"Cannot resolve package directive '{directive.RequestedDirective}' of type '{directive.VersionType}' using FHIR NPM registry - ignoring request.");
+            return null;
         }
 
         FhirSemVer requestedVersion = new(directive.RequestedVersion ?? "*");

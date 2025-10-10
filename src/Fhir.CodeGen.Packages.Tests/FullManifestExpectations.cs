@@ -12,7 +12,7 @@ internal static class FullManifestExpectations
 {
     internal const int _Simplifier = 1;
     internal const int _Packages2 = 2;
-    internal const int _CiServer = 3;
+    internal const int _FhirCiServer = 3;
 
     internal record class ExpectedDistTag(string Tag, string Version);
 

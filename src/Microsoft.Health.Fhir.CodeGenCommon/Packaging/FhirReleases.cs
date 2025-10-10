@@ -412,7 +412,18 @@ public static class FhirReleases
         FhirSequenceCodes.R4B => "hl7.fhir.r4b.core@" + sequence.ToLongVersion(),
         FhirSequenceCodes.R5 => "hl7.fhir.r5.core@" + sequence.ToLongVersion(),
         FhirSequenceCodes.R6 => "hl7.fhir.r6.core@" + sequence.ToLongVersion(),
-        _ => "Unknown"
+        _ => $"hl7.fhir.{sequence.ToRLiteral().ToLowerInvariant()}.core@*"
+    };
+
+    public static string ToCorePackageId(this FhirSequenceCodes sequence) => sequence switch
+    {
+        FhirSequenceCodes.DSTU2 => "hl7.fhir.r2.core",
+        FhirSequenceCodes.STU3 => "hl7.fhir.r3.core",
+        FhirSequenceCodes.R4 => "hl7.fhir.r4.core",
+        FhirSequenceCodes.R4B => "hl7.fhir.r4b.core",
+        FhirSequenceCodes.R5 => "hl7.fhir.r5.core",
+        FhirSequenceCodes.R6 => "hl7.fhir.r6.core",
+        _ => $"hl7.fhir.{sequence.ToRLiteral().ToLowerInvariant()}.core"
     };
 
     public static string ToWebUrlRoot(this FhirSequenceCodes sequence) => sequence switch

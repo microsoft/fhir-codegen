@@ -193,6 +193,12 @@ public record class PackageDirective
                         RequestedCiBranch = RequestedVersion[8..];
                         FhirCacheVersion = parsed;
                     }
+                    else if (RequestedVersion.StartsWith("dev$", StringComparison.OrdinalIgnoreCase))
+                    {
+                        VersionType = DirectiveVersionCodes.LocalBuild;
+                        RequestedCiBranch = RequestedVersion[4..];
+                        FhirCacheVersion = parsed;
+                    }
                     else if (!parsed.IsValid)
                     {
                         VersionType = DirectiveVersionCodes.NonSemVer;

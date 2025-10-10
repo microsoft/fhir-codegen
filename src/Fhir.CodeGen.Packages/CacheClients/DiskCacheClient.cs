@@ -18,7 +18,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Fhir.CodeGen.Packages.CacheClients;
 
-public class DiskCacheClient : CacheClientBase, ICacheClient
+public class DiskCacheClient : CacheClientBase, IFhirCacheClient
 {
     private string _cacheDirectory;
     public string CacheDirectory
@@ -42,7 +42,7 @@ public class DiskCacheClient : CacheClientBase, ICacheClient
     public DiskCacheClient(
         string? cacheDirectory = null,
         List<RegistryEndpointRecord>? registryEndpoints = null,
-        List<IRegistryClient>? registryClients = null,
+        List<IPackageRegistryClient>? registryClients = null,
         HttpClient? httpClient = null)
     {
         _cacheDirectory = string.IsNullOrWhiteSpace(cacheDirectory)
@@ -266,7 +266,7 @@ public class DiskCacheClient : CacheClientBase, ICacheClient
         bool includeDependencies,
         FhirReleases.FhirSequenceCodes? fhirSequence = null,
         List<RegistryEndpointRecord>? registryEndpoints = null,
-        List<IRegistryClient>? registryClients = null,
+        List<IPackageRegistryClient>? registryClients = null,
         bool overwriteExisting = false,
         CancellationToken cancellationToken = default)
     {
@@ -302,7 +302,7 @@ public class DiskCacheClient : CacheClientBase, ICacheClient
         }
 
         // use either passed-in registry information or our defaults
-        List<IRegistryClient> clients = getEffectiveClients(registryEndpoints, registryClients, directive.VersionType);
+        List<IPackageRegistryClient> clients = getEffectiveClients(registryEndpoints, registryClients, directive.VersionType);
 
         // if we have no clients that can handle this directive, it can be either be satisfied locally or not
         if (clients.Count == 0)
@@ -310,10 +310,10 @@ public class DiskCacheClient : CacheClientBase, ICacheClient
             return resolveLocally(directive);
         }
 
-        List<(IRegistryClient client, ResolvedDirectiveUri resolved)> resolvedUris = [];
+        List<(IPackageRegistryClient client, ResolvedDirectiveUri resolved)> resolvedUris = [];
 
         // get the resolutions from all configured registries
-        ConcurrentBag<(IRegistryClient client, ResolvedDirectiveUri resolved)> resolvingList = [];
+        ConcurrentBag<(IPackageRegistryClient client, ResolvedDirectiveUri resolved)> resolvingList = [];
 
         Parallel.ForEach(clients, _parallelForEachOptions, (registryClient) =>
         {
@@ -335,7 +335,7 @@ public class DiskCacheClient : CacheClientBase, ICacheClient
             return resolveLocally(directive);
         }
 
-        (IRegistryClient resolvingClient, ResolvedDirectiveUri resolvedInfo) = resolvedUris.First();
+        (IPackageRegistryClient resolvingClient, ResolvedDirectiveUri resolvedInfo) = resolvedUris.First();
 
         string cacheDirective = directive.FhirCacheDirective ??
             directive.PackageId + "#" + resolvedInfo.ResolvedVersion.ToString();
@@ -356,8 +356,21 @@ public class DiskCacheClient : CacheClientBase, ICacheClient
 
                 case PackageDirective.DirectiveVersionCodes.CiBuild:
                     {
-                        // need to determine which build is newer
-                        throw new NotImplementedException();
+                        // get version information from the CI server
+                        PackageManifest? ciServerManifest = resolvingClient.Resolve(directive);
+                        if (ciServerManifest is null)
+                        {
+                            Console.WriteLine($"Failed to re-resolve CI build manifest for '{directive.RequestedDirective}' - using local cache version.");
+                            return resolvedExisting;
+                        }
+
+                        // if the *dates* match, we can use the local version
+                        if ((ciServerManifest.PublicationDate is not null) &&
+                            (resolvedExisting.Manifest?.PublicationDate is not null) &&
+                            (ciServerManifest.PublicationDate.Value == resolvedExisting.Manifest.PublicationDate.Value))
+                        {
+                            return resolvedExisting;
+                        }
                     }
                     break;
             }

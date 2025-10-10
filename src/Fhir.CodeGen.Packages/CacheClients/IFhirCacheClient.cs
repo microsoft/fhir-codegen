@@ -9,7 +9,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Fhir.CodeGen.Packages.CacheClients;
 
-public interface ICacheClient
+public interface IFhirCacheClient
 {
     string Identifier { get; }
 
@@ -22,7 +22,7 @@ public interface ICacheClient
         bool includeDependencies,
         FhirReleases.FhirSequenceCodes? fhirSequence = null,
         List<RegistryEndpointRecord>? registryEndpoints = null,
-        List<IRegistryClient>? registryClients = null,
+        List<IPackageRegistryClient>? registryClients = null,
         bool overwriteExisting = false,
         CancellationToken cancellationToken = default);
 

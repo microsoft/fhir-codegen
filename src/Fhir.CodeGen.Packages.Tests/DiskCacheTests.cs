@@ -189,7 +189,7 @@ public class DiskCacheTestFixture : IDisposable
                 RegistryEndpointRecord.FhirSecondaryRegistry
             },
             //{
-            //    _CiServer,
+            //    _FhirCiServer,
             //    RegistryEndpointRecord.FhirCiRegistry
             //},
         };

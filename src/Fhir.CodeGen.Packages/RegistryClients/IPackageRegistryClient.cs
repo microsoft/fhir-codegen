@@ -17,9 +17,9 @@ public record class ResolvedDirectiveUri
 }
 
 
-public interface IRegistryClient
+public interface IPackageRegistryClient
 {
-    static IRegistryClient Create(RegistryEndpointRecord record, HttpClient? httpClient = null) =>
+    static IPackageRegistryClient Create(RegistryEndpointRecord record, HttpClient? httpClient = null) =>
         record.RegistryType switch
         {
             RegistryEndpointRecord.RegistryTypeCodes.FhirNpm => new FhirNpmClient(record, httpClient),

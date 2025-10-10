@@ -161,11 +161,64 @@ public class PackageHttpMessageHandler : HttpMessageHandler
                     return Task.FromResult(JsonFile("TestData/qas-full.json"));
                 }
 
-            // ci core versions
-            case "://build.fhir.org/version.info":
-            case "://build.fhir.org/branches/branch/version.info":
+            // ci core branches
+            case "://build.fhir.org/branches":
+            case "://build.fhir.org/branches/":
                 {
-                    return Task.FromResult(IniFile("TestData/version.info"));
+                    return Task.FromResult(JsonFile("TestData/core-r6-branches.json"));
+                }
+
+            // ci core versions
+            case "://build.fhir.org/hl7.fhir.r6.core.manifest.json":
+            case "://build.fhir.org/branches/master/hl7.fhir.r6.core.manifest.json":
+                {
+                    return Task.FromResult(JsonContent("""
+                        {
+                          "version": "6.0.0-ballot3",
+                          "fhirVersion": [
+                            "6.0.0-ballot3"
+                          ],
+                          "date": "20251010005838",
+                          "name": "hl7.fhir.r6.core"
+                        }
+                        """));
+                }
+
+            case "://build.fhir.org/branches/2025-09-gg-artifacts-menu/hl7.fhir.r6.core.manifest.json":
+                {
+                    return Task.FromResult(JsonContent("""
+                        {
+                          "version": "6.0.0-ballot3",
+                          "fhirVersion": [
+                            "6.0.0-ballot3"
+                          ],
+                          "date": "20250919215906",
+                          "name": "hl7.fhir.r6.core"
+                        }
+                        """));
+                }
+
+            case "://build.fhir.org/version.info":
+            case "://build.fhir.org/branches/master/version.info":
+                {
+                    return Task.FromResult(PlainTextContent("""
+                        [FHIR]
+                        FhirVersion=6.0.0-ballot3
+                        version=6.0.0-ballot3
+                        buildId=v5.0.0-4018-gc3858fff79
+                        date=20251010005838
+                        """));
+                }
+
+            case "://build.fhir.org/branches/2025-09-gg-artifacts-menu/version.info":
+                {
+                    return Task.FromResult(PlainTextContent("""
+                        [FHIR]
+                        FhirVersion=6.0.0-ballot3
+                        version=6.0.0-ballot3
+                        buildId=v5.0.0-3856-g1d58269406
+                        date=20250919215906
+                        """));
                 }
 
             // ci backport manifests
@@ -186,10 +239,6 @@ public class PackageHttpMessageHandler : HttpMessageHandler
         }
     }
 
-    /// <summary>Creates a JSON response message based on content.</summary>
-    /// <param name="content">   The content.</param>
-    /// <param name="statusCode">(Optional) The status code.</param>
-    /// <returns>A HttpResponseMessage.</returns>
     internal static HttpResponseMessage JsonFile(
             string filename,
             HttpStatusCode statusCode = HttpStatusCode.OK)
@@ -200,11 +249,7 @@ public class PackageHttpMessageHandler : HttpMessageHandler
         };
     }
 
-    /// <summary>Creates an INI response message based on content.</summary>
-    /// <param name="filename">  Filename of the file.</param>
-    /// <param name="statusCode">(Optional) The status code.</param>
-    /// <returns>A HttpResponseMessage.</returns>
-    internal static HttpResponseMessage IniFile(
+    internal static HttpResponseMessage PlainTextFile(
         string filename,
         HttpStatusCode statusCode = HttpStatusCode.OK)
     {
@@ -214,10 +259,6 @@ public class PackageHttpMessageHandler : HttpMessageHandler
         };
     }
 
-    /// <summary>Creates a JSON response message based on content.</summary>
-    /// <param name="content">   The content.</param>
-    /// <param name="statusCode">(Optional) The status code.</param>
-    /// <returns>A HttpResponseMessage.</returns>
     internal static HttpResponseMessage JsonContent(
             string content,
             HttpStatusCode statusCode = HttpStatusCode.OK)
@@ -227,4 +268,15 @@ public class PackageHttpMessageHandler : HttpMessageHandler
             Content = new StringContent(content, new System.Net.Http.Headers.MediaTypeHeaderValue("application/json")),
         };
     }
+
+    internal static HttpResponseMessage PlainTextContent(
+            string content,
+            HttpStatusCode statusCode = HttpStatusCode.OK)
+    {
+        return new HttpResponseMessage(statusCode)
+        {
+            Content = new StringContent(content, new System.Net.Http.Headers.MediaTypeHeaderValue("text/plain")),
+        };
+    }
+
 }

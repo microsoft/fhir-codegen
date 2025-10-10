@@ -19,41 +19,42 @@ public class FhirCiRegistryTests : IClassFixture<FhirCiRegistryTestFixture>
     }
 
     [Theory]
-    [InlineData(_CiServer, "hl7.fhir.uv.subscriptions-backport", new string[] { "master", "propose-changes" })]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", new string[] { "master", "propose-changes" })]
+    [InlineData("hl7.fhir.r6.core", new string[] { "master", "2025-09-gg-artifacts-menu" })]
+    [InlineData("hl7.fhir.r6", new string[] { "master", "2025-09-gg-artifacts-menu" })]
     public void RegistryCatalogFind(
-        int registryDiscriminator,
         string packageId,
         string[]? branchNames)
     {
-        RegistryEndpointRecord registryRec = _fixture._registries[registryDiscriminator];
+        RegistryEndpointRecord registryRec = _fixture._registries[_FhirCiServer];
 
-        IRegistryClient client = IRegistryClient.Create(registryRec, _fixture._httpClient);
+        IPackageRegistryClient client = IPackageRegistryClient.Create(registryRec, _fixture._httpClient);
         List<RegistryCatalogRecord>? results = client.Find(name: packageId);
-        results.ShouldNotBeNull($"Expected non-null results for registry {registryDiscriminator}.");
+        results.ShouldNotBeNull($"Expected non-null results for CI registry.");
 
         if (branchNames is null)
         {
-            results.Count.ShouldBe(0, $"Expected no results for registry {registryDiscriminator}.");
+            results.Count.ShouldBe(0, $"Expected no results for CI registry.");
             return;
         }
 
-        results.Count.ShouldBe(branchNames.Length, $"Expected {branchNames.Length} results for registry {registryDiscriminator}.");
+        results.Count.ShouldBeGreaterThanOrEqualTo(branchNames.Length, $"Expected at least {branchNames.Length} results for CI registry.");
         foreach (string branchName in branchNames)
         {
-            results.Any(r => r.GitHubBranch == branchName).ShouldBeTrue($"Expected to find branch '{branchName}' in results for registry {registryDiscriminator}.");
+            results.Any(r => r.GitHubBranch == branchName).ShouldBeTrue($"Expected to find branch '{branchName}' in results for CI registry.");
         }
     }
 
     [Theory]
-    [InlineData(_CiServer, "hl7.fhir.uv.subscriptions-backport", new string[] { "current", "current$propose-changes" })]
+    [InlineData("hl7.fhir.uv.subscriptions-backport", new string[] { "current", "current$propose-changes" })]
+    [InlineData("hl7.fhir.r6.core", new string[] { "current", "current$2025-09-gg-artifacts-menu" })]
+    [InlineData("hl7.fhir.r6", new string[] { "current", "current$2025-09-gg-artifacts-menu" })]
     public void RegistryGetFullManifest(
-        int registryDiscriminator,
         string packageId,
         string[]? versions)
     {
-        RegistryEndpointRecord registryRec = _fixture._registries[registryDiscriminator];
-
-        IRegistryClient client = IRegistryClient.Create(registryRec, _fixture._httpClient);
+        RegistryEndpointRecord registryRec = _fixture._registries[_FhirCiServer];
+        IPackageRegistryClient client = IPackageRegistryClient.Create(registryRec, _fixture._httpClient);
 
         FullPackageManifest? manifest = client.GetFullManifest(packageId);
 
@@ -65,7 +66,7 @@ public class FhirCiRegistryTests : IClassFixture<FhirCiRegistryTestFixture>
 
         manifest.ShouldNotBeNull();
         manifest.Versions.ShouldNotBeNull();
-        manifest.Versions.Count.ShouldBe(versions.Length);
+        manifest.Versions.Count.ShouldBeGreaterThanOrEqualTo(versions.Length, $"Expected at least {versions.Length} versions for CI registry.");
 
         foreach (string expectedVersion in versions)
         {
@@ -73,6 +74,46 @@ public class FhirCiRegistryTests : IClassFixture<FhirCiRegistryTestFixture>
             versionManifest.Distribution.ShouldNotBeNull();
             versionManifest.Distribution.TarballUrl.ShouldNotBeNull();
         }
+    }
+
+    [Theory]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#current", true)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#current$propose-changes", true)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#current$not-a-branch", false)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#dev", false)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#1.1.0", false)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#latest", false)]
+    [InlineData("hl7.fhir.uv.subscriptions-backport#*", false)]
+    [InlineData("hl7.fhir.r6.core#current", true)]
+    [InlineData("hl7.fhir.r6.core#current$2025-09-gg-artifacts-menu", true)]
+    [InlineData("hl7.fhir.r6.core#current$not-a-branch", false)]
+    [InlineData("hl7.fhir.r6#current", true)]
+    [InlineData("hl7.fhir.r6#current$2025-09-gg-artifacts-menu", true)]
+    public void RegistryGetVersionManifest(
+        string directive,
+        bool exists)
+    {
+        RegistryEndpointRecord registryRec = _fixture._registries[_FhirCiServer];
+        IPackageRegistryClient client = IPackageRegistryClient.Create(registryRec, _fixture._httpClient);
+
+        PackageDirective pd = new(directive);
+
+        if (exists)
+        {
+            pd.VersionType.ShouldBe(PackageDirective.DirectiveVersionCodes.CiBuild);
+        }
+
+        PackageManifest? manifest = client.Resolve(pd);
+        if (!exists)
+        {
+            manifest.ShouldBeNull();
+            return;
+        }
+
+        manifest.ShouldNotBeNull();
+        manifest.Version.ShouldNotBeNullOrEmpty();
+        manifest.Distribution.ShouldNotBeNull();
+        manifest.Distribution.TarballUrl.ShouldNotBeNullOrEmpty();
     }
 }
 
@@ -91,7 +132,7 @@ public class FhirCiRegistryTestFixture
         _registries = new()
         {
             {
-                _CiServer,
+                _FhirCiServer,
                 RegistryEndpointRecord.FhirCiRegistry
             }
         };

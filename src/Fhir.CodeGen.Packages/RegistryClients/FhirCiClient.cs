@@ -13,7 +13,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 
 namespace Fhir.CodeGen.Packages.RegistryClients;
 
-public class FhirCiClient : RegistryClientBase, IRegistryClient
+public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
 {
     private static readonly List<PackageDirective.DirectiveNameTypeCodes> _supportedNameTypes = [
         PackageDirective.DirectiveNameTypeCodes.CoreFull,
@@ -191,7 +191,8 @@ public class FhirCiClient : RegistryClientBase, IRegistryClient
         updateIndicies();
 
         // check if this is a core package request
-        if (FhirPackageUtils.PackageIsFhirCorePartial(packageId))
+        if (FhirPackageUtils.PackageIsFhirCore(packageId) ||
+            FhirPackageUtils.PackageIsFhirCorePartial(packageId))
         {
             return buildCoreCiManifest(packageId);
         }
@@ -332,7 +333,7 @@ public class FhirCiClient : RegistryClientBase, IRegistryClient
 
             // try to get the manifest
             (HttpStatusCode httpStatus, string? corePackageManifestJson) = GetJsonContent(
-                new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageDirective()}.manifest.json"));
+                new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.manifest.json"));
 
             if (httpStatus.IsSuccessful() &&
                 (corePackageManifestJson is not null))
@@ -349,7 +350,7 @@ public class FhirCiClient : RegistryClientBase, IRegistryClient
                         Version = versionTag,
                         Distribution = new()
                         {
-                            TarballUrl = new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageDirective()}.tgz").AbsoluteUri,
+                            TarballUrl = new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.tgz").AbsoluteUri,
                         },
                         Type = "Core",
                         CanonicalUrl = "http://hl7.org/fhir",
@@ -381,13 +382,13 @@ public class FhirCiClient : RegistryClientBase, IRegistryClient
 
             versions[versionTag] = new()
             {
-                Name = requestedCoreSequence.ToCorePackageDirective(),
+                Name = requestedCoreSequence.ToCorePackageId(),
                 Description = "FHIR Core CI - " + requestedCoreSequence.ToRLiteral(),
                 FhirVersion = [requestedCoreSequence.ToLongVersion()],
                 Version = versionTag,
                 Distribution = new()
                 {
-                    TarballUrl = new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageDirective()}.tgz").AbsoluteUri,
+                    TarballUrl = new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.tgz").AbsoluteUri,
                 },
                 Type = "Core",
                 CanonicalUrl = "http://hl7.org/fhir",
@@ -407,8 +408,8 @@ public class FhirCiClient : RegistryClientBase, IRegistryClient
         // construct a package manifest using the core branches as versions
         return new()
         {
-            Id = requestedCoreSequence.ToCorePackageDirective(),
-            Name = requestedCoreSequence.ToCorePackageDirective(),
+            Id = requestedCoreSequence.ToCorePackageId(),
+            Name = requestedCoreSequence.ToCorePackageId(),
             Description = "FHIR Core CI - " + requestedCoreSequence.ToRLiteral(),
             Versions = versions,
         };
@@ -484,14 +485,81 @@ public class FhirCiClient : RegistryClientBase, IRegistryClient
         FhirReleases.FhirSequenceCodes? requiredFhirSequence = null,
         bool allowPrerelease = true)
     {
-        throw new NotImplementedException();
+        if (directive.PackageId is null)
+        {
+            Console.WriteLine($"Cannot resolve a directive that has a null package id!");
+            return null;
+        }
+
+        if (!_supportedVersionTypes.Contains(directive.VersionType))
+        {
+            Console.WriteLine($"Cannot resolve package directive '{directive.RequestedDirective}' of type '{directive.VersionType}' using FHIR CI client - ignoring request.");
+            return null;
+        }
+
+        updateIndicies();
+
+        FullPackageManifest? fullPackageManifest = null;
+
+        // check if this is a core package request
+        if (FhirPackageUtils.PackageIsFhirCore(directive.PackageId) ||
+            FhirPackageUtils.PackageIsFhirCorePartial(directive.PackageId))
+        {
+            fullPackageManifest = buildCoreCiManifest(directive.PackageId);
+        }
+        else
+        {
+            fullPackageManifest = buildIgCiManifest(directive.PackageId);
+        }
+
+        if ((fullPackageManifest is null) ||
+            (fullPackageManifest.Versions is null) ||
+            (fullPackageManifest.Versions.Count == 0))
+        {
+            return null;
+        }
+
+        string versionLiteral = directive.RequestedVersion
+            ?? (directive.RequestedCiBranch is null ? null : $"current${directive.RequestedCiBranch}")
+            ?? "current";
+
+        if (fullPackageManifest.Versions.TryGetValue(versionLiteral, out PackageManifest? pm))
+        {
+            return pm;
+        }
+
+        return null;
     }
 
     public ResolvedDirectiveUri? GetDownloadUri(
         PackageDirective directive,
         bool requireRegistryResolution = false)
     {
-        throw new NotImplementedException();
+        if (directive.PackageId is null)
+        {
+            Console.WriteLine($"Cannot resolve a directive that has a null package id!");
+            return null;
+        }
+
+        if (!_supportedVersionTypes.Contains(directive.VersionType))
+        {
+            Console.WriteLine($"Cannot resolve package directive '{directive.RequestedDirective}' of type '{directive.VersionType}' using FHIR CI client - ignoring request.");
+            return null;
+        }
+
+        PackageManifest? versionManifest = Resolve(directive);
+        if ((versionManifest?.Distribution is null) ||
+            string.IsNullOrEmpty(versionManifest.Distribution.TarballUrl))
+        {
+            return null;
+        }
+
+        return new()
+        {
+            TarballUri = new(versionManifest.Distribution.TarballUrl),
+            ShaSum = versionManifest.Distribution.ShaSum,
+            ResolvedVersion = new(versionManifest.Version),
+        };
     }
 
     private void updateIndicies()

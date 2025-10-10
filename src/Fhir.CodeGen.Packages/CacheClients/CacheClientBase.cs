@@ -17,7 +17,7 @@ public abstract class CacheClientBase
     };
 
     protected List<RegistryEndpointRecord> _registryEndpoints = [];
-    protected List<IRegistryClient> _registryClients = [];
+    protected List<IPackageRegistryClient> _registryClients = [];
     protected HttpClient? _httpClient = null;
     protected ConcurrentDictionary<string, CachedPackageRecord>? _installedPackages = null;
     protected Lock _installedPackageLock = new();
@@ -30,14 +30,14 @@ public abstract class CacheClientBase
     /// <param name="registryClients"></param>
     protected void configureRegistryInfo(
         List<RegistryEndpointRecord>? registryEndpoints,
-        List<IRegistryClient>? registryClients)
+        List<IPackageRegistryClient>? registryClients)
     {
         if ((registryEndpoints is null) &&
             (registryClients is null))
         {
             _registryEndpoints = RegistryEndpointRecord.DefaultEndpoints;
             _registryClients = _registryEndpoints
-                .Select(e => IRegistryClient.Create(e, _httpClient))
+                .Select(e => IPackageRegistryClient.Create(e, _httpClient))
                 .ToList();
 
             return;
@@ -47,7 +47,7 @@ public abstract class CacheClientBase
         {
             _registryEndpoints = registryEndpoints!;
             _registryClients = _registryEndpoints
-                .Select(e => IRegistryClient.Create(e, _httpClient))
+                .Select(e => IPackageRegistryClient.Create(e, _httpClient))
                 .ToList();
 
             return;
@@ -67,9 +67,9 @@ public abstract class CacheClientBase
         _registryClients = registryClients!;
     }
 
-    protected List<IRegistryClient> getEffectiveClients(
+    protected List<IPackageRegistryClient> getEffectiveClients(
         List<RegistryEndpointRecord>? paramRegistryEndpoints,
-        List<IRegistryClient>? paramRegistryClients,
+        List<IPackageRegistryClient>? paramRegistryClients,
         PackageDirective.DirectiveVersionCodes forVersionType)
     {
         if ((paramRegistryEndpoints is null) && (paramRegistryClients is null))
@@ -87,7 +87,7 @@ public abstract class CacheClientBase
         }
 
         return paramRegistryEndpoints!
-            .Select(e => IRegistryClient.Create(e, _httpClient))
+            .Select(e => IPackageRegistryClient.Create(e, _httpClient))
             .Where(c => c.SupportedVersionTypes.Contains(forVersionType))
             .ToList();
     }

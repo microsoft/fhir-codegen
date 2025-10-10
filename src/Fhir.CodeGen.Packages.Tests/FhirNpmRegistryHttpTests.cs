@@ -57,7 +57,7 @@ public class FhirNpmRegistryHttpTests : IClassFixture<FhirNpmRegistryHttpTestFix
         FullManifestExpectationRecord? expectations = _fullManifestExpectationLookup[(packageId, registryDiscriminator)].FirstOrDefault();
         expectations.ShouldNotBeNull($"Missing expectations for package ID '{packageId}'.");
 
-        IRegistryClient client = IRegistryClient.Create(registryRec, _fixture._httpClient);
+        IPackageRegistryClient client = IPackageRegistryClient.Create(registryRec, _fixture._httpClient);
 
         List<RegistryCatalogRecord>? results = client.Find(name: packageId);
         results.ShouldNotBeNull($"Expected non-null results for registry {registryDiscriminator}.");
