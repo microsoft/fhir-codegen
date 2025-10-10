@@ -64,7 +64,8 @@ public partial class CgDbSearchParameter : CgDbMetadataResourceBase
         }
     }
 
-    public required Hl7.Fhir.Model.SearchParamType? SearchType { get; set; }
+    //public required Hl7.Fhir.Model.SearchParamType? SearchType { get; set; }
+    public required string? SearchType { get; set; }
     public required string? Expression { get; set; }
     public required Hl7.Fhir.Model.SearchParameter.SearchProcessingModeType? ProcessingMode { get; set; }
     public required string? SearchParameterConstraint { get; set; }

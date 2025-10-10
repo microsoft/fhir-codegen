@@ -729,7 +729,8 @@ public class ComparisonDatabase : IDisposable
             }
 
             List<string> deps = dc.Manifests.Keys
-                .Where(moniker => !moniker.StartsWith(dc.MainPackageId, StringComparison.OrdinalIgnoreCase))
+                .Where(key => !key.id.StartsWith(dc.MainPackageId, StringComparison.OrdinalIgnoreCase))
+                .Select(key => key.id + "@" + key.version)
                 .ToList();
 
             // add data about our packages

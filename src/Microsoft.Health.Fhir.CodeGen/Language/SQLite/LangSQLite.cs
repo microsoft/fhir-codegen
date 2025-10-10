@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Common;
 using System.Text;
 using System.Xml.Linq;
+using Fhir.CodeGen.Packages.Models;
 using fhir_codegen.LangSQLite.Models;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
@@ -91,18 +92,20 @@ public class LangSQLite : ILanguage
                 : FhirPackageUtils.GetShortName(dc.MainPackageId, dc.MainPackageVersion);
 
             List<string> deps = dc.Manifests.Keys
-                .Where(moniker => !moniker.StartsWith(dc.MainPackageId, StringComparison.OrdinalIgnoreCase))
+                .Where(key => !key.id.StartsWith(dc.MainPackageId, StringComparison.OrdinalIgnoreCase))
+                .Select(key => key.id + "@" + key.version)
                 .ToList();
 
-            string moniker = dc.MainPackageId + "@" + dc.MainPackageVersion;
+            if (!dc.TryGetManifest(dc.MainPackageId, dc.MainPackageVersion, out PackageManifest? mainManifest))
+            {
+                throw new Exception($"Failed to get main package manifest: {dc.MainPackageId}@{dc.MainPackageVersion}");
+            }
 
-            _ForPackages.PackageManifest mainManifest = dc.Manifests[moniker];
-
-            string? webUrl = string.IsNullOrEmpty(mainManifest.Url)
+            string? webUrl = string.IsNullOrEmpty(mainManifest.WebPublicationUrl)
                 ? null
-                : mainManifest.Url.EndsWith('/')
-                    ? mainManifest.Url
-                    : mainManifest.Url + "/";
+                : mainManifest.WebPublicationUrl.EndsWith('/')
+                    ? mainManifest.WebPublicationUrl
+                    : mainManifest.WebPublicationUrl + "/";
 
             if (_packageIsFhirCore)
             {
@@ -113,7 +116,7 @@ public class LangSQLite : ILanguage
                 }
             }
 
-            // create a new package
+            // create a new database package record
             package = new()
             {
                 Key = CgDbPackage.GetIndex(),
@@ -1527,7 +1530,7 @@ public class LangSQLite : ILanguage
 
                 DerivedFromCanonical = sp.DerivedFrom,
                 Code = sp.Code,
-                SearchType = sp.Type,
+                SearchType = sp.TypeElement?.ObjectValue?.ToString(),
                 Expression = sp.Expression,
                 ProcessingMode = sp.ProcessingMode,
                 SearchParameterConstraint = sp.Constraint,

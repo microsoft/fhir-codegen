@@ -391,13 +391,13 @@ internal static class LaunchUtils
         //// iterate through languages and add them as subcommands
         //foreach (ILanguage language in LanguageManager.GetLanguages())
         //{
-        //    Command languageCommand = new(language.Name, $"Generate {language.Name}");
-        //    if (language.Name.Any(char.IsUpper))
+        //    Command languageCommand = new(language.PackageId, $"Generate {language.PackageId}");
+        //    if (language.PackageId.Any(char.IsUpper))
         //    {
-        //        languageCommand.AddAlias(language.Name.ToLowerInvariant());
+        //        languageCommand.AddAlias(language.PackageId.ToLowerInvariant());
         //    }
 
-        //    foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
+        //    foreach (Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.PackageId), envConfig: envConfig))
         //    {
         //        languageCommand.AddOption(option);
         //        TrackIfEnum(option);

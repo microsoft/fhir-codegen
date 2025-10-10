@@ -378,6 +378,7 @@ public class DiskCacheClient : CacheClientBase, IFhirCacheClient
 
         // get a temporary directory so we can atomically update the cache
         string tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+        //string tempDir = Path.Combine(_cacheDirectory, ".fhir.codegen.temp-", Guid.NewGuid().ToString());
 
         try
         {
@@ -440,8 +441,18 @@ public class DiskCacheClient : CacheClientBase, IFhirCacheClient
                     }
                 }
 
-                // move the temp directory to the cache directory
-                Directory.Move(tempDir, destinationDir);
+                // if we are on windows, we can only move directories on the same volume
+                if (OperatingSystem.IsWindows() &&
+                    !string.Equals(Path.GetPathRoot(tempDir), Path.GetPathRoot(destinationDir), StringComparison.OrdinalIgnoreCase))
+                {
+                    // so we need to copy the temp directory to the destination (will be deleted in finally block)
+                    copyDirectory(tempDir, destinationDir, true);
+                }
+                else
+                {
+                    // move the temp directory to the cache directory
+                    Directory.Move(tempDir, destinationDir);
+                }
             }
 
             // create our cached package record
@@ -474,6 +485,41 @@ public class DiskCacheClient : CacheClientBase, IFhirCacheClient
                 {
                     // best effort
                 }
+            }
+        }
+    }
+
+    private static void copyDirectory(string sourceDir, string destinationDir, bool recursive = true)
+    {
+        // Get information about the source directory
+        DirectoryInfo dir = new DirectoryInfo(sourceDir);
+
+        // Check if the source directory exists
+        if (!dir.Exists)
+        {
+            throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+        }
+
+        // If the destination directory doesn't exist, create it
+        if (!Directory.Exists(destinationDir))
+        {
+            Directory.CreateDirectory(destinationDir);
+        }
+
+        // Get the files in the source directory and copy them to the destination directory
+        foreach (FileInfo file in dir.GetFiles())
+        {
+            string targetFilePath = Path.Combine(destinationDir, file.Name);
+            file.CopyTo(targetFilePath, true);
+        }
+
+        // If recursive and copying subdirectories, recursively call this method
+        if (recursive)
+        {
+            foreach (DirectoryInfo subDir in dir.GetDirectories())
+            {
+                string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                copyDirectory(subDir.FullName, newDestinationDir, true);
             }
         }
     }

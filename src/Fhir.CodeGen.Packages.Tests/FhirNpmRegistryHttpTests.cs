@@ -70,10 +70,10 @@ public class FhirNpmRegistryHttpTests : IClassFixture<FhirNpmRegistryHttpTestFix
         }
     }
 
-    public void RegistryGetFullManifest()
-    {
+    //public void RegistryGetFullManifest()
+    //{
 
-    }
+    //}
 
 }
 

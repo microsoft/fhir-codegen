@@ -38,8 +38,15 @@ public record class PackageDirective
     [SetsRequiredMembers]
     public PackageDirective(string requestedDirective)
     {
-        RequestedDirective = requestedDirective;
+        RequestedDirective = requestedDirective.Replace('#', '@');
         parseDirective(requestedDirective);
+    }
+
+    [SetsRequiredMembers]
+    public PackageDirective(string packageId, string version)
+    {
+        RequestedDirective = packageId + "@" + version;
+        parseDirective(RequestedDirective);
     }
 
     /// <summary>Initializes a new instance of the PackageDirective class.</summary>
@@ -89,10 +96,21 @@ public record class PackageDirective
 
     public FhirSemVer? FhirCacheVersion { get; set; } = null;
 
-    public string? FhirCacheDirective => ((PackageId == null) || (FhirCacheVersion == null))
+    public string? FhirCacheDirective => ((PackageId is null) || (FhirCacheVersion is null))
         ? null
         : PackageId + "#" + FhirCacheVersion.ToString();
 
+    public string? NpmDirective => (PackageId is null)
+        ? null
+        : (ResolvedVersion is not null)
+            ? PackageId + "@" + ResolvedVersion.ToString()
+            : (FhirCacheVersion is not null)
+                ? PackageId + "@" + FhirCacheVersion.ToString()
+                : null;
+
+    public string AnyDirective => ((PackageId is null) || (RequestedVersion is null))
+        ? RequestedDirective
+        : PackageId + "@" + RequestedVersion;
 
     public DirectiveNameTypeCodes NameType { get; set; } = DirectiveNameTypeCodes.Unknown;
     public DirectiveVersionCodes VersionType { get; set; } = DirectiveVersionCodes.Unknown;

@@ -9,8 +9,8 @@ using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
+using Fhir.CodeGen.Packages.Models;
 using Fhir.Metrics;
-using Firely.Fhir.Packages;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Terminology;
 using Microsoft.Extensions.Logging;
@@ -70,11 +70,11 @@ public partial class DefinitionCollection
     /// <summary>Gets or sets the main package version.</summary>
     public string MainPackageVersion { get; set; } = string.Empty;
 
-    /// <summary>Gets or sets the manifest.</summary>
-    public Dictionary<string, _ForPackages.PackageManifest> Manifests { get; set; } = [];
+    /// <summary>Gets or sets the index.</summary>
+    public Dictionary<(string id, FhirSemVer version), PackageManifest> Manifests { get; set; } = [];
 
     /// <summary>Gets or sets the contents.</summary>
-    public Dictionary<string, CanonicalIndex> ContentListings { get; set; } = [];
+    public Dictionary<(string id, FhirSemVer version), PackageIndex> ContentListings { get; set; } = [];
 
     //private readonly Dictionary<ElementDefinition, StructureDefinition> _elementSdLookup = new();
 
@@ -163,6 +163,135 @@ public partial class DefinitionCollection
         };
 
         _localTx = new CodeGenTerminologyService(valueSetExpanderSettings);
+    }
+
+    public void AddManifest(PackageDirective directive, PackageManifest manifest)
+    {
+        string packageId = directive.PackageId ?? manifest.Name;
+        
+        // if we have a directive, base off that
+        if (directive.FhirCacheVersion is not null)
+        {
+            Manifests[(packageId, directive.FhirCacheVersion)] = manifest;
+            return;
+        }
+
+        if (directive.RequestedVersionParsed is not null)
+        {
+            Manifests[(packageId, directive.RequestedVersionParsed)] = manifest;
+            return;
+        }
+
+        FhirSemVer v = new(manifest.Version);
+        Manifests[(packageId, v)] = manifest;
+    }
+
+    public void AddContentListing(PackageDirective directive, PackageIndex index)
+    {
+        if (directive.PackageId is null)
+        {
+            throw new ArgumentNullException(nameof(directive.PackageId));
+        }
+
+        // if we have a directive, base off that
+        if (directive.FhirCacheVersion is not null)
+        {
+            ContentListings[(directive.PackageId, directive.FhirCacheVersion)] = index;
+            return;
+        }
+
+        if (directive.RequestedVersionParsed is not null)
+        {
+            ContentListings[(directive.PackageId, directive.RequestedVersionParsed)] = index;
+            return;
+        }
+
+        throw new Exception($"Cannot track contents for a package with no version!");
+    }
+
+    public PackageManifest? GetManifest(string packageId, string version)
+    {
+        FhirSemVer requested = new(version);
+
+        if (Manifests.TryGetValue((packageId, requested), out PackageManifest? pm))
+        {
+            return pm;
+        }
+
+        foreach (KeyValuePair<(string id, FhirSemVer version), PackageManifest> kvp in Manifests)
+        {
+            if (!kvp.Key.id.Equals(packageId, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            if (kvp.Key.version.Satisfies(requested))
+            {
+                return kvp.Value;
+            }
+
+            FhirSemVer parsed = new(kvp.Value.Version);
+            if (parsed.Satisfies(requested))
+            {
+                return kvp.Value;
+            }
+        }
+
+        return null;
+    }
+
+    public PackageManifest? GetManifest(PackageDirective directive)
+    {
+        if (directive.PackageId is null)
+        {
+            return null;
+        }
+
+        if ((directive.FhirCacheVersion is not null) &&
+            Manifests.TryGetValue((directive.PackageId, directive.FhirCacheVersion), out PackageManifest? pm))
+        {
+            return pm;
+        }
+
+        if ((directive.ResolvedVersion is not null) &&
+            Manifests.TryGetValue((directive.PackageId, directive.ResolvedVersion), out pm))
+        {
+            return pm;
+        }
+
+        foreach (KeyValuePair<(string id, FhirSemVer version), PackageManifest> kvp in Manifests)
+        {
+            if (!kvp.Key.id.Equals(directive.PackageId, StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            if ((directive.FhirCacheVersion is not null) &&
+                kvp.Key.version.Satisfies(directive.FhirCacheVersion))
+            {
+                return kvp.Value;
+            }
+
+            if ((directive.ResolvedVersion is not null) &&
+                kvp.Key.version.Satisfies(directive.ResolvedVersion))
+            {
+                return kvp.Value;
+            }
+        }
+
+        return null;
+    }
+
+    public bool TryGetManifest(string packageId, string version, [NotNullWhen(true)] out PackageManifest? pm)
+    {
+        pm = GetManifest(packageId, version);
+        return pm is not null;
+    }
+
+    public bool TryGetManifest(PackageDirective directive, [NotNullWhen(true)] out PackageManifest? pm)
+    {
+        pm = GetManifest(directive);
+        return pm is not null;
     }
 
     public string Key => $"{MainPackageId}@{MainPackageVersion}";

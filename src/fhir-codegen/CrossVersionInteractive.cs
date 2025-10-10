@@ -786,7 +786,7 @@ internal class CrossVersionInteractive
     //            ResolvePackageDependencies = true,
     //        });
 
-    //        _dcLeft = loaderLeft.LoadPackages(packageLeft.Name, [ packageLeft ])
+    //        _dcLeft = loaderLeft.LoadPackages(packageLeft.PackageId, [ packageLeft ])
     //            ?? throw new Exception($"Could not load left-hand-side package: {directiveLeft}");
 
     //        PackageLoader loaderRight = new(cache, new()
@@ -796,7 +796,7 @@ internal class CrossVersionInteractive
     //            ResolvePackageDependencies = true,
     //        });
 
-    //        _dcRight = loaderRight.LoadPackages(packageRight.Name, [ packageRight ])
+    //        _dcRight = loaderRight.LoadPackages(packageRight.PackageId, [ packageRight ])
     //            ?? throw new Exception($"Could not load right-hand-side package: {directiveRight}");
 
     //        return (true, string.Empty);

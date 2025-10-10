@@ -15,10 +15,10 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
+using Fhir.CodeGen.Packages.CacheClients;
+using Fhir.CodeGen.Packages.Models;
 using Material.Icons;
-using Microsoft.Health.Fhir.CodeGen._ForPackages;
 using Microsoft.Health.Fhir.CodeGen.Configuration;
-using static Microsoft.Health.Fhir.CodeGen._ForPackages.DiskPackageCache;
 
 namespace fhir_codegen.ViewModels;
 
@@ -30,10 +30,10 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
 
     public record class InstalledPackageInfoRecord
     {
-        public required Firely.Fhir.Packages.PackageReference PackageRef { get; init; }
+        public required CachedPackageRecord PackageRef { get; init; }
         public required PackageManifest? Manifest { get; init; }
-        public required string Moniker { get; init; }
-        public required string Name { get; init; }
+        public required string DirectiveLiteral { get; init; }
+        public required string PackageId { get; init; }
         public required string Version { get; init; }
         public required string ManifestVersion { get; init; }
         public required DateTimeOffset? PackageDate { get; init; }
@@ -87,7 +87,7 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
             return;
         }
 
-        FilteredInstalledPackages = new(packages.Where(p => p.Moniker.Contains(filterValue, StringComparison.OrdinalIgnoreCase)));
+        FilteredInstalledPackages = new(packages.Where(p => p.DirectiveLiteral.Contains(filterValue, StringComparison.OrdinalIgnoreCase)));
     }
 
     public WelcomePageViewModel(object? args = null)
@@ -103,27 +103,35 @@ public partial class WelcomePageViewModel : ViewModelBase, INavigableViewModel
             throw new InvalidOperationException("No configuration found");
         }
 
-        DiskPackageCache cache = new(config.FhirCacheDirectory);
+        IFhirCacheClient cache = new DiskCacheClient(config.FhirCacheDirectory);
 
         List<InstalledPackageInfoRecord> installedPackages = new();
 
         // first, we need to get the installed package references
-        IEnumerable<Firely.Fhir.Packages.PackageReference> internalReferences = cache.GetPackageReferences().Result;
+        IEnumerable<CachedPackageRecord> internalReferences = cache.ListCachedPackages().Result;
 
         // iterate over the internal references and convert them to the public references
-        foreach (Firely.Fhir.Packages.PackageReference pr in internalReferences)
+        foreach (CachedPackageRecord cachedPackage in internalReferences)
         {
-            Microsoft.Health.Fhir.CodeGen._ForPackages.PackageManifest? manifest = cache.ReadManifestEx(pr).Result;
+            PackageManifest? manifest = cachedPackage.Manifest;
+
+            if (manifest is null)
+            {
+                continue;
+            }
 
             installedPackages.Add(new()
             {
-                PackageRef = pr,
+                PackageRef = cachedPackage,
                 Manifest = manifest,
-                Moniker = pr.Moniker,
-                Name = pr.Name ?? string.Empty,
-                Version = pr.Version ?? string.Empty,
+                DirectiveLiteral = cachedPackage.Directive.AnyDirective,
+                PackageId = cachedPackage.Directive.PackageId ?? string.Empty,
+                Version = cachedPackage.Directive.FhirCacheVersion?.ToString()
+                    ?? cachedPackage.Directive.ResolvedVersion?.ToString()
+                    ?? cachedPackage.Directive.RequestedVersion
+                    ?? string.Empty,
                 ManifestVersion = manifest?.Version ?? string.Empty,
-                PackageDate = manifest?.Date,
+                PackageDate = manifest?.PublicationDate,
                 FhirVersion = string.Join(", ", manifest?.AnyFhirVersions ?? Enumerable.Empty<string>()),
                 Description = manifest?.Description ?? string.Empty
             });

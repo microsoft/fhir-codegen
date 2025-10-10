@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Fhir.CodeGen.Packages.Models;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
 using Microsoft.Health.Fhir.CodeGen.Models;
@@ -144,9 +145,13 @@ public class ShorthandIG : ILanguage
         }
 
         // check to see if there are multiple versions of FHIR loaded - IG generation can only work with a single one
-        string[] fhirCoreDirectives = info.Manifests.Keys.Where(FhirPackageUtils.PackageIsFhirRelease).ToArray();
-        int fhirCoreVersionCount = fhirCoreDirectives.Select(d => info.Manifests[d].Version).Distinct().Count();
-
+        (string id, FhirSemVer version)[] fhirCorePackageIds = info.Manifests.Keys
+            .Where(key => FhirPackageUtils.PackageIsFhirRelease(key.id))
+            .ToArray();
+        int fhirCoreVersionCount = fhirCorePackageIds
+            .Select(d => info.Manifests[d].Version.ToString())
+            .Distinct()
+            .Count();
         if (fhirCoreVersionCount > 1)
         {
             throw new Exception("Multiple versions of FHIR are loaded, IG generation can only work with a single version. Either specify a package with a single version or use the --fhir-version parameter to filter.");

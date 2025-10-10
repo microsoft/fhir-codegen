@@ -446,6 +446,8 @@ When looking at a CI build of a core package in the local cache, the download/bu
 * `~/.fhir/packages/{directive}/package/package.json` - ([JSON - package.json](#jsonPackageJson)) - package information.
 
 When looking at a CI build of a core package, the build date can be found either:
+* in the FHIR Core build-named package manifest: e.g., `https://build.fhir.org/hl7.fhir.r6.core.manifest.json`, `https://build.fhir.org/hl7.fhir.r6.expansions.manifest.json`
+    * See [JSON - CI Manifest](#jsonCiManifest) for details
 * in the FHIR Core build version information file: `https://build.fhir.org/version.info`, or
     * See ([version.info](#iniVersionInfo)) for details
 * if a version information file does not exist, the package needs to be downloaded and extracted to discover the date.
@@ -761,6 +763,30 @@ Source: `https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.man
 }
 ```
 
+Source: `https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/package.r4.manifest.json`
+*Note that the FHIR-version-specific file MAY or MAY NOT contain the FHIR version property.*
+
+```json
+{
+  "version": "1.2.0-ballot",
+  "date": "20240617160736",
+  "notForPublication": true,
+  "name": "hl7.fhir.uv.subscriptions-backport.r4"
+}
+```
+
+Source: `https://build.fhir.org/hl7.fhir.r6.core.manifest.json`
+```json
+{
+  "version": "6.0.0-ballot3",
+  "fhirVersion": [
+    "6.0.0-ballot3"
+  ],
+  "date": "20251010005838",
+  "name": "hl7.fhir.r6.core"
+}
+```
+
 ### <a id="jsonPackageJson"></a>JSON - Package.json
 
 Source: `package/package.json` inside a FHIR NPM Package
@@ -912,4 +938,559 @@ FhirVersion={FHIR Version}
 version={FHIR Version}
 buildId={tool + short commit hash}
 date={build datetime (string - second resolution)}
+```
+
+
+---
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+----
+
+# Old Content (reference) - will be discarded prior to publishing
+
+#### Diagram
+
+```mermaid
+flowchart LR
+    subgraph n["Names"]
+        n01["Full with FHIR suffix"]
+        n02["Full without FHIR suffix"]
+        n03["Partial (core only)"]
+    end
+    
+    subgraph v["Versions"]
+        v01["Exact (1.0.0)"]
+        v02["Partial (1.0)"]
+        v03["latest"]
+        v04["dev (default branch)"]
+        v05["dev with branch name"]
+    end
+    
+    n01v01{{"hl7.fhir.uv.ig.r4#1.0.0"}}
+    click n01v01 href "#n01v01" "Jump to resolution"
+    n01v01 --> n01
+    n01v01 -.-> v01
+    
+    n02v01{{"hl7.fhir.uv.ig#1.0.0"}}
+    click n02v01 href "#n02v01" "Jump to resolution"
+    n02v01 --> n02
+    n02v01 -.-> v01
+    
+    n03v01{{"hl7.fhir.r4#4.0.1"}}
+    click n03v01 href "#n03v01" "Jump to resolution"
+    n03v01 --> n03
+    n03v01 -.-> v01
+    
+    n01v02{{"hl7.fhir.uv.ig.r4#1.0"}}
+    n01v02 ---> n01
+    n01v02 -..-> v02
+    
+    n02v02{{"hl7.fhir.uv.ig#1.0"}}
+    n02v02 ---> n02
+    n02v02 -..-> v02
+
+    n03v02{{"hl7.fhir.r4#4.0"}}
+    n03v02 ---> n03
+    n03v02 -..-> v02
+
+    n01v03{{"hl7.fhir.uv.ig.r4#latest"}}
+    n01v03 ----> n01
+    n01v03 -...-> v03
+    
+    n02v03{{"hl7.fhir.uv.ig#latest"}}
+    n02v03 ----> n02
+    n02v03 -...-> v03
+
+    n03v03{{"hl7.fhir.r4#latest"}}
+    n03v03 ----> n03
+    n03v03 -...-> v03
+
+    n01v04{{"hl7.fhir.uv.ig.r4#dev"}}
+    n01v04 -----> n01
+    n01v04 -....-> v04
+    
+    n02v04{{"hl7.fhir.uv.ig#dev"}}
+    n02v04 -----> n02
+    n02v04 -....-> v04
+
+    n03v04{{"hl7.fhir.r4#dev"}}
+    n03v04 -----> n03
+    n03v04 -....-> v04
+
+    n01v05{{"hl7.fhir.uv.ig.r4#dev-fixes"}}
+    n01v05 ------> n01
+    n01v05 -.....-> v05
+    
+    n02v05{{"hl7.fhir.uv.ig#dev-fixes"}}
+    n02v05 ------> n02
+    n02v05 -.....-> v05
+
+    n03v05{{"hl7.fhir.r4#dev-fixes"}}
+    n03v05 ------> n03
+    n03v05 -.....-> v05
+```
+
+### <a id="n01v01"></a>Name: Full with FHIR suffix + Version: Exact
+
+```mermaid
+flowchart TD
+    input{{"hl7.fhir.uv.ig.r4#1.0.0\nFull name with FHIR suffix + exact version"}}
+    input --> pre01
+
+    pre01["Check local cache for package"]
+    pre01 -- "Found" --> done
+    pre01 -- "Not Found" --> epr
+
+    subgraph epr["Each Package Registry"]
+        epr01["Request ...{name}/{version}"]
+        epr01 -- "Not Found" --> epr02>"Go to next registry"]
+        epr02 -.-> epr01
+    end
+
+    epr01 == "Found" ===> download
+    epr02 -- "None Found" ----> fail
+    
+    download["Download package tgz"]
+    download --> extract
+    extract["Extract tgz into cache"]
+    extract --> done
+
+    done["Package is in cache"]
+    fail["Fail"]
+```
+
+### <a id="n02v01"></a>Name: Full *without* FHIR suffix + Version: Exact
+
+* Note that we are assuming finding a matching package in the cache *and* not having a FHIR-Version-suffixed directory means that resolution completed sucessfully and no FHIR-Version specific package exists.
+* Note that we are assuming finding a non-FHIR-suffixed package of the correct version in a registry means that no other registries will have a FHIR-suffixed package.
+
+```mermaid
+flowchart TD
+    input{{"hl7.fhir.uv.ig#1.0.0\nFull name without FHIR suffix + exact version"}}
+    input --> pre01
+
+    pre01["Build FHIR-suffixed directive"]
+    pre01 --> pre02["Check local cache"]
+    
+    pre02 -- "Found" --> done
+    pre02 -- "Not Found" --> pre03["Use non-suffixed name"]
+    
+    pre03 --> pre04["Check local cache"]
+    
+    pre04 -- "Found" --> done
+    pre04 -- "Not Found" --> epr
+
+    subgraph epr["Each Package Registry"]
+        epr01["Query for {name}\ncatalog?op=find&name=..."]
+        epr01 --> epr02["Check results for FHIR-suffix match"]
+        epr02 -- "Does not exist" --> epr04
+        epr02 -- "Exists" --> epr03["Request ...{name}.r{FHIR}/{version}"]
+        epr03 -- "Not Found" --> epr04["Check results for exact name match"]
+        epr04 -- "Exists" --> epr05["Request ...{name}/{version}"]
+        epr05 -- "Not Found" --> epr06>"Go to next registry"]
+        epr06 -.-> epr01
+    end
+
+    epr05 == "Found" ===> download
+    epr06 -- "None Found" ----> fail
+
+    epr03 == "Found" ===> download
+    
+    download["Download package tgz"]
+    download --> extract
+    extract["Extract tgz into cache"]
+    extract --> done
+
+    done["Package is in cache"]
+    fail["Fail"]
+```
+
+### <a id="n03v01"></a>Name: Partial (core only) + Version: Exact
+
+* Note that users often do not specify the proper names for FHIR core packages - e.g., `hl7.fhir.r4` instead of `hl7.fhir.r4.core`.
+* Note that each version of FHIR includes a *different set* of core packages.
+  * I default to grabbing *core* and *expansions*, which exist for all non-CI builds since the R4 ballot (CI-Builds do not use explicit version resolution).
+  * If you want *examples* those are generally available.  It is hard to describe a rule for when it exists, so it is easier to just try and ignore an error if it does not exist.
+  * Other packages need to be specified explicitly (e.g., `hl7.fhir.r5.search`).  While mapping, you could expand out to all packages per version (or search the registry), but I have not seen use cases that require them by default.
+  * Fully-explicit package names are resolved as indicated here, but do not require mapping package names and iterating over packages.
+* Note that for published core packages, there is an additional fallback to download via the website instead of the registries (necessary when new versions are released and not yet supported/posted).
+
+```mermaid
+flowchart TD
+    input{{"hl7.fhir.r4#4.0.1\nPartial core package name + exact version"}}
+    input --> pre01
+
+    pre01["Map name to core packages"]
+    pre01 --> ep
+    
+    subgraph ep["Each core package"]
+        pre02["Check local cache"]
+        pre02 -- "Found" --> done
+        pre02 -- "Not Found" --> epr
+
+        subgraph epr["Each Package Registry"]
+            epr01["Request ...{name}/{version}"]
+            epr01 -- "Not Found" --> epr02>"Go to next registry"]
+            epr02 -.-> epr01
+        end
+
+        epr01 == "Found" ===> download
+        epr02 -- "None Found" ----> fail
+
+        download["Download package tgz"]
+        download --> extract
+        extract["Extract tgz into cache"]
+        extract --> done
+
+        done["Package is in cache"]
+        fail["Fail"]
+    end
+    
+    ep -->|All Pacakges Found| totalSuccess
+    ep -->|Any Package Fails| totalFail
+    
+    totalSuccess["Success"]
+    totalFail["Fail"]
+```
+
+
+---
+### First-pass content below...
+---
+
+## Published Version of Core Package
+
+Inputs:
+* Fully specified name and specific version: e.g., `hl7.fhir.r4.core#4.0.1` , or
+    * Check cache for directive,
+    * If not found, jump to Package Retrieval
+* Partially specified name and specific version: e.g., `hl7.fhir.r4#4.0.1`, or
+    * Map version to version-specific package names - each release version has different packages (all have `core` and `expansions`).
+    * Jump to Package Retrieval
+* Fully specified name without version: e.g., `hl7.fhir.r4.core`, or
+    * Jump to Version Resolution
+    * Jump to Package Retrieval
+* Partially specified name without version: e.g., `hl7.fhir.r4`, or
+    * Map version to version-specific package names - each release version has different packages (all have `core` and `expansions`).
+    * Jump to Version Resolution
+    * Jump to Package Retrieval
+* 'Version name': e.g., `R4`, `DSTU2`.
+    * Map version to version-specific package names - each release version has different packages (all have `core` and `expansions`).
+    * Jump to Version Resolution
+    * Jump to Package Retrieval
+
+Notes:
+* Some packages now have FHIR-version specific sub-packages
+
+### Core Version Resolution:
+
+Inputs:
+* Complete package name: e.g., `hl7.fhir.r4.core` or `hl7.fhir.r4.expansions`.
+
+```mermaid
+flowchart TD
+    subgraph epr["Each Package Registry"]
+        epr1["Ask for versions of [package name]"]
+        epr1 --> epr2["Parse version info and sort:\n- dist-tags: latest\n- version date\n- server preference"]
+    end
+    
+    epr --> a1["Collate information from each server"]
+    a1 --> done["Have known package\nname and version"]
+```
+
+### Core Package Retrieval:
+
+Inputs:
+* Complete package name: e.g., `hl7.fhir.r4.core` or `hl7.fhir.r4.expansions`, and
+* Specific version: e.g., `4.0.1`.
+
+```mermaid
+flowchart TD
+    common1["Check for local package"]
+    common1 -- "Yes" -->done
+    common1 -- "no: unknown FHIR version" -->common02a
+    common1 -- "no: known FHIR version" -->common02b
+
+    subgraph epr["Each Package Registry"]
+        epr1["Ask for versions of [package name]"]
+        epr1 --> epr2
+
+        epr2["Parse version info and sort:\n- dist-tags: latest\n- version date\n- server preference"]
+    end
+
+
+    common02a["Ask *each* package server for package versions\n.../{package name}\n.../{package name}.r4\n.../{package name}.r4b\n.../{package name}.r5..."]
+    common02a --> common03
+
+    common02b["Ask *each* package server for package versions\n.../{package name}"]
+    common02b --> common03
+    
+    common03["Parse version info and sort:\n- dist-tags: latest\n- version date\n- server preference"]
+    common03 --> common10
+        
+    common10["Grab tarball URL"]
+    common10 --> common12
+    
+    common12["Download package"]    
+    common12 --> common13
+
+    common13["Extract"]
+    common13 --> common99
+
+    done["Done"]
+```
+
+## CI Version of Core Package
+
+Inputs:
+* Fully-declared directive: e.g., ``
+
+Notes:
+* Cache directive resolves as `#current`, e.g., `hl7.fhir.r6.core#current`.
+
+```mermaid
+flowchart TD
+    a["Core FHIR\nCurrent"]
+    a --> a1
+
+    a1["Fixed URL:\nhttp://build.fhir.org/"]
+    a1 --> common01
+    
+    b["Core FHIR\nBranch"]
+    b --> b1
+
+    b1["Construct URL:\nhttp://build.fhir.org/branches/{input}"]
+    b1 --> common01
+    
+    common01["Download `version.info`"]
+    common01 --> common02
+    
+    common02["Check for local package"]
+    common02 -- yes -->common03
+    common02 -- no -->common10
+    
+    common03["Grab cached build date"]
+    common03 --> common04
+    
+    common04["Compare build dates"]
+    common04 -- Local is new enough -->common99
+    common04 -- CI is newer -->common10
+    
+    common10["Build package name:\n{qualified name}.tgz"]
+    common10 --> common11
+    
+    common11["Delete local contents"]
+    common11 --> common12
+
+    common12["Download package"]    
+    common12 --> common13
+
+    common13["Extract"]
+    common13 --> common99
+
+    common99["Done"]
+```
+
+
+## IG CI Build
+
+Notes:
+* I do not know of a method of resolving a package name into a branch name, which means you always have to start with a branch name or URL.
+* Main branch cache directive resolves as `#current`, e.g., `hl7.fhir.us.core#current`.
+* Named branches resolve as `#current${branchName}`, e.g., `hl7.fhir.us.core#current$FHIR-xxx`
+
+```mermaid
+flowchart TD
+    a[IG Directive]
+    a --> a1
+
+    a1["Construct root URL:\nhttp://build.fhir.org/ig/{directive}"]
+    a1 --> common01
+    
+    b[IG Directive and Branch]
+    b --> b1
+    
+    b1["Construct root URL:\nhttp://build.fhir.org/ig/{directive}/branches/{branch}"]
+    b1 --> common01
+    
+    c[Full URL]
+    c --> c1
+    
+    c1["Construct root URL:\nStrip .html, etc."]
+    c1 --> common01
+        
+    common01["Download `package.manifest.json`"]
+    common01 --> common02a
+    
+    common02a["Determine local directive\n(as noted above)"]
+    common02a --> common02
+    
+    common02["Check for local package"]
+    common02 -- yes -->common03
+    common02 -- no -->common10
+    
+    common03["Grab cached build date"]
+    common03 --> common04
+    
+    common04["Compare build dates"]
+    common04 -- Local is new enough -->common99
+    common04 -- CI is newer -->common10
+    
+    common10["Build package url:\n{resolved root url}/package.tgz"]
+    common10 --> common11
+    
+    common11["Delete local contents"]
+    common11 --> common12
+
+    common12["Download package"]    
+    common12 --> common13
+
+    common13["Extract"]
+    common13 --> common99
+
+    common99["Done"]
+```
+
+## Published Package With Explicit Version
+
+Notes:
+* Some packages now have FHIR-version specific sub-packages
+
+```mermaid
+flowchart TD
+    a["Full Directive, generic, e.g.:\nhl7.fhir.uv.subscriptions-backport#1.1.0"]
+    a --> common1
+    
+    b["Full Directive with FHIR version, e.g.,:\nhl7.fhir.uv.subscriptions-backport.r4#1.1.0"]
+    b --> common1
+
+    common1["Check for local package"]
+    common1 -- yes -->common99
+    common1 -- "no: unknown FHIR version" -->common02a
+    common1 -- "no: known FHIR version" -->common02b
+
+    common02a["Ask *each* package server for package versions\n.../{package name}\n.../{package name}.r4\n.../{package name}.r4b\n.../{package name}.r5..."]
+    common02a --> common03
+
+    common02b["Ask *each* package server for package versions\n.../{package name}"]
+    common02b --> common03
+    
+    common03["Parse version info and sort:\n- dist-tags: latest\n- version date\n- server preference"]
+    common03 --> common10
+        
+    common10["Grab tarball URL"]
+    common10 --> common12
+    
+    common12["Download package"]    
+    common12 --> common13
+
+    common13["Extract"]
+    common13 --> common99
+
+    common99["Done"]
+```
+
+
+## Published Package Without Explicit Version
+
+Notes:
+* Some packages now have FHIR-version specific sub-packages
+
+```mermaid
+flowchart TD
+    a["Name only, generic, e.g.:\nhl7.fhir.uv.subscriptions-backport"]
+    a --> common01
+    
+    b["Name only with FHIR version, e.g.,:\nhl7.fhir.uv.subscriptions-backport.r4"]
+    b --> common01
+
+    common01["Query *each* package server\n.../catalog?op=find&name=..."]
+    common01 -- "Has Version and latest tag" --> common02a
+    common01 -- "Otherwise: known FHIR version" --> common02b
+    common01 -- "Otherwise: unknown FHIR version" --> common02c
+    
+    common02a["Sort results:\n- FHIR Version\n- Package Version*\n- Server order"]
+    common02a --> common03
+
+    common02b["Ask for package versions for each package\n.../{package name}"]
+    common02b --> common02a
+
+    common02c["Ask for package versions for each package\n.../{package name}\n.../{package name}.r4\n.../{package name}.r4b\n.../{package name}.r5"]
+    common02c --> common02a
+
+    common03["Parse version info and sort:\n- dist-tags: latest\n- version date\n- server preference"]
+    common03 --> common10
+        
+    common10["Grab tarball URL"]
+    common10 --> common12
+    
+    common12["Download package"]    
+    common12 --> common13
+
+    common13["Extract"]
+    common13 --> common99
+
+    common99["Done"]
 ```

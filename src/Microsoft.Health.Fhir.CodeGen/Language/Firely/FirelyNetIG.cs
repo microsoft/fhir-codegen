@@ -40,6 +40,7 @@ using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
 using Fhir.Metrics;
 using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirely2;
 using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Fhir.CodeGen.Packages.Models;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -313,9 +314,13 @@ public partial class FirelyNetIG : ILanguage
         }
 
         // check to see if there are multiple versions of FHIR loaded - IG generation can only work with a single one
-        string[] fhirCoreDirectives = info.Manifests.Keys.Where(FhirPackageUtils.PackageIsFhirRelease).ToArray();
-        int fhirCoreVersionCount = fhirCoreDirectives.Select(d => info.Manifests[d].Version).Distinct().Count();
-
+        (string id, FhirSemVer version)[] fhirCorePackageIds = info.Manifests.Keys
+            .Where(key => FhirPackageUtils.PackageIsFhirRelease(key.id))
+            .ToArray();
+        int fhirCoreVersionCount = fhirCorePackageIds
+            .Select(d => info.Manifests[d].Version.ToString())
+            .Distinct()
+            .Count();
         if (fhirCoreVersionCount > 1)
         {
             throw new Exception("Multiple versions of FHIR are loaded, IG generation can only work with a single version. Either specify a package with a single version or use the --fhir-version parameter to filter.");

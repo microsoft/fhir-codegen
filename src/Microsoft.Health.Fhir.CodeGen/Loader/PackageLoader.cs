@@ -3,28 +3,31 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using Hl7.Fhir.Language.Debugging;
-using System.Diagnostics;
-using System.Net;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Utility;
-using Microsoft.Health.Fhir.CodeGen.Models;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Hl7.Fhir.Serialization;
-using System.Text.Json;
-using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
-using Firely.Fhir.Packages;
-using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
-using System.Xml.Linq;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
+using System.Diagnostics;
 using System.Linq;
-using Microsoft.Health.Fhir.CodeGen._ForPackages;
-using Microsoft.Health.Fhir.CodeGen.Utils;
-using Microsoft.Extensions.Logging;
+using System.Net;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using Fhir.CodeGen.Packages;
+using Fhir.CodeGen.Packages.CacheClients;
+using Fhir.CodeGen.Packages.Models;
+using Fhir.CodeGen.Packages.RegistryClients;
 using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Language.Debugging;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Utility;
+using Microsoft.Extensions.Logging;
+using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Utils;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
+using Tasks = System.Threading.Tasks;
 
 namespace Microsoft.Health.Fhir.CodeGen.Loader;
 
@@ -71,26 +74,9 @@ public partial class PackageLoader : IDisposable
 {
     private const int _packageAccessTimeout = 5 * 60 * 1000;
 
-    internal enum VersionHandlingTypes
-    {
-        /// <summary>Unprocessed / unknown / SemVer / ranges / etc (pass through).</summary>
-        Passthrough,
-
-        /// <summary>Latest release.</summary>
-        Latest,
-
-        /// <summary>Local build.</summary>
-        Local,
-
-        /// <summary>CI Build.</summary>
-        ContinuousIntegration,
-    }
-
-    /// <summary>(Immutable) The cache.</summary>
-    private readonly _ForPackages.DiskPackageCache _cache;
-
-    /// <summary>(Immutable) The package clients.</summary>
-    private readonly List<IPackageServer> _packageClients = [];
+    private readonly HttpClient _httpClient;
+    private readonly IFhirCacheClient _cache;
+    private readonly List<IPackageRegistryClient> _packageClients = [];
 
     private bool _disposedValue = false;
 
@@ -138,30 +124,38 @@ public partial class PackageLoader : IDisposable
     /// <summary>Initializes a new instance of the <see cref="PackageLoader"/> class.</summary>
     /// <param name="config">(Optional) The configuration.</param>
     /// <param name="opts">  (Optional) Options for controlling the operation.</param>
-    public PackageLoader(ConfigRoot? config = null, LoaderOptions? opts = null)
+    public PackageLoader(
+        ConfigRoot? config = null,
+        LoaderOptions? opts = null,
+        HttpClient? httpClient = null)
     {
         _logger = (config?.LogFactory ?? LoggerFactory.Create(builder => builder.AddConsole())).CreateLogger<PackageLoader>();
+        _httpClient = httpClient ?? new();
 
         // use defaults if nothing was specified
         opts ??= new();
 
         _rootConfiguration = config ?? new();
 
-        _cache = new(_rootConfiguration.FhirCacheDirectory);
-
         // check if we are using the official registries
         if (_rootConfiguration.UseOfficialRegistries == true)
         {
-            _packageClients.Add(PackageClient.Create("https://packages.fhir.org"));
-            _packageClients.Add(PackageClient.Create("https://packages2.fhir.org/packages"));
-            _packageClients.Add(new _ForPackages.FhirCiClient(-1));
+            foreach (RegistryEndpointRecord endpoint in RegistryEndpointRecord.DefaultEndpoints)
+            {
+                _packageClients.Add(IPackageRegistryClient.Create(endpoint, _httpClient));
+            }
         }
 
         if (_rootConfiguration.AdditionalFhirRegistryUrls.Length != 0)
         {
             foreach (string url in _rootConfiguration.AdditionalFhirRegistryUrls)
             {
-                _packageClients.Add(PackageClient.Create(url, npm: false));
+                RegistryEndpointRecord endpoint = new()
+                {
+                    RegistryType = RegistryEndpointRecord.RegistryTypeCodes.FhirNpm,
+                    Url = url,
+                };
+                _packageClients.Add(IPackageRegistryClient.Create(endpoint, _httpClient));
             }
         }
 
@@ -169,9 +163,16 @@ public partial class PackageLoader : IDisposable
         {
             foreach (string url in _rootConfiguration.AdditionalNpmRegistryUrls)
             {
-                _packageClients.Add(PackageClient.Create(url, npm: true));
+                RegistryEndpointRecord endpoint = new()
+                {
+                    RegistryType = RegistryEndpointRecord.RegistryTypeCodes.Npm,
+                    Url = url,
+                };
+                _packageClients.Add(IPackageRegistryClient.Create(endpoint, _httpClient));
             }
         }
+
+        _cache = new DiskCacheClient(_rootConfiguration.FhirCacheDirectory, registryClients: _packageClients, httpClient: _httpClient);
 
         _defaultFhirVersion = FhirReleases.FhirVersionToSequence(_rootConfiguration.FhirVersion);
 
@@ -388,115 +389,6 @@ public partial class PackageLoader : IDisposable
         }
     }
 
-    private VersionHandlingTypes GetVersionHandlingType(string? version)
-    {
-        // handle simple literals
-        switch (version)
-        {
-            case null:
-            case "":
-            case "latest":
-                return VersionHandlingTypes.Latest;
-
-            case "current":
-                return VersionHandlingTypes.ContinuousIntegration;
-
-            case "dev":
-                return VersionHandlingTypes.Local;
-        }
-
-        // check for local or current with branch names
-        if (version.StartsWith("current$", StringComparison.Ordinal))
-        {
-            return VersionHandlingTypes.ContinuousIntegration;
-        }
-
-        if (version.StartsWith("dev$", StringComparison.Ordinal))
-        {
-            return VersionHandlingTypes.Local;
-        }
-
-        return VersionHandlingTypes.Passthrough;
-    }
-
-    private async ValueTask<(PackageReference, IPackageServer?)> ResolveLatest(string name)
-    {
-        List<(PackageReference pr, IPackageServer server)> latestRecs = new();
-
-        foreach (IPackageServer server in _packageClients)
-        {
-            PackageReference pr = await server.GetLatest(name);
-            if (pr == PackageReference.None)
-            {
-                continue;
-            }
-            latestRecs.Add((pr, server));
-        }
-
-        if (latestRecs.Count == 0)
-        {
-            return (PackageReference.None, null);
-        }
-
-        return latestRecs.OrderByDescending(v => v.pr.Version).First();
-    }
-
-    /// <summary>
-    /// Installs a package with the specified package reference.
-    /// </summary>
-    /// <param name="packageReference">The package reference.</param>
-    /// <param name="retries">The number of retries.</param>
-    /// <returns><c>true</c> if the package is installed successfully; otherwise, <c>false</c>.</returns>
-    private async Task<bool> InstallPackage(PackageReference packageReference, int retries = 5)
-    {
-        Random r = new();
-
-        for (int i = 0; i < retries; i++)
-        {
-            foreach (IPackageServer pc in _packageClients)
-            {
-                try
-                {
-                    if (packageReference.Scope == FhirCiClient.FhirCiScope)
-                    {
-                        if (pc is not FhirCiClient ciClient)
-                        {
-                            // cannot install CI packages from non-CI clients
-                            continue;
-                        }
-
-                        await ciClient.InstallOrUpdate(packageReference, _cache);
-                        return true;
-                    }
-
-                    // try to download this package
-                    byte[] data = await pc.GetPackage(packageReference);
-
-                    // try to install this package
-                    try
-                    {
-                        await _cache.Install(packageReference, data);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception($"Failed to install {packageReference.Moniker}: {ex.Message}", ex);
-                    }
-
-                    // only need to install from first hit
-                    return true;
-                }
-                catch (Exception)
-                {
-                    // ignore
-                }
-            }
-
-            await System.Threading.Tasks.Task.Delay(500 + (int)(r.NextDouble() * 1000));
-        }
-
-        return false;
-    }
-
     private void CreateConverterIfRequired(FhirReleases.FhirSequenceCodes fhirSequence)
     {
         // create the converter we need
@@ -504,7 +396,7 @@ public partial class PackageLoader : IDisposable
         {
             case FhirReleases.FhirSequenceCodes.DSTU2:
                 {
-                    if (_converter_20_50 == null)
+                    if (_converter_20_50 is null)
                     {
                         lock (_convertLockObject)
                         {
@@ -516,7 +408,7 @@ public partial class PackageLoader : IDisposable
 
             case FhirReleases.FhirSequenceCodes.STU3:
                 {
-                    if (_converter_30_50 == null)
+                    if (_converter_30_50 is null)
                     {
                         lock (_convertLockObject)
                         {
@@ -529,7 +421,7 @@ public partial class PackageLoader : IDisposable
             case FhirReleases.FhirSequenceCodes.R4:
             case FhirReleases.FhirSequenceCodes.R4B:
                 {
-                    if (_converter_43_50 == null)
+                    if (_converter_43_50 is null)
                     {
                         lock (_convertLockObject)
                         {
@@ -555,7 +447,7 @@ public partial class PackageLoader : IDisposable
 
         if (fhirSequence == FhirReleases.FhirSequenceCodes.Unknown)
         {
-            if ((definitions == null) ||
+            if ((definitions is null) ||
                 (definitions.FhirSequence == FhirReleases.FhirSequenceCodes.Unknown))
             {
                 throw new Exception("Cannot load from a directory with an unknown FHIR version");
@@ -568,7 +460,7 @@ public partial class PackageLoader : IDisposable
 
         string? name = Path.GetFileName(sourcePath);
 
-        if (name == null)
+        if (name is null)
         {
             throw new Exception($"Failed to get directory name from '{sourcePath}'");
         }
@@ -623,7 +515,7 @@ public partial class PackageLoader : IDisposable
                     break;
             }
 
-            if (r == null)
+            if (r is null)
             {
                 throw new Exception($"Failed to parse '{path}'");
             }
@@ -640,12 +532,14 @@ public partial class PackageLoader : IDisposable
     /// <param name="definitions">(Optional) The definitions.</param>
     /// <param name="fhirVersion">(Optional) The FHIR version.</param>
     /// <returns>An asynchronous result that yields the package.</returns>
-    public async Task<DefinitionCollection?> LoadPackages(
+    public async Tasks.Task<DefinitionCollection?> LoadPackages(
         IEnumerable<string> packages,
         DefinitionCollection? definitions = null,
         string? fhirVersion = null,
         HashSet<FhirArtifactClassEnum>? loadFilterOverride = null)
     {
+        await Tasks.Task.Delay(0);
+
         string? requestedFhirVersion = fhirVersion;
 
         if (!packages.Any())
@@ -693,25 +587,28 @@ public partial class PackageLoader : IDisposable
                 }
             }
 
-            // TODO(ginoc): PR in to Parse FHIR-style directives, remove when added.
-            string directive = inputDirective.Contains('@')
-                ? inputDirective
-                : inputDirective.Replace('#', '@');
+            PackageDirective packageDirective = new(inputDirective);
 
-            PackageReference packageReference = PackageReference.Parse(directive);
-
-            if (packageReference.Name == null)
+            if ((packageDirective is null) ||
+                (packageDirective.PackageId is null))
             {
-                throw new Exception($"Failed to parse package reference: {directive}");
+                throw new Exception($"Failed to parse package reference: {inputDirective}");
             }
 
-            // check to see if this is a FHIR release that is no longer available
-            if (FhirPackageUtils.PackageIsFhirRelease(packageReference.Name) &&
-                FhirReleases.VersionIsUnavailable(packageReference.Version ?? string.Empty))
+            // check to see if this is an explicit request for a FHIR release that is no longer available
+            if (FhirPackageUtils.PackageIsFhirRelease(packageDirective.PackageId) &&
+                (packageDirective.VersionType == PackageDirective.DirectiveVersionCodes.Exact) &&
+                FhirReleases.VersionIsUnavailable(packageDirective.RequestedVersion ?? string.Empty))
             {
-                packageReference.Version = FhirReleases.GetCurrentPatch(packageReference.Version ?? string.Empty);
+                packageDirective = new(packageDirective.PackageId, FhirReleases.GetCurrentPatch(packageDirective.RequestedVersion ?? string.Empty));
 
-                if (definitions?.Manifests.ContainsKey(packageReference.Moniker) == true)
+                if ((packageDirective is null) ||
+                    (packageDirective.PackageId is null))
+                {
+                    throw new Exception($"Failed to parse package reference: {inputDirective}");
+                }
+
+                if (definitions?.TryGetManifest(packageDirective, out _) == true)
                 {
                     // we have already loaded this package, just continue
                     continue;
@@ -719,11 +616,11 @@ public partial class PackageLoader : IDisposable
             }
 
             // create our definition collection shell if we do not have one
-            if (definitions == null)
+            if (definitions is null)
             {
                 definitions = new(_rootConfiguration)
                 {
-                    Name = packageReference.Name,
+                    Name = packageDirective.PackageId,
                     Logger = _rootConfiguration.LogFactory.CreateLogger<DefinitionCollection>(),
                 };
 
@@ -733,94 +630,68 @@ public partial class PackageLoader : IDisposable
                 }
             }
 
-            using Mutex packageAccessMutex = new Mutex(true, "fcg-" + packageReference.Moniker, out bool mutexCreated);
+            CachedPackageRecord? cachedPackage = null;
+
+            using Mutex packageAccessMutex = new Mutex(true, "fcg-" + packageDirective.RequestedDirective, out bool mutexCreated);
             {
                 // if we did not create the mutex, we need to wait for it
                 if (!mutexCreated &&
                     !packageAccessMutex.WaitOne(_packageAccessTimeout))
                 {
-                    _logger.LogSynchronizationFailed(packageReference.Moniker);
-                    throw new Exception($"Failed to access the synchronization object for {packageReference.Moniker}");
-                }
-
-                bool needsInstall = true;
-
-                VersionHandlingTypes vht = GetVersionHandlingType(packageReference.Version);
-
-                // do special handling for versions if necessary
-                switch (vht)
-                {
-                    case VersionHandlingTypes.Latest:
-                        {
-                            // resolve the version via Firely Packages so that we have access to the actual version number
-                            (PackageReference pr, IPackageServer? _) = await ResolveLatest(packageReference.Name);
-
-                            if ((pr == PackageReference.None) || (pr.Name == null))
-                            {
-                                throw new Exception($"Failed to resolve latest version of {packageReference.Name} ({directive})");
-                            }
-
-                            packageReference = pr;
-                            needsInstall = !(await _cache.IsInstalled(packageReference));
-                        }
-                        break;
-
-                    case VersionHandlingTypes.Local:
-                        // ensure there is a local build, there is no other source
-                        {
-                            if (!_cache.IsInstalled(packageReference).Result)
-                            {
-                                throw new Exception($"Local build of {packageReference.Name} is not installed ({directive})");
-                            }
-                        }
-                        break;
-
-                    case VersionHandlingTypes.ContinuousIntegration:
-                        // always trigger install/update for CI builds
-                        packageReference.Scope = FhirCiClient.FhirCiScope;
-                        needsInstall = true;
-                        break;
-
-                    default:
-                        needsInstall = !(await _cache.IsInstalled(packageReference));
-                        break;
+                    _logger.LogSynchronizationFailed(packageDirective.RequestedDirective);
+                    throw new Exception($"Failed to access the synchronization object for {packageDirective.RequestedDirective}");
                 }
 
                 // check if we are flagged to load expansions and this is a core package
                 if (_rootConfiguration.AutoLoadExpansions &&
-                    FhirPackageUtils.PackageIsFhirCore(packageReference.Name) &&
-                    (packageReference.Name != "hl7.fhir.r2.core"))
+                    (
+                        FhirPackageUtils.PackageIsFhirCore(packageDirective.PackageId) ||
+                        FhirPackageUtils.PackageIsFhirCorePartial(packageDirective.PackageId)
+                    ) &&
+                    (packageDirective.PackageId != "hl7.fhir.r2.core"))
                 {
-                    string expansionPackageName = packageReference.Name.Replace(".core", ".expansions");
-                    string expansionDirective = expansionPackageName + "@" + packageReference.Version;
+                    string expansionPackageName = packageDirective.PackageId.Replace(".core", ".expansions");
+                    string expansionDirective = expansionPackageName +
+                        "@" +
+                        (packageDirective.FhirCacheVersion?.ToString() ?? packageDirective.RequestedVersion ?? "latest");
 
                     _logger.LogAutoExpansionMessage($"Auto-loading core expansions: {expansionDirective}...");
 
                     await LoadPackages([expansionDirective], definitions, requestedFhirVersion);
                 }
 
-                // skip if we have already loaded this package
-                if (definitions.Manifests.ContainsKey(packageReference.Moniker))
-                {
-                    _logger.LogSkipMessage($"Skipping already loaded dependency: {packageReference.Moniker}");
-                    continue;
-                }
+                _logger.LogProcessingStartMessage(packageDirective.AnyDirective);
 
-                _logger.LogProcessingStartMessage(packageReference.Moniker);
-
-                // check to see if this package needs to be installed
-                if (needsInstall &&
-                    (await InstallPackage(packageReference) == false))
+                //cachedPackage = await _cache.GetOrInstallAsync(packageDirective.RequestedDirective, false).ConfigureAwait(true);
+                cachedPackage = _cache.GetOrInstallAsync(packageDirective.RequestedDirective, false).Result;
+                if ((cachedPackage is null) ||
+                    (cachedPackage.Directive is null) ||
+                    (cachedPackage.Directive.PackageId is null) ||
+                    (cachedPackage.Directive.NpmDirective is null))
                 {
                     // failed to install
-                    throw new Exception($"Failed to install package {packageReference.Moniker} as requested by {inputDirective}");
+                    throw new Exception($"Failed to install package {packageDirective.RequestedDirective} as requested by {inputDirective}");
+                }
+
+                packageDirective = cachedPackage.Directive;
+
+                // skip if we have already loaded this package
+                if (definitions.TryGetManifest(packageDirective, out _))
+                {
+                    _logger.LogSkipMessage($"Skipping already loaded dependency: {packageDirective.NpmDirective}");
+                    continue;
                 }
 
                 // release our mutex
                 packageAccessMutex.ReleaseMutex();
             }
 
-            _ForPackages.PackageManifest manifest = await _cache.ReadManifestEx(packageReference) ?? throw new Exception("Failed to load package manifest");
+            if (cachedPackage.Manifest is null)
+            {
+                throw new Exception("Failed to load package manifest");
+            }
+
+            PackageManifest manifest = cachedPackage.Manifest;
 
             // check to see if we have a restricted FHIR version and need to filter
             if ((!string.IsNullOrEmpty(requestedFhirVersion)) &&
@@ -829,33 +700,26 @@ public partial class PackageLoader : IDisposable
                 !string.IsNullOrEmpty(manifestFhirVersion) &&
                 (definitions.FhirSequence != FhirReleases.FhirVersionToSequence(manifestFhirVersion)))
             {
-                _logger.LogPackageFhirMismatch(packageReference.Moniker, manifestFhirVersion, fhirVersion);
-
-                string packageIdSuffix = packageReference.Name.Split('.')[^1];
-                FhirReleases.FhirSequenceCodes packageIdSuffixCode = FhirReleases.FhirVersionToSequence(packageIdSuffix);
+                _logger.LogPackageFhirMismatch(packageDirective.AnyDirective, manifestFhirVersion, fhirVersion);
 
                 // check for NOT having a version already specified
-                if (packageIdSuffixCode == FhirReleases.FhirSequenceCodes.Unknown)
+                if (packageDirective.NameType != PackageDirective.DirectiveNameTypeCodes.GuideWithSuffix)
                 {
                     string requiredRLiteral = definitions.FhirSequence.ToRLiteral().ToLowerInvariant();
+                    string desiredMoniker = $"{packageDirective.PackageId}.{requiredRLiteral}@{packageDirective.ResolvedVersion}";
 
-                    string desiredMoniker = $"{packageReference.Name}.{requiredRLiteral}@{packageReference.Version}";
+                    PackageDirective desiredDirective = new(desiredMoniker);
 
                     await LoadPackages([desiredMoniker], definitions, requestedFhirVersion);
-
-                    if (definitions.Manifests.ContainsKey(desiredMoniker))
+                    if (definitions.TryGetManifest(desiredDirective, out _))
                     {
-                        _logger.LogPackageSubstitutionSuccess(desiredMoniker, packageReference.Moniker);
+                        _logger.LogPackageSubstitutionSuccess(desiredMoniker, packageDirective.NpmDirective);
                     }
                     else
                     {
-                        _logger.LogPackageSubstitutionFailure(packageReference.Moniker);
+                        _logger.LogPackageSubstitutionFailure(packageDirective.NpmDirective);
                     }
                 }
-                //else
-                //{
-                //    Console.WriteLine($"Package {packageReference.Moniker} specifies an incorrect FHIR version - please correct!");
-                //}
 
                 // whether it loaded or not, we cannot do more this pass
                 continue;
@@ -867,28 +731,29 @@ public partial class PackageLoader : IDisposable
             //    !string.IsNullOrEmpty(manifestFhirVersion) &&
             //    (definitions.FhirSequence != FhirReleases.FhirVersionToSequence(manifestFhirVersion)))
             //{
-            //    Console.WriteLine($"Package {packageReference.Moniker} FHIR version mismatch: {manifest?.GetFhirVersion()} != {fhirVersion}, attempting to resolve...");
+            //    Console.WriteLine($"Package {packageDirective.Moniker} FHIR version mismatch: {manifest?.GetFhirVersion()} != {fhirVersion}, attempting to resolve...");
 
             //    string requiredRLiteral = definitions.FhirSequence.ToRLiteral().ToLowerInvariant();
 
-            //    string desiredMoniker = $"{packageReference.Name}.{requiredRLiteral}@{packageReference.Version}";
+            //    string desiredMoniker = $"{packageDirective.Name}.{requiredRLiteral}@{packageDirective.Version}";
 
             //    await LoadPackages([desiredMoniker], definitions);
 
             //    if (!definitions.Manifests.ContainsKey(desiredMoniker))
             //    {
-            //        throw new Exception($"Package {packageReference.Moniker} FHIR version mismatch: {manifest?.GetFhirVersion()} != {fhirVersion} and could not be resolved!");
+            //        throw new Exception($"Package {packageDirective.Moniker} FHIR version mismatch: {manifest?.GetFhirVersion()} != {fhirVersion} and could not be resolved!");
             //    }
             //}
 
             // flag we are tracking this package
-            definitions.Manifests.Add(packageReference.Moniker, manifest);
+            definitions.AddManifest(packageDirective, manifest);
 
             if (string.IsNullOrEmpty(definitions.MainPackageId) || (definitions.Name == manifest.Name))
             {
                 definitions.MainPackageId = manifest.Name;
                 definitions.MainPackageVersion = manifest.Version;
-                definitions.MainPackageCanonical = manifest.Canonical ?? throw new Exception($"Main package {packageReference.Moniker} manifest does not contain a canonical URL");
+                definitions.MainPackageCanonical = manifest.CanonicalUrl
+                    ?? throw new Exception($"Package manifest for {packageDirective.NpmDirective} does not contain a canonical URL");
             }
 
             string? packageFhirVersionLiteral = manifest.AnyFhirVersions?.FirstOrDefault();
@@ -908,6 +773,7 @@ public partial class PackageLoader : IDisposable
                     FhirReleases.FhirSequenceCodes.R4 => FHIRVersion.N4_0,
                     FhirReleases.FhirSequenceCodes.R4B => FHIRVersion.N4_3,
                     FhirReleases.FhirSequenceCodes.R5 => FHIRVersion.N5_0,
+                    FhirReleases.FhirSequenceCodes.R6 => FHIRVersion.N6_0,
                     _ => null,
                 };
             }
@@ -922,16 +788,17 @@ public partial class PackageLoader : IDisposable
             if (_rootConfiguration.ResolvePackageDependencies && (manifest.Dependencies?.Any() ?? false))
             {
                 await LoadPackages(manifest.Dependencies.Select(kvp => $"{kvp.Key}@{kvp.Value}"), definitions, requestedFhirVersion);
-                _logger.LogPackageDependenciesResolved(packageReference.Moniker);
+                _logger.LogPackageDependenciesResolved(packageDirective.NpmDirective);
             }
             else
             {
-                _logger.LogPackageLoading(packageReference.Moniker);
+                _logger.LogPackageLoading(packageDirective.NpmDirective);
             }
 
             // grab the contents of our package
-            CanonicalIndex? packageIndex = await _cache.GetCanonicalIndex(packageReference) ?? throw new Exception("Failed to load package contents");
-            string packageDirectory = _cache.PackageContentFolder(packageReference);
+            PackageIndex packageIndex = cachedPackage.FileIndex
+                ?? throw new Exception($"Package {packageDirective.NpmDirective} did not parse a package index!");
+            string packageDirectory = cachedPackage.GetContentPath();
 
             if (!Directory.Exists(packageDirectory))
             {
@@ -950,7 +817,7 @@ public partial class PackageLoader : IDisposable
 
             string packageRootDirectory = Path.Combine(packageDirectory, "..");
 
-            definitions.ContentListings.Add(packageReference.Moniker, packageIndex);
+            definitions.AddContentListing(packageDirective, packageIndex);
 
             // create an dictionary of indexes we are going to load - note that we are essentially traversing twice, but that is better than projecting each time
             List<int>[] sortedFileIndexes = new List<int>[_sortedLoadOrder.Length];
@@ -962,7 +829,7 @@ public partial class PackageLoader : IDisposable
 
             // traverse our files
             int fileIndex = 0;
-            foreach (ResourceMetadata resourceListing in packageIndex.Files)
+            foreach (PackageIndex.IndexFile resourceListing in packageIndex.Files)
             {
                 int loadIndex = Array.IndexOf(_sortedLoadOrder, resourceListing.ResourceType);
                 if (loadIndex < 0)
@@ -982,7 +849,7 @@ public partial class PackageLoader : IDisposable
 
                 Type? netType = Hl7.Fhir.Model.ModelInfo.GetTypeForFhirType(rt);
 
-                if (netType == null)
+                if (netType is null)
                 {
                     if (rt == "Conformance")
                     {
@@ -1064,23 +931,30 @@ public partial class PackageLoader : IDisposable
 
                 foreach (int fi in sortedFileIndexes[i])
                 {
-                    ResourceMetadata pFile = packageIndex.Files[fi];
+                    PackageIndex.IndexFile pFile = packageIndex.Files[fi];
+
+                    if (pFile.Filename is null)
+                    {
+                        continue;
+                    }
 
                     // load the file
-                    string path = Path.Combine(packageRootDirectory, pFile.FilePath);
+                    string path = pFile.FilePath is not null
+                        ? Path.Combine(packageRootDirectory, pFile.FilePath)
+                        : Path.Combine(packageDirectory, pFile.Filename);
 
                     if (!File.Exists(path))
                     {
-                        if (pFile.FileName.StartsWith("ig-") && pFile.FileName.EndsWith(".json"))
+                        if (pFile.Filename.StartsWith("ig-") && pFile.Filename.EndsWith(".json"))
                         {
                             // ignore IG artifacts that do not exist - issue in IG publisher for IGs that target multiple FHIR versions
                             continue;
                         }
 
-                        throw new Exception($"Listed file {packageReference.Moniker}:{pFile.FileName} does not exist (looking for '{path}')");
+                        throw new Exception($"Listed file {packageDirective.AnyDirective}:{pFile.Filename} does not exist (looking for '{path}')");
                     }
 
-                    string fileExtension = Path.GetExtension(pFile.FileName);
+                    string fileExtension = Path.GetExtension(pFile.Filename);
 
                     object? r;
 
@@ -1120,9 +994,9 @@ public partial class PackageLoader : IDisposable
                             break;
                     }
 
-                    if (r == null)
+                    if (r is null)
                     {
-                        throw new Exception($"Failed to parse {rt} {packageReference.Moniker}:{pFile.FileName}");
+                        throw new Exception($"Failed to parse {rt} {packageDirective.AnyDirective}:{pFile.Filename}");
                     }
 
                     // filter for structure types we are not processing
@@ -1135,7 +1009,7 @@ public partial class PackageLoader : IDisposable
                         }
                     }
 
-                    definitions.AddResource(r, packageFhirVersion, manifest.Name, manifest.Version, manifest.Canonical!);
+                    definitions.AddResource(r, packageFhirVersion, manifest.Name, manifest.Version, manifest.CanonicalUrl!);
                 }
             }
 
@@ -1183,12 +1057,12 @@ public partial class PackageLoader : IDisposable
                                 break;
                         }
 
-                        if (r == null)
+                        if (r is null)
                         {
                             throw new Exception($"Failed to parse '{path}'");
                         }
 
-                        definitions.AddResource(r, _defaultFhirVersion, manifest.Name, manifest.Version, manifest.Canonical!);
+                        definitions.AddResource(r, _defaultFhirVersion, manifest.Name, manifest.Version, manifest.CanonicalUrl!);
                     }
                 }
             }
@@ -1196,7 +1070,7 @@ public partial class PackageLoader : IDisposable
             // check to see if this package is a 'core' FHIR package to add missing contents
             if ((manifest.Type == "core") ||
                 (manifest.Type == "fhir.core") ||
-                FhirPackageUtils.PackageIsFhirRelease(packageReference.Name))
+                FhirPackageUtils.PackageIsFhirRelease(packageDirective.PackageId))
             {
                 AddMissingCoreSearchParameters(definitions!, manifest.Name, manifest.Version);
                 AddAllInteractionParameters(definitions!);
@@ -1207,7 +1081,8 @@ public partial class PackageLoader : IDisposable
         // generate any missing Snapshots - note this has to be done after all resources are loaded so dependencies can be resolved
         if (definitions != null)
         {
-            _ = await definitions.TryGenerateMissingSnapshots();
+            //_ = await definitions.TryGenerateMissingSnapshots();
+            _ = definitions.TryGenerateMissingSnapshots().Result;
         }
 
         // reconcile inheritance of elements
