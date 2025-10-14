@@ -107,6 +107,8 @@ public static class CommonDefinitions
     public static readonly Dictionary<string, string> WorkgroupReplacement = new(StringComparer.OrdinalIgnoreCase)
     {
         { "rcrim", "brr" },
+        { "mnm", "fhir" },
+        { "ti", "vocab" },
     };
 
     /// <summary>

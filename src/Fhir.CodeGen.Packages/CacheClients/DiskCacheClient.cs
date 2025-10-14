@@ -26,11 +26,23 @@ public class DiskCacheClient : CacheClientBase, IFhirCacheClient
         get => _cacheDirectory;
         init
         {
-            _cacheDirectory = string.IsNullOrWhiteSpace(value)
-                ? System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".fhir")
-                : value!;
-            _packageDirectory = Path.Combine(_cacheDirectory, "packages");
-        }
+            if (string.IsNullOrEmpty(value))
+            {
+                _cacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".fhir");
+                _packageDirectory = Path.Combine(_cacheDirectory, "packages");
+            }
+            else if (Path.GetFileName(value).Equals("packages", StringComparison.OrdinalIgnoreCase) ||
+                value.EndsWith("packages", StringComparison.OrdinalIgnoreCase))
+            {
+                _cacheDirectory = Path.GetFullPath(Path.Combine(value, ".."));
+                _packageDirectory = value;
+            }
+            else
+            {
+                _cacheDirectory = value;
+                _packageDirectory = Path.Combine(_cacheDirectory, "packages");
+            }
+    }
     }
 
     private string _packageDirectory;
@@ -59,9 +71,11 @@ public class DiskCacheClient : CacheClientBase, IFhirCacheClient
             Directory.CreateDirectory(_cacheDirectory);
         }
 
-        if (Path.GetDirectoryName(_cacheDirectory)?.Equals("packages", StringComparison.Ordinal) == true)
+        if (Path.GetFileName(_cacheDirectory).Equals("packages", StringComparison.OrdinalIgnoreCase) ||
+            _cacheDirectory.EndsWith("packages", StringComparison.OrdinalIgnoreCase))
         {
             _packageDirectory = _cacheDirectory;
+            _cacheDirectory = Path.GetFullPath(Path.Combine(_packageDirectory, ".."));
         }
         else
         {
