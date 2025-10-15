@@ -1056,8 +1056,8 @@ public class LangSQLite : ILanguage
             (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
             (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
             (dc.InterfacesByName.Values, FhirArtifactClassEnum.Interface),
-            //(dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
-            //(dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
+            (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
+            (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
             //(dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
             ];
 

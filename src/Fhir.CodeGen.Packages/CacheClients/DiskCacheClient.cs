@@ -445,14 +445,7 @@ public class DiskCacheClient : CacheClientBase, IFhirCacheClient
             {
                 if (Directory.Exists(destinationDir))
                 {
-                    if (overwriteExisting)
-                    {
-                        Directory.Delete(destinationDir, true);
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException($"Cache directory '{destinationDir}' already exists.");
-                    }
+                    Directory.Delete(destinationDir, true);
                 }
 
                 // if we are on windows, we can only move directories on the same volume
