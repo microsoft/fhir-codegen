@@ -26,6 +26,13 @@ public partial class CgDbStructure : CgDbMetadataResourceBase
 
     public required string? Implements { get; set; }
 
+    public required string? Kind { get; set; }
+    public bool? IsAbstract { get; set; }
+    public required string? FhirType { get; set; }
+    public required string? BaseDefinition { get; set; }
+    public required string? BaseDefinitionShort { get; set; }
+    public required string? Derivation { get; set; }
+
     [CgSQLiteIgnore]
     public string UiDisplay
     {

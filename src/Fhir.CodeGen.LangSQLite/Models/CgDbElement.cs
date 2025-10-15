@@ -59,6 +59,11 @@ public partial class CgDbElement : CgDbPackageContentBase
 
     public required string? StandardStatus { get; set; }
 
+    public required string? FixedValue { get; set; }
+    public required string? PatternValue { get; set; }
+
+    public required string? MeaningWhenMissing { get; set; }
+
 
     [CgSQLiteIgnore]
     public string UiDisplay
@@ -145,5 +150,8 @@ public partial class CgDbElement : CgDbPackageContentBase
         IsModifier = false,
         IsModifierReason = null,
         StandardStatus = null,
+        FixedValue = null,
+        PatternValue = null,
+        MeaningWhenMissing = null,
     };
 }

@@ -14,6 +14,7 @@ using Fhir.CodeGen.Lib.Models;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
+using System.Text.Json;
 
 namespace Fhir.CodeGen.Lib.Language.SQLite;
 
@@ -903,6 +904,8 @@ public class LangSQLite : ILanguage
             foreach (StructureDefinition sd in structures)
             {
                 string? sdImplements = sd.cgImplementsJoined();
+                string? sdBase = sd.BaseDefinition;
+                string? sdBaseShort = sdBase?.Split('/').LastOrDefault();
 
                 // will not further process value sets we know we will not process
                 if (_exclusionSet.Contains(sd.Url))
@@ -953,6 +956,12 @@ public class LangSQLite : ILanguage
                         SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
                         DifferentialCount = sd.Differential?.Element.Count ?? 0,
                         Implements = sdImplements,
+                        Kind = sd.Kind is null ? null : EnumUtility.GetLiteral(sd.Kind),
+                        IsAbstract = sd.Abstract,
+                        FhirType = sd.Type,
+                        BaseDefinition = sdBase,
+                        BaseDefinitionShort = sdBaseShort,
+                        Derivation = sd.Derivation is null ? null : EnumUtility.GetLiteral(sd.Derivation),
                     };
 
                     dbStructures.Add(sd.Id, sdmExcluded);
@@ -1006,6 +1015,12 @@ public class LangSQLite : ILanguage
                     SnapshotCount = sd.Snapshot?.Element.Count ?? 0,
                     DifferentialCount = sd.Differential?.Element.Count ?? 0,
                     Implements = sdImplements,
+                    Kind = sd.Kind is null ? null : EnumUtility.GetLiteral(sd.Kind),
+                    IsAbstract = sd.Abstract,
+                    FhirType = sd.Type,
+                    BaseDefinition = sdBase,
+                    BaseDefinitionShort = sdBaseShort,
+                    Derivation = sd.Derivation is null ? null : EnumUtility.GetLiteral(sd.Derivation),
                 };
 
                 dbStructures.Add(sd.Id, dbStructure);
@@ -1051,15 +1066,20 @@ public class LangSQLite : ILanguage
         return;
 
         // TODO(ginoc): For now, exclude extensions, profiles, and logical models - we will want them for generic packages, but do not care for core
-        (IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) => [
-            (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
-            (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
-            (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
-            (dc.InterfacesByName.Values, FhirArtifactClassEnum.Interface),
-            (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
-            (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
-            //(dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
-            ];
+        (IEnumerable<StructureDefinition> structures, FhirArtifactClassEnum cgClass)[] getStructures(DefinitionCollection dc) =>
+            _options.IncludeExtendedStructures
+            ? [ (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
+                (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
+                (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
+                (dc.InterfacesByName.Values, FhirArtifactClassEnum.Interface),
+                (dc.ExtensionsByUrl.Values, FhirArtifactClassEnum.Extension),
+                (dc.ProfilesByUrl.Values, FhirArtifactClassEnum.Profile),
+                //(dc.LogicalModelsByUrl.Values, FhirArtifactClassEnum.LogicalModel),
+                ]
+            : [ (dc.PrimitiveTypesByName.Values, FhirArtifactClassEnum.PrimitiveType),
+                (dc.ComplexTypesByName.Values, FhirArtifactClassEnum.ComplexType),
+                (dc.ResourcesByName.Values, FhirArtifactClassEnum.Resource),
+                ];
 
         string literalForType(string? typeName, string? typeProfile, string? targetProfile) =>
             (string.IsNullOrEmpty(typeName) ? string.Empty : typeName) +
@@ -1354,6 +1374,9 @@ public class LangSQLite : ILanguage
                 }
             }
 
+            string? fixedValue = ed.Fixed != null ? JsonSerializer.Serialize(ed.Fixed) : null;
+            string? patternValue = ed.Pattern != null ? JsonSerializer.Serialize(ed.Pattern) : null;
+
             CgDbElement dbElement = new()
             {
                 Key = elementKey,
@@ -1386,6 +1409,9 @@ public class LangSQLite : ILanguage
                 IsModifier = ed.IsModifier == true,
                 IsModifierReason = ed.IsModifierReason,
                 StandardStatus = ed.cgStandardStatus(),
+                FixedValue = fixedValue,
+                PatternValue = patternValue,
+                MeaningWhenMissing = string.IsNullOrEmpty(ed.MeaningWhenMissing) ? null : ed.MeaningWhenMissing,
             };
 
             dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);
