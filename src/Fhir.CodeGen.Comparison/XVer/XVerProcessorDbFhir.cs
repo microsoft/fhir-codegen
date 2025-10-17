@@ -178,7 +178,6 @@ public partial class XVerProcessor
                 FhirPackageKey: package.Key,
                 Name: "Basic",
                 ArtifactClass: FhirArtifactClassEnum.Resource);
-
             if (basicResource != null)
             {
                 // get the elements for this structure
@@ -189,9 +188,10 @@ public partial class XVerProcessor
                 // iterate over the elements
                 foreach (DbElement element in basicElements)
                 {
-                    // skip root and elements with empty paths
+                    // skip root, elements with empty paths, and `code` element
                     if ((element.ResourceFieldOrder == 0) ||
-                        string.IsNullOrEmpty(element.Path))
+                        string.IsNullOrEmpty(element.Path) ||
+                        element.Path.Equals("Basic.code", StringComparison.Ordinal))
                     {
                         continue;
                     }
@@ -965,7 +965,6 @@ public partial class XVerProcessor
                         continue;
                     }
 
-
                     List<DbElementComparison> comparisons = [];
 
                     // resolve the current column
@@ -1095,7 +1094,8 @@ public partial class XVerProcessor
                         });
 
                         // check to see if this extension maps to the root of the Basic resource
-                        if (extSd.Context.Any(c => c.Expression == "Basic"))
+                        if ((sd.ArtifactClass == FhirArtifactClassEnum.Resource) &&
+                            extSd.Context.Any(c => c.Expression == "Basic"))
                         {
                             // need to create a profile for this extension
                             StructureDefinition profileSd = createBasicProfileForExtension(sourcePackage, targetPackage, sd, extSd);
@@ -1288,7 +1288,8 @@ public partial class XVerProcessor
                         });
 
                         // check to see if this extension maps to the root of the Basic resource
-                        if (extSd.Context.Any(c => c.Expression == "Basic"))
+                        if ((sd.ArtifactClass == FhirArtifactClassEnum.Resource) &&
+                            extSd.Context.Any(c => c.Expression == "Basic"))
                         {
                             // need to create a profile for this extension
                             StructureDefinition profileSd = createBasicProfileForExtension(sourcePackage, targetPackage, sd, extSd);

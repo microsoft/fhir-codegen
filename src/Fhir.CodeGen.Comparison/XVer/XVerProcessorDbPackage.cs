@@ -44,6 +44,11 @@ public partial class XVerProcessor
 {
     private const string _xverChangelogMd = $$$"""
 
+        ### 0.0.1-snapshot-3
+
+        * Fix: resources mapping to `Basic` still need a `[Source.]code` extension, `Basic.code` has a necessary meaning. Excluded `Basic.code` from automatic removal when mapping to `Basic`.
+        * Fix: non-resource structures should not create profiles of `Basic` resources. Only resource structures should create `Basic` profiles.
+
         ### 0.0.1-snapshot-2
 
         * Fix issue with modifier extensions:
