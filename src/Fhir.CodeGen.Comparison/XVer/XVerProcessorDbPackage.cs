@@ -48,6 +48,14 @@ public partial class XVerProcessor
 
         * Fix: resources mapping to `Basic` still need a `[Source.]code` extension, `Basic.code` has a necessary meaning. Excluded `Basic.code` from automatic removal when mapping to `Basic`.
         * Fix: non-resource structures should not create profiles of `Basic` resources. Only resource structures should create `Basic` profiles.
+        * [ ] Remove depdency on SUSHI
+        * [ ] Constrain `Extension.value[x]` to `0..0` when creating complex extensions
+        * [ ] https://hl7.org/fhir/uv/xver-r5.r4/0.0.1-snapshot-2/StructureDefinition-ext-R5-ValueSet.ex.co.property.html is still closed - why?
+            * Also has a sub-property `value[x]`, which should be `value`
+        * [ ] Add ConceptMap resources for element / outcome navigation
+        * [ ] Update Lookup files to include the 'parent' extension when result is to use a parent extension
+        * [ ] Add Lookup files for Value Sets
+        * [ ] Add profile links to the lookup files for Resource extensions that target `Basic`
 
         ### 0.0.1-snapshot-2
 
