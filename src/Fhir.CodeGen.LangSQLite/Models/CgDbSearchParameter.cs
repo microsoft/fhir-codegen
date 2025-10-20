@@ -64,6 +64,28 @@ public partial class CgDbSearchParameter : CgDbMetadataResourceBase
         }
     }
 
+    public required string? AdditionalBaseResources { get; set; }
+    [CgSQLiteIgnore]
+    public List<string> AdditionalBaseResourceList
+    {
+        set
+        {
+            AdditionalBaseResources = (value == null || value.Count == 0) ? null : string.Join(',', value);
+        }
+        get
+        {
+            if (string.IsNullOrEmpty(AdditionalBaseResources))
+            {
+                return [];
+            }
+            return AdditionalBaseResources
+                .Split(',')
+                .Select(v => v.Trim())
+                .Where(v => !string.IsNullOrEmpty(v))
+                .ToList();
+        }
+    }
+
     //public required Hl7.Fhir.Model.SearchParamType? SearchType { get; set; }
     public required string? SearchType { get; set; }
     public required string? Expression { get; set; }

@@ -23,6 +23,7 @@ using Fhir.CodeGen.Common.Packaging;
 
 using Fhir.CodeGen.Common.Polyfill;
 using static Fhir.CodeGen.Lib.FhirExtensions.StructureDefinitionExtensions;
+using Hl7.Fhir.Utility;
 
 namespace Fhir.CodeGen.Lib.Models;
 
@@ -2857,6 +2858,35 @@ public partial class DefinitionCollection
         _searchParamsByUrl[sp.Url] = sp;
         TrackResource(sp);
 
+        //// check for a single base with a replacement resource type
+        //if (sp.BaseElement.Count == 1)
+        //{
+        //    Code<VersionIndependentResourceTypesAll>? baseElement = sp.BaseElement.First();
+        //    if (baseElement != null)
+        //    {
+        //        string spBase = Hl7.Fhir.Utility.EnumUtility.GetLiteral(baseElement.Value) ?? string.Empty;
+
+        //        if (spBase == "Resource")
+        //        {
+        //            Code? extCode = baseElement.GetExtensionValue<Code>(CommonDefinitions.ExtUrlSearchParameterBaseType);
+
+        //            string? extBase = (extCode is null)
+        //                ? null
+        //                : extCode.Value;
+
+        //            VersionIndependentResourceTypesAll? replacement = extBase is null
+        //                ? null
+        //                : EnumUtility.ParseLiteral<VersionIndependentResourceTypesAll>(extBase);
+
+        //            if (replacement is not null)
+        //            {
+        //                sp.BaseElement = [ new Code<VersionIndependentResourceTypesAll>(replacement) ];
+        //            }
+        //        }
+        //    }
+        //}
+
+        // iterate over the bases
         foreach (VersionIndependentResourceTypesAll? rt in sp.Base)
         {
             if (rt == null)
@@ -2866,7 +2896,7 @@ public partial class DefinitionCollection
                 //continue;
             }
 
-            string spBase = Hl7.Fhir.Utility.EnumUtility.GetLiteral(rt) ?? string.Empty;
+            string spBase = Hl7.Fhir.Utility.EnumUtility.GetLiteral(rt.Value) ?? string.Empty;
 
             if (string.IsNullOrEmpty(spBase))
             {

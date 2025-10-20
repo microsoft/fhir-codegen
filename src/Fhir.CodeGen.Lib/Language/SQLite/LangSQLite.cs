@@ -15,6 +15,7 @@ using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using System.Text.Json;
+using Fhir.CodeGen.Common.FhirExtensions;
 
 namespace Fhir.CodeGen.Lib.Language.SQLite;
 
@@ -1414,7 +1415,21 @@ public class LangSQLite : ILanguage
                 MeaningWhenMissing = string.IsNullOrEmpty(ed.MeaningWhenMissing) ? null : ed.MeaningWhenMissing,
             };
 
-            dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);
+            try
+            {
+                dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);
+            }
+            catch (Exception)
+            {
+                if (ed.ElementId == "ExplanationOfBenefit.item.informationSequence")
+                {
+                    // current known issue
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
     }
 
@@ -1517,6 +1532,23 @@ public class LangSQLite : ILanguage
                 continue;
             }
 
+            List<string> additionalBaseTypes = [];
+            // check for a single base with a replacement resource type
+            foreach (Code<VersionIndependentResourceTypesAll> baseElement in sp.BaseElement)
+            {
+                if (baseElement is null)
+                {
+                    continue;
+                }
+
+                Code? extCode = baseElement.GetExtensionValue<Code>(CommonDefinitions.ExtUrlSearchParameterBaseType);
+
+                if (extCode is not null)
+                {
+                    additionalBaseTypes.Add(extCode.Value);
+                }
+            }
+
             // create a new metadata record
             CgDbSearchParameter dbSp = new()
             {
@@ -1570,6 +1602,7 @@ public class LangSQLite : ILanguage
 
                 AliasCodes = null,
                 BaseResources = string.Empty,
+                AdditionalBaseResources = null,
                 ReferenceTargets = null,
                 Comparators = null,
                 Modifiers = null,
@@ -1579,6 +1612,7 @@ public class LangSQLite : ILanguage
             // set list-based properties (overrides previous nulls)
             dbSp.AliasCodeList = [];        // TODO: added in R6
             dbSp.BaseResourceList = sp.BaseElement;
+            dbSp.AdditionalBaseResourceList = additionalBaseTypes;
             dbSp.ReferenceTargetList = sp.Target.Select(t => t.ToString()!).ToList();
             dbSp.ComparatorList = sp.ComparatorElement;
             dbSp.ModifierList = sp.ModifierElement;
