@@ -1676,6 +1676,23 @@ public class LangSQLite : ILanguage
                 continue;
             }
 
+            List<string> additionalResourceTypes = [];
+            // check for a single base with a replacement resource type
+            foreach (Code<VersionIndependentResourceTypesAll> resourceElement in op.ResourceElement)
+            {
+                if (resourceElement is null)
+                {
+                    continue;
+                }
+
+                Code? extCode = resourceElement.GetExtensionValue<Code>(CommonDefinitions.ExtUrlOperationDefinitionAllowedType);
+
+                if (extCode is not null)
+                {
+                    additionalResourceTypes.Add(extCode.Value);
+                }
+            }
+
             // create a new metadata record
             CgDbOperation dbOp = new()
             {
@@ -1725,6 +1742,7 @@ public class LangSQLite : ILanguage
                 Comment = processTextForLinks(op.Comment, package),
                 BaseCanonical = op.Base,
                 ResourceTypes = null,
+                AdditionalResourceTypes = null,
                 InvokeOnSystem = op.System ?? false,
                 InvokeOnType = op.Type ?? false,
                 InvokeOnInstance = op.Instance ?? false,
@@ -1736,6 +1754,7 @@ public class LangSQLite : ILanguage
 
             // set list-based properties (overrides previous nulls)
             dbOp.ResourceTypeList = op.ResourceElement;
+            dbOp.AdditionalResourceTypeList = additionalResourceTypes;
 
             int parameterIndex = 0;
             addOpParams(dbOp.Key, op.Parameter, ref parameterIndex);

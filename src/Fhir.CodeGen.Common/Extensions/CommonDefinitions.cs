@@ -64,6 +64,7 @@ public static class CommonDefinitions
     public const string ExtUrlConceptMapAggregateRelationship = "http://ginoc.io/fhir/StructureDefinition/conceptmap-aggregate-relationship";
 
     public const string ExtUrlSearchParameterBaseType = "http://hl7.org/fhir/tools/StructureDefinition/searchparameter-base-type";
+    public const string ExtUrlOperationDefinitionAllowedType = "https://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type";
 
     public const string ConceptMapPropertiesSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-properties";
     public const string ConceptMapPropertyGenerated = "cg-generated";

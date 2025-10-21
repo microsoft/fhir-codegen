@@ -45,6 +45,28 @@ public partial class CgDbOperation : CgDbMetadataResourceBase
         }
     }
 
+    public required string? AdditionalResourceTypes { get; set; }
+    [CgSQLiteIgnore]
+    public List<string> AdditionalResourceTypeList
+    {
+        set
+        {
+            AdditionalResourceTypes = (value == null || value.Count == 0) ? null : string.Join(',', value);
+        }
+        get
+        {
+            if (string.IsNullOrEmpty(AdditionalResourceTypes))
+            {
+                return [];
+            }
+            return AdditionalResourceTypes
+                .Split(',')
+                .Select(v => v.Trim())
+                .Where(v => !string.IsNullOrEmpty(v))
+                .ToList();
+        }
+    }
+
     public required bool InvokeOnSystem { get; set; }
     public required bool InvokeOnType { get; set; }
     public required bool InvokeOnInstance { get; set; }
