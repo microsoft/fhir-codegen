@@ -24,8 +24,25 @@ public class ExportSQLiteOptions : ConfigGenerate
         },
     };
 
+    [ConfigOption(
+        ArgName = "--drop-tables",
+        Description = "If tables should be dropped before processing")]
+    public bool DropTables { get; set; } = false;
+
+    private static ConfigurationOption DropTablesParameter { get; } = new()
+    {
+        Name = "DropTables",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--drop-tables", "If tables should be dropped before processing")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
     private static readonly ConfigurationOption[] _options = [
         IncludeExtendedStructuresParameter,
+        DropTablesParameter,
         ];
 
     public override ConfigurationOption[] GetOptions()
@@ -45,6 +62,9 @@ public class ExportSQLiteOptions : ConfigGenerate
             {
                 case "IncludeExtendedStructures":
                     IncludeExtendedStructures = GetOpt(parseResult, opt, IncludeExtendedStructures);
+                    break;
+                case "DropTables":
+                    DropTables = GetOpt(parseResult, opt, DropTables);
                     break;
             }
         }

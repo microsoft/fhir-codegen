@@ -2887,16 +2887,16 @@ public partial class DefinitionCollection
         //}
 
         // iterate over the bases
-        foreach (VersionIndependentResourceTypesAll? rt in sp.Base)
+        foreach (Code<VersionIndependentResourceTypesAll>? baseElementCode in sp.BaseElement)
         {
-            if (rt == null)
+            if (baseElementCode == null)
             {
                 // TODO(ginoc): Check to see if this is actually possible
                 throw new Exception("SearchParameter.Base == null");
                 //continue;
             }
 
-            string spBase = Hl7.Fhir.Utility.EnumUtility.GetLiteral(rt.Value) ?? string.Empty;
+            string spBase = baseElementCode.ObjectValue?.ToString() ?? string.Empty;  // Hl7.Fhir.Utility.EnumUtility.GetLiteral(rt.Value) ?? string.Empty;
 
             if (string.IsNullOrEmpty(spBase))
             {

@@ -76,6 +76,11 @@ public class LangSQLite : ILanguage
         // open our connection
         _db.Open();
 
+        if (config.DropTables)
+        {
+            dropTables();
+        }
+
         // ensure tables exist
         createTables();
 
@@ -168,6 +173,7 @@ public class LangSQLite : ILanguage
 
         CgDbValueSet.LoadMaxKey(_db);
         CgDbValueSetConcept.LoadMaxKey(_db);
+        CgDbValueSetSystem.LoadMaxKey(_db);
 
         CgDbStructure.LoadMaxKey(_db);
 
@@ -205,6 +211,7 @@ public class LangSQLite : ILanguage
 
         CgDbValueSet.Delete(_db, PackageKey: existing.Key);
         CgDbValueSetConcept.Delete(_db, PackageKey: existing.Key);
+        CgDbValueSetSystem.Delete(_db, PackageKey: existing.Key);
 
         CgDbStructure.Delete(_db, PackageKey: existing.Key);
 
@@ -223,6 +230,34 @@ public class LangSQLite : ILanguage
         return existing;
     }
 
+    private void dropTables()
+    {
+        CgDbPackage.DropTable(_db);
+
+        CgDbCodeSystem.DropTable(_db);
+        CgDbCodeSystemConcept.DropTable(_db);
+        CgDbCodeSystemConceptProperty.DropTable(_db);
+        CgDbCodeSystemFilter.DropTable(_db);
+        CgDbCodeSystemPropertyDefinition.DropTable(_db);
+
+        CgDbValueSet.DropTable(_db);
+        CgDbValueSetConcept.DropTable(_db);
+        CgDbValueSetSystem.DropTable(_db);
+
+        CgDbStructure.DropTable(_db);
+
+        CgDbElement.DropTable(_db);
+        CgDbElementAdditionalBinding.DropTable(_db);
+        CgDbElementCollatedType.DropTable(_db);
+        CgDbElementType.DropTable(_db);
+
+        CgDbSearchParameter.DropTable(_db);
+        CgDbSearchParameterComponent.DropTable(_db);
+
+        CgDbOperation.DropTable(_db);
+        CgDbOperationParameter.DropTable(_db);
+    }
+
     private void createTables()
     {
         CgDbPackage.CreateTable(_db);
@@ -235,6 +270,7 @@ public class LangSQLite : ILanguage
 
         CgDbValueSet.CreateTable(_db);
         CgDbValueSetConcept.CreateTable(_db);
+        CgDbValueSetSystem.CreateTable(_db);
 
         CgDbStructure.CreateTable(_db);
 
@@ -658,6 +694,7 @@ public class LangSQLite : ILanguage
     {
         List<CgDbValueSet> dbValueSets = [];
         List<CgDbValueSetConcept> allDbConcepts = [];
+        Dictionary<int, List<string>> valueSetCodeSystems = [];
 
         string fhirVersionLiteral = package.DefinitionFhirSequence.ToString();
 
@@ -702,6 +739,10 @@ public class LangSQLite : ILanguage
 
             bool isExcluded = _exclusionSet.Contains(unversionedUrl);
 
+            int vsKey = CgDbValueSet.GetIndex();
+
+            valueSetCodeSystems[vsKey] = vs?.cgReferencedCodeSystems().Where(v => v is not null).ToList() ?? [];
+
             // will not further process value sets we know we will not process
             if (isExcluded ||
                 !canExpand ||
@@ -710,7 +751,7 @@ public class LangSQLite : ILanguage
                 // still add a metadata record
                 CgDbValueSet vsmExcluded = new()
                 {
-                    Key = CgDbValueSet.GetIndex(),
+                    Key = vsKey,
                     PackageKey = package.Key,
                     Id = uvs.Id,
                     VersionedUrl = versionedUrl,
@@ -772,7 +813,7 @@ public class LangSQLite : ILanguage
 
             CgDbValueSet dbVs = new()
             {
-                Key = CgDbValueSet.GetIndex(),
+                Key = vsKey,
                 PackageKey = package.Key,
                 Id = vs.Id,
                 VersionedUrl = versionedUrl,
@@ -882,6 +923,58 @@ public class LangSQLite : ILanguage
 
         _db.Insert(allDbConcepts);
         Console.WriteLine($" <<< added {allDbConcepts.Count} ValueSet Concepts");
+
+        List<CgDbValueSetSystem> vsCodeSystems = [];
+
+        // process the added value sets to resolve the code systems
+        foreach (CgDbValueSet vs in dbValueSets)
+        {
+            if (!valueSetCodeSystems.TryGetValue(vs.Key, out List<string>? referencedCodeSystems))
+            {
+                continue;
+            }
+
+            // iterate over the code systems
+            foreach (string csLit in referencedCodeSystems)
+            {
+                string unversionedUrl;
+
+                int versionLoc = csLit.LastIndexOf('|');
+                if (versionLoc == -1)
+                {
+                    unversionedUrl = csLit;
+                }
+                else
+                {
+                    unversionedUrl = csLit[0..versionLoc];
+                }
+
+                // try to resolve this code system record
+                CgDbCodeSystem? cs = CgDbCodeSystem.SelectSingle(
+                    _db,
+                    PackageKey: vs.PackageKey,
+                    UnversionedUrl: unversionedUrl);
+                if (cs is null)
+                {
+                    continue;
+                }
+
+                CgDbValueSetSystem vsCs = new()
+                {
+                    Key = CgDbValueSetSystem.GetIndex(),
+                    PackageKey = vs.PackageKey,
+                    ValueSetKey = vs.Key,
+                    CodeSystemKey = cs.Key,
+                    System = cs.UnversionedUrl,
+                    Version = cs.Version,
+                };
+
+                vsCodeSystems.Add(vsCs);
+            }
+        }
+
+        _db.Insert(vsCodeSystems);
+        Console.WriteLine($" <<< added {vsCodeSystems.Count} ValueSet Code Systems");
 
         return;
     }
@@ -1613,7 +1706,7 @@ public class LangSQLite : ILanguage
             dbSp.AliasCodeList = [];        // TODO: added in R6
             dbSp.BaseResourceList = sp.BaseElement;
             dbSp.AdditionalBaseResourceList = additionalBaseTypes;
-            dbSp.ReferenceTargetList = sp.Target.Select(t => t.ToString()!).ToList();
+            dbSp.ReferenceTargetList = sp.TargetElement.Select(t => t.ObjectValue?.ToString() ?? string.Empty).ToList();
             dbSp.ComparatorList = sp.ComparatorElement;
             dbSp.ModifierList = sp.ModifierElement;
             dbSp.ChainableSearchParameterList = sp.Chain.ToList();
