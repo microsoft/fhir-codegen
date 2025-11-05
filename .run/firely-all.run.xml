@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="firely-all" type="CompoundRunConfigurationType">
+    <toRun name="fhir-codegen: Firely 5.x Base" type="LaunchSettings" />
+    <toRun name="fhir-codegen: Firely 5.x Conformance" type="LaunchSettings" />
+    <toRun name="fhir-codegen: Firely 5.x R4" type="LaunchSettings" />
+    <toRun name="fhir-codegen: Firely 5.x R4B" type="LaunchSettings" />
+    <toRun name="fhir-codegen: Firely 5.x R5" type="LaunchSettings" />
+    <toRun name="fhir-codegen: Firely 5.x STU3" type="LaunchSettings" />
+    <method v="2" />
+  </configuration>
+</component>

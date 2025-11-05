@@ -95,7 +95,7 @@ public static class FhirNameConventionExtensions
             return string.Join(joinDelimiter, word.Split(delimitersToRemove, _wordSplitOptions).Select(w => w.ToPascalCase(false)));
         }
 
-        return string.Concat(word.Substring(0, 1).ToUpperInvariant(), word.Substring(1));
+        return string.Concat(word[..1].ToUpperInvariant(), word[1..]);
     }
 
     /// <summary>An extension method that converts an array of words each to PascalCase.</summary>
@@ -163,10 +163,10 @@ public static class FhirNameConventionExtensions
         {
             // converting to pascal and changing the initial letter is faster than accumulating here
             string pc = word.ToPascalCase(removeDelimiters, joinDelimiter, delimitersToRemove);
-            return string.Concat(pc.Substring(0, 1).ToLowerInvariant(), pc.Substring(1));
+            return string.Concat(pc[..1].ToLowerInvariant(), pc[1..]);
         }
 
-        return string.Concat(word.Substring(0, 1).ToLowerInvariant(), word.Substring(1));
+        return string.Concat(word[..1].ToLowerInvariant(), word[1..]);
     }
 
     /// <summary>An extension method that converts an array of words each to camelCase.</summary>

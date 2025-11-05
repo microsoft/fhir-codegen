@@ -4,8 +4,12 @@
 // </copyright>
 
 using System.ComponentModel;
+using System.Text;
 using Hl7.Fhir.Model;
 using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
 
 #if NETSTANDARD2_0
 using Microsoft.Health.Fhir.CodeGenCommon.Polyfill;
@@ -17,7 +21,7 @@ public static class CSharpFirelyCommon
 {
 
     /// <summary>Dictionary mapping FHIR primitive types to language equivalents (see Template-Model.tt#1252).</summary>
-    public static readonly Dictionary<string, string> PrimitiveTypeMap = new Dictionary<string, string>()
+    public static readonly Dictionary<string, string> PrimitiveTypeMap = new()
     {
         { "base64Binary", "byte[]" },
         { "boolean", "bool?" },
@@ -59,22 +63,6 @@ public static class CSharpFirelyCommon
     public static readonly Dictionary<string, string> ContextTypeMappings = new()
     {
         { "Resource", "DomainResource" },
-    };
-
-    /// <summary>Primitive types that have a specific validation attribute on their Value property.</summary>
-    public static readonly Dictionary<string, string> PrimitiveValidationPatterns = new()
-    {
-        ["uri"] = "UriPattern",
-        ["uuid"] = "UuidPattern",
-        ["id"] = "IdPattern",
-        ["date"] = "DatePattern",
-        ["dateTime"] = "DateTimePattern",
-        ["oid"] = "OidPattern",
-        ["code"] = "CodePattern",
-        ["time"] = "TimePattern",
-        ["string"] = "StringPattern",
-        ["markdown"] = "StringPattern",
-        ["xhtml"] = "NarrativeXhtmlPattern"
     };
 
     /// <summary>
@@ -251,4 +239,27 @@ public static class CSharpFirelyCommon
     {
         return (relativeOrder * 10) + 10;
     }
+
+    public static string BuildOpenAllowedTypesAttribute() => "[AllowedTypes(OpenChoice = true)]";
+
+    public static string BuildAllowedTypesAttribute(IEnumerable<TypeReference> types, FhirReleases.FhirSequenceCodes? since)
+    {
+        StringBuilder sb = new();
+        sb.Append("[AllowedTypes(");
+
+        string typesList = string.Join(",",
+            types.Select(t => $"typeof({t.PropertyTypeString})"));
+
+        sb.Append(typesList);
+        if (since is not null)
+            sb.Append($", Since = FhirRelease.{since}");
+        sb.Append(")]");
+        return sb.ToString();
+    }
+}
+
+
+public static class StringHelpers
+{
+    public static string EnsurePeriod(this string s) => s.EndsWith('.') ? s : s + ".";
 }

@@ -7,167 +7,157 @@
         },
         "Firely 5.x Base": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Base\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset base",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.Base/Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset base",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x Conformance": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Conformance\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset conformance",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.Conformance/Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset conformance",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x STU3": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.STU3\\Model -p hl7.fhir.r3.core#3.0.2 -p hl7.fhir.r3.expansions#3.0.2 --subset satellite",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.STU3/Model -p hl7.fhir.r3.core#3.0.2 -p hl7.fhir.r3.expansions#3.0.2 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4\\Model -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1 --subset satellite --cql-model Fhir401",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.R4/Model -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1 --subset satellite --cql-model Fhir401",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R4B": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R4B\\Model -p hl7.fhir.r4b.core#4.3.0 -p hl7.fhir.r4b.expansions#4.3.0 --subset satellite",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.R4B/Model -p hl7.fhir.r4b.core#4.3.0 -p hl7.fhir.r4b.expansions#4.3.0 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R5": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.R5/Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R6": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R6\\Model -p hl7.fhir.r6.core#6.0.0-ballot3 -p hl7.fhir.r6.expansions#6.0.0-ballot3 --subset satellite",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "DONT USE YET Firely 5.x Base (R6)": {
-            "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Base\\Model -p hl7.fhir.r6.core#6.0.0-ballot3 -p hl7.fhir.r6.expansions#6.0.0-ballot3 --subset base",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
-        "DONT USE YET Firely 5.x Conformance (R6)": {
-            "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.Conformance\\Model -p hl7.fhir.r6.core#6.0.0-ballot3 -p hl7.fhir.r6.expansions#6.0.0-ballot3 --subset conformance",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.R6/Model -p hl7.fhir.r6.core#6.0.0-ballot3 -p hl7.fhir.r6.expansions#6.0.0-ballot3 --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG Backport": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --fhir-version 4.0.1 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ../../temp/firely-ig -p hl7.fhir.uv.subscriptions-backport#1.1.0 --fhir-version 4.0.1 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG US Core": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ../../temp/firely-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG Extensions Pack": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.extensions.r4#latest --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ../../temp/firely-ig -p hl7.fhir.uv.extensions.r4#latest --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG NDH": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ../../temp/firely-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG SDC": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --output-path ..\\..\\temp\\firely-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --output-path ../../temp/firely-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely OpenApi": {
             "commandName": "Project",
-            "commandLineArgs": "generate OpenApi --fhir-server-url https://secure.server.fire.ly/ -p hl7.fhir.r4.core#4.0.1 --output-path ..\\..\\generated\\FS-OpenApi-R4 --include-experimental --schema-level names --metadata true --multi-file true --single-responses false --resolve-server-canonicals false --resolve-external-canonicals false --basic-scopes-only true",
+            "commandLineArgs": "generate OpenApi --fhir-server-url https://secure.server.fire.ly/ -p hl7.fhir.r4.core#4.0.1 --output-path ../../generated/FS-OpenApi-R4 --include-experimental --schema-level names --metadata true --multi-file true --single-responses false --resolve-server-canonicals false --resolve-external-canonicals false --basic-scopes-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Info R2": {
             "commandName": "Project",
-            "commandLineArgs": "generate Info --output-path ..\\..\\generated --output-filename Info_R2.txt -p hl7.fhir.r2.core@1.0.2 -p hl7.fhir.r2.expansions#1.0.2",
+            "commandLineArgs": "generate Info --output-path ../../generated --output-filename Info_R2.txt -p hl7.fhir.r2.core@1.0.2 -p hl7.fhir.r2.expansions#1.0.2",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Info R3": {
             "commandName": "Project",
-            "commandLineArgs": "generate Info --output-path ..\\..\\generated --output-filename Info_R3.txt -p hl7.fhir.r3.core@3.0.2 -p hl7.fhir.r3.expansions#3.0.2",
+            "commandLineArgs": "generate Info --output-path ../../generated --output-filename Info_R3.txt -p hl7.fhir.r3.core@3.0.2 -p hl7.fhir.r3.expansions#3.0.2",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Info R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate Info --output-path ..\\..\\generated --output-filename Info_R4.txt -p hl7.fhir.r4.core@latest -p hl7.fhir.r4.expansions#4.0.1",
+            "commandLineArgs": "generate Info --output-path ../../generated --output-filename Info_R4.txt -p hl7.fhir.r4.core@latest -p hl7.fhir.r4.expansions#4.0.1",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Info R4B": {
             "commandName": "Project",
-            "commandLineArgs": "generate Info --output-path ..\\..\\generated --output-filename Info_R4B.txt -p hl7.fhir.r4b.core@4.3.0 -p hl7.fhir.r4b.expansions#4.3.0",
+            "commandLineArgs": "generate Info --output-path ../../generated --output-filename Info_R4B.txt -p hl7.fhir.r4b.core@4.3.0 -p hl7.fhir.r4b.expansions#4.3.0",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Info R5": {
             "commandName": "Project",
-            "commandLineArgs": "generate Info --output-path ..\\..\\generated --output-filename Info_R5.txt -p hl7.fhir.r5.core@5.0.0 -p hl7.fhir.r5.expansions#5.0.0",
+            "commandLineArgs": "generate Info --output-path ../../generated --output-filename Info_R5.txt -p hl7.fhir.r5.core@5.0.0 -p hl7.fhir.r5.expansions#5.0.0",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Shorthand IG US Core": {
             "commandName": "Project",
-            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate ShorthandIg --output-path ../../temp/fsh-ig -p hl7.fhir.us.core#6.1.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Shorthand IG Extensions Pack": {
             "commandName": "Project",
-            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.uv.extensions.r4#latest --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate ShorthandIg --output-path ../../temp/fsh-ig -p hl7.fhir.uv.extensions.r4#latest --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Shorthand IG NDH": {
             "commandName": "Project",
-            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate ShorthandIg --output-path ../../temp/fsh-ig -p hl7.fhir.us.ndh#1.0.0-ballot --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Shorthand IG SDC": {
             "commandName": "Project",
-            "commandLineArgs": "generate ShorthandIg --output-path ..\\..\\temp\\fsh-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate ShorthandIg --output-path ../../temp/fsh-ig -p hl7.fhir.uv.sdc#3.0.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "TypeScript R2": {
             "commandName": "Project",
-            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R2.ts -p hl7.fhir.r2.core#1.0.2 -p hl7.fhir.r2.expansions#1.0.2",
+            "commandLineArgs": "generate TypeScript --output-path ../../generated --output-filename TypeScript_R2.ts -p hl7.fhir.r2.core#1.0.2 -p hl7.fhir.r2.expansions#1.0.2",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "TypeScript R3": {
             "commandName": "Project",
-            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R3.ts -p hl7.fhir.r3.core#3.0.2 -p hl7.fhir.r3.expansions#3.0.2",
+            "commandLineArgs": "generate TypeScript --output-path ../../generated --output-filename TypeScript_R3.ts -p hl7.fhir.r3.core#3.0.2 -p hl7.fhir.r3.expansions#3.0.2",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "TypeScript R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R4.ts -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1",
+            "commandLineArgs": "generate TypeScript --output-path ../../generated --output-filename TypeScript_R4.ts -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "TypeScript R4B": {
             "commandName": "Project",
-            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R4B.ts -p hl7.fhir.r4b.core#4.3.0 -p hl7.fhir.r4b.expansions#4.3.0",
+            "commandLineArgs": "generate TypeScript --output-path ../../generated --output-filename TypeScript_R4B.ts -p hl7.fhir.r4b.core#4.3.0 -p hl7.fhir.r4b.expansions#4.3.0",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "TypeScript R5": {
             "commandName": "Project",
-            "commandLineArgs": "generate TypeScript --output-path ..\\..\\generated --output-filename TypeScript_R5.ts -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0",
+            "commandLineArgs": "generate TypeScript --output-path ../../generated --output-filename TypeScript_R5.ts -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Ruby R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate Ruby --output-path ..\\..\\generated\\Ruby_r4 -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1",
+            "commandLineArgs": "generate Ruby --output-path ../../generated/Ruby_r4 -p hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r4.expansions#4.0.1",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Compare x-y": {
             "commandName": "Project",
-            "commandLineArgs": "compare -c hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
+            "commandLineArgs": "compare -c hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ../../../fhir-cross-version  --map-destination-path ../../../fhir-cross-version-source --map-save-style Source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Compare 43-50": {
             "commandName": "Project",
-            "commandLineArgs": "compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
+            "commandLineArgs": "compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ../../../fhir-cross-version  --map-destination-path ../../../fhir-cross-version-source --map-save-style Source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Compare 50-43": {
             "commandName": "Project",
-            "commandLineArgs": "compare -p hl7.fhir.r5.core#5.0.0 -c hl7.fhir.r4b.core#4.3.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
+            "commandLineArgs": "compare -p hl7.fhir.r5.core#5.0.0 -c hl7.fhir.r4b.core#4.3.0 --auto-load-expansions --resolve-dependencies true --map-source-path ../../../fhir-cross-version  --map-destination-path ../../../fhir-cross-version-source --map-save-style Source",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Gui": {
@@ -177,7 +167,7 @@
         },
         "Cross Version Review": {
             "commandName": "Project",
-            "commandLineArgs": "cross-version --output-path ..\\..\\temp\\cross-version",
+            "commandLineArgs": "cross-version --output-path ../../temp/cross-version",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "http": {
