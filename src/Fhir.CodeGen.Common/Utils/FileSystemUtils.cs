@@ -9,7 +9,12 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Fhir.CodeGen.Lib.Utils;
+
+#if NETSTANDARD2_0
+using Fhir.CodeGen.Common.Polyfill;
+#endif
+
+namespace Fhir.CodeGen.Common.Utils;
 
 public abstract class FileSystemUtils
 {
@@ -35,6 +40,15 @@ public abstract class FileSystemUtils
             "~/" => Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)) ?? string.Empty,
             _ => startDir,
         };
+
+        if (currentDir.StartsWith('~'))
+        {
+            currentDir = Path.GetDirectoryName(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) ?? Path.GetDirectoryName(AppContext.BaseDirectory) ?? ".",
+                currentDir[2..]))
+                ?? ".";
+        }
+
         string testDir = Path.Combine(currentDir, dirName);
 
         while (!Directory.Exists(testDir))
@@ -55,6 +69,49 @@ public abstract class FileSystemUtils
         }
 
         return Path.GetFullPath(testDir);
+    }
+
+    public static string FindRelativeFile(
+        string startDir,
+        string fileName,
+        bool throwIfNotFound = true)
+    {
+        string currentDir = startDir switch
+        {
+            null => Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty,
+            "" => Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty,
+            "." => Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty,
+            "./" => Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty,
+            "~" => Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)) ?? string.Empty,
+            "~/" => Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)) ?? string.Empty,
+            _ => startDir,
+        };
+
+        if (currentDir.StartsWith('~'))
+        {
+            currentDir = Path.GetDirectoryName(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) ?? Path.GetDirectoryName(AppContext.BaseDirectory) ?? ".",
+                currentDir[2..]))
+                ?? ".";
+        }
+
+        string testFile = Path.Combine(currentDir, fileName);
+
+        while (!File.Exists(testFile))
+        {
+            currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
+            if (currentDir == Path.GetPathRoot(currentDir))
+            {
+                if (throwIfNotFound)
+                {
+                    throw new FileNotFoundException($"Could not find file {fileName}!");
+                }
+                return string.Empty;
+            }
+            testFile = Path.Combine(currentDir, fileName);
+        }
+
+        return Path.GetFullPath(testFile);
     }
 
     public static string GenerateSha256(Stream stream)

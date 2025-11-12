@@ -1220,12 +1220,16 @@ public class CrossVersionMapCollection
                 continue;
             }
 
-            string? targetTypeName = null;
+            if (!_source.TryGetStructure(typeGroup.Key, out StructureDefinition? sourceSd))
+            {
+                Console.WriteLine($"processCrossVersionElementsMap <<< invalid source structure {typeGroup.Key} for {_source.MainPackageId}@{_source.MainPackageVersion} from {cm.Id} ({cm.Url})");
+                continue;
+            }
 
             // create a lookup based on the full source element paths
             ILookup<string, ConceptMap.SourceElementComponent> elementDict = elements.ToLookup(e => e.Code);
-
             List<ConceptMap.SourceElementComponent> reconciled = [];
+            HashSet<string> targetTypeNames = [];
 
             // iterate over the elements and build our reconciled element map
             foreach (IGrouping<string, ConceptMap.SourceElementComponent> originalSourceElements in elementDict)
@@ -1245,87 +1249,87 @@ public class CrossVersionMapCollection
                 // add this element
                 reconciled.Add(reconciledElement);
 
-                // check for a target type
+                // check for target types
                 if (reconciledElement.Target.Count > 0)
                 {
-                    targetTypeName = reconciledElement.Target[0].Code.Split('.')[0];
-                }
-            }
-
-            // try to resolve these structures
-            if (!_source.TryGetStructure(typeGroup.Key, out StructureDefinition? sourceSd))
-            {
-                Console.WriteLine($"processCrossVersionElementsMap <<< invalid source structure {typeGroup.Key} for {_source.MainPackageId}@{_source.MainPackageVersion} from {cm.Id} ({cm.Url})");
-                continue;
-            }
-
-            string? resolvedTargetName;
-
-            // try to resolve these structures
-            if (_target.TryGetStructure(targetTypeName ?? typeGroup.Key, out StructureDefinition? targetSd))
-            {
-                resolvedTargetName = targetSd.Name;
-            }
-            else
-            {
-                resolvedTargetName = null;
-            }
-
-            // check to see if we have an existing concept map to add to
-            if (tryGetElementMap(typeGroup.Key, resolvedTargetName, out ConceptMap? elementMap) &&
-                (elementMap != null))
-            {
-                string groupSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", typeGroup.Key);
-                string? groupTargetUrl = (targetSd == null)
-                    ? null
-                    : BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", targetTypeName ?? typeGroup.Key);
-
-                ConceptMap.GroupComponent? mapGroup = elementMap.Group.FirstOrDefault(g => (g.Source == groupSourceUrl) && (g.Target == groupTargetUrl));
-                if (mapGroup == null)
-                {
-                    mapGroup = new()
+                    foreach (ConceptMap.TargetElementComponent target in reconciledElement.Target)
                     {
-                        Source = groupSourceUrl,
-                        Target = groupTargetUrl,
-                        Element = reconciled,
-                    };
-                }
-                else
-                {
-                    ILookup<string, ConceptMap.SourceElementComponent> existingSourceLookup = mapGroup.Element.ToLookup(e => e.Code);
-
-                    foreach (ConceptMap.SourceElementComponent reconciledSource in reconciled)
-                    {
-                        ConceptMap.SourceElementComponent mappedSource = existingSourceLookup.Contains(reconciledSource.Code)
-                            ? existingSourceLookup[reconciledSource.Code].First()
-                            : reconciledSource;
-
-                        foreach (ConceptMap.TargetElementComponent reconciledTarget in reconciledSource.Target)
-                        {
-                            if (mappedSource.Target.Any(t => t.Code == reconciledTarget.Code))
-                            {
-                                continue;
-                            }
-
-                            mappedSource.Target.Add(reconciledTarget);
-                        }
+                        string tn = target.Code.Split('.')[0];
+                        targetTypeNames.Add(tn);
                     }
                 }
             }
-            else
+
+            foreach (string targetTypeName in targetTypeNames)
             {
-                elementMap = BuildNewElementMap(
-                    typeGroup.Key,
-                    resolvedTargetName,
-                    reconciled);
+                string? resolvedTargetName;
 
-                addUseContextTarget(
-                    elementMap,
-                    sourceSd.cgArtifactClass() == Common.Models.FhirArtifactClassEnum.ComplexType
-                        ? CommonDefinitions.ConceptMapUsageContextDataType
-                        : CommonDefinitions.ConceptMapUsageContextResource);
+                // try to resolve these structures
+                if (_target.TryGetStructure(targetTypeName ?? typeGroup.Key, out StructureDefinition? targetSd))
+                {
+                    resolvedTargetName = targetSd.Name;
+                }
+                else
+                {
+                    resolvedTargetName = null;
+                }
 
-                _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+                // check to see if we have an existing concept map to add to
+                if (tryGetElementMap(typeGroup.Key, resolvedTargetName, out ConceptMap? elementMap) &&
+                    (elementMap is not null))
+                {
+                    string groupSourceUrl = BuildUrl("{0}/{1}/{2}", _sourcePackageCanonical, "StructureDefinition", typeGroup.Key);
+                    string? groupTargetUrl = (targetSd == null)
+                        ? null
+                        : BuildUrl("{0}/{1}/{2}", _targetPackageCanonical, "StructureDefinition", targetTypeName ?? typeGroup.Key);
+
+                    ConceptMap.GroupComponent? mapGroup = elementMap.Group.FirstOrDefault(g => (g.Source == groupSourceUrl) && (g.Target == groupTargetUrl));
+                    if (mapGroup == null)
+                    {
+                        mapGroup = new()
+                        {
+                            Source = groupSourceUrl,
+                            Target = groupTargetUrl,
+                            Element = reconciled,
+                        };
+                    }
+                    else
+                    {
+                        ILookup<string, ConceptMap.SourceElementComponent> existingSourceLookup = mapGroup.Element.ToLookup(e => e.Code);
+
+                        foreach (ConceptMap.SourceElementComponent reconciledSource in reconciled)
+                        {
+                            ConceptMap.SourceElementComponent mappedSource = existingSourceLookup.Contains(reconciledSource.Code)
+                                ? existingSourceLookup[reconciledSource.Code].First()
+                                : reconciledSource;
+
+                            foreach (ConceptMap.TargetElementComponent reconciledTarget in reconciledSource.Target)
+                            {
+                                if (mappedSource.Target.Any(t => t.Code == reconciledTarget.Code))
+                                {
+                                    continue;
+                                }
+
+                                mappedSource.Target.Add(reconciledTarget);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    elementMap = BuildNewElementMap(
+                        typeGroup.Key,
+                        resolvedTargetName,
+                        reconciled);
+
+                    addUseContextTarget(
+                        elementMap,
+                        sourceSd.cgArtifactClass() == Common.Models.FhirArtifactClassEnum.ComplexType
+                            ? CommonDefinitions.ConceptMapUsageContextDataType
+                            : CommonDefinitions.ConceptMapUsageContextResource);
+
+                    _dc.AddConceptMap(elementMap, _dc.MainPackageId, _dc.MainPackageVersion);
+                }
             }
         }
     }

@@ -25,7 +25,6 @@ using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.Extensions;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.Packaging;
 using Ncqa.Cql.Model;

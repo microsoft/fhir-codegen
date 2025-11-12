@@ -6,7 +6,6 @@
 using System.Runtime.CompilerServices;
 using Hl7.Fhir.Model;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Utils;
 using CSDC = Hl7.Fhir.Model.CodeSystem.ConceptDefinitionComponent;

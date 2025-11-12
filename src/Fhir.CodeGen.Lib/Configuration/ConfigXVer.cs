@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Lib.Extensions;
 
 namespace Fhir.CodeGen.Lib.Configuration;
@@ -339,13 +340,33 @@ public class ConfigXVer : ConfigRoot
                     ComparePackages = GetOptArray(parseResult, opt, ComparePackages);
                     break;
                 case "Comparison_Database_Path":
-                    CrossVersionDbPath = GetOpt(parseResult, opt, CrossVersionDbPath);
+                    {
+                        string? path = GetOpt(parseResult, opt, CrossVersionDbPath);
+                        if (string.IsNullOrEmpty(path))
+                        {
+                            CrossVersionDbPath = string.Empty;
+                        }
+                        else
+                        {
+                            CrossVersionDbPath = FileSystemUtils.FindRelativeFile(string.Empty, path ?? string.Empty, false);
+                        }
+                    }
                     break;
                 case "Reload_Comparison_Database":
                     ReloadDatabase = GetOpt(parseResult, opt, ReloadDatabase);
                     break;
                 case "Comparison_Source_Database":
-                    CrossVersionSourceDb = GetOpt(parseResult, opt, CrossVersionSourceDb);
+                    {
+                        string? path = GetOpt(parseResult, opt, CrossVersionSourceDb);
+                        if (string.IsNullOrEmpty(path))
+                        {
+                            CrossVersionSourceDb = string.Empty;
+                        }
+                        else
+                        {
+                            CrossVersionSourceDb = FileSystemUtils.FindRelativeFile(string.Empty, path ?? string.Empty, false);
+                        }
+                    }
                     break;
                 case "Comparison_Pair_Filter_Key":
                     ComparisonPairFilterKeys = GetOptHash(parseResult, opt.CliOption, ComparisonPairFilterKeys);
@@ -375,10 +396,30 @@ public class ConfigXVer : ConfigRoot
                     SaveComparisonResult = GetOpt(parseResult, opt, SaveComparisonResult);
                     break;
                 case "Map_Source_Path":
-                    CrossVersionMapSourcePath = GetOpt(parseResult, opt, CrossVersionMapSourcePath);
+                    {
+                        string? path = GetOpt(parseResult, opt, CrossVersionMapSourcePath);
+                        if (string.IsNullOrEmpty(path))
+                        {
+                            CrossVersionMapSourcePath = string.Empty;
+                        }
+                        else
+                        {
+                            CrossVersionMapSourcePath = FileSystemUtils.FindRelativeDir(string.Empty, path ?? string.Empty, false);
+                        }
+                    }
                     break;
                 case "Map_Destination_Path":
-                    CrossVersionMapDestinationPath = GetOpt(parseResult, opt, CrossVersionMapDestinationPath);
+                    {
+                        string? path = GetOpt(parseResult, opt, CrossVersionMapDestinationPath);
+                        if (string.IsNullOrEmpty(path))
+                        {
+                            CrossVersionMapDestinationPath = string.Empty;
+                        }
+                        else
+                        {
+                            CrossVersionMapDestinationPath = FileSystemUtils.FindRelativeDir(string.Empty, path ?? string.Empty, false);
+                        }
+                    }
                     break;
             }
         }

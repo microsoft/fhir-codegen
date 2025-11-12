@@ -63,6 +63,7 @@
 
   <ItemGroup>
     <Folder Include="Polyfill\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   
 </Project>

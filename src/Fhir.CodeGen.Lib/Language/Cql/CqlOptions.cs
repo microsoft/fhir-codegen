@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.Extensions;
 
@@ -59,11 +60,11 @@ public class CqlOptions : ConfigGenerate
                         string? dir = GetOpt(parseResult, opt, CqlSupportDir);
                         if (string.IsNullOrEmpty(dir))
                         {
-                            dir = FindRelativeDir(string.Empty, "Language/Cql/_Definitional/fsh-generated");
+                            dir = FileSystemUtils.FindRelativeDir(string.Empty, "Language/Cql/_Definitional/fsh-generated");
                         }
                         else if (!Path.IsPathRooted(dir))
                         {
-                            dir = FindRelativeDir(string.Empty, dir!);
+                            dir = FileSystemUtils.FindRelativeDir(string.Empty, dir!);
                         }
 
                         CqlSupportDir = dir;

@@ -12,7 +12,6 @@ using Fhir.CodeGen.Lib.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Hl7.Fhir.Model;
 using Fhir.CodeGen.Lib.FhirExtensions;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.Utils;
 
 #if NETSTANDARD2_0

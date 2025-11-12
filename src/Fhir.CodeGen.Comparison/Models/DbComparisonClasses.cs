@@ -9,7 +9,6 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.SQLiteGenerator;

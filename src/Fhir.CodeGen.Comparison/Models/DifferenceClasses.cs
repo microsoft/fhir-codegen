@@ -15,7 +15,6 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Utils;
 

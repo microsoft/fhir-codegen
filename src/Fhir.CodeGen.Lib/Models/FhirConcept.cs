@@ -4,7 +4,6 @@
 // </copyright>
 
 using Hl7.Fhir.Model;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Utils;
 

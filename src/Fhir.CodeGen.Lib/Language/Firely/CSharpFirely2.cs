@@ -10,7 +10,6 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;

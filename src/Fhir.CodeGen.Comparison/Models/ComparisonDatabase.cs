@@ -20,7 +20,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
@@ -1140,8 +1139,8 @@ public class ComparisonDatabase : IDisposable
             DbStructureComparison? inverseSdComparison = null;
 
             // if we have a source and a target, get or make a comparison record
-            if ((sourceDbSd != null) &&
-                (targetDbSd != null))
+            if ((sourceDbSd is not null) &&
+                (targetDbSd is not null))
             {
                 inverseSdComparison = DbStructureComparison.SelectSingle(
                     _dbConnection,
@@ -1325,8 +1324,6 @@ public class ComparisonDatabase : IDisposable
                             targetDbElement,
                             targetStructureUrl: targetVersioned,
                             targetToken: mapTargetElement.Code);
-
-                        continue;
                     }
                 }
             }

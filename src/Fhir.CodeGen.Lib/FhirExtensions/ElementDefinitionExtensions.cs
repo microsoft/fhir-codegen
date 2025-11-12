@@ -8,7 +8,6 @@ using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using static Fhir.CodeGen.Common.Extensions.FhirNameConventionExtensions;

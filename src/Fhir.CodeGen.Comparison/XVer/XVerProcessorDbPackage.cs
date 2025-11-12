@@ -56,6 +56,9 @@ public partial class XVerProcessor
         * [ ] Update Lookup files to include the 'parent' extension when result is to use a parent extension
         * [ ] Add Lookup files for Value Sets
         * [ ] Add profile links to the lookup files for Resource extensions that target `Basic`
+        * [ ] Port Search Parameters for new resources
+            * [ ] Determine if we can add new search parameters due to additional elements
+        * [ ] Port Operation Definitions for new resources
 
         ### 0.0.1-snapshot-2
 
@@ -534,8 +537,10 @@ public partial class XVerProcessor
         ERROR: %: %: It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.6.276' - use 'http://terminology.hl7.org/CodeSystem/GMDN'
         INFORMATION: %: %: A definition for CodeSystem 'urn:oid:2.16.840.1.113883.6.276' could not be found, so the code cannot be validated
         WARNING: %: %: The terminology server null used for the CodeSystem urn:oid:2.16.840.1.113883.6.276 does not support batch validation (tx version Not Known), so the codes have not been validated
+        WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r3: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r5: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
+        WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r6: Unable to provide support for code system urn:oid:2.16.840.1.113883.6.276
         ERROR: %: %: It is not valid to refer to a CodeSystem by an identifier like this 'urn:oid:2.16.840.1.113883.3.26.1.1' - use 'http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl'
         ERROR: %: %: The code '%' is not valid in the system urn:oid:2.16.840.1.113883.3.26.1.1 version 5.0.0 (%)
         INFORMATION: %: %: A definition for CodeSystem 'urn:oid:2.16.840.1.113883.3.26.1.1' version '5.0.0' could not be found, so the code cannot be validated. Valid versions: []
@@ -566,8 +571,10 @@ public partial class XVerProcessor
 
         # ==== 22. ValueSet with overly-large expansion is not validated ====
         INFORMATION: ValueSet/%: %: The value set include has too many codes to validate (%), so each individual code has not been checked
+        WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r3: Unable to provide support for code system http://snomed.info/sct version http://snomed.info/sct/900000000000207008/version/20200731 (known versions = %)
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r4: Unable to provide support for code system http://snomed.info/sct version http://snomed.info/sct/900000000000207008/version/20200731 (known versions = %)
         WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r5: Unable to provide support for code system http://snomed.info/sct version http://snomed.info/sct/900000000000207008/version/20200731 (known versions = %)
+        WARNING: ValueSet.where(id = '%'): Error from https://tx.fhir.org/r6: Unable to provide support for code system http://snomed.info/sct version http://snomed.info/sct/900000000000207008/version/20200731 (known versions = %)
 
         # ==== 23. ValueSets with overly-large expansions are not fully displayed ====
         VALUESET_INC_TOO_MANY_CODES
@@ -584,8 +591,10 @@ public partial class XVerProcessor
         WARNING: ValueSet.jurisdiction: The resource should declare its jurisdiction to match the package id (%) (for Sushi users: in sushi-config.yaml, 'jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"')
 
         # ==== 27. These are example ValueSets and incorrect, but we cannot change the properties ====
+        ERROR: ValueSet.where(id = '%example%'): Unsupported property value for a CodeSystem Property: boolean (and Error from https://tx.fhir.org/r3: The filter "acme-plasma = true" from the value set % was not understood in the context of http://hl7.org/fhir/CodeSystem/example (3))
         ERROR: ValueSet.where(id = '%example%'): Unsupported property value for a CodeSystem Property: boolean (and Error from https://tx.fhir.org/r4: The filter "acme-plasma = true" from the value set % was not understood in the context of http://hl7.org/fhir/CodeSystem/example (3))
         ERROR: ValueSet.where(id = '%example%'): Unsupported property value for a CodeSystem Property: boolean (and Error from https://tx.fhir.org/r5: The filter "acme-plasma = true" from the value set % was not understood in the context of http://hl7.org/fhir/CodeSystem/example (3))
+        ERROR: ValueSet.where(id = '%example%'): Unsupported property value for a CodeSystem Property: boolean (and Error from https://tx.fhir.org/r6: The filter "acme-plasma = true" from the value set % was not understood in the context of http://hl7.org/fhir/CodeSystem/example (3))
 
         # ==== 28. This was wrong in this version of THO ====
         VALUESET_INCLUDE_CS_CONTENT
@@ -1729,17 +1738,16 @@ public partial class XVerProcessor
 
             // build and write the ImplementationGuide resource for the combination package (single source and target)
             {
-                string igJson;
+                string? igJson = targetSupport.Package.DefinitionFhirSequence switch
+                {
+                    FhirReleases.FhirSequenceCodes.R4 => getIgJsonR4(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo),
+                    FhirReleases.FhirSequenceCodes.R4B => getIgJsonR4(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo),
+                    FhirReleases.FhirSequenceCodes.R5 => getIgJsonR5(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo),
+                    FhirReleases.FhirSequenceCodes.R6 => getIgJsonR5(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo),
+                    _ => null,
+                };
 
-                if (targetSupport.Package.FhirVersionShort.StartsWith('4'))
-                {
-                    igJson = getIgJsonR4(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo);
-                }
-                else if (targetSupport.Package.FhirVersionShort.StartsWith('5'))
-                {
-                    igJson = getIgJsonR5(sourcePackage, targetSupport.Package, xverValueSets, xverExtensions, indexInfo);
-                }
-                else
+                if (igJson is null)
                 {
                     // TODO: Implment DSTU2 and STU3
                     continue;

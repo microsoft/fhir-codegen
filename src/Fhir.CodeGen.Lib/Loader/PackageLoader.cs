@@ -23,11 +23,11 @@ using Microsoft.Extensions.Logging;
 using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Lib.Utils;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Polyfill;
 using Tasks = System.Threading.Tasks;
+using Fhir.CodeGen.Common.Utils;
 
 namespace Fhir.CodeGen.Lib.Loader;
 

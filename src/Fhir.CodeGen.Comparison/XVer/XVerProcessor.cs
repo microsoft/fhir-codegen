@@ -321,7 +321,8 @@ public partial class XVerProcessor
             {
                 // check for copying from source
                 if (!allowSourceCopy ||
-                    string.IsNullOrEmpty(_config.CrossVersionSourceDb))
+                    string.IsNullOrEmpty(_config.CrossVersionSourceDb) &&
+                    (_config.CrossVersionSourceDb.ToLowerInvariant() != _config.CrossVersionDbPath.ToLowerInvariant()))
                 {
                     return;
                 }

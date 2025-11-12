@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Lib.Extensions;
 
 namespace Fhir.CodeGen.Lib.Configuration;
@@ -79,11 +80,11 @@ public class ConfigSql : ConfigRoot
 
                         if (string.IsNullOrEmpty(dir))
                         {
-                            dir = FindRelativeDir(string.Empty, ".");
+                            dir = FileSystemUtils.FindRelativeDir(string.Empty, ".");
                         }
                         else if (!Path.IsPathRooted(dir))
                         {
-                            dir = FindRelativeDir(string.Empty, dir);
+                            dir = FileSystemUtils.FindRelativeDir(string.Empty, dir);
                         }
 
                         ViewDefinitionDirectory = dir;
