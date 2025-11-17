@@ -2,17 +2,9 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Serialization;
-using Hl7.Fhir.Specification.Snapshot;
-using Hl7.Fhir.Utility;
-using Hl7.FhirPath.Sprache;
-using Microsoft.Extensions.Logging;
-using Fhir.CodeGen.Lib.Configuration;
-using Fhir.CodeGen.Lib.FhirExtensions;
-using Fhir.CodeGen.Lib.Models;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
@@ -20,6 +12,15 @@ using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Lib.Configuration;
+using Fhir.CodeGen.Lib.FhirExtensions;
+using Fhir.CodeGen.Lib.Models;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Specification.Snapshot;
+using Hl7.Fhir.Utility;
+using Hl7.FhirPath.Sprache;
+using Microsoft.Extensions.Logging;
 using Octokit;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
@@ -28,6 +29,100 @@ namespace Fhir.CodeGen.Comparison.XVer;
 
 public partial class XVerProcessor
 {
+    private record class XVerIgFileRecord
+    {
+        [JsonPropertyName("filename")]
+        public required string FileName { get; init; }
+
+        [JsonIgnore]
+        public required string FileNameWithoutExtension { get; init; }
+
+        [JsonIgnore]
+        public required bool IsPageContentFile { get; init; }
+
+        [JsonIgnore]
+        public required string Name { get; init; }
+
+        [JsonPropertyName("id")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public required string? Id { get; init; }
+
+        [JsonPropertyName("url")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public required string? Url { get; init; }
+
+        [JsonPropertyName("resourceType")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public required string? ResourceType { get; init; }
+
+        /// <summary>
+        /// Resource `version` value, if applicable *and* different from the IG itself (e.g., CodeSystem.version).
+        /// </summary>
+        [JsonPropertyName("version")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Version { get; init; } = null;
+
+        [JsonIgnore]
+        public required string Description { get; init; }
+
+        [JsonIgnore]
+        public string? GroupingId { get; init; } = null;
+
+        [JsonIgnore]
+        public bool? IsExample { get; init; } = null;
+
+        [JsonIgnore]
+        public List<string>? Profiles { get; init; } = null;
+
+        /// <summary>
+        /// Resource `kind` value, if applicable (e.g., CodeSystem.kind).
+        /// </summary>
+        [JsonPropertyName("kind")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? KindValue { get; init; } = null;
+
+        /// <summary>
+        /// Resource `type` value, if applicable (e.g., StructureDefinition.type).
+        /// </summary>
+        [JsonPropertyName("type")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? TypeValue { get; init; } = null;
+
+        /// <summary>
+        /// Resource `derivation` value, if applicable (e.g., StructureDefinition.derivation).
+        /// </summary>
+        [JsonPropertyName("derivation")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? DerivationValue { get; init; } = null;
+
+        /// <summary>
+        /// Resource `valueSet` value, if applicable (e.g., CodeSystem.valueSet).
+        /// </summary>
+        [JsonPropertyName("valueSet")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? ValueSetValue { get; init; } = null;
+
+        [JsonPropertyName("hasSnapshot")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? HasSnapshot { get; init; } = null;
+
+        [JsonPropertyName("hasExpansion")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public bool? HasExpansion { get; init; } = null;
+
+        public PackageContents.PackageFile AsPackageFile() => new()
+        {
+            FileName = FileName,
+            ResourceType = ResourceType,
+            Id = Id,
+            Url = Url,
+            Version = Version,
+            Kind = KindValue,
+            Type = TypeValue,
+            Derivation = DerivationValue,
+        };
+    }
+
 
     /// <summary>
     /// Represents index information for a cross-version FHIR package, including references to supporting structures and value sets.
@@ -49,32 +144,38 @@ public partial class XVerProcessor
         /// </summary>
         public required string PackageId { get; set; }
 
-        public List<PackageContents.PackageFile> ExtensionIndexFiles { get; set; } = [];
-        public List<PackageContents.PackageFile> ProfileIndexFiles { get; set; } = [];
-        public List<PackageContents.PackageFile> CodeSystemIndexFiles { get; set; } = [];
-        public List<PackageContents.PackageFile> ValueSetIndexFiles { get; set; } = [];
+        public List<XVerIgFileRecord> ExtensionFiles { get; set; } = [];
+        public List<XVerIgFileRecord> ProfileFiles { get; set; } = [];
+        public List<XVerIgFileRecord> CodeSystemFiles { get; set; } = [];
+        public List<XVerIgFileRecord> ValueSetFiles { get; set; } = [];
 
-        public PackageContents.PackageFile? IgIndexFile { get; set; } = null;
+        public List<XVerIgFileRecord> StructureLookupFiles { get; set; } = [];
+        public List<XVerIgFileRecord> ValueSetLookupFiles { get; set; } = [];
 
-        /// <summary>
-        /// Gets or sets the list of JSON strings for ImplementationGuide structure resources.
-        /// </summary>
-        public List<string> IgStructureJsons { get; set; } = [];
+        public XVerIgFileRecord? IgIndexFile { get; set; } = null;
 
-        /// <summary>
-        /// Gets or sets the list of JSON strings for ImplementationGuide value set resources.
-        /// </summary>
-        public List<string> IgValueSetJsons { get; set; } = [];
+        public PackageContents AsPackageContents()
+        {
+            if (IgIndexFile is null)
+            {
+                throw new Exception("IG Index file is required to create PackageContents.");
+            }
 
-        /// <summary>
-        /// Gets or sets the list of ImplementationGuide structure resource components.
-        /// </summary>
-        public List<ImplementationGuide.ResourceComponent> IgStructures { get; set; } = [];
+            List<PackageContents.PackageFile> files = [
+                IgIndexFile.AsPackageFile(),
+                ];
 
-        /// <summary>
-        /// Gets or sets the list of ImplementationGuide value set resource components.
-        /// </summary>
-        public List<ImplementationGuide.ResourceComponent> IgValueSets { get; set; } = [];
+            files.AddRange(CodeSystemFiles.Select(f => f.AsPackageFile()));
+            files.AddRange(ValueSetFiles.Select(f => f.AsPackageFile()));
+            files.AddRange(ExtensionFiles.Select(f => f.AsPackageFile()));
+            files.AddRange(ProfileFiles.Select(f => f.AsPackageFile()));
+
+            return new PackageContents()
+            {
+                IndexVersion = 2,
+                Files = files,
+            };
+        }
     }
 
     private static Dictionary<string, string> _publisherScripts = [];
@@ -250,7 +351,7 @@ public partial class XVerProcessor
             //    continue;
             //}
 
-            _logger.LogInformation($"Processing package {focusPackageIndex + 1} of {packages.Count}: {packages[focusPackageIndex].ShortName}");
+            _logger.LogInformation($"Processing source package {focusPackageIndex + 1} of {packages.Count}: {packages[focusPackageIndex].ShortName}");
 
             Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets = buildXverValueSets(packages, focusPackageIndex);
 
@@ -267,16 +368,16 @@ public partial class XVerProcessor
             // write the source code systems for this package
             writeXverSourceCodeSystemsFromDb(packages, focusPackageIndex, fhirDir);
 
-            if (!_config.XverExportForPublisher)
+            if (_config.XverExportForPublisher)
             {
-                List<XverPackageIndexInfo> focusedIndexInfos = writeXverSinglePackageSupportFiles(
+                List<XverPackageIndexInfo> focusedInfos = buildInitialPackageInfo(
                     packageSupports,
                     focusPackageIndex,
                     xverValueSets,
                     xverExtensions,
                     xverProfiles,
                     fhirDir);
-                allIndexInfos.AddRange(focusedIndexInfos);
+                allIndexInfos.AddRange(focusedInfos);
             }
         }
 
@@ -284,8 +385,8 @@ public partial class XVerProcessor
         writeXverOutcomes(
             packageSupports,
             xverOutcomes,
-            outputDir,
-            out Dictionary<string, List<(string structureName, string filename)>> packageMdList);
+            allIndexInfos,
+            outputDir);
 
         // write our combined package support files
         if (_config.XverExportForPublisher)
@@ -294,11 +395,11 @@ public partial class XVerProcessor
             for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
             {
                 // write the publisher config files
-                writePublisherSinglePackageConfig(packageSupports, focusPackageIndex, fhirDir, packageMdList);
+                writePublisherSinglePackageConfig(packageSupports, focusPackageIndex, fhirDir, allIndexInfos);
             }
 
             // write the validation package support files
-            writePublisherValidationPackageConfig(packageSupports, allIndexInfos, fhirDir, packageMdList);
+            writePublisherValidationPackageConfig(packageSupports, allIndexInfos, fhirDir);
         }
         else
         {

@@ -396,6 +396,38 @@ public abstract partial class FhirSanitizationUtils
         return input;
     }
 
+    public static string SanitizeForJsonValue(
+        string input,
+        bool escapeToHtml = false,
+        bool condenseWhitespace = false)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return string.Empty;
+        }
+
+        if (escapeToHtml)
+        {
+            input = input.Replace('"', '\'')
+                .Replace("\r\n", "<br />")
+                .Replace("\r", "<br />")
+                .Replace("\n", "<br />");
+        }
+        else
+        {
+            input = input.Replace('"', '\'')
+                .Replace("\r", "\\r")
+                .Replace("\n", "\\n");
+        }
+
+        if (condenseWhitespace)
+        {
+            input = _regexRemoveDuplicateWhitespace.Replace(input, " ");
+        }
+
+        return input;
+    }
+
     /// <summary>Sanitize for code.</summary>
     /// <param name="input">        The input.</param>
     /// <param name="reservedWords">The reserved words.</param>

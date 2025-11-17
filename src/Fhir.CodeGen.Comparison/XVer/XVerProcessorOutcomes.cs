@@ -1,35 +1,36 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.CommandLine;
+using System.Data;
+using System.Data.Common;
+using System.Formats.Tar;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Utility;
-using Microsoft.Extensions.Logging;
+using System.Xml.Linq;
+using Fhir.CodeGen.Common.Extensions;
+using Fhir.CodeGen.Common.Models;
+using Fhir.CodeGen.Common.Packaging;
+using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Language;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Common.Extensions;
-using Fhir.CodeGen.Common.Packaging;
-using Fhir.CodeGen.Common.Utils;
-using System.CommandLine;
-using System.Linq;
-using System.Data.Common;
-using System.Collections.Concurrent;
-using Fhir.CodeGen.Common.Models;
-using Fhir.CodeGen.Comparison.Models;
-using System.Xml.Linq;
-using System.Data;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
-using static System.Net.Mime.MediaTypeNames;
+using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
+using Microsoft.Extensions.Logging;
+using Octokit;
+using static System.Net.Mime.MediaTypeNames;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
-using System.IO;
-using System.IO.Compression;
-using System.Formats.Tar;
 
 namespace Fhir.CodeGen.Comparison.XVer;
 
@@ -131,8 +132,8 @@ public partial class XVerProcessor
     private void writeXverOutcomes(
         List<PackageXverSupport> packageSupports,
         Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
-        string outputDir,
-        out Dictionary<string, List<(string structureName, string filename)>> packageMdList)
+        List<XverPackageIndexInfo> indexInfos,
+        string outputDir)
     {
         HashSet<string> createdDirs = [];
 
@@ -153,8 +154,10 @@ public partial class XVerProcessor
             Directory.CreateDirectory(docsDir);
         }
 
+        ILookup<(int sourcePackageKey, int targetPackageKey), XverPackageIndexInfo> indexInfoLookup =
+            indexInfos.ToLookup(ii => (ii.SourcePackageSupport.PackageIndex, ii.TargetPackageSupport.PackageIndex));
+
         Dictionary<string, (string sourceVersion, string targetVersion)> packageVersions = [];
-        packageMdList = [];
 
         // iterate over each structure in each source package
         foreach (((int sourcePackageIndex, string sourceStructureName), List<List<XverOutcome>> structureOutcomesByTarget) in xverOutcomes)
@@ -164,6 +167,17 @@ public partial class XVerProcessor
             {
                 if (sourcePackageIndex == targetPackageIndex)
                 {
+                    continue;
+                }
+
+                XverPackageIndexInfo? indexInfo = indexInfoLookup[(sourcePackageIndex, targetPackageIndex)].FirstOrDefault();
+
+                if (indexInfo is null)
+                {
+                    _logger.LogWarning(
+                        "No XVer index info found for source package index {SourcePackageIndex} and target package index {TargetPackageIndex}.",
+                        sourcePackageIndex,
+                        targetPackageIndex);
                     continue;
                 }
 
@@ -189,7 +203,6 @@ public partial class XVerProcessor
                 }
                 else
                 {
-                    packageMdList.Add(packageId, []);
                     packageVersions.Add(packageId, (sourcePackage.PackageVersion, targetPackage.PackageVersion));
 
                     if (_config.XverExportForPublisher)
@@ -235,7 +248,18 @@ public partial class XVerProcessor
                     // create a filename for this structure's md file
                     string mdFilename = $"Lookup-{sourcePackage.ShortName}-{sourceStructureName}-{targetPackage.ShortName}.md";
 
-                    packageMdList[packageId].Add((sourceStructureName, mdFilename[..^3]));
+                    indexInfo.StructureLookupFiles.Add(new()
+                    {
+                        FileName = mdFilename,
+                        FileNameWithoutExtension = mdFilename[..^3],
+                        IsPageContentFile = true,
+                        Name = sourceStructureName,
+                        Id = sourceStructureName,
+                        Url = string.Empty,
+                        ResourceType = "StructureDefinition",
+                        Version = _crossDefinitionVersion,
+                        Description = $"Lookup for FHIR {sourcePackage.ShortName} {sourceStructureName} for use in FHIR {targetPackage.ShortName}"
+                    });
 
                     // open our files
                     using ExportStreamWriter mdWriter = createMarkdownWriter(Path.Combine(mdDir, mdFilename), false, false);
@@ -317,14 +341,17 @@ public partial class XVerProcessor
         // if we are exporting for the publisher, we need to create a single index file per package
         if (_config.XverExportForPublisher)
         {
-            foreach ((string packageId, List<(string structureName, string filename)> mdFiles) in packageMdList)
+            // iterate across each of our targets
+            foreach (XverPackageIndexInfo indexInfo in indexInfos)
             {
-                if (mdFiles.Count == 0)
+                if (indexInfo.StructureLookupFiles.Count == 0)
                 {
                     continue; // no files for this package, skip it
                 }
 
-                (string sourceVersion, string targetVersion) = packageVersions[packageId];
+                string packageId = indexInfo.PackageId;
+                string sourceVersion = indexInfo.SourcePackageSupport.Package.PackageVersion;
+                string targetVersion = indexInfo.TargetPackageSupport.Package.PackageVersion;
 
                 // create the index file
                 using ExportStreamWriter indexWriter = createMarkdownWriter(Path.Combine(fhirDir, packageId, "input", "pagecontent", "lookup.md"), false, false);
@@ -335,12 +362,42 @@ public partial class XVerProcessor
                 indexWriter.WriteLine();
                 indexWriter.WriteLine($"| {sourceVersion} Structure | Lookup File |");
                 indexWriter.WriteLine("| --------- | ----------- |");
-                foreach ((string structureName, string filename) in mdFiles.OrderBy(x => x.structureName))
+
+                foreach (XVerIgFileRecord fileRec in indexInfo.StructureLookupFiles)
                 {
-                    indexWriter.WriteLine($"| {structureName} | [{filename}]({filename}.html) |");
+                    indexWriter.WriteLine($"| {fileRec.Name} | [{fileRec.FileNameWithoutExtension}]({fileRec.FileNameWithoutExtension}.html) |");
                 }
+
                 indexWriter.Close();
             }
+
+
+            //foreach ((string packageId, List<(string structureName, string filename)> mdFiles) in packageMdList)
+            //{
+            //    if (mdFiles.Count == 0)
+            //    {
+            //        continue; // no files for this package, skip it
+            //    }
+
+            //    (string sourceVersion, string targetVersion) = packageVersions[packageId];
+
+            //    // create the index file
+            //    using ExportStreamWriter indexWriter = createMarkdownWriter(Path.Combine(fhirDir, packageId, "input", "pagecontent", "lookup.md"), false, false);
+            //    indexWriter.WriteLine($"### FHIR {packageId} Cross-Version Artifact Lookup");
+            //    indexWriter.WriteLine();
+            //    indexWriter.WriteLine("The following table links to documentation for the source version of FHIR, for implementers to understand if there is an extension for the element they are trying to use.");
+            //    indexWriter.WriteLine($"These are structures defined in FHIR {sourceVersion} (the source package), with applicable usage as mapped into FHIR {targetVersion} (the target package).");
+            //    indexWriter.WriteLine();
+            //    indexWriter.WriteLine($"| {sourceVersion} Structure | Lookup File |");
+            //    indexWriter.WriteLine("| --------- | ----------- |");
+
+            //    foreach ((string structureName, string filename) in mdFiles.OrderBy(x => x.structureName))
+            //    {
+            //        indexWriter.WriteLine($"| {structureName} | [{filename}]({filename}.html) |");
+            //    }
+
+            //    indexWriter.Close();
+            //}
         }
 
         return;
@@ -353,6 +410,4 @@ public partial class XVerProcessor
                    (outcome.TargetExtensionUrl != null ? $"<br/>[{outcome.TargetExtensionUrl}]({outcome.TargetExtensionUrl})" : "");
         }
     }
-
-
 }
