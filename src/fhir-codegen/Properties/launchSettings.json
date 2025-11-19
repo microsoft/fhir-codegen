@@ -185,6 +185,11 @@
             "commandLineArgs": "xver create-db --max-expansion-size 8000 --resolve-dependencies false -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2  -c hl7.fhir.r4.core@4.0.1 -c hl7.fhir.r4b.core@4.3.0 -c hl7.fhir.r5.core@5.0.0 --auto-load-expansions",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
+        "XVer wip": {
+            "commandName": "Project",
+            "commandLineArgs": "xver wip --max-expansion-size 8000 --resolve-dependencies false -c hl7.fhir.r2.core@1.0.2 -c hl7.fhir.r3.core@3.0.2  -c hl7.fhir.r4.core@4.0.1 -c hl7.fhir.r4b.core@4.3.0 -c hl7.fhir.r5.core@5.0.0 --auto-load-expansions",
+            "workingDirectory": "$(MSBuildProjectDirectory)"
+        },
         "XVer discover-db": {
             "commandName": "Project",
             "commandLineArgs": "xver discover",
@@ -200,9 +205,9 @@
             "commandLineArgs": "xver compare-vs --xver-allow-comparison-updates false",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "XVer docs-db": {
+        "XVer outcomes": {
             "commandName": "Project",
-            "commandLineArgs": "xver docs",
+            "commandLineArgs": "xver outcomes",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "XVer fhir-db": {

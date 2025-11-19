@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Fhir.CodeGen.SQLiteGenerator;
-using Hl7.Fhir.ElementModel.Types;
-using Microsoft.Data.Sqlite;
-using Fhir.CodeGen.Common.Models;
-using Fhir.CodeGen.Common.Packaging;
-
+﻿using Fhir.CodeGen.SQLiteGenerator;
 
 namespace Fhir.CodeGen.Comparison.Models;
 
@@ -119,7 +104,7 @@ public partial class DbValueSet : DbMetadataResource
     }
 }
 
-[CgSQLiteTable(tableName: "Concepts")]
+[CgSQLiteTable(tableName: "ValueSetConcepts")]
 [CgSQLiteIndex(nameof(ValueSetKey), nameof(Inactive), nameof(Abstract))]
 [CgSQLiteIndex(nameof(ValueSetKey), nameof(System), nameof(Code))]
 public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSetConcept>

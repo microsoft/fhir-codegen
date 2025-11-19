@@ -59,7 +59,7 @@ public partial class FhirDbComparer
             {
                 CMR relationship = (targetElements.Count == 1)
                     ? CMR.Equivalent
-                    : CMR.SourceIsBroaderThanTarget;
+                    : CMR.SourceIsNarrowerThanTarget;
 
                 // iterate over the possible targets
                 foreach (DbElement targetElement in targetElements)
@@ -236,10 +236,10 @@ public partial class FhirDbComparer
 
                     // check for a single source with multiple targets and any that map as equivalent
                     if ((elementComparison.Relationship == CMR.Equivalent) &&
-                        (comparisons.Count > 1))
+                        (comparisons.Count(ec => ec.NoMap != true) > 1))
                     {
                         // mark as not equivalent
-                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                        conceptRelationship = applyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
                         isGenerated = true;
                         messages.Add($"`{sourceElement.Id}` maps to multiple elements in {targetSd.Name} and cannot be equivalent.");
                         changed = true;

@@ -113,6 +113,7 @@ public partial class XVerProcessor
         "http://hl7.org/fhir/ValueSet/all-languages",
         "http://tools.ietf.org/html/bcp47",             // DSTU2 version of all-languages
         "http://hl7.org/fhir/ValueSet/mimetypes",
+        "http://hl7.org/fhir/ValueSet/timezones",
         //"http://hl7.org/fhir/ValueSet/use-context",
         //"http://hl7.org/fhir/ValueSet/jurisdiction",
     ];
@@ -269,24 +270,38 @@ public partial class XVerProcessor
                 CompareInDatabase(FhirArtifactClassEnum.Resource);
                 break;
 
-            case "docs":
+            case "outcomes":
                 LoadDatabase(false, false);
-                WriteDocsFromDatabase();
+                GenerateOutcomesFromComparisons();
                 break;
 
-            case "docs-vs":
-                LoadDatabase(false, false);
-                WriteDocsFromDatabase(FhirArtifactClassEnum.ValueSet);
-                break;
+            //case "docs":
+            //    LoadDatabase(false, false);
+            //    WriteDocsFromDatabase();
+            //    break;
 
-            case "docs-sd":
-                LoadDatabase(false, false);
-                WriteDocsFromDatabase(FhirArtifactClassEnum.Resource);
-                break;
+            //case "docs-vs":
+            //    LoadDatabase(false, false);
+            //    WriteDocsFromDatabase(FhirArtifactClassEnum.ValueSet);
+            //    break;
+
+            //case "docs-sd":
+            //    LoadDatabase(false, false);
+            //    WriteDocsFromDatabase(FhirArtifactClassEnum.Resource);
+            //    break;
 
             case "fhir":
                 LoadDatabase(false, false);
                 WriteFhirFromDatabase();
+                break;
+
+            case "wip":
+                LoadDatabase(true, true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                BuildComparisonPairs();
+                CompareInDatabase();
+                GenerateOutcomesFromComparisons();
+                //WriteFhirFromDatabase();
                 break;
 
             default:
@@ -294,6 +309,7 @@ public partial class XVerProcessor
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 BuildComparisonPairs();
                 CompareInDatabase();
+                GenerateOutcomesFromComparisons();
                 //WriteDocsFromDatabase();
                 WriteFhirFromDatabase();
                 break;

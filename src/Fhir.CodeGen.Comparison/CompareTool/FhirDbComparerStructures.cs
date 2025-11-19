@@ -1,11 +1,12 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
-using Hl7.Fhir.Utility;
-using Microsoft.Extensions.Logging;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
+using Hl7.Fhir.Utility;
+using Microsoft.Extensions.Logging;
 using static Fhir.CodeGen.Comparison.CompareTool.FhirTypeMappings;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
@@ -673,12 +674,12 @@ public partial class FhirDbComparer
             return;
         }
 
-        if (aggregateStructureRelationships(forwardComparison, sourceSd, targetSd))
+        if (aggregateStructureRelationships(forwardComparison, sourceSd, targetSd, edComparisonCache))
         {
             sdComparisonCache.Changed(forwardComparison);
         }
 
-        if (aggregateStructureRelationships(inverseComparison, targetSd, sourceSd))
+        if (aggregateStructureRelationships(inverseComparison, targetSd, sourceSd, edComparisonCache))
         {
             sdComparisonCache.Changed(inverseComparison);
         }
@@ -843,9 +844,31 @@ public partial class FhirDbComparer
     /// </summary>
     /// <param name="sdComparison">The comparison object for the value set.</param>
     /// <returns>True if the relationship was updated, otherwise false.</returns>
-    private bool aggregateStructureRelationships(DbStructureComparison sdComparison, DbStructureDefinition sourceSd, DbStructureDefinition targetSd)
+    private bool aggregateStructureRelationships(
+        DbStructureComparison sdComparison,
+        DbStructureDefinition sourceSd,
+        DbStructureDefinition targetSd,
+        DbComparisonCache<DbElementComparison>? edComparisonCache = null)
     {
-        List<DbElementComparison> elementComparisons = DbElementComparison.SelectList(_db, StructureComparisonKey: sdComparison.Key);
+        List<DbElementComparison> elementComparisons = edComparisonCache?.Values
+            .Where(c => (c.SourceStructureKey == sourceSd.Key) && (c.TargetStructureKey == targetSd.Key))
+            .ToList()
+            ?? [];
+
+        List<DbElementComparison> existingDbComparisons = DbElementComparison.SelectList(
+            _db,
+            StructureComparisonKey: sdComparison.Key);
+
+        // look at the database for exising comparisons
+        foreach (DbElementComparison existingDbComparison in existingDbComparisons)
+        {
+            if (elementComparisons.Contains(existingDbComparison))
+            {
+                continue;
+            }
+            elementComparisons.Add(existingDbComparison);
+        }
+
         List<CMR?> relationships = elementComparisons.Select(c => c.Relationship).Distinct().ToList();
 
         // check for no relationships

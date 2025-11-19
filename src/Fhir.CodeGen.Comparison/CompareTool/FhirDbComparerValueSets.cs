@@ -363,12 +363,12 @@ public partial class FhirDbComparer
             vsComparisonCache.Changed(inverseComparison);
         }
 
-        if (aggregateValueSetRelationships(forwardComparison, sourceVs, targetVs))
+        if (aggregateValueSetRelationships(forwardComparison, sourceVs, targetVs, conceptComparisonCache))
         {
             vsComparisonCache.Changed(forwardComparison);
         }
 
-        if (aggregateValueSetRelationships(inverseComparison, targetVs, sourceVs))
+        if (aggregateValueSetRelationships(inverseComparison, targetVs, sourceVs, conceptComparisonCache))
         {
             vsComparisonCache.Changed(inverseComparison);
         }
@@ -508,9 +508,28 @@ public partial class FhirDbComparer
     private bool aggregateValueSetRelationships(
         DbValueSetComparison vsComparison,
         DbValueSet sourceVs,
-        DbValueSet targetVs)
+        DbValueSet targetVs,
+        DbComparisonCache<DbValueSetConceptComparison>? conceptComparisonCache = null)
     {
-        List<DbValueSetConceptComparison> conceptComparisons = DbValueSetConceptComparison.SelectList(_db, ValueSetComparisonKey: vsComparison.Key);
+        List<DbValueSetConceptComparison> conceptComparisons = conceptComparisonCache?.Values
+            .Where(c => (c.SourceValueSetKey == sourceVs.Key) && (c.TargetValueSetKey == targetVs.Key))
+            .ToList()
+            ?? [];
+
+        List<DbValueSetConceptComparison> existingDbComparisons = DbValueSetConceptComparison.SelectList(
+            _db,
+            ValueSetComparisonKey: vsComparison.Key);
+
+        // look at the database for exising comparisons
+        foreach (DbValueSetConceptComparison existingDbComparison in existingDbComparisons)
+        {
+            if (conceptComparisons.Contains(existingDbComparison))
+            {
+                continue;
+            }
+            conceptComparisons.Add(existingDbComparison);
+        }
+
         List<CMR?> relationships = conceptComparisons.Select(c => c.Relationship).Distinct().ToList();
 
         // check for no relationships

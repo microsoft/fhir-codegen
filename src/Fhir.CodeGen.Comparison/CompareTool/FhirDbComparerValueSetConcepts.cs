@@ -245,7 +245,7 @@ public partial class FhirDbComparer
 
                     // check for a single source with multiple targets and any that map as equivalent
                     if ((conceptComparison.Relationship == CMR.Equivalent) &&
-                        (targetComparisons.Count > 1))
+                        (targetComparisons.Count(tc => tc.NoMap != true) > 1))
                     {
                         conceptComparisonCache.Changed(conceptComparison);
 
@@ -257,7 +257,7 @@ public partial class FhirDbComparer
                             .ToList();
 
                         // mark as not equivalent
-                        conceptComparison.Relationship = CMR.SourceIsBroaderThanTarget;
+                        conceptComparison.Relationship = CMR.SourceIsNarrowerThanTarget;
                         conceptComparison.IsGenerated = true;
                         conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
                             $" `{sourceConcept.Code}` maps to multiple codes in `{targetVs.VersionedUrl}` and cannot be equivalent.";

@@ -241,7 +241,7 @@ public partial class XVerProcessor
         ConcurrentDictionary<int, string> differentialVsBySourceKey = [];
 
         Dictionary<int, HashSet<string>> basicElementPathsByPackageKey = [];
-        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes = [];
+        Dictionary<(int sourcePackageIndex, string sdName), List<List<XverOutcome>>> xverOutcomes = [];
 
         List<PackageXverSupport> packageSupports = [];
 
@@ -366,7 +366,10 @@ public partial class XVerProcessor
             writeXverStructures(packageSupports, focusPackageIndex, xverExtensions, xverProfiles, fhirDir);
 
             // write the source code systems for this package
-            writeXverSourceCodeSystemsFromDb(packages, focusPackageIndex, fhirDir);
+            Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> xverCodeSystems = writeXverSourceCodeSystemsFromDb(
+                packages,
+                focusPackageIndex,
+                fhirDir);
 
             if (_config.XverExportForPublisher)
             {
@@ -374,6 +377,7 @@ public partial class XVerProcessor
                     packageSupports,
                     focusPackageIndex,
                     xverValueSets,
+                    xverCodeSystems,
                     xverExtensions,
                     xverProfiles,
                     fhirDir);
@@ -446,11 +450,13 @@ public partial class XVerProcessor
     }
 
 
-    private void writeXverSourceCodeSystemsFromDb(
+    private Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> writeXverSourceCodeSystemsFromDb(
         List<DbFhirPackage> packages,
         int focusPackageIndex,
         string fhirDir)
     {
+        Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> xverCodeSystems = [];
+
         DbFhirPackage focusPackage = packages[focusPackageIndex];
 
         // iterate over the target packages
@@ -487,6 +493,8 @@ public partial class XVerProcessor
                     string filename = $"CodeSystem-{inclusion.Id}.json";
                     string path = Path.Combine(dir, filename);
                     File.WriteAllText(path, inclusion.Json);
+
+                    xverCodeSystems[(-1 * inclusion.Key, targetPackage.Key)] = (null, inclusion.Key);
                 }
             }
 
@@ -667,8 +675,12 @@ public partial class XVerProcessor
                 string filename = $"CodeSystem-{fhirCs.Id}.json";
                 string path = Path.Combine(dir, filename);
                 File.WriteAllText(path, fhirCs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+
+                xverCodeSystems[(dbCs.Key, targetPackage.Key)] = (fhirCs, null);
             }
         }
+
+        return xverCodeSystems;
     }
 
     private void addDbCodeSystemConcepts(
@@ -775,7 +787,7 @@ public partial class XVerProcessor
         }
 
         //// iterate over the value sets
-        //foreach (((int sourceVsKey, int targetPackageId), ValueSet vs) in xverValueSets)
+        //foreach (((int sourceVsKey, int targetPackageId), ValueSet originalDbVs) in xverValueSets)
         //{
         //    DbFhirPackage targetPackage = packageDict[targetPackageId];
 
@@ -790,9 +802,9 @@ public partial class XVerProcessor
         //    }
 
         //    // write the value set to a file
-        //    string filename = $"ValueSet-{vs.Id}.json";
+        //    string filename = $"ValueSet-{originalDbVs.Id}.json";
         //    string path = Path.Combine(dir, filename);
-        //    File.WriteAllText(path, vs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+        //    File.WriteAllText(path, originalDbVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
         //}
     }
 
@@ -918,7 +930,7 @@ public partial class XVerProcessor
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
         Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles,
-        Dictionary<(int, string), List<List<XverOutcome>>> xverOutcomes,
+        Dictionary<(int sourcePackageIndex, string sdName), List<List<XverOutcome>>> xverOutcomes,
         FhirArtifactClassEnum artifactClass)
     {
         DbFhirPackage sourcePackage = packageSupports[sourcePackageIndex].Package;
@@ -1782,8 +1794,15 @@ public partial class XVerProcessor
         return extSd;
     }
 
-    private void addExtRecToSd(StructureDefinition sd, ExtElementBuilderRecord extRec, bool allowModifier, bool addRootElement = false)
+    private void addExtRecToSd(
+        StructureDefinition sd,
+        ExtElementBuilderRecord extRec,
+        bool allowModifier,
+        bool addRootElement = false)
     {
+        string extElementId = extRec.ElementId.Replace("[x]", string.Empty);
+        string extElementPath = extRec.Path.Replace("[x]", string.Empty);
+
         if (addRootElement)
         {
             bool? isMod = allowModifier == false
@@ -1797,8 +1816,8 @@ public partial class XVerProcessor
 
             ElementDefinition rootElement = new()
             {
-                ElementId = extRec.ElementId,
-                Path = extRec.Path,
+                ElementId = extElementId,
+                Path = extElementPath,
                 Short = extRec.ShortText,
                 Definition = extRec.Definition,
                 Comment = extRec.Comment,
@@ -1821,8 +1840,8 @@ public partial class XVerProcessor
             // add the primary slice
             ElementDefinition sliceElement = new()
             {
-                ElementId = extRec.ElementId,
-                Path = extRec.Path,
+                ElementId = extElementId,
+                Path = extElementPath,
                 SliceName = extRec.SliceName,
                 Short = extRec.ShortText,
                 Definition = extRec.Definition,
@@ -1848,8 +1867,8 @@ public partial class XVerProcessor
         {
             sd.Differential.Element.Add(new()
             {
-                ElementId = extRec.ElementId + ".extension",
-                Path = extRec.Path + ".extension",
+                ElementId = extElementId + ".extension",
+                Path = extElementPath + ".extension",
                 Base = new()
                 {
                     Path = "Extension.extension",
@@ -1888,8 +1907,8 @@ public partial class XVerProcessor
         // add the URL element (always required)
         sd.Differential.Element.Add(new()
         {
-            ElementId = extRec.ElementId + ".url",
-            Path = extRec.Path + ".url",
+            ElementId = extElementId + ".url",
+            Path = extElementPath + ".url",
             Base = new()
             {
                 Path = "Extension.url",
@@ -1901,8 +1920,24 @@ public partial class XVerProcessor
             Fixed = new FhirUri(extRec.Url),
         });
 
-        // if there is a value element, we need to add it
-        if (extRec.ValueElement != null)
+        // either constrain or add the value element
+        if (extRec.ValueElement is null)
+        {
+            sd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".value[x]",
+                Path = extElementPath + ".value[x]",
+                Base = new()
+                {
+                    Path = "Extension.value[x]",
+                    Min = 0,
+                    Max = "1",
+                },
+                Min = 0,
+                Max = "0",
+            });
+        }
+        else
         {
             sd.Differential.Element.Add(extRec.ValueElement);
         }
@@ -2433,7 +2468,7 @@ public partial class XVerProcessor
         string typeName)
     {
         // if we don't have the element already, we need to create the whole set
-        if (extBuilderRecord.DatatypeValueElement == null)
+        if (extBuilderRecord.DatatypeValueElement is null)
         {
             extBuilderRecord.DatatypeSliceElement = new()
             {

@@ -28,8 +28,10 @@ using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Language;
 using Fhir.CodeGen.Lib.Models;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.CdsHooks;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
+using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
@@ -54,6 +56,8 @@ public partial class XVerProcessor
         * Fix: resources mapping to `Basic` still need a `[Source.]code` extension, `Basic.code` has a necessary meaning. Excluded `Basic.code` from automatic removal when mapping to `Basic`.
         * Fix: non-resource structures should not create profiles of `Basic` resources. Only resource structures should create `Basic` profiles.
         * Updated to use language-based fragment inclusions.
+        * Added default language of `US-en` so translations can be supported.
+        * Added `https://www.iana.org/time-zones` to exclusion set (never need to generate)
         * [ ] Remove dependency on SUSHI
         * [ ] Constrain `Extension.value[x]` to `0..0` when creating complex extensions
         * [ ] https://hl7.org/fhir/uv/xver-r5.r4/0.0.1-snapshot-2/StructureDefinition-ext-R5-ValueSet.ex.co.property.html is still closed - why?
@@ -66,6 +70,8 @@ public partial class XVerProcessor
             * [ ] Determine if we can add new search parameters due to additional elements
         * [ ] Port Operation Definitions for new resources
         * [ ] Add ImplementationGuide.definition.grouping to organize resources in the IG
+        * [ ] Add support for STU3 package generation
+        * [ ] Add support for DSTU2 package generation
 
         ### 0.0.1-snapshot-2
 
@@ -390,6 +396,9 @@ public partial class XVerProcessor
 
         // excludemap: If true, causes the mapping tab to be excluded from all StructureDefinition artifact pages
         ("excludemap", "true"),
+
+        // i18n-default-lang: The default language (e.g. Resource.language) to assume in the IG when the resource and/or the element context doesn't specify a language
+        ("i18n-default-lang", "US-en"),
 
         // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
         //("jira-code", ""),
@@ -1823,6 +1832,7 @@ public partial class XVerProcessor
         List<PackageXverSupport> packageSupports,
         int focusPackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> xverCodeSystems,
         Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles,
         string fhirDir)
@@ -1848,7 +1858,7 @@ public partial class XVerProcessor
                 PackageId = packageId,
                 ExtensionFiles = buildExtensionFileList(targetSupport.Package.Key, xverExtensions),
                 ProfileFiles = buildProfileFileList(targetSupport.Package.Key, xverProfiles),
-                CodeSystemFiles = buildCodeSystemFileList(targetSupport.Package.Key, targetSupport.Package.NpmId, xverValueSets),
+                CodeSystemFiles = buildCodeSystemFileList(targetSupport.Package.Key, targetSupport.Package.NpmId, xverCodeSystems),
                 ValueSetFiles = buildValueSetFileList(targetSupport.Package.Key, xverValueSets),
             };
 
@@ -1872,6 +1882,7 @@ public partial class XVerProcessor
         List<PackageXverSupport> packageSupports,
         int focusPackageIndex,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> xverCodeSystems,
         Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles,
         string fhirDir)
@@ -1897,7 +1908,7 @@ public partial class XVerProcessor
                 PackageId = packageId,
                 ExtensionFiles = buildExtensionFileList(targetSupport.Package.Key, xverExtensions),
                 ProfileFiles = buildProfileFileList(targetSupport.Package.Key, xverProfiles),
-                CodeSystemFiles = buildCodeSystemFileList(targetSupport.Package.Key, targetSupport.Package.NpmId, xverValueSets),
+                CodeSystemFiles = buildCodeSystemFileList(targetSupport.Package.Key, targetSupport.Package.NpmId, xverCodeSystems),
                 ValueSetFiles = buildValueSetFileList(targetSupport.Package.Key, xverValueSets),
             };
 
@@ -2075,7 +2086,7 @@ public partial class XVerProcessor
     private List<XVerIgFileRecord> buildCodeSystemFileList(
         int targetPackageKey,
         string targetPackageNpmId,
-        Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
+        Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> xverCodeSystems)
     {
         List<XVerIgFileRecord> fileRecords = [];
 
@@ -2105,25 +2116,38 @@ public partial class XVerProcessor
             }
         }
 
-        // get the list of code systems in the source package
-        List<DbCodeSystem> codeSystems = DbCodeSystem.SelectList(
-            _db!.DbConnection,
-            FhirPackageKey: targetPackageKey);
+        HashSet<string> processedIds = [];
 
-        foreach (DbCodeSystem dbCs in codeSystems)
+        foreach (((int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)) in xverCodeSystems)
         {
+            if (targetPackageId != targetPackageKey)
+            {
+                continue;
+            }
+
+            // external inclusions are already handled
+            if (cs is null)
+            {
+                continue;
+            }
+
+            if (!processedIds.Add(cs.Id))
+            {
+                // already processed this one
+                continue;
+            }
+
             fileRecords.Add(new()
             {
-                FileName = $"CodeSystem-{dbCs.Id}.json",
-                FileNameWithoutExtension = $"CodeSystem-{dbCs.Id}",
+                FileName = $"CodeSystem-{cs.Id}.json",
+                FileNameWithoutExtension = $"CodeSystem-{cs.Id}",
                 IsPageContentFile = false,
-                Name = dbCs.Name,
-                Id = dbCs.Id,
-                Url = dbCs.UnversionedUrl,
+                Name = cs.Name,
+                Id = cs.Id,
+                Url = cs.Url,
                 ResourceType = "CodeSystem",
-                Version = dbCs.Version ?? _crossDefinitionVersion,
-                Description = FhirSanitizationUtils.SanitizeForJsonValue(dbCs.Description ?? dbCs.Title ?? $"CodeSystem: '{dbCs.UnversionedUrl}|{dbCs.Version}'"),
-                HasExpansion = dbCs.Count > 0,
+                Version = cs.Version ?? _crossDefinitionVersion,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(cs.Description ?? cs.Title ?? $"CodeSystem: '{cs.Url}|{cs.Version}'"),
             });
         }
 
@@ -2135,12 +2159,19 @@ public partial class XVerProcessor
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets)
     {
         List<XVerIgFileRecord> fileRecords = [];
+        HashSet<string> processedIds = [];
 
         // build the list of value sets we are defining
         foreach (((int sourceElementKey, int targetPackageId), ValueSet vs) in xverValueSets)
         {
             if (targetPackageId != targetPackageKey)
             {
+                continue;
+            }
+
+            if (!processedIds.Add(vs.Id))
+            {
+                // already processed this one
                 continue;
             }
 
@@ -2177,6 +2208,7 @@ public partial class XVerProcessor
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
         Dictionary<(int sourceVsKey, int targetPackageId), ValueSet> xverValueSets,
+        Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> xverCodeSystems,
         Dictionary<(int sourceElementKey, int targetPackageId), (StructureDefinition, DbExtensionSubstitution?)> xverExtensions,
         Dictionary<(int sourceStructureKey, int targetPackageId), StructureDefinition> xverProfiles,
         XverPackageIndexInfo indexInfo)
@@ -2193,7 +2225,7 @@ public partial class XVerProcessor
 
         if (indexInfo.CodeSystemFiles.Count == 0)
         {
-            indexInfo.CodeSystemFiles = buildCodeSystemFileList(targetPackage.Key, targetPackage.NpmId, xverValueSets);
+            indexInfo.CodeSystemFiles = buildCodeSystemFileList(targetPackage.Key, targetPackage.NpmId, xverCodeSystems);
         }
 
         if (indexInfo.ValueSetFiles.Count == 0)

@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Hl7.Fhir.Model;
-using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.Models;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Extensions;
 
@@ -29,14 +18,14 @@ public static class DbContentExtensions
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
-            SELECT COUNT(Key)
+            SELECT COUNT({{{nameof(DbElementType.Key)}}})
             FROM {{{elementTypeTableName}}}
-            WHERE ElementKey = {{{element.Key}}}
-            AND TypeName NOT IN (
-                SELECT DISTINCT Id
+            WHERE {{{nameof(DbElementType.ElementKey)}}} = {{{element.Key}}}
+            AND {{{nameof(DbElementType.TypeName)}}} NOT IN (
+                SELECT DISTINCT {{{nameof(DbStructureDefinition.Id)}}}
                 FROM {{{structureTypeTableName}}}
-                where FhirPackageKey = {{{element.FhirPackageKey}}}
-                AND ArtifactClass = 'PrimitiveType'
+                WHERE {{{nameof(DbStructureDefinition.FhirPackageKey)}}} = {{{element.FhirPackageKey}}}
+                AND {{{nameof(DbStructureDefinition.ArtifactClass)}}} = 'PrimitiveType'
             )
             """;
 
@@ -91,11 +80,11 @@ public static class DbContentExtensions
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
-            SELECT COUNT(C1.Key)
+            SELECT COUNT(C1.{{{nameof(DbValueSetConcept.Key)}}})
             FROM {{{conceptTableName}}} C1
             JOIN {{{conceptTableName}}} C2 ON C1.Code = C2.Code
-            WHERE C1.ValueSetKey = {{{vsKeyA}}}
-            AND C2.ValueSetKey = {{{vsKeyB}}}
+            WHERE C1.{{{nameof(DbValueSetConcept.ValueSetKey)}}} = {{{vsKeyA}}}
+            AND C2.{{{nameof(DbValueSetConcept.ValueSetKey)}}} = {{{vsKeyB}}}
             """;
 
         return Convert.ToInt32(command.ExecuteScalar());
@@ -111,21 +100,21 @@ public static class DbContentExtensions
 
         IDbCommand command = dbConnection.CreateCommand();
         command.CommandText = $$$"""
-            SELECT COUNT(E1.Key)
+            SELECT COUNT(E1.{{{nameof(DbElement.Key)}}})
             FROM {{{elementTableName}}} E1
             JOIN {{{elementTableName}}} E2 ON E1.Id = E2.Id
-            WHERE E1.StructureKey = {{{structureKeyA}}}
-            AND E2.StructureKey = {{{structureKeyB}}}
+            WHERE E1.{{{nameof(DbElement.StructureKey)}}} = {{{structureKeyA}}}
+            AND E2.{{{nameof(DbElement.StructureKey)}}} = {{{structureKeyB}}}
             AND (
-                E1.MinCardinality != E2.MinCardinality
-                OR E1.MaxCardinality != E2.MaxCardinality
-                OR E1.FullCollatedTypeLiteral != E2.FullCollatedTypeLiteral
+                E1.{{{nameof(DbElement.MinCardinality)}}} != E2.{{{nameof(DbElement.MinCardinality)}}}
+                OR E1.{{{nameof(DbElement.MaxCardinality)}}} != E2.{{{nameof(DbElement.MaxCardinality)}}}
+                OR E1.{{{nameof(DbElement.FullCollatedTypeLiteral)}}} != E2.{{{nameof(DbElement.FullCollatedTypeLiteral)}}}
                 OR (
-                    (E1.ValueSetBindingStrength is NULL AND E2.ValueSetBindingStrength is NOT NULL)
-                    or (E1.ValueSetBindingStrength is NOT NULL AND E2.ValueSetBindingStrength is NULL)
-                    or (E1.ValueSetBindingStrength != E2.ValueSetBindingStrength)
+                    (E1.{{{nameof(DbElement.ValueSetBindingStrength)}}} is NULL AND E2.{{{nameof(DbElement.ValueSetBindingStrength)}}} is NOT NULL)
+                    or (E1.{{{nameof(DbElement.ValueSetBindingStrength)}}} is NOT NULL AND E2.{{{nameof(DbElement.ValueSetBindingStrength)}}} is NULL)
+                    or (E1.{{{nameof(DbElement.ValueSetBindingStrength)}}} != E2.{{{nameof(DbElement.ValueSetBindingStrength)}}})
                     )
-                OR E1.IsModifier != E2.IsModifier
+                OR E1.{{{nameof(DbElement.IsModifier)}}} != E2.{{{nameof(DbElement.IsModifier)}}}
                 )
             """;
 
@@ -145,11 +134,11 @@ public static class DbContentExtensions
         command.CommandText = $$$"""
             UPDATE {{{collatedTypeTableName}}}
             SET
-                TypeStructureKey = S.Key
+                {{{nameof(DbCollatedType.TypeStructureKey)}}} = S.{{{nameof(DbStructureDefinition.Key)}}}
             FROM {{{structureTableName}}} S
-            WHERE {{{collatedTypeTableName}}}.TypeName = S.Id
-            AND {{{collatedTypeTableName}}}.FhirPackageKey = S.FhirPackageKey
-            AND {{{collatedTypeTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
+            WHERE {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.TypeName)}}} = S.{{{nameof(DbStructureDefinition.Id)}}}
+            AND {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.FhirPackageKey)}}} = S.{{{nameof(DbStructureDefinition.FhirPackageKey)}}}
+            AND {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.FhirPackageKey)}}} = {{{FhirPackageKey}}}
             """;
 
         return command.ExecuteNonQuery();
@@ -168,11 +157,11 @@ public static class DbContentExtensions
         command.CommandText = $$$"""
             UPDATE {{{elementTypeTableName}}}
             SET
-                TypeStructureKey = S.Key
+                {{{nameof(DbElementType.TypeStructureKey)}}} = S.Key
             FROM {{{structureTableName}}} S
-            WHERE {{{elementTypeTableName}}}.TypeName = S.Id
-            AND {{{elementTypeTableName}}}.FhirPackageKey = S.FhirPackageKey
-            AND {{{elementTypeTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
+            WHERE {{{elementTypeTableName}}}.{{{nameof(DbElementType.TypeName)}}} = S.{{{nameof(DbStructureDefinition.Id)}}}
+            AND {{{elementTypeTableName}}}.{{{nameof(DbElementType.FhirPackageKey)}}} = S.{{{nameof(DbStructureDefinition.FhirPackageKey)}}}
+            AND {{{elementTypeTableName}}}.{{{nameof(DbElementType.FhirPackageKey)}}} = {{{FhirPackageKey}}}
             """;
 
         return command.ExecuteNonQuery();
@@ -189,13 +178,13 @@ public static class DbContentExtensions
         command.CommandText = $$$"""
             UPDATE {{{dbTableName}}}
             SET
-                BaseElementKey = E.Key,
-                BaseStructureKey = E.StructureKey
+                {{{nameof(DbElement.BaseElementKey)}}} = E.{{{nameof(DbElement.Key)}}},
+                {{{nameof(DbElement.BaseStructureKey)}}} = E.{{{nameof(DbElement.StructureKey)}}}
             FROM {{{dbTableName}}} E
-            WHERE {{{dbTableName}}}.Key = E.Key
-            AND {{{dbTableName}}}.BasePath is not NULL
-            AND {{{dbTableName}}}.BaseElementKey is NULL
-            AND {{{dbTableName}}}.FhirPackageKey = {{{FhirPackageKey}}}
+            WHERE {{{dbTableName}}}.{{{nameof(DbElement.Key)}}} = E.{{{nameof(DbElement.Key)}}}
+            AND {{{dbTableName}}}.{{{nameof(DbElement.BasePath)}}} is not NULL
+            AND {{{dbTableName}}}.{{{nameof(DbElement.BaseElementKey)}}} is NULL
+            AND {{{dbTableName}}}.{{{nameof(DbElement.FhirPackageKey)}}} = {{{FhirPackageKey}}}
             """;
 
         return command.ExecuteNonQuery();

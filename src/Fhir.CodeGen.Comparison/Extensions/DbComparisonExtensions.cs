@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
-using Fhir.CodeGen.Common.Extensions;
-using Fhir.CodeGen.Common.Utils;
+﻿using System.Data;
 using Fhir.CodeGen.Comparison.Models;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
@@ -21,13 +12,14 @@ public static class DbComparisonExtensions
         string? dbTableName = null,
         string? structureDbTableName = null)
     {
-        dbTableName ??= "ElementTypes";
-        structureDbTableName ??= "Structures";
+        dbTableName ??= DbElementType.DefaultTableName;
+        structureDbTableName ??= DbStructureDefinition.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
-        command.CommandText = $"SELECT count(Key) FROM {dbTableName}" +
-            $" WHERE ElementKey = $ElementKey" +
-            $" AND TypeStructureKey in (select Key from {structureDbTableName} where ArtifactClass = 'PrimitiveType')";
+        command.CommandText = $"SELECT count({nameof(DbElementType.Key)}) FROM {dbTableName}" +
+            $" WHERE {nameof(DbElementType.ElementKey)} = $ElementKey" +
+            $" AND {nameof(DbElementType.TypeStructureKey)} in" +
+            $" (select {nameof(DbStructureDefinition.Key)} from {structureDbTableName} where {nameof(DbStructureDefinition.ArtifactClass)} = 'PrimitiveType')";
 
         {
             IDbDataParameter elementKeyParam = command.CreateParameter();
@@ -56,15 +48,15 @@ public static class DbComparisonExtensions
         string TargetElementTypeLiteral,
         string? dbTableName = null)
     {
-        dbTableName ??= "ElementTypeComparisons";
+        dbTableName ??= DbElementTypeComparison.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
-        command.CommandText = $"SELECT distinct Relationship" +
+        command.CommandText = $"SELECT distinct {nameof(DbElementTypeComparison.Relationship)}" +
             $" FROM {dbTableName}" +
-            $" WHERE SourceFhirPackageKey = $SourceFhirPackageKey" +
-            $" AND TargetFhirPackageKey = $TargetFhirPackageKey" +
-            $" AND SourceElementTypeLiteral = $SourceElementTypeLiteral" +
-            $" AND TargetElementTypeLiteral = $TargetElementTypeLiteral";
+            $" WHERE {nameof(DbElementTypeComparison.SourceFhirPackageKey)} = $SourceFhirPackageKey" +
+            $" AND {nameof(DbElementTypeComparison.TargetFhirPackageKey)} = $TargetFhirPackageKey" +
+            $" AND {nameof(DbElementTypeComparison.SourceTypeLiteral)} = $SourceElementTypeLiteral" +
+            $" AND {nameof(DbElementTypeComparison.TargetTypeLiteral)} = $TargetElementTypeLiteral";
 
         {
             IDbDataParameter SourceFhirPackageKeyParam = command.CreateParameter();

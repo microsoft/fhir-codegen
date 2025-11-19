@@ -214,6 +214,12 @@ public class ComparisonDatabase : IDisposable
 
             DbExtensionSubstitution.LoadMaxKey(_dbConnection);
             DbExternalInclusion.LoadMaxKey(_dbConnection);
+
+            DbValueSetOutcome.LoadMaxKey(_dbConnection);
+            DbValueSetConceptOutcome.LoadMaxKey(_dbConnection);
+
+            DbStructureOutcome.LoadMaxKey(_dbConnection);
+            DbElementOutcome.LoadMaxKey(_dbConnection);
         }
         catch (Exception ex)
         {
@@ -369,6 +375,9 @@ public class ComparisonDatabase : IDisposable
                     DbValueSetComparison.DropTable(db);
                     DbValueSetConceptComparison.DropTable(db);
                     DbExternalInclusion.DropTable(db);
+
+                    DbValueSetOutcome.DropTable(db);
+                    DbValueSetConceptOutcome.DropTable(db);
                 }
                 break;
 
@@ -392,6 +401,9 @@ public class ComparisonDatabase : IDisposable
 
                     DbExtensionSubstitution.DropTable(db);
                     DbExternalInclusion.DropTable(db);
+
+                    DbStructureOutcome.DropTable(db);
+                    DbElementOutcome.DropTable(db);
                 }
                 break;
 
@@ -412,6 +424,9 @@ public class ComparisonDatabase : IDisposable
                     DbValueSetConceptComparison.DropTable(db);
                     DbUnresolvedConceptComparison.DropTable(db);
 
+                    DbValueSetOutcome.DropTable(db);
+                    DbValueSetConceptOutcome.DropTable(db);
+
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
                     DbElementType.DropTable(db);
@@ -426,6 +441,9 @@ public class ComparisonDatabase : IDisposable
 
                     DbExtensionSubstitution.DropTable(db);
                     DbExternalInclusion.DropTable(db);
+
+                    DbStructureOutcome.DropTable(db);
+                    DbElementOutcome.DropTable(db);
                 }
                 break;
         }
@@ -455,6 +473,9 @@ public class ComparisonDatabase : IDisposable
                     DbValueSetComparison.CreateTable(db);
                     DbValueSetConceptComparison.CreateTable(db);
                     DbExternalInclusion.CreateTable(db);
+
+                    DbValueSetOutcome.CreateTable(db);
+                    DbValueSetConceptOutcome.CreateTable(db);
                 }
                 break;
 
@@ -476,6 +497,9 @@ public class ComparisonDatabase : IDisposable
                     DbCollatedTypeComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
                     DbExternalInclusion.CreateTable(db);
+
+                    DbStructureOutcome.CreateTable(db);
+                    DbElementOutcome.CreateTable(db);
                 }
                 break;
 
@@ -495,6 +519,8 @@ public class ComparisonDatabase : IDisposable
                     DbValueSetComparison.CreateTable(db);
                     DbValueSetConceptComparison.CreateTable(db);
                     DbUnresolvedConceptComparison.CreateTable(db);
+                    DbValueSetOutcome.CreateTable(db);
+                    DbValueSetConceptOutcome.CreateTable(db);
 
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
@@ -507,6 +533,8 @@ public class ComparisonDatabase : IDisposable
                     DbElementTypeComparison.CreateTable(db);
                     DbCollatedTypeComparison.CreateTable(db);
                     DbUnresolvedElementComparison.CreateTable(db);
+                    DbStructureOutcome.CreateTable(db);
+                    DbElementOutcome.CreateTable(db);
 
                     DbExtensionSubstitution.CreateTable(db);
                     DbExternalInclusion.CreateTable(db);
@@ -2070,37 +2098,46 @@ public class ComparisonDatabase : IDisposable
             IDbCommand command = _dbConnection.CreateCommand();
             command.CommandText = $"""
                 delete from {DbCodeSystem.DefaultTableName}
-                where FhirPackageKey = {r5.Key}
-                and SourcePackageMoniker = 'hl7.terminology@5.1.0'
-                and UnversionedUrl not in (
-                    select distinct System
+                where {nameof(DbCodeSystem.FhirPackageKey)} = {r5.Key}
+                and {nameof(DbCodeSystem.SourcePackageMoniker)} = 'hl7.terminology@5.1.0'
+                and {nameof(DbCodeSystem.UnversionedUrl)} not in (
+                    select distinct {nameof(DbValueSetConcept.System)}
                     from {DbValueSetConcept.DefaultTableName}
-                    where FhirPackageKey = {r5.Key}
-                    and ValueSetKey in (
-                        select distinct BindingValueSetKey
+                    where {nameof(DbValueSetConcept.FhirPackageKey)} = {r5.Key}
+                    and {nameof(DbValueSetConcept.ValueSetKey)} in (
+                        select distinct {nameof(DbElement.BindingValueSetKey)}
                         from {DbElement.DefaultTableName}
-                        where FhirPackageKey = {r5.Key}
-                        and BindingValueSetKey is not null
+                        where {nameof(DbElement.FhirPackageKey)} = {r5.Key}
+                        and {nameof(DbElement.BindingValueSetKey)} is not null
                     )
-                    and System is not null
+                    and {nameof(DbValueSetConcept.System)} is not null
                 )
                 """;
             command.ExecuteNonQuery();
 
             command = _dbConnection.CreateCommand();
-            command.CommandText = $"delete from {DbCodeSystemConcept.DefaultTableName} where CodeSystemKey not in (select Key from {DbCodeSystem.DefaultTableName})";
+            command.CommandText =
+                $"delete from {DbCodeSystemConcept.DefaultTableName}" +
+                $" where {nameof(DbCodeSystemConcept.CodeSystemKey)} not in (select {nameof(DbCodeSystem.Key)} from {DbCodeSystem.DefaultTableName})";
             command.ExecuteNonQuery();
 
             command = _dbConnection.CreateCommand();
-            command.CommandText = $"delete from {DbCodeSystemFilter.DefaultTableName} where CodeSystemKey not in (select Key from {DbCodeSystem.DefaultTableName})";
+            command.CommandText =
+                $"delete from {DbCodeSystemFilter.DefaultTableName}" +
+                $" where {nameof(DbCodeSystemFilter.CodeSystemKey)} not in (select {nameof(DbCodeSystem.Key)} from {DbCodeSystem.DefaultTableName})";
             command.ExecuteNonQuery();
 
             command = _dbConnection.CreateCommand();
-            command.CommandText = $"delete from {DbCodeSystemPropertyDefinition.DefaultTableName} where CodeSystemKey not in (select Key from {DbCodeSystem.DefaultTableName})";
+            command.CommandText =
+                $"delete from {DbCodeSystemPropertyDefinition.DefaultTableName}" +
+                $" where {nameof(DbCodeSystemPropertyDefinition.CodeSystemKey)} not in (select {nameof(DbCodeSystem.Key)} from {DbCodeSystem.DefaultTableName})";
             command.ExecuteNonQuery();
 
             command = _dbConnection.CreateCommand();
-            command.CommandText = $"delete from {DbCodeSystemConceptProperty.DefaultTableName} where CodeSystemPropertyDefinitionKey not in (select Key from {DbCodeSystemPropertyDefinition.DefaultTableName})";
+            command.CommandText =
+                $"delete from {DbCodeSystemConceptProperty.DefaultTableName}" +
+                $" where {nameof(DbCodeSystemConceptProperty.CodeSystemPropertyDefinitionKey)}" +
+                $" not in (select {nameof(DbCodeSystemPropertyDefinition.Key)} from {DbCodeSystemPropertyDefinition.DefaultTableName})";
             command.ExecuteNonQuery();
         }
 
@@ -2502,8 +2539,13 @@ public class ComparisonDatabase : IDisposable
             IDbCommand command = _dbConnection.CreateCommand();
             command.CommandText = $"""
                 update {DbValueSet.DefaultTableName}
-                set HasEscapeValveCode = 1
-                where Key in (select distinct ValueSetKey from Concepts where Code in ({(string.Join(", ", _escapeValveCodes.Select(v => "'" + v + "'")))}) )
+                set {nameof(DbValueSet.HasEscapeValveCode)} = 1
+                where {nameof(DbValueSet.Key)} in
+                (
+                  select distinct {nameof(DbValueSetConcept.ValueSetKey)}
+                  from {DbValueSetConcept.DefaultTableName}
+                  where {nameof(DbValueSetConcept.Code)} in ({string.Join(", ", _escapeValveCodes.Select(v => "'" + v + "'"))})
+                )
                 """;
 
             command.ExecuteNonQuery();
@@ -2513,8 +2555,9 @@ public class ComparisonDatabase : IDisposable
             IDbCommand command = _dbConnection.CreateCommand();
             command.CommandText = $"""
                 update {DbValueSetConcept.DefaultTableName}
-                set System = 'http://hl7.org/fhir/sample-security-structural-roles'
-                where System = 'sample-security-structural-roles' and SystemVersion = '5.0.0'
+                set {nameof(DbValueSetConcept.System)} = 'http://hl7.org/fhir/sample-security-structural-roles'
+                where {nameof(DbValueSetConcept.System)} = 'sample-security-structural-roles'
+                and {nameof(DbValueSetConcept.SystemVersion)} = '5.0.0'
                 """;
 
             command.ExecuteNonQuery();
@@ -2525,24 +2568,24 @@ public class ComparisonDatabase : IDisposable
             IDbCommand command = _dbConnection.CreateCommand();
             command.CommandText = $"""
                 UPDATE {DbValueSetConcept.DefaultTableName} 
-                SET Display = (
-                    SELECT csc.Display 
+                SET {nameof(DbValueSetConcept.Display)} = (
+                    SELECT csc.{nameof(DbCodeSystemConcept.Display)}
                     FROM {DbCodeSystem.DefaultTableName} cs
-                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.Key = csc.CodeSystemKey
-                    WHERE {DbValueSetConcept.DefaultTableName}.FhirPackageKey = cs.FhirPackageKey 
-                      AND {DbValueSetConcept.DefaultTableName}.System = cs.UnversionedUrl 
-                      AND {DbValueSetConcept.DefaultTableName}.SystemVersion = cs.Version
-                      AND {DbValueSetConcept.DefaultTableName}.Code = csc.Code
+                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
+                    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
                 )
-                WHERE {DbValueSetConcept.DefaultTableName}.Display IS NULL
+                WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Display)} IS NULL
                   AND EXISTS (
                     SELECT 1 
                     FROM {DbCodeSystem.DefaultTableName} cs
-                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.Key = csc.CodeSystemKey
-                    WHERE {DbValueSetConcept.DefaultTableName}.FhirPackageKey = cs.FhirPackageKey 
-                      AND {DbValueSetConcept.DefaultTableName}.System = cs.UnversionedUrl 
-                      AND {DbValueSetConcept.DefaultTableName}.SystemVersion = cs.Version
-                      AND {DbValueSetConcept.DefaultTableName}.Code = csc.Code
+                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
+                    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
                   )
                 """;
 

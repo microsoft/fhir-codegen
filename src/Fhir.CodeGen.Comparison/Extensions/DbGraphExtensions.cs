@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
-using Fhir.CodeGen.Common.Extensions;
-using Fhir.CodeGen.Common.Utils;
+﻿using System.Data;
 using Fhir.CodeGen.Comparison.Models;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Extensions;
 
@@ -48,8 +38,8 @@ public static class DbGraphExtensions
               v.Title as title,
               0 as level,
               CAST(v.FhirPackageKey AS TEXT) as visited_packages
-            FROM ValueSets v
-            JOIN FhirPackages fp ON v.FhirPackageKey = fp.Key
+            FROM {{{DbValueSet.DefaultTableName}}} v
+            JOIN {{{DbFhirPackage.DefaultTableName}}}} fp ON v.FhirPackageKey = fp.Key
             WHERE v.FhirPackageKey = $SourcePackageKey
             AND (v.UnversionedUrl = $SourceUrl OR v.VersionedUrl = $SourceUrl)
 
@@ -68,9 +58,9 @@ public static class DbGraphExtensions
               vm.level + 1 as level,
               vm.visited_packages || ',' || CAST(tv.FhirPackageKey AS TEXT) as visited_packages
             FROM vs_mappings vm
-            JOIN ValueSetComparisons vc ON vc.SourceValueSetKey = vm.vs_key
-            JOIN ValueSets tv ON tv.Key = vc.TargetValueSetKey
-            JOIN FhirPackages tfp ON tv.FhirPackageKey = tfp.Key
+            JOIN {{{DbValueSetComparison.DefaultTableName}}} vc ON vc.SourceValueSetKey = vm.vs_key
+            JOIN {{{DbValueSet.DefaultTableName}}} tv ON tv.Key = vc.TargetValueSetKey
+            JOIN {{{DbFhirPackage.DefaultTableName}}} tfp ON tv.FhirPackageKey = tfp.Key
             WHERE
               vm.level < 6 -- Safety limit to prevent infinite recursion
               AND tv.Key IS NOT NULL -- Ensure target value set exists
@@ -92,9 +82,9 @@ public static class DbGraphExtensions
               vm.level + 1 as level,
               vm.visited_packages || ',' || CAST(sv.FhirPackageKey AS TEXT) as visited_packages
             FROM vs_mappings vm
-            JOIN ValueSetComparisons vc ON vc.TargetValueSetKey = vm.vs_key
-            JOIN ValueSets sv ON sv.Key = vc.SourceValueSetKey
-            JOIN FhirPackages sfp ON sv.FhirPackageKey = sfp.Key
+            JOIN {{{DbValueSetComparison.DefaultTableName}}} vc ON vc.TargetValueSetKey = vm.vs_key
+            JOIN {{{DbValueSet.DefaultTableName}}} sv ON sv.Key = vc.SourceValueSetKey
+            JOIN {{{DbFhirPackage.DefaultTableName}}} sfp ON sv.FhirPackageKey = sfp.Key
             WHERE
               vm.level < 6 -- Safety limit to prevent infinite recursion
               AND sv.Key IS NOT NULL -- Ensure source value setexists
@@ -193,8 +183,8 @@ public static class DbGraphExtensions
               s.Title as title,
               0 as level,
               CAST(s.FhirPackageKey AS TEXT) as visited_packages
-            FROM Structures s
-            JOIN FhirPackages fp ON s.FhirPackageKey = fp.Key
+            FROM {{{DbStructureDefinition.DefaultTableName}}} s
+            JOIN {{{DbFhirPackage.DefaultTableName}}} fp ON s.FhirPackageKey = fp.Key
             WHERE s.FhirPackageKey = $SourcePackageKey
             AND s.Id = $SourceStructureId
 
@@ -212,9 +202,9 @@ public static class DbGraphExtensions
               sm.level + 1 as level,
               sm.visited_packages || ',' || CAST(ts.FhirPackageKey AS TEXT) as visited_packages
             FROM structure_mappings sm
-            JOIN StructureComparisons sc ON sc.SourceStructureKey = sm.structure_key
-            JOIN Structures ts ON ts.Key = sc.TargetStructureKey
-            JOIN FhirPackages tfp ON ts.FhirPackageKey = tfp.Key
+            JOIN {{{DbStructureComparison.DefaultTableName}}} sc ON sc.SourceStructureKey = sm.structure_key
+            JOIN {{{DbStructureDefinition.DefaultTableName}}} ts ON ts.Key = sc.TargetStructureKey
+            JOIN {{{DbFhirPackage.DefaultTableName}}} tfp ON ts.FhirPackageKey = tfp.Key
             WHERE
               sm.level < 6 -- Safety limit to prevent infinite recursion
               AND ts.Key IS NOT NULL -- Ensure target structure exists
@@ -235,9 +225,9 @@ public static class DbGraphExtensions
               sm.level + 1 as level,
               sm.visited_packages || ',' || CAST(ss.FhirPackageKey AS TEXT) as visited_packages
             FROM structure_mappings sm
-            JOIN StructureComparisons sc ON sc.TargetStructureKey = sm.structure_key
-            JOIN Structures ss ON ss.Key = sc.SourceStructureKey
-            JOIN FhirPackages sfp ON ss.FhirPackageKey = sfp.Key
+            JOIN {{{DbStructureComparison.DefaultTableName}}} sc ON sc.TargetStructureKey = sm.structure_key
+            JOIN {{{DbStructureDefinition.DefaultTableName}}} ss ON ss.Key = sc.SourceStructureKey
+            JOIN {{{DbFhirPackage.DefaultTableName}}} sfp ON ss.FhirPackageKey = sfp.Key
             WHERE
               sm.level < 6 -- Safety limit to prevent infinite recursion
               AND ss.Key IS NOT NULL -- Ensure source structure exists
@@ -324,8 +314,8 @@ public static class DbGraphExtensions
               s.Title as title,
               0 as level,
               CAST(s.FhirPackageKey AS TEXT) as visited_packages
-            FROM Structures s
-            JOIN FhirPackages fp ON s.FhirPackageKey = fp.Key
+            FROM {{{DbStructureDefinition.DefaultTableName}}} s
+            JOIN {{{DbFhirPackage.DefaultTableName}}} fp ON s.FhirPackageKey = fp.Key
             WHERE s.FhirPackageKey = $SourcePackageKey
             AND s.Id = $SourceStructureId
 
@@ -343,9 +333,9 @@ public static class DbGraphExtensions
               sm.level + 1 as level,
               sm.visited_packages || ',' || CAST(ts.FhirPackageKey AS TEXT) as visited_packages
             FROM structure_mappings sm
-            JOIN StructureComparisons sc ON sc.SourceStructureKey = sm.structure_key
-            JOIN Structures ts ON ts.Key = sc.TargetStructureKey
-            JOIN FhirPackages tfp ON ts.FhirPackageKey = tfp.Key
+            JOIN {{{DbStructureComparison.DefaultTableName}}} sc ON sc.SourceStructureKey = sm.structure_key
+            JOIN {{{DbStructureDefinition.DefaultTableName}}} ts ON ts.Key = sc.TargetStructureKey
+            JOIN {{{DbFhirPackage.DefaultTableName}}} tfp ON ts.FhirPackageKey = tfp.Key
             WHERE
               sm.level < 6 -- Safety limit to prevent infinite recursion
               AND ts.Key IS NOT NULL -- Ensure target structure exists
@@ -366,9 +356,9 @@ public static class DbGraphExtensions
               sm.level + 1 as level,
               sm.visited_packages || ',' || CAST(ss.FhirPackageKey AS TEXT) as visited_packages
             FROM structure_mappings sm
-            JOIN StructureComparisons sc ON sc.TargetStructureKey = sm.structure_key
-            JOIN Structures ss ON ss.Key = sc.SourceStructureKey
-            JOIN FhirPackages sfp ON ss.FhirPackageKey = sfp.Key
+            JOIN {{{DbStructureComparison.DefaultTableName}}} sc ON sc.TargetStructureKey = sm.structure_key
+            JOIN {{{DbStructureDefinition.DefaultTableName}}} ss ON ss.Key = sc.SourceStructureKey
+            JOIN {{{DbFhirPackage.DefaultTableName}}} sfp ON ss.FhirPackageKey = sfp.Key
             WHERE
               sm.level < 6 -- Safety limit to prevent infinite recursion
               AND ss.Key IS NOT NULL -- Ensure source structure exists

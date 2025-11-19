@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Fhir.CodeGen.Common.Models;
-using Fhir.CodeGen.Common.Utils;
-using Fhir.CodeGen.SQLiteGenerator;
+﻿using Fhir.CodeGen.SQLiteGenerator;
 using System.Diagnostics.CodeAnalysis;
 using System.Data;
-
 
 namespace Fhir.CodeGen.Comparison.Models;
 
@@ -285,7 +271,7 @@ public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPacka
     };
 }
 
-[CgSQLiteTable(tableName: "ConceptComparisons")]
+[CgSQLiteTable(tableName: "ValueSetConceptComparisons")]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey))]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceConceptKey), nameof(TargetConceptKey))]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey))]
@@ -303,10 +289,10 @@ public partial class DbValueSetConceptComparison : DbPackageComparisonContent, I
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int? TargetValueSetKey { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int SourceConceptKey { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int? TargetConceptKey { get; set; }
 
     public required bool? NoMap { get; set; }
@@ -363,14 +349,14 @@ public partial class DbUnresolvedConceptComparison : DbPackageComparisonContent
     public required string ConceptMapUrl { get; set; }
 
 
-    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetConcept", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int? SourceConceptKey { get; set; }
     public required bool SourceConceptExists { get; set; } = false;
     public required string SourceSystem { get; set; }
     public required string SourceCode { get; set; }
     public required string? SourceDisplay { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "Concepts", referenceColumn: nameof(DbValueSetConcept.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetConcept", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int? TargetConceptKey { get; set; }
     public required bool? TargetConceptExists { get; set; }
     public required string? TargetSystem { get; set; }
@@ -659,6 +645,8 @@ public class DbComparisonCache<T>
             .Where(kvp => kvp.Key.targetKey == targetKey)
             .Select(kvp => kvp.Value);
     }
+
+    public IEnumerable<T> Values => _byKey.Values;
 
     public IEnumerable<T> ComparisonsToAdd => _toAdd.Values;
     public IEnumerable<T> ComparisonsToUpdate => _toUpdate.Values;

@@ -409,6 +409,7 @@ public abstract partial class FhirSanitizationUtils
         if (escapeToHtml)
         {
             input = input.Replace('"', '\'')
+                .Replace("\\", "\\\\")
                 .Replace("\r\n", "<br />")
                 .Replace("\r", "<br />")
                 .Replace("\n", "<br />");
@@ -416,6 +417,7 @@ public abstract partial class FhirSanitizationUtils
         else
         {
             input = input.Replace('"', '\'')
+                .Replace("\\", "\\\\")
                 .Replace("\r", "\\r")
                 .Replace("\n", "\\n");
         }
