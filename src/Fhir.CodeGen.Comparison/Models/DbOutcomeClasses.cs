@@ -38,6 +38,10 @@ public abstract class DbOutcomeBase : DbRecordBase
     public required bool IsBroaderThanTarget { get; set; }
     public required bool IsNarrowerThanTarget { get; set; }
 
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+
+
     public required bool FullyMapsToThisTarget { get; set; }
     public required bool FullyMapsAcrossAllTargets { get; set; }
 
@@ -47,10 +51,10 @@ public abstract class DbOutcomeBase : DbRecordBase
 [CgSQLiteBaseClass]
 public abstract class DbArtifactOutcomeBase : DbOutcomeBase
 {
-    public required string? GeneratedArtifactResourceType { get; set; }
-    public required string? GeneratedArtifactLongId { get; set; }
-    public required string? GeneratedArtifactShortId { get; set; }
-    public required string? GeneratedArtifactUrl { get; set; }
+    public required string? GenerationArtifactResourceType { get; set; }
+    public required string? GenerationArtifactLongId { get; set; }
+    public required string? GenerationArtifactShortId { get; set; }
+    public required string? GenerationArtifactUrl { get; set; }
 }
 
 [CgSQLiteTable(tableName: "StructureOutcomes")]
@@ -96,11 +100,6 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
 
     [CgSQLiteForeignKey(referenceTable: "ExtensionSubstituions", referenceColumn: nameof(DbExtensionSubstitution.Key))]
     public required int? ExtensionSubstitutionKey { get; set; }
-
-    public required string? GeneratedAncestorUrl { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(DbElementOutcome.Key))]
-    public required int? GeneratedAncestorElementOutcomeKey { get; set; }
 
     [CgSQLiteIgnore]
     public Hl7.Fhir.Model.StructureDefinition? GeneratedExtension { get; set; } = null;

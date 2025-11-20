@@ -458,10 +458,10 @@ public partial class XVerProcessor
                     TargetValueSetUnversionedUrl = null,
                     TargetValueSetVersion = null,
 
-                    GeneratedArtifactResourceType = "ValueSet",
-                    GeneratedArtifactLongId = idLong,
-                    GeneratedArtifactShortId = idShort,
-                    GeneratedArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
+                    GenerationArtifactResourceType = "ValueSet",
+                    GenerationArtifactLongId = idLong,
+                    GenerationArtifactShortId = idShort,
+                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = 0,
@@ -474,6 +474,8 @@ public partial class XVerProcessor
                     IsNarrowerThanTarget = false,
                     FullyMapsToThisTarget = false,
                     FullyMapsAcrossAllTargets = false,
+                    ConceptDomainRelationship = null,
+                    ValueDomainRelationship = null,
 
                     Comments = $$$"""
                         The FHIR {{{sourcePackage.ShortName}}} ValueSet `{{{sourceVs.UnversionedUrl}}}|{{{sourceVs.Version}}}`
@@ -500,7 +502,7 @@ public partial class XVerProcessor
             HashSet<int> conceptsThatFullyMapToAnyTarget = [];
             List<DbValueSetOutcome> vsOutcomesForThisSource = [];
 
-            bool multipleTargets = vsComparisons.Count > 1;
+            bool multipleTargets = vsComparisons.Count(c => c.TargetContentKey is not null) > 1;
 
             // iterate over each comparison for this value set
             foreach ((DbValueSetComparison vsComparison, int comparisonIndex) in vsComparisons.Select((c, i) => (c, i)))
@@ -568,6 +570,8 @@ public partial class XVerProcessor
                             IsNarrowerThanTarget = false,
                             FullyMapsToThisTarget = false,
                             FullyMapsAcrossAllTargets = false,
+                            ConceptDomainRelationship = null,
+                            ValueDomainRelationship = null,
 
                             Comments = $$$"""
                                 The Concept `{{{sourceConcept.System}}}#{{{sourceConcept.Code}}}` from FHIR {{{sourcePackage.ShortName}}} ValueSet
@@ -578,6 +582,8 @@ public partial class XVerProcessor
                         vsConceptOutcomesToAdd.Add(noMapOutcome);
                         continue;
                     }
+
+                    bool multipleContentTargets = conceptComparisons.Count(c => c.TargetContentKey is not null) > 1;
 
                     // iterate over the concept comparisons to build concept outcomes
                     foreach (DbValueSetConceptComparison conceptComparison in conceptComparisons)
@@ -612,6 +618,8 @@ public partial class XVerProcessor
                                 IsNarrowerThanTarget = false,
                                 FullyMapsToThisTarget = false,
                                 FullyMapsAcrossAllTargets = false,
+                                ConceptDomainRelationship = conceptComparison.Relationship,
+                                ValueDomainRelationship = CMR.Equivalent,
 
                                 Comments = $$$"""
                                     The Concept `{{{sourceConcept.System}}}#{{{sourceConcept.Code}}}`
@@ -664,7 +672,9 @@ public partial class XVerProcessor
                             TotalSourceCount = 1,
                             TotalTargetCount = conceptComparisons.Where(cc => cc.TargetConceptKey is not null).Count(),
 
-                            IsRenamed = (conceptComparison.Relationship == CMR.Equivalent) && (conceptComparison.CodesAreIdentical != true),
+                            IsRenamed = !multipleContentTargets &&
+                                ((conceptComparison.Relationship == CMR.Equivalent) || (conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
+                                (conceptComparison.CodesAreIdentical != true),
                             IsUnmapped = false,
                             IsIdentical = conceptComparison.CodesAreIdentical == true,
                             IsEquivalent = conceptComparison.Relationship == CMR.Equivalent,
@@ -673,6 +683,8 @@ public partial class XVerProcessor
 
                             FullyMapsToThisTarget = (conceptComparison.Relationship == CMR.Equivalent) || (conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget),
                             FullyMapsAcrossAllTargets = conceptComparisons.All(cc => cc.Relationship != CMR.SourceIsBroaderThanTarget),
+                            ConceptDomainRelationship = conceptComparison.Relationship,
+                            ValueDomainRelationship = CMR.Equivalent,
 
                             Comments = $$$"""
                                 The FHIR {{{sourcePackage.ShortName}}}
@@ -702,15 +714,17 @@ public partial class XVerProcessor
                     TargetValueSetUnversionedUrl = targetVs?.UnversionedUrl,
                     TargetValueSetVersion = targetVs?.Version,
 
-                    GeneratedArtifactResourceType = "ValueSet",
-                    GeneratedArtifactLongId = idLong,
-                    GeneratedArtifactShortId = idShort,
-                    GeneratedArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
+                    GenerationArtifactResourceType = "ValueSet",
+                    GenerationArtifactLongId = idLong,
+                    GenerationArtifactShortId = idShort,
+                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = vsComparisons.Count,
 
-                    IsRenamed = (vsComparison.Relationship == CMR.Equivalent) && (sourceVs.Id != targetVs?.Id),
+                    IsRenamed = !multipleTargets &&
+                        ((vsComparison.Relationship == CMR.Equivalent) || (vsComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
+                        (sourceVs.Id != targetVs?.Id),
                     IsUnmapped = false,
                     IsIdentical = vsComparison.IsIdentical == true,
                     IsEquivalent = vsComparison.Relationship == CMR.Equivalent,
@@ -718,6 +732,8 @@ public partial class XVerProcessor
                     IsNarrowerThanTarget = vsComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
                     FullyMapsToThisTarget = conceptsThatFullyMapToThisTarget.Count == sourceVsConcepts.Count,
                     FullyMapsAcrossAllTargets = false,      // need to finish processing to update this value
+                    ConceptDomainRelationship = vsComparison.Relationship,
+                    ValueDomainRelationship = CMR.Equivalent,
 
                     Comments = vsComparison.UserMessage ?? vsComparison.TechnicalMessage ?? string.Empty,
                 };
@@ -746,7 +762,6 @@ public partial class XVerProcessor
         _logger.LogInformation(
             $"Inserted {vsConceptOutcomesToAdd.Count} ValueSet Concept outcomes for source package {sourcePackage.ShortName} to target package {targetPackage.ShortName}.");
     }
-
 
     private void generateOutcomesSd(
         DbFhirPackage sourcePackage,
@@ -788,10 +803,10 @@ public partial class XVerProcessor
                     TargetStructureKey = null,
                     TargetStructureName = null,
 
-                    GeneratedArtifactResourceType = "StructureDefinition",
-                    GeneratedArtifactLongId = idLong,
-                    GeneratedArtifactShortId = idShort,
-                    GeneratedArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
+                    GenerationArtifactResourceType = "StructureDefinition",
+                    GenerationArtifactLongId = idLong,
+                    GenerationArtifactShortId = idShort,
+                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = 0,
@@ -804,6 +819,8 @@ public partial class XVerProcessor
                     IsNarrowerThanTarget = false,
                     FullyMapsToThisTarget = false,
                     FullyMapsAcrossAllTargets = false,
+                    ConceptDomainRelationship = null,
+                    ValueDomainRelationship = null,
 
                     Comments = $$$"""
                         The FHIR {{{sourcePackage.ShortName}}} StructureDefinition `{{{sourceSd.UnversionedUrl}}}|{{{sourceSd.Version}}}`
@@ -831,7 +848,7 @@ public partial class XVerProcessor
             HashSet<int> elementsThatFullyMapToAnyTarget = [];
             List<DbStructureOutcome> sdOutcomesForThisSource = [];
 
-            bool multipleTargets = sdComparisons.Count > 1;
+            bool multipleTargets = sdComparisons.Count(c => c.TargetContentKey is not null) > 1;
 
             // iterate over each comparison for this structure
             foreach ((DbStructureComparison sdComparison, int comparisonIndex) in sdComparisons.Select((c, i) => (c, i)))
@@ -859,8 +876,6 @@ public partial class XVerProcessor
                         targetPackage.ShortName,
                         targetSd.Id);
                 }
-
-                DbElementOutcome? ancestorElementOutcome = null;
 
                 // iterate over the elements in this structure
                 foreach (DbElement sourceElement in sourceElements)
@@ -891,15 +906,13 @@ public partial class XVerProcessor
                             TargetElementId = null,
 
                             ExtensionSubstitutionKey = null,
-                            GeneratedAncestorUrl = null,
-                            GeneratedAncestorElementOutcomeKey = null,
 
                             StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
-                            GeneratedArtifactResourceType = "StructureDefinition",
-                            GeneratedArtifactLongId = elementIdLong,
-                            GeneratedArtifactShortId = elementIdShort,
-                            GeneratedArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                            GenerationArtifactResourceType = "StructureDefinition",
+                            GenerationArtifactLongId = elementIdLong,
+                            GenerationArtifactShortId = elementIdShort,
+                            GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
 
                             TotalSourceCount = 1,
                             TotalTargetCount = 0,
@@ -912,6 +925,8 @@ public partial class XVerProcessor
                             IsNarrowerThanTarget = false,
                             FullyMapsToThisTarget = false,
                             FullyMapsAcrossAllTargets = false,
+                            ConceptDomainRelationship = null,
+                            ValueDomainRelationship = null,
 
                             Comments = $$$"""
                                 The Element `{{{sourceElement.Id}}}` from FHIR {{{sourcePackage.ShortName}}}
@@ -922,6 +937,8 @@ public partial class XVerProcessor
                         elementOutcomesToAdd.Add(noMapOutcome);
                         continue;
                     }
+
+                    bool multipleContentTargets = elementComparisons.Count(c => c.TargetContentKey is not null) > 1;
 
                     // iterate over the element comparisons to build element outcomes
                     foreach (DbElementComparison elementComparison in elementComparisons)
@@ -943,14 +960,12 @@ public partial class XVerProcessor
 
                                 StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
-                                GeneratedArtifactResourceType = "StructureDefinition",
-                                GeneratedArtifactLongId = elementIdLong,
-                                GeneratedArtifactShortId = elementIdShort,
-                                GeneratedArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                                GenerationArtifactResourceType = "StructureDefinition",
+                                GenerationArtifactLongId = elementIdLong,
+                                GenerationArtifactShortId = elementIdShort,
+                                GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
 
                                 ExtensionSubstitutionKey = null,
-                                GeneratedAncestorUrl = null,
-                                GeneratedAncestorElementOutcomeKey = null,
 
                                 TotalSourceCount = 1,
                                 TotalTargetCount = 0,
@@ -963,6 +978,8 @@ public partial class XVerProcessor
                                 IsNarrowerThanTarget = false,
                                 FullyMapsToThisTarget = false,
                                 FullyMapsAcrossAllTargets = false,
+                                ConceptDomainRelationship = elementComparison.ConceptDomainRelationship,
+                                ValueDomainRelationship = elementComparison.ValueDomainRelationship,
 
                                 Comments = $$$"""
                                     The Element `{{{sourceElement.Id}}}` from FHIR {{{sourcePackage.ShortName}}}
@@ -1008,19 +1025,19 @@ public partial class XVerProcessor
 
                             StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
-                            GeneratedArtifactResourceType = "StructureDefinition",
-                            GeneratedArtifactLongId = elementIdLong,
-                            GeneratedArtifactShortId = elementIdShort,
-                            GeneratedArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                            GenerationArtifactResourceType = "StructureDefinition",
+                            GenerationArtifactLongId = elementIdLong,
+                            GenerationArtifactShortId = elementIdShort,
+                            GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
 
                             ExtensionSubstitutionKey = null,
-                            GeneratedAncestorUrl = null,
-                            GeneratedAncestorElementOutcomeKey = null,
 
                             TotalSourceCount = 1,
-                            TotalTargetCount = elementComparisons.Where(cc => cc.TargetElementKey is not null).Count(),
+                            TotalTargetCount = elementComparisons.Where(ec => ec.TargetElementKey is not null).Count(),
 
-                            IsRenamed = (elementComparison.Relationship == CMR.Equivalent) && (sourceElement.Name != targetElement.Name),
+                            IsRenamed = !multipleContentTargets &&
+                                ((elementComparison.Relationship == CMR.Equivalent) || (elementComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
+                                (sourceElement.Name != targetElement.Name),
                             IsUnmapped = false,
                             IsIdentical = elementComparison.IsIdentical == true,
                             IsEquivalent = elementComparison.Relationship == CMR.Equivalent,
@@ -1028,7 +1045,10 @@ public partial class XVerProcessor
                             IsNarrowerThanTarget = elementComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
 
                             FullyMapsToThisTarget = (elementComparison.Relationship == CMR.Equivalent) || (elementComparison.Relationship == CMR.SourceIsNarrowerThanTarget),
-                            FullyMapsAcrossAllTargets = elementComparisons.All(cc => cc.Relationship != CMR.SourceIsBroaderThanTarget),
+                            FullyMapsAcrossAllTargets = elementComparisons.All(ec => ec.Relationship != CMR.SourceIsBroaderThanTarget),
+
+                            ConceptDomainRelationship = elementComparison.ConceptDomainRelationship,
+                            ValueDomainRelationship = elementComparison.ValueDomainRelationship,
 
                             Comments = $$$"""
                                 The FHIR {{{sourcePackage.ShortName}}}
@@ -1054,15 +1074,17 @@ public partial class XVerProcessor
                     TargetStructureKey = targetSd?.Key,
                     TargetStructureName = targetSd?.Name,
 
-                    GeneratedArtifactResourceType = "StructureDefinition",
-                    GeneratedArtifactLongId = idLong,
-                    GeneratedArtifactShortId = idShort,
-                    GeneratedArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
+                    GenerationArtifactResourceType = "StructureDefinition",
+                    GenerationArtifactLongId = idLong,
+                    GenerationArtifactShortId = idShort,
+                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = sdComparisons.Count,
 
-                    IsRenamed = (sdComparison.Relationship == CMR.Equivalent) && (sourceSd.Id != targetSd?.Id),
+                    IsRenamed = !multipleTargets &&
+                        ((sdComparison.Relationship == CMR.Equivalent) || (sdComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
+                        (sourceSd.Id != targetSd?.Id),
                     IsUnmapped = false,
                     IsIdentical = sdComparison.IsIdentical == true,
                     IsEquivalent = sdComparison.Relationship == CMR.Equivalent,
@@ -1070,6 +1092,9 @@ public partial class XVerProcessor
                     IsNarrowerThanTarget = sdComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
                     FullyMapsToThisTarget = elementsThatFullyMapToThisTarget.Count == sourceElements.Count,
                     FullyMapsAcrossAllTargets = false,      // need to finish processing to update this value
+
+                    ConceptDomainRelationship = sdComparison.ConceptDomainRelationship,
+                    ValueDomainRelationship = sdComparison.ValueDomainRelationship,
 
                     Comments = sdComparison.UserMessage ?? sdComparison.TechnicalMessage ?? string.Empty,
                 };
