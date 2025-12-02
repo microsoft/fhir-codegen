@@ -170,7 +170,7 @@ public partial class XVerProcessor
 
         HashSet<(int sourcePackageKey, int targetPackageKey)> processedPackagePairs = [];
 
-        // first, traverse all the processed pairs to build the neighbor-pair outcomes
+        // traverse all the processed pairs to build the neighbor-pair outcomes
         foreach (DbFhirPackageComparisonPair packagePair in packageComparisonPairs)
         {
             _logger.LogInformation(
@@ -198,6 +198,51 @@ public partial class XVerProcessor
             processedPackagePairs.Add((sourcePackage.Key, targetPackage.Key));
         }
 
+        // traverse neighbor-pair outcomes to update the actions based on the generated data
+        updateValueSetOutcomeActions();
+
+        // traverse all packages combinations to build the combinatorial outcomes (non-neighbor pairs)
+
+    }
+
+    private void updateValueSetOutcomeActions()
+    {
+        List<DbValueSetOutcome> toUpdate = [];
+
+        // traverse the value set outcomes without actions
+        foreach (DbValueSetOutcome outcome in DbValueSetOutcome.SelectEnumerable(_db!.DbConnection, OutcomeActionIsNull: true))
+        {
+            // check for non-generating outcomes
+            if ((outcome.IsIdentical == true) ||
+                (outcome.IsEquivalent == true) ||
+                (outcome.IsBroaderThanTarget == true))
+            {
+                if (outcome.IsRenamed == true)
+                {
+                    outcome.OutcomeAction = OutcomeValueSetActionCodes.UseValueSetRenamed;
+                }
+                else
+                {
+                    outcome.OutcomeAction = OutcomeValueSetActionCodes.UseValueSetSameName;
+                }
+            }
+            else
+            {
+                if (outcome.IsRenamed == true)
+                {
+                    outcome.OutcomeAction = OutcomeValueSetActionCodes.UseRenamedAndCrossVersion;
+                }
+                else
+                {
+                    outcome.OutcomeAction = OutcomeValueSetActionCodes.UseSameNameAndCrossVersion;
+                }
+            }
+
+            toUpdate.Add(outcome);
+        }
+
+        // update our outcomes in the database
+        toUpdate.Update(_db.DbConnection);
     }
 
     private void generateOutcomes(
@@ -462,6 +507,7 @@ public partial class XVerProcessor
                     PotentialGenLongId = idLong,
                     PotentialGenShortId = idShort,
                     PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
+                    OutcomeAction = null,
 
                     TotalSourceCount = 1,
                     TotalTargetCount = 0,
@@ -718,6 +764,7 @@ public partial class XVerProcessor
                     PotentialGenLongId = idLong,
                     PotentialGenShortId = idShort,
                     PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
+                    OutcomeAction = null,
 
                     TotalSourceCount = 1,
                     TotalTargetCount = vsComparisons.Count,
@@ -807,6 +854,7 @@ public partial class XVerProcessor
                     PotentialGenLongId = idLong,
                     PotentialGenShortId = idShort,
                     PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
+                    OutcomeAction = null,
 
                     TotalSourceCount = 1,
                     TotalTargetCount = 0,
@@ -913,6 +961,7 @@ public partial class XVerProcessor
                             PotentialGenLongId = elementIdLong,
                             PotentialGenShortId = elementIdShort,
                             PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                            OutcomeAction = null,
 
                             TotalSourceCount = 1,
                             TotalTargetCount = 0,
@@ -964,6 +1013,7 @@ public partial class XVerProcessor
                                 PotentialGenLongId = elementIdLong,
                                 PotentialGenShortId = elementIdShort,
                                 PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                                OutcomeAction = null,
 
                                 ExtensionSubstitutionKey = null,
 
@@ -1029,6 +1079,7 @@ public partial class XVerProcessor
                             PotentialGenLongId = elementIdLong,
                             PotentialGenShortId = elementIdShort,
                             PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                            OutcomeAction = null,
 
                             ExtensionSubstitutionKey = null,
 
@@ -1078,6 +1129,7 @@ public partial class XVerProcessor
                     PotentialGenLongId = idLong,
                     PotentialGenShortId = idShort,
                     PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
+                    OutcomeAction = null,
 
                     TotalSourceCount = 1,
                     TotalTargetCount = sdComparisons.Count,

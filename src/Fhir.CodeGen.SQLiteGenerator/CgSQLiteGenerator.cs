@@ -721,6 +721,45 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return results;
                         }
 
+                        public static IEnumerable<{{{className}}}> SelectEnumerable(IDbConnection dbConnection, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        {
+                            dbTableName ??= "{{{tableName}}}";
+                    
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
+                    
+                            bool addedCondition = false;
+                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
+                            {{{string.Join(_line_2, getConditionLines(true))}}}
+                    
+                            if ((orderByProperties != null) && (orderByProperties.Length > 0))
+                            {
+                                command.CommandText += $" ORDER BY {string.Join(", ", orderByProperties)}";
+                                if (orderByDirection?.StartsWith("d", StringComparison.OrdinalIgnoreCase) == true)
+                                {
+                                    command.CommandText += $" DESC";
+                                }
+                                else
+                                {
+                                    command.CommandText += $" ASC";
+                                }
+                            }
+                    
+                            using (IDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    yield return new()
+                                    {
+                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
+                                    };
+                                }
+                            }
+
+                            yield break;
+                        }
+
                         public static Dictionary<{{{(pkColName == null ? "int" : pkPropType)}}}, {{{className}}}> SelectDict(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                         {
                             dbTableName ??= "{{{tableName}}}";
@@ -1026,6 +1065,12 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             return {{{className}}}.SelectList(dbCon, dbTableName, orderByProperties, orderByDirection, {{{string.Join(", ", getFnFilterArgs(true))}}});
                         }
 
+                        public static IEnumerable<{{{className}}}> SelectEnumerable<T>(this IDbConnection dbCon, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                            where T : {{{className}}}
+                        {
+                            return {{{className}}}.SelectEnumerable(dbCon, dbTableName, orderByProperties, orderByDirection, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                        }
+                    
                         public static int SelectCount<T>(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
                             where T : {{{className}}}
                         {

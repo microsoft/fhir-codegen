@@ -2,6 +2,74 @@
 
 namespace Fhir.CodeGen.Comparison.Models;
 
+public enum OutcomeValueSetActionCodes
+{
+    /// <summary>
+    /// The value set is used with the same name in the target version.
+    /// </summary>
+    UseValueSetSameName,
+    /// <summary>
+    /// The value set is used but has been renamed in the target version.
+    /// </summary>
+    UseValueSetRenamed,
+    /// <summary>
+    /// The value set has no valid mapping to the target version, so a cross-version defined value set must be used.
+    /// </summary>
+    UseCrossVersionDefinition,
+    /// <summary>
+    /// The value set exists in the target version with the same name, but additional concepts are required from a cross-version defined value set.
+    /// </summary>
+    UseSameNameAndCrossVersion,
+    /// <summary>
+    /// The value set has been renamed in the target version, and additional concepts are required from a cross-version defined value set.
+    /// </summary>
+    UseRenamedAndCrossVersion,
+}
+
+public enum OutcomeStructureActionCodes
+{
+    /// <summary>
+    /// The structure is used with the same name in the target version.
+    /// </summary>
+    UseStructureSameName,
+    /// <summary>
+    /// The structure is used but has been renamed in the target version.
+    /// </summary>
+    UseStructureRenamed,
+    /// <summary>
+    /// The structure has no valid mapping to the target version, so a Basic resource must be used.
+    /// </summary>
+    UseBasicResource,
+}
+
+public enum OutcomeElementActionCodes
+{
+    /// <summary>
+    /// The element is used with the same name in the target version.
+    /// </summary>
+    UseElementSameName,
+    /// <summary>
+    /// The element is used but has been renamed in the target version.
+    /// </summary>
+    UseElementRenamed,
+    /// <summary>
+    /// The element is represented as an extension in the target version.
+    /// </summary>
+    UseExtension,
+    /// <summary>
+    /// The element is represented as an extension inherited from an ancestor.
+    /// </summary>
+    UseExtensionFromAncestor,
+    /// <summary>
+    /// The element is mapped to a basic element in the target version.
+    /// </summary>
+    UseBasicElement,
+    /// <summary>
+    /// The element is mapped to one of several possible elements and possibly an extension in the target version.
+    /// </summary>
+    UseOneOf,
+}
+
 [CgSQLiteBaseClass]
 public abstract class DbOutcomeBase : DbRecordBase
 {
@@ -69,6 +137,8 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
     public required int? TargetStructureKey { get; set; }
     public required string? TargetStructureName { get; set; }
 
+    public required OutcomeStructureActionCodes? OutcomeAction { get; set; }
+
     [CgSQLiteIgnore]
     public Hl7.Fhir.Model.StructureDefinition? PotentialGenProfile { get; set; } = null;
 }
@@ -101,6 +171,8 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     [CgSQLiteForeignKey(referenceTable: "ExtensionSubstituions", referenceColumn: nameof(DbExtensionSubstitution.Key))]
     public required int? ExtensionSubstitutionKey { get; set; }
 
+    public required OutcomeElementActionCodes? OutcomeAction { get; set; }
+
     [CgSQLiteIgnore]
     public Hl7.Fhir.Model.StructureDefinition? PotentialGenExtension { get; set; } = null;
 }
@@ -120,6 +192,8 @@ public partial class DbValueSetOutcome : DbArtifactOutcomeBase
     public required int? TargetValueSetKey { get; set; }
     public required string? TargetValueSetUnversionedUrl { get; set; }
     public required string? TargetValueSetVersion { get; set; }
+
+    public required OutcomeValueSetActionCodes? OutcomeAction { get; set; }
 
     [CgSQLiteIgnore]
     public Hl7.Fhir.Model.ValueSet? PotentialGenValueSet { get; set; } = null;
