@@ -153,20 +153,19 @@ public partial class FhirDbComparer
             {
                 sdElementComparisons.Add(elementComparison);
 
-                DbElement? targetElement = (elementComparison.TargetElementKey == null)
-                    ? null
-                    : DbElement.SelectSingle(_db, Key: elementComparison.TargetElementKey);
-
-                if (targetElement == null)
+                if ((elementComparison.TargetStructureKey is null) ||
+                    (elementComparison.TargetElementKey is null))
                 {
-                    if (elementComparison.TargetElementKey != null)
-                    {
-                        throw new Exception($"Failed to resolve {elementComparison.TargetElementToken} ({elementComparison.TargetElementKey})");
-                    }
-
-                    // if there is no target (non-mapping element), there is nothing else to check
+                    // if there is no target (non-mapping element), apply the 'broader' relationship and move on
                     aggregateStructureRelationship = applyRelationship(aggregateStructureRelationship, CMR.SourceIsBroaderThanTarget);
                     continue;
+                }
+
+                DbElement? targetElement = DbElement.SelectSingle(_db, Key: elementComparison.TargetElementKey);
+
+                if (targetElement is null)
+                {
+                    throw new Exception($"Failed to resolve {elementComparison.TargetElementToken} ({elementComparison.TargetElementKey})");
                 }
 
                 usedTargetElements.Add(targetElement.Id);
@@ -387,9 +386,9 @@ public partial class FhirDbComparer
                     }
 
                     // allow identical elements that have different base names
-                    if ((elementComparison.ConceptDomainRelationship == CMR.Equivalent) &&
-                        (elementComparison.ValueDomainRelationship == CMR.Equivalent) &&
-                        (elementComparison.Relationship == CMR.Equivalent) &&
+                    if ((conceptRelationship == CMR.Equivalent) &&
+                        (valueRelationship == CMR.Equivalent) &&
+                        (relationship == CMR.Equivalent) &&
                         (sourceElement.Name == targetElement.Name) &&
                         (sourceElement.FullCollatedTypeLiteral == targetElement.FullCollatedTypeLiteral) &&
                         (sourceElement.BindingValueSet == targetElement.BindingValueSet))

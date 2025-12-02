@@ -36,7 +36,7 @@ public partial class FhirDbComparer
 
         foreach (DbValueSetConcept sourceConcept in sourceConcepts)
         {
-            // look in our cache for existing comparisons
+            // look in our cache for dbRec comparisons
             List<DbValueSetConceptComparison> comparisons = conceptComparisonCache.ForSource(sourceConcept.Key)
                 .Where(c => c.TargetFhirPackageKey == targetPackage.Key)
                 .ToList();
@@ -58,7 +58,7 @@ public partial class FhirDbComparer
                 comparisons.Add(existingDbComparison);
             }
 
-            // if there are no existing comparisons, see if we can find a matching concept
+            // if there are no dbRec comparisons, see if we can find a matching concept
             if ((comparisons.Count == 0) &&
                 (DbValueSetConcept.SelectList(_db, ValueSetKey: targetVs.Key, Code: sourceConcept.Code) is List<DbValueSetConcept> targetConcepts) &&
                 (targetConcepts.Count != 0))
@@ -156,28 +156,18 @@ public partial class FhirDbComparer
             {
                 vsConceptComparisons.Add(conceptComparison);
 
-                DbValueSetConcept? targetConcept = (conceptComparison.TargetConceptKey == null)
-                    ? null
-                    : DbValueSetConcept.SelectSingle(_db, Key: conceptComparison.TargetConceptKey);
-
-                // if there is no target, there is nothing to check
-                if (targetConcept == null)
+                if ((conceptComparison.TargetValueSetKey is null) ||
+                    (conceptComparison.TargetConceptKey is null))
                 {
+                    // nothing to check
                     continue;
                 }
 
-                // get the list of all comparisons that source this ValueSet and target the same concept
-                List<DbValueSetConceptComparison> targetComparisons = conceptComparisonCache.ForSource(targetConcept.Key)
-                    .Where(c => c.TargetFhirPackageKey == sourcePackage.Key)
-                    .ToList();
-
-                List<DbValueSetConceptComparison> existingTargetComparisons = DbValueSetConceptComparison.SelectList(
-                    _db,
-                    PackageComparisonKey: forwardPair.Key,
-                    SourceValueSetKey: sourceVs.Key,
-                    TargetConceptKey: targetConcept.Key);
-
-                targetComparisons.AddRange(existingTargetComparisons.Where(etc => !targetComparisons.Contains(etc)));
+                DbValueSetConcept? targetConcept = DbValueSetConcept.SelectSingle(_db, Key: conceptComparison.TargetConceptKey);
+                if (targetConcept is null)
+                {
+                    throw new Exception($"Unable to locate target concept with Key={conceptComparison.TargetConceptKey}");
+                }
 
                 // look for an inverse comparison
                 DbValueSetConceptComparison? inverseComparison = null;
@@ -214,68 +204,32 @@ public partial class FhirDbComparer
                 // do basic checks if this has not been reviewed
                 if (conceptComparison.LastReviewedOn == null)
                 {
-                    bool userMessageIsComplete = false;
-                    string userMessage = $"`{sourceConcept.System}`#`{sourceConcept.Code}`" +
-                        $" maps to {targetPackage.ShortName} `{targetConcept.System}`#`{targetConcept.Code}`";
-
-                    // check for missing no-map value
-                    if ((conceptComparison.TargetConceptKey == null) &&
-                        (conceptComparison.NoMap != true))
-                    {
-                        conceptComparisonCache.Changed(conceptComparison);
-                        conceptComparison.NoMap = true;
-                    }
-
-                    // check for incorrectly-flagged-as-equivalent escape-value code mappings
-                    if ((targetConcept != null) &&
-                        (conceptComparison.Relationship == CMR.Equivalent) &&
-                        XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code) &&
-                        (sourceVs.ActiveConcreteConceptCount != targetVs.ActiveConcreteConceptCount))
-                    {
-                        conceptComparisonCache.Changed(conceptComparison);
-                        conceptComparison.Relationship = RelationshipForCounts(sourceVs.ActiveConcreteConceptCount, targetVs.ActiveConcreteConceptCount);
-                        conceptComparison.IsGenerated = true;
-                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
-                            $" Escape-valve code `{sourceConcept.System}`#`{sourceConcept.Code}` maps to `{targetConcept.System}`#`{targetConcept.Code}`, but represent different concept domains (different number of codes).";
-                        userMessage = $"Escape-valve code `{sourceConcept.System}`#`{sourceConcept.Code}`" +
-                            $" maps to `{targetConcept.System}`#`{targetConcept.Code}`," +
-                            $" but represent different concept domains (different number of codes).";
-                        userMessageIsComplete = true;
-                    }
-
-                    // check for a single source with multiple targets and any that map as equivalent
-                    if ((conceptComparison.Relationship == CMR.Equivalent) &&
-                        (targetComparisons.Count(tc => tc.NoMap != true) > 1))
-                    {
-                        conceptComparisonCache.Changed(conceptComparison);
-
-                        // build a target concept list
-                        List<DbValueSetConcept?> targetConceptCodes = targetComparisons
-                            .Where(tc => tc.TargetConceptKey != null)
-                            .Select(tc => DbValueSetConcept.SelectSingle(_db, Key: tc.TargetConceptKey))
-                            .Where(c => c != null)
-                            .ToList();
-
-                        // mark as not equivalent
-                        conceptComparison.Relationship = CMR.SourceIsNarrowerThanTarget;
-                        conceptComparison.IsGenerated = true;
-                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
-                            $" `{sourceConcept.Code}` maps to multiple codes in `{targetVs.VersionedUrl}` and cannot be equivalent.";
-
-                        if (!userMessageIsComplete)
-                        {
-                            userMessage += $", but maps to multiple codes in {targetVs.VersionedUrl}:" +
-                                $" ({string.Join(", ", targetConceptCodes.Select(c => $"`{c?.System}`#`{c?.Code}`"))}), so maps as";
-                        }
-                    }
-
-                    if (!userMessageIsComplete)
-                    {
-                        userMessage += $" as {conceptComparison.Relationship}.";
-                    }
-
-                    conceptComparison.UserMessage = userMessage;
+                    // all unreviewed records are updated in some way (even if just the message)
                     conceptComparisonCache.Changed(conceptComparison);
+
+                    // check for no-map value
+                    if (!checkNoMap(sourceConcept, conceptComparison))
+                    {
+                        string userMessage = $"`{sourceConcept.System}`#`{sourceConcept.Code}` has a mapping" +
+                            $" to the ValueSet `{targetVs.VersionedUrl}` (defined by FHIR {targetPackage.ShortName})" +
+                            $" for the code `{targetConcept.System}`#`{targetConcept.Code}`";
+
+                        // check escape-valve codes for proper relationships
+                        checkEscapeValve(sourceConcept, targetConcept, conceptComparison, ref userMessage);
+
+                        // check to see if there are multiple source codes mapping to the same target code as Equivalent
+                        checkMultipleSourcesToTarget(sourceConcept, targetConcept, conceptComparison, ref userMessage);
+
+                        // check to see if there are multiple target codes for the same source code
+                        checkMultipleTargets(sourceConcept, targetConcept, conceptComparison, ref userMessage);
+
+                        //if (!userMessageIsComplete)
+                        //{
+                        //    userMessage += $" as {conceptComparison.Relationship}.";
+                        //}
+
+                        conceptComparison.UserMessage = userMessage;
+                    }
                 }
 
                 if (inverseComparison != null)
@@ -346,5 +300,226 @@ public partial class FhirDbComparer
         }
 
         return vsConceptComparisons;
+
+        /// <returns>true if the comparison is a no-map</returns>
+        bool checkNoMap(DbValueSetConcept sourceConcept, DbValueSetConceptComparison conceptComparison)
+        {
+            if (conceptComparison.NoMap == true)
+            {
+                conceptComparison.Relationship = null;
+                conceptComparison.TargetConceptKey = null;
+
+                conceptComparison.UserMessage =
+                    $"`{sourceConcept.System}`#`{sourceConcept.Code}` is not mapped to any codes in" +
+                    $" the ValueSet `{targetVs.VersionedUrl}` defined in FHIR {targetPackage.ShortName}.";
+
+                return true;
+            }
+
+            if (conceptComparison.TargetConceptKey is null)
+            {
+                conceptComparison.NoMap = true;
+                conceptComparison.Relationship = null;
+
+                conceptComparison.UserMessage =
+                    $"`{sourceConcept.System}`#`{sourceConcept.Code}` is not mapped to any codes in" +
+                    $" the ValueSet `{targetVs.VersionedUrl}` defined in FHIR {targetPackage.ShortName}.";
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <returns>true if the source concept is an escape-valve code</returns>
+        bool checkEscapeValve(
+            DbValueSetConcept sourceConcept,
+            DbValueSetConcept targetConcept,
+            DbValueSetConceptComparison conceptComparison,
+            ref string userMessage)
+        {
+            if (!XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code))
+            {
+                return false;
+            }
+
+            bool countsDiffer = sourceVs.ActiveConcreteConceptCount != targetVs.ActiveConcreteConceptCount;
+
+            if (countsDiffer)
+            {
+                conceptComparison.Relationship = RelationshipForCounts(sourceVs.ActiveConcreteConceptCount, targetVs.ActiveConcreteConceptCount);
+                conceptComparison.IsGenerated = true;
+                conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                    $" Escape-valve code `{sourceConcept.System}`#`{sourceConcept.Code}` is mapped to" +
+                    $" `{targetConcept.System}`#`{targetConcept.Code}`," +
+                    $" but represent different concept domains (different number of codes).";
+                userMessage += $" but is an 'escape-valve code'" +
+                    $" and the ValueSets have different numbers of codes (represent different concept domains).";
+            }
+            else
+            {
+                conceptComparison.Relationship = CMR.Equivalent;
+                conceptComparison.IsGenerated = true;
+                conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                    $" Escape-valve code `{sourceConcept.System}`#`{sourceConcept.Code}` is mapped to" +
+                    $" `{targetConcept.System}`#`{targetConcept.Code}`" +
+                    $" and both ValueSets have the same number of active codes.";
+                userMessage += $" and is a possible 'escape-valve code'.";
+            }
+
+            return true;
+        }
+
+        void checkMultipleSourcesToTarget(
+            DbValueSetConcept sourceConcept,
+            DbValueSetConcept targetConcept,
+            DbValueSetConceptComparison conceptComparison,
+            ref string userMessage)
+        {
+            // start with local cache
+            List<DbValueSetConceptComparison> comparisonsTargeting = conceptComparisonCache.ForTarget(targetConcept.Key)
+                //.Where(c => c.SourceFhirPackageKey == sourcePackage.Key)
+                .Where(c => c.SourceValueSetKey == sourceVs.Key)
+                .ToList();
+
+            // grab any existing database records
+            List<DbValueSetConceptComparison> comparisonsTargetingFromDb = DbValueSetConceptComparison.SelectList(
+                _db,
+                PackageComparisonKey: forwardPair.Key,
+                TargetConceptKey: targetConcept.Key,
+                SourceValueSetKey: sourceVs.Key);
+
+            // add items from the db that are not already in the list
+            comparisonsTargeting.AddRange(comparisonsTargetingFromDb.Where(dbRec => !comparisonsTargeting.Any(tracked => tracked.Key == dbRec.Key)));
+
+            // if there are zero or one comparisons, nothing to do here
+            if (comparisonsTargeting.Count < 2)
+            {
+                return;
+            }
+
+            // get the source concept list
+            List<DbValueSetConcept?> sourceConceptCodes = comparisonsTargeting
+                .Select(tc => DbValueSetConcept.SelectSingle(_db, Key: tc.SourceConceptKey))
+                .Where(c => c != null)
+                .ToList();
+
+            userMessage += $". Note that multiple codes are mapped to the concept `{targetConcept.System}#{targetConcept.Code}`" +
+                $" ({string.Join(", ", sourceConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))}).";
+
+            switch (conceptComparison.Relationship)
+            {
+                // if this is marked equivalent and there are multiple source codes mapping to the same target code, this source is actually narrower
+                case CMR.Equivalent:
+                    {
+                        conceptComparison.Relationship = CMR.SourceIsNarrowerThanTarget;
+                        conceptComparison.IsGenerated = true;
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" Found multiple codes with mappings to `{targetConcept.System}#{targetConcept.Code}`" +
+                            $" ({string.Join(", ", sourceConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))})." +
+                            $" The relationship was updated from `Equivalent` to `SourceIsNarrowerThanTarget`.";
+                    }
+                    break;
+
+                // if this is marked narrower or related to, just update our messages
+                case CMR.RelatedTo:
+                case CMR.SourceIsNarrowerThanTarget:
+                    {
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" Found multiple codes with mappings to `{targetConcept.System}#{targetConcept.Code}`" +
+                            $" ({string.Join(", ", sourceConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))})." +
+                            $" The relationship of `{conceptComparison.Relationship}` is still appropriate.";
+                    }
+                    break;
+
+                // if this is marked broader and there are multiple source codes mapping to the same target code, this is a complicated mapping
+                case CMR.SourceIsBroaderThanTarget:
+                    {
+                        conceptComparison.Relationship = CMR.RelatedTo;
+                        conceptComparison.IsGenerated = true;
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" Found multiple codes with mappings to `{targetConcept.System}#{targetConcept.Code}`" +
+                            $" ({string.Join(", ", sourceConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))})." +
+                            $" The relationship of `SourceIsBroaderThanTarget` is inappropriate - this is a complex relationship described as `RelatedTo`.";
+                    }
+                    break;
+            }
+        }
+
+        void checkMultipleTargets(
+            DbValueSetConcept sourceConcept,
+            DbValueSetConcept targetConcept,
+            DbValueSetConceptComparison conceptComparison,
+            ref string userMessage)
+        {
+            // start with local cache
+            List<DbValueSetConceptComparison> comparisonsForSource = conceptComparisonCache.ForSource(sourceConcept.Key)
+                //.Where(c => c.TargetFhirPackageKey == targetPackage.Key)
+                .Where(c => c.TargetValueSetKey == targetVs.Key)
+                .ToList();
+
+            // grab any existing database records
+            List<DbValueSetConceptComparison> comparisonsForSourceFromDb = DbValueSetConceptComparison.SelectList(
+                _db,
+                PackageComparisonKey: forwardPair.Key,
+                SourceConceptKey: sourceConcept.Key,
+                TargetValueSetKey: targetVs.Key);
+
+            // add items from the db that are not already in the list
+            comparisonsForSource.AddRange(comparisonsForSourceFromDb.Where(dbRec => !comparisonsForSource.Any(tracked => tracked.Key == dbRec.Key)));
+
+            // if there are zero or one comparisons, nothing to do here
+            if (comparisonsForSource.Count < 2)
+            {
+                return;
+            }
+
+            // get the target concept list
+            List<DbValueSetConcept?> targetConceptCodes = comparisonsForSource
+                .Select(tc => DbValueSetConcept.SelectSingle(_db, Key: tc.TargetConceptKey))
+                .Where(c => c != null)
+                .ToList();
+
+            userMessage += $". Note that this concept is mapped to the multiple concepts: " +
+                $" {string.Join(", ", targetConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))}.";
+
+            switch (conceptComparison.Relationship)
+            {
+                // if this is marked equivalent and there are multiple target codes, this source is actually broader than each individual target
+                case CMR.Equivalent:
+                    {
+                        conceptComparison.Relationship = CMR.SourceIsBroaderThanTarget;
+                        conceptComparison.IsGenerated = true;
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" Found multiple mapping targets for `{sourceConcept.System}#{sourceConcept.Code}`:" +
+                            $" {string.Join(", ", targetConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))}." +
+                            $" The relationship was updated from `Equivalent` to `SourceIsBroaderThanTarget`.";
+                    }
+                    break;
+
+                // if this is marked broader or related to, just update our messages
+                case CMR.RelatedTo:
+                case CMR.SourceIsBroaderThanTarget:
+                    {
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" Found multiple mapping targets for `{sourceConcept.System}#{sourceConcept.Code}`:" +
+                            $" {string.Join(", ", targetConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))}." +
+                            $" The relationship of `{conceptComparison.Relationship}` is still appropriate.";
+                    }
+                    break;
+
+                // if this is marked narrower and there are multiple targets, this is a complicated mapping
+                case CMR.SourceIsNarrowerThanTarget:
+                    {
+                        conceptComparison.Relationship = CMR.RelatedTo;
+                        conceptComparison.IsGenerated = true;
+                        conceptComparison.TechnicalMessage = conceptComparison.TechnicalMessage +
+                            $" Found multiple mapping targets for `{sourceConcept.System}#{sourceConcept.Code}`:" +
+                            $" {string.Join(", ", targetConceptCodes.Select(c => $"`{c!.System}`#`{c!.Code}`"))}." +
+                            $" The relationship of `SourceIsNarrowerThanTarget` is inappropriate - this is a complex relationship described as `RelatedTo`.";
+                    }
+                    break;
+            }
+        }
     }
 }

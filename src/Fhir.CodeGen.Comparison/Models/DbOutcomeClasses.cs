@@ -51,10 +51,10 @@ public abstract class DbOutcomeBase : DbRecordBase
 [CgSQLiteBaseClass]
 public abstract class DbArtifactOutcomeBase : DbOutcomeBase
 {
-    public required string? GenerationArtifactResourceType { get; set; }
-    public required string? GenerationArtifactLongId { get; set; }
-    public required string? GenerationArtifactShortId { get; set; }
-    public required string? GenerationArtifactUrl { get; set; }
+    public required string? PotentialGenResourceType { get; set; }
+    public required string? PotentialGenLongId { get; set; }
+    public required string? PotentialGenShortId { get; set; }
+    public required string? PotentialGenUrl { get; set; }
 }
 
 [CgSQLiteTable(tableName: "StructureOutcomes")]
@@ -70,7 +70,7 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
     public required string? TargetStructureName { get; set; }
 
     [CgSQLiteIgnore]
-    public Hl7.Fhir.Model.StructureDefinition? GeneratedProfile { get; set; } = null;
+    public Hl7.Fhir.Model.StructureDefinition? PotentialGenProfile { get; set; } = null;
 }
 
 [CgSQLiteTable(tableName: "ElementOutcomes")]
@@ -102,7 +102,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required int? ExtensionSubstitutionKey { get; set; }
 
     [CgSQLiteIgnore]
-    public Hl7.Fhir.Model.StructureDefinition? GeneratedExtension { get; set; } = null;
+    public Hl7.Fhir.Model.StructureDefinition? PotentialGenExtension { get; set; } = null;
 }
 
 
@@ -122,7 +122,7 @@ public partial class DbValueSetOutcome : DbArtifactOutcomeBase
     public required string? TargetValueSetVersion { get; set; }
 
     [CgSQLiteIgnore]
-    public Hl7.Fhir.Model.ValueSet? GeneratedValueSet { get; set; } = null;
+    public Hl7.Fhir.Model.ValueSet? PotentialGenValueSet { get; set; } = null;
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptOutcomes")]

@@ -458,10 +458,10 @@ public partial class XVerProcessor
                     TargetValueSetUnversionedUrl = null,
                     TargetValueSetVersion = null,
 
-                    GenerationArtifactResourceType = "ValueSet",
-                    GenerationArtifactLongId = idLong,
-                    GenerationArtifactShortId = idShort,
-                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
+                    PotentialGenResourceType = "ValueSet",
+                    PotentialGenLongId = idLong,
+                    PotentialGenShortId = idShort,
+                    PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = 0,
@@ -714,10 +714,10 @@ public partial class XVerProcessor
                     TargetValueSetUnversionedUrl = targetVs?.UnversionedUrl,
                     TargetValueSetVersion = targetVs?.Version,
 
-                    GenerationArtifactResourceType = "ValueSet",
-                    GenerationArtifactLongId = idLong,
-                    GenerationArtifactShortId = idShort,
-                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
+                    PotentialGenResourceType = "ValueSet",
+                    PotentialGenLongId = idLong,
+                    PotentialGenShortId = idShort,
+                    PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = vsComparisons.Count,
@@ -803,10 +803,10 @@ public partial class XVerProcessor
                     TargetStructureKey = null,
                     TargetStructureName = null,
 
-                    GenerationArtifactResourceType = "StructureDefinition",
-                    GenerationArtifactLongId = idLong,
-                    GenerationArtifactShortId = idShort,
-                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
+                    PotentialGenResourceType = "StructureDefinition",
+                    PotentialGenLongId = idLong,
+                    PotentialGenShortId = idShort,
+                    PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = 0,
@@ -909,10 +909,10 @@ public partial class XVerProcessor
 
                             StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
-                            GenerationArtifactResourceType = "StructureDefinition",
-                            GenerationArtifactLongId = elementIdLong,
-                            GenerationArtifactShortId = elementIdShort,
-                            GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                            PotentialGenResourceType = "StructureDefinition",
+                            PotentialGenLongId = elementIdLong,
+                            PotentialGenShortId = elementIdShort,
+                            PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
 
                             TotalSourceCount = 1,
                             TotalTargetCount = 0,
@@ -960,10 +960,10 @@ public partial class XVerProcessor
 
                                 StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
-                                GenerationArtifactResourceType = "StructureDefinition",
-                                GenerationArtifactLongId = elementIdLong,
-                                GenerationArtifactShortId = elementIdShort,
-                                GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                                PotentialGenResourceType = "StructureDefinition",
+                                PotentialGenLongId = elementIdLong,
+                                PotentialGenShortId = elementIdShort,
+                                PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
 
                                 ExtensionSubstitutionKey = null,
 
@@ -1025,10 +1025,10 @@ public partial class XVerProcessor
 
                             StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
-                            GenerationArtifactResourceType = "StructureDefinition",
-                            GenerationArtifactLongId = elementIdLong,
-                            GenerationArtifactShortId = elementIdShort,
-                            GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
+                            PotentialGenResourceType = "StructureDefinition",
+                            PotentialGenLongId = elementIdLong,
+                            PotentialGenShortId = elementIdShort,
+                            PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{elementIdLong}",
 
                             ExtensionSubstitutionKey = null,
 
@@ -1074,10 +1074,10 @@ public partial class XVerProcessor
                     TargetStructureKey = targetSd?.Key,
                     TargetStructureName = targetSd?.Name,
 
-                    GenerationArtifactResourceType = "StructureDefinition",
-                    GenerationArtifactLongId = idLong,
-                    GenerationArtifactShortId = idShort,
-                    GenerationArtifactUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
+                    PotentialGenResourceType = "StructureDefinition",
+                    PotentialGenLongId = idLong,
+                    PotentialGenShortId = idShort,
+                    PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/{idLong}",
 
                     TotalSourceCount = 1,
                     TotalTargetCount = sdComparisons.Count,
