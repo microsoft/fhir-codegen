@@ -182,7 +182,8 @@ public partial class XVerProcessor
     private static Lock _publisherScriptsLock = new();
 
     /// <summary>
-    /// Generates cross-version FHIR artifacts from the loaded database, including ValueSets, StructureDefinitions, and ImplementationGuides.
+    /// Generates cross-version FHIR artifacts from the loaded database, including CodeSystems,
+    /// ValueSets, StructureDefinitions, and ImplementationGuides.
     /// </summary>
     /// <param name="version">Optional artifact version to use; if null, uses the configured artifact version.</param>
     /// <param name="outputDir">Optional output directory; if null, uses the configured map source path.</param>

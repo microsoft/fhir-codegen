@@ -189,6 +189,7 @@ public partial class XVerProcessor
                 throw new Exception("Missing package for comparison pair!");
             }
 
+            // build the initial outcomes for this package pair
             generateOutcomes(
                 sourcePackage,
                 targetPackage,
@@ -198,24 +199,308 @@ public partial class XVerProcessor
             processedPackagePairs.Add((sourcePackage.Key, targetPackage.Key));
         }
 
-        // traverse neighbor-pair outcomes to update the actions based on the generated data
-        updateValueSetOutcomeActions();
-
-        // traverse all packages combinations to build the combinatorial outcomes (non-neighbor pairs)
-
+        // TODO: traverse the packages to extend outcomes to non-neighbor pairs (all combinatorial outcomes)
     }
 
-    private void updateValueSetOutcomeActions()
+    private void updateStructureOutcomeActions(
+        List<DbStructureOutcome> outcomes,
+        DbStructureDefinition targetBasicStructure,
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage)
     {
-        List<DbValueSetOutcome> toUpdate = [];
-
-        // traverse the value set outcomes without actions
-        foreach (DbValueSetOutcome outcome in DbValueSetOutcome.SelectEnumerable(_db!.DbConnection, OutcomeActionIsNull: true))
+        // traverse structure outcomes without actions
+        foreach (DbStructureOutcome outcome in outcomes)
         {
+            // check for unmapped
+            if (outcome.TargetStructureKey is null)
+            {
+                // resources map to basic, datatypes map to extensions
+                if (outcome.SourceArtifactClass == FhirArtifactClassEnum.Resource)
+                {
+                    outcome.TargetStructureKey = targetBasicStructure.Key;
+                    outcome.TargetStructureName = targetBasicStructure.Name;
+                    outcome.OutcomeAction = OutcomeStructureActionCodes.UseBasicResource;
+
+                    outcome.Comments += "\n\n" +
+                        $"The FHIR {sourcePackage.ShortName} resource `{outcome.SourceStructureName}` has no mapping to" +
+                        $" FHIR {targetPackage.ShortName} and is represented using the `Basic` resource with extensions.";
+                }
+                else
+                {
+                    outcome.TargetStructureKey = null;
+                    outcome.TargetStructureName = null;
+                    outcome.OutcomeAction = OutcomeStructureActionCodes.UseDatatypeExtension;
+
+                    outcome.Comments += "\n\n" +
+                        $"The FHIR {sourcePackage.ShortName} Structure ({outcome.SourceArtifactClass.ToString()})" +
+                        $" `{outcome.SourceStructureName}` has no mapping to FHIR {targetPackage.ShortName} and" +
+                        $" is represented by a complex extension that includes an explicit `_datatype`.";
+                }
+
+                continue;
+            }
+
+            // check for multiple targets
+            if (outcome.TotalTargetCount > 1)
+            {
+                outcome.Comments += "\n\n" +
+                    $"Note that the FHIR {sourcePackage.ShortName} Structure ({outcome.SourceArtifactClass.ToString()})" +
+                    $" `{outcome.SourceStructureName}` maps to multiple structures in FHIR {targetPackage.ShortName}." +
+                    $" Some elements that are not mapped to `{outcome.TargetStructureName}` are mapped to another structure.";
+            }
+
+            // if we have a target, the outcome is either renamed or same-name
+            if (outcome.IsRenamed == true)
+            {
+                outcome.OutcomeAction = OutcomeStructureActionCodes.UseStructureRenamed;
+            }
+            else
+            {
+                outcome.OutcomeAction = OutcomeStructureActionCodes.UseStructureSameName;
+            }
+        }
+    }
+
+    private bool elementCannotHaveExtension(DbElement e) => 
+        (e.IsSimpleType == true) ||
+        (e.FullCollatedTypeLiteral == "Resource") ||
+        (e.FullCollatedTypeLiteral == "Extension") ||
+        (e.FullCollatedTypeLiteral == "Base") ||
+        e.FullCollatedTypeLiteral.StartsWith("Resource(");
+
+    private void updateElementOutcomeActions(
+        List<DbElementOutcome> outcomes,
+        List<DbStructureOutcome> structureOutcomes,
+        DbStructureDefinition targetBasicStructure,
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage)
+    {
+        // build a lookup for structure outcomes
+        ILookup<int, DbStructureOutcome> structureOutcomeLookup = structureOutcomes.ToLookup(so => so.Key);
+
+        DbElement? rootBasicElement = null;
+
+        // get the list of elements from the basic structure
+        Dictionary<string, DbElement> basicMappableElements = [];
+
+        // iterate over the elements
+        foreach (DbElement element in DbElement.SelectEnumerable(_db!.DbConnection, StructureKey: targetBasicStructure.Key))
+        {
+            if ((element.ParentElementKey is null) ||
+                (element.ResourceFieldOrder == 0))
+            {
+                rootBasicElement = element;
+                continue;
+            }
+
+            // skip root, elements with empty paths, and `code` element
+            if (string.IsNullOrEmpty(element.Path) ||
+                element.Path.Equals("Basic.code", StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            // add the path to the dictionary, but strip "Basic" from the front
+            basicMappableElements.Add(element.Path[5..], element);
+        }
+
+        DbStructureOutcome? sdOutcome = null;
+        int sdNameLength = 0;
+        Dictionary<int, DbElementOutcome> elementKeysWithExtensions = [];
+
+        // traverse the element outcomes without actions
+        foreach (DbElementOutcome outcome in outcomes)
+        {
+            // update our current structure if necessary
+            if (outcome.StructureOutcomeKey != sdOutcome?.Key)
+            {
+                sdOutcome = structureOutcomeLookup[outcome.StructureOutcomeKey].FirstOrDefault();
+
+                if (sdOutcome is null)
+                {
+                    throw new Exception(
+                        $"Element outcome with key {outcome.Key} has invalid structure outcome key {outcome.StructureOutcomeKey}!");
+                }
+
+                sdNameLength = sdOutcome.SourceStructureName.Length;
+            }
+
+            // resolve the source element for this outcome
+            DbElement? sourceElement = DbElement.SelectSingle(
+                _db.DbConnection,
+                Key: outcome.SourceElementKey);
+
+            if (sourceElement is null)
+            {
+                throw new Exception(
+                    $"Element outcome with key {outcome.Key} has invalid source element key {outcome.SourceElementKey}!");
+            }
+
+            // check to see if we are on the root element of a structure
+            if ((sourceElement.ParentElementKey is null) ||
+                (sourceElement.ResourceFieldOrder == 0))
+            {
+                // use the structure outcome action
+                switch (sdOutcome.OutcomeAction)
+                {
+                    case OutcomeStructureActionCodes.UseStructureSameName:
+                        outcome.OutcomeAction = OutcomeElementActionCodes.UseElementSameName;
+                        break;
+
+                    case OutcomeStructureActionCodes.UseStructureRenamed:
+                        outcome.OutcomeAction = OutcomeElementActionCodes.UseElementRenamed;
+                        break;
+
+                    case OutcomeStructureActionCodes.UseBasicResource:
+                        outcome.OutcomeAction = OutcomeElementActionCodes.UseBasicElement;
+                        outcome.TargetStructureKey = targetBasicStructure.Key;
+                        outcome.TargetElementKey = rootBasicElement?.Key;
+                        outcome.TargetElementId = rootBasicElement?.Id;
+                        outcome.TargetElementResourceOrder = rootBasicElement?.ResourceFieldOrder;
+                        outcome.TargetElementComponentOrder = rootBasicElement?.ComponentFieldOrder;
+
+                        outcome.Comments += "\n\n" +
+                            $"The FHIR {sourcePackage.ShortName} Resource `{sdOutcome.SourceStructureName}` has no" +
+                            $" mapping to FHIR {targetPackage.ShortName} and is represented using the `Basic` resource" +
+                            $" with extensions.";
+                        break;
+
+                    case OutcomeStructureActionCodes.UseDatatypeExtension:
+                        outcome.OutcomeAction = OutcomeElementActionCodes.UseExtension;
+                        outcome.Comments += "\n\n" +
+                            $"The FHIR {sourcePackage.ShortName} Structure ({sdOutcome.SourceArtifactClass.ToString()})" +
+                            $" `{sdOutcome.SourceStructureName}` has no mapping to FHIR {targetPackage.ShortName} and" +
+                            $" is represented using a complex extension that includes an explicit `_datatype`.";
+                        break;
+                    default:
+                        throw new Exception(
+                            $"Unhandled structure outcome action code {sdOutcome.OutcomeAction} for structure outcome {sdOutcome.Key}!");
+                }
+
+                continue;
+            }
+
+            // check for an element that maps to the basic resource
+            if ((sdOutcome.OutcomeAction == OutcomeStructureActionCodes.UseBasicResource) &&
+                basicMappableElements.TryGetValue(outcome.SourceElementId[sdNameLength..], out DbElement? targetBasicElement))
+            {
+                outcome.OutcomeAction = OutcomeElementActionCodes.UseBasicElement;
+                outcome.TargetStructureKey = targetBasicStructure.Key;
+                outcome.TargetElementKey = targetBasicElement.Key;
+                outcome.TargetElementId = targetBasicElement.Path;
+                outcome.TargetElementResourceOrder = targetBasicElement.ResourceFieldOrder;
+                outcome.TargetElementComponentOrder = targetBasicElement.ComponentFieldOrder;
+
+                outcome.Comments += "\n\n" +
+                    $"The FHIR {sourcePackage.ShortName} Resource `{sdOutcome.SourceStructureName}` has no mapping" +
+                    $" for FHIR {targetPackage.ShortName} and is represented by the `Basic` resource. The" +
+                    $" element `{outcome.SourceElementId}` maps to the existing `Basic` element `{targetBasicElement.Path}`.";
+
+                continue;
+            }
+
+            // check for an element of type extension
+            if (sourceElement.FullCollatedTypeLiteral == "Extension")
+            {
+                outcome.OutcomeAction = OutcomeElementActionCodes.IsExtension;
+                outcome.Comments += "\n\n" +
+                    $"The FHIR {sourcePackage.ShortName} element `{outcome.SourceElementId}` is of type `Extension`." +
+                    $" Use an extension in FHIR {targetPackage.ShortName} on an appropriate element or extension.";
+                continue;
+            }
+
+            // check for `Element.id`
+            if (sourceElement.IsSimpleType &&
+                (sourceElement.BasePath == "Element.id"))
+            {
+                outcome.OutcomeAction = OutcomeElementActionCodes.IsElementId;
+                outcome.Comments += "\n\n" +
+                    $"The FHIR {sourcePackage.ShortName} element `{outcome.SourceElementId}` is an Element ID" +
+                    $" and should be represented by the Element.id of the element or extension that represents" +
+                    $" the parent.";
+                continue;
+            }
+
+            // check for elements that we will not generate extensions for
+            if (elementCannotHaveExtension(sourceElement))
+            {
+                if (outcome.TargetElementKey is null)
+                {
+                    outcome.OutcomeAction = OutcomeElementActionCodes.Unresolved;
+                    outcome.Comments += "\n\n" +
+                        $"The FHIR {sourcePackage.ShortName} element has no valid target and cannot be mapped to an extension." +
+                        $" If you believe this is incorrect, please contact the FHIR Infrastructure" +
+                        $" Work Group or file a ticket against this specification in Jira.";
+                    continue;
+                }
+
+                // if there is a target element, it is either renamed or same-name
+                if (outcome.IsRenamed == true)
+                {
+                    outcome.OutcomeAction = OutcomeElementActionCodes.UseElementRenamed;
+                }
+                else
+                {
+                    outcome.OutcomeAction = OutcomeElementActionCodes.UseElementSameName;
+                }
+
+                continue;
+            }
+
+            // check to see if we are in a backbone that already has been moved into extension space
+            if (elementKeysWithExtensions.TryGetValue(sourceElement.ParentElementKey.Value, out DbElementOutcome? ancestorOutcome))
+            {
+                // use the extension from ancestor
+                outcome.OutcomeAction = OutcomeElementActionCodes.UseExtensionFromAncestor;
+                outcome.TargetStructureKey = ancestorOutcome.TargetStructureKey;
+                outcome.RelatedAncestorOutcomeKey = ancestorOutcome.Key;
+                outcome.Comments += "\n\n" +
+                    $"The FHIR {sourcePackage.ShortName} element `{outcome.SourceElementId}` is contained within the backbone element" +
+                    $" `{ancestorOutcome.SourceElementId}`, which is mapped to an extension." +
+                    $" This element is defined as part of the extension `{ancestorOutcome.PotentialGenUrl}`.";
+
+                // add this element to the extensions list, but use the ancestor outcome so we have the correct extension when looking up
+                elementKeysWithExtensions.Add(outcome.Key, ancestorOutcome);
+                continue;
+            }
+
             // check for non-generating outcomes
-            if ((outcome.IsIdentical == true) ||
-                (outcome.IsEquivalent == true) ||
-                (outcome.IsBroaderThanTarget == true))
+            if ((outcome.TargetElementKey is not null) &&
+                outcome.FullyMapsAcrossAllTargets)
+            {
+                if (outcome.IsRenamed == true)
+                {
+                    outcome.OutcomeAction = OutcomeElementActionCodes.UseElementRenamed;
+                }
+                else
+                {
+                    outcome.OutcomeAction = OutcomeElementActionCodes.UseElementSameName;
+                }
+
+                // check for multiple targets
+                if (outcome.TotalTargetCount > 1)
+                {
+                    outcome.Comments += "\n\n" +
+                        $"Note that rhe FHIR {sourcePackage.ShortName} element `{outcome.SourceElementId}`" +
+                        $" maps to multiple elements in FHIR {targetPackage.ShortName}.";
+                }
+
+                continue;
+            }
+
+            // need to generate an extension
+            outcome.OutcomeAction = OutcomeElementActionCodes.UseExtension;
+            elementKeysWithExtensions.Add(outcome.Key, outcome);
+        }
+    }
+
+    private void updateValueSetOutcomeActions(List<DbValueSetOutcome> outcomes)
+    {
+        // traverse the value set outcomes without actions
+        foreach (DbValueSetOutcome outcome in outcomes)
+        {
+            // check for a complete mapping
+            if (outcome.FullyMapsToThisTarget || outcome.FullyMapsAcrossAllTargets)
             {
                 if (outcome.IsRenamed == true)
                 {
@@ -225,24 +510,27 @@ public partial class XVerProcessor
                 {
                     outcome.OutcomeAction = OutcomeValueSetActionCodes.UseValueSetSameName;
                 }
+
+                continue;
+            }
+
+            // check for cross-version only
+            if (outcome.IsUnmapped == true)
+            {
+                outcome.OutcomeAction = OutcomeValueSetActionCodes.UseCrossVersionDefinition;
+                continue;
+            }
+
+            // the remaining has a source and a target and needs the cross-version definition
+            if (outcome.IsRenamed == true)
+            {
+                outcome.OutcomeAction = OutcomeValueSetActionCodes.UseRenamedAndCrossVersion;
             }
             else
             {
-                if (outcome.IsRenamed == true)
-                {
-                    outcome.OutcomeAction = OutcomeValueSetActionCodes.UseRenamedAndCrossVersion;
-                }
-                else
-                {
-                    outcome.OutcomeAction = OutcomeValueSetActionCodes.UseSameNameAndCrossVersion;
-                }
+                outcome.OutcomeAction = OutcomeValueSetActionCodes.UseSameNameAndCrossVersion;
             }
-
-            toUpdate.Add(outcome);
         }
-
-        // update our outcomes in the database
-        toUpdate.Update(_db.DbConnection);
     }
 
     private void generateOutcomes(
@@ -250,13 +538,13 @@ public partial class XVerProcessor
         DbFhirPackage targetPackage,
         DbFhirPackageComparisonPair? packagePair)
     {
-        // first, process value sets
+        // process value sets
         generateOutcomesVs(
             sourcePackage,
             targetPackage,
             packagePair);
 
-        // then process structures
+        // process structures
         generateOutcomesSd(
             sourcePackage,
             targetPackage,
@@ -523,10 +811,9 @@ public partial class XVerProcessor
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
 
-                    Comments = $$$"""
-                        The FHIR {{{sourcePackage.ShortName}}} ValueSet `{{{sourceVs.UnversionedUrl}}}|{{{sourceVs.Version}}}`
-                        (`{{{sourceVs.Id}}}`) has no mapping to FHIR {{{targetPackage.ShortName}}}.
-                        """,
+                    Comments =
+                        $"The FHIR {sourcePackage.ShortName} ValueSet `{sourceVs.UnversionedUrl}|{sourceVs.Version}`" +
+                        $" (`{sourceVs.Id}`) has no mapping to FHIR {targetPackage.ShortName}.",
                 };
 
                 // track to add to the database
@@ -619,10 +906,9 @@ public partial class XVerProcessor
                             ConceptDomainRelationship = null,
                             ValueDomainRelationship = null,
 
-                            Comments = $$$"""
-                                The Concept `{{{sourceConcept.System}}}#{{{sourceConcept.Code}}}` from FHIR {{{sourcePackage.ShortName}}} ValueSet
-                                `{{{sourceVs.UnversionedUrl}}}|{{{sourceVs.Version}}}` has no mapping to FHIR {{{targetPackage.ShortName}}}.
-                                """,
+                            Comments = 
+                                $"The FHIR {sourcePackage.ShortName} ValueSet `{sourceVs.UnversionedUrl}|{sourceVs.Version}`" +
+                                $" Concept `{sourceConcept.System}#{sourceConcept.Code}` has no mapping to FHIR {targetPackage.ShortName}.",
                         };
 
                         vsConceptOutcomesToAdd.Add(noMapOutcome);
@@ -667,12 +953,10 @@ public partial class XVerProcessor
                                 ConceptDomainRelationship = conceptComparison.Relationship,
                                 ValueDomainRelationship = CMR.Equivalent,
 
-                                Comments = $$$"""
-                                    The Concept `{{{sourceConcept.System}}}#{{{sourceConcept.Code}}}`
-                                    from FHIR {{{sourcePackage.ShortName}}} ValueSet `{{{sourceVs.UnversionedUrl}}}|{{{sourceVs.Version}}}`
-                                    has no mapping
-                                    to FHIR {{{targetPackage.ShortName}}} ValueSet `{{{targetVs.UnversionedUrl}}}|{{{targetVs.Version}}}`.
-                                    """,
+                                Comments = 
+                                    $"The FHIR {sourcePackage.ShortName} ValueSet `{sourceVs.UnversionedUrl}|{sourceVs.Version}`" +
+                                    $" Concept `{sourceConcept.System}#{sourceConcept.Code}` has no mapping to" +
+                                    $" FHIR {targetPackage.ShortName} ValueSet `{targetVs.UnversionedUrl}|{targetVs.Version}`.",
                             };
 
                             vsConceptOutcomesToAdd.Add(noMapOutcome);
@@ -718,9 +1002,11 @@ public partial class XVerProcessor
                             TotalSourceCount = 1,
                             TotalTargetCount = conceptComparisons.Where(cc => cc.TargetConceptKey is not null).Count(),
 
-                            IsRenamed = !multipleContentTargets &&
-                                ((conceptComparison.Relationship == CMR.Equivalent) || (conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
-                                (conceptComparison.CodesAreIdentical != true),
+                            //IsRenamed = !multipleContentTargets &&
+                            //    ((conceptComparison.Relationship == CMR.Equivalent) || (conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
+                            //    (conceptComparison.CodesAreIdentical != true),
+                            IsRenamed = (sourceConcept.Code != targetConcept.Code),
+
                             IsUnmapped = false,
                             IsIdentical = conceptComparison.CodesAreIdentical == true,
                             IsEquivalent = conceptComparison.Relationship == CMR.Equivalent,
@@ -732,15 +1018,12 @@ public partial class XVerProcessor
                             ConceptDomainRelationship = conceptComparison.Relationship,
                             ValueDomainRelationship = CMR.Equivalent,
 
-                            Comments = $$$"""
-                                The FHIR {{{sourcePackage.ShortName}}}
-                                Concept `{{{sourceConcept.System}}}#{{{sourceConcept.Code}}}`
-                                from ValueSet `{{{sourceVs.UnversionedUrl}}}|{{{sourceVs.Version}}}` maps to
-                                FHIR {{{targetPackage.ShortName}}}
-                                Concept `{{{targetConcept.System}}}#{{{targetConcept.Code}}}`
-                                in ValueSet `{{{targetVs.UnversionedUrl}}}|{{{targetVs.Version}}}`
-                                with relationship `{{{conceptComparison.Relationship.ToString()}}}`.
-                                """,
+                            Comments = 
+                                $"The FHIR {sourcePackage.ShortName} ValueSet `{sourceVs.UnversionedUrl}|{sourceVs.Version}`" +
+                                $" Concept `{sourceConcept.System}#{sourceConcept.Code}` maps to" +
+                                $" FHIR {targetPackage.ShortName} ValueSet `{targetVs.UnversionedUrl}|{targetVs.Version}`" +
+                                $" Concept `{targetConcept.System}#{targetConcept.Code}`" +
+                                $" with relationship `{conceptComparison.Relationship.GetLiteral()}`.",
                         };
 
                         vsConceptOutcomesToAdd.Add(conceptOutcome);
@@ -769,9 +1052,11 @@ public partial class XVerProcessor
                     TotalSourceCount = 1,
                     TotalTargetCount = vsComparisons.Count,
 
-                    IsRenamed = !multipleTargets &&
-                        ((vsComparison.Relationship == CMR.Equivalent) || (vsComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
-                        (sourceVs.Id != targetVs?.Id),
+                    //IsRenamed = !multipleTargets &&
+                    //    ((vsComparison.Relationship == CMR.Equivalent) || (vsComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
+                    //    (sourceVs.Id != targetVs?.Id),
+                    IsRenamed = (sourceVs.Id != targetVs?.Id),
+
                     IsUnmapped = false,
                     IsIdentical = vsComparison.IsIdentical == true,
                     IsEquivalent = vsComparison.Relationship == CMR.Equivalent,
@@ -800,12 +1085,15 @@ public partial class XVerProcessor
             }
         }
 
+        // update our outcomes with action codes
+        updateValueSetOutcomeActions(vsOutcomesToAdd);
+
         // insert our outcomes into the database
-        vsOutcomesToAdd.Insert(_db.DbConnection);
+        vsOutcomesToAdd.Insert(_db.DbConnection, insertPrimaryKey: true);
         _logger.LogInformation(
             $"Inserted {vsOutcomesToAdd.Count} ValueSet outcomes for source package {sourcePackage.ShortName} to target package {targetPackage.ShortName}.");
 
-        vsConceptOutcomesToAdd.Insert(_db.DbConnection);
+        vsConceptOutcomesToAdd.Insert(_db.DbConnection, insertPrimaryKey: true);
         _logger.LogInformation(
             $"Inserted {vsConceptOutcomesToAdd.Count} ValueSet Concept outcomes for source package {sourcePackage.ShortName} to target package {targetPackage.ShortName}.");
     }
@@ -817,6 +1105,18 @@ public partial class XVerProcessor
     {
         List<DbStructureOutcome> sdOutcomesToAdd = [];
         List<DbElementOutcome> elementOutcomesToAdd = [];
+
+        // get the 'Basic' structure for the target package
+        DbStructureDefinition? targetBasicSd = DbStructureDefinition.SelectSingle(
+            _db!.DbConnection,
+            FhirPackageKey: targetPackage.Key,
+            Id: "Basic");
+
+        if (targetBasicSd is null)
+        {
+            throw new Exception(
+                $"Target FHIR package {targetPackage.ShortName} does not have a 'Basic' StructureDefinition!");
+        }
 
         // get the list of all structures for the source package
         List<DbStructureDefinition> sourceStructures = DbStructureDefinition.SelectList(
@@ -847,6 +1147,7 @@ public partial class XVerProcessor
                     TargetFhirPackageKey = targetPackage.Key,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureName = sourceSd.Name,
+                    SourceArtifactClass = sourceSd.ArtifactClass,
                     TargetStructureKey = null,
                     TargetStructureName = null,
 
@@ -870,10 +1171,9 @@ public partial class XVerProcessor
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
 
-                    Comments = $$$"""
-                        The FHIR {{{sourcePackage.ShortName}}} StructureDefinition `{{{sourceSd.UnversionedUrl}}}|{{{sourceSd.Version}}}`
-                        (`{{{sourceSd.Id}}}`) has no mapping to FHIR {{{targetPackage.ShortName}}}.
-                        """,
+                    Comments = 
+                        $"The FHIR {sourcePackage.ShortName} StructureDefinition ({sourceSd.ArtifactClass.ToString()})" +
+                        $" `{sourceSd.UnversionedUrl}|{sourceSd.Version}` (`{sourceSd.Id}`) has no mapping to FHIR {targetPackage.ShortName}.",
                 };
 
                 // track to add to the database
@@ -949,11 +1249,17 @@ public partial class XVerProcessor
                             SourceStructureKey = sourceSd.Key,
                             SourceElementKey = sourceElement.Key,
                             SourceElementId = sourceElement.Id,
+                            SourceElementResourceOrder = sourceElement.ResourceFieldOrder,
+                            SourceElementComponentOrder = sourceElement.ComponentFieldOrder,
+
                             TargetStructureKey = targetSd.Key,
                             TargetElementKey = null,
                             TargetElementId = null,
+                            TargetElementResourceOrder = null,
+                            TargetElementComponentOrder = null,
 
                             ExtensionSubstitutionKey = null,
+                            RelatedAncestorOutcomeKey = null,
 
                             StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
@@ -977,10 +1283,9 @@ public partial class XVerProcessor
                             ConceptDomainRelationship = null,
                             ValueDomainRelationship = null,
 
-                            Comments = $$$"""
-                                The Element `{{{sourceElement.Id}}}` from FHIR {{{sourcePackage.ShortName}}}
-                                has no mapping to FHIR {{{targetPackage.ShortName}}}.
-                                """,
+                            Comments = 
+                                $"The FHIR {sourcePackage.ShortName} {(sourceElement.ResourceFieldOrder == 0 ? "root " : string.Empty)}element" +
+                                $" `{sourceElement.Id}` has no mapping to FHIR {targetPackage.ShortName}.",
                         };
 
                         elementOutcomesToAdd.Add(noMapOutcome);
@@ -1003,9 +1308,14 @@ public partial class XVerProcessor
                                 SourceStructureKey = sourceSd.Key,
                                 SourceElementKey = sourceElement.Key,
                                 SourceElementId = sourceElement.Id,
+                                SourceElementResourceOrder = sourceElement.ResourceFieldOrder,
+                                SourceElementComponentOrder = sourceElement.ComponentFieldOrder,
+
                                 TargetStructureKey = targetSd.Key,
                                 TargetElementKey = null,
                                 TargetElementId = null,
+                                TargetElementResourceOrder = null,
+                                TargetElementComponentOrder = null,
 
                                 StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
@@ -1016,6 +1326,7 @@ public partial class XVerProcessor
                                 OutcomeAction = null,
 
                                 ExtensionSubstitutionKey = null,
+                                RelatedAncestorOutcomeKey = null,
 
                                 TotalSourceCount = 1,
                                 TotalTargetCount = 0,
@@ -1031,10 +1342,9 @@ public partial class XVerProcessor
                                 ConceptDomainRelationship = elementComparison.ConceptDomainRelationship,
                                 ValueDomainRelationship = elementComparison.ValueDomainRelationship,
 
-                                Comments = $$$"""
-                                    The Element `{{{sourceElement.Id}}}` from FHIR {{{sourcePackage.ShortName}}}
-                                    has no mapping to FHIR {{{targetPackage.ShortName}}}.
-                                    """,
+                                Comments =
+                                    $"The FHIR {sourcePackage.ShortName} {(sourceElement.ResourceFieldOrder == 0 ? "root " : string.Empty)}element" +
+                                    $" `{sourceElement.Id}` has no mapping to FHIR {targetPackage.ShortName}.",
                             };
 
                             elementOutcomesToAdd.Add(noMapOutcome);
@@ -1069,9 +1379,14 @@ public partial class XVerProcessor
                             SourceStructureKey = sourceSd.Key,
                             SourceElementKey = sourceElement.Key,
                             SourceElementId = sourceElement.Id,
+                            SourceElementResourceOrder = sourceElement.ResourceFieldOrder,
+                            SourceElementComponentOrder = sourceElement.ComponentFieldOrder,
+
                             TargetStructureKey = targetSd.Key,
                             TargetElementKey = elementComparison.TargetElementKey,
                             TargetElementId = targetElement.Id,
+                            TargetElementResourceOrder = targetElement.ResourceFieldOrder,
+                            TargetElementComponentOrder = targetElement.ComponentFieldOrder,
 
                             StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
@@ -1082,6 +1397,7 @@ public partial class XVerProcessor
                             OutcomeAction = null,
 
                             ExtensionSubstitutionKey = null,
+                            RelatedAncestorOutcomeKey = null,
 
                             TotalSourceCount = 1,
                             TotalTargetCount = elementComparisons.Where(ec => ec.TargetElementKey is not null).Count(),
@@ -1101,13 +1417,10 @@ public partial class XVerProcessor
                             ConceptDomainRelationship = elementComparison.ConceptDomainRelationship,
                             ValueDomainRelationship = elementComparison.ValueDomainRelationship,
 
-                            Comments = $$$"""
-                                The FHIR {{{sourcePackage.ShortName}}}
-                                Element `{{{sourceElement.Id}}}` maps to
-                                FHIR {{{targetPackage.ShortName}}}
-                                Element `{{{targetElement.Id}}}`
-                                with relationship `{{{elementComparison.Relationship.ToString()}}}`.
-                                """,
+                            Comments = 
+                                $"The FHIR {sourcePackage.ShortName} {(sourceElement.ResourceFieldOrder == 0 ? "root " : string.Empty)}element" +
+                                $" `{sourceElement.Id}` maps to FHIR {targetPackage.ShortName} element `{targetElement.Id}`" +
+                                $" with relationship `{elementComparison.Relationship.GetLiteral()}`.",
                         };
 
                         elementOutcomesToAdd.Add(elementOutcome);
@@ -1122,6 +1435,7 @@ public partial class XVerProcessor
                     TargetFhirPackageKey = targetPackage.Key,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureName = sourceSd.Name,
+                    SourceArtifactClass = sourceSd.ArtifactClass,
                     TargetStructureKey = targetSd?.Key,
                     TargetStructureName = targetSd?.Name,
 
@@ -1166,12 +1480,16 @@ public partial class XVerProcessor
             }
         }
 
+        // update our outcomes with action codes
+        updateStructureOutcomeActions(sdOutcomesToAdd, targetBasicSd, sourcePackage, targetPackage);
+        updateElementOutcomeActions(elementOutcomesToAdd, sdOutcomesToAdd, targetBasicSd, sourcePackage, targetPackage);
+
         // insert our outcomes into the database
-        sdOutcomesToAdd.Insert(_db.DbConnection);
+        sdOutcomesToAdd.Insert(_db.DbConnection, insertPrimaryKey: true);
         _logger.LogInformation(
             $"Inserted {sdOutcomesToAdd.Count} Structure outcomes for source package {sourcePackage.ShortName} to target package {targetPackage.ShortName}.");
 
-        elementOutcomesToAdd.Insert(_db.DbConnection);
+        elementOutcomesToAdd.Insert(_db.DbConnection, insertPrimaryKey: true);
         _logger.LogInformation(
             $"Inserted {elementOutcomesToAdd.Count} Element outcomes for source package {sourcePackage.ShortName} to target package {targetPackage.ShortName}.");
     }

@@ -272,23 +272,23 @@ public class ComparisonDatabase : IDisposable
         {
             case FhirArtifactClassEnum.CodeSystem:
                 {
-                    DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
-                    DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
-                    DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
-                    DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
-                    DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
-                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
+                    DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                 }
                 break;
 
             case FhirArtifactClassEnum.ValueSet:
                 {
-                    DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
-                    DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
-                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
-                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb));
-                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb));
-                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
+                    DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                 }
                 break;
 
@@ -298,54 +298,54 @@ public class ComparisonDatabase : IDisposable
             case FhirArtifactClassEnum.Profile:
             case FhirArtifactClassEnum.LogicalModel:
                 {
-                    DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
-                    DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
-                    DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
-                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb));
-                    DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb));
-                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
-                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
-                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
-                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
-                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb));
-                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
+                    DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElement.Insert(targetDb, DbElement.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
-                    DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
-                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
+                    DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                 }
                 break;
 
             default:
                 {
-                    DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb));
-                    DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb));
+                    DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
-                    DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb));
-                    DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb));
-                    DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb));
-                    DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb));
-                    DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb));
+                    DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemFilter.Insert(targetDb, DbCodeSystemFilter.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemConcept.Insert(targetDb, DbCodeSystemConcept.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCodeSystemConceptProperty.Insert(targetDb, DbCodeSystemConceptProperty.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
-                    DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb));
-                    DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb));
-                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb));
-                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb));
-                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb));
+                    DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
-                    DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb));
-                    DbElement.Insert(targetDb, DbElement.SelectList(sourceDb));
-                    DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb));
-                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb));
-                    DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb));
-                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb));
-                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb));
-                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb));
-                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb));
-                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb));
-                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb));
+                    DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElement.Insert(targetDb, DbElement.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
-                    DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb));
-                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb));
+                    DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                 }
                 break;
         }
@@ -579,7 +579,7 @@ public class ComparisonDatabase : IDisposable
             //},
         ];
 
-        substitutions.Insert(_dbConnection);
+        substitutions.Insert(_dbConnection, insertPrimaryKey: true);
     }
 
     private void loadKnownExternalInclusions()
@@ -715,7 +715,7 @@ public class ComparisonDatabase : IDisposable
             }
         ];
 
-        inclusions.Insert(_dbConnection);
+        inclusions.Insert(_dbConnection, insertPrimaryKey: true);
     }
 
     /// <summary>
@@ -842,7 +842,7 @@ public class ComparisonDatabase : IDisposable
 
             if (insertLtoR)
             {
-                _dbConnection.Insert(dbPairLtoR);
+                _dbConnection.Insert(dbPairLtoR, insertPrimaryKey: true);
             }
             else
             {
@@ -851,7 +851,7 @@ public class ComparisonDatabase : IDisposable
 
             if (insertRtoL)
             {
-                _dbConnection.Insert(dbPairRtoL);
+                _dbConnection.Insert(dbPairRtoL, insertPrimaryKey: true);
             }
             else
             {
@@ -968,31 +968,31 @@ public class ComparisonDatabase : IDisposable
 
         _logger.LogInformation("Inserting existing cross version maps into the database...");
 
-        _dbConnection.Insert(vsComparisons.ComparisonsToAdd);
+        _dbConnection.Insert(vsComparisons.ComparisonsToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {vsComparisons.Count} ValueSet Comparisons");
 
-        _dbConnection.Insert(conceptComparisons.ComparisonsToAdd);
+        _dbConnection.Insert(conceptComparisons.ComparisonsToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {conceptComparisons.Count} ValueSet Concept Comparisons");
 
         _dbConnection.Insert(unresolvedConceptComparisons);
         _logger.LogInformation($" <<< added {unresolvedConceptComparisons.Count} Unresolved ValueSet Concept Comparisons");
 
-        _dbConnection.Insert(sdComparisons.ComparisonsToAdd);
+        _dbConnection.Insert(sdComparisons.ComparisonsToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {sdComparisons.Count} Structure Comparisons");
 
-        _dbConnection.Insert(unresolvedSdComparisons);
+        _dbConnection.Insert(unresolvedSdComparisons, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {unresolvedSdComparisons.Count} Unresolved Structure Comparisons");
 
-        _dbConnection.Insert(elementComparisons.ComparisonsToAdd);
+        _dbConnection.Insert(elementComparisons.ComparisonsToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {elementComparisons.Count} Element Comparisons");
 
-        _dbConnection.Insert(collatedTypeComparisons.ComparisonsToAdd);
+        _dbConnection.Insert(collatedTypeComparisons.ComparisonsToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {collatedTypeComparisons.Count} Collated Type Comparisons");
 
-        _dbConnection.Insert(typeComparisons.ComparisonsToAdd);
+        _dbConnection.Insert(typeComparisons.ComparisonsToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {typeComparisons.Count} Type Comparisons");
 
-        _dbConnection.Insert(unresolvedElementComparisons);
+        _dbConnection.Insert(unresolvedElementComparisons, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {unresolvedElementComparisons.Count} Unresolved Element Comparisons");
 
         return true;
@@ -2404,19 +2404,19 @@ public class ComparisonDatabase : IDisposable
 
         _logger.LogInformation($"Inserting CodeSystems for {pm.PackageId}@{pm.PackageVersion} into database...");
 
-        _dbConnection.Insert(dbCodeSystems);
+        _dbConnection.Insert(dbCodeSystems, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbCodeSystems.Count} CodeSystems");
 
-        _dbConnection.Insert(dbCodeSystemFilters);
+        _dbConnection.Insert(dbCodeSystemFilters, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbCodeSystemFilters.Count} CodeSystem Filters");
 
-        _dbConnection.Insert(dbCodeSystemPropertyDefinitions);
+        _dbConnection.Insert(dbCodeSystemPropertyDefinitions, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbCodeSystemPropertyDefinitions.Count} CodeSystem Property Definitions");
 
-        _dbConnection.Insert(allDbConcepts);
+        _dbConnection.Insert(allDbConcepts, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {allDbConcepts.Count} CodeSystem Concepts");
 
-        _dbConnection.Insert(allDbConceptProperties);
+        _dbConnection.Insert(allDbConceptProperties, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {allDbConceptProperties.Count} CodeSystem Concept Properties");
 
         return;
@@ -2822,10 +2822,10 @@ public class ComparisonDatabase : IDisposable
 
         _logger.LogInformation($"Inserting ValueSets for {pm.PackageId}@{pm.PackageVersion} into database...");
 
-        _dbConnection.Insert(dbValueSets);
+        _dbConnection.Insert(dbValueSets, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbValueSets.Count} ValueSets");
 
-        _dbConnection.Insert(allDbConcepts);
+        _dbConnection.Insert(allDbConcepts, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {allDbConcepts.Count} ValueSet Concepts");
 
         return;
@@ -2968,19 +2968,19 @@ public class ComparisonDatabase : IDisposable
         // save changes
         _logger.LogInformation($"Inserting Structures for {pm.PackageId}@{pm.PackageVersion} into database...");
 
-        _dbConnection.Insert(dbStructures.Values);
+        _dbConnection.Insert(dbStructures.Values, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbStructures.Count} Structures");
 
-        _dbConnection.Insert(dbElements.Values);
+        _dbConnection.Insert(dbElements.Values, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbElements.Count} Elements");
 
-        _dbConnection.Insert(dbCollatedTypes);
+        _dbConnection.Insert(dbCollatedTypes, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbCollatedTypes.Count} Collated Element Types");
 
-        _dbConnection.Insert(dbElementTypes);
+        _dbConnection.Insert(dbElementTypes, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbElementTypes.Count} Discrete Element Types");
 
-        _dbConnection.Insert(dbAdditionalBindings);
+        _dbConnection.Insert(dbAdditionalBindings, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbAdditionalBindings.Count} Additional Bindings");
 
         int affectedRows;

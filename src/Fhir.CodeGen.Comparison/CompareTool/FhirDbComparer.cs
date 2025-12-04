@@ -316,9 +316,9 @@ public partial class FhirDbComparer
                 }
 
                 // update the database
-                _vsComparisonCache.ComparisonsToAdd.Insert(_db);
+                _vsComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
                 _vsComparisonCache.ComparisonsToUpdate.Update(_db);
-                _conceptComparisonCache.ComparisonsToAdd.Insert(_db);
+                _conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
                 _conceptComparisonCache.ComparisonsToUpdate.Update(_db);
             }
 
@@ -377,13 +377,13 @@ public partial class FhirDbComparer
                 }
 
                 // update the database
-                _sdComparisonCache.ComparisonsToAdd.Insert(_db);
+                _sdComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
                 _sdComparisonCache.ComparisonsToUpdate.Update(_db);
-                _edComparisonCache.ComparisonsToAdd.Insert(_db);
+                _edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
                 _edComparisonCache.ComparisonsToUpdate.Update(_db);
-                _collatedTypeComparisonCache.ComparisonsToAdd.Insert(_db);
+                _collatedTypeComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
                 _collatedTypeComparisonCache.ComparisonsToUpdate.Update(_db);
-                _typeComparisonCache.ComparisonsToAdd.Insert(_db);
+                _typeComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
                 _typeComparisonCache.ComparisonsToUpdate.Update(_db);
             }
         }

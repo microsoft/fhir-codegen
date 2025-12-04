@@ -253,7 +253,7 @@ public partial class FhirDbComparer
         }
 
         // apply database changes
-        _sdComparisonCache.ComparisonsToAdd.Insert(_db);
+        _sdComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         _sdComparisonCache.ComparisonsToUpdate.Update(_db);
         _sdComparisonCache.ComparisonsToDelete.Delete(_db);
     }
@@ -373,7 +373,7 @@ public partial class FhirDbComparer
         // apply inverse updates to the VS
         if (addedInverse)
         {
-            inverseComparsion.Insert(_db);
+            inverseComparsion.Insert(_db, insertPrimaryKey: true);
         }
         else
         {
@@ -381,7 +381,7 @@ public partial class FhirDbComparer
         }
 
         // apply our concept changes
-        edComparisonCache.ComparisonsToAdd.Insert(_db);
+        edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         edComparisonCache.ComparisonsToUpdate.Update(_db);
         edComparisonCache.ComparisonsToDelete.Delete(_db);
 
@@ -454,7 +454,7 @@ public partial class FhirDbComparer
         // apply the changes to the structure comparisons
         if (sdComparisonCache.ComparisonsToAdd.Any())
         {
-            sdComparisonCache.ComparisonsToAdd.Insert(_db);
+            sdComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
         if (sdComparisonCache.ComparisonsToUpdate.Any())
@@ -470,7 +470,7 @@ public partial class FhirDbComparer
         // apply the changes to the element comparisons
         if (edComparisonCache.ComparisonsToAdd.Any())
         {
-            edComparisonCache.ComparisonsToAdd.Insert(_db);
+            edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
         if (edComparisonCache.ComparisonsToUpdate.Any())
@@ -545,7 +545,7 @@ public partial class FhirDbComparer
         }
 
         // apply the changes to the concept comparisons
-        edComparisonCache.ComparisonsToAdd.Insert(_db);
+        edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         edComparisonCache.ComparisonsToUpdate.Update(_db);
         edComparisonCache.ComparisonsToDelete.Delete(_db);
     }

@@ -22,6 +22,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     private const string _line_2 = "\r\n        ";
     private const string _line_3 = "\r\n            ";
     private const string _line_4 = "\r\n                ";
+    private const string _line_5 = "\r\n                    ";
     private const string _comma_line_2 = ",\r\n        ";
     private const string _comma_line_4 = ",\r\n                ";
     private const string _comma_line_5 = ",\r\n                    ";
@@ -136,7 +137,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             // such as interfaces, methods, members, contructor parameters etc.
             ISymbol? symbol = model.GetDeclaredSymbol(classSyntax);
 
-            if (symbol == null)
+            if (symbol is null)
             {
                 continue;
             }
@@ -147,7 +148,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             while (btn != null)
             {
                 ClassDeclarationSyntax? btcs = classLookup[btn].FirstOrDefault();
-                if (btcs == null)
+                if (btcs is null)
                 {
                     break;
                 }
@@ -185,7 +186,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             // such as interfaces, methods, members, contructor parameters etc.
             ISymbol? symbol = model.GetDeclaredSymbol(recordSyntax);
 
-            if (symbol == null)
+            if (symbol is null)
             {
                 continue;
             }
@@ -195,7 +196,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             while (btn != null)
             {
                 RecordDeclarationSyntax? btcs = recordLookup[btn].FirstOrDefault();
-                if (btcs == null)
+                if (btcs is null)
                 {
                     break;
                 }
@@ -227,7 +228,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         bool isNullable,
         bool isEnum,
         bool useJson,
-        bool isArray);
+        bool isArray,
+        string? foreignTable,
+        string? foreignColumn,
+        string? foreignModelType);
 
     private void execute(
         Compilation compilation,
@@ -267,7 +271,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             SemanticModel pModel = compilation.GetSemanticModel(pds.SyntaxTree);
             //ISymbol? pSymbol = pModel.GetDeclaredSymbol(pds);
 
-            //if (pSymbol == null)
+            //if (pSymbol is null)
             //{
             //    continue;
             //}
@@ -302,7 +306,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
             if (isPrimaryKey)
             {
-                if (pkColName == null)
+                if (pkColName is null)
                 {
                     throw new Exception("Primary key column name is null");
                 }
@@ -320,7 +324,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
             // check for type nullability
             //bool nullable = Nullable.GetUnderlyingType(member.) != null;
-            //bool nullable = new NullabilityInfoContext().Create(prop).WriteState is NullabilityState.Nullable;
+            //bool nullable = new NullabilityInfoContext().Create(prop).WriteState == NullabilityState.Nullable;
 
             string? jsonTypeName = null;
             string? enumTypeName = null;
@@ -338,7 +342,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 // grab the enum type name
                 if (namedTypeSymbol.TypeKind == TypeKind.Enum)
                 {
-                    if (namedTypeSymbol.ContainingType == null)
+                    if (namedTypeSymbol.ContainingType is null)
                     {
                         enumTypeName = $"{namedTypeSymbol.ContainingNamespace}.{namedTypeSymbol.Name}";
                     }
@@ -349,7 +353,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 }
                 else if (namedTypeSymbol.TypeArguments.Length != 0)
                 {
-                    if (namedTypeSymbol.TypeArguments[0].ContainingType == null)
+                    if (namedTypeSymbol.TypeArguments[0].ContainingType is null)
                     {
                         enumTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}";
                     }
@@ -371,7 +375,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         namedTypeSymbol.Name.Contains("Enumerable"))
                     {
                         memberIsNonScalar = true;
-                        if (namedTypeSymbol.TypeArguments[0].ContainingType == null)
+                        if (namedTypeSymbol.TypeArguments[0].ContainingType is null)
                         {
                             //jsonTypeName = $"System.Collections.Generic.List<{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}>";
                             jsonTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}";
@@ -384,7 +388,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     }
                     else
                     {
-                        if (namedTypeSymbol.TypeArguments[0].ContainingType == null)
+                        if (namedTypeSymbol.TypeArguments[0].ContainingType is null)
                         {
                             jsonTypeName = $"{namedTypeSymbol.TypeArguments[0].ContainingNamespace}.{namedTypeSymbol.TypeArguments[0].Name}";
                         }
@@ -396,7 +400,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 }
                 else
                 {
-                    if (namedTypeSymbol.ContainingType == null)
+                    if (namedTypeSymbol.ContainingType is null)
                     {
                         jsonTypeName = $"{namedTypeSymbol.ContainingNamespace}.{namedTypeSymbol.Name}";
                     }
@@ -423,25 +427,32 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             // check for foreign key property information
             string? foreignTable = null;
             string? foreignColumn = null;
+            string? foreignModelType = null;
             foreach (AttributeListSyntax als in pds.AttributeLists)
             {
                 foreach (AttributeSyntax a in als.Attributes.Where(a => a.Name.ToString() == GeneratorAttributes._cgSQLiteForeignKey))
                 {
                     foreach (AttributeArgumentSyntax arg in a.ArgumentList?.Arguments ?? [])
                     {
-                        if (arg.NameEquals?.Name.ToString() == "ReferenceTable")
+                        switch (arg.NameEquals?.Name.ToString())
                         {
-                            foreignTable = arg.Expression.ToString();
-                        }
-                        else if (arg.NameEquals?.Name.ToString() == "ReferenceColumn")
-                        {
-                            foreignColumn = arg.Expression.ToString();
+                            case "ReferenceTable":
+                                foreignTable = arg.Expression.ToString();
+                                break;
+
+                            case "ReferenceColumn":
+                                foreignColumn = arg.Expression.ToString();
+                                break;
+
+                            case "ModelTypeName":
+                                foreignModelType = arg.Expression.ToString();
+                                break;
                         }
                     }
                 }
             }
 
-            if ((foreignTable != null) && (foreignColumn != null))
+            if ((foreignTable is not null) && (foreignColumn is not null))
             {
                 createFKLines.Add($"FOREIGN KEY ({pds.Identifier}) REFERENCES {foreignTable}({foreignColumn})");
             }
@@ -459,7 +470,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     nullable,
                     memberIsEnum,
                     useJson,
-                    memberIsNonScalar));
+                    memberIsNonScalar,
+                    foreignTable,
+                    foreignColumn,
+                    foreignModelType));
             }
             else if (!nullable && _sqliteReadDirectives.TryGetValue(propTypeName, out readFormat))
             {
@@ -473,7 +487,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     nullable,
                     memberIsEnum,
                     useJson,
-                    memberIsNonScalar));
+                    memberIsNonScalar,
+                    foreignTable,
+                    foreignColumn,
+                    foreignModelType));
             }
             else if (memberIsEnum)
             {
@@ -494,7 +511,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     nullable,
                     memberIsEnum,
                     useJson,
-                    memberIsNonScalar));
+                    memberIsNonScalar,
+                    foreignTable,
+                    foreignColumn,
+                    foreignModelType));
             }
             else if (memberIsNonScalar)
             {
@@ -514,7 +534,10 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     nullable,
                     memberIsEnum,
                     useJson,
-                    memberIsNonScalar));
+                    memberIsNonScalar,
+                    foreignTable,
+                    foreignColumn,
+                    foreignModelType));
             }
             else
             {
@@ -545,9 +568,736 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     nullable,
                     memberIsEnum,
                     useJson,
-                    memberIsNonScalar));
+                    memberIsNonScalar,
+                    foreignTable,
+                    foreignColumn,
+                    foreignModelType));
             }
         }
+
+        string argFilterParams = string.Join(", ", getFnFilterParams(true));
+        string argFilters = string.Join(", ", getFnFilterArgs(true));
+        string conditionLinesUsingJoiner2 = string.Join(_line_2, getConditionLines(true, true));
+        string colReaderDirectivesComma5 = string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective));
+
+        string genClassVars;
+        if ((pkPropType == "int") || (pkPropType == "long"))
+        {
+            genClassVars = $$$""""
+                    public static string DefaultTableName => "{{{tableName}}}";
+                    internal static {{{pkPropType}}} _indexValue = 0;
+                    public static {{{pkPropType}}} GetIndex() => Interlocked.Increment(ref _indexValue);
+                """";
+        }
+        else
+        {
+            genClassVars = $"    public static string DefaultTableName => \"{tableName}\";";
+        }
+
+        string fnCreateTable = $$$""""
+                public static bool CreateTable(IDbConnection dbConnection, string? dbTableName = null)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"""
+                        CREATE TABLE IF NOT EXISTS {dbTableName} (
+                            {{{string.Join(_comma_line_4, [.. createColLines, .. createFKLines])}}}
+                        )
+                        """;
+
+                    command.ExecuteNonQuery();
+
+                    {{{string.Join(_line_2, getIndexLines())}}}
+
+                    return true;
+                }
+            """";
+
+        string fnDropTable = $$$""""
+                public static bool DropTable(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"DROP TABLE IF EXISTS {dbTableName}";
+                    
+                    command.ExecuteNonQuery();
+                    
+                    return true;
+                }
+            """";
+
+        string fnLoadMaxKey = $$$""""
+                public static void LoadMaxKey(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    int defaultValue = 0)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"SELECT MAX({{{(pkColName is null ? "ROWID" : pkColName)}}}) FROM {dbTableName}";
+
+                    try
+                    {
+                        object? result = command.ExecuteScalar();
+                        if (result is {{{(pkColName is null ? "int" : pkPropType)}}} value)
+                        {
+                            _indexValue = value;
+                        }
+                        else if (result is long l)
+                        {
+                            _indexValue = {{{((pkColName is null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        _indexValue = defaultValue;
+                    }
+                }
+            """";
+
+        string fnSelectMaxKey = $$$""""
+                public static {{{(pkColName is null ? "int" : pkPropType)}}}? SelectMaxKey(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    int defaultValue = 0)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+            
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"SELECT MAX({{{(pkColName is null ? "ROWID" : pkColName)}}}) FROM {dbTableName}";
+            
+                    object? result = command.ExecuteScalar();
+                    if (result is {{{(pkColName is null ? "int" : pkPropType)}}} value)
+                    {
+                        return value;
+                    }
+                    else if (result is long l)
+                    {
+                        return {{{((pkColName is null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                    }
+            
+                    return null;
+                }
+            """";
+
+        string fnSelectSingle = $$$""""
+                public static {{{className}}}? SelectSingle(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    bool orJoinConditions = false,
+                    {{{argFilterParams}}})
+                {
+                    dbTableName ??= "{{{tableName}}}";
+            
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
+            
+                    string joiner = orJoinConditions ? " OR " : " AND ";
+                    bool addedCondition = false;
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+            
+                    {{{conditionLinesUsingJoiner2}}}
+            
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new()
+                            {
+                                {{{colReaderDirectivesComma5}}}
+                            };
+                        }
+                    }
+                    return null;
+                }
+            """";
+
+        string fnSelectList = $$$""""
+                public static List<{{{className}}}> SelectList(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    string[]? orderByProperties = null,
+                    string? orderByDirection = null,
+                    bool orJoinConditions = false,
+                    int? resultLimit = null,
+                    int? resultOffset = null,
+                    {{{argFilterParams}}})
+                {
+                    dbTableName ??= "{{{tableName}}}";
+
+                    List<{{{className}}}> results = new();
+
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
+
+                    string joiner = orJoinConditions ? " OR " : " AND ";
+                    bool addedCondition = false;
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+
+                    {{{conditionLinesUsingJoiner2}}}
+
+                    if ((orderByProperties != null) && (orderByProperties.Length > 0))
+                    {
+                        command.CommandText += $" ORDER BY {string.Join(", ", orderByProperties)}";
+                        if (orderByDirection?.StartsWith("d", StringComparison.OrdinalIgnoreCase) == true)
+                        {
+                            command.CommandText += $" DESC";
+                        }
+                        else
+                        {
+                            command.CommandText += $" ASC";
+                        }
+                    }
+
+                    if (resultLimit.HasValue && (resultLimit.Value > 0))
+                    {
+                        command.CommandText += $" LIMIT {resultLimit.Value}";
+                        if (resultOffset.HasValue && (resultOffset.Value > 0))
+                        {
+                            command.CommandText += $" OFFSET {resultOffset.Value}";
+                        }
+                    }
+
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            results.Add(new()
+                            {
+                                {{{colReaderDirectivesComma5}}}
+                            });
+                        }
+                    }
+                    return results;
+                }
+            """";
+        
+        string fnSelectEnumerable = $$$""""
+                public static IEnumerable<{{{className}}}> SelectEnumerable(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    string[]? orderByProperties = null,
+                    string? orderByDirection = null,
+                    bool orJoinConditions = false,
+                    int? resultLimit = null,
+                    int? resultOffset = null,
+                    {{{argFilterParams}}})
+                {
+                    dbTableName ??= "{{{tableName}}}";
+            
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
+            
+                    string joiner = orJoinConditions ? " OR " : " AND ";
+                    bool addedCondition = false;
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                
+                    {{{conditionLinesUsingJoiner2}}}
+            
+                    if ((orderByProperties != null) && (orderByProperties.Length > 0))
+                    {
+                        command.CommandText += $" ORDER BY {string.Join(", ", orderByProperties)}";
+                        if (orderByDirection?.StartsWith("d", StringComparison.OrdinalIgnoreCase) == true)
+                        {
+                            command.CommandText += $" DESC";
+                        }
+                        else
+                        {
+                            command.CommandText += $" ASC";
+                        }
+                    }
+
+                    if (resultLimit.HasValue && (resultLimit.Value > 0))
+                    {
+                        command.CommandText += $" LIMIT {resultLimit.Value}";
+                        if (resultOffset.HasValue && (resultOffset.Value > 0))
+                        {
+                            command.CommandText += $" OFFSET {resultOffset.Value}";
+                        }
+                    }
+            
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return new()
+                            {
+                                {{{colReaderDirectivesComma5}}}
+                            };
+                        }
+                    }
+            
+                    yield break;
+                }
+            """";
+
+        string fnSelectDict = $$$""""
+                public static Dictionary<{{{(pkColName is null ? "int" : pkPropType)}}}, {{{className}}}> SelectDict(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    string[]? orderByProperties = null,
+                    string? orderByDirection = null,
+                    bool orJoinConditions = false,
+                    int? resultLimit = null,
+                    int? resultOffset = null,
+                    {{{argFilterParams}}})
+                {
+                    dbTableName ??= "{{{tableName}}}";
+
+                    Dictionary<{{{(pkColName is null ? "int" : pkPropType)}}}, {{{className}}}> results = new();
+
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
+
+                    string joiner = orJoinConditions ? " OR " : " AND ";
+                    bool addedCondition = false;
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+
+                    {{{conditionLinesUsingJoiner2}}}
+
+                    if ((orderByProperties != null) && (orderByProperties.Length > 0))
+                    {
+                        command.CommandText += $" ORDER BY {string.Join(", ", orderByProperties)}";
+                        if (orderByDirection?.StartsWith("d", StringComparison.OrdinalIgnoreCase) == true)
+                        {
+                            command.CommandText += $" DESC";
+                        }
+                        else
+                        {
+                            command.CommandText += $" ASC";
+                        }
+                    }
+
+                    if (resultLimit.HasValue && (resultLimit.Value > 0))
+                    {
+                        command.CommandText += $" LIMIT {resultLimit.Value}";
+                        if (resultOffset.HasValue && (resultOffset.Value > 0))
+                        {
+                            command.CommandText += $" OFFSET {resultOffset.Value}";
+                        }
+                    }
+
+                    {{{(pkColName is null ? "int rowId = 0;" : string.Empty)}}}
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            results.Add({{{(pkColName is null ? "rowId++" : tableColInfo[(int)pkColIndex!].shortRead)}}}, new()
+                            {
+                                {{{colReaderDirectivesComma5}}}
+                            });
+                        }
+                    }
+                    return results;
+                }
+            """";
+
+        string fnSelectCount = $$$""""
+                public static int SelectCount(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    bool orJoinConditions = false,
+                    {{{argFilterParams}}})
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    
+                    IDbCommand command = dbConnection.CreateCommand();
+                    command.CommandText = $"SELECT COUNT({{{(pkColName is null ? "*" : pkColName)}}}) FROM {dbTableName}";
+                    
+                    string joiner = orJoinConditions ? " OR " : " AND ";
+                    bool addedCondition = false;
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
+                    {{{conditionLinesUsingJoiner2}}}
+
+                    object? result = command.ExecuteScalar();
+                    if (result is int value)
+                    {
+                        return value;
+                    }
+                    else if (result is long l)
+                    {
+                        return {{{((pkColName is null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
+                    }
+
+                    return -1;
+                }
+            """";
+
+        string insertColsLine5 = string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name));
+        string insertParamsLine5 = string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name));
+
+        string fnInsertSingle = $$$""""
+                public static {{{(pkColName is null ? "void" : pkPropType)}}} Insert(
+                    IDbConnection dbConnection,
+                    {{{className}}} value,
+                    string? dbTableName = null,
+                    bool ignoreDuplicates = false,
+                    bool insertPrimaryKey = false)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                    string insertLiteral = ignoreDuplicates ? "INSERT OR IGNORE" : "INSERT";
+
+                    if (insertPrimaryKey)
+                    {
+                        using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                        {
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"""
+                                {insertLiteral} INTO {dbTableName} (
+                                    {{{insertColsLine5}}}
+                                ) VALUES (
+                                    {{{insertParamsLine5}}}
+                                );
+                                """;
+            
+                            {{{string.Join(_line_4, getInsertCommandParamLines(true, null, pkPropType, includeIdentity: true, ignoreDupeProperty: "ignoreDuplicates"))}}}
+            
+                            transaction.Commit();
+                        }
+                    }
+                    else
+                    {
+                        using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                        {
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.CommandText = $"""
+                                {insertLiteral} INTO {dbTableName} (
+                                    {{{insertColsLine5}}}
+                                ) VALUES (
+                                    {{{insertParamsLine5}}}
+                                ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
+                                """;
+            
+                            {{{string.Join(_line_4, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType, ignoreDupeProperty: "ignoreDuplicates"))}}}
+            
+                            transaction.Commit();
+                        }
+                    }
+                    {{{(pkColName is null ? "return" : $"return value.{pkColName}")}}};
+                }
+            """";
+
+        string fnInsertList = $$$""""
+                public static void Insert(
+                    IDbConnection dbConnection,
+                    List<{{{className}}}> values,
+                    string? dbTableName = null,
+                    bool ignoreDuplicates = false,
+                    bool insertPrimaryKey = false)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                    string insertLiteral = ignoreDuplicates ? "INSERT OR IGNORE" : "INSERT";
+
+                    if (insertPrimaryKey)
+                    {
+                        using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                        {
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.Transaction = transaction;
+                            command.CommandText = $"""
+                                {insertLiteral} INTO {dbTableName} (
+                                    {{{insertColsLine5}}}
+                                ) VALUES (
+                                    {{{insertParamsLine5}}}
+                                );
+                                """;
+
+                            {{{string.Join(_line_4, getInsertCommandParamLines(false, null, pkPropType, createParameters: true, includeIdentity: true, ignoreDupeProperty: "ignoreDuplicates"))}}}
+            
+                            command.Prepare();
+            
+                            foreach ({{{className}}} value in values)
+                            {
+                                {{{string.Join(_line_5, getInsertCommandParamLines(false, null, pkPropType, instantiateParameters: true, executeCommand: true, includeIdentity: true, ignoreDupeProperty: "ignoreDuplicates"))}}}
+                            }
+            
+                            transaction.Commit();
+                        }
+                    }
+                    else
+                    {
+                        using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                        {
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.Transaction = transaction;
+                            command.CommandText = $"""
+                                {insertLiteral} INTO {dbTableName} (
+                                    {{{insertColsLine5}}}
+                                ) VALUES (
+                                    {{{insertParamsLine5}}}
+                                ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
+                                """;
+            
+                            {{{string.Join(_line_4, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true, ignoreDupeProperty: "ignoreDuplicates"))}}}
+                        
+                            command.Prepare();
+
+                            foreach ({{{className}}} value in values)
+                            {
+                                {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
+                                {{{string.Join(_line_5, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, instantiateParameters: true, executeCommand: true))}}}
+                            }
+
+                            transaction.Commit();
+                        }
+                    }
+                }
+            """";
+
+        string fnInsertEnumerable = $$$""""
+                public static void Insert(
+                    IDbConnection dbConnection,
+                    IEnumerable<{{{className}}}> values,
+                    string? dbTableName = null,
+                    bool ignoreDuplicates = false,
+                    bool insertPrimaryKey = false)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                    string insertLiteral = ignoreDuplicates ? "INSERT OR IGNORE" : "INSERT";
+            
+                    if (insertPrimaryKey)
+                    {
+                        using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                        {
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.Transaction = transaction;
+                            command.CommandText = $"""
+                                {insertLiteral} INTO {dbTableName} (
+                                    {{{insertColsLine5}}}
+                                ) VALUES (
+                                    {{{insertParamsLine5}}}
+                                );
+                                """;
+
+                            {{{string.Join(_line_4, getInsertCommandParamLines(false, null, pkPropType, createParameters: true, includeIdentity: true, ignoreDupeProperty: "ignoreDuplicates"))}}}
+
+                            command.Prepare();
+
+                            foreach ({{{className}}} value in values)
+                            {
+                                {{{string.Join(_line_5, getInsertCommandParamLines(false, null, pkPropType, instantiateParameters: true, executeCommand: true, includeIdentity: true, setIdentity: false, ignoreDupeProperty: "ignoreDuplicates"))}}}
+                            }
+
+                            transaction.Commit();
+                        }
+                    }
+                    else
+                    {
+                        using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                        {
+                            IDbCommand command = dbConnection.CreateCommand();
+                            command.Transaction = transaction;
+                            command.CommandText = $"""
+                                {insertLiteral} INTO {dbTableName} (
+                                    {{{insertColsLine5}}}
+                                ) VALUES (
+                                    {{{insertParamsLine5}}}
+                                ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
+                                """;
+
+                            {{{string.Join(_line_4, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true, ignoreDupeProperty: "ignoreDuplicates"))}}}
+
+                            command.Prepare();
+
+                            foreach ({{{className}}} value in values)
+                            {
+                                {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
+                                {{{string.Join(_line_5, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, instantiateParameters: true, executeCommand: true, setIdentity: false, ignoreDupeProperty: "ignoreDuplicates"))}}}
+                            }
+
+                            transaction.Commit();
+                        }
+                    }
+                }
+            """";
+
+        string fnUpdateSingle = $$$""""
+                public static {{{className}}} Update(
+                    IDbConnection dbConnection,
+                    {{{className}}} value,
+                    string? dbTableName = null)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                        
+                    using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                    {
+                        IDbCommand command = dbConnection.CreateCommand();
+                        command.CommandText = $"""
+                            UPDATE {dbTableName} SET
+                                {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
+                            WHERE
+                                {{{pkColName}}} = ${{{pkColName}}}
+                            """;
+                    
+                        {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType, includeIdentity: true, isInsert: false))}}}
+                    
+                        transaction.Commit();
+                    }
+                    
+                    return value;
+                }
+            """";
+
+        string fnUpdateEnumerable = $$$""""
+                public static void Update(
+                    IDbConnection dbConnection,
+                    IEnumerable<{{{className}}}> values,
+                    string? dbTableName = null)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+                                                
+                    using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                    {
+                        IDbCommand command = dbConnection.CreateCommand();
+                        command.CommandText = $"""
+                            UPDATE {dbTableName} SET
+                                {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
+                            WHERE
+                                {{{pkColName}}} = ${{{pkColName}}}
+                            """;
+                    
+                        {{{string.Join(
+                            _line_3,
+                            getInsertCommandParamLines(
+                                false,
+                                pkIsIdentity ? pkColName : null,
+                                pkPropType,
+                                createParameters: true,
+                                includeIdentity: true,
+                                isInsert: false))}}}
+                    
+                        foreach ({{{className}}} value in values)
+                        {
+                            {{{string.Join(
+                                _line_4,
+                                getInsertCommandParamLines(
+                                    false,
+                                    pkIsIdentity ? pkColName : null,
+                                    pkPropType,
+                                    instantiateParameters: true,
+                                    executeCommand: true,
+                                    setIdentity: false,
+                                    includeIdentity: true,
+                                    isInsert: false))}}}
+                        }
+                    
+                        transaction.Commit();
+                    }
+                }
+            """";
+
+        string deleteCommandParamsSingleLine3 = string.Join(
+            _line_3,
+            getInsertCommandParamLines(
+                true,
+                pkIsIdentity ? pkColName : null,
+                pkPropType,
+                executeCommand: true,
+                includeIdentity: true,
+                identityOnly: true,
+                setIdentity: false));
+
+        string deleteCommandParamsLine3 = string.Join(
+            _line_3,
+            getInsertCommandParamLines(
+                false,
+                pkIsIdentity ? pkColName : null,
+                pkPropType,
+                createParameters: true,
+                includeIdentity: true,
+                identityOnly: true,
+                setIdentity: false));
+
+        string deleteCommandValuesLine4 = string.Join(
+            _line_4,
+            getInsertCommandParamLines(
+                false,
+                pkIsIdentity ? pkColName : null,
+                pkPropType,
+                instantiateParameters: true,
+                executeCommand: true,
+                setIdentity: false,
+                includeIdentity: true,
+                identityOnly: true));
+
+        string fnDeleteSingle = $$$""""
+                public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                                        
+                    using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                    {
+                        IDbCommand command = dbConnection.CreateCommand();
+                        command.CommandText = $"DELETE FROM {dbTableName} WHERE {{{pkColName}}} = ${{{pkColName}}}";
+                    
+                        {{{deleteCommandParamsSingleLine3}}}
+
+                        transaction.Commit();
+                    }
+                }
+            """";
+
+        string fnDeleteEnumerable = $$$""""
+                public static void Delete(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                                        
+                    using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                    {
+                        IDbCommand command = dbConnection.CreateCommand();
+                        command.CommandText = $"DELETE FROM {dbTableName} WHERE {{{pkColName}}} = ${{{pkColName}}}";
+                                
+                        {{{deleteCommandParamsLine3}}}
+            
+                        foreach ({{{className}}} value in values)
+                        {
+                            {{{deleteCommandValuesLine4}}}
+                        }
+            
+                        transaction.Commit();
+                    }
+                }
+            """";
+
+        string fnDeleteFiltered = $$$""""
+                public static void Delete(
+                    IDbConnection dbConnection,
+                    string? dbTableName = null,
+                    bool orJoinConditions = false,
+                    {{{argFilterParams}}})
+                {
+                    dbTableName ??= "{{{tableName}}}";
+                    {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
+
+                    string joiner = orJoinConditions ? " OR " : " AND ";
+                                        
+                    using (IDbTransaction transaction = dbConnection.BeginTransaction())
+                    {
+                        IDbCommand command = dbConnection.CreateCommand();
+                        command.CommandText = $"DELETE FROM {dbTableName}";
+                                        
+                        bool addedCondition = false;
+                    
+                        {{{conditionLinesUsingJoiner2}}}
+
+                        command.ExecuteNonQuery();
+
+                        transaction.Commit();
+                    }
+                }
+            """";
 
         context.AddSource(
             $"{className}{"SQLite"}.g.cs",
@@ -575,521 +1325,163 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
                     public partial {{{decForGenCategory(genCategory)}}} {{{className}}}
                     {
-                        public static string DefaultTableName => "{{{tableName}}}";
-                        {{{(pkPropType == "int" ? "internal static int _indexValue = 0;" : string.Empty)}}}
-                        {{{(pkPropType == "int" ? "public static int GetIndex() => Interlocked.Increment(ref _indexValue);" : string.Empty)}}}
-                        {{{(pkPropType == "long" ? "internal static long _indexValue = 0;" : string.Empty)}}}
-                        {{{(pkPropType == "long" ? "public static long GetIndex() => Interlocked.Increment(ref _indexValue);" : string.Empty)}}}
-                    
-                        public static bool CreateTable(IDbConnection dbConnection, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
+                    {{{genClassVars}}}
 
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"""
-                                CREATE TABLE IF NOT EXISTS {dbTableName} (
-                                    {{{string.Join(_comma_line_4, [.. createColLines, .. createFKLines])}}}
-                                )
-                                """;
+                    {{{fnCreateTable}}}
 
-                            command.ExecuteNonQuery();
+                    {{{fnDropTable}}}
 
-                            {{{string.Join(_line_2, getIndexLines())}}}
-                    
-                            return true;
-                        }
+                    {{{fnLoadMaxKey}}}
 
-                        public static bool DropTable(IDbConnection dbConnection, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                    
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"DROP TABLE IF EXISTS {dbTableName}";
-                    
-                            command.ExecuteNonQuery();
-                    
-                            return true;
-                        }
+                    {{{fnSelectMaxKey}}}
 
-                        public static void LoadMaxKey(IDbConnection dbConnection, string? dbTableName = null, int defaultValue = 0)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                    
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT MAX({{{(pkColName == null ? "ROWID" : pkColName)}}}) FROM {dbTableName}";
+                    {{{fnSelectSingle}}}
 
-                            try
-                            {
-                                object? result = command.ExecuteScalar();
-                                if (result is {{{(pkColName == null ? "int" : pkPropType)}}} value)
-                                {
-                                    _indexValue = value;
-                                }
-                                else if (result is long l)
-                                {
-                                    _indexValue = {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
-                                }
-                            }
-                            catch (Exception)
-                            {
-                                _indexValue = defaultValue;
-                            }
-                        }
+                    {{{fnSelectList}}}
 
-                        public static {{{(pkColName == null ? "int" : pkPropType)}}}? SelectMaxKey(IDbConnection dbConnection, string? dbTableName = null, int defaultValue = 0)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                    
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT MAX({{{(pkColName == null ? "ROWID" : pkColName)}}}) FROM {dbTableName}";
+                    {{{fnSelectEnumerable}}}
 
-                            object? result = command.ExecuteScalar();
-                            if (result is {{{(pkColName == null ? "int" : pkPropType)}}} value)
-                            {
-                                return value;
-                            }
-                            else if (result is long l)
-                            {
-                                return {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
-                            }
+                    {{{fnSelectDict}}}
 
-                            return null;
-                        }
-                    
-                        public static {{{className}}}? SelectSingle(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
-                        {
-                            dbTableName ??= "{{{tableName}}}";
+                    {{{fnSelectCount}}}
 
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
+                    {{{fnInsertSingle}}}
 
-                            bool addedCondition = false;
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                    
-                            {{{string.Join(_line_2, getConditionLines(true))}}}
+                    {{{fnInsertList}}}
 
-                            using (IDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    return new()
-                                    {
-                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
-                                    };
-                                }
-                            }
-                            return null;
-                        }
+                    {{{fnInsertEnumerable}}}
 
-                        public static List<{{{className}}}> SelectList(IDbConnection dbConnection, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
-                        {
-                            dbTableName ??= "{{{tableName}}}";
+                    {{{fnUpdateSingle}}}
 
-                            List<{{{className}}}> results = new();
+                    {{{fnUpdateEnumerable}}}
 
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
-                    
-                            bool addedCondition = false;
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                        
-                            {{{string.Join(_line_2, getConditionLines(true))}}}
+                    {{{fnDeleteSingle}}}
 
-                            if ((orderByProperties != null) && (orderByProperties.Length > 0))
-                            {
-                                command.CommandText += $" ORDER BY {string.Join(", ", orderByProperties)}";
-                                if (orderByDirection?.StartsWith("d", StringComparison.OrdinalIgnoreCase) == true)
-                                {
-                                    command.CommandText += $" DESC";
-                                }
-                                else
-                                {
-                                    command.CommandText += $" ASC";
-                                }
-                            }
-                    
-                            using (IDataReader reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    results.Add(new()
-                                    {
-                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
-                                    });
-                                }
-                            }
-                            return results;
-                        }
+                    {{{fnDeleteEnumerable}}}
 
-                        public static IEnumerable<{{{className}}}> SelectEnumerable(IDbConnection dbConnection, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                    
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
-                    
-                            bool addedCondition = false;
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                        
-                            {{{string.Join(_line_2, getConditionLines(true))}}}
-                    
-                            if ((orderByProperties != null) && (orderByProperties.Length > 0))
-                            {
-                                command.CommandText += $" ORDER BY {string.Join(", ", orderByProperties)}";
-                                if (orderByDirection?.StartsWith("d", StringComparison.OrdinalIgnoreCase) == true)
-                                {
-                                    command.CommandText += $" DESC";
-                                }
-                                else
-                                {
-                                    command.CommandText += $" ASC";
-                                }
-                            }
-                    
-                            using (IDataReader reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    yield return new()
-                                    {
-                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
-                                    };
-                                }
-                            }
+                    {{{fnDeleteFiltered}}}
 
-                            yield break;
-                        }
-
-                        public static Dictionary<{{{(pkColName == null ? "int" : pkPropType)}}}, {{{className}}}> SelectDict(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                    
-                            Dictionary<{{{(pkColName == null ? "int" : pkPropType)}}}, {{{className}}}> results = new();
-                    
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
-                    
-                            bool addedCondition = false;
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                        
-                            {{{string.Join(_line_2, getConditionLines(true))}}}
-
-                            {{{(pkColName == null ? "int rowId = 0;" : string.Empty)}}}
-                            using (IDataReader reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    results.Add({{{(pkColName == null ? "rowId++" : tableColInfo[(int)pkColIndex!].shortRead)}}}, new()
-                                    {
-                                        {{{string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective))}}}
-                                    });
-                                }
-                            }
-                            return results;
-                        }
-
-                        public static int SelectCount(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                    
-                            IDbCommand command = dbConnection.CreateCommand();
-                            command.CommandText = $"SELECT COUNT({{{(pkColName == null ? "*" : pkColName)}}}) FROM {dbTableName}";
-                    
-                            bool addedCondition = false;
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                        
-                            {{{string.Join(_line_2, getConditionLines(true))}}}
-
-                            object? result = command.ExecuteScalar();
-                            if (result is int value)
-                            {
-                                return value;
-                            }
-                            else if (result is long l)
-                            {
-                                return {{{((pkColName == null) || (pkPropType == "int") ? "Convert.ToInt32(l)" : "null")}}};
-                            }
-
-                            return -1;
-                        }
-
-                        public static {{{(pkColName == null ? "void" : pkPropType)}}} Insert(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                            {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"""
-                                    INSERT INTO {dbTableName} (
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
-                                    ) VALUES (
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
-                                    ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
-                                    """;
-
-                                {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType))}}}
-
-                                transaction.Commit();
-                            }
-
-                            {{{(pkColName == null ? "return" : $"return value.{pkColName}")}}};
-                        }
-
-                        public static void Insert(IDbConnection dbConnection, List<{{{className}}}> values, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                                
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"""
-                                    INSERT INTO {dbTableName} (
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
-                                    ) VALUES (
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
-                                    ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
-                                    """;
-
-                                {{{string.Join(_line_3, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true))}}}
-
-                                command.Prepare();
-
-                                foreach ({{{className}}} value in values)
-                                {
-                                    {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
-                                    {{{string.Join(_line_4, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, instantiateParameters: true, executeCommand: true))}}}
-                                }
-                    
-                                transaction.Commit();
-                            }
-                        }
-
-                        public static void Insert(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                                
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"""
-                                    INSERT INTO {dbTableName} (
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => p.name))}}}
-                                    ) VALUES (
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isIdentity == false).Select(p => "$" + p.name))}}}
-                                    ) {{{(pkIsIdentity ? " RETURNING " + pkColName : string.Empty)}}};
-                                    """;
-                    
-                                {{{string.Join(_line_3, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, createParameters: true))}}}
-                    
-                                command.Prepare();
-                    
-                                foreach ({{{className}}} value in values)
-                                {
-                                    {{{getNonIdentityPkInit(pkColName, pkPropType)}}}
-                                    {{{string.Join(_line_4, getInsertCommandParamLines(false, pkIsIdentity ? pkColName : null, pkPropType, instantiateParameters: true, executeCommand: true, setIdentity: false))}}}
-                                }
-                    
-                                transaction.Commit();
-                            }
-                        }
-
-                        public static {{{className}}} Update(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                        
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"""
-                                    UPDATE {dbTableName} SET
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
-                                    WHERE
-                                        {{{pkColName}}} = ${{{pkColName}}}
-                                    """;
-                    
-                                {{{string.Join(_line_3, getInsertCommandParamLines(true, pkIsIdentity ? pkColName : null, pkPropType, includeIdentity: true, isInsert: false))}}}
-                    
-                                transaction.Commit();
-                            }
-                    
-                            return value;
-                        }
-
-                        public static void Update(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                                
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"""
-                                    UPDATE {dbTableName} SET
-                                        {{{string.Join(_comma_line_5, tableColInfo.Where(p => p.isPrimaryKey == false).Select(p => p.name + " = $" + p.name))}}}
-                                    WHERE
-                                        {{{pkColName}}} = ${{{pkColName}}}
-                                    """;
-                    
-                                {{{string.Join(
-                                _line_3,
-                                getInsertCommandParamLines(
-                                    false,
-                                    pkIsIdentity ? pkColName : null,
-                                    pkPropType,
-                                    createParameters: true,
-                                    includeIdentity: true,
-                                    isInsert: false))}}}
-                    
-                                foreach ({{{className}}} value in values)
-                                {
-                                    {{{string.Join(
-                                    _line_4,
-                                    getInsertCommandParamLines(
-                                        false,
-                                        pkIsIdentity ? pkColName : null,
-                                        pkPropType,
-                                        instantiateParameters: true,
-                                        executeCommand: true,
-                                        setIdentity: false,
-                                        includeIdentity: true,
-                                        isInsert: false))}}}
-                                }
-                    
-                                transaction.Commit();
-                            }
-                        }
-
-                        public static void Delete(IDbConnection dbConnection, {{{className}}} value, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                                        
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"DELETE FROM {dbTableName} WHERE {{{pkColName}}} = ${{{pkColName}}}";
-                    
-                                {{{string.Join(
-                                _line_3,
-                                getInsertCommandParamLines(
-                                    true,
-                                    pkIsIdentity ? pkColName : null,
-                                    pkPropType,
-                                    executeCommand: true,
-                                    includeIdentity: true,
-                                    identityOnly: true,
-                                    setIdentity: false))}}}
-
-                                transaction.Commit();
-                            }
-                        }
-                    
-                        public static void Delete(IDbConnection dbConnection, IEnumerable<{{{className}}}> values, string? dbTableName = null)
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                                                
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"DELETE FROM {dbTableName} WHERE {{{pkColName}}} = ${{{pkColName}}}";
-                                        
-                                {{{string.Join(
-                                _line_3,
-                                getInsertCommandParamLines(
-                                    false,
-                                    pkIsIdentity ? pkColName : null,
-                                    pkPropType,
-                                    createParameters: true,
-                                    includeIdentity: true,
-                                    identityOnly: true,
-                                    setIdentity: false))}}}
-                    
-                                foreach ({{{className}}} value in values)
-                                {
-                                    {{{string.Join(
-                                    _line_4,
-                                    getInsertCommandParamLines(
-                                        false,
-                                        pkIsIdentity ? pkColName : null,
-                                        pkPropType,
-                                        instantiateParameters: true,
-                                        executeCommand: true,
-                                        setIdentity: false,
-                                        includeIdentity: true,
-                                        identityOnly: true))}}}
-                                }
-                    
-                                transaction.Commit();
-                            }
-                        }
-
-                        public static void Delete(IDbConnection dbConnection, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
-                        {
-                            dbTableName ??= "{{{tableName}}}";
-                            {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
-                                        
-                            using (IDbTransaction transaction = dbConnection.BeginTransaction())
-                            {
-                                IDbCommand command = dbConnection.CreateCommand();
-                                command.CommandText = $"DELETE FROM {dbTableName}";
-                                        
-                                bool addedCondition = false;
-                    
-                                {{{string.Join(_line_2, getConditionLines(true))}}}
-
-                                command.ExecuteNonQuery();
-
-                                transaction.Commit();
-                            }
-                        }
                     }
 
                     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
                     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
                     public static class {{{className}}}Extensions
                     {
-                        public static {{{className}}}? SelectSingle<T>(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        public static {{{className}}}? SelectSingle<T>(
+                            this IDbConnection dbCon,
+                            string? dbTableName = null,
+                            bool orJoinConditions = false,
+                            {{{argFilterParams}}})
                             where T : {{{className}}}
                         {
-                            return {{{className}}}.SelectSingle(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                            return {{{className}}}.SelectSingle(
+                                dbCon,
+                                dbTableName,
+                                orJoinConditions,
+                                {{{argFilters}}});
                         }
 
-                        public static List<{{{className}}}> SelectList<T>(this IDbConnection dbCon, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        public static List<{{{className}}}> SelectList<T>(
+                            this IDbConnection dbCon,
+                            string? dbTableName = null,
+                            string[]? orderByProperties = null,
+                            string? orderByDirection = null,
+                            bool orJoinConditions = false,
+                            int? resultLimit = null,
+                            int? resultOffset = null,
+                            {{{argFilterParams}}})
                             where T : {{{className}}}
                         {
-                            return {{{className}}}.SelectList(dbCon, dbTableName, orderByProperties, orderByDirection, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                            return {{{className}}}.SelectList(
+                                dbCon,
+                                dbTableName,
+                                orderByProperties,
+                                orderByDirection,
+                                orJoinConditions,
+                                resultLimit,
+                                resultOffset,
+                                {{{argFilters}}});
                         }
 
-                        public static IEnumerable<{{{className}}}> SelectEnumerable<T>(this IDbConnection dbCon, string? dbTableName = null, string[]? orderByProperties = null, string? orderByDirection = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        public static IEnumerable<{{{className}}}> SelectEnumerable<T>(
+                            this IDbConnection dbCon,
+                            string? dbTableName = null,
+                            string[]? orderByProperties = null,
+                            string? orderByDirection = null,
+                            bool orJoinConditions = false,
+                            int? resultLimit = null,
+                            int? resultOffset = null,
+                            {{{argFilterParams}}})
                             where T : {{{className}}}
                         {
-                            return {{{className}}}.SelectEnumerable(dbCon, dbTableName, orderByProperties, orderByDirection, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                            return {{{className}}}.SelectEnumerable(
+                                dbCon,
+                                dbTableName,
+                                orderByProperties,
+                                orderByDirection,
+                                orJoinConditions,
+                                resultLimit,
+                                resultOffset,
+                                {{{argFilters}}});
                         }
                     
-                        public static int SelectCount<T>(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        public static int SelectCount<T>(
+                            this IDbConnection dbCon,
+                            string? dbTableName = null,
+                            bool orJoinConditions = false,
+                            {{{argFilterParams}}})
                             where T : {{{className}}}
                         {
-                            return {{{className}}}.SelectCount(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                            return {{{className}}}.SelectCount(
+                                dbCon,
+                                dbTableName,
+                                orJoinConditions,
+                                {{{argFilters}}});
                         }
                                                             
-                        public static void Insert(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
+                        public static void Insert(
+                            this IDbConnection dbCon,
+                            {{{className}}} value,
+                            string? dbTableName = null,
+                            bool ignoreDuplicates = false,
+                            bool insertPrimaryKey = false)
                         {
-                            {{{className}}}.Insert(dbCon, value, dbTableName);
+                            {{{className}}}.Insert(
+                                dbCon,
+                                value,
+                                dbTableName,
+                                ignoreDuplicates,
+                                insertPrimaryKey);
                         }
 
-                        public static void Insert(this IDbConnection dbCon, List<{{{className}}}> values, string? dbTableName = null)
+                        public static void Insert(
+                            this IDbConnection dbCon,
+                            List<{{{className}}}> values,
+                            string? dbTableName = null,
+                            bool ignoreDuplicates = false,
+                            bool insertPrimaryKey = false)
                         {
-                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                            {{{className}}}.Insert(
+                                dbCon,
+                                values,
+                                dbTableName,
+                                ignoreDuplicates,
+                                insertPrimaryKey);
                         }
 
-                        public static void Insert(this IDbConnection dbCon, IEnumerable<{{{className}}}> values, string? dbTableName = null)
+                        public static void Insert(
+                            this IDbConnection dbCon,
+                            IEnumerable<{{{className}}}> values,
+                            string? dbTableName = null,
+                            bool ignoreDuplicates = false,
+                            bool insertPrimaryKey = false)
                         {
-                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                            {{{className}}}.Insert(
+                                dbCon,
+                                values,
+                                dbTableName,
+                                ignoreDuplicates,
+                                insertPrimaryKey);
                         }
 
                         public static void Update(this IDbConnection dbCon, {{{className}}} value, string? dbTableName = null)
@@ -1112,24 +1504,54 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             {{{className}}}.Delete(dbCon, values, dbTableName);
                         }
 
-                        public static void Delete(this IDbConnection dbCon, string? dbTableName = null, {{{string.Join(", ", getFnFilterParams(true))}}})
+                        public static void Delete(this IDbConnection dbCon, string? dbTableName = null, bool orJoinConditions = false, {{{argFilterParams}}})
                         {
-                            {{{className}}}.Delete(dbCon, dbTableName, {{{string.Join(", ", getFnFilterArgs(true))}}});
+                            {{{className}}}.Delete(dbCon, dbTableName, orJoinConditions, {{{argFilters}}});
                         }
 
-                        public static void Insert(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)
+                        public static void Insert(
+                            this {{{className}}} value,
+                            IDbConnection dbCon,
+                            string? dbTableName = null,
+                            bool ignoreDuplicates = false,
+                            bool insertPrimaryKey = false)
                         {
-                            {{{className}}}.Insert(dbCon, value, dbTableName);
+                            {{{className}}}.Insert(
+                                dbCon,
+                                value,
+                                dbTableName,
+                                ignoreDuplicates,
+                                insertPrimaryKey);
                         }
                     
-                        public static void Insert(this List<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        public static void Insert(
+                            this List<{{{className}}}> values,
+                            IDbConnection dbCon,
+                            string? dbTableName = null,
+                            bool ignoreDuplicates = false,
+                            bool insertPrimaryKey = false)
                         {
-                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                            {{{className}}}.Insert(
+                                dbCon,
+                                values,
+                                dbTableName,
+                                ignoreDuplicates,
+                                insertPrimaryKey);
                         }
 
-                        public static void Insert(this IEnumerable<{{{className}}}> values, IDbConnection dbCon, string? dbTableName = null)
+                        public static void Insert(
+                            this IEnumerable<{{{className}}}> values,
+                            IDbConnection dbCon,
+                            string? dbTableName = null,
+                            bool ignoreDuplicates = false,
+                            bool insertPrimaryKey = false)
                         {
-                            {{{className}}}.Insert(dbCon, values, dbTableName);
+                            {{{className}}}.Insert(
+                                dbCon,
+                                values,
+                                dbTableName,
+                                ignoreDuplicates,
+                                insertPrimaryKey);
                         }
                     
                         public static void Update(this {{{className}}} value, IDbConnection dbCon, string? dbTableName = null)
@@ -1222,6 +1644,19 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             {
                 yield return $"{rec.propType}? {rec.name} = null";
 
+                if ((!rec.isPrimaryKey) && (!rec.isIdentity))
+                {
+                    switch (rec.propType)
+                    {
+                        case "int":
+                        case "long":
+                        case "decimal":
+                        case "double":
+                            yield return $"string {rec.name}Operator = \"=\"";
+                            break;
+                    }
+                }
+
                 if (rec.isNullable)
                 {
                     yield return $"bool {rec.name}IsNull = false";
@@ -1235,6 +1670,19 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             {
                 yield return rec.name;
 
+                if ((!rec.isPrimaryKey) && (!rec.isIdentity))
+                {
+                    switch (rec.propType)
+                    {
+                        case "int":
+                        case "long":
+                        case "decimal":
+                        case "double":
+                            yield return $"{rec.name}Operator";
+                            break;
+                    }
+                }
+
                 if (rec.isNullable)
                 {
                     yield return $"{rec.name}IsNull";
@@ -1242,13 +1690,41 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             }
         }
 
-        IEnumerable<string> getConditionLines(bool includeNullFilter)
+        IEnumerable<string> getConditionLines(bool includeNullFilter, bool allowsOrJoining)
         {
             foreach (TableColInfoRec rec in tableColInfo)
             {
                 yield return $"if ({rec.name} != null)";
                 yield return "{";
-                yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{rec.name} = ${rec.name}\";";
+
+                string conditionComparator;
+
+                if (rec.isPrimaryKey || rec.isIdentity)
+                {
+                    conditionComparator = "=";
+                }
+                else
+                {
+                    conditionComparator = rec.propType switch
+                    {
+                        "int" => $$$"""{{{{rec.name}}}Operator}""",
+                        "long" => $$$"""{{{{rec.name}}}Operator}""",
+                        "decimal" => $$$"""{{{{rec.name}}}Operator}""",
+                        "double" => $$$"""{{{{rec.name}}}Operator}""",
+                        _ => "="
+                    };
+                }
+
+                if (allowsOrJoining)
+                {
+                    yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + $"{{{rec.name}}} {{{conditionComparator}}} ${{{rec.name}}}";""";
+                }
+                else
+                {
+                    yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + $"{{{rec.name}}} {{{conditionComparator}}} ${{{rec.name}}}";""";
+                }
+
+
                 yield return "    addedCondition = true;";
                 yield return string.Empty;
                 yield return $"    IDbDataParameter {rec.name}Param = command.CreateParameter();";
@@ -1293,15 +1769,26 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 yield return "}";
                 yield return string.Empty;
 
-                if (includeNullFilter && rec.isNullable)
+                if (!includeNullFilter || !rec.isNullable)
                 {
-                    yield return $"if ({rec.name}IsNull)";
-                    yield return "{";
-                    yield return $"    command.CommandText += (addedCondition ? \" AND \" : \" WHERE \") + \"{rec.name} IS NULL\";";
-                    yield return "    addedCondition = true;";
-                    yield return "}";
-                    yield return string.Empty;
+                    continue;
                 }
+
+                yield return $"if ({rec.name}IsNull)";
+                yield return "{";
+
+                if (allowsOrJoining)
+                {
+                    yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + "{{{rec.name}}} IS NULL";""";
+                }
+                else
+                {
+                    yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + "{{{rec.name}}} IS NULL";""";
+                }
+
+                yield return "    addedCondition = true;";
+                yield return "}";
+                yield return string.Empty;
             }
         }
 
@@ -1315,10 +1802,11 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             bool setIdentity = true,
             bool includeIdentity = false,
             bool identityOnly = false,
-            bool isInsert = true)
+            bool isInsert = true,
+            string? ignoreDupeProperty = null)
         {
             // if no specific type is specified, default to true
-            if ((createParameters == null) && (instantiateParameters == null) && (executeCommand == null))
+            if ((createParameters is null) && (instantiateParameters is null) && (executeCommand is null))
             {
                 createParameters = true;
                 instantiateParameters = true;
@@ -1351,25 +1839,25 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     {
                         if (rec.isEnum)
                         {
-                            yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : value.{rec.name}.ToString();";
+                            yield return $"{rec.name}Param.Value = (value.{rec.name} is null) ? DBNull.Value : value.{rec.name}.ToString();";
                         }
                         else if (rec.useJson)
                         {
-                            //yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : JsonSerializer.Serialize(value.{rec.name});";
+                            //yield return $"{rec.name}Param.Value = (value.{rec.name} is null) ? DBNull.Value : JsonSerializer.Serialize(value.{rec.name});";
                             //if (rec.isArray)
                             //{
-                            //    yield return $"{rec.name}Param.Value = ((value.{rec.name} == null) || !value.{rec.name}.Any()) ? DBNull.Value : CgFhirUtils.SerializeArrayForDb(value.{rec.name}, true);";
+                            //    yield return $"{rec.name}Param.Value = ((value.{rec.name} is null) || !value.{rec.name}.Any()) ? DBNull.Value : CgFhirUtils.SerializeArrayForDb(value.{rec.name}, true);";
                             //}
                             //else
                             //{
-                                //yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : (CgFhirUtils.SerializeForDb(value.{rec.name}, true) ?? DBNull.Value);";
+                                //yield return $"{rec.name}Param.Value = (value.{rec.name} is null) ? DBNull.Value : (CgFhirUtils.SerializeForDb(value.{rec.name}, true) ?? DBNull.Value);";
                                 yield return $"{rec.name}Param.Value = CgFhirUtils.TrySerializeForDb(value.{rec.name}, out dbJson) ? dbJson : DBNull.Value;";
                             //}
 
                         }
                         else
                         {
-                            yield return $"{rec.name}Param.Value = (value.{rec.name} == null) ? DBNull.Value : value.{rec.name};";
+                            yield return $"{rec.name}Param.Value = (value.{rec.name} is null) ? DBNull.Value : value.{rec.name};";
                         }
                     }
                     else
@@ -1408,28 +1896,73 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
             if (executeCommand == true)
             {
-                if ((identityColName == null) || (!setIdentity) || (!isInsert))
+                if ((identityColName is null) || (!setIdentity) || (!isInsert))
                 {
-                    yield return "int rowsAffected = command.ExecuteNonQuery();";
-                    yield return "if (rowsAffected == 0) throw new Exception(\"Command failed!\");";
+                    if (ignoreDupeProperty is null)
+                    {
+                        yield return "int rowsAffected = command.ExecuteNonQuery();";
+                        yield return "if (rowsAffected == 0) throw new Exception(\"Command failed!\");";
+                    }
+                    else
+                    {
+                        yield return "int rowsAffected = command.ExecuteNonQuery();";
+                        yield return $"if (!{ignoreDupeProperty} && (rowsAffected == 0)) throw new Exception(\"Command failed!\");";
+                    }
                 }
                 else
                 {
-                    yield return "object? commandResult = command.ExecuteScalar();";
-                    yield return "if (commandResult == null) throw new Exception(\"Command failed!\");";
-
-                    switch (identityColType)
+                    if (ignoreDupeProperty == null)
                     {
-                        case "int":
-                            yield return $"value.{identityColName} = Convert.ToInt32(commandResult);";
-                            break;
-                        case "long":
-                            yield return $"value.{identityColName} = Convert.ToInt64(commandResult);";
-                            break;
-                        default:
-                            yield return $"value.{identityColName} = ({identityColType})commandResult;";
-                            break;
+                        yield return "object? commandResult = command.ExecuteScalar();";
+                        yield return "if (commandResult is null) throw new Exception(\"Command failed!\");";
+
+                        switch (identityColType)
+                        {
+                            case "int":
+                                yield return $"value.{identityColName} = Convert.ToInt32(commandResult);";
+                                break;
+                            case "long":
+                                yield return $"value.{identityColName} = Convert.ToInt64(commandResult);";
+                                break;
+                            default:
+                                yield return $"value.{identityColName} = ({identityColType})commandResult;";
+                                break;
+                        }
                     }
+                    else
+                    {
+                        yield return "object? commandResult = command.ExecuteScalar();";
+                        yield return $"if (!{ignoreDupeProperty} && (commandResult is null)) throw new Exception(\"Command failed!\");";
+
+                        switch (identityColType)
+                        {
+                            case "int":
+                                yield return $"if (commandResult != null) value.{identityColName} = Convert.ToInt32(commandResult);";
+                                break;
+                            case "long":
+                                yield return $"if (commandResult != null) value.{identityColName} = Convert.ToInt64(commandResult);";
+                                break;
+                            default:
+                                yield return $"if (commandResult != null) value.{identityColName} = ({identityColType})commandResult;";
+                                break;
+                        }
+                    }
+
+                    //yield return "object? commandResult = command.ExecuteScalar();";
+                    //yield return "if (commandResult is null) throw new Exception(\"Command failed!\");";
+
+                    //switch (identityColType)
+                    //{
+                    //    case "int":
+                    //        yield return $"value.{identityColName} = Convert.ToInt32(commandResult);";
+                    //        break;
+                    //    case "long":
+                    //        yield return $"value.{identityColName} = Convert.ToInt64(commandResult);";
+                    //        break;
+                    //    default:
+                    //        yield return $"value.{identityColName} = ({identityColType})commandResult;";
+                    //        break;
+                    //}
                 }
             }
         }

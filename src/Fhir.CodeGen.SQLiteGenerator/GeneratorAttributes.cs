@@ -80,10 +80,12 @@ public class GeneratorAttributes
             {
                 public string? ReferenceTable { get; set; }
                 public string? ReferenceColumn { get; set; }
-                public {{{_cgSQLiteForeignKey}}}(string? referenceTable = null, string? referenceColumn = null)
+                public string? ModelTypeName { get; set; }
+                public {{{_cgSQLiteForeignKey}}}(string? referenceTable = null, string? referenceColumn = null, string? modelTypeName = null)
                 {
                     ReferenceTable = referenceTable;
                     ReferenceColumn = referenceColumn;
+                    ModelTypeName = modelTypeName;
                 }
             }
 

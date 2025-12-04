@@ -249,7 +249,7 @@ public partial class FhirDbComparer
         }
 
         // apply database changes
-        _vsComparisonCache.ComparisonsToAdd.Insert(_db);
+        _vsComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         _vsComparisonCache.ComparisonsToUpdate.Update(_db);
         _vsComparisonCache.ComparisonsToDelete.Delete(_db);
     }
@@ -648,7 +648,7 @@ public partial class FhirDbComparer
         }
 
         // apply the changes to the concept comparisons
-        conceptComparisonCache.ComparisonsToAdd.Insert(_db);
+        conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         conceptComparisonCache.ComparisonsToUpdate.Update(_db);
         conceptComparisonCache.ComparisonsToDelete.Delete(_db);
     }
@@ -718,7 +718,7 @@ public partial class FhirDbComparer
         // apply the changes to the structure comparisons
         if (vsComparisonCache.ComparisonsToAdd.Any())
         {
-            vsComparisonCache.ComparisonsToAdd.Insert(_db);
+            vsComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
         if (vsComparisonCache.ComparisonsToUpdate.Any())
@@ -734,7 +734,7 @@ public partial class FhirDbComparer
         // apply the changes to the element comparisons
         if (conceptComparisonCache.ComparisonsToAdd.Any())
         {
-            conceptComparisonCache.ComparisonsToAdd.Insert(_db);
+            conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
         if (conceptComparisonCache.ComparisonsToUpdate.Any())
@@ -867,7 +867,7 @@ public partial class FhirDbComparer
         // apply inverse updates to the VS
         if (addedInverse)
         {
-            inverseComparsion.Insert(_db);
+            inverseComparsion.Insert(_db, insertPrimaryKey: true);
         }
         else
         {
@@ -875,7 +875,7 @@ public partial class FhirDbComparer
         }
 
         // apply our concept changes
-        conceptComparisonCache.ComparisonsToAdd.Insert(_db);
+        conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
         conceptComparisonCache.ComparisonsToUpdate.Update(_db);
         conceptComparisonCache.ComparisonsToDelete.Delete(_db);
 
