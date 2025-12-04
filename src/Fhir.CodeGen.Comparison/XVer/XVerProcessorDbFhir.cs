@@ -16,12 +16,14 @@ using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Models;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Model.CdsHooks;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
 using Microsoft.Extensions.Logging;
 using Octokit;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
 
@@ -125,22 +127,22 @@ public partial class XVerProcessor
 
 
     /// <summary>
-    /// Represents index information for a cross-version FHIR package, including references to supporting structures and value sets.
+    /// Represents index information for a cross-version FHIR sourcePackage, including references to supporting structures and value sets.
     /// </summary>
     private class XverPackageIndexInfo
     {
         /// <summary>
-        /// Gets or sets the source package support information.
+        /// Gets or sets the source sourcePackage support information.
         /// </summary>
         public required PackageXverSupport SourcePackageSupport { get; set; }
 
         /// <summary>
-        /// Gets or sets the target package support information.
+        /// Gets or sets the target sourcePackage support information.
         /// </summary>
         public required PackageXverSupport TargetPackageSupport { get; set; }
 
         /// <summary>
-        /// Gets or sets the unique package identifier for this cross-version package.
+        /// Gets or sets the unique sourcePackage identifier for this cross-version sourcePackage.
         /// </summary>
         public required string PackageId { get; set; }
 
@@ -180,6 +182,589 @@ public partial class XVerProcessor
 
     private static Dictionary<string, string> _publisherScripts = [];
     private static Lock _publisherScriptsLock = new();
+
+    public void WriteFhirFromDbOutcomes(string? version = null, string? outputDir = null)
+    {
+        // check for no database
+        if (_db == null)
+        {
+            throw new Exception("Cannot generate FHIR artifacts without a loaded database!");
+        }
+
+        // prefer the map path if it is set
+        if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
+        {
+            outputDir = _config.CrossVersionMapSourcePath;
+        }
+        else
+        {
+            outputDir ??= _config.OutputDirectory;
+        }
+
+        // check for no output location
+        if (string.IsNullOrEmpty(outputDir))
+        {
+            throw new Exception("Cannot write FHIR artifacts without output or map source folder!");
+        }
+
+        string fhirDir = Path.Combine(outputDir, "fhir");
+        if (Directory.Exists(fhirDir))
+        {
+            Directory.Delete(fhirDir, true);
+        }
+
+        Directory.CreateDirectory(fhirDir);
+
+        if (string.IsNullOrEmpty(version))
+        {
+            _crossDefinitionVersion = _config.XverArtifactVersion;
+        }
+        else
+        {
+            _crossDefinitionVersion = version;
+        }
+
+        _logger.LogInformation($"Writing cross-version FHIR artifacts to {fhirDir} with version {_crossDefinitionVersion}");
+
+        // grab the FHIR Packages we are processing
+        List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
+        ConcurrentDictionary<int, string> differentialVsBySourceKey = [];
+
+        // iterate across the packages as source packages
+        foreach ((DbFhirPackage sourcePackage, int index) in packages.Select((p, i) => (p, i)))
+        {
+            _logger.LogInformation($"Processing source package {index + 1} of {packages.Count}: {sourcePackage.ShortName}");
+
+            // starting from the current package, iterate over earlier packages as target packages
+            if (index > 0)
+            {
+                for (int targetIndex = index - 1; targetIndex >= 0; targetIndex--)
+                {
+                    DbFhirPackage targetPackage = packages[targetIndex];
+                    _logger.LogInformation($"  Processing target package: {targetPackage.ShortName}");
+
+                    // build our package id
+                    string packageId = getPackageId(sourcePackage, targetPackage);
+
+                    // create the export package directory
+                    string packageDir = createExportPackageDir(fhirDir, sourcePackage, targetPackage);
+
+                    // write all of the source-defined code systems
+                    List<XVerIgFileRecord> csFiles = writeXverCodeSystems(sourcePackage, targetPackage, packageId, packageDir);
+
+                    // write the differential value sets
+                    List<XVerIgFileRecord> vsFiles = writeXverValueSets(
+                        sourcePackage,
+                        targetPackage,
+                        packageId,
+                        packageDir);
+
+                }
+            }
+
+            // starting from the current package, iterate over later packages as target packages
+            if (index < packages.Count - 1)
+            {
+                for (int targetIndex = index + 1; targetIndex < packages.Count; targetIndex++)
+                {
+                    DbFhirPackage targetPackage = packages[targetIndex];
+                    _logger.LogInformation($"  Processing target package: {targetPackage.ShortName}");
+                }
+            }
+        }
+    }
+
+    private List<XVerIgFileRecord> writeXverValueSets(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        string packageId,
+        string packageDir)
+    {
+        _logger.LogInformation($"  Writing Value Sets for: {packageId}");
+
+        string vocabDir = _config.XverExportForPublisher
+            ? Path.Combine(packageDir, "input", "vocabulary")
+            : Path.Combine(packageDir, "package");
+
+        if (!Directory.Exists(vocabDir))
+        {
+            Directory.CreateDirectory(vocabDir);
+        }
+
+        List<XVerIgFileRecord> exported = [];
+
+        // write the relevant externally-included value sets
+        foreach (DbExternalInclusion inclusion in DbExternalInclusion.SelectEnumerable(_db!.DbConnection, ResourceType: Hl7.Fhir.Model.FHIRAllTypes.ValueSet))
+        {
+            if ((inclusion.IncludeInPackages is not null) &&
+                !inclusion.GetIncludeInPackagesList().Contains(packageId, StringComparer.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            // write the code system to a file
+            string filename = $"ValueSet-{inclusion.Id}.json";
+            string path = Path.Combine(vocabDir, filename);
+            File.WriteAllText(path, inclusion.Json);
+
+            exported.Add(new()
+            {
+                FileName = filename,
+                FileNameWithoutExtension = filename[..^5],
+                IsPageContentFile = false,
+                Name = inclusion.Name,
+                Id = inclusion.Id,
+                Url = inclusion.UnversionedUrl,
+                ResourceType = Hl7.Fhir.Model.FHIRAllTypes.ValueSet.GetLiteral(),
+                Version = inclusion.Version,
+                Description = $"Externally-defined ValueSet: {inclusion.Name}",
+            });
+        }
+
+        // traverse the list of value set outcomes for this package pair
+        foreach (DbValueSetOutcome outcome in
+            DbValueSetOutcome.SelectEnumerable(
+                _db!.DbConnection,
+                SourceFhirPackageKey: sourcePackage.Key,
+                TargetFhirPackageKey: targetPackage.Key))
+        {
+            // skip records we do not need to generate for
+            if ((outcome.OutcomeAction == OutcomeValueSetActionCodes.UseValueSetSameName) ||
+                (outcome.OutcomeAction == OutcomeValueSetActionCodes.UseValueSetRenamed))
+            {
+                continue;
+            }
+
+            // resolve the database value set record
+            DbValueSet? sourceVs = DbValueSet.SelectSingle(
+                _db.DbConnection,
+                Key: outcome.SourceValueSetKey);
+
+            if (sourceVs is null)
+            {
+                throw new Exception($"Could not find source ValueSet with key {outcome.SourceValueSetKey} for outcome record {outcome.Key}!");
+            }
+
+            DbValueSet? targetVs = outcome.TargetValueSetKey is null
+                ? null
+                : DbValueSet.SelectSingle(
+                    _db.DbConnection,
+                    Key: outcome.TargetValueSetKey);
+
+            ValueSet fhirVs = new()
+            {
+                Url = outcome.PotentialGenUrl,
+                Id = outcome.PotentialGenLongId,
+                Version = _crossDefinitionVersion,
+                Name = FhirSanitizationUtils.ReformatIdForName(outcome.PotentialGenLongId!),
+                Title = $"Cross-version ValueSet {sourcePackage.ShortName}.{sourceVs.Name} for use in FHIR {targetPackage.ShortName}",
+                Status = PublicationStatus.Active,
+                Experimental = false,
+                UseContext = sourceVs.UseContexts,
+                Jurisdiction = sourceVs.Jurisdictions,
+                DateElement = new FhirDateTime(DateTimeOffset.Now),
+                Description = (targetVs is null)
+                    ? $"This cross-version ValueSet represents content from {sourceVs.VersionedUrl} for use in FHIR {targetPackage.ShortName}."
+                    : $"This cross-version ValueSet represents content from {sourceVs.VersionedUrl} for use in FHIR {targetPackage.ShortName}" +
+                        $" that is appropriate for use but unavailable in {targetVs.VersionedUrl}.",
+                Compose = new()
+                {
+                    Include = [],
+                },
+                Expansion = new()
+                {
+                    TimestampElement = new FhirDateTime(DateTimeOffset.Now),
+                    Contains = [],
+                },
+            };
+
+            // check to see if we should set various root extensions
+            if (sourceVs.FhirMaturity != null)
+            {
+                fhirVs.AddExtension(CommonDefinitions.ExtUrlFmm, new Integer(sourceVs.FhirMaturity));
+            }
+
+            // FHIR-I is the default WG responsible if none are specified
+            string wg = CommonDefinitions.ResolveWorkgroup(sourceVs.WorkGroup, "fhir");
+
+            // add the work group extension
+            fhirVs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+            // ensure there is a publisher, use the WG if there is none
+            fhirVs.Publisher = CommonDefinitions.WorkgroupNames[wg];
+
+            // ensure there is a contact point - use the default WG unless there are multiple entries
+            if ((fhirVs.Contact == null) || (fhirVs.Contact.Count < 2))
+            {
+                fhirVs.Contact = [
+                    new()
+                    {
+                        Name = CommonDefinitions.WorkgroupNames[wg],
+                        Telecom = [
+                            new()
+                            {
+                                System = ContactPoint.ContactPointSystem.Url,
+                                Value = CommonDefinitions.WorkgroupUrls[wg],
+                            },
+                        ],
+                    }
+                ];
+            }
+
+            // check for unexpandable value sets (are stuck using the compose - even though it is likely incorrect)
+            if ((sourceVs.CanExpand == false) ||
+                (sourceVs.ActiveConcreteConceptCount == 0))
+            {
+                // use the existing compose
+                fhirVs.Compose = sourceVs.Compose;
+
+                // will not have an expansion
+                fhirVs.Expansion = null;
+            }
+            else
+            {
+                Dictionary<string, ValueSet.ConceptSetComponent> composeIncludes = [];
+
+                // traverse concepts
+                foreach (DbValueSetConceptOutcome conceptOutcome in
+                    DbValueSetConceptOutcome.SelectEnumerable(
+                        _db.DbConnection,
+                        ValueSetOutcomeKey: outcome.Key))
+                {
+                    // ignore concepts that should not be included
+                    if ((conceptOutcome.OutcomeAction == OutcomeValueSetConceptActionCodes.UseConceptSameCode) ||
+                        (conceptOutcome.OutcomeAction == OutcomeValueSetConceptActionCodes.UseConceptChangedCode) ||
+                        (conceptOutcome.OutcomeAction == OutcomeValueSetConceptActionCodes.MappedInOtherValueSet))
+                    {
+                        continue;
+                    }
+
+                    // resolve this concept
+                    DbValueSetConcept concept = DbValueSetConcept.SelectSingle(
+                        _db.DbConnection,
+                        Key: conceptOutcome.SourceValueSetConceptKey)
+                        ?? throw new Exception($"Failed to resolve concept with key {conceptOutcome.SourceValueSetConceptKey} for ValueSet outcome {outcome.Key}!");
+
+                    string composeKey = concept.System + "|" + concept.SystemVersion;
+
+                    if (!composeIncludes.TryGetValue(composeKey, out ValueSet.ConceptSetComponent? composeInclude))
+                    {
+                        // create a new include for this concept
+                        composeInclude = new()
+                        {
+                            System = concept.System,
+                            Version = concept.SystemVersion,
+                            Concept = [],
+                        };
+                        composeIncludes.Add(composeKey, composeInclude);
+                        fhirVs.Compose.Include.Add(composeInclude);
+                    }
+
+                    composeInclude.Concept.Add(new()
+                    {
+                        Code = concept.Code,
+                        Display = concept.Display,
+                    });
+
+                    // add this concept to the expansion
+                    fhirVs.Expansion.Contains.Add(new()
+                    {
+                        System = concept.System,
+                        Version = concept.SystemVersion,
+                        Code = concept.Code,
+                        Display = concept.Display,
+                    });
+                }
+
+                // add the compose includes to the value set
+                fhirVs.Compose.Include = composeIncludes.Values.ToList();
+
+                // if we have no concepts, do not write this value set
+                if (composeIncludes.Count == 0)
+                {
+                    continue;
+                }
+            }
+
+            fhirVs.cgAddPackageSource(packageId, _crossDefinitionVersion, null);
+
+            // write the code system to a file
+            string filename = $"ValueSet-{fhirVs.Id}.json";
+            string path = Path.Combine(vocabDir, filename);
+            File.WriteAllText(path, fhirVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+
+            exported.Add(new()
+            {
+                FileName = filename,
+                FileNameWithoutExtension = filename[..^5],
+                IsPageContentFile = false,
+                Name = fhirVs.Name,
+                Id = fhirVs.Id,
+                Url = fhirVs.Url,
+                ResourceType = Hl7.Fhir.Model.FHIRAllTypes.ValueSet.GetLiteral(),
+                Version = fhirVs.Version,
+                Description = fhirVs.Description ?? fhirVs.Title ?? $"ValueSet: {fhirVs.Url}|{fhirVs.Version}",
+            });
+        }
+
+        return exported;
+    }
+
+    private List<XVerIgFileRecord> writeXverCodeSystems(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        string packageId,
+        string packageDir)
+    {
+        _logger.LogInformation($"  Writing Code Systems for: {packageId}");
+
+        string vocabDir = _config.XverExportForPublisher
+            ? Path.Combine(packageDir, "input", "vocabulary")
+            : Path.Combine(packageDir, "package");
+
+        if (!Directory.Exists(vocabDir))
+        {
+            Directory.CreateDirectory(vocabDir);
+        }
+
+        List<XVerIgFileRecord> exported = [];
+
+        // write the relevant externally-included code systems
+        foreach (DbExternalInclusion inclusion in DbExternalInclusion.SelectEnumerable(_db!.DbConnection, ResourceType: Hl7.Fhir.Model.FHIRAllTypes.CodeSystem))
+        {
+            if ((inclusion.IncludeInPackages is not null) &&
+                !inclusion.GetIncludeInPackagesList().Contains(packageId, StringComparer.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            // write the code system to a file
+            string filename = $"CodeSystem-{inclusion.Id}.json";
+            string path = Path.Combine(vocabDir, filename);
+            File.WriteAllText(path, inclusion.Json);
+
+            exported.Add(new()
+            {
+                FileName = filename,
+                FileNameWithoutExtension = filename[..^5],
+                IsPageContentFile = false,
+                Name = inclusion.Name,
+                Id = inclusion.Id,
+                Url = inclusion.UnversionedUrl,
+                ResourceType = Hl7.Fhir.Model.FHIRAllTypes.CodeSystem.GetLiteral(),
+                Version = inclusion.Version,
+                Description = $"Externally-defined CodeSystem: {inclusion.Name}",
+            });
+        }
+
+        // get the list of code systems in the source sourcePackage
+        List<DbCodeSystem> codeSystems = DbCodeSystem.SelectList(
+            _db!.DbConnection,
+            FhirPackageKey: sourcePackage.Key);
+
+
+        // iterate over the code systems to them
+        foreach (DbCodeSystem dbCs in codeSystems)
+        {
+            // create the FHIR CodeSystem
+            CodeSystem fhirCs = new()
+            {
+                Id = dbCs.Id,
+                Url = dbCs.UnversionedUrl,
+                Name = dbCs.Name,
+                Version = dbCs.Version,
+                VersionAlgorithm =
+                    (dbCs.VersionAlgorithmString != null)
+                    ? new FhirString(dbCs.VersionAlgorithmString)
+                    : (dbCs.VersionAlgorithmCoding != null)
+                    ? dbCs.VersionAlgorithmCoding
+                    : null,
+                Status = dbCs.Status,
+                Title = dbCs.Title,
+                Description = dbCs.Description,
+                Purpose = dbCs.Purpose,
+                Text = dbCs.Narrative,
+                Experimental = dbCs.IsExperimental,
+                DateElement = (dbCs.LastChangedDate != null) ? new FhirDateTime(dbCs.LastChangedDate.Value) : null,
+                Publisher = dbCs.Publisher,
+                Copyright = dbCs.Copyright,
+                CopyrightLabel = dbCs.CopyrightLabel,
+                ApprovalDate = dbCs.ApprovalDate,
+                LastReviewDate = dbCs.LastReviewDate,
+                EffectivePeriod = (dbCs.EffectivePeriodStart != null || dbCs.EffectivePeriodEnd != null)
+                    ? new Period()
+                    {
+                        StartElement = (dbCs.EffectivePeriodStart != null) ? new FhirDateTime(dbCs.EffectivePeriodStart.Value) : null,
+                        EndElement = (dbCs.EffectivePeriodEnd != null) ? new FhirDateTime(dbCs.EffectivePeriodEnd.Value) : null,
+                    }
+                    : null,
+                Topic = dbCs.Topic,
+                RelatedArtifact = dbCs.RelatedArtifacts,
+                Jurisdiction = dbCs.Jurisdictions,
+                UseContext = dbCs.UseContexts,
+                Contact = dbCs.Contacts,
+                Author = dbCs.Authors,
+                Editor = dbCs.Editors,
+                Reviewer = dbCs.Reviewers,
+                CaseSensitive = dbCs.IsCaseSensitive,
+                ValueSet = dbCs.ValueSetVersioned,
+                HierarchyMeaning = dbCs.HierarchyMeaning,
+                Compositional = dbCs.IsCompositional,
+                VersionNeeded = dbCs.VersionNeeded,
+                Content = dbCs.Content,
+                Supplements = dbCs.SupplementsVersioned,
+                Count = dbCs.Count,
+            };
+
+            // remove pre-R5 elements if we are in an earlier version
+            if (targetPackage.DefinitionFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+            {
+                fhirCs.ApprovalDate = null;
+                fhirCs.LastReviewDate = null;
+                fhirCs.EffectivePeriod = null;
+                fhirCs.Topic = null;
+                fhirCs.Author = null;
+                fhirCs.Editor = null;
+                fhirCs.Reviewer = null;
+                fhirCs.RelatedArtifact = null;
+            }
+
+            string? wg = null;
+
+            // add standard extensions
+            if (dbCs.RootExtensions != null)
+            {
+                foreach (Hl7.Fhir.Model.Extension ext in dbCs.RootExtensions)
+                {
+                    switch (ext.Url)
+                    {
+                        case CommonDefinitions.ExtUrlWorkGroup:
+                            {
+                                switch (ext.Value)
+                                {
+                                    case FhirString fhirString:
+                                        wg = fhirString.Value;
+                                        break;
+                                    case Hl7.Fhir.Model.Code code:
+                                        wg = code.Value;
+                                        break;
+                                    case Markdown markdown:
+                                        wg = markdown.Value;
+                                        break;
+                                    default:
+                                        continue;
+                                }
+                            }
+                            break;
+
+                        case CommonDefinitions.ExtUrlPackageSource:
+                            fhirCs.cgAddPackageSource(packageId, _crossDefinitionVersion, null);
+                            break;
+
+                        default:
+                            // copy any extensions we have not specifically handled
+                            fhirCs.Extension.Add(ext);
+                            break;
+                    }
+                }
+            }
+
+            // default to fhir infrastructure work group if none is present
+            wg = CommonDefinitions.ResolveWorkgroup(wg, "fhir");
+
+            // add the work group extension
+            fhirCs.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+            // ensure the publisher matches the WG
+            fhirCs.Publisher = CommonDefinitions.WorkgroupNames[wg];
+
+            // ensure there is a contact point - use the default WG unless there are multiple entries
+            if ((fhirCs.Contact == null) || (fhirCs.Contact.Count < 2))
+            {
+                fhirCs.Contact = [
+                    new()
+                        {
+                            Name = CommonDefinitions.WorkgroupNames[wg],
+                            Telecom = [
+                                new()
+                                {
+                                    System = ContactPoint.ContactPointSystem.Url,
+                                    Value = CommonDefinitions.WorkgroupUrls[wg],
+                                },
+                            ],
+                        }
+                ];
+            }
+
+            // add filters
+            List<DbCodeSystemFilter> csFilters = DbCodeSystemFilter.SelectList(
+                _db!.DbConnection,
+                CodeSystemKey: dbCs.Key);
+
+            foreach (DbCodeSystemFilter dbFilter in csFilters)
+            {
+                fhirCs.Filter.Add(new CodeSystem.FilterComponent()
+                {
+                    Code = dbFilter.Code,
+                    Description = dbFilter.Description,
+                    Operator = dbFilter.Operators.Split('|').Select(op => EnumUtility.ParseLiteral<FilterOperator>(op, true)).ToList(),
+                    Value = dbFilter.Value,
+                });
+            }
+
+            // add property definitions
+            List<DbCodeSystemPropertyDefinition> csPropertyDefinitions = DbCodeSystemPropertyDefinition.SelectList(
+                _db!.DbConnection,
+                CodeSystemKey: dbCs.Key);
+
+            foreach (DbCodeSystemPropertyDefinition dbPropDef in csPropertyDefinitions)
+            {
+                fhirCs.Property.Add(new CodeSystem.PropertyComponent()
+                {
+                    Code = dbPropDef.Code,
+                    Uri = dbPropDef.Uri,
+                    Description = dbPropDef.Description,
+                    Type = dbPropDef.Type,
+                });
+            }
+
+            // recursively add concepts
+            addDbCodeSystemConcepts(fhirCs.Concept, dbCs.Key);
+
+            // write the code system to a file
+            string filename = $"CodeSystem-{fhirCs.Id}.json";
+            string path = Path.Combine(vocabDir, filename);
+            File.WriteAllText(path, fhirCs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+
+            exported.Add(new()
+            {
+                FileName = filename,
+                FileNameWithoutExtension = filename[..^5],
+                IsPageContentFile = false,
+                Name = fhirCs.Name,
+                Id = fhirCs.Id,
+                Url = fhirCs.Url,
+                ResourceType = Hl7.Fhir.Model.FHIRAllTypes.CodeSystem.GetLiteral(),
+                Version = fhirCs.Version,
+                Description = fhirCs.Description ?? fhirCs.Title ?? $"CodeSystem: {fhirCs.Url}|{fhirCs.Version}",
+            });
+        }
+
+        return exported;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /// <summary>
     /// Generates cross-version FHIR artifacts from the loaded database, including CodeSystems,
@@ -251,7 +836,7 @@ public partial class XVerProcessor
         // iterate over the packages to build the Basic resource element paths
         foreach ((DbFhirPackage package, int index) in packages.Select((p, i) => (p, i)))
         {
-            // need to create a definition collection with the matching core package so that we can build everything
+            // need to create a definition collection with the matching core sourcePackage so that we can build everything
             string packageDirective = $"{package.PackageId}#{package.PackageVersion}";
 
             // create a loader because these are all different FHIR core versions
@@ -261,7 +846,7 @@ public partial class XVerProcessor
             });
 
             //DefinitionCollection coreDc = loader.LoadPackages([packageDirective]).Result
-            //    ?? throw new Exception($"Could not load package: {packageDirective}");
+            //    ?? throw new Exception($"Could not load sourcePackage: {packageDirective}");
 
             PackageXverSupport packageSupport = new()
             {
@@ -366,7 +951,7 @@ public partial class XVerProcessor
 
             writeXverStructures(packageSupports, focusPackageIndex, xverExtensions, xverProfiles, fhirDir);
 
-            // write the source code systems for this package
+            // write the source code systems for this sourcePackage
             Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> xverCodeSystems = writeXverSourceCodeSystemsFromDb(
                 packages,
                 focusPackageIndex,
@@ -393,17 +978,17 @@ public partial class XVerProcessor
             allIndexInfos,
             outputDir);
 
-        // write our combined package support files
+        // write our combined sourcePackage support files
         if (_config.XverExportForPublisher)
         {
-            // write the individual package support files
+            // write the individual sourcePackage support files
             for (int focusPackageIndex = 0; focusPackageIndex < packages.Count; focusPackageIndex++)
             {
                 // write the publisher config files
                 writePublisherSinglePackageConfig(packageSupports, focusPackageIndex, fhirDir, allIndexInfos);
             }
 
-            // write the validation package support files
+            // write the validation sourcePackage support files
             writePublisherValidationPackageConfig(packageSupports, allIndexInfos, fhirDir);
         }
         else
@@ -414,7 +999,7 @@ public partial class XVerProcessor
         if ((_config.XverExportForPublisher == false) &&
             (_config.XverGenerateNpms == true))
         {
-            // make the make package tgz files
+            // make the make sourcePackage tgz files
             foreach (DbFhirPackage focusPackage in packages)
             {
                 // TODO: until verified, only write R4 and later packages
@@ -426,7 +1011,7 @@ public partial class XVerProcessor
 
                 string validationPackageId = $"hl7.fhir.uv.xver.{focusPackage.ShortName.ToLowerInvariant()}";
 
-                // create the validation package
+                // create the validation sourcePackage
                 createTgzFromDirectory(
                     Path.Combine(fhirDir, focusPackage.ShortName),
                     Path.Combine(fhirDir, $"{validationPackageId}.{_crossDefinitionVersion}.tgz"));
@@ -441,7 +1026,7 @@ public partial class XVerProcessor
 
                     string packageId = $"hl7.fhir.uv.xver-{sourcePackage.ShortName.ToLowerInvariant()}.{focusPackage.ShortName.ToLowerInvariant()}";
 
-                    // create the validation package
+                    // create the validation sourcePackage
                     createTgzFromDirectory(
                         Path.Combine(fhirDir, $"{sourcePackage.ShortName}-for-{focusPackage.ShortName}"),
                         Path.Combine(fhirDir, $"{packageId}.{_crossDefinitionVersion}.tgz"));
@@ -450,7 +1035,7 @@ public partial class XVerProcessor
         }
     }
 
-
+    [Obsolete]
     private Dictionary<(int sourceCsKey, int targetPackageId), (CodeSystem? cs, int? externalInclusionKey)> writeXverSourceCodeSystemsFromDb(
         List<DbFhirPackage> packages,
         int focusPackageIndex,
@@ -499,7 +1084,7 @@ public partial class XVerProcessor
                 }
             }
 
-            // get the list of code systems in the source package
+            // get the list of code systems in the source sourcePackage
             List<DbCodeSystem> codeSystems = DbCodeSystem.SelectList(
                 _db!.DbConnection,
                 FhirPackageKey: focusPackage.Key);
@@ -792,19 +1377,19 @@ public partial class XVerProcessor
         //{
         //    DbFhirPackage targetPackage = packageDict[targetPackageId];
 
-        //    string dir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
+        //    string packageDir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
 
-        //    dir = _config.XverExportForPublisher
-        //        ? Path.Combine(dir, "input", "vocabulary")
-        //        : Path.Combine(dir, "package");
-        //    if (!Directory.Exists(dir))
+        //    packageDir = _config.XverExportForPublisher
+        //        ? Path.Combine(packageDir, "input", "vocabulary")
+        //        : Path.Combine(packageDir, "sourcePackage");
+        //    if (!Directory.Exists(packageDir))
         //    {
-        //        Directory.CreateDirectory(dir);
+        //        Directory.CreateDirectory(packageDir);
         //    }
 
         //    // write the value set to a file
         //    string filename = $"ValueSet-{originalDbVs.Id}.json";
-        //    string path = Path.Combine(dir, filename);
+        //    string path = Path.Combine(packageDir, filename);
         //    File.WriteAllText(path, originalDbVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
         //}
     }
@@ -1150,7 +1735,7 @@ public partial class XVerProcessor
                         }
                     }
 
-                    // if we still do not need an extension, go to next package
+                    // if we still do not need an extension, go to next sourcePackage
                     if (!extensionNeeded)
                     {
                         continue;
@@ -1344,7 +1929,7 @@ public partial class XVerProcessor
                         }
                     }
 
-                    // if we still do not need an extension, go to next package
+                    // if we still do not need an extension, go to next sourcePackage
                     if (!extensionNeeded)
                     {
                         continue;
@@ -2363,7 +2948,7 @@ public partial class XVerProcessor
                     continue;
                 }
 
-                // get the mapped structure URLs for the target package
+                // get the mapped structure URLs for the target sourcePackage
                 List<string> mappedUrls = _db!.DbConnection.GetMappedStructureUrls(sourcePackageSupport.Package.Key, tp, targetPackageSupport.Package.Key);
 
                 foreach (string unversionedUrl in mappedUrls)
@@ -2787,7 +3372,7 @@ public partial class XVerProcessor
                 }
             }
 
-            // build the value sets for this package
+            // build the value sets for this sourcePackage
             buildXverValueSets(
                 packages,
                 sourcePackageIndex,
@@ -2814,7 +3399,7 @@ public partial class XVerProcessor
         if ((currentPackageIndex == -1) ||
             (targetPackageIndex == -1))
         {
-            // if we are not the last package, build upwards
+            // if we are not the last sourcePackage, build upwards
             if (sourcePackageIndex < (packages.Count - 1))
             {
                 buildXverValueSets(
@@ -2829,7 +3414,7 @@ public partial class XVerProcessor
                     targetPackageIndex: sourcePackageIndex + 1);
             }
 
-            // if we are not the first package, build downwards
+            // if we are not the first sourcePackage, build downwards
             if (sourcePackageIndex > 0)
             {
                 buildXverValueSets(
@@ -3061,11 +3646,11 @@ public partial class XVerProcessor
             }
         }
 
-        // check for continuing to the next package to the right
+        // check for continuing to the next sourcePackage to the right
         if (testingRight &&
             (targetPackageIndex < packages.Count - 1))
         {
-            // build the value set for this package
+            // build the value set for this sourcePackage
             buildXverValueSets(
                 packages,
                 sourcePackageIndex,
@@ -3078,11 +3663,11 @@ public partial class XVerProcessor
                 targetPackageIndex: targetPackageIndex + 1);
         }
 
-        // check for continuing to the next package to the left
+        // check for continuing to the next sourcePackage to the left
         if (testingLeft &&
             (targetPackageIndex > 0))
         {
-            // build the value set for this package
+            // build the value set for this sourcePackage
             buildXverValueSets(
                 packages,
                 sourcePackageIndex,

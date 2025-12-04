@@ -211,6 +211,11 @@ public partial class XVerProcessor
         // traverse structure outcomes without actions
         foreach (DbStructureOutcome outcome in outcomes)
         {
+            if (outcome.OutcomeAction is not null)
+            {
+                continue;
+            }
+
             // check for unmapped
             if (outcome.TargetStructureKey is null)
             {
@@ -311,6 +316,11 @@ public partial class XVerProcessor
         // traverse the element outcomes without actions
         foreach (DbElementOutcome outcome in outcomes)
         {
+            if (outcome.OutcomeAction is not null)
+            {
+                continue;
+            }
+
             // update our current structure if necessary
             if (outcome.StructureOutcomeKey != sdOutcome?.Key)
             {
@@ -499,6 +509,11 @@ public partial class XVerProcessor
         // traverse the value set outcomes without actions
         foreach (DbValueSetOutcome outcome in outcomes)
         {
+            if (outcome.OutcomeAction is not null)
+            {
+                continue;
+            }
+
             // check for a complete mapping
             if (outcome.FullyMapsToThisTarget || outcome.FullyMapsAcrossAllTargets)
             {
@@ -532,6 +547,81 @@ public partial class XVerProcessor
             }
         }
     }
+
+    private void updateValueSetConceptOutcomeActions(
+        List<DbValueSetConceptOutcome> outcomes,
+        List<DbValueSetOutcome> vsOutcomes,
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage)
+    {
+        // build a lookup for outcomes based on source concept key
+        ILookup<int, DbValueSetConceptOutcome> conceptOutcomeLookup = outcomes.ToLookup(o => o.SourceValueSetConceptKey);
+
+        // traverse the value set concept outcomes
+        foreach (DbValueSetConceptOutcome outcome in outcomes)
+        {
+            if (outcome.OutcomeAction is not null)
+            {
+                continue;
+            }
+
+            // check for unmapped
+            if (outcome.IsUnmapped ||
+                (outcome.TargetValueSetConceptCode is null))
+            {
+                // check to see if this concept has a mapping to another value set
+                if (conceptOutcomeLookup[outcome.SourceValueSetConceptKey].Any(o => !o.IsUnmapped && (o.TargetValueSetConceptCode is not null)))
+                {
+                    outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.MappedInOtherValueSet;
+                    outcome.Comments += "\n\n" +
+                        $"The FHIR {sourcePackage.ShortName} ValueSet Concept `{outcome.SourceValueSetConceptCode}` has no mapping" +
+                        $" in FHIR {targetPackage.ShortName} for this ValueSet, but does have a mapping to another ValueSet." +
+                        $" Review other ValueSets in FHIR {targetPackage.ShortName} for the mapped concept.";
+                }
+                else
+                {
+                    outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition;
+                    outcome.Comments += "\n\n" +
+                        $"The FHIR {sourcePackage.ShortName} ValueSet Concept `{outcome.SourceValueSetConceptCode}` has no mapping" +
+                        $" in FHIR {targetPackage.ShortName}.";
+                }
+
+                continue;
+            }
+
+            // check for equivalent or identical
+            if (outcome.IsIdentical || outcome.IsEquivalent)
+            {
+                // check for same code
+                if (outcome.SourceValueSetConceptCode == outcome.TargetValueSetConceptCode)
+                {
+                    outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.UseConceptSameCode;
+                }
+                else
+                {
+                    outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.UseConceptChangedCode;
+                }
+
+                outcome.Comments += "\n\n" +
+                    $"The FHIR {sourcePackage.ShortName} ValueSet Concept" +
+                    $" `{outcome.SourceValueSetConceptSystem}`#`{outcome.SourceValueSetConceptCode}` is mapped as" +
+                    $" equivalent to FHIR {targetPackage.ShortName} ValueSet Concept" +
+                    $" `{outcome.TargetValueSetConceptSystem}`#`{outcome.TargetValueSetConceptCode}`.";
+
+                continue;
+            }
+
+            // default to cross-version definition
+            outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition;
+            outcome.Comments += "\n\n" +
+                $"The FHIR {sourcePackage.ShortName} ValueSet Concept" +
+                $" `{outcome.SourceValueSetConceptSystem}`#`{outcome.SourceValueSetConceptCode}` is mapped as" +
+                $" a non-equivalent concept to FHIR {targetPackage.ShortName} ValueSet Concept" +
+                $" `{outcome.TargetValueSetConceptSystem}`#`{outcome.TargetValueSetConceptCode}`." +
+                $" Implementers must determine which of the definitions are appropriate for use.";
+        }
+    }
+
 
     private void generateOutcomes(
         DbFhirPackage sourcePackage,
@@ -906,6 +996,8 @@ public partial class XVerProcessor
                             ConceptDomainRelationship = null,
                             ValueDomainRelationship = null,
 
+                            OutcomeAction = null,
+
                             Comments = 
                                 $"The FHIR {sourcePackage.ShortName} ValueSet `{sourceVs.UnversionedUrl}|{sourceVs.Version}`" +
                                 $" Concept `{sourceConcept.System}#{sourceConcept.Code}` has no mapping to FHIR {targetPackage.ShortName}.",
@@ -952,6 +1044,8 @@ public partial class XVerProcessor
                                 FullyMapsAcrossAllTargets = false,
                                 ConceptDomainRelationship = conceptComparison.Relationship,
                                 ValueDomainRelationship = CMR.Equivalent,
+
+                                OutcomeAction = null,
 
                                 Comments = 
                                     $"The FHIR {sourcePackage.ShortName} ValueSet `{sourceVs.UnversionedUrl}|{sourceVs.Version}`" +
@@ -1017,6 +1111,8 @@ public partial class XVerProcessor
                             FullyMapsAcrossAllTargets = conceptComparisons.All(cc => cc.Relationship != CMR.SourceIsBroaderThanTarget),
                             ConceptDomainRelationship = conceptComparison.Relationship,
                             ValueDomainRelationship = CMR.Equivalent,
+
+                            OutcomeAction = null,
 
                             Comments = 
                                 $"The FHIR {sourcePackage.ShortName} ValueSet `{sourceVs.UnversionedUrl}|{sourceVs.Version}`" +
@@ -1087,6 +1183,8 @@ public partial class XVerProcessor
 
         // update our outcomes with action codes
         updateValueSetOutcomeActions(vsOutcomesToAdd);
+        updateValueSetConceptOutcomeActions(vsConceptOutcomesToAdd, vsOutcomesToAdd, sourcePackage, targetPackage);
+
 
         // insert our outcomes into the database
         vsOutcomesToAdd.Insert(_db.DbConnection, insertPrimaryKey: true);

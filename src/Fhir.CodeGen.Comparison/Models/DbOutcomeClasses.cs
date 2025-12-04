@@ -26,6 +26,30 @@ public enum OutcomeValueSetActionCodes
     UseRenamedAndCrossVersion,
 }
 
+public enum OutcomeValueSetConceptActionCodes
+{
+    /// <summary>
+    /// The concept is used with the same code in the target version.
+    /// </summary>
+    UseConceptSameCode,
+    /// <summary>
+    /// The concept is used but has been changed to a different code in the target version.
+    /// </summary>
+    UseConceptChangedCode,
+    /// <summary>
+    /// The concept has no valid mapping to the target version.
+    /// </summary>
+    UnmappedConcept,
+    /// <summary>
+    /// The concept has no valid mapping to the target version, so a cross-version defined concept must be used.
+    /// </summary>
+    UseCrossVersionDefinition,
+    /// <summary>
+    /// The concept is mapped to a different value set in the target version.
+    /// </summary>
+    MappedInOtherValueSet,
+}
+
 public enum OutcomeStructureActionCodes
 {
     /// <summary>
@@ -254,4 +278,6 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
 
     public required string? TargetValueSetConceptSystem { get; set; }
     public required string? TargetValueSetConceptCode { get; set; }
+
+    public required OutcomeValueSetConceptActionCodes? OutcomeAction { get; set; }
 }

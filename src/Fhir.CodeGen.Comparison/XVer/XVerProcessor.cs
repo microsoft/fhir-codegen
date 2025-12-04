@@ -292,7 +292,8 @@ public partial class XVerProcessor
 
             case "fhir":
                 LoadDatabase(false, false);
-                WriteFhirFromDatabase();
+                WriteFhirFromDbOutcomes();
+                //WriteFhirFromDatabase();
                 break;
 
             case "wip":
@@ -301,7 +302,7 @@ public partial class XVerProcessor
                 BuildComparisonPairs();
                 CompareInDatabase();
                 GenerateOutcomesFromComparisons();
-                //WriteFhirFromDatabase();
+                WriteFhirFromDbOutcomes();
                 break;
 
             default:
