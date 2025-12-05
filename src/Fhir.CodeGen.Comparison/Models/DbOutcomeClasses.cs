@@ -47,7 +47,7 @@ public enum OutcomeValueSetConceptActionCodes
     /// <summary>
     /// The concept is mapped to a different value set in the target version.
     /// </summary>
-    MappedInOtherValueSet,
+    MappedElsewhere,
 }
 
 public enum OutcomeStructureActionCodes
@@ -112,6 +112,11 @@ public enum OutcomeElementActionCodes
     /// The element represents an Element.id, so nothing is generated.
     /// </summary>
     IsElementId,
+    /// <summary>
+    /// The concept is mapped to a different element in the target version.
+    /// </summary>
+    MappedElsewhere,
+
 }
 
 [CgSQLiteBaseClass]
@@ -192,6 +197,7 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceElementResourceOrder))]
+[CgSQLiteIndex(nameof(StructureOutcomeKey), nameof(OutcomeAction), nameof(RelatedAncestorOutcomeKey), nameof(SourceElementResourceOrder))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]

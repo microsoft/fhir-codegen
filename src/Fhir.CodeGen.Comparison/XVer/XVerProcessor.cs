@@ -98,6 +98,7 @@ internal static class XVerExtensions
 public partial class XVerProcessor
 {
     private string _crossDefinitionVersion = "0.0.1-snapshot-2";
+    private static readonly DateTimeOffset _runTime = DateTimeOffset.UtcNow;
 
     /// <summary>
     /// The directions for comparison (Up and Down).

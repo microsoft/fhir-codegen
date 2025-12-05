@@ -47,8 +47,6 @@ namespace Fhir.CodeGen.Comparison.XVer;
 
 public partial class XVerProcessor
 {
-    private static readonly DateTimeOffset _runTime = DateTimeOffset.UtcNow;
-
     private const string _xverChangelogMd = $$$"""
 
         ### 0.0.1-snapshot-3

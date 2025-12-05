@@ -259,6 +259,11 @@ public partial class XVerProcessor
                         packageId,
                         packageDir);
 
+                    List<XVerIgFileRecord> sdFiles = writeXverStructures(
+                        sourcePackage,
+                        targetPackage,
+                        packageId,
+                        packageDir);
                 }
             }
 
@@ -273,6 +278,361 @@ public partial class XVerProcessor
             }
         }
     }
+
+    private List<XVerIgFileRecord> writeXverStructures(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        string packageId,
+        string packageDir)
+    {
+        _logger.LogInformation($"  Writing Value Sets for: {packageId}");
+
+        string extensionDir = _config.XverExportForPublisher
+            ? Path.Combine(packageDir, "input", "extensions")
+            : Path.Combine(packageDir, "package");
+
+        if (!Directory.Exists(extensionDir))
+        {
+            Directory.CreateDirectory(extensionDir);
+        }
+
+        string profileDir = _config.XverExportForPublisher
+            ? Path.Combine(packageDir, "input", "profiles")
+            : Path.Combine(packageDir, "package");
+
+        if (!Directory.Exists(profileDir))
+        {
+            Directory.CreateDirectory(profileDir);
+        }
+
+        List<XVerIgFileRecord> exported = [];
+
+        // traverse the list of structure outcomes for this package pair
+        foreach (DbStructureOutcome outcome in
+            DbStructureOutcome.SelectEnumerable(
+                _db!.DbConnection,
+                SourceFhirPackageKey: sourcePackage.Key,
+                TargetFhirPackageKey: targetPackage.Key))
+        {
+            // resolve the database structure record
+            DbStructureDefinition? sourceSd = DbStructureDefinition.SelectSingle(
+                _db.DbConnection,
+                Key: outcome.SourceStructureKey);
+
+            if (sourceSd is null)
+            {
+                throw new Exception($"Could not find source Structure with key {outcome.SourceStructureKey} for outcome record {outcome.Key}!");
+            }
+
+            DbStructureDefinition? targetSd = outcome.TargetStructureKey is null
+                ? null
+                : DbStructureDefinition.SelectSingle(
+                    _db.DbConnection,
+                    Key: outcome.TargetStructureKey);
+
+            // if the target is not null, we want to make a profile
+            StructureDefinition? fhirProfileSd = null;
+            if (targetSd is not null)
+            {
+                // TODO: create profile
+                fhirProfileSd = new()
+                {
+                };
+            }
+
+            // each source element only needs to be processed once per source:target pair - generation takes all outcomes into account
+            HashSet<int> processedSourceElements = [];
+
+            // get the list of element outcomes for this structure outcome that need extensions
+            List<DbElementOutcome> elementOutcomes = DbElementOutcome.SelectList(
+                _db.DbConnection,
+                StructureOutcomeKey: outcome.Key,
+                OutcomeAction: OutcomeElementActionCodes.UseExtension,
+                orderByProperties: [nameof(DbElementOutcome.SourceElementResourceOrder)]);
+
+            foreach (DbElementOutcome elementOutcome in elementOutcomes)
+            {
+                // skip elements that do not need extensions
+                if (elementOutcome.OutcomeAction != OutcomeElementActionCodes.UseExtension)
+                {
+                    continue;
+                }
+
+                // only process elements that have not been processed here
+                if (!processedSourceElements.Add(elementOutcome.SourceElementKey))
+                {
+                    continue;
+                }
+
+                StructureDefinition extensionSd = createExtension(
+                    sourcePackage,
+                    targetPackage,
+                    packageId,
+                    packageDir,
+                    outcome,
+                    sourceSd,
+                    targetSd,
+                    elementOutcome);
+
+                // check for substitution
+
+
+
+            }
+
+        }
+
+
+        return exported;
+    }
+
+    private StructureDefinition createExtension(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        string packageId,
+        string packageDir,
+        DbStructureOutcome structureOutcome,
+        DbStructureDefinition sourceSd,
+        DbStructureDefinition? targetSd,
+        DbElementOutcome elementOutcome)
+    {
+        // resolve the the element definitions
+        DbElement sourceElement = DbElement.SelectSingle(_db!.DbConnection, Key: elementOutcome.SourceElementKey)
+            ?? throw new Exception($"Failed to resolve source element with key {elementOutcome.SourceElementKey} for outcome {elementOutcome.Key}!");
+
+        DbElement? targetElement = elementOutcome.TargetElementKey is null
+            ? null
+            : DbElement.SelectSingle(_db.DbConnection, Key: elementOutcome.TargetElementKey);
+
+        // get all the outcomes for this source element into this target package that have a target element
+        List<DbElementOutcome> elementOutcomesWithTargets = DbElementOutcome.SelectList(
+            _db.DbConnection,
+            SourceElementKey: sourceElement.ParentElementKey!.Value,
+            TargetFhirPackageKey: targetPackage.Key,
+            TargetElementIdIsNull: false);
+
+        List<DbElement> contextElements = [];
+        List<StructureDefinition.ContextComponent> contexts = [];
+
+        // determine the contexts for this extensions
+        if (sourceElement.ResourceFieldOrder == 0)
+        {
+            // if we have a target structure, that is the context
+            if (targetSd is not null)
+            {
+                // use the target structure as the context
+                contexts.Add(new()
+                {
+                    Type = StructureDefinition.ExtensionContextType.Element,
+                    Expression = targetSd.Name,
+                });
+
+                // resolve the root element for the target structure so we have it later
+                DbElement targetRootElement = DbElement.SelectSingle(
+                    _db.DbConnection,
+                    StructureKey: targetSd.Key,
+                    ResourceFieldOrder: 0)
+                    ?? throw new Exception($"Failed to resolve root element for target StructureDefinition with key {targetSd.Key}!");
+
+                contextElements.Add(targetRootElement);
+            }
+        }
+        else if (elementOutcomesWithTargets.Count == 0)
+        {
+            if (targetSd is not null)
+            {
+                // use the target structure as the context
+                contexts.Add(new()
+                {
+                    Type = StructureDefinition.ExtensionContextType.Element,
+                    Expression = targetSd.Name,
+                });
+
+                // resolve the root element for the target structure so we have it later
+                DbElement targetRootElement = DbElement.SelectSingle(
+                    _db.DbConnection,
+                    StructureKey: targetSd.Key,
+                    ResourceFieldOrder: 0)
+                    ?? throw new Exception($"Failed to resolve root element for target StructureDefinition with key {targetSd.Key}!");
+
+                contextElements.Add(targetRootElement);
+            }
+        }
+        else
+        {
+            HashSet<string> usedContextPaths = [];
+            foreach (DbElementOutcome contextOutcome in elementOutcomesWithTargets)
+            {
+                if (!usedContextPaths.Add(contextOutcome.TargetElementId!))
+                {
+                    continue;
+                }
+
+                // resolve the element
+                DbElement targetContextElement = DbElement.SelectSingle(
+                    _db.DbConnection,
+                    Key: contextOutcome.TargetElementKey!)
+                    ?? throw new Exception($"Failed to resolve target context element with key {contextOutcome.TargetElementKey} for outcome {contextOutcome.Key}!");
+
+                contexts.Add(new()
+                {
+                    Type = StructureDefinition.ExtensionContextType.Element,
+                    Expression = targetContextElement.Path,
+                });
+                contextElements.Add(targetContextElement);
+            }
+        }
+        
+        if (contexts.Count == 0)
+        {
+            // if there is no known target, this is an extension that can appear anywhere (e.g., datatype)
+            contexts.Add(new()
+            {
+                Type = StructureDefinition.ExtensionContextType.Element,
+                Expression = "Element",
+            });
+        }
+
+        bool allowModifier = false;
+
+        // if the extension wants to be a modifier, check the contexts
+        if (sourceElement.IsModifier == true)
+        {
+            allowModifier = true;
+
+            /*
+             * Determine if this extension should really be a modifier based on context:
+             *  * Modifier element -> Modifier element : extension
+             *  * Modifier element -> Backbone element (not modifier) : modifier extension
+             *  * Modifier element -> Primitive-type element (not modifier) : modifier extension, context moves up a level
+             *  * Modifier element -> Primitive-type element (array, not modifier) : currently unresolvable, but also has not happened yet
+             */
+
+            List<(DbElement original, DbElement replacement)> ctxElementReplacements = [];
+            foreach (DbElement contextElement in contextElements)
+            {
+                // check if the source element is a modifier - do not need a modifier extension
+                if (contextElement.IsModifier)
+                {
+                    allowModifier = false;
+                    continue;
+                }
+
+                // check to see if the context element has children, can stay how it is
+                if (contextElement.ChildElementCount > 0)
+                {
+                    continue;
+                }
+
+                // if element has ONLY primitive types, we need to move the context up a level
+                if (_db!.DbConnection.ElementHasNonPrimitiveTypes(contextElement) == false)
+                {
+                    if (contextElement.ParentElementKey == null)
+                    {
+                        throw new Exception($"Cannot have a root element with only primitive types!");
+                    }
+
+                    DbElement replacement = DbElement.SelectSingle(_db!.DbConnection, Key: contextElement.ParentElementKey)
+                        ?? throw new Exception($"Could not resolve Element: {contextElement.ParentElementKey} (parent of Element: {sourceElement.Key} - '{sourceElement.Id}')");
+
+                    ctxElementReplacements.Add((contextElement, replacement));
+                }
+            }
+
+            // resolve any context replacements
+            if (ctxElementReplacements.Count != 0)
+            {
+                foreach ((DbElement original, DbElement replacement) in ctxElementReplacements)
+                {
+                    // look for the matching extension context
+                    foreach (StructureDefinition.ContextComponent ctx in contexts)
+                    {
+                        if (ctx.Expression != original.Path)
+                        {
+                            continue;
+                        }
+
+                        ctx.Expression = replacement.Path;
+                    }
+                }
+            }
+        }
+
+        // build the initial scaffold for the extension
+        StructureDefinition extSd = new()
+        {
+            Id = elementOutcome.PotentialGenLongId,
+            Url = elementOutcome.PotentialGenUrl,
+            Name = FhirSanitizationUtils.ReformatIdForName(elementOutcome.PotentialGenLongId!),
+            Version = _crossDefinitionVersion,
+            Date = _runTime.ToString("O"),
+            Title = $"Cross-version Extension {sourcePackage.ShortName}.{sourceSd.Name}.{sourceElement.Id} for use in FHIR {targetPackage.ShortName}",
+            Description = $"This cross-version extension represents {sourceElement.Path} from {sourceSd.VersionedUrl} for use in FHIR {targetPackage.ShortName}.",
+            Purpose = elementOutcome.Comments,
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
+            Abstract = false,
+            Context = contexts,
+            Type = "Extension",
+            BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
+            Derivation = StructureDefinition.TypeDerivationRule.Constraint,
+            Differential = new()
+            {
+                Element = [],
+            },
+        };
+
+        // TODO: right now I am setting FHIR-I as the WG responsible since we are creating the extension - should we use the WG from the source resource?
+        string wg = "fhir";
+
+        // add the work group extension
+        extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+        // ensure there is a publisher, use the WG if there is none
+        extSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
+
+        // ensure there is a contact point - use the default WG unless there are multiple entries
+        if ((extSd.Contact == null) || (extSd.Contact.Count < 2))
+        {
+            extSd.Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames[wg],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls[wg],
+                        },
+                    ],
+                }
+            ];
+        }
+
+        extSd.cgAddPackageSource(packageId, _crossDefinitionVersion, $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{packageId}");
+
+        // need to find the difference between the source element and *all* the elements is is mapped to
+        // thinking an extension function to use the DB and select the element types and target types not found from
+        // the source element or provided list and the list of target elements.
+
+        //elementOutcomesWithTargets
+
+
+
+        // get the list of outcomes that are sub-extensions for this extension
+        List<DbElementOutcome> subElementOutcomes = DbElementOutcome.SelectList(
+            _db.DbConnection,
+            StructureOutcomeKey: structureOutcome.Key,
+            OutcomeAction: OutcomeElementActionCodes.UseExtensionFromAncestor,
+            RelatedAncestorOutcomeKey: elementOutcome.Key,
+            orderByProperties: [nameof(DbElementOutcome.SourceElementResourceOrder)]);
+
+
+
+        return extSd;
+    }
+
 
     private List<XVerIgFileRecord> writeXverValueSets(
         DbFhirPackage sourcePackage,
@@ -434,7 +794,7 @@ public partial class XVerProcessor
                     // ignore concepts that should not be included
                     if ((conceptOutcome.OutcomeAction == OutcomeValueSetConceptActionCodes.UseConceptSameCode) ||
                         (conceptOutcome.OutcomeAction == OutcomeValueSetConceptActionCodes.UseConceptChangedCode) ||
-                        (conceptOutcome.OutcomeAction == OutcomeValueSetConceptActionCodes.MappedInOtherValueSet))
+                        (conceptOutcome.OutcomeAction == OutcomeValueSetConceptActionCodes.MappedElsewhere))
                     {
                         continue;
                     }
@@ -775,6 +1135,7 @@ public partial class XVerProcessor
     /// <exception cref="Exception">
     /// Thrown if the database is not loaded or if the output directory is not specified.
     /// </exception>
+    [Obsolete]
     public void WriteFhirFromDatabase(string? version = null, string? outputDir = null)
     {
         // check for no database
@@ -1394,6 +1755,7 @@ public partial class XVerProcessor
         //}
     }
 
+    //[Obsolete]
     private void writeXverStructures(
         List<PackageXverSupport> packageSupports,
         int focusPackageIndex,
@@ -3108,7 +3470,7 @@ public partial class XVerProcessor
         extBuilderRecord.DatatypeValueElement.Comment += "|" + typeName;
     }
 
-
+    [Obsolete]
     private List<DbElement> discoverContexts(
         HashSet<string> contextElementPaths,
         int sourceIndex,
@@ -3445,7 +3807,7 @@ public partial class XVerProcessor
         //string sourceDashTarget = $"{focusPackage.ShortName}-{targetPackage.ShortName}";
         string vsIdLong = $"{sourcePackage.ShortName}-{sourceVs.Id}-for-{targetPackage.ShortName}";
         string vsId;
-        //string vsId = $"{sourceDashTarget}-{sourceVs.Id}";
+        //string vsId = $"{sourceDashTarget}-{sourceSd.Id}";
 
         if (vsIdLong.Length > 64)
         {
