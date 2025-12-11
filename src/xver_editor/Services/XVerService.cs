@@ -9,6 +9,7 @@ namespace xver_editor.Services;
 public class XVerService : IXverService
 {
     private XverAppConfig _config;
+    private ILoggerFactory _loggerFactory;
     private ILogger _logger;
     private ComparisonDatabase? _db = null;
     private bool _open = false;
@@ -20,6 +21,7 @@ public class XVerService : IXverService
     public XVerService(XverAppConfig config)
     {
         _config = config;
+        _loggerFactory = config.LogFactory;
         _logger = config.LogFactory.CreateLogger<XVerProcessor>();
     }
 
@@ -130,7 +132,7 @@ public class XVerService : IXverService
             throw new ArgumentNullException(nameof(outputDirectory));
         }
 
-        XVerProcessor xverProcessor = new(_db, outputDirectory, _config.LogFactory);
+        XVerProcessor xverProcessor = new(_db, outputDirectory, _loggerFactory);
         await Task.Run(() => xverProcessor.WriteDocsFromDatabase(outputDir: outputDirectory));
     }
 
@@ -148,7 +150,7 @@ public class XVerService : IXverService
             throw new ArgumentNullException(nameof(outputDirectory));
         }
 
-        XVerProcessor xverProcessor = new(_db, outputDirectory, _config.LogFactory);
+        XVerProcessor xverProcessor = new(_db, outputDirectory, _loggerFactory);
         await Task.Run(() => xverProcessor.WriteFhirFromDatabase(outputDir: outputDirectory, version: version));
     }
 

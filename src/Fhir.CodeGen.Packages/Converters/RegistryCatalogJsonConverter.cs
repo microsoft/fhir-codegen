@@ -146,7 +146,7 @@ internal sealed class RegistryCatalogJsonConverter : JsonConverter<RegistryCatal
                     }
                     else if (reader.TokenType == JsonTokenType.String)
                     {
-                        keywords = [reader.GetString()];
+                        keywords = [reader.GetString() ?? string.Empty];
                     }
 
                     break;

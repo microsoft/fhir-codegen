@@ -1749,7 +1749,7 @@ public partial class XVerProcessor
         //    }
 
         //    // write the value set to a file
-        //    string filename = $"ValueSet-{originalDbVs.Id}.json";
+        //    string filename = $"ValueSet-{originalDbVs.IdLong}.json";
         //    string path = Path.Combine(packageDir, filename);
         //    File.WriteAllText(path, originalDbVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
         //}
@@ -3807,7 +3807,7 @@ public partial class XVerProcessor
         //string sourceDashTarget = $"{focusPackage.ShortName}-{targetPackage.ShortName}";
         string vsIdLong = $"{sourcePackage.ShortName}-{sourceVs.Id}-for-{targetPackage.ShortName}";
         string vsId;
-        //string vsId = $"{sourceDashTarget}-{sourceSd.Id}";
+        //string vsId = $"{sourceDashTarget}-{sourceSd.IdLong}";
 
         if (vsIdLong.Length > 64)
         {

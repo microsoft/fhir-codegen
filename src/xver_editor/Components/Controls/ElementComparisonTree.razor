@@ -112,7 +112,7 @@
         if (!rec.ElementProjections.Any())
         {
             return "⚠️ " + rec.Element.UiDisplayWithType;
-            // return $"{rec.Element.Id} !! no mapping records!";
+            // return $"{rec.Element.IdLong} !! no mapping records!";
         }
 
         if (rec.ElementProjections.Count() == 1)
@@ -122,13 +122,13 @@
             if (proj.Comparison.NoMap == true)
             {
                 return "⚠️ " + rec.Element.UiDisplayWithType;
-                // return $"{rec.Element.Id} !! not mapped";
+                // return $"{rec.Element.IdLong} !! not mapped";
             }
 
             if (string.IsNullOrEmpty(proj.TargetCell.Element?.Id))
             {
                 return "⚠️ " + rec.Element.UiDisplayWithType;
-                // return $"{rec.Element.Id} !! mapped to empty!";
+                // return $"{rec.Element.IdLong} !! mapped to empty!";
             }
 
             return "✅ " + $"{rec.Element.UiDisplayWithType} -> {proj.TargetCell.Element.UiDisplayWithType}";

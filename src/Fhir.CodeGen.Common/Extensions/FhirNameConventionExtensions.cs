@@ -69,6 +69,16 @@ public static class FhirNameConventionExtensions
         _ => word,
     };
 
+    public static string CapitalizeFirstLetter(this string word)
+    {
+        if (string.IsNullOrEmpty(word))
+        {
+            return string.Empty;
+        }
+
+        return string.Concat(word.Substring(0, 1).ToUpperInvariant(), word.Substring(1));
+    }
+
     /// <summary>A string extension method that converts a word to PascalCase.</summary>
     /// <param name="word">            The word to act on.</param>
     /// <param name="removeDelimiters">(Optional) True to remove delimiters.</param>

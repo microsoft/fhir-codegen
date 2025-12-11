@@ -97,7 +97,9 @@ internal static class LaunchUtils
             Description = "Perform FHIR Core Cross-Version processing",
             ConfigurationType = typeof(ConfigXVer),
             SubCommands = [
-                ("create-db", "Create package comparison database file"),
+                ("load", "Load contents for processing"),
+                ("load-base", "Load FHIR Core package definitions"),
+                ("load-maps", "Load FHIR-Cross-Version-Source maps"),
                 ("discover", "Build skeleton comparison records (do not perform comparisons)"),
                 ("compare", "Run a comparison and update the database"),
                 ("compare-vs", "Run a comparison of ValueSet data and update the database"),

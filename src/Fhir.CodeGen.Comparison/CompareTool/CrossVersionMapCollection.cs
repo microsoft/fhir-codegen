@@ -184,7 +184,7 @@ public class CrossVersionMapCollection
             // update the last edit date
             cm.DateElement = new FhirDateTime(DateTimeOffset.Now);
 
-            // filename is the FHIR-core style ResourceName-Id.json
+            // filename is the FHIR-core style ResourceName-IdLong.json
             string filename = Path.Combine(dir, $"ConceptMap-{cm.Id}.json");
 
             // write the file
@@ -249,7 +249,7 @@ public class CrossVersionMapCollection
             // update the last edit date
             cm.DateElement = new FhirDateTime(DateTimeOffset.Now);
 
-            // filename is the FHIR-core style ResourceName-Id.json
+            // filename is the FHIR-core style ResourceName-IdLong.json
             string filename = isOverview
                 ? Path.Combine(path, $"ConceptMap-{cm.Id}.json")
                 : Path.Combine(dir, $"ConceptMap-{cm.Id}.json");

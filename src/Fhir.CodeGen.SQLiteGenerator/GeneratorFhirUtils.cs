@@ -36,7 +36,7 @@ public class GeneratorFhirUtils
                     .UsingMode(DeserializerModes.Ostrich)
                     .Compact();
 
-                public static bool TrySerializeForDb<T>(T? instance, [NotNullWhen(true)]out string? json) where T : Hl7.Fhir.Model.Base
+                public static bool TrySerializeForDb<T>(T? instance, [NotNullWhen(true)]out string? json) where T : class   // Hl7.Fhir.Model.Base
                 {
                     if (instance == null)
                     {
@@ -49,7 +49,7 @@ public class GeneratorFhirUtils
                     return true;
                 }
 
-                public static bool TrySerializeForDb<T>(List<T>? instances, [NotNullWhen(true)] out string? json) where T : Hl7.Fhir.Model.Base
+                public static bool TrySerializeForDb<T>(List<T>? instances, [NotNullWhen(true)] out string? json) where T : class   // Hl7.Fhir.Model.Base
                 {
                     if ((instances == null) || (instances.Count == 0))
                     {
@@ -62,7 +62,7 @@ public class GeneratorFhirUtils
                     return true;
                 }
 
-                public static T? ParseFromDb<T>(string json) where T : Hl7.Fhir.Model.Base
+                public static T? ParseFromDb<T>(string json) where T : class   // Hl7.Fhir.Model.Base
                 {
                     if (string.IsNullOrWhiteSpace(json))
                     {
@@ -73,7 +73,7 @@ public class GeneratorFhirUtils
                     return JsonSerializer.Deserialize<T>(json, _options);
                 }
 
-                public static List<T> ParseArrayFromDb<T>(string json) where T : Hl7.Fhir.Model.Base
+                public static List<T> ParseArrayFromDb<T>(string json) where T : class   // Hl7.Fhir.Model.Base
                 {
                     if (string.IsNullOrWhiteSpace(json))
                     {
@@ -81,7 +81,7 @@ public class GeneratorFhirUtils
                     }
 
                     return JsonSerializer.Deserialize<List<T>>(json, _options) ?? [];
-                }
+                }        
             }
         }
         #nullable restore

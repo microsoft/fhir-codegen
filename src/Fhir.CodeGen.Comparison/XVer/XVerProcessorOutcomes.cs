@@ -858,6 +858,11 @@ public partial class XVerProcessor
         string targetPackageShortName,
         string targetArtifactId)
     {
+        if (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase))
+        {
+            return generateArtifactId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
+        }
+
         string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}-{targetArtifactId}";
 
         if (idLong.Length <= 64)
@@ -1244,7 +1249,7 @@ public partial class XVerProcessor
 
                     //IsRenamed = !multipleTargets &&
                     //    ((vsComparison.Relationship == CMR.Equivalent) || (vsComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
-                    //    (sourceVs.Id != targetVs?.Id),
+                    //    (sourceVs.IdLong != targetVs?.IdLong),
                     IsRenamed = (sourceVs.Id != targetVs?.Id),
 
                     IsUnmapped = false,

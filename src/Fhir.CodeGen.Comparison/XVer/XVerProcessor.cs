@@ -135,6 +135,7 @@ public partial class XVerProcessor
         ];
 
     private ConfigXVer _config;
+    private ILoggerFactory _loggerFactory;
     private ILogger _logger;
     private DefinitionCollection[] _definitions = [];
     private Dictionary<string, int> _definitionIndexes = [];
@@ -187,6 +188,7 @@ public partial class XVerProcessor
             LogFactory = loggerFactory,
         };
 
+        _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger<XVerProcessor>();
 
         _dbPath = db.DbFilePath;
@@ -246,10 +248,33 @@ public partial class XVerProcessor
     {
         switch (command)
         {
-            case "create-db":
+            case "wip":
+                //LoadDatabase(true, true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                //BuildComparisonPairs();
+                //CompareInDatabase();
+                //GenerateOutcomesFromComparisons();
+                //WriteFhirFromDbOutcomes();
+                break;
+
+            case "load":
                 LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 break;
+
+            case "load-base":
+                LoadDatabase(true, true);
+                break;
+
+            case "load-maps":
+                LoadDatabase(_config.ReloadDatabase, true);
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                break;
+
+            //case "create-db":
+            //    LoadDatabase(true, true);
+            //    LoadFhirCrossVersionMaps(preferV1Maps: true);
+            //    break;
 
             case "discover":
                 LoadDatabase(_config.ReloadDatabase, true);
@@ -295,15 +320,6 @@ public partial class XVerProcessor
                 LoadDatabase(false, false);
                 WriteFhirFromDbOutcomes();
                 //WriteFhirFromDatabase();
-                break;
-
-            case "wip":
-                LoadDatabase(true, true);
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
-                BuildComparisonPairs();
-                CompareInDatabase();
-                GenerateOutcomesFromComparisons();
-                WriteFhirFromDbOutcomes();
                 break;
 
             default:
@@ -442,20 +458,20 @@ public partial class XVerProcessor
     /// <exception cref="InvalidOperationException">Thrown when there are less than two definitions available for comparison.</exception>
     public void LoadFhirCrossVersionMaps(bool preferV1Maps)
     {
-        // need definitions loaded in order for existing cross-version maps to be usable
-        if (_definitions.Length == 0)
-        {
-            loadDefinitionCollections();
-        }
+        //// need definitions loaded in order for existing cross-version maps to be usable
+        //if (_definitions.Length == 0)
+        //{
+        //    loadDefinitionCollections();
+        //}
 
-        if (_definitions.Length < 2)
-        {
-            throw new InvalidOperationException("At least two definitions are required to compare.");
-        }
+        //if (_definitions.Length < 2)
+        //{
+        //    throw new InvalidOperationException("At least two definitions are required to compare.");
+        //}
 
         if (_db == null)
         {
-            LoadDatabase(_config.ReloadDatabase, true);
+            LoadDatabase(false, true);
             if (_db == null)
             {
                 throw new Exception($"Failed to create or load a comparison database!");
@@ -463,10 +479,10 @@ public partial class XVerProcessor
         }
 
         // if this is a core comparison and we have a location, try to load existing cross-version maps
-        if (_db.IsCoreComparison &&
-            !string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
+        if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            _ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
+            _ = _db.TryLoadCrossVersionSourceMaps(_config.CrossVersionMapSourcePath);
+            //_ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
         }
     }
 

@@ -1306,7 +1306,7 @@ public class PackageComparer
     //    {
     //        return;
     //    }
-    //    string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+    //    string filename = Path.Combine(outputDir, $"ConceptMap-{cm.IdLong}.json");
 
     //    try
     //    {
@@ -1338,7 +1338,7 @@ public class PackageComparer
     //            continue;
     //        }
 
-    //        string filename = Path.Combine(outputDir, $"ConceptMap-{cm.Id}.json");
+    //        string filename = Path.Combine(outputDir, $"ConceptMap-{cm.IdLong}.json");
 
     //        try
     //        {

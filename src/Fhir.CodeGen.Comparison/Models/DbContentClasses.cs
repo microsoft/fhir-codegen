@@ -271,6 +271,10 @@ public partial class DbElement : DbPackageContent
     public required int ResourceFieldOrder { get; set; }
     public required int ComponentFieldOrder { get; set; }
     public required string Id { get; set; }
+
+    [CgSQLiteIgnore]
+    public string StructureName => Id.Split('.').First();
+
     public required string Path { get; set; }
     public required int ChildElementCount { get; set; }
     public required string Name { get; set; }
@@ -286,6 +290,7 @@ public partial class DbElement : DbPackageContent
     public required string? SliceName { get; set; }
 
     public required string FullCollatedTypeLiteral { get; set; }
+    public required string? FullCollatedReferenceTypesLiteral { get; set; }
 
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
@@ -377,6 +382,7 @@ public partial class DbElement : DbPackageContent
         MaxCardinalityString = string.Empty,
         SliceName = null,
         FullCollatedTypeLiteral = string.Empty,
+        FullCollatedReferenceTypesLiteral = null,
         ValueSetBindingStrength = null,
         BindingValueSet = null,
         BindingValueSetKey = null,

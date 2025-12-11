@@ -10,16 +10,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Specification;
-using Hl7.Fhir.Utility;
-using Microsoft.Data.Sqlite;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Fhir.CodeGen.Lib.FhirExtensions;
-using Fhir.CodeGen.Lib.Models;
 using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
@@ -28,6 +21,15 @@ using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Lib.FhirExtensions;
+using Fhir.CodeGen.Lib.Loader;
+using Fhir.CodeGen.Lib.Models;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Utility;
+using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Models;
@@ -66,6 +68,8 @@ public class ComparisonDatabase : IDisposable
     private string _dbName;
 
     private IDbConnection _dbConnection;
+    private PackageLoader? _loader = null;
+
 
     public ComparisonDatabase(
         DefinitionCollection[] definitions,
@@ -79,7 +83,9 @@ public class ComparisonDatabase : IDisposable
         }
 
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory?.CreateLogger<ComparisonDatabase>() ?? definitions[0].Logger;
+        _logger = loggerFactory?.CreateLogger<ComparisonDatabase>()
+            ?? definitions[0].Logger
+            ?? LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<ComparisonDatabase>();
         _definitions = definitions.Select(dc => (dc, new DcInfoRec()
         {
             FhirSequence = dc.FhirSequence,
@@ -150,7 +156,9 @@ public class ComparisonDatabase : IDisposable
         ILoggerFactory? loggerFactory = null)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory?.CreateLogger<ComparisonDatabase>() ?? NullLoggerFactory.Instance.CreateLogger(nameof(ComparisonDatabase));
+        _logger = loggerFactory?.CreateLogger<ComparisonDatabase>()
+            ?? LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<ComparisonDatabase>()
+            ?? NullLoggerFactory.Instance.CreateLogger(nameof(ComparisonDatabase));
 
         _dbPath = dbPath;
         if (!Directory.Exists(_dbPath))
@@ -183,7 +191,7 @@ public class ComparisonDatabase : IDisposable
         try
         {
             DbFhirPackage.LoadMaxKey(_dbConnection);
-            DbFhirPackageComparisonPair.LoadMaxKey(_dbConnection);
+            //DbFhirPackageComparisonPair.LoadMaxKey(_dbConnection);
 
             DbCodeSystem.LoadMaxKey(_dbConnection);
             DbCodeSystemPropertyDefinition.LoadMaxKey(_dbConnection);
@@ -200,26 +208,26 @@ public class ComparisonDatabase : IDisposable
             DbCollatedType.LoadMaxKey(_dbConnection);
             DbElementAdditionalBinding.LoadMaxKey(_dbConnection);
 
-            DbValueSetComparison.LoadMaxKey(_dbConnection);
-            DbValueSetConceptComparison.LoadMaxKey(_dbConnection);
-            DbUnresolvedConceptComparison.LoadMaxKey(_dbConnection);
+            //DbValueSetComparison.LoadMaxKey(_dbConnection);
+            //DbValueSetConceptComparison.LoadMaxKey(_dbConnection);
+            //DbUnresolvedConceptComparison.LoadMaxKey(_dbConnection);
 
-            DbStructureComparison.LoadMaxKey(_dbConnection);
-            DbUnresolvedStructureComparison.LoadMaxKey(_dbConnection);
+            //DbStructureComparison.LoadMaxKey(_dbConnection);
+            //DbUnresolvedStructureComparison.LoadMaxKey(_dbConnection);
 
-            DbElementComparison.LoadMaxKey(_dbConnection);
-            DbElementTypeComparison.LoadMaxKey(_dbConnection);
-            DbCollatedTypeComparison.LoadMaxKey(_dbConnection);
-            DbUnresolvedElementComparison.LoadMaxKey(_dbConnection);
+            //DbElementComparison.LoadMaxKey(_dbConnection);
+            //DbElementTypeComparison.LoadMaxKey(_dbConnection);
+            //DbCollatedTypeComparison.LoadMaxKey(_dbConnection);
+            //DbUnresolvedElementComparison.LoadMaxKey(_dbConnection);
 
             DbExtensionSubstitution.LoadMaxKey(_dbConnection);
             DbExternalInclusion.LoadMaxKey(_dbConnection);
 
-            DbValueSetOutcome.LoadMaxKey(_dbConnection);
-            DbValueSetConceptOutcome.LoadMaxKey(_dbConnection);
+            //DbValueSetOutcome.LoadMaxKey(_dbConnection);
+            //DbValueSetConceptOutcome.LoadMaxKey(_dbConnection);
 
-            DbStructureOutcome.LoadMaxKey(_dbConnection);
-            DbElementOutcome.LoadMaxKey(_dbConnection);
+            //DbStructureOutcome.LoadMaxKey(_dbConnection);
+            //DbElementOutcome.LoadMaxKey(_dbConnection);
         }
         catch (Exception ex)
         {
@@ -285,9 +293,9 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                 }
                 break;
@@ -303,12 +311,12 @@ public class ComparisonDatabase : IDisposable
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
                     DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
@@ -318,7 +326,7 @@ public class ComparisonDatabase : IDisposable
             default:
                 {
                     DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
                     DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
@@ -328,27 +336,43 @@ public class ComparisonDatabase : IDisposable
 
                     DbValueSet.Insert(targetDb, DbValueSet.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbValueSetConcept.Insert(targetDb, DbValueSetConcept.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbValueSetComparison.Insert(targetDb, DbValueSetComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbValueSetConceptComparison.Insert(targetDb, DbValueSetConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbUnresolvedConceptComparison.Insert(targetDb, DbUnresolvedConceptComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbElementComparison.Insert(targetDb, DbElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbElementTypeComparison.Insert(targetDb, DbElementTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbCollatedTypeComparison.Insert(targetDb, DbCollatedTypeComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbUnresolvedElementComparison.Insert(targetDb, DbUnresolvedElementComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
                     DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                 }
                 break;
         }
+    }
+
+    private void dropMapTables(IDbConnection db)
+    {
+        DbValueSetMapRecord.DropTable(db);
+        DbValueSetConceptMapRecord.DropTable(db);
+        DbStructureMappingRecord.DropTable(db);
+        DbElementMappingRecord.DropTable(db);
+    }
+
+    private void createMapTables(IDbConnection db)
+    {
+        DbValueSetMapRecord.CreateTable(db);
+        DbValueSetConceptMapRecord.CreateTable(db);
+        DbStructureMappingRecord.CreateTable(db);
+        DbElementMappingRecord.CreateTable(db);
     }
 
     private void dropTables(
@@ -372,12 +396,12 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbValueSet.DropTable(db);
                     DbValueSetConcept.DropTable(db);
-                    DbValueSetComparison.DropTable(db);
-                    DbValueSetConceptComparison.DropTable(db);
+                    //DbValueSetComparison.DropTable(db);
+                    //DbValueSetConceptComparison.DropTable(db);
                     DbExternalInclusion.DropTable(db);
 
-                    DbValueSetOutcome.DropTable(db);
-                    DbValueSetConceptOutcome.DropTable(db);
+                    //DbValueSetOutcome.DropTable(db);
+                    //DbValueSetConceptOutcome.DropTable(db);
                 }
                 break;
 
@@ -392,25 +416,25 @@ public class ComparisonDatabase : IDisposable
                     DbElementType.DropTable(db);
                     DbCollatedType.DropTable(db);
                     DbElementAdditionalBinding.DropTable(db);
-                    DbStructureComparison.DropTable(db);
-                    DbUnresolvedStructureComparison.DropTable(db);
-                    DbElementComparison.DropTable(db);
-                    DbElementTypeComparison.DropTable(db);
-                    DbCollatedTypeComparison.DropTable(db);
-                    DbUnresolvedElementComparison.DropTable(db);
+                    //DbStructureComparison.DropTable(db);
+                    //DbUnresolvedStructureComparison.DropTable(db);
+                    //DbElementComparison.DropTable(db);
+                    //DbElementTypeComparison.DropTable(db);
+                    //DbCollatedTypeComparison.DropTable(db);
+                    //DbUnresolvedElementComparison.DropTable(db);
 
                     DbExtensionSubstitution.DropTable(db);
                     DbExternalInclusion.DropTable(db);
 
-                    DbStructureOutcome.DropTable(db);
-                    DbElementOutcome.DropTable(db);
+                    //DbStructureOutcome.DropTable(db);
+                    //DbElementOutcome.DropTable(db);
                 }
                 break;
 
             default:
                 {
                     DbFhirPackage.DropTable(db);
-                    DbFhirPackageComparisonPair.DropTable(db);
+                    //DbFhirPackageComparisonPair.DropTable(db);
 
                     DbCodeSystem.DropTable(db);
                     DbCodeSystemPropertyDefinition.DropTable(db);
@@ -420,30 +444,30 @@ public class ComparisonDatabase : IDisposable
 
                     DbValueSet.DropTable(db);
                     DbValueSetConcept.DropTable(db);
-                    DbValueSetComparison.DropTable(db);
-                    DbValueSetConceptComparison.DropTable(db);
-                    DbUnresolvedConceptComparison.DropTable(db);
+                    //DbValueSetComparison.DropTable(db);
+                    //DbValueSetConceptComparison.DropTable(db);
+                    //DbUnresolvedConceptComparison.DropTable(db);
 
-                    DbValueSetOutcome.DropTable(db);
-                    DbValueSetConceptOutcome.DropTable(db);
+                    //DbValueSetOutcome.DropTable(db);
+                    //DbValueSetConceptOutcome.DropTable(db);
 
                     DbStructureDefinition.DropTable(db);
                     DbElement.DropTable(db);
                     DbElementType.DropTable(db);
                     DbCollatedType.DropTable(db);
                     DbElementAdditionalBinding.DropTable(db);
-                    DbStructureComparison.DropTable(db);
-                    DbUnresolvedStructureComparison.DropTable(db);
-                    DbElementComparison.DropTable(db);
-                    DbElementTypeComparison.DropTable(db);
-                    DbCollatedTypeComparison.DropTable(db);
-                    DbUnresolvedElementComparison.DropTable(db);
+                    //DbStructureComparison.DropTable(db);
+                    //DbUnresolvedStructureComparison.DropTable(db);
+                    //DbElementComparison.DropTable(db);
+                    //DbElementTypeComparison.DropTable(db);
+                    //DbCollatedTypeComparison.DropTable(db);
+                    //DbUnresolvedElementComparison.DropTable(db);
 
                     DbExtensionSubstitution.DropTable(db);
                     DbExternalInclusion.DropTable(db);
 
-                    DbStructureOutcome.DropTable(db);
-                    DbElementOutcome.DropTable(db);
+                    //DbStructureOutcome.DropTable(db);
+                    //DbElementOutcome.DropTable(db);
                 }
                 break;
         }
@@ -470,12 +494,12 @@ public class ComparisonDatabase : IDisposable
                 {
                     DbValueSet.CreateTable(db);
                     DbValueSetConcept.CreateTable(db);
-                    DbValueSetComparison.CreateTable(db);
-                    DbValueSetConceptComparison.CreateTable(db);
+                    //DbValueSetComparison.CreateTable(db);
+                    //DbValueSetConceptComparison.CreateTable(db);
                     DbExternalInclusion.CreateTable(db);
 
-                    DbValueSetOutcome.CreateTable(db);
-                    DbValueSetConceptOutcome.CreateTable(db);
+                    //DbValueSetOutcome.CreateTable(db);
+                    //DbValueSetConceptOutcome.CreateTable(db);
                 }
                 break;
 
@@ -490,23 +514,23 @@ public class ComparisonDatabase : IDisposable
                     DbElementType.CreateTable(db);
                     DbCollatedType.CreateTable(db);
                     DbElementAdditionalBinding.CreateTable(db);
-                    DbStructureComparison.CreateTable(db);
-                    DbUnresolvedStructureComparison.CreateTable(db);
-                    DbElementComparison.CreateTable(db);
-                    DbElementTypeComparison.CreateTable(db);
-                    DbCollatedTypeComparison.CreateTable(db);
-                    DbUnresolvedElementComparison.CreateTable(db);
+                    //DbStructureComparison.CreateTable(db);
+                    //DbUnresolvedStructureComparison.CreateTable(db);
+                    //DbElementComparison.CreateTable(db);
+                    //DbElementTypeComparison.CreateTable(db);
+                    //DbCollatedTypeComparison.CreateTable(db);
+                    //DbUnresolvedElementComparison.CreateTable(db);
                     DbExternalInclusion.CreateTable(db);
 
-                    DbStructureOutcome.CreateTable(db);
-                    DbElementOutcome.CreateTable(db);
+                    //DbStructureOutcome.CreateTable(db);
+                    //DbElementOutcome.CreateTable(db);
                 }
                 break;
 
             default:
                 {
                     DbFhirPackage.CreateTable(db);
-                    DbFhirPackageComparisonPair.CreateTable(db);
+                    //DbFhirPackageComparisonPair.CreateTable(db);
 
                     DbCodeSystem.CreateTable(db);
                     DbCodeSystemPropertyDefinition.CreateTable(db);
@@ -516,25 +540,25 @@ public class ComparisonDatabase : IDisposable
 
                     DbValueSet.CreateTable(db);
                     DbValueSetConcept.CreateTable(db);
-                    DbValueSetComparison.CreateTable(db);
-                    DbValueSetConceptComparison.CreateTable(db);
-                    DbUnresolvedConceptComparison.CreateTable(db);
-                    DbValueSetOutcome.CreateTable(db);
-                    DbValueSetConceptOutcome.CreateTable(db);
+                    //DbValueSetComparison.CreateTable(db);
+                    //DbValueSetConceptComparison.CreateTable(db);
+                    //DbUnresolvedConceptComparison.CreateTable(db);
+                    //DbValueSetOutcome.CreateTable(db);
+                    //DbValueSetConceptOutcome.CreateTable(db);
 
                     DbStructureDefinition.CreateTable(db);
                     DbElement.CreateTable(db);
                     DbCollatedType.CreateTable(db);
                     DbElementType.CreateTable(db);
                     DbElementAdditionalBinding.CreateTable(db);
-                    DbStructureComparison.CreateTable(db);
-                    DbUnresolvedStructureComparison.CreateTable(db);
-                    DbElementComparison.CreateTable(db);
-                    DbElementTypeComparison.CreateTable(db);
-                    DbCollatedTypeComparison.CreateTable(db);
-                    DbUnresolvedElementComparison.CreateTable(db);
-                    DbStructureOutcome.CreateTable(db);
-                    DbElementOutcome.CreateTable(db);
+                    //DbStructureComparison.CreateTable(db);
+                    //DbUnresolvedStructureComparison.CreateTable(db);
+                    //DbElementComparison.CreateTable(db);
+                    //DbElementTypeComparison.CreateTable(db);
+                    //DbCollatedTypeComparison.CreateTable(db);
+                    //DbUnresolvedElementComparison.CreateTable(db);
+                    //DbStructureOutcome.CreateTable(db);
+                    //DbElementOutcome.CreateTable(db);
 
                     DbExtensionSubstitution.CreateTable(db);
                     DbExternalInclusion.CreateTable(db);
@@ -779,91 +803,1190 @@ public class ComparisonDatabase : IDisposable
             }
         }
 
-        // look for cross-version collections
-        for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
-        {
-            DefinitionCollection left = _definitions[definitionIndex - 1].dc;
-            DefinitionCollection right = _definitions[definitionIndex].dc;
+        //// look for cross-version collections
+        //for (int definitionIndex = 1; definitionIndex < _definitions.Length; definitionIndex++)
+        //{
+        //    DefinitionCollection left = _definitions[definitionIndex - 1].dc;
+        //    DefinitionCollection right = _definitions[definitionIndex].dc;
 
-            // get the db package definitions
-            DbFhirPackage leftDbPackage = DbFhirPackage.SelectSingle(_dbConnection, PackageId: left.MainPackageId, PackageVersion: left.MainPackageVersion)
-                ?? throw new Exception($"Package {left.MainPackageId}@{left.MainPackageVersion} was not found in the database!");
-            DbFhirPackage rightDbPackage = DbFhirPackage.SelectSingle(_dbConnection, PackageId: right.MainPackageId, PackageVersion: right.MainPackageVersion)
-                ?? throw new Exception($"Package {right.MainPackageId}@{right.MainPackageVersion} was not found in the database!");
+        //    // get the db package definitions
+        //    DbFhirPackage leftDbPackage = DbFhirPackage.SelectSingle(_dbConnection, PackageId: left.MainPackageId, PackageVersion: left.MainPackageVersion)
+        //        ?? throw new Exception($"Package {left.MainPackageId}@{left.MainPackageVersion} was not found in the database!");
+        //    DbFhirPackage rightDbPackage = DbFhirPackage.SelectSingle(_dbConnection, PackageId: right.MainPackageId, PackageVersion: right.MainPackageVersion)
+        //        ?? throw new Exception($"Package {right.MainPackageId}@{right.MainPackageVersion} was not found in the database!");
 
-            // check for a package pair for left-to-right comparison
-            DbFhirPackageComparisonPair? dbPairLtoR = DbFhirPackageComparisonPair.SelectSingle(
-                _dbConnection,
-                SourcePackageKey: leftDbPackage.Key,
-                TargetPackageKey: rightDbPackage.Key);
+        //    // check for a package pair for left-to-right comparison
+        //    DbFhirPackageComparisonPair? dbPairLtoR = DbFhirPackageComparisonPair.SelectSingle(
+        //        _dbConnection,
+        //        SourcePackageKey: leftDbPackage.Key,
+        //        TargetPackageKey: rightDbPackage.Key);
 
-            bool insertLtoR = false;
-            bool insertRtoL = false;
+        //    bool insertLtoR = false;
+        //    bool insertRtoL = false;
 
-            if (dbPairLtoR == null)
-            {
-                insertLtoR = true;
-                dbPairLtoR = new()
-                {
-                    Key = DbFhirPackageComparisonPair.GetIndex(),
-                    SourcePackageKey = leftDbPackage.Key,
-                    SourcePackageShortName = leftDbPackage.ShortName,
-                    TargetPackageKey = rightDbPackage.Key,
-                    TargetPackageShortName = rightDbPackage.ShortName,
-                    ProcessedAt = DateTime.UtcNow,
-                };
-            }
+        //    if (dbPairLtoR == null)
+        //    {
+        //        insertLtoR = true;
+        //        dbPairLtoR = new()
+        //        {
+        //            Key = DbFhirPackageComparisonPair.GetIndex(),
+        //            SourcePackageKey = leftDbPackage.Key,
+        //            SourcePackageShortName = leftDbPackage.ShortName,
+        //            TargetPackageKey = rightDbPackage.Key,
+        //            TargetPackageShortName = rightDbPackage.ShortName,
+        //            ProcessedAt = DateTime.UtcNow,
+        //        };
+        //    }
 
-            // check for a package pair for right-to-left comparison
-            DbFhirPackageComparisonPair? dbPairRtoL = DbFhirPackageComparisonPair.SelectSingle(
-                _dbConnection,
-                SourcePackageKey: rightDbPackage.Key,
-                TargetPackageKey: leftDbPackage.Key);
+        //    // check for a package pair for right-to-left comparison
+        //    DbFhirPackageComparisonPair? dbPairRtoL = DbFhirPackageComparisonPair.SelectSingle(
+        //        _dbConnection,
+        //        SourcePackageKey: rightDbPackage.Key,
+        //        TargetPackageKey: leftDbPackage.Key);
 
-            if (dbPairRtoL == null)
-            {
-                insertRtoL = true;
-                dbPairRtoL = new()
-                {
-                    Key = DbFhirPackageComparisonPair.GetIndex(),
-                    InverseComparisonKey = dbPairLtoR.Key,
-                    SourcePackageKey = rightDbPackage.Key,
-                    SourcePackageShortName = rightDbPackage.ShortName,
-                    TargetPackageKey = leftDbPackage.Key,
-                    TargetPackageShortName = leftDbPackage.ShortName,
-                    ProcessedAt = DateTime.UtcNow,
-                };
+        //    if (dbPairRtoL == null)
+        //    {
+        //        insertRtoL = true;
+        //        dbPairRtoL = new()
+        //        {
+        //            Key = DbFhirPackageComparisonPair.GetIndex(),
+        //            InverseComparisonKey = dbPairLtoR.Key,
+        //            SourcePackageKey = rightDbPackage.Key,
+        //            SourcePackageShortName = rightDbPackage.ShortName,
+        //            TargetPackageKey = leftDbPackage.Key,
+        //            TargetPackageShortName = leftDbPackage.ShortName,
+        //            ProcessedAt = DateTime.UtcNow,
+        //        };
 
-                dbPairLtoR.InverseComparisonKey = dbPairRtoL.Key;
-            }
+        //        dbPairLtoR.InverseComparisonKey = dbPairRtoL.Key;
+        //    }
 
-            dbPairLtoR.InverseComparisonKey = dbPairRtoL.Key;
-            dbPairRtoL.InverseComparisonKey = dbPairLtoR.Key;
+        //    dbPairLtoR.InverseComparisonKey = dbPairRtoL.Key;
+        //    dbPairRtoL.InverseComparisonKey = dbPairLtoR.Key;
 
-            if (insertLtoR)
-            {
-                _dbConnection.Insert(dbPairLtoR, insertPrimaryKey: true);
-            }
-            else
-            {
-                _dbConnection.Update(dbPairLtoR);
-            }
+        //    if (insertLtoR)
+        //    {
+        //        _dbConnection.Insert(dbPairLtoR, insertPrimaryKey: true);
+        //    }
+        //    else
+        //    {
+        //        _dbConnection.Update(dbPairLtoR);
+        //    }
 
-            if (insertRtoL)
-            {
-                _dbConnection.Insert(dbPairRtoL, insertPrimaryKey: true);
-            }
-            else
-            {
-                _dbConnection.Update(dbPairRtoL);
-            }
+        //    if (insertRtoL)
+        //    {
+        //        _dbConnection.Insert(dbPairRtoL, insertPrimaryKey: true);
+        //    }
+        //    else
+        //    {
+        //        _dbConnection.Update(dbPairRtoL);
+        //    }
 
-        }
+        //}
 
         loadKnownSubstitutions();
         loadKnownExternalInclusions();
     }
 
+    public bool TryLoadCrossVersionSourceMaps(string sourcePath)
+    {
+        if (string.IsNullOrEmpty(sourcePath) ||
+            (!Directory.Exists(sourcePath)))
+        {
+            _logger.LogError($"Invalid map source path: {sourcePath}");
+            return false;
+        }
+
+        // sanity check for db access
+        if (_dbConnection is null)
+        {
+            _logger.LogError("Database connection is not initialized!");
+            return false;
+        }
+
+        _loader ??= new(new()
+        {
+            AutoLoadExpansions = false,
+            ResolvePackageDependencies = false,
+        }, new()
+        {
+            JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+        });
+
+        // ensure our tables exist and are empty
+        dropMapTables(_dbConnection);
+        createMapTables(_dbConnection);
+
+        loadSourceMaps(sourcePath, "types", "ConceptMap-types-*.json");
+
+        // TODO: add missing type maps
+
+        loadSourceMaps(sourcePath, "codes", "ConceptMap-*-*.json");
+
+        // TODO: add missing value set maps
+
+        loadSourceMaps(sourcePath, "resources", "ConceptMap-resources-*.json");
+
+        // TODO: add missing resource type maps
+
+        loadSourceMaps(sourcePath, "elements", "ConceptMap-elements-*.json");
+
+        // TODO: add missing element maps
+
+        loadSourceMaps(sourcePath, "search-params", "ConceptMap-search-params-*.json");
+
+        // TODO: add missing search parameter maps
+
+        // TODO: process FML
+
+        return true;
+    }
+
+    private enum SourceMapTypeCodes : int
+    {
+        Types = 0,
+        Codes,
+        Resources,
+        Elements,
+        SearchParams,
+    }
+    
+    private void loadSourceMaps(string basePath, string relativePath, string searchPattern)
+    {
+        string inputPath = Path.Combine(basePath, "input");
+        if (!Directory.Exists(inputPath))
+        {
+            _logger.LogWarning($"Path not found: {inputPath}");
+            return;
+        }
+
+        string path = Path.Combine(inputPath, relativePath);
+        if (!Directory.Exists(path))
+        {
+            _logger.LogWarning($"Path not found: {path}");
+            return;
+        }
+
+        SourceMapTypeCodes sourceMapType = relativePath switch
+        {
+            "types" => SourceMapTypeCodes.Types,
+            "codes" => SourceMapTypeCodes.Codes,
+            "resources" => SourceMapTypeCodes.Resources,
+            "elements" => SourceMapTypeCodes.Elements,
+            "search-params" => SourceMapTypeCodes.SearchParams,
+            _ => throw new Exception($"Invalid source map relative path: {relativePath}")
+        };
+
+        int typeMapCount = 0;
+        int valueSetMapCount = 0;
+        int valueSetConceptMapCount = 0;
+        int resourceMapCount = 0;
+        int elementMapCount = 0;
+
+        // get the specified map files
+        string[] files = Directory.GetFiles(path, searchPattern, SearchOption.TopDirectoryOnly);
+        foreach (string filename in files)
+        {
+            // extract the source and target version information
+            (string sv, string tv) = getVersionsFromFilename(filename);
+
+            if (!FhirReleases.TryGetSequence(sv, out FhirReleases.FhirSequenceCodes sourceVersion))
+            {
+                throw new Exception($"Invalid source version: {sv} from file: {filename}!");
+            }
+
+            if (!FhirReleases.TryGetSequence(tv, out FhirReleases.FhirSequenceCodes targetVersion))
+            {
+                throw new Exception($"Invalid target version: {tv} from file: {filename}!");
+            }
+
+            // ensure we have these versions in the database
+            DbFhirPackage? sourcePackage = DbFhirPackage.SelectSingle(
+                _dbConnection,
+                PackageId: sourceVersion.ToCorePackageId(),
+                PackageVersion: sourceVersion.ToLongVersion());
+            if (sourcePackage is null)
+            {
+                _logger.LogWarning($"Skipping map with source version: {sourceVersion.ToRLiteral()} since it is not in the database!");
+                continue;
+            }
+
+            DbFhirPackage? targetPackage = DbFhirPackage.SelectSingle(
+                _dbConnection,
+                PackageId: targetVersion.ToCorePackageId(),
+                PackageVersion: targetVersion.ToLongVersion());
+            if (targetPackage is null)
+            {
+                _logger.LogWarning($"Skipping map with target version: {targetVersion.ToRLiteral()} since it is not in the database!");
+                continue;
+            }
+
+            object? loaded = _loader!.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: filename);
+            if (loaded is not ConceptMap cm)
+            {
+                _logger.LogError($"Error loading {filename}: could not parse as ConceptMap");
+                continue;
+            }
+
+            // process the map
+            switch (sourceMapType)
+            {
+                case SourceMapTypeCodes.Types:
+                    {
+                        int addedMapCount = loadSourceTypeMap(sourcePackage, targetPackage, cm, inputPath);
+                        typeMapCount += addedMapCount;
+                    }
+                    break;
+
+                case SourceMapTypeCodes.Codes:
+                    {
+                        (int addedVsMapCount, int addedConceptMapCount) = loadSourceCodeMap(sourcePackage, targetPackage, cm);
+                        valueSetMapCount += addedVsMapCount;
+                        valueSetConceptMapCount += addedConceptMapCount;
+                    }
+                    break;
+
+                case SourceMapTypeCodes.Resources:
+                    {
+                        int addedMapCount = loadSourceResourceMap(sourcePackage, targetPackage, cm, inputPath);
+                        resourceMapCount += addedMapCount;
+                    }
+                    break;
+
+                case SourceMapTypeCodes.Elements:
+                    {
+                        int addedMapCount = loadSourceElementMap(sourcePackage, targetPackage, cm);
+                        elementMapCount += addedMapCount;
+                    }
+                    break;
+
+                case SourceMapTypeCodes.SearchParams:
+                    //loadSourceTypeMap(sourcePackage, targetPackage, cm);
+                    break;
+
+                default:
+                    throw new Exception($"Unhandled relative path resolution: {sourceMapType} ({relativePath})!");
+            }
+        }
+
+        // log what we loaded
+        switch (sourceMapType)
+        {
+            case SourceMapTypeCodes.Types:
+                _logger.LogInformation($"Loaded {typeMapCount} Type Definition map records from: {path}");
+                break;
+            case SourceMapTypeCodes.Codes:
+                _logger.LogInformation($"Loaded {valueSetMapCount} ValueSet and {valueSetConceptMapCount} ValueSet.Concept map records from: {path}");
+                break;
+            case SourceMapTypeCodes.Resources:
+                _logger.LogInformation($"Loaded {resourceMapCount} Resource map records from: {path}");
+                break;
+            case SourceMapTypeCodes.Elements:
+                _logger.LogInformation($"Loaded {elementMapCount} Element map records from: {path}");
+                break;
+            case SourceMapTypeCodes.SearchParams:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private int loadSourceElementMap(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        ConceptMap cm)
+    {
+        List<DbElementMappingRecord> elementMapsToAdd = [];
+
+        // there *should* only be one group, but iterate just in case
+        foreach (ConceptMap.GroupComponent group in cm.Group)
+        {
+            // ensure we are in a valid element grouping
+            if (!group.Source.EndsWith("element-names", StringComparison.Ordinal))
+            {
+                throw new Exception($"Invalid source group: {group.Source} in map: {cm.Url} ({cm.Id})!");
+            }
+
+            if (!group.Target.EndsWith("element-names", StringComparison.Ordinal))
+            {
+                throw new Exception($"Invalid target group: {group.Target} in map: {cm.Url} ({cm.Id})!");
+            }
+
+            // iterate over the source elements of the map
+            foreach (ConceptMap.SourceElementComponent groupSourceElement in group.Element)
+            {
+                // resolve the source element
+                DbElement? sourceElement = DbElement.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sourcePackage.Key,
+                    Id: groupSourceElement.Code);
+                if (sourceElement is null)
+                {
+                    _logger.LogWarning($"Invalid source element: `{groupSourceElement.Code}` in map: {cm.Url} ({cm.Id})!");
+                }
+
+                // check for no map
+                if (groupSourceElement.NoMap == true)
+                {
+                    // see if there are maps we can apply this to
+                    List<DbStructureMappingRecord> relevantMaps;
+
+                    if (sourceElement is null)
+                    {
+                        relevantMaps = DbStructureMappingRecord.SelectList(
+                            _dbConnection,
+                            SourceFhirPackageKey: sourcePackage.Key,
+                            SourceStructureId: groupSourceElement.Code.Split('.').First(),
+                            TargetFhirPackageKey: targetPackage.Key);
+                    }
+                    else
+                    {
+                        relevantMaps = DbStructureMappingRecord.SelectList(
+                            _dbConnection,
+                            SourceFhirPackageKey: sourcePackage.Key,
+                            SourceStructureKey: sourceElement.StructureKey,
+                            TargetFhirPackageKey: targetPackage.Key);
+                    }
+
+                    if (relevantMaps.Count == 0)
+                    {
+                        throw new Exception($"No relevant structure maps found for source element: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
+                    }
+
+                    foreach (DbStructureMappingRecord relevantMap in relevantMaps)
+                    {
+                        DbElementMappingRecord mapRec = new()
+                        {
+                            Key = DbElementMappingRecord.GetIndex(),
+                            ResourceMapKey = relevantMap.Key,
+                            SourceElementKey = sourceElement?.Key,
+                            SourceElementId = groupSourceElement.Code,
+                            TargetElementKey = null,
+                            TargetElementId = null,
+                            OriginatingConceptMapUrlsLiteral = cm.Url,
+
+                            Relationship = null,
+                            ConceptDomainRelationship = null,
+                            ValueDomainRelationship = null,
+                            ComputedRelationship = null,
+
+                            ElementTypeChange = null,
+                            TypesAddedLiteral = null,
+                            TypesRemovedLiteral = sourceElement?.FullCollatedTypeLiteral,
+                            TypesIdenticalLiteral = null,
+                            TypesMappedLiteral = null,
+
+                            ReferenceTargetChange = null,
+                            ReferenceTargetsAddedLiteral = null,
+                            ReferenceTargetsRemovedLiteral = sourceElement?.FullCollatedReferenceTypesLiteral,
+                            ReferenceTargetsIdenticalLiteral = null,
+                            ReferenceTargetsMappedLiteral = null,
+
+                            BindingStrengthChange = null,
+                            BindingBecameRequired = null,
+                            BindingNoLongerRequired = null,
+                            BindingTargetChange = null,
+                            BoundValueSetMapKey = null,
+
+                            MaxCardinalityChange = null,
+                            BecameProhibited = true,
+                            BecameMandatory = false,
+                            BecameOptional = false,
+                            BecameArray = false,
+                            BecameScalar = false,
+                        };
+
+                        elementMapsToAdd.Add(mapRec);
+                    }
+
+                    continue;
+                }
+
+                // iterate over the map targets
+                foreach (ConceptMap.TargetElementComponent elementTarget in groupSourceElement.Target)
+                {
+                    // resolve the target type
+                    DbElement? targetElement = DbElement.SelectSingle(
+                        _dbConnection,
+                        FhirPackageKey: targetPackage.Key,
+                        Id: elementTarget.Code);
+
+                    // see if there are maps we can apply this to
+                    DbStructureMappingRecord? relevantMap;
+
+                    if (targetElement is null)
+                    {
+                        _logger.LogWarning($"Invalid target element: `{elementTarget.Code}` for source: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
+
+                        if (sourceElement is null)
+                        {
+                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                                _dbConnection,
+                                SourceFhirPackageKey: sourcePackage.Key,
+                                SourceStructureId: groupSourceElement.Code.Split('.').First(),
+                                TargetFhirPackageKey: targetPackage.Key,
+                                TargetStructureId: elementTarget.Code.Split('.').First());
+                        }
+                        else
+                        {
+                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                                _dbConnection,
+                                SourceFhirPackageKey: sourcePackage.Key,
+                                SourceStructureKey: sourceElement.StructureKey,
+                                TargetFhirPackageKey: targetPackage.Key,
+                                TargetStructureId: elementTarget.Code.Split('.').First());
+                        }
+                    }
+                    else
+                    {
+                        if (sourceElement is null)
+                        {
+                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                                _dbConnection,
+                                SourceFhirPackageKey: sourcePackage.Key,
+                                SourceStructureId: groupSourceElement.Code.Split('.').First(),
+                                TargetFhirPackageKey: targetPackage.Key,
+                                TargetStructureKey: targetElement.StructureKey);
+                        }
+                        else
+                        {
+                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                                _dbConnection,
+                                SourceFhirPackageKey: sourcePackage.Key,
+                                SourceStructureKey: sourceElement.StructureKey,
+                                TargetFhirPackageKey: targetPackage.Key,
+                                TargetStructureKey: targetElement.StructureKey);
+                        }
+                    }
+
+                    if (relevantMap is null)
+                    {
+                        throw new Exception($"No relevant structure map found for source element: {groupSourceElement.Code} to target: {elementTarget.Code} in map: {cm.Url} ({cm.Id})!");
+                    }
+
+                    // create a record for the database
+                    DbElementMappingRecord mapRec = new()
+                    {
+                        Key = DbElementMappingRecord.GetIndex(),
+                        ResourceMapKey = relevantMap.Key,
+                        SourceElementKey = sourceElement?.Key,
+                        SourceElementId = groupSourceElement.Code,
+                        TargetElementKey = targetElement?.Key,
+                        TargetElementId = elementTarget.Code,
+                        OriginatingConceptMapUrlsLiteral = cm.Url,
+
+                        Relationship = elementTarget.Relationship,
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
+                        ComputedRelationship = null,
+
+                        ElementTypeChange = null,
+                        TypesAddedLiteral = null,
+                        TypesRemovedLiteral = null,
+                        TypesIdenticalLiteral = null,
+                        TypesMappedLiteral = null,
+
+                        ReferenceTargetChange = null,
+                        ReferenceTargetsAddedLiteral = null,
+                        ReferenceTargetsRemovedLiteral = null,
+                        ReferenceTargetsIdenticalLiteral = null,
+                        ReferenceTargetsMappedLiteral = null,
+
+                        BindingStrengthChange = null,
+                        BindingBecameRequired = null,
+                        BindingNoLongerRequired = null,
+                        BindingTargetChange = null,
+                        BoundValueSetMapKey = null,
+
+                        MaxCardinalityChange = null,
+                        BecameProhibited = null,
+                        BecameMandatory = null,
+                        BecameOptional = null,
+                        BecameArray = null,
+                        BecameScalar = null,
+                    };
+
+                    elementMapsToAdd.Add(mapRec);
+                }
+            }
+        }
+
+        // insert into the database
+        elementMapsToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+        //_logger.LogInformation($"Inserted {elementMapsToAdd.Count} Type Definition Map records");
+
+        return elementMapsToAdd.Count;
+    }
+
+    private int loadSourceResourceMap(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        ConceptMap cm,
+        string sourceInputPath)
+    {
+        List<DbStructureMappingRecord> resourceMapsToAdd = [];
+
+        // there *should* only be one group, but iterate just in case
+        foreach (ConceptMap.GroupComponent group in cm.Group)
+        {
+            // ensure we are in a valid resource type grouping
+            if (!group.Source.EndsWith("resource-types", StringComparison.Ordinal))
+            {
+                throw new Exception($"Invalid source group: {group.Source} in map: {cm.Url} ({cm.Id})!");
+            }
+
+            if (!group.Target.EndsWith("resource-types", StringComparison.Ordinal))
+            {
+                throw new Exception($"Invalid target group: {group.Target} in map: {cm.Url} ({cm.Id})!");
+            }
+
+            // iterate over the source elements of the map
+            foreach (ConceptMap.SourceElementComponent groupSourceElement in group.Element)
+            {
+                // resolve the source type
+                DbStructureDefinition? sourceSd = DbStructureDefinition.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sourcePackage.Key,
+                    Id: groupSourceElement.Code);
+                if (sourceSd is null)
+                {
+                    throw new Exception($"Invalid source resource: `{groupSourceElement.Code}` in map: {cm.Url} ({cm.Id})!");
+                }
+
+                // check for no map
+                if (groupSourceElement.NoMap == true)
+                {
+                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
+
+                    DbStructureMappingRecord mapRec = new()
+                    {
+                        Key = DbStructureMappingRecord.GetIndex(),
+                        SourceFhirPackageKey = sourcePackage.Key,
+                        SourceStructureKey = sourceSd.Key,
+                        SourceStructureId = sourceSd.Id,
+
+                        TargetFhirPackageKey = targetPackage.Key,
+                        TargetStructureKey = null,
+                        TargetStructureId = null,
+
+                        FmlExists = null,
+                        FmlUrl = null,
+                        FmlFilename = null,
+
+                        Relationship = null,
+
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
+
+                        OriginatingConceptMapUrlsLiteral = cm.Url,
+                        IdLong = idLong,
+                        IdShort = idShort,
+                        Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                        Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                        Title = $"Concept Map of FHIR {sourcePackage.ShortName} resource {sourceSd.Name} to FHIR {targetPackage.ShortName}"
+                    };
+
+                    resourceMapsToAdd.Add(mapRec);
+                    continue;
+                }
+
+                // iterate over the map targets
+                foreach (ConceptMap.TargetElementComponent elementTarget in groupSourceElement.Target)
+                {
+                    // resolve the target type
+                    DbStructureDefinition? targetSd = DbStructureDefinition.SelectSingle(
+                        _dbConnection,
+                        FhirPackageKey: targetPackage.Key,
+                        Id: elementTarget.Code);
+
+                    if (targetSd is null)
+                    {
+                        throw new Exception($"Invalid target resource: `{elementTarget.Code}` for source: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
+                    }
+
+                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, targetSd.Id);
+
+                    string fmlFolder = sourcePackage.ShortName + "to" + targetPackage.ShortName;
+                    string fmlFile = sourceSd.Name + ".fml";
+                    bool fmlExists = File.Exists(Path.Combine(sourceInputPath, fmlFolder, fmlFile));
+
+                    // create a record for the database
+                    DbStructureMappingRecord mapRec = new()
+                    {
+                        Key = DbStructureMappingRecord.GetIndex(),
+                        SourceFhirPackageKey = sourcePackage.Key,
+                        SourceStructureKey = sourceSd.Key,
+                        SourceStructureId = sourceSd.Id,
+
+                        TargetFhirPackageKey = targetPackage.Key,
+                        TargetStructureKey = targetSd.Key,
+                        TargetStructureId = targetSd.Id,
+
+                        FmlExists = fmlExists,
+                        FmlFilename = fmlFile,
+                        FmlUrl = $"http://hl7.org/fhir/uv/xver/StructureMap/{sourceSd.Name}{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
+
+                        Relationship = elementTarget.Relationship,
+                        Comments = elementTarget.Comment,
+
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
+
+                        OriginatingConceptMapUrlsLiteral = cm.Url,
+
+                        IdLong = idLong,
+                        IdShort = idShort,
+                        Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                        Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                        Title = $"Concept Map of FHIR {sourcePackage.ShortName} type {sourceSd.Name} to FHIR {targetPackage.ShortName} type {targetSd.Name}"
+                    };
+
+                    resourceMapsToAdd.Add(mapRec);
+                }
+            }
+        }
+
+        // insert into the database
+        resourceMapsToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+        //_logger.LogInformation($"Inserted {elementMapsToAdd.Count} Type Definition Map records");
+
+        return resourceMapsToAdd.Count;
+    }
+
+    private (int insertedVsMapCount, int insertedConceptMapCount) loadSourceCodeMap(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        ConceptMap cm)
+    {
+        List<DbValueSetMapRecord> valueSetMapsToAdd = [];
+        List<DbValueSetConceptMapRecord> conceptMapsToAdd = [];
+
+        // there *should* only be one group, but iterate just in case
+        foreach (ConceptMap.GroupComponent group in cm.Group)
+        {
+            // try to resolve the source value set
+            string sourceVsId = group.Source.Substring(group.Source.LastIndexOf('/') + 1);
+            DbValueSet? sourceVs = DbValueSet.SelectSingle(
+                _dbConnection,
+                FhirPackageKey: sourcePackage.Key,
+                Id: sourceVsId);
+
+            if (sourceVs is null)
+            {
+                // try to resolve the element instead of the value set id
+                string elementId = cm.SourceScope is FhirUri sourceUri
+                    ? sourceUri.Value.Substring(sourceUri.Value.LastIndexOf('#') + 1)
+                    : cm.SourceScope is Canonical sourceCanonical
+                    ? sourceCanonical.Value.Substring(sourceCanonical.Value.LastIndexOf('#') + 1)
+                    : throw new Exception($"Failed to resolve Element ID for source `{cm.SourceScope}` in map: {cm.Url} ({cm.Id})");
+
+                DbElement? sourceScopeElement = DbElement.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sourcePackage.Key,
+                    Id: elementId); 
+                if ((sourceScopeElement is not null) &&
+                    (sourceScopeElement.BindingValueSetKey is not null))
+                {
+                    sourceVs = DbValueSet.SelectSingle(
+                        _dbConnection,
+                        Key: sourceScopeElement.BindingValueSetKey);
+
+                    if (sourceVs is null)
+                    {
+                        throw new Exception($"Failed to resolve bound value set key: {sourceScopeElement.Key}" +
+                            $" for element {sourceScopeElement.Id} ({sourceScopeElement.Key}) while resolving" +
+                            $" source scope: `{cm.SourceScope.ToString()}` in map: {cm.Url} ({cm.Id})");
+                    }
+                }
+
+                if (sourceVs is null)
+                {
+                    throw new Exception($"Invalid source Value Set: {sourceVsId} ({group.Source}) from map: {cm.Url} ({cm.Id})");
+                }
+            }
+
+            if (sourceVs.CanExpand != true)
+            {
+                // skip this
+                continue;
+            }
+
+            string targetVsId = group.Target.Substring(group.Target.LastIndexOf('/') + 1);
+            DbValueSet? targetVs = DbValueSet.SelectSingle(
+                _dbConnection,
+                FhirPackageKey: targetPackage.Key,
+                Id: targetVsId);
+            if (targetVs is null)
+            {
+                // try to resolve the element instead of the value set id
+                string elementId = cm.TargetScope is FhirUri targetUri
+                    ? targetUri.Value.Substring(targetUri.Value.LastIndexOf('#') + 1)
+                    : cm.TargetScope is Canonical targetCanonical
+                    ? targetCanonical.Value.Substring(targetCanonical.Value.LastIndexOf('#') + 1)
+                    : throw new Exception($"Failed to resolve Element ID for target `{cm.TargetScope}` in map: {cm.Url} ({cm.Id})");
+
+                DbElement? targetScopeElement = DbElement.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: targetPackage.Key,
+                    Id: elementId);
+                if ((targetScopeElement is not null) &&
+                    (targetScopeElement.BindingValueSetKey is not null))
+                {
+                    targetVs = DbValueSet.SelectSingle(
+                        _dbConnection,
+                        Key: targetScopeElement.BindingValueSetKey);
+
+                    if (targetVs is null)
+                    {
+                        throw new Exception($"Failed to resolve bound value set key: {targetScopeElement.Key}" +
+                            $" for element {targetScopeElement.Id} ({targetScopeElement.Key}) while resolving" +
+                            $" target scope: `{cm.TargetScope.ToString()}` in map: {cm.Url} ({cm.Id})");
+                    }
+                }
+
+                if (targetVs is null)
+                {
+                    throw new Exception($"Invalid target Value Set: {targetVsId} ({group.Target}) from map: {cm.Url} ({cm.Id})");
+                }
+            }
+
+            if (targetVs.CanExpand != true)
+            {
+                // skip this
+                continue;
+            }
+
+            // build the ID for the value set map
+            (string vsIdLong, string vsIdShort) = generateArtifactId(sourcePackage.ShortName, sourceVs.Id, targetPackage.ShortName, targetVs.Id);
+
+            // get from the db or create a new map
+            DbValueSetMapRecord? vsMap = DbValueSetMapRecord.SelectSingle(
+                _dbConnection,
+                IdLong: vsIdLong);
+            if (vsMap is null)
+            {
+                vsMap = new()
+                {
+                    Key = DbValueSetMapRecord.GetIndex(),
+                    SourceFhirPackageKey = sourcePackage.Key,
+                    SourceValueSetKey = sourceVs.Key,
+
+                    TargetFhirPackageKey = targetPackage.Key,
+                    TargetValueSetKey = targetVs.Key,
+
+                    Relationship = null,
+
+                    OriginatingConceptMapUrlsLiteral = cm.Url,
+
+                    IdLong = vsIdLong,
+                    IdShort = vsIdShort,
+                    Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{vsIdLong}",
+                    Name = FhirSanitizationUtils.ReformatIdForName(vsIdLong),
+                    Title = $"Concept Map of FHIR {sourcePackage.ShortName} Value Set `{sourceVs.VersionedUrl}` to FHIR {targetPackage.ShortName} Value Set `{targetVs.VersionedUrl}`"
+                };
+
+                valueSetMapsToAdd.Add(vsMap);
+            }
+            else
+            {
+                // add this source map as a source
+                vsMap.OriginatingConceptMapUrls = [..vsMap.OriginatingConceptMapUrls!, cm.Url];
+
+                // just update now
+                vsMap.Update(_dbConnection);
+            }
+
+            // iterate over the source elements of the map
+            foreach (ConceptMap.SourceElementComponent groupSourceElement in group.Element)
+            {
+                // resolve the source concept
+                DbValueSetConcept? sourceConcept = DbValueSetConcept.SelectSingle(
+                    _dbConnection,
+                    ValueSetKey: sourceVs.Key,
+                    Code: groupSourceElement.Code);
+                if (sourceConcept is null)
+                {
+                    throw new Exception($"Invalid source concept literal `{groupSourceElement.Code}` for Value Set: `{sourceVs.VersionedUrl}` from map: {cm.Url} ({cm.Id})");
+                }
+
+                // check for no map
+                if (groupSourceElement.NoMap == true)
+                {
+                    // check to see if we already have this in the database
+                    DbValueSetConceptMapRecord? conceptMapRec = DbValueSetConceptMapRecord.SelectSingle(
+                        _dbConnection,
+                        ValueSetMapKey: vsMap.Key,
+                        SourceValueSetConceptKey: sourceConcept.Key,
+                        TargetValueSetConceptKeyIsNull: true);
+                    if (conceptMapRec is not null)
+                    {
+                        continue;
+                    }
+
+                    conceptMapRec = new()
+                    {
+                        Key = DbValueSetConceptMapRecord.GetIndex(),
+                        ValueSetMapKey = vsMap.Key,
+
+                        SourceValueSetConceptKey = sourceConcept.Key,
+                        TargetValueSetConceptKey = null,
+
+                        Relationship = null,
+                        CodesAreIdentical = false,
+                    };
+
+                    conceptMapsToAdd.Add(conceptMapRec);
+                    continue;
+                }
+
+                // iterate over the map targets
+                foreach (ConceptMap.TargetElementComponent elementTarget in groupSourceElement.Target)
+                {
+                    // resolve the target concept
+                    DbValueSetConcept? targetConcept = DbValueSetConcept.SelectSingle(
+                        _dbConnection,
+                        ValueSetKey: targetVs.Key,
+                        Code: elementTarget.Code);
+
+                    if (targetConcept is null)
+                    {
+                        throw new Exception($"Invalid target concept literal `{elementTarget.Code}`" +
+                            $" for Value Set: `{sourceVs.VersionedUrl}` source: `{groupSourceElement.Code}`" +
+                            $" from map: {cm.Url} ({cm.Id})");
+                    }
+
+                    // check to see if we already have this in the database
+                    DbValueSetConceptMapRecord? conceptMapRec = DbValueSetConceptMapRecord.SelectSingle(
+                        _dbConnection,
+                        ValueSetMapKey: vsMap.Key,
+                        SourceValueSetConceptKey: sourceConcept.Key,
+                        TargetValueSetConceptKey: targetConcept.Key);
+
+                    if (conceptMapRec is not null)
+                    {
+                        continue;
+                    }
+
+                    // create a record for the database
+                    conceptMapRec = new()
+                    {
+                        Key = DbValueSetConceptMapRecord.GetIndex(),
+                        ValueSetMapKey = vsMap.Key,
+
+                        SourceValueSetConceptKey = sourceConcept.Key,
+                        TargetValueSetConceptKey = targetConcept.Key,
+
+                        Relationship = elementTarget.Relationship,
+                        Comments = elementTarget.Comment,
+                        CodesAreIdentical = groupSourceElement.Code == elementTarget.Code,
+                    };
+
+                    conceptMapsToAdd.Add(conceptMapRec);
+                }
+            }
+        }
+
+        // insert into the database
+        valueSetMapsToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+        //_logger.LogInformation($"Inserted {valueSetMapsToAdd.Count} Value Set Map records");
+
+        conceptMapsToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+        //_logger.LogInformation($"Inserted {conceptMapsToAdd.Count} Value Set Concept Map records");
+
+        return (valueSetMapsToAdd.Count, conceptMapsToAdd.Count);
+    }
+
+    private int loadSourceTypeMap(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        ConceptMap cm,
+        string sourceInputPath)
+    {
+        List<DbStructureMappingRecord> typeDefinitionMapsToAdd = [];
+
+        // there *should* only be one group, but iterate just in case
+        foreach (ConceptMap.GroupComponent group in cm.Group)
+        {
+            // ensure we are in a valid data type grouping
+            if (!group.Source.EndsWith("data-types", StringComparison.Ordinal))
+            {
+                throw new Exception($"Invalid source group: {group.Source} in map: {cm.Url} ({cm.Id})!");
+            }
+
+            if (!group.Target.EndsWith("data-types", StringComparison.Ordinal))
+            {
+                throw new Exception($"Invalid target group: {group.Target} in map: {cm.Url} ({cm.Id})!");
+            }
+
+            // iterate over the source elements of the map
+            foreach (ConceptMap.SourceElementComponent groupSourceElement in group.Element)
+            {
+                // resolve the source type
+                DbStructureDefinition? sourceSd = DbStructureDefinition.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: sourcePackage.Key,
+                    Id: groupSourceElement.Code);
+                if (sourceSd is null)
+                {
+                    throw new Exception($"Invalid source type: `{groupSourceElement.Code}` in map: {cm.Url} ({cm.Id})!");
+                }
+
+                // check for no map
+                if (groupSourceElement.NoMap == true)
+                {
+                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
+
+                    DbStructureMappingRecord mapRec = new()
+                    {
+                        Key = DbStructureMappingRecord.GetIndex(),
+                        SourceFhirPackageKey = sourcePackage.Key,
+                        SourceStructureKey = sourceSd.Key,
+                        SourceStructureId = sourceSd.Id,
+
+                        TargetFhirPackageKey = targetPackage.Key,
+                        TargetStructureKey = null,
+                        TargetStructureId = null,
+
+                        FmlExists = null,
+                        FmlFilename = null,
+                        FmlUrl = null,
+
+                        Relationship = null,
+
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
+
+                        OriginatingConceptMapUrlsLiteral = cm.Url,
+                        IdLong = idLong,
+                        IdShort = idShort,
+                        Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                        Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                        Title = $"Concept Map of FHIR {sourcePackage.ShortName} type {sourceSd.Name} to FHIR {targetPackage.ShortName}"
+                    };
+
+                    typeDefinitionMapsToAdd.Add(mapRec);
+                    continue;
+                }
+
+                // iterate over the map targets
+                foreach (ConceptMap.TargetElementComponent elementTarget in groupSourceElement.Target)
+                {
+                    // resolve the target type
+                    DbStructureDefinition? targetSd = DbStructureDefinition.SelectSingle(
+                        _dbConnection,
+                        FhirPackageKey: targetPackage.Key,
+                        Id: elementTarget.Code);
+
+                    if (targetSd is null)
+                    {
+                        throw new Exception($"Invalid target type: `{elementTarget.Code}` for source: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
+                    }
+
+                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, targetSd.Id);
+
+                    string fmlFolder = sourcePackage.ShortName + "to" + targetPackage.ShortName;
+                    string fmlFile = sourceSd.Name + ".fml";
+                    bool fmlExists = File.Exists(Path.Combine(sourceInputPath, fmlFolder, fmlFile));
+
+                    // create a record for the database
+                    DbStructureMappingRecord mapRec = new()
+                    {
+                        Key = DbStructureMappingRecord.GetIndex(),
+                        SourceFhirPackageKey = sourcePackage.Key,
+                        SourceStructureKey = sourceSd.Key,
+                        SourceStructureId = sourceSd.Id,
+
+                        TargetFhirPackageKey = targetPackage.Key,
+                        TargetStructureKey = targetSd.Key,
+                        TargetStructureId = targetSd.Id,
+
+                        FmlExists = fmlExists,
+                        FmlFilename = fmlFile,
+                        FmlUrl = $"http://hl7.org/fhir/uv/xver/StructureMap/{sourceSd.Name}{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
+
+                        Relationship = elementTarget.Relationship,
+                        Comments = elementTarget.Comment,
+
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
+
+                        OriginatingConceptMapUrlsLiteral = cm.Url,
+
+                        IdLong = idLong,
+                        IdShort = idShort,
+                        Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                        Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                        Title = $"Concept Map of FHIR {sourcePackage.ShortName} type {sourceSd.Name} to FHIR {targetPackage.ShortName} type {targetSd.Name}"
+                    };
+
+                    typeDefinitionMapsToAdd.Add(mapRec);
+                }
+            }
+        }
+
+        // insert into the database
+        typeDefinitionMapsToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+        //_logger.LogInformation($"Inserted {elementMapsToAdd.Count} Type Definition Map records");
+
+        return typeDefinitionMapsToAdd.Count;
+    }
+
+    private (string sourceVersion, string targetVersion) getVersionsFromFilename(string filename)
+    {
+        string fileOnly = Path.GetFileNameWithoutExtension(filename);
+        string versionPart = fileOnly.Substring(fileOnly.LastIndexOf('-') + 1);
+
+        int toIndex = versionPart.IndexOf("to", StringComparison.OrdinalIgnoreCase);
+        if (toIndex < 1)
+        {
+            throw new Exception($"Invalid source map filename: {filename}!");
+        }
+
+        string sourceVersion = versionPart.Substring(0, toIndex);
+        string targetVersion = versionPart.Substring(toIndex + 2);
+
+        return (sourceVersion, targetVersion);
+    }
+
+
+    private (string idLong, string idShort) generateArtifactId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName)
+    {
+        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong);
+        }
+
+        string idShort;
+
+        string[] sourceIdComponents = sourceArtifactId.Split('-');
+        if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+            sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+        {
+            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+            string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
+                .Select(m => m.Value)
+                .ToArray();
+
+            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+            idShort = $"{sourcePackageShortName}" +
+                $"-{sourceIdComponents[0]}" +
+                $"{pascalComponents[0]}" +
+                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                $"{pascalComponents[^1]}" +
+                $"-for-{targetPackageShortName}";
+
+        }
+        else if (sourceIdComponents.Length > 2)
+        {
+            // use the first and last components completely, but abbreviate the middle components
+            idShort = $"{sourcePackageShortName}" +
+                $"-{sourceIdComponents[0]}" +
+                $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                $"-{sourceIdComponents[^1]}" +
+                $"-for-{targetPackageShortName}";
+        }
+        else
+        {
+            // truncate the source ID so it all fits
+            idShort = $"{sourcePackageShortName}-{sourceArtifactId.Substring(0, 50)}-for-{targetPackageShortName}";
+        }
+
+        return (idLong, idShort);
+    }
+
+    private (string idLong, string idShort) generateArtifactId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName,
+        string targetArtifactId)
+    {
+        if (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase))
+        {
+            return generateArtifactId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
+        }
+
+        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}-{targetArtifactId}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong);
+        }
+
+        string shortSource;
+
+        string[] sourceIdComponents = sourceArtifactId.Split('-');
+        if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+            sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+        {
+            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+            string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
+                .Select(m => m.Value)
+                .ToArray();
+
+            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+            shortSource = $"{sourceIdComponents[0]}" +
+                $"{pascalComponents[0]}" +
+                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                $"{pascalComponents[^1]}";
+        }
+        else if (sourceIdComponents.Length > 2)
+        {
+            // use the first and last components completely, but abbreviate the middle components
+            shortSource = $"{sourceIdComponents[0]}" +
+                $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                $"-{sourceIdComponents[^1]}";
+        }
+        else
+        {
+            // truncate the source ID so it all fits
+            shortSource = sourceArtifactId.Substring(0, 25);
+        }
+
+        string shortTarget;
+
+        string[] targetIdComponents = targetArtifactId.Split('-');
+        if (targetArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+            targetArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+        {
+            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+            string[] pascalComponents = Regex.Matches(targetIdComponents[1], @"([A-Z][a-z0-9]+)")
+                .Select(m => m.Value)
+                .ToArray();
+
+            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+            shortTarget = $"{targetIdComponents[0]}" +
+                $"{pascalComponents[0]}" +
+                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                $"{pascalComponents[^1]}";
+        }
+        else if (targetIdComponents.Length > 2)
+        {
+            // use the first and last components completely, but abbreviate the middle components
+            shortTarget = $"{targetIdComponents[0]}" +
+                $"-{string.Join('-', targetIdComponents.Skip(1).Take(targetIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                $"-{targetIdComponents[^1]}";
+        }
+        else
+        {
+            // truncate the target ID so it all fits
+            shortTarget = targetArtifactId.Substring(0, 25);
+        }
+
+        string idShort = $"{sourcePackageShortName}-{shortSource}-for-{targetPackageShortName}-{shortTarget}";
+
+        return (idLong, idShort);
+    }
+
+
+    [Obsolete]
     public bool TryLoadFhirCrossVersionMaps(string crossVersionMapSourcePath)
     {
         if ((_definitions == null) || (_definitions.Length == 0))
@@ -1007,7 +2130,7 @@ public class ComparisonDatabase : IDisposable
             // iterate over our known the primitives
             foreach (FhirTypeMappings.CodeGenTypeMapping tm in FhirTypeMappings.PrimitiveMappings)
             {
-                // make sure each of the types exists
+                // make sure each of the types fmlExists
                 if (!source.PrimitiveTypesByName.TryGetValue(tm.SourceType, out StructureDefinition? sourceSd) ||
                     !target.PrimitiveTypesByName.TryGetValue(tm.TargetType, out StructureDefinition? targetSd))
                 {
@@ -2150,8 +3273,8 @@ public class ComparisonDatabase : IDisposable
         //    IDbCommand command = _dbConnection.CreateCommand();
         //    command.CommandText = $"""
         //    update {DbElement.DefaultTableName}
-        //    set FullCollatedTypeLiteral = 'id'
-        //    where Name = 'id' and FullCollatedTypeLiteral = 'string' and (BasePath = 'Element.id' or Id = 'Element.id')
+        //    set FullCollatedTypeLiteral = 'vsId'
+        //    where Name = 'vsId' and FullCollatedTypeLiteral = 'string' and (BasePath = 'Element.vsId' or IdLong = 'Element.vsId')
         //    """;
 
         //    command.ExecuteNonQuery();
@@ -2165,7 +3288,7 @@ public class ComparisonDatabase : IDisposable
         //        DbStructureDefinition? idSd = DbStructureDefinition.SelectSingle(
         //            _dbConnection,
         //            FhirPackageKey: pm.Key,
-        //            Name: "id");
+        //            Name: "vsId");
 
         //        if (idSd == null)
         //        {
@@ -2175,10 +3298,10 @@ public class ComparisonDatabase : IDisposable
         //        IDbCommand command = _dbConnection.CreateCommand();
         //        command.CommandText = $"""
         //            update {DbElementType.DefaultTableName}
-        //            set TypeName = 'id', TypeStructureKey = {idSd.Key}
+        //            set TypeName = 'vsId', TypeStructureKey = {idSd.Key}
         //            where FhirPackageKey = {pm.Key}
         //            and TypeName = 'string'
-        //            and ElementKey in (select Key from Elements where Name = 'id' and (BasePath = 'Element.id' or Id = 'Element.id'))
+        //            and ElementKey in (select Key from Elements where Name = 'vsId' and (BasePath = 'Element.vsId' or IdLong = 'Element.vsId'))
         //            """;
 
         //        command.ExecuteNonQuery();
@@ -2209,7 +3332,7 @@ public class ComparisonDatabase : IDisposable
                 FhirPackageKey: pm.Key,
                 UnversionedUrl: codeSystemUrl);
 
-            // check to see if this code system already exists
+            // check to see if this code system already fmlExists
             if (existingDbCs != null)
             {
                 continue;
@@ -2619,7 +3742,7 @@ public class ComparisonDatabase : IDisposable
                 UnversionedUrl: unversionedUrl,
                 Version: vsVersion);
 
-            // check to see if this value set already exists
+            // check to see if this value set already fmlExists
             if (existingDbVs != null)
             {
                 continue;
@@ -3288,6 +4411,17 @@ public class ComparisonDatabase : IDisposable
 
             string typeGroupLiteral = string.Join(", ", completeLiteralComponents.Order());
 
+            List<string> completeTargetLiterals = [];
+            foreach (DbElementType currentElementType in currentElementTypes)
+            {
+                if (currentElementType.TargetProfile is null)
+                {
+                    continue;
+                }
+
+                completeLiteralComponents.Add(currentElementType.TargetProfile);
+            }
+
             int resourceFieldOrder = ed.cgFieldOrder();
             int? parentElementDbKey = null;
 
@@ -3324,6 +4458,9 @@ public class ComparisonDatabase : IDisposable
                 BindingDescription = ed.Binding?.Description,
                 AdditionalBindingCount = additionalBindingCount,
                 FullCollatedTypeLiteral = typeGroupLiteral,
+                FullCollatedReferenceTypesLiteral = completeTargetLiterals.Count == 0
+                    ? null
+                    : string.Join(", ", completeTargetLiterals.Order()),
                 IsInherited = isInherited,
                 BasePath = basePath,
                 BaseElementKey = null,
