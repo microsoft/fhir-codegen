@@ -153,6 +153,7 @@ public partial class XVerProcessor
     public XVerProcessor(ConfigXVer config)
     {
         _config = config;
+        _loggerFactory = config.LogFactory;
         _logger = config.LogFactory.CreateLogger<XVerProcessor>();
 
         string path = string.IsNullOrEmpty(_config.CrossVersionDbPath)

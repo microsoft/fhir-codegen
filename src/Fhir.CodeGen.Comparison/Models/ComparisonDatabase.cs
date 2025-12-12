@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.ConstrainedExecution;
@@ -21,10 +22,12 @@ using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Comparison.XVer;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Loader;
 using Fhir.CodeGen.Lib.Models;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
 using Hl7.Fhir.Utility;
 using Microsoft.Data.Sqlite;
@@ -917,6 +920,10 @@ public class ComparisonDatabase : IDisposable
         dropMapTables(_dbConnection);
         createMapTables(_dbConnection);
 
+        // TODO: determine when we should call this
+        generateInitialTypeMaps(sourcePath);
+
+
         loadSourceMaps(sourcePath, "types", "ConceptMap-types-*.json");
 
         // TODO: add missing type maps
@@ -931,16 +938,18 @@ public class ComparisonDatabase : IDisposable
 
         loadSourceMaps(sourcePath, "elements", "ConceptMap-elements-*.json");
 
+        // TODO: process FML
+
         // TODO: add missing element maps
 
         loadSourceMaps(sourcePath, "search-params", "ConceptMap-search-params-*.json");
 
         // TODO: add missing search parameter maps
 
-        // TODO: process FML
 
         return true;
     }
+
 
     private enum SourceMapTypeCodes : int
     {
@@ -1159,8 +1168,10 @@ public class ComparisonDatabase : IDisposable
                         {
                             Key = DbElementMappingRecord.GetIndex(),
                             ResourceMapKey = relevantMap.Key,
+                            SourceFhirPackageKey = sourcePackage.Key,
                             SourceElementKey = sourceElement?.Key,
                             SourceElementId = groupSourceElement.Code,
+                            TargetFhirPackageKey = targetPackage.Key,
                             TargetElementKey = null,
                             TargetElementId = null,
                             OriginatingConceptMapUrlsLiteral = cm.Url,
@@ -1269,8 +1280,10 @@ public class ComparisonDatabase : IDisposable
                     {
                         Key = DbElementMappingRecord.GetIndex(),
                         ResourceMapKey = relevantMap.Key,
+                        SourceFhirPackageKey = sourcePackage.Key,
                         SourceElementKey = sourceElement?.Key,
                         SourceElementId = groupSourceElement.Code,
+                        TargetFhirPackageKey = targetPackage.Key,
                         TargetElementKey = targetElement?.Key,
                         TargetElementId = elementTarget.Code,
                         OriginatingConceptMapUrlsLiteral = cm.Url,
@@ -1628,7 +1641,9 @@ public class ComparisonDatabase : IDisposable
                         Key = DbValueSetConceptMapRecord.GetIndex(),
                         ValueSetMapKey = vsMap.Key,
 
+                        SourceFhirPackageKey = sourcePackage.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
+                        TargetFhirPackageKey = targetPackage.Key,
                         TargetValueSetConceptKey = null,
 
                         Relationship = null,
@@ -1673,7 +1688,9 @@ public class ComparisonDatabase : IDisposable
                         Key = DbValueSetConceptMapRecord.GetIndex(),
                         ValueSetMapKey = vsMap.Key,
 
+                        SourceFhirPackageKey = sourcePackage.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
+                        TargetFhirPackageKey = targetPackage.Key,
                         TargetValueSetConceptKey = targetConcept.Key,
 
                         Relationship = elementTarget.Relationship,
@@ -1694,6 +1711,248 @@ public class ComparisonDatabase : IDisposable
         //_logger.LogInformation($"Inserted {conceptMapsToAdd.Count} Value Set Concept Map records");
 
         return (valueSetMapsToAdd.Count, conceptMapsToAdd.Count);
+    }
+
+    private void generateInitialTypeMaps(string sourcePath)
+    {
+        string typeMapPath = Path.Combine(sourcePath, "input", "types");
+        if (!Directory.Exists(typeMapPath))
+        {
+            throw new Exception($"Type map input path not found: {typeMapPath}!");
+        }
+
+        HashSet<(string, string)> processedPairs = [];
+
+        // get all packages
+        List<DbFhirPackage> packages = DbFhirPackage.SelectList(_dbConnection);
+
+        // iterate over each source/target pair for the pre-generated and known combinations
+        for (int i = 0; i < packages.Count; i++)
+        {
+            DbFhirPackage sourcePackage = packages[i];
+            for (int j = 0; j < packages.Count; j++)
+            {
+                if (i == j)
+                {
+                    continue;
+                }
+                DbFhirPackage targetPackage = packages[j];
+
+                List<FhirTypeMappings.CodeGenTypeMapping> complexMappings = FhirTypeMappings.GetComplexTypeMaps(
+                    sourcePackage.ShortName,
+                    targetPackage.ShortName);
+
+                if (complexMappings.Count == 0)
+                {
+                    continue;
+                }
+
+                processedPairs.Add((sourcePackage.ShortName, targetPackage.ShortName));
+
+                generateInitialTypeMap(
+                    sourcePackage,
+                    targetPackage,
+                    complexMappings,
+                    typeMapPath);
+            }
+        }
+
+        System.Diagnostics.Debug.Assert(false);
+
+        // iterate over each source/target pair to expand any missing combinations (need to process sequentially in each direction so the data we need is there)
+        for (int i = 0; i < packages.Count; i++)
+        {
+            DbFhirPackage sourcePackage = packages[i];
+
+            // work upwards first
+            for (int j = i; j < packages.Count; j++)
+            {
+                if (i == j)
+                {
+                    continue;
+                }
+
+                DbFhirPackage targetPackage = packages[j];
+
+                if (processedPairs.Contains((sourcePackage.ShortName, targetPackage.ShortName)))
+                {
+                    continue;
+                }
+            }
+
+            // work downwards second
+            for (int j = i; j <= 0; j--)
+            {
+                if (i == j)
+                {
+                    continue;
+                }
+
+                DbFhirPackage targetPackage = packages[j];
+                if (processedPairs.Contains((sourcePackage.ShortName, targetPackage.ShortName)))
+                {
+                    continue;
+                }
+            }
+        }
+    }
+
+    private void generateInitialTypeMap(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        List<FhirTypeMappings.CodeGenTypeMapping> complexMappings,
+        string typeMapPath)
+    {
+        string filename = $"ConceptMap-types-{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}.json";
+
+        Dictionary<(string, string), ConceptMap.TargetElementComponent> originalMapInfo = [];
+        if (File.Exists(Path.Combine(typeMapPath, filename)))
+        {
+            object? loaded = _loader!.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: Path.Combine(typeMapPath, filename));
+            if (loaded is ConceptMap originalMap)
+            {
+                // extract the original mapping info
+                foreach (ConceptMap.GroupComponent group in originalMap.Group)
+                {
+                    foreach (ConceptMap.SourceElementComponent sourceElement in group.Element)
+                    {
+                        foreach (ConceptMap.TargetElementComponent targetElement in sourceElement.Target)
+                        {
+                            originalMapInfo[(sourceElement.Code, targetElement.Code)] = targetElement;
+                        }
+                    }
+                }
+            }
+
+            //string backupPath = Path.Combine(typeMapPath, filename + ".backup");
+
+            //if (!File.Exists(backupPath))
+            //{
+            //    // copy the file
+            //    File.Copy(Path.Combine(typeMapPath, filename), backupPath, overwrite: false);
+            //}
+        }
+
+        ConceptMap cm = new()
+        {
+            Id = $"types-{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
+            Url = $"http://hl7.org/fhir/uv/xver/ConceptMap/types-{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
+            Version = "0.2",
+            Name = $"Types{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
+            Title = $"Type Map {sourcePackage.ShortName} to {targetPackage.ShortName}",
+            Description = $"Type Map {sourcePackage.ShortName} to {targetPackage.ShortName}",
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Date = DateTimeOffset.UtcNow.ToString("O"),
+            Publisher = CommonDefinitions.WorkgroupNames["fhir"],
+            SourceScope = new FhirUri($"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/data-types"),
+            TargetScope = new FhirUri($"http://hl7.org/fhir/{targetPackage.FhirVersionShort}/ValueSet/data-types"),
+            Property = [ ConceptMapProperties.PropConceptDomain, ConceptMapProperties.PropValueDomain ],
+            Group = new()
+            {
+                new()
+                {
+                    Source = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/data-types",
+                    Target = $"http://hl7.org/fhir/{targetPackage.FhirVersionShort}/data-types",
+                },
+            },
+        };
+
+        // get the source and target primitive types
+        Dictionary<string, DbStructureDefinition> sourcePrimitives = DbStructureDefinition.SelectList(
+            _dbConnection,
+            FhirPackageKey: sourcePackage.Key,
+            ArtifactClass: FhirArtifactClassEnum.PrimitiveType)
+            .ToDictionary(sd => sd.Id, sd => sd);
+
+        Dictionary<string, DbStructureDefinition> targetPrimitives = DbStructureDefinition.SelectList(
+            _dbConnection,
+            FhirPackageKey: targetPackage.Key,
+            ArtifactClass: FhirArtifactClassEnum.PrimitiveType)
+            .ToDictionary(sd => sd.Id, sd => sd);
+
+        // process the primitive types that apply
+        foreach (FhirTypeMappings.CodeGenTypeMapping tm in FhirTypeMappings.PrimitiveMappings)
+        {
+            // ensure the source and target types exist
+            if (!sourcePrimitives.ContainsKey(tm.SourceType))
+            {
+                continue;
+            }
+
+            if (!targetPrimitives.ContainsKey(tm.TargetType))
+            {
+                continue;
+            }
+
+            originalMapInfo.TryGetValue((tm.SourceType, tm.TargetType), out ConceptMap.TargetElementComponent? originalTargetElement);
+
+            // add to the concept map
+            ConceptMap.SourceElementComponent sourceElement = new()
+            {
+                Code = tm.SourceType,
+                Target = new()
+                {
+                    new ConceptMap.TargetElementComponent
+                    {
+                        Code = tm.TargetType,
+                        Relationship = tm.Relationship,
+                        Comment = originalTargetElement?.Comment ?? tm.Comment,
+                        Property = [
+                            new()
+                            {
+                                Code = ConceptMapProperties.PropertyCodeConceptDomainRelationship,
+                                Value = new Code<CMR>(tm.ConceptDomainRelationship),
+                            },
+                            new()
+                            {
+                                Code = ConceptMapProperties.PropertyCodeValueDomainRelationship,
+                                Value = new Code<CMR>(tm.ValueDomainRelationship),
+                            },
+                        ],
+                    }
+                }
+            };
+            cm.Group[0].Element.Add(sourceElement);
+        }
+
+        // handle the complex mappings
+        foreach (FhirTypeMappings.CodeGenTypeMapping tm in complexMappings)
+        {
+            originalMapInfo.TryGetValue((tm.SourceType, tm.TargetType), out ConceptMap.TargetElementComponent? originalTargetElement);
+
+            // add to the concept map
+            ConceptMap.SourceElementComponent sourceElement = new()
+            {
+                Code = tm.SourceType,
+                Target = new()
+                {
+                    new ConceptMap.TargetElementComponent
+                    {
+                        Code = tm.TargetType,
+                        Relationship = tm.Relationship,
+                        Comment = originalTargetElement?.Comment ?? tm.Comment,
+                        Property = [
+                            new()
+                            {
+                                Code = ConceptMapProperties.PropertyCodeConceptDomainRelationship,
+                                Value = new Code<CMR>(tm.ConceptDomainRelationship),
+                            },
+                            new()
+                            {
+                                Code = ConceptMapProperties.PropertyCodeValueDomainRelationship,
+                                Value = new Code<CMR>(tm.ValueDomainRelationship),
+                            },
+                        ],
+                    }
+                }
+            };
+            cm.Group[0].Element.Add(sourceElement);
+        }
+
+        // save the file
+        string outputPath = Path.Combine(typeMapPath, filename);
+        File.WriteAllText(outputPath, cm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
     }
 
     private int loadSourceTypeMap(
@@ -1788,6 +2047,17 @@ public class ComparisonDatabase : IDisposable
                     string fmlFile = sourceSd.Name + ".fml";
                     bool fmlExists = File.Exists(Path.Combine(sourceInputPath, fmlFolder, fmlFile));
 
+                    // get existing properties if they exist
+                    CMR? cdRelationship = elementTarget.Property
+                        .FirstOrDefault(p => p.Code == ConceptMapProperties.PropertyCodeConceptDomainRelationship)?.Value is Code cdCodeValue
+                        ? EnumUtility.ParseLiteral<CMR>(cdCodeValue.Value)
+                        : null;
+
+                    CMR? vdRelationship = elementTarget.Property
+                        .FirstOrDefault(p => p.Code == ConceptMapProperties.PropertyCodeValueDomainRelationship)?.Value is Code vdCodeValue
+                        ? EnumUtility.ParseLiteral<CMR>(vdCodeValue.Value)
+                        : null;
+
                     // create a record for the database
                     DbStructureMappingRecord mapRec = new()
                     {
@@ -1807,8 +2077,8 @@ public class ComparisonDatabase : IDisposable
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
 
-                        ConceptDomainRelationship = null,
-                        ValueDomainRelationship = null,
+                        ConceptDomainRelationship = cdRelationship,
+                        ValueDomainRelationship = vdRelationship,
 
                         OriginatingConceptMapUrlsLiteral = cm.Url,
 

@@ -683,7 +683,8 @@ public partial class FhirDbComparer
             sourceElement.FullCollatedTypeLiteral,
             targetElement.FullCollatedTypeLiteral,
             conceptRelationship,
-            valueRelationship);
+            valueRelationship,
+            conceptRelationship == CMR.Equivalent ? valueRelationship : conceptRelationship);
 
         DbCollatedTypeComparison? typeComparison = existingCollated;
 

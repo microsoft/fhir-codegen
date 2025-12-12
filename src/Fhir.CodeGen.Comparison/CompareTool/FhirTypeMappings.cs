@@ -9,6 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Security.AccessControl;
 using System.Text;
 using Hl7.Fhir.Model;
+using Octokit;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.CompareTool;
@@ -67,7 +68,8 @@ public class FhirTypeMappings
         string SourceType,
         string TargetType,
         CMR ConceptDomainRelationship,
-        CMR ValueDomainRelationship)
+        CMR ValueDomainRelationship,
+        CMR Relationship)
     {
         /// <summary>
         /// Gets a comment describing the relationship between the concept domains of the source and target types.
@@ -99,11 +101,11 @@ public class FhirTypeMappings
             ? "The types are the same"
             : $"Concept domain: {ConceptDomainComment}. Value domain: {ValueDomainComment}";
 
-        public CMR Relationship => ConceptDomainRelationship switch
-        {
-            CMR.Equivalent => ValueDomainRelationship,
-            _ => ConceptDomainRelationship
-        };
+        //public CMR Relationship => ConceptDomainRelationship switch
+        //{
+        //    CMR.Equivalent => ValueDomainRelationship,
+        //    _ => ConceptDomainRelationship
+        //};
     }
 
     /// <summary>
@@ -114,85 +116,85 @@ public class FhirTypeMappings
     /// The mappings are used to determine how types are converted or compared during code generation.
     /// </remarks>
     internal static readonly CodeGenTypeMapping[] PrimitiveMappings = [
-        new("base64Binary", "base64Binary", CMR.Equivalent, CMR.Equivalent),
+        new("base64Binary", "base64Binary", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("boolean", "boolean", CMR.Equivalent, CMR.Equivalent),
+        new("boolean", "boolean", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("canonical", "canonical", CMR.Equivalent, CMR.Equivalent),
-        new("canonical", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("canonical", "uri", CMR.Equivalent, CMR.Equivalent),
+        new("canonical", "canonical", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("canonical", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("canonical", "uri", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("code", "code", CMR.Equivalent, CMR.Equivalent),
-        new("code", "id", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("code", "string", CMR.Equivalent, CMR.Equivalent),
-        new("code", "oid", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("code", "uri", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("code", "code", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("code", "id", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("code", "string", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("code", "oid", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("code", "uri", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
 
-        new("date", "date", CMR.Equivalent, CMR.Equivalent),
-        new("date", "dateTime", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
+        new("date", "date", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("date", "dateTime", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsBroaderThanTarget),
 
-        new("dateTime", "dateTime", CMR.Equivalent, CMR.Equivalent),
-        new("dateTime", "date", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("dateTime", "dateTime", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("dateTime", "date", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
 
-        new("decimal", "decimal", CMR.Equivalent, CMR.Equivalent),
-        new("decimal", "unsignedInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("decimal", "decimal", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("decimal", "unsignedInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
 
-        new("id", "id", CMR.Equivalent, CMR.Equivalent),
-        new("id", "code", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("id", "oid", CMR.Equivalent, CMR.NotRelatedTo),
-        new("id", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
+        new("id", "id", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("id", "code", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("id", "oid", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("id", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
 
-        new("instant", "instant", CMR.Equivalent, CMR.Equivalent),
+        new("instant", "instant", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("integer", "integer", CMR.Equivalent, CMR.Equivalent),
-        new("integer", "integer64", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("integer", "positiveInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("integer", "unsignedInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("integer", "integer", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("integer", "integer64", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("integer", "positiveInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("integer", "unsignedInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
 
-        new("integer64", "integer64", CMR.Equivalent, CMR.Equivalent),
-        new("integer64", "integer", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("integer64", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
+        new("integer64", "integer64", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("integer64", "integer", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("integer64", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
 
-        new("markdown", "markdown", CMR.Equivalent, CMR.Equivalent),
-        new("markdown", "string", CMR.Equivalent, CMR.Equivalent),
+        new("markdown", "markdown", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("markdown", "string", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("oid", "oid", CMR.Equivalent, CMR.Equivalent),
-        new("oid", "code", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("oid", "id", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("oid", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
+        new("oid", "oid", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("oid", "code", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("oid", "id", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("oid", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
 
-        new("positiveInt", "positiveInt", CMR.Equivalent, CMR.Equivalent),
-        new("positiveInt", "integer", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("positiveInt", "unsignedInt", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
+        new("positiveInt", "positiveInt", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("positiveInt", "integer", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("positiveInt", "unsignedInt", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
 
-        new("string", "string", CMR.Equivalent, CMR.Equivalent),
-        new("string", "canonical", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("string", "code", CMR.Equivalent, CMR.Equivalent),
-        new("string", "id", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("string", "integer64", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("string", "markdown", CMR.Equivalent, CMR.Equivalent),
-        new("string", "oid", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
-        new("string", "uri", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("string", "string", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("string", "canonical", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("string", "code", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("string", "id", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("string", "integer64", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("string", "markdown", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("string", "oid", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("string", "uri", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
 
-        new("time", "time", CMR.Equivalent, CMR.Equivalent),
+        new("time", "time", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("unsignedInt", "unsignedInt", CMR.Equivalent, CMR.Equivalent),
-        new("unsignedInt", "decimal", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("unsignedInt", "integer", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("unsignedInt", "positiveInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget),
+        new("unsignedInt", "unsignedInt", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("unsignedInt", "decimal", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("unsignedInt", "integer", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("unsignedInt", "positiveInt", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
 
-        new("uri", "uri", CMR.Equivalent, CMR.Equivalent),
-        new("uri", "canonical", CMR.Equivalent, CMR.Equivalent),
-        new("uri", "code", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("uri", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget),
-        new("uri", "url", CMR.Equivalent, CMR.Equivalent),
+        new("uri", "uri", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("uri", "canonical", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("uri", "code", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("uri", "string", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("uri", "url", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("url", "url", CMR.Equivalent, CMR.Equivalent),
-        new("url", "uri", CMR.Equivalent, CMR.Equivalent),
+        new("url", "url", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("url", "uri", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("uuid", "uuid", CMR.Equivalent, CMR.Equivalent),
+        new("uuid", "uuid", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
 
-        new("xhtml", "xhtml", CMR.Equivalent, CMR.Equivalent),
+        new("xhtml", "xhtml", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
     ];
 
     internal static Dictionary<string, string> PrimitiveTypeFallbacks = new()
@@ -209,26 +211,25 @@ public class FhirTypeMappings
         { "xhtml", "uri" },
     };
 
-    internal static ILookup<(string, string), CodeGenTypeMapping> PrimitiveMappingLookup =
+    internal static ILookup<(string, string), CodeGenTypeMapping> PrimitiveLookupByPair =
         PrimitiveMappings.ToLookup(m => (m.SourceType, m.TargetType), m => m);
 
     internal static readonly Dictionary<string, CodeGenTypeMapping> CompositeMappingOverrides = new()
     {
-        { "R2-Quantity-R3-Age", new("Quantity", "Age", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
-        { "R2-Quantity-R3-Count", new("Quantity", "Count", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
-        { "R2-Quantity-R3-Distance", new("Quantity", "Distance", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
-        { "R2-Quantity-R3-Duration", new("Quantity", "Duration", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
-        { "R2-Quantity-R3-Money", new("Quantity", "Money", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
-        { "R2-Quantity-R3-SimpleQuantity", new("Quantity", "SimpleQuantity", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Age", new("Quantity", "Age", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Count", new("Quantity", "Count", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Distance", new("Quantity", "Distance", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Duration", new("Quantity", "Duration", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-Money", new("Quantity", "Money", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
+        { "R2-Quantity-R3-SimpleQuantity", new("Quantity", "SimpleQuantity", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget) },
 
-        { "R3-Age-R2-Quantity", new("Age", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
-        { "R3-Count-R2-Quantity", new("Count", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
-        { "R3-Distance-R2-Quantity", new("Distance", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
-        { "R3-Duration-R2-Quantity", new("Duration", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
-        { "R3-Money-R2-Quantity", new("Money", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
-        { "R3-SimpleQuantity-R2-Quantity", new("SimpleQuantity", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Age-R2-Quantity", new("Age", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Count-R2-Quantity", new("Count", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Distance-R2-Quantity", new("Distance", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Duration-R2-Quantity", new("Duration", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-Money-R2-Quantity", new("Money", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
+        { "R3-SimpleQuantity-R2-Quantity", new("SimpleQuantity", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget) },
     };
-
 
     static internal bool TryGetMapping(
         string sourceType,
@@ -247,4 +248,343 @@ public class FhirTypeMappings
         return false;
     }
 
+    internal static List<CodeGenTypeMapping> GetComplexTypeMaps(string leftRVersion, string rightRVersion)
+    {
+        switch (leftRVersion, rightRVersion)
+        {
+            case ("R2", "R3"):
+                return InitialComplexTypeMaps_R2_R3;
+            case ("R3", "R2"):
+                return InitialComplexTypeMaps_R3_R2;
+            case ("R3", "R4"):
+                return InitialComplexTypeMaps_R3_R4;
+            case ("R4", "R3"):
+                return InitialComplexTypeMaps_R4_R3;
+            case ("R4", "R4B"):
+                return InitialComplexTypeMaps_R4_R4B;
+            case ("R4B", "R4"):
+                return InitialComplexTypeMaps_R4B_R4;
+            case ("R4B", "R5"):
+                return InitialComplexTypeMaps_R4B_R5;
+            case ("R5", "R4B"):
+                return InitialComplexTypeMaps_R5_R4B;
+            default:
+                return [];
+        }
+    }
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R2_R3 => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Quantity", "Age", CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget),
+        new("Quantity", "Count", CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget),
+        new("Quantity", "Distance", CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget),
+        new("Quantity", "Money", CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget),
+        new("Quantity", "Duration", CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget , CMR.SourceIsBroaderThanTarget),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Signature", "Signature", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Timing", "Timing", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        ];
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R3_R2 => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Age", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Count", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Distance", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Duration", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Money", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Signature", "Signature", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Timing", "Timing", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        ];
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R3_R4 => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactDetail", "ContactDetail", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Contributor", "Contributor", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Count", "Count", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("DataRequirement", "DataRequirement", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Distance", "Distance", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Dosage", "Dosage", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Duration", "Duration", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Money", "Money", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ParameterDefinition", "ParameterDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RelatedArtifact", "RelatedArtifact", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Signature", "Signature", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Timing", "Timing", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("TriggerDefinition", "TriggerDefinition", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("UsageContext", "UsageContext", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        ];
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4_R3 => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactDetail", "ContactDetail", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Contributor", "Contributor", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Count", "Count", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("DataRequirement", "DataRequirement", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Distance", "Distance", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Dosage", "Dosage", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Duration", "Duration", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Money", "Money", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ParameterDefinition", "ParameterDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RelatedArtifact", "RelatedArtifact", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Signature", "Signature", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Timing", "Timing", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("TriggerDefinition", "TriggerDefinition", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("UsageContext", "UsageContext", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        ];
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4_R4B => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableReference", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactDetail", "ContactDetail", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Contributor", "Contributor", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Count", "Count", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("DataRequirement", "DataRequirement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Distance", "Distance", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Dosage", "Dosage", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Duration", "Duration", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Expression", "Expression", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("MarketingStatus", "MarketingStatus", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Money", "Money", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ParameterDefinition", "ParameterDefinition", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Population", "Population", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ProdCharacteristic", "ProdCharacteristic", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ProductShelfLife", "ProductShelfLife", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RelatedArtifact", "RelatedArtifact", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Signature", "Signature", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Timing", "Timing", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("TriggerDefinition", "TriggerDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("UsageContext", "UsageContext", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        ];
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4B_R4 => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableReference", "CodeableConcept", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("CodeableReference", "Reference", CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactDetail", "ContactDetail", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Contributor", "Contributor", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Count", "Count", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("DataRequirement", "DataRequirement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Distance", "Distance", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Dosage", "Dosage", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Duration", "Duration", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Expression", "Expression", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("MarketingStatus", "MarketingStatus", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Money", "Money", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ParameterDefinition", "ParameterDefinition", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Population", "Population", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ProdCharacteristic", "ProdCharacteristic", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ProductShelfLife", "ProductShelfLife", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RelatedArtifact", "RelatedArtifact", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Signature", "Signature", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Timing", "Timing", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("TriggerDefinition", "TriggerDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("UsageContext", "UsageContext", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        ];
+
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4B_R5 => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableReference", "CodeableReference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactDetail", "ContactDetail", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Contributor", "Contributor", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Count", "Count", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("DataRequirement", "DataRequirement", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("DataType", "DataType", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Distance", "Distance", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Dosage", "Dosage", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Duration", "Duration", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Expression", "Expression", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("MarketingStatus", "MarketingStatus", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Money", "Money", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ParameterDefinition", "ParameterDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ProductShelfLife", "ProductShelfLife", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RatioRange", "RatioRange", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RelatedArtifact", "RelatedArtifact", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Signature", "Signature", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Timing", "Timing", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("TriggerDefinition", "TriggerDefinition", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("UsageContext", "UsageContext", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        ];
+
+    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R5_R4B => [
+        new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Attachment", "Attachment", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("BackboneElement", "BackboneElement", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableConcept", "CodeableConcept", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("CodeableReference", "CodeableReference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Coding", "Coding", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactDetail", "ContactDetail", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ContactPoint", "ContactPoint", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Contributor", "Contributor", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Count", "Count", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("DataRequirement", "DataRequirement", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("DataType", "DataType", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Distance", "Distance", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Dosage", "Dosage", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Duration", "Duration", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Element", "Element", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ElementDefinition", "ElementDefinition", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Expression", "Expression", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Extension", "Extension", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("HumanName", "HumanName", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Identifier", "Identifier", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("MarketingStatus", "MarketingStatus", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Meta", "Meta", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Money", "Money", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Narrative", "Narrative", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ParameterDefinition", "ParameterDefinition", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Period", "Period", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("ProductShelfLife", "ProductShelfLife", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
+        new("Quantity", "Quantity", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Range", "Range", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Ratio", "Ratio", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RatioRange", "RatioRange", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Reference", "Reference", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("RelatedArtifact", "RelatedArtifact", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("SampledData", "SampledData", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("Signature", "Signature", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("Timing", "Timing", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        new("TriggerDefinition", "TriggerDefinition", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("UsageContext", "UsageContext", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
+        ];
 }

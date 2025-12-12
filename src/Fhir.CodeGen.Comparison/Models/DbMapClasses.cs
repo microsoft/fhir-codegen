@@ -9,6 +9,12 @@ namespace Fhir.CodeGen.Comparison.Models;
 [CgSQLiteBaseClass]
 public abstract class DbMapRecordBase : DbRecordBase
 {
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int SourceFhirPackageKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int TargetFhirPackageKey { get; set; }
+
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
 
@@ -29,12 +35,6 @@ public abstract class DbMapRecordBase : DbRecordBase
 [CgSQLiteBaseClass]
 public abstract class DbMapArtifactRecordBase : DbMapRecordBase
 {
-    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
-    public required int SourceFhirPackageKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
-    public required int TargetFhirPackageKey { get; set; }
-
     public string? OriginatingConceptMapUrlsLiteral { get; set; } = null;
     [CgSQLiteIgnore]
     public List<string>? OriginatingConceptMapUrls
