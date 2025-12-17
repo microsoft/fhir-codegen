@@ -261,6 +261,7 @@ public partial class DbStructureDefinition : DbMetadataResource
 [CgSQLiteIndex(nameof(StructureKey), nameof(ResourceFieldOrder))]
 [CgSQLiteIndex(nameof(ParentElementKey), nameof(ResourceFieldOrder))]
 [CgSQLiteIndex(nameof(BindingValueSetKey))]
+[CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
 public partial class DbElement : DbPackageContent
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]

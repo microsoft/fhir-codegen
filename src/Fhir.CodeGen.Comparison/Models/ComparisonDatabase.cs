@@ -950,7 +950,6 @@ public class ComparisonDatabase : IDisposable
             transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
         }
 
-
         loadSourceMaps(sourcePath, "resources", "ConceptMap-resources-*.json");
         transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
 
@@ -975,11 +974,6 @@ public class ComparisonDatabase : IDisposable
             _logger.LogWarning($"Path not found: {inputPath}");
             return;
         }
-
-        // TESTING: load R4B->R5 FML
-        loadSourceFml(packages[3], packages[4], Path.Combine(inputPath, "R4BtoR5"));
-
-        System.Diagnostics.Debug.Assert(false);
 
         // iterate over the source packages
         for (int sourceIndex = 0; sourceIndex < packages.Count - 1; sourceIndex++)
