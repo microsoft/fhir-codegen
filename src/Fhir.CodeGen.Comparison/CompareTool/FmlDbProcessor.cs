@@ -37,6 +37,8 @@ public class FmlDbProcessor
     private ILoggerFactory? _loggerFactory;
     private ILogger _logger;
 
+    private Dictionary<string, HashSet<string>> _relatedPaths;
+
     public FmlDbProcessor(
         IDbConnection db,
         DbFhirPackage sourcePackage,
@@ -60,11 +62,12 @@ public class FmlDbProcessor
         _fmlUrl = fml.MetadataByPath.ContainsKey("url")
             ? fml.MetadataByPath["url"]?.Literal?.ValueAsString
             : null;
+
+        _relatedPaths = [];
     }
 
     public void ProcessElementRelationships()
     {
-        Dictionary<string, HashSet<string>> linkedPaths = [];
         //Dictionary<string, string> fmlVariables = [];
 
         HashSet<string> processedGroupNames = [];
@@ -168,8 +171,7 @@ public class FmlDbProcessor
             processFmlGroup(
                 group,
                 (sourceVarLiteral, resolvedSource, null),
-                (targetVarLiteral, resolvedTarget, null),
-                linkedPaths);
+                (targetVarLiteral, resolvedTarget, null));
              
             System.Diagnostics.Debug.Fail("Pick up here.");
 
@@ -183,7 +185,6 @@ public class FmlDbProcessor
         GroupDeclaration group,
         (string literal, DbStructureDefinition structure, DbElement? element) resolvedSource,
         (string literal, DbStructureDefinition structure, DbElement? element) resolvedTarget,
-        Dictionary<string, HashSet<string>> linkedPaths,
         HashSet<string>? processedGroupNames = null)
     {
         processedGroupNames ??= [];
@@ -201,19 +202,62 @@ public class FmlDbProcessor
                     group,
                     expression.SimpleCopyExpression,
                     resolvedSource,
-                    resolvedTarget,
-                    linkedPaths);
+                    resolvedTarget);
                 continue;
             }
+
+            if (expression.MappingExpression is not null)
+            {
+                processComplexMappingExpression(
+                    group,
+                    expression.MappingExpression,
+                    resolvedSource,
+                    resolvedTarget);
+
+                continue;
+            }
+
+            
         }
+    }
+
+    private void processComplexMappingExpression(
+        GroupDeclaration group,
+        FmlGroupExpression expression,
+        (string literal, DbStructureDefinition structure, DbElement? element) resolvedSourceInput,
+        (string literal, DbStructureDefinition structure, DbElement? element) resolvedTargetInput)
+    {
+        string sourceLiteralWithDot = resolvedSourceInput.literal + ".";
+        string targetLiteralWithDot = resolvedTargetInput.literal + ".";
+
+        foreach (FmlExpressionSource source in expression.Sources)
+        {
+            if (!source.Identifier.StartsWith(sourceLiteralWithDot, StringComparison.Ordinal))
+            {
+                throw new Exception(
+                    $"Source of `{source.Identifier}` does not match expression source of `{sourceLiteralWithDot}`" +
+                    $" in group {group.Name} of FML: {_name} ({_fmlFilename})");
+            }
+        }
+
+        foreach (FmlExpressionTarget target in expression.Targets)
+        {
+            if (!target.Identifier!.StartsWith(targetLiteralWithDot, StringComparison.Ordinal))
+            {
+                throw new Exception(
+                    $"Target of `{target.Identifier}` does not match expression target of `{targetLiteralWithDot}`" +
+                    $" in group {group.Name} of FML: {_name} ({_fmlFilename})");
+            }
+        }
+
+
     }
 
     private void processSimpleCopyExpression(
         GroupDeclaration group,
         MapSimpleCopyExpression expression,
         (string literal, DbStructureDefinition structure, DbElement? element) resolvedSourceInput,
-        (string literal, DbStructureDefinition structure, DbElement? element) resolvedTargetInput,
-        Dictionary<string, HashSet<string>> linkedPaths)
+        (string literal, DbStructureDefinition structure, DbElement? element) resolvedTargetInput)
     {
         string sourceLiteralWithDot = resolvedSourceInput.literal + ".";
         string targetLiteralWithDot = resolvedTargetInput.literal + ".";
@@ -240,10 +284,10 @@ public class FmlDbProcessor
             ? $"{resolvedTargetInput.structure.Name}.{expression.Target[targetLiteralWithDot.Length..]}"
             : $"{resolvedTargetInput.element.Path}.{expression.Target[targetLiteralWithDot.Length..]}";
 
-        if (!linkedPaths.TryGetValue(sourcePath, out HashSet<string>? targets))
+        if (!_relatedPaths.TryGetValue(sourcePath, out HashSet<string>? targets))
         {
             targets = [];
-            linkedPaths.Add(sourcePath, targets);
+            _relatedPaths.Add(sourcePath, targets);
         }
 
         targets.Add(targetPath);
