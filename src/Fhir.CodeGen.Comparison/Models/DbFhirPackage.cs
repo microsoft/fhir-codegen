@@ -31,5 +31,8 @@ public partial class DbFhirPackage : DbRecordBase
     public string CacheFolderName => (string.IsNullOrEmpty(PackageId) && string.IsNullOrEmpty(PackageVersion))
         ? string.Empty
         : $"{PackageId}#{PackageVersion}";
+
+    [CgSQLiteIgnore]
+    public int PackageArrayIndex => (int)DefinitionFhirSequence - 1;
 }
 

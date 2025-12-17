@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.AccessControl;
 using System.Text;
+using Fhir.CodeGen.Common.Packaging;
 using Hl7.Fhir.Model;
 using Octokit;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
@@ -78,7 +79,7 @@ public class FhirTypeMappings
         {
             CMR.Equivalent => (SourceType == TargetType)
                 ? "The type is the same"
-                : $"{SourceType} and {TargetType} are conceptually interchangeable where appropriate",
+                : $"{SourceType} and {TargetType} are conceptually interchangeable if deemed appropriate by the context of use",
             CMR.SourceIsNarrowerThanTarget => $"`{SourceType}` is considered a narrower concept domain than `{TargetType}`",
             CMR.SourceIsBroaderThanTarget => $"`{SourceType}` is considered a broader concept domain than `{TargetType}`",
             _ => $"Conceptually, `{SourceType}` and `{TargetType}` should be treated as `{ConceptDomainRelationship}`"
@@ -248,32 +249,34 @@ public class FhirTypeMappings
         return false;
     }
 
-    internal static List<CodeGenTypeMapping> GetComplexTypeMaps(string leftRVersion, string rightRVersion)
+    internal static List<CodeGenTypeMapping> GetComplexTypeMaps(
+        FhirReleases.FhirSequenceCodes left,
+        FhirReleases.FhirSequenceCodes right)
     {
-        switch (leftRVersion, rightRVersion)
+        switch (left, right)
         {
-            case ("R2", "R3"):
+            case (FhirReleases.FhirSequenceCodes.DSTU2, FhirReleases.FhirSequenceCodes.STU3):
                 return InitialComplexTypeMaps_R2_R3;
-            case ("R3", "R2"):
+            case (FhirReleases.FhirSequenceCodes.STU3, FhirReleases.FhirSequenceCodes.DSTU2):
                 return InitialComplexTypeMaps_R3_R2;
-            case ("R3", "R4"):
+            case (FhirReleases.FhirSequenceCodes.STU3, FhirReleases.FhirSequenceCodes.R4):
                 return InitialComplexTypeMaps_R3_R4;
-            case ("R4", "R3"):
+            case (FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.STU3):
                 return InitialComplexTypeMaps_R4_R3;
-            case ("R4", "R4B"):
+            case (FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.R4B):
                 return InitialComplexTypeMaps_R4_R4B;
-            case ("R4B", "R4"):
+            case (FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R4):
                 return InitialComplexTypeMaps_R4B_R4;
-            case ("R4B", "R5"):
+            case (FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R5):
                 return InitialComplexTypeMaps_R4B_R5;
-            case ("R5", "R4B"):
+            case (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B):
                 return InitialComplexTypeMaps_R5_R4B;
             default:
                 return [];
         }
     }
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R2_R3 => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R2_R3 => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Attachment", "Attachment", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
@@ -303,7 +306,7 @@ public class FhirTypeMappings
         new("Timing", "Timing", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
         ];
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R3_R2 => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R3_R2 => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Age", "Quantity", CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
@@ -333,7 +336,7 @@ public class FhirTypeMappings
         new("Timing", "Timing", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
         ];
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R3_R4 => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R3_R4 => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
@@ -371,7 +374,7 @@ public class FhirTypeMappings
         new("UsageContext", "UsageContext", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
         ];
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4_R3 => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4_R3 => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
@@ -409,7 +412,7 @@ public class FhirTypeMappings
         new("UsageContext", "UsageContext", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
         ];
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4_R4B => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4_R4B => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
@@ -454,7 +457,7 @@ public class FhirTypeMappings
         new("UsageContext", "UsageContext", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         ];
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4B_R4 => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4B_R4 => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
@@ -500,7 +503,7 @@ public class FhirTypeMappings
         ];
 
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4B_R5 => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R4B_R5 => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
@@ -544,7 +547,7 @@ public class FhirTypeMappings
         new("UsageContext", "UsageContext", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         ];
 
-    internal static List<CodeGenTypeMapping> InitialComplexTypeMaps_R5_R4B => [
+    private static List<CodeGenTypeMapping> InitialComplexTypeMaps_R5_R4B => [
         new("Address", "Address", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Age", "Age", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("Annotation", "Annotation", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),

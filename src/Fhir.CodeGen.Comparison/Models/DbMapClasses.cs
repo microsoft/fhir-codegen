@@ -88,6 +88,36 @@ public partial class DbValueSetMapRecord : DbMapArtifactRecordBase      //, IDbM
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public int? ValueSetKeyR6 { get; set; } = null;
 
+    [CgSQLiteIgnore]
+    public int?[] ValueSetKeys
+    {
+        get => [ValueSetKeyR2, ValueSetKeyR3, ValueSetKeyR4, ValueSetKeyR4B, ValueSetKeyR5, ValueSetKeyR6];
+        set
+        {
+            if (value.Length == 5)
+            {
+                ValueSetKeyR2 = value[0];
+                ValueSetKeyR3 = value[1];
+                ValueSetKeyR4 = value[2];
+                ValueSetKeyR4B = value[3];
+                ValueSetKeyR5 = value[4];
+                ValueSetKeyR6 = null;
+                return;
+            }
+            if (value.Length == 6)
+            {
+                ValueSetKeyR2 = value[0];
+                ValueSetKeyR3 = value[1];
+                ValueSetKeyR4 = value[2];
+                ValueSetKeyR4B = value[3];
+                ValueSetKeyR5 = value[4];
+                ValueSetKeyR6 = value[5];
+                return;
+            }
+            throw new ArgumentException($"Invalid number of ValueSet keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
+
 
 }
 
@@ -123,6 +153,35 @@ public partial class DbValueSetConceptMapRecord : DbMapRecordBase
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public int? ValueSetConceptKeyR6 { get; set; } = null;
 
+    [CgSQLiteIgnore]
+    public int?[] ValueSetConceptKeys
+    {
+        get => [ValueSetConceptKeyR2, ValueSetConceptKeyR3, ValueSetConceptKeyR4, ValueSetConceptKeyR4B, ValueSetConceptKeyR5, ValueSetConceptKeyR6];
+        set
+        {
+            if (value.Length == 5)
+            {
+                ValueSetConceptKeyR2 = value[0];
+                ValueSetConceptKeyR3 = value[1];
+                ValueSetConceptKeyR4 = value[2];
+                ValueSetConceptKeyR4B = value[3];
+                ValueSetConceptKeyR5 = value[4];
+                ValueSetConceptKeyR6 = null;
+                return;
+            }
+            if (value.Length == 6)
+            {
+                ValueSetConceptKeyR2 = value[0];
+                ValueSetConceptKeyR3 = value[1];
+                ValueSetConceptKeyR4 = value[2];
+                ValueSetConceptKeyR4B = value[3];
+                ValueSetConceptKeyR5 = value[4];
+                ValueSetConceptKeyR6 = value[5];
+                return;
+            }
+            throw new ArgumentException($"Invalid number of ValueSet concept keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
 
     public required bool? CodesAreIdentical { get; set; }
 }
@@ -165,10 +224,42 @@ public partial class DbStructureMappingRecord : DbMapArtifactRecordBase
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public int? StructureKeyR6 { get; set; } = null;
 
+    [CgSQLiteIgnore]
+    public int?[] StructureKeys
+    {
+        get => [StructureKeyR2, StructureKeyR3, StructureKeyR4, StructureKeyR4B, StructureKeyR5, StructureKeyR6];
+        set
+        {
+            if (value.Length == 5)
+            {
+                StructureKeyR2 = value[0];
+                StructureKeyR3 = value[1];
+                StructureKeyR4 = value[2];
+                StructureKeyR4B = value[3];
+                StructureKeyR5 = value[4];
+                StructureKeyR6 = null;
+                return;
+            }
 
+            if (value.Length == 6)
+            {
+                StructureKeyR2 = value[0];
+                StructureKeyR3 = value[1];
+                StructureKeyR4 = value[2];
+                StructureKeyR4B = value[3];
+                StructureKeyR5 = value[4];
+                StructureKeyR6 = value[5];
+                return;
+            }
+
+            throw new ArgumentException($"Invalid number of structure keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ComputedRelationship { get; set; }
 
 
     //[CgSQLiteIgnore]
@@ -219,6 +310,36 @@ public partial class DbElementMappingRecord : DbMapRecordBase
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public int? ElementKeyR6 { get; set; } = null;
 
+    [CgSQLiteIgnore]
+    public int?[] ElementKeys
+    {
+        get => [ElementKeyR2, ElementKeyR3, ElementKeyR4, ElementKeyR4B, ElementKeyR5, ElementKeyR6];
+        set
+        {
+            if (value.Length == 5)
+            {
+                ElementKeyR2 = value[0];
+                ElementKeyR3 = value[1];
+                ElementKeyR4 = value[2];
+                ElementKeyR4B = value[3];
+                ElementKeyR5 = value[4];
+                ElementKeyR6 = null;
+                return;
+            }
+            if (value.Length == 6)
+            {
+                ElementKeyR2 = value[0];
+                ElementKeyR3 = value[1];
+                ElementKeyR4 = value[2];
+                ElementKeyR4B = value[3];
+                ElementKeyR5 = value[4];
+                ElementKeyR6 = value[5];
+                return;
+            }
+            throw new ArgumentException($"Invalid number of element keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
+
     public string? OriginatingConceptMapUrlsLiteral { get; set; } = null;
     [CgSQLiteIgnore]
     public List<string>? OriginatingConceptMapUrls
@@ -226,7 +347,6 @@ public partial class DbElementMappingRecord : DbMapRecordBase
         get => OriginatingConceptMapUrlsLiteral?.Split(", ").ToList();
         set => OriginatingConceptMapUrlsLiteral = value is null ? null : string.Join(", ", value);
     }
-
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }

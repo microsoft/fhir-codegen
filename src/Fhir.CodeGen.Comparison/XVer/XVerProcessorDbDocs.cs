@@ -449,7 +449,7 @@ public partial class XVerProcessor
                         //{
                         //    // write mapping notes
                         //    writer.Write(
-                        //        $"| → {cell.RightComparison.Relationship} → " +
+                        //        $"| -> {cell.RightComparison.Relationship} -> " +
                         //        $"<hr/>" +
                         //        $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
                         //}
@@ -469,7 +469,7 @@ public partial class XVerProcessor
                         {
                             // write mapping notes
                             writer.Write(
-                                $"| →→→→ _{cell.RightComparison.Relationship}_ →→→→ <br/>({cell.RightComparison.Key})" +
+                                $"| ->->->-> _{cell.RightComparison.Relationship}_ ->->->-> <br/>({cell.RightComparison.Key})" +
                                 $"<hr/>" +
                                 $"←←←← _{cell.RightCell.LeftComparison?.Relationship}_ ←←←← <br/>({cell.RightCell.LeftComparison?.Key})");
                         }
@@ -524,7 +524,7 @@ public partial class XVerProcessor
         DbStructureComparison? toComparison = movingRight ? cell.RightComparison : cell.LeftComparison;
         DbStructureComparison? fromComparison = movingRight ? targetCell.LeftComparison : cell.RightComparison;
 
-        return (getLink(toComparison, targetCell, "→→→→→→→"), getLink(fromComparison, targetCell, "←←←←←←←"));
+        return (getLink(toComparison, targetCell, "->->->->->->->"), getLink(fromComparison, targetCell, "←←←←←←←"));
 
         string getLink(DbStructureComparison? comparison, DbGraphSd.DbSdCell? target, string arrows)
         {
@@ -1095,7 +1095,7 @@ public partial class XVerProcessor
                         //{
                         //    // write mapping notes
                         //    writer.Write(
-                        //        $"| → {cell.RightComparison.Relationship} → " +
+                        //        $"| -> {cell.RightComparison.Relationship} -> " +
                         //        $"<hr/>" +
                         //        $"← {cell.RightCell.LeftComparison?.Relationship} ← ");
                         //}
@@ -1103,7 +1103,7 @@ public partial class XVerProcessor
                         {
                             // write mapping notes
                             writer.Write(
-                                $"| →→→→ _{cell.RightComparison.Relationship}_ →→→→ <br/>({cell.RightComparison.Key})" +
+                                $"| ->->->-> _{cell.RightComparison.Relationship}_ ->->->-> <br/>({cell.RightComparison.Key})" +
                                 $"<hr/>" +
                                 $"←←←← _{cell.RightCell.LeftComparison?.Relationship}_ ←←←← <br/>({cell.RightCell.LeftComparison?.Key}) ");
                         }
@@ -1157,7 +1157,7 @@ public partial class XVerProcessor
         DbValueSetComparison? toComparison = movingRight ? cell.RightComparison : cell.LeftComparison;
         DbValueSetComparison? fromComparison = movingRight ? targetCell.LeftComparison : cell.RightComparison;
 
-        return (getLink(toComparison, targetCell, "→→→→→→→"), getLink(fromComparison, targetCell, "←←←←←←←"));
+        return (getLink(toComparison, targetCell, "->->->->->->->"), getLink(fromComparison, targetCell, "←←←←←←←"));
 
         string getLink(DbValueSetComparison? comparison, DbGraphVs.DbVsCell? target, string arrows)
         {

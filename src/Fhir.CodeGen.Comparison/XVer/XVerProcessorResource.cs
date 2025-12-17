@@ -287,7 +287,7 @@ public partial class XVerProcessor
                 {
                     // write mapping notes
                     writer.Write(
-                        $"| →→→→→→→ <br/>Overview: {overviewToRight}<br/> →→→→→→→ " +
+                        $"| ->->->->->->-> <br/>Overview: {overviewToRight}<br/> ->->->->->->-> " +
                         $"<hr/>" +
                         $"←←←←←←← <br/>Overview: {overviewFromRight}<br/> ←←←←←←← ");
                 }
@@ -295,7 +295,7 @@ public partial class XVerProcessor
                 {
                     // write mapping notes
                     writer.Write(
-                        $"| →→→→→→→ <br/>Overview: {overviewToRight}<br/>Artifact: {toRight}<br/> →→→→→→→ " +
+                        $"| ->->->->->->-> <br/>Overview: {overviewToRight}<br/>Artifact: {toRight}<br/> ->->->->->->-> " +
                         $"<hr/>" +
                         $"←←←←←←← <br/>Overview: {overviewFromRight}<br/>Artifact: {fromRight}<br/> ←←←←←←← ");
                 }
@@ -708,7 +708,7 @@ public partial class XVerProcessor
 
                 // write mapping notes
                 writer.Write(
-                    $"| →→→→→→→ <br/> {toRight} <br/> →→→→→→→ " +
+                    $"| ->->->->->->-> <br/> {toRight} <br/> ->->->->->->-> " +
                     $"<hr/>" +
                     $"←←←←←←← <br/> {fromRight} <br/> ←←←←←←← ");
             }
@@ -835,7 +835,7 @@ public partial class XVerProcessor
                             {
                                 // write mapping notes
                                 writer.Write(
-                                    $"| → {cell.RightEdge?.UpTarget?.Relationship} → " +
+                                    $"| -> {cell.RightEdge?.UpTarget?.Relationship} -> " +
                                     $"<hr/>" +
                                     $"← {cell.RightEdge?.DownTarget?.Relationship} ← ");
                             }

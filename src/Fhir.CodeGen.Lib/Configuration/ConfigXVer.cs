@@ -113,10 +113,10 @@ public class ConfigXVer : ConfigRoot
     };
 
     [ConfigOption(
-    ArgName = "--comparison-pair-filter-key",
-    EnvName = "Comparison_Pair_Filter_Key",
-    ArgArity = "0..*",
-    Description = "Set of Package Comparison Pair keys to process (used to reduce comparisons).")]
+        ArgName = "--comparison-pair-filter-key",
+        EnvName = "Comparison_Pair_Filter_Key",
+        ArgArity = "0..*",
+        Description = "Set of Package Comparison Pair keys to process (used to reduce comparisons).")]
     public HashSet<int> ComparisonPairFilterKeys { get; set; } = [];
 
     private static ConfigurationOption ComparisonPairFilterKeysParameter => new()
@@ -299,6 +299,24 @@ public class ConfigXVer : ConfigRoot
         },
     };
 
+    [ConfigOption(
+        ArgName = "--use-internal-type-maps",
+        EnvName = "Use_Internal_Type_Maps",
+        ArgArity = "0..1",
+        Description = "Set to use internal type maps for comparison processing.")]
+    public bool UseInternalTypeMaps { get; set; } = false;
+    public static ConfigurationOption UseInternalTypeMapsParameter => new()
+    {
+        Name = "Use_Internal_Type_Maps",
+        EnvVarName = "Use_Internal_Type_Maps",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--use-internal-type-maps", "Set to use internal type maps for comparison processing.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
 
     private static readonly ConfigurationOption[] _options =
     [
@@ -317,6 +335,7 @@ public class ConfigXVer : ConfigRoot
         SaveComparisonResultParameter,
         CrossVersionMapSourcePathParameter,
         CrossVersionMapDestinationPathParameter,
+        UseInternalTypeMapsParameter,
     ];
 
     /// <summary>Gets the array of configuration options.</summary>
@@ -420,6 +439,9 @@ public class ConfigXVer : ConfigRoot
                             CrossVersionMapDestinationPath = FileSystemUtils.FindRelativeDir(string.Empty, path ?? string.Empty, false);
                         }
                     }
+                    break;
+                case "Use_Internal_Type_Maps":
+                    UseInternalTypeMaps = GetOpt(parseResult, opt, UseInternalTypeMaps);
                     break;
             }
         }

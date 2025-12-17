@@ -4,37 +4,38 @@
 // </copyright>
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.CommandLine;
+using System.Data;
+using System.Data.Common;
+using System.Formats.Tar;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Hl7.Fhir.Model;
-using Hl7.Fhir.Utility;
-using Microsoft.Extensions.Logging;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using Fhir.CodeGen.Common.Extensions;
+using Fhir.CodeGen.Common.Models;
+using Fhir.CodeGen.Common.Packaging;
+using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Language;
 using Fhir.CodeGen.Lib.Models;
-using Fhir.CodeGen.Common.Extensions;
-using Fhir.CodeGen.Common.Packaging;
-using Fhir.CodeGen.Common.Utils;
-using System.CommandLine;
-using System.Linq;
-using System.Data.Common;
-using System.Collections.Concurrent;
-using Fhir.CodeGen.Common.Models;
-using Fhir.CodeGen.Comparison.Models;
-using System.Xml.Linq;
-using System.Data;
-using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
+using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification.Snapshot;
-using static System.Net.Mime.MediaTypeNames;
+using Hl7.Fhir.Utility;
 using Hl7.FhirPath.Sprache;
+using Microsoft.Extensions.Logging;
+using static System.Net.Mime.MediaTypeNames;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 using Tasks = System.Threading.Tasks;
-using System.IO;
-using System.IO.Compression;
-using System.Formats.Tar;
 
 namespace Fhir.CodeGen.Comparison.XVer;
 
@@ -482,7 +483,9 @@ public partial class XVerProcessor
         // if this is a core comparison and we have a location, try to load existing cross-version maps
         if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            _ = _db.TryLoadCrossVersionSourceMaps(_config.CrossVersionMapSourcePath);
+            _ = _db.TryLoadCrossVersionSourceMaps(
+                _config.CrossVersionMapSourcePath,
+                _config.UseInternalTypeMaps);
             //_ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
         }
     }
@@ -788,6 +791,145 @@ public partial class XVerProcessor
         }
 
         throw new IOException("Failed to create file after 3 attempts.");
+    }
+
+
+
+    internal static (string idLong, string idShort) GenerateArtifactId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName)
+    {
+        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong);
+        }
+
+        string idShort;
+
+        string[] sourceIdComponents = sourceArtifactId.Split('-');
+        if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+            sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+        {
+            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+            string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
+                .Select(m => m.Value)
+                .ToArray();
+
+            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+            idShort = $"{sourcePackageShortName}" +
+                $"-{sourceIdComponents[0]}" +
+                $"{pascalComponents[0]}" +
+                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                $"{pascalComponents[^1]}" +
+                $"-for-{targetPackageShortName}";
+
+        }
+        else if (sourceIdComponents.Length > 2)
+        {
+            // use the first and last components completely, but abbreviate the middle components
+            idShort = $"{sourcePackageShortName}" +
+                $"-{sourceIdComponents[0]}" +
+                $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                $"-{sourceIdComponents[^1]}" +
+                $"-for-{targetPackageShortName}";
+        }
+        else
+        {
+            // truncate the source ID so it all fits
+            idShort = $"{sourcePackageShortName}-{sourceArtifactId.Substring(0, 50)}-for-{targetPackageShortName}";
+        }
+
+        return (idLong, idShort);
+    }
+
+    internal static (string idLong, string idShort) GenerateArtifactId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName,
+        string? targetArtifactId)
+    {
+        if ((targetArtifactId is null) ||
+            (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase)))
+        {
+            return GenerateArtifactId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
+        }
+
+        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}-{targetArtifactId}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong);
+        }
+
+        string shortSource;
+
+        string[] sourceIdComponents = sourceArtifactId.Split('-');
+        if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+            sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+        {
+            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+            string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
+                .Select(m => m.Value)
+                .ToArray();
+
+            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+            shortSource = $"{sourceIdComponents[0]}" +
+                $"{pascalComponents[0]}" +
+                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                $"{pascalComponents[^1]}";
+        }
+        else if (sourceIdComponents.Length > 2)
+        {
+            // use the first and last components completely, but abbreviate the middle components
+            shortSource = $"{sourceIdComponents[0]}" +
+                $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                $"-{sourceIdComponents[^1]}";
+        }
+        else
+        {
+            // truncate the source ID so it all fits
+            shortSource = sourceArtifactId.Substring(0, 25);
+        }
+
+        string shortTarget;
+
+        string[] targetIdComponents = targetArtifactId.Split('-');
+        if (targetArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+            targetArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+        {
+            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+            string[] pascalComponents = Regex.Matches(targetIdComponents[1], @"([A-Z][a-z0-9]+)")
+                .Select(m => m.Value)
+                .ToArray();
+
+            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+            shortTarget = $"{targetIdComponents[0]}" +
+                $"{pascalComponents[0]}" +
+                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                $"{pascalComponents[^1]}";
+        }
+        else if (targetIdComponents.Length > 2)
+        {
+            // use the first and last components completely, but abbreviate the middle components
+            shortTarget = $"{targetIdComponents[0]}" +
+                $"-{string.Join('-', targetIdComponents.Skip(1).Take(targetIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                $"-{targetIdComponents[^1]}";
+        }
+        else
+        {
+            // truncate the target ID so it all fits
+            shortTarget = targetArtifactId.Substring(0, 25);
+        }
+
+        string idShort = $"{sourcePackageShortName}-{shortSource}-for-{targetPackageShortName}-{shortTarget}";
+
+        return (idLong, idShort);
     }
 
 }

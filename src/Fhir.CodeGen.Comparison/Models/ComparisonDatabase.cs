@@ -14,6 +14,7 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Antlr4.Runtime.Tree.Xpath;
 using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
@@ -26,6 +27,7 @@ using Fhir.CodeGen.Comparison.XVer;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Loader;
 using Fhir.CodeGen.Lib.Models;
+using Fhir.CodeGen.MappingLanguage;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Specification;
@@ -33,6 +35,8 @@ using Hl7.Fhir.Utility;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Octokit;
+using static Fhir.CodeGen.Comparison.CompareTool.FhirTypeMappings;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Models;
@@ -891,7 +895,9 @@ public class ComparisonDatabase : IDisposable
         loadKnownExternalInclusions();
     }
 
-    public bool TryLoadCrossVersionSourceMaps(string sourcePath)
+    public bool TryLoadCrossVersionSourceMaps(
+        string sourcePath,
+        bool useInternalTypeMaps)
     {
         if (string.IsNullOrEmpty(sourcePath) ||
             (!Directory.Exists(sourcePath)))
@@ -920,34 +926,151 @@ public class ComparisonDatabase : IDisposable
         dropMapTables(_dbConnection);
         createMapTables(_dbConnection);
 
+        // ensure we have these versions in the database
+        List<DbFhirPackage> packages = DbFhirPackage.SelectList(
+            _dbConnection,
+            orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
+
+        // complex types need transitive mappings built, primitives are direct only
+        TransitiveMappingBuilder transitiveBuilder = new(_dbConnection, _loggerFactory, packages);
+
         // TODO: determine when we should call this
-        generateInitialTypeMaps(sourcePath);
+        if (useInternalTypeMaps)
+        {
+            loadInternalTypeMaps(packages);
 
+            // complex types need transitive mappings built, primitives are direct only when using internal
+            transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
+        }
+        else
+        {
+            loadSourceMaps(sourcePath, "types", "ConceptMap-types-*.json");
 
-        loadSourceMaps(sourcePath, "types", "ConceptMap-types-*.json");
+            transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.PrimitiveType);
+            transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
+        }
 
-        // TODO: add missing type maps
-
-        loadSourceMaps(sourcePath, "codes", "ConceptMap-*-*.json");
-
-        // TODO: add missing value set maps
 
         loadSourceMaps(sourcePath, "resources", "ConceptMap-resources-*.json");
-
-        // TODO: add missing resource type maps
+        transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
 
         loadSourceMaps(sourcePath, "elements", "ConceptMap-elements-*.json");
 
-        // TODO: process FML
-
-        // TODO: add missing element maps
+        loadSourceFml(sourcePath, packages);
 
         loadSourceMaps(sourcePath, "search-params", "ConceptMap-search-params-*.json");
 
-        // TODO: add missing search parameter maps
-
+        loadSourceMaps(sourcePath, "codes", "ConceptMap-*-*.json");
 
         return true;
+    }
+
+    private void loadSourceFml(
+        string basePath,
+        List<DbFhirPackage> packages)
+    {
+        string inputPath = Path.Combine(basePath, "input");
+        if (!Directory.Exists(inputPath))
+        {
+            _logger.LogWarning($"Path not found: {inputPath}");
+            return;
+        }
+
+        // iterate over the source packages
+        for (int sourceIndex = 0; sourceIndex < packages.Count - 1; sourceIndex++)
+        {
+            DbFhirPackage sourcePackage = packages[sourceIndex];
+
+            // iterate over the target packages
+            for (int targetIndex = sourceIndex + 1; targetIndex < packages.Count; targetIndex++)
+            {
+                // skip same package
+                if (sourceIndex == targetIndex)
+                {
+                    continue;
+                }
+
+                DbFhirPackage targetPackage = packages[targetIndex];
+
+                string relativePath = $"{sourcePackage.ShortName}to{targetPackage.ShortName}";
+
+                string path = Path.Combine(inputPath, relativePath);
+                if (!Directory.Exists(path))
+                {
+                    continue;
+                }
+
+                loadSourceFml(sourcePackage, targetPackage, path);
+            }
+        }
+
+    }
+
+    private void loadSourceFml(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        string path)
+    {
+        _logger.LogInformation($"Loading FML maps from: {path}");
+
+        string sourceToTargetNoR = $"{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}";
+        int sourceToTargetNoRLen = sourceToTargetNoR.Length;
+
+        FhirMappingLanguage fmlParser = new();
+
+        // files have different naming conventions in each directory, so just process anything FML
+        string[] files = Directory.GetFiles(path, $"*.fml", SearchOption.TopDirectoryOnly);
+        foreach (string filename in files)
+        {
+            try
+            {
+                string fmlContent = File.ReadAllText(filename);
+
+                if (!fmlParser.TryParse(fmlContent, out FhirStructureMap? fml))
+                {
+                    _logger.LogError($"Error loading {filename}: could not parse");
+                    continue;
+                }
+
+                // extract the name root
+                string name;
+
+                if (fml.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
+                {
+                    name = nameMeta.Literal?.ValueAsString ?? throw new Exception($"Cross-version structure maps require a metadata name property: {filename}");
+                }
+                else
+                {
+                    name = Path.GetFileNameWithoutExtension(filename);
+                }
+
+                if (name.EndsWith(sourceToTargetNoR, StringComparison.OrdinalIgnoreCase))
+                {
+                    name = name[..^sourceToTargetNoRLen];
+                }
+
+                if (name.Equals("primitives", StringComparison.OrdinalIgnoreCase))
+                {
+                    // skip primitive type map - we have that information internally already, see FhirTypeMappings.cs
+                    continue;
+                }
+
+                // process this file
+                FmlDbProcessor fmlDbProcessor = new(
+                    _dbConnection,
+                    sourcePackage,
+                    targetPackage,
+                    filename,
+                    name,
+                    fml);
+
+                fmlDbProcessor.ProcessElementRelationships();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error loading {filename}: {ex.Message}");
+            }
+        }
     }
 
 
@@ -1369,7 +1492,7 @@ public class ComparisonDatabase : IDisposable
                 // check for no map
                 if (groupSourceElement.NoMap == true)
                 {
-                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
+                    (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
 
                     DbStructureMappingRecord mapRec = new()
                     {
@@ -1390,6 +1513,7 @@ public class ComparisonDatabase : IDisposable
 
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
+                        ComputedRelationship = null,
 
                         OriginatingConceptMapUrlsLiteral = cm.Url,
                         IdLong = idLong,
@@ -1417,7 +1541,7 @@ public class ComparisonDatabase : IDisposable
                         throw new Exception($"Invalid target resource: `{elementTarget.Code}` for source: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
                     }
 
-                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, targetSd.Id);
+                    (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, targetSd.Id);
 
                     string fmlFolder = sourcePackage.ShortName + "to" + targetPackage.ShortName;
                     string fmlFile = sourceSd.Name + ".fml";
@@ -1444,6 +1568,7 @@ public class ComparisonDatabase : IDisposable
 
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
+                        ComputedRelationship = null,
 
                         OriginatingConceptMapUrlsLiteral = cm.Url,
 
@@ -1570,7 +1695,7 @@ public class ComparisonDatabase : IDisposable
             }
 
             // build the ID for the value set map
-            (string vsIdLong, string vsIdShort) = generateArtifactId(sourcePackage.ShortName, sourceVs.Id, targetPackage.ShortName, targetVs.Id);
+            (string vsIdLong, string vsIdShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceVs.Id, targetPackage.ShortName, targetVs.Id);
 
             // get from the db or create a new map
             DbValueSetMapRecord? vsMap = DbValueSetMapRecord.SelectSingle(
@@ -1713,246 +1838,312 @@ public class ComparisonDatabase : IDisposable
         return (valueSetMapsToAdd.Count, conceptMapsToAdd.Count);
     }
 
-    private void generateInitialTypeMaps(string sourcePath)
+    private void loadInternalTypeMaps(List<DbFhirPackage> packages)
     {
-        string typeMapPath = Path.Combine(sourcePath, "input", "types");
-        if (!Directory.Exists(typeMapPath))
+        HashSet<(FhirReleases.FhirSequenceCodes, FhirReleases.FhirSequenceCodes)> processedPairs = [];
+
+        // iterate across package pairs
+        for (int sourceIndex = 0; sourceIndex < packages.Count; sourceIndex++)
         {
-            throw new Exception($"Type map input path not found: {typeMapPath}!");
-        }
+            DbFhirPackage sourcePackage = packages[sourceIndex];
 
-        HashSet<(string, string)> processedPairs = [];
-
-        // get all packages
-        List<DbFhirPackage> packages = DbFhirPackage.SelectList(_dbConnection);
-
-        // iterate over each source/target pair for the pre-generated and known combinations
-        for (int i = 0; i < packages.Count; i++)
-        {
-            DbFhirPackage sourcePackage = packages[i];
-            for (int j = 0; j < packages.Count; j++)
+            for (int targetIndex = 0; targetIndex < sourceIndex; targetIndex++)
             {
-                if (i == j)
-                {
-                    continue;
-                }
-                DbFhirPackage targetPackage = packages[j];
-
-                List<FhirTypeMappings.CodeGenTypeMapping> complexMappings = FhirTypeMappings.GetComplexTypeMaps(
-                    sourcePackage.ShortName,
-                    targetPackage.ShortName);
-
-                if (complexMappings.Count == 0)
+                if (targetIndex == sourceIndex)
                 {
                     continue;
                 }
 
-                processedPairs.Add((sourcePackage.ShortName, targetPackage.ShortName));
+                DbFhirPackage targetPackage = packages[targetIndex];
 
-                generateInitialTypeMap(
-                    sourcePackage,
-                    targetPackage,
-                    complexMappings,
-                    typeMapPath);
+                if (processedPairs.Add((sourcePackage.DefinitionFhirSequence, targetPackage.DefinitionFhirSequence)))
+                {
+                    loadInternalTypeMap(
+                        packages,
+                        sourcePackage,
+                        targetPackage);
+                }
+
+                if (processedPairs.Add((targetPackage.DefinitionFhirSequence, sourcePackage.DefinitionFhirSequence)))
+                {
+                    loadInternalTypeMap(
+                        packages,
+                        targetPackage,
+                        sourcePackage);
+                }
             }
         }
 
-        System.Diagnostics.Debug.Assert(false);
-
-        // iterate over each source/target pair to expand any missing combinations (need to process sequentially in each direction so the data we need is there)
-        for (int i = 0; i < packages.Count; i++)
-        {
-            DbFhirPackage sourcePackage = packages[i];
-
-            // work upwards first
-            for (int j = i; j < packages.Count; j++)
-            {
-                if (i == j)
-                {
-                    continue;
-                }
-
-                DbFhirPackage targetPackage = packages[j];
-
-                if (processedPairs.Contains((sourcePackage.ShortName, targetPackage.ShortName)))
-                {
-                    continue;
-                }
-            }
-
-            // work downwards second
-            for (int j = i; j <= 0; j--)
-            {
-                if (i == j)
-                {
-                    continue;
-                }
-
-                DbFhirPackage targetPackage = packages[j];
-                if (processedPairs.Contains((sourcePackage.ShortName, targetPackage.ShortName)))
-                {
-                    continue;
-                }
-            }
-        }
     }
 
-    private void generateInitialTypeMap(
+    private int?[] getKeyArray(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
-        List<FhirTypeMappings.CodeGenTypeMapping> complexMappings,
-        string typeMapPath)
+        int? sourceKey,
+        int? targetKey)
     {
-        string filename = $"ConceptMap-types-{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}.json";
+        int?[] keyArray = [ null, null, null, null, null, null ];
+        keyArray[sourcePackage.PackageArrayIndex] = sourceKey;
+        keyArray[targetPackage.PackageArrayIndex] = targetKey;
+        return keyArray;
+    }
 
-        Dictionary<(string, string), ConceptMap.TargetElementComponent> originalMapInfo = [];
-        if (File.Exists(Path.Combine(typeMapPath, filename)))
-        {
-            object? loaded = _loader!.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: Path.Combine(typeMapPath, filename));
-            if (loaded is ConceptMap originalMap)
-            {
-                // extract the original mapping info
-                foreach (ConceptMap.GroupComponent group in originalMap.Group)
-                {
-                    foreach (ConceptMap.SourceElementComponent sourceElement in group.Element)
-                    {
-                        foreach (ConceptMap.TargetElementComponent targetElement in sourceElement.Target)
-                        {
-                            originalMapInfo[(sourceElement.Code, targetElement.Code)] = targetElement;
-                        }
-                    }
-                }
-            }
-
-            //string backupPath = Path.Combine(typeMapPath, filename + ".backup");
-
-            //if (!File.Exists(backupPath))
-            //{
-            //    // copy the file
-            //    File.Copy(Path.Combine(typeMapPath, filename), backupPath, overwrite: false);
-            //}
-        }
-
-        ConceptMap cm = new()
-        {
-            Id = $"types-{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
-            Url = $"http://hl7.org/fhir/uv/xver/ConceptMap/types-{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
-            Version = "0.2",
-            Name = $"Types{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
-            Title = $"Type Map {sourcePackage.ShortName} to {targetPackage.ShortName}",
-            Description = $"Type Map {sourcePackage.ShortName} to {targetPackage.ShortName}",
-            Status = PublicationStatus.Active,
-            Experimental = false,
-            Date = DateTimeOffset.UtcNow.ToString("O"),
-            Publisher = CommonDefinitions.WorkgroupNames["fhir"],
-            SourceScope = new FhirUri($"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ValueSet/data-types"),
-            TargetScope = new FhirUri($"http://hl7.org/fhir/{targetPackage.FhirVersionShort}/ValueSet/data-types"),
-            Property = [ ConceptMapProperties.PropConceptDomain, ConceptMapProperties.PropValueDomain ],
-            Group = new()
-            {
-                new()
-                {
-                    Source = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/data-types",
-                    Target = $"http://hl7.org/fhir/{targetPackage.FhirVersionShort}/data-types",
-                },
-            },
-        };
+    private List<DbStructureMappingRecord> buildInternalPrimitiveTypeMapRecs(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage)
+    {
+        List<DbStructureMappingRecord> toAdd = [];
 
         // get the source and target primitive types
-        Dictionary<string, DbStructureDefinition> sourcePrimitives = DbStructureDefinition.SelectList(
+        List<DbStructureDefinition> sourceTypes = DbStructureDefinition.SelectList(
             _dbConnection,
             FhirPackageKey: sourcePackage.Key,
-            ArtifactClass: FhirArtifactClassEnum.PrimitiveType)
-            .ToDictionary(sd => sd.Id, sd => sd);
+            ArtifactClass: FhirArtifactClassEnum.PrimitiveType);
 
-        Dictionary<string, DbStructureDefinition> targetPrimitives = DbStructureDefinition.SelectList(
+        Dictionary<string, DbStructureDefinition> targetTypes = DbStructureDefinition.SelectList(
             _dbConnection,
             FhirPackageKey: targetPackage.Key,
             ArtifactClass: FhirArtifactClassEnum.PrimitiveType)
             .ToDictionary(sd => sd.Id, sd => sd);
 
-        // process the primitive types that apply
-        foreach (FhirTypeMappings.CodeGenTypeMapping tm in FhirTypeMappings.PrimitiveMappings)
+        ILookup<string, CodeGenTypeMapping> typeMappingLookup = FhirTypeMappings.PrimitiveMappings.ToLookup(
+            tm => tm.SourceType,
+            tm => tm);
+
+        // iterate over the source types
+        foreach (DbStructureDefinition sourceSd in sourceTypes)
         {
-            // ensure the source and target types exist
-            if (!sourcePrimitives.ContainsKey(tm.SourceType))
+            bool mapsAdded = false;
+
+            // get the mappings for this type
+            IEnumerable<FhirTypeMappings.CodeGenTypeMapping> mappingsForSource = typeMappingLookup[sourceSd.Id];
+            foreach (FhirTypeMappings.CodeGenTypeMapping tm in mappingsForSource)
             {
-                continue;
+                // ensure the target type exists
+                if (!targetTypes.TryGetValue(tm.TargetType, out DbStructureDefinition? targetSd))
+                {
+                    continue;
+                }
+
+                mapsAdded = true;
+
+                (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, tm.TargetType);
+
+                // create the structure mapping record
+                DbStructureMappingRecord mappingRec = new()
+                {
+                    Key = DbStructureMappingRecord.GetIndex(),
+                    SourceFhirPackageKey = sourcePackage.Key,
+                    SourceStructureKey = sourceSd.Key,
+                    SourceStructureId = sourceSd.Id,
+                    TargetFhirPackageKey = targetPackage.Key,
+                    TargetStructureKey = targetSd.Key,
+                    TargetStructureId = tm.TargetType,
+
+                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+
+                    FmlExists = null,
+                    FmlUrl = null,
+                    FmlFilename = null,
+
+                    Relationship = tm.Relationship,
+                    ConceptDomainRelationship = tm.ConceptDomainRelationship,
+                    ValueDomainRelationship = tm.ValueDomainRelationship,
+                    ComputedRelationship = RelationshipComposition.ComputeForDomains(tm.ConceptDomainRelationship, tm.ValueDomainRelationship),
+
+                    OriginatingConceptMapUrlsLiteral = null,
+                    IdLong = idLong,
+                    IdShort = idShort,
+                    Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                    Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                    Title = $"Cross Version Concept Map for FHIR {sourcePackage.ShortName} {sourceSd.Id} to FHIR {targetPackage.ShortName} {targetSd.Id}",
+                };
+
+                toAdd.Add(mappingRec);
             }
 
-            if (!targetPrimitives.ContainsKey(tm.TargetType))
+            // if there are no maps for this source type, add a no-map entry
+            if (!mapsAdded)
             {
-                continue;
+                (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
+                // create the structure mapping record
+                DbStructureMappingRecord mappingRec = new()
+                {
+                    Key = DbStructureMappingRecord.GetIndex(),
+                    SourceFhirPackageKey = sourcePackage.Key,
+                    SourceStructureKey = sourceSd.Key,
+                    SourceStructureId = sourceSd.Id,
+                    TargetFhirPackageKey = targetPackage.Key,
+                    TargetStructureKey = null,
+                    TargetStructureId = null,
+                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+                    FmlExists = null,
+                    FmlUrl = null,
+                    FmlFilename = null,
+                    Relationship = null,
+                    ConceptDomainRelationship = null,
+                    ValueDomainRelationship = null,
+                    ComputedRelationship = null,
+                    OriginatingConceptMapUrlsLiteral = null,
+                    IdLong = idLong,
+                    IdShort = idShort,
+                    Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                    Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                    Title = $"Cross Version Concept Map for FHIR {sourcePackage.ShortName} {sourceSd.Id} to FHIR {targetPackage.ShortName} - No Map",
+                };
+                toAdd.Add(mappingRec);
+            }
+        }
+
+        return toAdd;
+    }
+
+    private List<DbStructureMappingRecord> buildInternalComplexTypeMapRecs(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage)
+    {
+        // get the complex type mappings for this pair
+        ILookup<string, CodeGenTypeMapping> typeMappingLookup = FhirTypeMappings.GetComplexTypeMaps(
+            sourcePackage.DefinitionFhirSequence,
+            targetPackage.DefinitionFhirSequence)
+            .ToLookup(tm => tm.SourceType, tm => tm);
+
+        if (typeMappingLookup.Count == 0)
+        {
+            // nothing to do here
+            return [];
+        }
+
+
+        List<DbStructureDefinition> sourceTypes = DbStructureDefinition.SelectList(
+            _dbConnection,
+            FhirPackageKey: sourcePackage.Key,
+            ArtifactClass: FhirArtifactClassEnum.ComplexType);
+
+        Dictionary<string, DbStructureDefinition> targetTypes = DbStructureDefinition.SelectList(
+            _dbConnection,
+            FhirPackageKey: targetPackage.Key,
+            ArtifactClass: FhirArtifactClassEnum.ComplexType)
+            .ToDictionary(sd => sd.Id, sd => sd);
+
+        List<DbStructureMappingRecord> toAdd = [];
+
+        // iterate over the source types
+        foreach (DbStructureDefinition sourceSd in sourceTypes)
+        {
+            bool mapsAdded = false;
+
+            // get the mappings for this type
+            IEnumerable<FhirTypeMappings.CodeGenTypeMapping> mappingsForSource = typeMappingLookup[sourceSd.Id];
+            foreach (FhirTypeMappings.CodeGenTypeMapping tm in mappingsForSource)
+            {
+                // ensure the target type exists
+                if (!targetTypes.TryGetValue(tm.TargetType, out DbStructureDefinition? targetSd))
+                {
+                    continue;
+                }
+
+                mapsAdded = true;
+
+                (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, tm.TargetType);
+
+                // create the structure mapping record
+                DbStructureMappingRecord mappingRec = new()
+                {
+                    Key = DbStructureMappingRecord.GetIndex(),
+                    SourceFhirPackageKey = sourcePackage.Key,
+                    SourceStructureKey = sourceSd.Key,
+                    SourceStructureId = sourceSd.Id,
+                    TargetFhirPackageKey = targetPackage.Key,
+                    TargetStructureKey = targetSd.Key,
+                    TargetStructureId = tm.TargetType,
+
+                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+
+                    FmlExists = null,
+                    FmlUrl = null,
+                    FmlFilename = null,
+
+                    Relationship = tm.Relationship,
+                    ConceptDomainRelationship = tm.ConceptDomainRelationship,
+                    ValueDomainRelationship = tm.ValueDomainRelationship,
+                    ComputedRelationship = RelationshipComposition.ComputeForDomains(tm.ConceptDomainRelationship, tm.ValueDomainRelationship),
+
+                    OriginatingConceptMapUrlsLiteral = null,
+                    IdLong = idLong,
+                    IdShort = idShort,
+                    Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                    Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                    Title = $"Cross Version Concept Map for FHIR {sourcePackage.ShortName} {sourceSd.Id} to FHIR {targetPackage.ShortName} {targetSd.Id}",
+                };
+                toAdd.Add(mappingRec);
             }
 
-            originalMapInfo.TryGetValue((tm.SourceType, tm.TargetType), out ConceptMap.TargetElementComponent? originalTargetElement);
-
-            // add to the concept map
-            ConceptMap.SourceElementComponent sourceElement = new()
+            // if there are no maps for this source type, add a no-map entry
+            if (!mapsAdded)
             {
-                Code = tm.SourceType,
-                Target = new()
+                (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
+
+                // create the structure mapping record
+                DbStructureMappingRecord mappingRec = new()
                 {
-                    new ConceptMap.TargetElementComponent
-                    {
-                        Code = tm.TargetType,
-                        Relationship = tm.Relationship,
-                        Comment = originalTargetElement?.Comment ?? tm.Comment,
-                        Property = [
-                            new()
-                            {
-                                Code = ConceptMapProperties.PropertyCodeConceptDomainRelationship,
-                                Value = new Code<CMR>(tm.ConceptDomainRelationship),
-                            },
-                            new()
-                            {
-                                Code = ConceptMapProperties.PropertyCodeValueDomainRelationship,
-                                Value = new Code<CMR>(tm.ValueDomainRelationship),
-                            },
-                        ],
-                    }
-                }
-            };
-            cm.Group[0].Element.Add(sourceElement);
+                    Key = DbStructureMappingRecord.GetIndex(),
+                    SourceFhirPackageKey = sourcePackage.Key,
+                    SourceStructureKey = sourceSd.Key,
+                    SourceStructureId = sourceSd.Id,
+                    TargetFhirPackageKey = targetPackage.Key,
+                    TargetStructureKey = null,
+                    TargetStructureId = null,
+
+                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+
+                    FmlExists = null,
+                    FmlUrl = null,
+                    FmlFilename = null,
+                    Relationship = null,
+
+                    ConceptDomainRelationship = null,
+                    ValueDomainRelationship = null,
+                    ComputedRelationship = null,
+                    OriginatingConceptMapUrlsLiteral = null,
+
+                    IdLong = idLong,
+                    IdShort = idShort,
+                    Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
+                    Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                    Title = $"Cross Version Concept Map for FHIR {sourcePackage.ShortName} {sourceSd.Id} to FHIR {targetPackage.ShortName} - No Map",
+                };
+                toAdd.Add(mappingRec);
+            }
         }
 
-        // handle the complex mappings
-        foreach (FhirTypeMappings.CodeGenTypeMapping tm in complexMappings)
+        return toAdd;
+    }
+
+    private void loadInternalTypeMap(
+        List<DbFhirPackage> packages,
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage)
+    {
+        List<DbStructureMappingRecord> toAdd = [];
+
+        // add the primitive type mappings first
+        toAdd.AddRange(
+            buildInternalPrimitiveTypeMapRecs(
+                sourcePackage,
+                targetPackage));
+
+        // add the complex type mappings second
+        toAdd.AddRange(
+            buildInternalComplexTypeMapRecs(
+                sourcePackage,
+                targetPackage));
+
+        // insert our mapping records
+        if (toAdd.Count > 0)
         {
-            originalMapInfo.TryGetValue((tm.SourceType, tm.TargetType), out ConceptMap.TargetElementComponent? originalTargetElement);
-
-            // add to the concept map
-            ConceptMap.SourceElementComponent sourceElement = new()
-            {
-                Code = tm.SourceType,
-                Target = new()
-                {
-                    new ConceptMap.TargetElementComponent
-                    {
-                        Code = tm.TargetType,
-                        Relationship = tm.Relationship,
-                        Comment = originalTargetElement?.Comment ?? tm.Comment,
-                        Property = [
-                            new()
-                            {
-                                Code = ConceptMapProperties.PropertyCodeConceptDomainRelationship,
-                                Value = new Code<CMR>(tm.ConceptDomainRelationship),
-                            },
-                            new()
-                            {
-                                Code = ConceptMapProperties.PropertyCodeValueDomainRelationship,
-                                Value = new Code<CMR>(tm.ValueDomainRelationship),
-                            },
-                        ],
-                    }
-                }
-            };
-            cm.Group[0].Element.Add(sourceElement);
+            toAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
         }
-
-        // save the file
-        string outputPath = Path.Combine(typeMapPath, filename);
-        File.WriteAllText(outputPath, cm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
     }
 
     private int loadSourceTypeMap(
@@ -1993,7 +2184,7 @@ public class ComparisonDatabase : IDisposable
                 // check for no map
                 if (groupSourceElement.NoMap == true)
                 {
-                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
+                    (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName);
 
                     DbStructureMappingRecord mapRec = new()
                     {
@@ -2006,6 +2197,8 @@ public class ComparisonDatabase : IDisposable
                         TargetStructureKey = null,
                         TargetStructureId = null,
 
+                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+
                         FmlExists = null,
                         FmlFilename = null,
                         FmlUrl = null,
@@ -2014,6 +2207,7 @@ public class ComparisonDatabase : IDisposable
 
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
+                        ComputedRelationship = null,
 
                         OriginatingConceptMapUrlsLiteral = cm.Url,
                         IdLong = idLong,
@@ -2041,13 +2235,13 @@ public class ComparisonDatabase : IDisposable
                         throw new Exception($"Invalid target type: `{elementTarget.Code}` for source: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
                     }
 
-                    (string idLong, string idShort) = generateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, targetSd.Id);
+                    (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, targetSd.Id);
 
                     string fmlFolder = sourcePackage.ShortName + "to" + targetPackage.ShortName;
                     string fmlFile = sourceSd.Name + ".fml";
                     bool fmlExists = File.Exists(Path.Combine(sourceInputPath, fmlFolder, fmlFile));
 
-                    // get existing properties if they exist
+                    // get cdRelationship properties if they exist
                     CMR? cdRelationship = elementTarget.Property
                         .FirstOrDefault(p => p.Code == ConceptMapProperties.PropertyCodeConceptDomainRelationship)?.Value is Code cdCodeValue
                         ? EnumUtility.ParseLiteral<CMR>(cdCodeValue.Value)
@@ -2070,6 +2264,8 @@ public class ComparisonDatabase : IDisposable
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
 
+                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+
                         FmlExists = fmlExists,
                         FmlFilename = fmlFile,
                         FmlUrl = $"http://hl7.org/fhir/uv/xver/StructureMap/{sourceSd.Name}{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
@@ -2079,6 +2275,7 @@ public class ComparisonDatabase : IDisposable
 
                         ConceptDomainRelationship = cdRelationship,
                         ValueDomainRelationship = vdRelationship,
+                        ComputedRelationship = RelationshipComposition.ComputeForDomains(cdRelationship, vdRelationship),
 
                         OriginatingConceptMapUrlsLiteral = cm.Url,
 
@@ -2101,6 +2298,7 @@ public class ComparisonDatabase : IDisposable
         return typeDefinitionMapsToAdd.Count;
     }
 
+
     private (string sourceVersion, string targetVersion) getVersionsFromFilename(string filename)
     {
         string fileOnly = Path.GetFileNameWithoutExtension(filename);
@@ -2116,143 +2314,6 @@ public class ComparisonDatabase : IDisposable
         string targetVersion = versionPart.Substring(toIndex + 2);
 
         return (sourceVersion, targetVersion);
-    }
-
-
-    private (string idLong, string idShort) generateArtifactId(
-        string sourcePackageShortName,
-        string sourceArtifactId,
-        string targetPackageShortName)
-    {
-        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}";
-
-        if (idLong.Length <= 64)
-        {
-            return (idLong, idLong);
-        }
-
-        string idShort;
-
-        string[] sourceIdComponents = sourceArtifactId.Split('-');
-        if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
-            sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
-        {
-            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
-            string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
-                .Select(m => m.Value)
-                .ToArray();
-
-            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
-            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
-            idShort = $"{sourcePackageShortName}" +
-                $"-{sourceIdComponents[0]}" +
-                $"{pascalComponents[0]}" +
-                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
-                $"{pascalComponents[^1]}" +
-                $"-for-{targetPackageShortName}";
-
-        }
-        else if (sourceIdComponents.Length > 2)
-        {
-            // use the first and last components completely, but abbreviate the middle components
-            idShort = $"{sourcePackageShortName}" +
-                $"-{sourceIdComponents[0]}" +
-                $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
-                $"-{sourceIdComponents[^1]}" +
-                $"-for-{targetPackageShortName}";
-        }
-        else
-        {
-            // truncate the source ID so it all fits
-            idShort = $"{sourcePackageShortName}-{sourceArtifactId.Substring(0, 50)}-for-{targetPackageShortName}";
-        }
-
-        return (idLong, idShort);
-    }
-
-    private (string idLong, string idShort) generateArtifactId(
-        string sourcePackageShortName,
-        string sourceArtifactId,
-        string targetPackageShortName,
-        string targetArtifactId)
-    {
-        if (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase))
-        {
-            return generateArtifactId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
-        }
-
-        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}-{targetArtifactId}";
-
-        if (idLong.Length <= 64)
-        {
-            return (idLong, idLong);
-        }
-
-        string shortSource;
-
-        string[] sourceIdComponents = sourceArtifactId.Split('-');
-        if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
-            sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
-        {
-            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
-            string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
-                .Select(m => m.Value)
-                .ToArray();
-
-            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
-            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
-            shortSource = $"{sourceIdComponents[0]}" +
-                $"{pascalComponents[0]}" +
-                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
-                $"{pascalComponents[^1]}";
-        }
-        else if (sourceIdComponents.Length > 2)
-        {
-            // use the first and last components completely, but abbreviate the middle components
-            shortSource = $"{sourceIdComponents[0]}" +
-                $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
-                $"-{sourceIdComponents[^1]}";
-        }
-        else
-        {
-            // truncate the source ID so it all fits
-            shortSource = sourceArtifactId.Substring(0, 25);
-        }
-
-        string shortTarget;
-
-        string[] targetIdComponents = targetArtifactId.Split('-');
-        if (targetArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
-            targetArtifactId.StartsWith("v2-", StringComparison.Ordinal))
-        {
-            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
-            string[] pascalComponents = Regex.Matches(targetIdComponents[1], @"([A-Z][a-z0-9]+)")
-                .Select(m => m.Value)
-                .ToArray();
-
-            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
-            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
-            shortTarget = $"{targetIdComponents[0]}" +
-                $"{pascalComponents[0]}" +
-                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
-                $"{pascalComponents[^1]}";
-        }
-        else if (targetIdComponents.Length > 2)
-        {
-            // use the first and last components completely, but abbreviate the middle components
-            shortTarget = $"{targetIdComponents[0]}" +
-                $"-{string.Join('-', targetIdComponents.Skip(1).Take(targetIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
-                $"-{targetIdComponents[^1]}";
-        }
-        else
-        {
-            // truncate the target ID so it all fits
-            shortTarget = targetArtifactId.Substring(0, 25);
-        }
-
-        string idShort = $"{sourcePackageShortName}-{shortSource}-for-{targetPackageShortName}-{shortTarget}";
-
-        return (idLong, idShort);
     }
 
 
@@ -2422,7 +2483,7 @@ public class ComparisonDatabase : IDisposable
 
                 _ = sdComparisons.TryGet((targetDbSd.Key, sourceDbSd.Key), out DbStructureComparison? inverseSdComparison);
 
-                // look for an existing comparison record
+                // look for an cdRelationship comparison record
                 if (!sdComparisons.TryGet((sourceDbSd.Key, targetDbSd.Key), out DbStructureComparison? sdComparison))
                 {
                     // create our comparison record
@@ -4183,7 +4244,7 @@ public class ComparisonDatabase : IDisposable
                     activeConcreteConceptCount++;
                 }
 
-                // check for this record already existing
+                // check for this record already cdRelationship
                 if (DbValueSetConcept.SelectSingle(_dbConnection, FhirPackageKey: pm.Key, ValueSetKey: dbVs.Key, System: fc.System, Code: fc.Code) != null)
                 {
                     continue;
@@ -4763,7 +4824,7 @@ public class ComparisonDatabase : IDisposable
 
     void IDisposable.Dispose()
     {
-        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        // Do not vdRelationship this code. Put cleanup code in 'Dispose(bool disposing)' method
         Dispose(disposing: true);
         GC.SuppressFinalize(this);
     }
