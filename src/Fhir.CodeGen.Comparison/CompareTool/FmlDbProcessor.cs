@@ -64,26 +64,189 @@ public class FmlDbProcessor
 
     public void ProcessElementRelationships()
     {
+        Dictionary<string, HashSet<string>> linkedPaths = [];
+        //Dictionary<string, string> fmlVariables = [];
+
+        HashSet<string> processedGroupNames = [];
+
+        Dictionary<string, DbStructureDefinition> resolvedStructures = [];
+
         Dictionary<string, Dictionary<string, CrossVersionMapCollection.FmlTargetInfo>> fmlPathLookup = [];
-        fmlPathLookup.Clear();
+
+        // process the initial structure declarations to get the aliases
+        foreach ((string url, StructureDeclaration fmlStructure) in _fml.StructuresByUrl)
+        {
+            // extract the FHIR structure type from the URL
+            string fhirStructureType = url.Split('/')[^1];
+
+            while (!char.IsAsciiLetter(fhirStructureType[^1]))
+            {
+                fhirStructureType = fhirStructureType[..^1];
+
+                if (fhirStructureType.Length == 0)
+                {
+                    throw new Exception($"Failed to parse FHIR structure type from URL: {url} in {_name} ({_fmlFilename})");
+                }
+            }
+
+            // ensure the type exists in the correct package
+            if (fmlStructure.ModelMode == StructureMap.StructureMapModelMode.Source)
+            {
+                DbStructureDefinition? sd = DbStructureDefinition.SelectSingle(
+                    _db,
+                    FhirPackageKey: _sourcePackage.Key,
+                    Id: fhirStructureType);
+
+                if (sd is null)
+                {
+                    throw new Exception($"Failed to resolve FML source structure: {fhirStructureType} in {_name} ({_fmlFilename})");
+                }
+
+                if (fmlStructure.Alias is not null)
+                {
+                    //fmlVariables[fmlStructure.Alias] = fhirStructureType;
+                    resolvedStructures[fmlStructure.Alias] = sd;
+                }
+            }
+
+            if (fmlStructure.ModelMode == StructureMap.StructureMapModelMode.Target)
+            {
+                DbStructureDefinition? sd = DbStructureDefinition.SelectSingle(
+                    _db,
+                    FhirPackageKey: _targetPackage.Key,
+                    Id: fhirStructureType);
+
+                if (sd is null)
+                {
+                    throw new Exception($"Failed to resolve FML target structure: {fhirStructureType} in {_name} ({_fmlFilename})");
+                }
+
+                if (fmlStructure.Alias is not null)
+                {
+                    //fmlVariables[fmlStructure.Alias] = fhirStructureType;
+                    resolvedStructures[fmlStructure.Alias] = sd;
+                }
+            }
+        }
 
         // process each of the groups in the FML to extract path maps
         foreach ((string groupName, GroupDeclaration group) in _fml.GroupsByName)
         {
-            // process root groups (recurses into dependent groups)
-            if (_name.Contains(groupName))
+            string? sourceVarLiteral = null;
+            string? targetVarLiteral = null;
+            DbStructureDefinition? resolvedSource = null;
+            DbStructureDefinition? resolvedTarget = null;
+
+            // check for groups that process structures directly (no other variables added yet)
+            foreach (GroupParameter gp in group.Parameters)
             {
-                System.Diagnostics.Debug.Fail("Pick up here.");
-                processCrossVersionGroup(groupName, groupName, group, fmlPathLookup);
+                if (gp.TypeIdentifier is null)
+                {
+                    continue;
+                }
+
+                switch (gp.InputMode)
+                {
+                    case StructureMap.StructureMapInputMode.Source:
+                        _ = resolvedStructures.TryGetValue(gp.TypeIdentifier, out resolvedSource);
+                        sourceVarLiteral = gp.Identifier;
+                        break;
+
+                    case StructureMap.StructureMapInputMode.Target:
+                        _ = resolvedStructures.TryGetValue(gp.TypeIdentifier, out resolvedTarget);
+                        targetVarLiteral = gp.Identifier;
+                        break;
+                }
             }
+
+            if ((sourceVarLiteral is null) || (targetVarLiteral is null) ||
+                (resolvedSource is null) || (resolvedTarget is null))
+            {
+                continue;
+            }
+
+            processFmlGroup(
+                group,
+                (sourceVarLiteral, resolvedSource, null),
+                (targetVarLiteral, resolvedTarget, null),
+                linkedPaths);
+             
+            System.Diagnostics.Debug.Fail("Pick up here.");
+
+            processCrossVersionGroup(groupName, groupName, group, fmlPathLookup);
         }
 
         reconcileElementMapFmlPathsInDb(fmlPathLookup);
     }
 
-    private void processFmlGroup()
+    private void processFmlGroup(
+        GroupDeclaration group,
+        (string literal, DbStructureDefinition structure, DbElement? element) resolvedSource,
+        (string literal, DbStructureDefinition structure, DbElement? element) resolvedTarget,
+        Dictionary<string, HashSet<string>> linkedPaths,
+        HashSet<string>? processedGroupNames = null)
     {
+        processedGroupNames ??= [];
+        if (!processedGroupNames.Add(group.Name))
+        {
+            return;
+        }
 
+        // travers each expression in the group
+        foreach (GroupExpression expression in group.Expressions)
+        {
+            if (expression.SimpleCopyExpression is not null)
+            {
+                processSimpleCopyExpression(
+                    group,
+                    expression.SimpleCopyExpression,
+                    resolvedSource,
+                    resolvedTarget,
+                    linkedPaths);
+                continue;
+            }
+        }
+    }
+
+    private void processSimpleCopyExpression(
+        GroupDeclaration group,
+        MapSimpleCopyExpression expression,
+        (string literal, DbStructureDefinition structure, DbElement? element) resolvedSourceInput,
+        (string literal, DbStructureDefinition structure, DbElement? element) resolvedTargetInput,
+        Dictionary<string, HashSet<string>> linkedPaths)
+    {
+        string sourceLiteralWithDot = resolvedSourceInput.literal + ".";
+        string targetLiteralWithDot = resolvedTargetInput.literal + ".";
+
+        if (!expression.Source.StartsWith(sourceLiteralWithDot, StringComparison.Ordinal))
+        {
+            throw new Exception(
+                $"Source of `{expression.Source}` does not match expression source of `{sourceLiteralWithDot}`" +
+                $" in group {group.Name} of FML: {_name} ({_fmlFilename})");
+        }
+
+        if (!expression.Target.StartsWith(targetLiteralWithDot, StringComparison.Ordinal))
+        {
+            throw new Exception(
+                $"Target of `{expression.Target}` does not match expression target of `{targetLiteralWithDot}`" +
+                $" in group {group.Name} of FML: {_name} ({_fmlFilename})");
+        }
+
+        string sourcePath = resolvedSourceInput.element is null
+            ? $"{resolvedSourceInput.structure.Name}.{expression.Source[sourceLiteralWithDot.Length..]}"
+            : $"{resolvedSourceInput.element.Path}.{expression.Source[sourceLiteralWithDot.Length..]}";
+
+        string targetPath = resolvedTargetInput.element is null
+            ? $"{resolvedTargetInput.structure.Name}.{expression.Target[targetLiteralWithDot.Length..]}"
+            : $"{resolvedTargetInput.element.Path}.{expression.Target[targetLiteralWithDot.Length..]}";
+
+        if (!linkedPaths.TryGetValue(sourcePath, out HashSet<string>? targets))
+        {
+            targets = [];
+            linkedPaths.Add(sourcePath, targets);
+        }
+
+        targets.Add(targetPath);
     }
 
     [Obsolete]
