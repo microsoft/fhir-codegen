@@ -223,7 +223,7 @@ public partial class XVerProcessor
             List<string> loadDirectives = FhirReleases.TryGetSequence(directive, out FhirReleases.FhirSequenceCodes packageSequence)
                 ? packageSequence switch
                 {
-                    FhirReleases.FhirSequenceCodes.R5 => [ directive, "hl7.terminology@5.0.1"],
+                    FhirReleases.FhirSequenceCodes.R5 => [ directive, "hl7.terminology@5.1.0"],
                     _ => [ directive ]
                 }
                 : [directive];
@@ -251,7 +251,7 @@ public partial class XVerProcessor
         switch (command)
         {
             case "wip":
-                //LoadDatabase(true, true);
+                LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
                 //BuildComparisonPairs();
                 //CompareInDatabase();

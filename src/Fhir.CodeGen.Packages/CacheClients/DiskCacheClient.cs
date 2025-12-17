@@ -349,151 +349,155 @@ public class DiskCacheClient : CacheClientBase, IFhirCacheClient
             return resolveLocally(directive);
         }
 
-        (IPackageRegistryClient resolvingClient, ResolvedDirectiveUri resolvedInfo) = resolvedUris.First();
-
-        string cacheDirective = directive.FhirCacheDirective ??
-            directive.PackageId + "#" + resolvedInfo.ResolvedVersion.ToString();
-
-        // check to see if *this* version is already installed and we are not forced-overwriting
-        if (!overwriteExisting &&
-            _installedPackages.TryGetValue(directive.FhirCacheDirective!, out CachedPackageRecord? resolvedExisting))
+        foreach ((IPackageRegistryClient resolvingClient, ResolvedDirectiveUri resolvedInfo) in resolvedUris)
         {
-            switch (directive.VersionType)
-            {
-                case PackageDirective.DirectiveVersionCodes.Unknown:
-                case PackageDirective.DirectiveVersionCodes.Exact:
-                case PackageDirective.DirectiveVersionCodes.Wildcard:
-                case PackageDirective.DirectiveVersionCodes.Latest:
-                case PackageDirective.DirectiveVersionCodes.LocalBuild:
-                    // we can use the local version
-                    return resolvedExisting;
+            string cacheDirective = directive.FhirCacheDirective ??
+                directive.PackageId + "#" + resolvedInfo.ResolvedVersion.ToString();
 
-                case PackageDirective.DirectiveVersionCodes.CiBuild:
+            // check to see if *this* version is already installed and we are not forced-overwriting
+            if (!overwriteExisting &&
+                _installedPackages.TryGetValue(directive.FhirCacheDirective!, out CachedPackageRecord? resolvedExisting))
+            {
+                switch (directive.VersionType)
+                {
+                    case PackageDirective.DirectiveVersionCodes.Unknown:
+                    case PackageDirective.DirectiveVersionCodes.Exact:
+                    case PackageDirective.DirectiveVersionCodes.Wildcard:
+                    case PackageDirective.DirectiveVersionCodes.Latest:
+                    case PackageDirective.DirectiveVersionCodes.LocalBuild:
+                        // we can use the local version
+                        return resolvedExisting;
+
+                    case PackageDirective.DirectiveVersionCodes.CiBuild:
+                        {
+                            // get version information from the CI server
+                            PackageManifest? ciServerManifest = resolvingClient.Resolve(directive);
+                            if (ciServerManifest is null)
+                            {
+                                Console.WriteLine($"Failed to re-resolve CI build manifest for '{directive.RequestedDirective}' - using local cache version.");
+                                return resolvedExisting;
+                            }
+
+                            // if the *dates* match, we can use the local version
+                            if ((ciServerManifest.PublicationDate is not null) &&
+                                (resolvedExisting.Manifest?.PublicationDate is not null) &&
+                                (ciServerManifest.PublicationDate.Value == resolvedExisting.Manifest.PublicationDate.Value))
+                            {
+                                return resolvedExisting;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            // get a temporary directory so we can atomically update the cache
+            string tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            //string tempDir = Path.Combine(_cacheDirectory, ".fhir.codegen.temp-", Guid.NewGuid().ToString());
+
+            try
+            {
+                if (!Directory.Exists(tempDir))
+                {
+                    Directory.CreateDirectory(tempDir);
+                }
+
+                // get the stream for the tarball
+                (HttpStatusCode status, Stream? content) = resolvingClient.GetHttpStream(resolvedInfo.TarballUri);
+                if (!status.IsSuccessful())
+                {
+                    Console.WriteLine($"Request failed: {status.ToString()} opening tarball stream: '{resolvedInfo.TarballUri}'");
+                    continue;
+                }
+
+                if (content is null)
+                {
+                    Console.WriteLine($"Request returned no content opening tarball stream: '{resolvedInfo.TarballUri}'");
+                    continue;
+                }
+
+                // decompress and extract the tarball into the temp directory
+                using (Stream gzipStream = new GZipStream(content, CompressionMode.Decompress))
+                {
+                    await TarFile.ExtractToDirectoryAsync(gzipStream, tempDir, true, cancellationToken);
+                }
+
+                PackageManifest? manifest = null;
+                PackageIndex? packageIndex = null;
+
+                // read the package.json file if it exists
+                string packageJsonPath = Path.Combine(tempDir, "package", "package.json");
+                if (File.Exists(packageJsonPath))
+                {
+                    string json = await File.ReadAllTextAsync(packageJsonPath);
+                    manifest = JsonSerializer.Deserialize<PackageManifest>(json);
+                }
+
+                // read the .index.json file if it exists
+                string indexJsonPath = Path.Combine(tempDir, "package", ".index.json");
+                if (File.Exists(indexJsonPath))
+                {
+                    string json = await File.ReadAllTextAsync(indexJsonPath);
+                    packageIndex = JsonSerializer.Deserialize<PackageIndex>(json);
+                }
+
+                string destinationDir = Path.Combine(_packageDirectory, cacheDirective);
+                lock (_installedPackageLock)
+                {
+                    if (Directory.Exists(destinationDir))
                     {
-                        // get version information from the CI server
-                        PackageManifest? ciServerManifest = resolvingClient.Resolve(directive);
-                        if (ciServerManifest is null)
-                        {
-                            Console.WriteLine($"Failed to re-resolve CI build manifest for '{directive.RequestedDirective}' - using local cache version.");
-                            return resolvedExisting;
-                        }
-
-                        // if the *dates* match, we can use the local version
-                        if ((ciServerManifest.PublicationDate is not null) &&
-                            (resolvedExisting.Manifest?.PublicationDate is not null) &&
-                            (ciServerManifest.PublicationDate.Value == resolvedExisting.Manifest.PublicationDate.Value))
-                        {
-                            return resolvedExisting;
-                        }
+                        Directory.Delete(destinationDir, true);
                     }
-                    break;
-            }
-        }
 
-        // get a temporary directory so we can atomically update the cache
-        string tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-        //string tempDir = Path.Combine(_cacheDirectory, ".fhir.codegen.temp-", Guid.NewGuid().ToString());
-
-        try
-        {
-            if (!Directory.Exists(tempDir))
-            {
-                Directory.CreateDirectory(tempDir);
-            }
-
-            // get the stream for the tarball
-            (HttpStatusCode status, Stream? content) = resolvingClient.GetHttpStream(resolvedInfo.TarballUri);
-            if (!status.IsSuccessful())
-            {
-                Console.WriteLine($"Request failed: {status.ToString()} opening tarball stream: '{resolvedInfo.TarballUri}'");
-                return null;
-            }
-
-            if (content is null)
-            {
-                Console.WriteLine($"Request returned no content opening tarball stream: '{resolvedInfo.TarballUri}'");
-                return null;
-            }
-
-            // decompress and extract the tarball into the temp directory
-            using (Stream gzipStream = new GZipStream(content, CompressionMode.Decompress))
-            {
-                await TarFile.ExtractToDirectoryAsync(gzipStream, tempDir, true, cancellationToken);
-            }
-
-            PackageManifest? manifest = null;
-            PackageIndex? packageIndex = null;
-
-            // read the package.json file if it exists
-            string packageJsonPath = Path.Combine(tempDir, "package", "package.json");
-            if (File.Exists(packageJsonPath))
-            {
-                string json = await File.ReadAllTextAsync(packageJsonPath);
-                manifest = JsonSerializer.Deserialize<PackageManifest>(json);
-            }
-
-            // read the .index.json file if it exists
-            string indexJsonPath = Path.Combine(tempDir, "package", ".index.json");
-            if (File.Exists(indexJsonPath))
-            {
-                string json = await File.ReadAllTextAsync(indexJsonPath);
-                packageIndex = JsonSerializer.Deserialize<PackageIndex>(json);
-            }
-
-            string destinationDir = Path.Combine(_packageDirectory, cacheDirective);
-            lock (_installedPackageLock)
-            {
-                if (Directory.Exists(destinationDir))
-                {
-                    Directory.Delete(destinationDir, true);
+                    // if we are on windows, we can only move directories on the same volume
+                    if (OperatingSystem.IsWindows() &&
+                        !string.Equals(Path.GetPathRoot(tempDir), Path.GetPathRoot(destinationDir), StringComparison.OrdinalIgnoreCase))
+                    {
+                        // so we need to copy the temp directory to the destination (will be deleted in finally block)
+                        copyDirectory(tempDir, destinationDir, true);
+                    }
+                    else
+                    {
+                        // move the temp directory to the cache directory
+                        Directory.Move(tempDir, destinationDir);
+                    }
                 }
 
-                // if we are on windows, we can only move directories on the same volume
-                if (OperatingSystem.IsWindows() &&
-                    !string.Equals(Path.GetPathRoot(tempDir), Path.GetPathRoot(destinationDir), StringComparison.OrdinalIgnoreCase))
+                // create our cached package record
+                CachedPackageRecord newRecord = new()
                 {
-                    // so we need to copy the temp directory to the destination (will be deleted in finally block)
-                    copyDirectory(tempDir, destinationDir, true);
-                }
-                else
-                {
-                    // move the temp directory to the cache directory
-                    Directory.Move(tempDir, destinationDir);
-                }
+                    Directive = new PackageDirective(cacheDirective)
+                    {
+                        ResolvedVersion = resolvedInfo.ResolvedVersion,
+                    },
+                    FullPath = Path.GetFullPath(destinationDir),
+                    FullPackagePath = Path.GetFullPath(Path.Combine(destinationDir, "package")),
+                    Manifest = manifest,
+                    FileIndex = packageIndex,
+                };
+
+                addPackageToIndex(newRecord);
+
+                return newRecord;
             }
-
-            // create our cached package record
-            CachedPackageRecord newRecord = new()
+            finally
             {
-                Directive = new PackageDirective(cacheDirective)
+                // clean up the temp directory if it still exists
+                if (Directory.Exists(tempDir))
                 {
-                    ResolvedVersion = resolvedInfo.ResolvedVersion,
-                },
-                FullPath = Path.GetFullPath(destinationDir),
-                FullPackagePath = Path.GetFullPath(Path.Combine(destinationDir, "package")),
-                Manifest = manifest,
-                FileIndex = packageIndex,
-            };
-
-            addPackageToIndex(newRecord);
-
-            return newRecord;
-        }
-        finally
-        {
-            // clean up the temp directory if it still exists
-            if (Directory.Exists(tempDir))
-            {
-                try
-                {
-                    Directory.Delete(tempDir, true);
-                }
-                catch
-                {
-                    // best effort
+                    try
+                    {
+                        Directory.Delete(tempDir, true);
+                    }
+                    catch
+                    {
+                        // best effort
+                    }
                 }
             }
         }
+
+        Console.WriteLine($"Failed to resolve and install package for directive '{directive.ToString()}' from any configured registry.");
+        return null;
     }
 
     private static void copyDirectory(string sourceDir, string destinationDir, bool recursive = true)

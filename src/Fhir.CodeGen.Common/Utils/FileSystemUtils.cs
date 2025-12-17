@@ -41,6 +41,16 @@ public abstract class FileSystemUtils
             _ => startDir,
         };
 
+        if (dirName.StartsWith('~'))
+        {
+            currentDir = Path.GetDirectoryName(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) ?? Path.GetDirectoryName(AppContext.BaseDirectory) ?? ".",
+                dirName[2..]))
+                ?? currentDir;
+
+            dirName = dirName[2..];
+        }
+
         if (currentDir.StartsWith('~'))
         {
             currentDir = Path.GetDirectoryName(Path.Combine(
