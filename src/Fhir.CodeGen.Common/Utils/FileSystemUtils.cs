@@ -30,6 +30,17 @@ public abstract class FileSystemUtils
         string dirName,
         bool throwIfNotFound = true)
     {
+        if (Path.IsPathRooted(dirName) || Path.IsPathFullyQualified(dirName))
+        {
+            if (Directory.Exists(dirName))
+            {
+                return Path.GetFullPath(dirName);
+            }
+
+            return dirName;
+        }
+
+
         string currentDir = startDir switch
         {
             null => Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty,
@@ -86,6 +97,16 @@ public abstract class FileSystemUtils
         string fileName,
         bool throwIfNotFound = true)
     {
+        if (Path.IsPathRooted(fileName) || Path.IsPathFullyQualified(fileName))
+        {
+            if (File.Exists(fileName))
+            {
+                return Path.GetFullPath(fileName);
+            }
+
+            return fileName;
+        }
+
         string currentDir = startDir switch
         {
             null => Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty,
