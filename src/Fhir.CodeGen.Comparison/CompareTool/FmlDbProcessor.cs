@@ -73,6 +73,7 @@ public class FmlDbProcessor
             // process root groups (recurses into dependent groups)
             if (_name.Contains(groupName))
             {
+                System.Diagnostics.Debug.Fail("Pick up here.");
                 processCrossVersionGroup(groupName, groupName, group, fmlPathLookup);
             }
         }
@@ -80,7 +81,12 @@ public class FmlDbProcessor
         reconcileElementMapFmlPathsInDb(fmlPathLookup);
     }
 
+    private void processFmlGroup()
+    {
 
+    }
+
+    [Obsolete]
     private void processCrossVersionGroup(
         string sourcePrefix,
         string targetPrefix,
