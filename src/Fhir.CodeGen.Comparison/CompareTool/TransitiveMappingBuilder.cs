@@ -29,17 +29,17 @@ public class TransitiveMappingBuilder
     }
 
     /// <summary>
-    /// Builds transitive mappings for all non-adjacent version pairs
+    /// Builds transitive mappings for all non-adjacent version pairs of structures
     /// </summary>
-    public void BuildTransitiveMappings(FhirArtifactClassEnum? artifactClass)
+    public void BuildTransitiveStructureMappings(FhirArtifactClassEnum? artifactClass)
     {
         if (artifactClass is null)
         {
-            _logger.LogInformation("Building transitive mappings...");
+            _logger.LogInformation("Building transitive structure mappings...");
         }
         else
         {
-            _logger.LogInformation($"Building transitive mappings for {artifactClass}...");
+            _logger.LogInformation($"Building transitive structure mappings for {artifactClass}...");
         }
 
         // iterate over all the packages to use as source
@@ -53,7 +53,7 @@ public class TransitiveMappingBuilder
                 DbFhirPackage targetPackage = _packages[targetIndex];
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
                 _logger.LogInformation(
-                    $"Building transitive mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
+                    $"Building transitive structure mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
                 buildTransitiveStructureMappings(sourcePackage, targetPackage, sourceIndex, targetIndex, artifactClass);
             }
 
@@ -63,7 +63,7 @@ public class TransitiveMappingBuilder
                 DbFhirPackage targetPackage = _packages[targetIndex];
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
                 _logger.LogInformation(
-                    $"Building transitive mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
+                    $"Building transitive structure mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
                 buildTransitiveStructureMappings(sourcePackage, targetPackage, sourceIndex, targetIndex, artifactClass);
             }
         }
@@ -76,6 +76,8 @@ public class TransitiveMappingBuilder
         int targetIndex,
         FhirArtifactClassEnum? artifactClass)
     {
+        DbArtifactMapCache<DbStructureMappingRecord> mappingCache = new();
+
         // get all direct mappings in the chain
         List<List<DbStructureMappingRecord>> chainMappings = [];
 
@@ -93,8 +95,7 @@ public class TransitiveMappingBuilder
             List<DbStructureMappingRecord> directMaps = DbStructureMappingRecord.SelectList(
                 _dbConnection,
                 SourceFhirPackageKey: fromPkg.Key,
-                TargetFhirPackageKey: toPkg.Key)
-                .ToList();
+                TargetFhirPackageKey: toPkg.Key);
 
             chainMappings.Add(directMaps);
 
@@ -109,36 +110,37 @@ public class TransitiveMappingBuilder
             FhirPackageKey: sourcePackage.Key,
             ArtifactClass: artifactClass);
 
-        List<DbStructureMappingRecord> transitiveMappings = [];
-
         foreach (DbStructureDefinition sourceSd in sourceStructures)
         {
             // trace this structure through the chain (may produce multiple paths)
-            List<DbStructureMappingRecord> results = traceStructureThroughChain(
+            traceStructureThroughChain(
                 sourceSd,
                 chainMappings,
                 sourceIndex,
-                targetIndex);
-
-            transitiveMappings.AddRange(results);
+                targetIndex,
+                mappingCache);
         }
-    
-        // Batch insert
-        if (transitiveMappings.Count > 0)
+
+        if (mappingCache.ToAddCount > 0)
         {
-            _dbConnection.Insert(transitiveMappings);
-            _logger.LogInformation($"  Created {transitiveMappings.Count} transitive structure mappings");
+            mappingCache.ToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+            _logger.LogInformation($"  Created {mappingCache.ToAddCount} transitive structure mappings");
+        }
+
+        if (mappingCache.ToUpdateCount > 0)
+        {
+            mappingCache.ToUpdate.Update(_dbConnection);
+            _logger.LogInformation($"  Updated {mappingCache.ToUpdateCount} transitive structure mappings");
         }
     }
 
-    private List<DbStructureMappingRecord> traceStructureThroughChain(
+    private void traceStructureThroughChain(
         DbStructureDefinition sourceStructure,
         List<List<DbStructureMappingRecord>> chainMappings,
         int sourceIndex,
-        int targetIndex)
+        int targetIndex,
+        DbArtifactMapCache<DbStructureMappingRecord> mappingCache)
     {
-        List<DbStructureMappingRecord> results = [];
-
         // Each path tracks: currentKey, currentId, relationships, structureIds, versionKeys
         List<MappingPath> activePaths =
         [
@@ -224,26 +226,21 @@ public class TransitiveMappingBuilder
         // Convert all completed paths to records
         foreach (MappingPath path in activePaths)
         {
-            DbStructureMappingRecord? record = createMappingRecord(
+            createStructureMappingRecord(
                 sourceStructure,
                 path,
                 sourceIndex,
-                targetIndex);
-
-            if (record is not null)
-            {
-                results.Add(record);
-            }
+                targetIndex,
+                mappingCache);
         }
-
-        return results;
     }
 
-    private DbStructureMappingRecord? createMappingRecord(
+    private void createStructureMappingRecord(
         DbStructureDefinition sourceStructure,
         MappingPath path,
         int sourceIndex,
-        int targetIndex)
+        int targetIndex,
+        DbArtifactMapCache<DbStructureMappingRecord> mappingCache)
     {
         CMR? computedRelationship = RelationshipComposition.ComposeChain(path.Relationships);
         CMR? cdRelationship = RelationshipComposition.ComposeChain(path.CdRelationships);
@@ -255,40 +252,76 @@ public class TransitiveMappingBuilder
             _packages[targetIndex].ShortName,
             path.CurrentId);
 
-        return new DbStructureMappingRecord
+        // check to see if there is an existing record
+        DbStructureMappingRecord? rec = DbStructureMappingRecord.SelectSingle(
+            _dbConnection,
+            IdLong: idLong);
+
+        if (rec is null)
         {
-            Key = DbStructureMappingRecord.GetIndex(),
-            SourceFhirPackageKey = _packages[sourceIndex].Key,
-            TargetFhirPackageKey = _packages[targetIndex].Key,
-            SourceStructureKey = sourceStructure.Key,
-            SourceStructureId = sourceStructure.Id,
-            TargetStructureKey = path.CurrentKey,
-            TargetStructureId = path.CurrentId,
+            // check for cached record
+            mappingCache.TryGet(idLong, out rec);
+        }
 
-            StructureKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2),
-            StructureKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3),
-            StructureKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4),
-            StructureKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B),
-            StructureKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5),
-            StructureKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6),
+        if (rec is not null)
+        {
+            // update with current data
+            rec.StructureKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2);
+            rec.StructureKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3);
+            rec.StructureKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4);
+            rec.StructureKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B);
+            rec.StructureKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5);
+            rec.StructureKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6);
 
-            Relationship = computedRelationship,
-            ComputedRelationship = computedRelationship,
-            ConceptDomainRelationship = cdRelationship,
-            ValueDomainRelationship = vdRelationship,
+            rec.ComputedRelationship ??= computedRelationship;
+            rec.ConceptDomainRelationship ??= cdRelationship;
+            rec.ValueDomainRelationship ??= vdRelationship;
 
-            FmlExists = false,
-            FmlUrl = null,
-            FmlFilename = null,
+            rec.TechnicalNotes = (rec.TechnicalNotes ?? string.Empty) + 
+                $" Computed transitively through {string.Join("->", path.StructureIds.Where(s => s != null))}";
 
-            IdLong = idLong,
-            IdShort = idShort,
-            Url = $"http://hl7.org/fhir/{_packages[sourceIndex].FhirVersionShort}/ConceptMap/{idLong}",
-            Name = FhirSanitizationUtils.ReformatIdForName(idLong),
-            Title = $"Transitive mapping of {sourceStructure.Name} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
+            mappingCache.CacheUpdate(rec);
+        }
+        else
+        {
+            // create a new record
+            rec = new()
+            {
+                Key = DbStructureMappingRecord.GetIndex(),
+                SourceFhirPackageKey = _packages[sourceIndex].Key,
+                TargetFhirPackageKey = _packages[targetIndex].Key,
+                SourceStructureKey = sourceStructure.Key,
+                SourceStructureId = sourceStructure.Id,
+                TargetStructureKey = path.CurrentKey,
+                TargetStructureId = path.CurrentId,
 
-            TechnicalNotes = $"Computed transitively through {string.Join("->", path.StructureIds.Where(s => s != null))}",
-        };
+                StructureKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2),
+                StructureKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3),
+                StructureKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4),
+                StructureKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B),
+                StructureKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5),
+                StructureKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6),
+
+                Relationship = computedRelationship,
+                ComputedRelationship = computedRelationship,
+                ConceptDomainRelationship = cdRelationship,
+                ValueDomainRelationship = vdRelationship,
+
+                FmlExists = false,
+                FmlUrl = null,
+                FmlFilename = null,
+
+                IdLong = idLong,
+                IdShort = idShort,
+                Url = $"http://hl7.org/fhir/{_packages[sourceIndex].FhirVersionShort}/ConceptMap/{idLong}",
+                Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                Title = $"Transitive mapping of {sourceStructure.Name} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
+
+                TechnicalNotes = $"Computed transitively through {string.Join("->", path.StructureIds.Where(s => s != null))}",
+            };
+
+            mappingCache.CacheAdd(rec);
+        }
     }
 
     private class MappingPath

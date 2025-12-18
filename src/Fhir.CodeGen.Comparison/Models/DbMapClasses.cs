@@ -43,7 +43,7 @@ public abstract class DbMapArtifactRecordBase : DbMapRecordBase
         set => OriginatingConceptMapUrlsLiteral = value is null ? null : string.Join(", ", value);
     }
 
-    public string? IdLong { get; set; } = null;
+    public string IdLong { get; set; } = string.Empty;
     public string? IdShort { get; set; } = null;
     public string? Url { get; set; } = null;
     public string? Name { get; set; } = null;
@@ -188,8 +188,11 @@ public partial class DbValueSetConceptMapRecord : DbMapRecordBase
 
 
 [CgSQLiteTable(tableName: "StructureMappings")]
+[CgSQLiteIndex(nameof(SourceStructureKey), nameof(TargetStructureKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureId), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
+[CgSQLiteIndex(nameof(IdLong))]
 public partial class DbStructureMappingRecord : DbMapArtifactRecordBase
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -276,10 +279,12 @@ public enum ChangeIndicationCodes : int
 }
 
 [CgSQLiteTable(tableName: "ElementMappings")]
+[CgSQLiteIndex(nameof(StructureMappingKey), nameof(SourceElementKey), nameof(TargetElementKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceElementId), nameof(TargetElementId))]
 public partial class DbElementMappingRecord : DbMapRecordBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureMappings", referenceColumn: nameof(DbStructureMappingRecord.Key))]
-    public required int ResourceMapKey { get; set; }
+    public required int StructureMappingKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int? SourceElementKey { get; set; }
@@ -437,4 +442,95 @@ public partial class DbElementMappingRecord : DbMapRecordBase
     public required bool? BecameOptional { get; set; }
     public required bool? BecameArray { get; set; }
     public required bool? BecameScalar { get; set; }
+}
+
+
+public class DbArtifactMapCache<T>
+        where T : DbMapArtifactRecordBase
+{
+    private readonly Dictionary<int, T> _byKey = [];
+    private readonly Dictionary<string, T> _byIdLong = [];
+
+    private readonly Dictionary<int, T> _toAdd = [];
+    private readonly Dictionary<int, T> _toUpdate = [];
+    private readonly Dictionary<int, T> _toDelete = [];
+
+    public bool TryGet(int key, [NotNullWhen(true)] out T? value) => _byKey.TryGetValue(key, out value);
+    public bool TryGet(string idLong, [NotNullWhen(true)] out T? value) => _byIdLong.TryGetValue(idLong, out value);
+
+    public T? Get(int key) => _byKey.TryGetValue(key, out T? value) ? value : default(T);
+    public T? Get(string idLong) => _byIdLong.TryGetValue(idLong, out T? value) ? value : default(T);
+
+    public IEnumerable<T> Values => _byKey.Values;
+    public int ValueCount => _byKey.Count;
+
+    public IEnumerable<T> ToAdd => _toAdd.Values;
+    public int ToAddCount => _toAdd.Count;
+    public IEnumerable<T> ToUpdate => _toUpdate.Values;
+    public int ToUpdateCount => _toUpdate.Count;
+    public IEnumerable<T> ToDelete => _toDelete.Values;
+    public int ToDeleteCount => _toDelete.Count;
+
+    public void Clear()
+    {
+        _byKey.Clear();
+        _byIdLong.Clear();
+        _toAdd.Clear();
+        _toUpdate.Clear();
+        _toDelete.Clear();
+    }
+
+    public void CacheAdd(T item)
+    {
+        if (item.IdLong is null)
+        {
+            throw new ArgumentException("Cannot cache item with null IdLong.");
+        }
+
+        _byKey[item.Key] = item;
+        _byIdLong[item.IdLong] = item;
+        _toAdd[item.Key] = item;
+    }
+
+    public void CacheUpdate(T item)
+    {
+        _byKey[item.Key] = item;
+        _byIdLong[item.IdLong] = item;
+        _toUpdate[item.Key] = item;
+    }
+
+    public void CacheDelete(T item)
+    {
+        _byKey[item.Key] = item;
+        _byIdLong[item.IdLong] = item;
+        _toDelete[item.Key] = item;
+    }
+
+    public void Changed(T item)
+    {
+        if (!_byKey.ContainsKey(item.Key))
+        {
+            _byKey[item.Key] = item;
+        }
+
+        if (!_byIdLong.ContainsKey(item.IdLong))
+        {
+            _byIdLong[item.IdLong] = item;
+        }
+
+        if (_toDelete.ContainsKey(item.Key))
+        {
+            _toDelete.Remove(item.Key);
+        }
+
+        if (_toUpdate.ContainsKey(item.Key))
+        {
+            _toUpdate[item.Key] = item;
+            return;
+        }
+
+        _toAdd[item.Key] = item;
+    }
+
+    public int Count => _byKey.Count;
 }

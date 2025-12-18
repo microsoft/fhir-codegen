@@ -211,7 +211,7 @@ public class FmlDbProcessor
                                 };
 
                                 sourceSymbols[gp.Identifier] = r;
-                                parameters.Add(r);
+                                //parameters.Add(r);
                             }
                         }
                         break;
@@ -227,7 +227,7 @@ public class FmlDbProcessor
                                 };
 
                                 targetSymbols[gp.Identifier] = r;
-                                parameters.Add(r);
+                                //parameters.Add(r);
                             }
                         }
                         break;
@@ -244,7 +244,7 @@ public class FmlDbProcessor
                 group,
                 sourceSymbols,
                 targetSymbols,
-                parameters);
+                []);
         }
 
         reconcileElementMapFmlPathsInDb();
@@ -342,7 +342,7 @@ public class FmlDbProcessor
         // iterate up to see if we can substitute something in the chain
         if (prefixRec is not null)
         {
-            string[] testComponents = [prefixRec.ResolvedPath, .. components[1..]];
+            string[] testComponents = [..prefixRec.ResolvedPath.Split('.'), ..components[1..]];
 
             for (int splitIndex = testComponents.Length - 1; splitIndex > 0; splitIndex--)
             {
@@ -382,7 +382,7 @@ public class FmlDbProcessor
                     }
 
                     // check to see if we can resolve the rest of the element from this root
-                    string postfixPath = string.Join('.', [prefixTypeSd.Id, .. testComponents[splitIndex..]]);
+                    string postfixPath = string.Join('.', [prefixTypeSd.Id, ..testComponents[splitIndex..]]);
 
                     // try to resolve from the database
                     DbElement? postfixEd = DbElement.SelectSingle(
@@ -485,22 +485,36 @@ public class FmlDbProcessor
         {
             if (expression.SimpleCopyExpression is not null)
             {
-                processSimpleCopyExpression(
-                    group,
-                    expression.SimpleCopyExpression,
-                    sourceSymbols,
-                    targetSymbols);
+                try
+                {
+                    processSimpleCopyExpression(
+                        group,
+                        expression.SimpleCopyExpression,
+                        sourceSymbols,
+                        targetSymbols);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning($" <<< processSimpleCopyExpression for {_fmlFilename} Line: {expression.Line} caught: {ex.Message}");
+                }
                 continue;
             }
 
             if (expression.MappingExpression is not null)
             {
-                processComplexMappingExpression(
-                    group,
-                    expression.MappingExpression,
-                    sourceSymbols,
-                    targetSymbols,
-                    groupCallStack);
+                try
+                {
+                    processComplexMappingExpression(
+                        group,
+                        expression.MappingExpression,
+                        sourceSymbols,
+                        targetSymbols,
+                        groupCallStack);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning($" <<< processComplexMappingExpression for {_fmlFilename} Line: {expression.Line} caught: {ex.Message}");
+                }
 
                 continue;
             }
@@ -520,8 +534,18 @@ public class FmlDbProcessor
         Dictionary<string, FmlSymbolResolutionRecord> localSourceSymbols = [];
         Dictionary<string, FmlSymbolResolutionRecord> localTargetSymbols = [];
 
+        FmlSymbolResolutionRecord? lastResolvedSource = null;
+        FmlSymbolResolutionRecord? lastResolvedTarget = null;
+
         foreach (FmlExpressionSource expressionSource in expression.Sources)
         {
+            // check for odd expressions we do not want to handle
+            if (string.IsNullOrEmpty(expressionSource.Identifier) ||
+                !expressionSource.Identifier.Contains('.'))
+            {
+                continue;
+            }
+
             FmlSymbolResolutionRecord? resolved = resolveFmlSymbol(
                 expressionSource.Identifier,
                 expressionSource.Alias,
@@ -549,10 +573,19 @@ public class FmlDbProcessor
             {
                 localSourceSymbols[resolved.Identifier] = resolved;
             }
+
+            lastResolvedSource = resolved;
         }
 
         foreach (FmlExpressionTarget expressionTarget in expression.Targets)
         {
+            // check for odd expressions we do not want to handle
+            if (string.IsNullOrEmpty(expressionTarget.Identifier) ||
+                !expressionTarget.Identifier.Contains('.'))
+            {
+                continue;
+            }
+
             FmlSymbolResolutionRecord? resolved = resolveFmlSymbol(
                 expressionTarget.Identifier,
                 expressionTarget.Alias,
@@ -580,10 +613,12 @@ public class FmlDbProcessor
             {
                 localTargetSymbols[resolved.Identifier] = resolved;
             }
+
+            lastResolvedTarget = resolved;
         }
 
-        if ((localSourceSymbols.Count == 0) ||
-            (localTargetSymbols.Count == 0))
+        if ((lastResolvedSource is null) ||
+            (lastResolvedTarget is null))
         {
             // either the source or the target is unresolved, we can ignore for now
             return;
@@ -591,18 +626,13 @@ public class FmlDbProcessor
 
         if (localSourceSymbols.Count == 1)
         {
-            FmlSymbolResolutionRecord sourceResovled = localSourceSymbols.Values.First();
-
-            foreach (FmlSymbolResolutionRecord targetResolved in localTargetSymbols.Values)
+            if (!_relatedPaths.TryGetValue(lastResolvedSource.ResolvedPath, out HashSet<string>? relatedTargetPaths))
             {
-                if (!_relatedPaths.TryGetValue(sourceResovled.ResolvedPath, out HashSet<string>? relatedTargetPaths))
-                {
-                    relatedTargetPaths = [];
-                    _relatedPaths.Add(sourceResovled.ResolvedPath, relatedTargetPaths);
-                }
-
-                relatedTargetPaths.Add(targetResolved.ResolvedPath);
+                relatedTargetPaths = [];
+                _relatedPaths.Add(lastResolvedSource.ResolvedPath, relatedTargetPaths);
             }
+
+            relatedTargetPaths.Add(lastResolvedTarget.ResolvedPath);
         }
         else
         {
@@ -679,13 +709,13 @@ public class FmlDbProcessor
         if (resolveFmlSymbol(expression.Source, null, null, sourceSymbols, StructureMap.StructureMapInputMode.Source)
             is not FmlSymbolResolutionRecord sourceResovled)
         {
-            throw new Exception($"Failed to resolve source `{expression.Source}` in group {group.Name} of FML: {_name} ({_fmlFilename})");
+            throw new Exception($"Failed to resolve source `{expression.Source}` in group {group.Name}");
         }
 
         if (resolveFmlSymbol(expression.Target, null, null, targetSymbols, StructureMap.StructureMapInputMode.Target)
             is not FmlSymbolResolutionRecord targetResolved)
         {
-            throw new Exception($"Failed to resolve source `{expression.Source}` in group {group.Name} of FML: {_name} ({_fmlFilename})");
+            throw new Exception($"Failed to resolve target `{expression.Target}` in group {group.Name}");
         }
 
         if (!_relatedPaths.TryGetValue(sourceResovled.ResolvedPath, out HashSet<string>? relatedTargetPaths))
@@ -714,7 +744,7 @@ public class FmlDbProcessor
             throw new ApplicationException($"Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
         }
 
-        // parse out the expressionSource and target names from the group
+        // parse out the source and target names from the group
         foreach (GroupParameter gp in group.Parameters)
         {
             switch (gp.InputMode)
@@ -949,17 +979,17 @@ public class FmlDbProcessor
 
             foreach (string targetPath in targetPaths)
             {
-                // check for expressionSource and target paths being the same
+                // check for source and target paths being the same
                 if (sourcePath == targetPath)
                 {
                     continue;
                 }
 
-                // grab the expressionSource and target type info to check for mappings
+                // grab the source and target type info to check for mappings
                 string sourceTypeName = sourcePath.Split('.')[0];
                 string targetTypeName = targetPath.Split('.')[0];
 
-                // make sure we have a expressionSource structure
+                // make sure we have a source structure
                 if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourceTypeName)
                     is not DbStructureDefinition sourceSd)
                 {
@@ -967,42 +997,46 @@ public class FmlDbProcessor
                     continue;
                 }
 
-                DbElement? sourceEd = DbElement.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourcePath);
-                sourceEd ??= DbElement.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourcePath + "[x]");
-
-                // make sure the expressionSource element exists
-                if (sourceEd is null)
-                {
-                    _logger.LogWarning($"Note: could not resolve source path {sourcePath} for {sourceTypeName} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
-                }
-
-                // skip elements that have child elements - will either be picked up by dependent groups or are not relevant
-                if (sourceEd?.ChildElementCount > 0)
-                {
-                    continue;
-                }
-
                 // make sure we have a target structure
                 if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: _targetPackage.Key, Id: targetTypeName)
                     is not DbStructureDefinition targetSd)
                 {
-                    _logger.LogError($"Could not resolve target type {targetTypeName} for {targetPath} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
+                    _logger.LogError($"Could not resolve target structure {targetTypeName} for {targetPath} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
                     continue;
                 }
 
+                // try to get a source element
+                DbElement? sourceEd = DbElement.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourcePath);
+                sourceEd ??= DbElement.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourcePath + "[x]");
+
+                //// make sure the source element exists
+                //if (sourceEd is null)
+                //{
+                //    _logger.LogWarning($"Note: could not resolve source path {sourcePath} for {sourceTypeName} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
+                //}
+
+                //// skip elements that have child elements - will either be picked up by dependent groups or are not relevant
+                //if (sourceEd?.ChildElementCount > 0)
+                //{
+                //    continue;
+                //}
+
+                // try to get a target element
                 DbElement? targetEd = DbElement.SelectSingle(_db, FhirPackageKey: _targetPackage.Key, Id: targetPath);
                 targetEd ??= DbElement.SelectSingle(_db, FhirPackageKey: _targetPackage.Key, Id: targetPath + "[x]");
                 // make sure the target element exists
-                if (targetEd is null)
-                {
-                    _logger.LogWarning($"Note: Could not resolve target path {targetPath} for {targetTypeName} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
-                }
+                //if (targetEd is null)
+                //{
+                //    _logger.LogWarning($"Note: Could not resolve target path {targetPath} for {targetTypeName} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
+                //}
 
-                // skip elements that have child elements - will either be picked up by dependent groups or are not relevant
-                if (targetEd?.ChildElementCount > 0)
-                {
-                    continue;
-                }
+                //// skip elements that have child elements - will either be picked up by dependent groups or are not relevant
+                //if (targetEd?.ChildElementCount > 0)
+                //{
+                //    continue;
+                //}
+
+                DbStructureMappingRecord structureMappingRec;
 
                 // check to see if there are existing mapping records for the structures
                 List<DbStructureMappingRecord> sdMappingRecords = DbStructureMappingRecord.SelectList(
@@ -1019,7 +1053,7 @@ public class FmlDbProcessor
                         _targetPackage.ShortName,
                         targetSd.Id);
 
-                    DbStructureMappingRecord sdMappingRec = new()
+                    structureMappingRec = new()
                     {
                         Key = DbStructureMappingRecord.GetIndex(),
                         SourceFhirPackageKey = _sourcePackage.Key,
@@ -1032,7 +1066,7 @@ public class FmlDbProcessor
 
                         FmlExists = true,
                         FmlUrl = _fmlUrl,
-                        FmlFilename = _fmlFilename,
+                        FmlFilename = Path.GetFileName(_fmlFilename),
 
                         Relationship = initialRelationship,
                         ConceptDomainRelationship = initialRelationship,
@@ -1047,19 +1081,59 @@ public class FmlDbProcessor
                         Title = $"Concept Map of FHIR {_sourcePackage.ShortName} resource {sourceSd.Name} to FHIR {_targetPackage.ShortName}"
                     };
 
-                    sdMappingRecsToAdd.Add(sdMappingRec);
-                    sdMappingRecords.Add(sdMappingRec);
+                    sdMappingRecsToAdd.Add(structureMappingRec);
+                    sdMappingRecords.Add(structureMappingRec);
+                }
+                else
+                {
+                    structureMappingRec = sdMappingRecords[0];
+
+                    if (structureMappingRec.FmlFilename != Path.GetFileName(_fmlFilename))
+                    {
+                        structureMappingRec.FmlExists = true;
+                        structureMappingRec.FmlUrl = _fmlUrl;
+                        structureMappingRec.FmlFilename = Path.GetFileName(_fmlFilename);
+
+                        structureMappingRec.Update(_db);
+                    }
                 }
 
-                DbStructureMappingRecord relevantMap = sdMappingRecords[0];
-
                 // check to see if there are existing element mapping records
-                List<DbElementMappingRecord> edMappingRecords = sourceEd is null
-                    ? []
-                    : DbElementMappingRecord.SelectList(
+                List<DbElementMappingRecord> edMappingRecords;
+
+                if ((sourceEd is not null) && (targetEd is not null))
+                {
+                    // check for explicit matches
+                    edMappingRecords = DbElementMappingRecord.SelectList(
                         _db,
+                        StructureMappingKey: structureMappingRec.Key,
                         SourceElementKey: sourceEd.Key,
-                        TargetElementKey: targetEd?.Key);
+                        TargetElementKey: targetEd.Key);
+
+                    // add no-map records
+                    edMappingRecords.AddRange(DbElementMappingRecord.SelectList(
+                        _db,
+                        StructureMappingKey: structureMappingRec.Key,
+                        SourceElementKey: sourceEd.Key,
+                        TargetElementIdIsNull: true));
+                }
+                else
+                {
+                    // check for path-based matches
+                    edMappingRecords = DbElementMappingRecord.SelectList(
+                        _db,
+                        SourceFhirPackageKey: _sourcePackage.Key,
+                        TargetFhirPackageKey: _targetPackage.Key,
+                        SourceElementId: sourceEd?.Id ?? sourcePath,
+                        TargetElementId: targetEd?.Id ?? targetPath);
+
+                    // add no-map records
+                    edMappingRecords.AddRange(DbElementMappingRecord.SelectList(
+                        _db,
+                        StructureMappingKey: structureMappingRec.Key,
+                        SourceElementId: sourceEd?.Id ?? sourcePath,
+                        TargetElementIdIsNull: true));
+                }
 
                 // if there are no records, we need to create one
                 if (edMappingRecords.Count == 0)
@@ -1067,7 +1141,7 @@ public class FmlDbProcessor
                     DbElementMappingRecord edMappingRec = new()
                     {
                         Key = DbElementMappingRecord.GetIndex(),
-                        ResourceMapKey = relevantMap.Key,
+                        StructureMappingKey = structureMappingRec.Key,
                         SourceFhirPackageKey = _sourcePackage.Key,
                         SourceElementKey = sourceEd?.Key,
                         SourceElementId = sourceEd?.Id ?? sourcePath,

@@ -1205,6 +1205,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 true,
                 pkIsIdentity ? pkColName : null,
                 pkPropType,
+                createParameters: true,
+                instantiateParameters: true,
                 executeCommand: true,
                 includeIdentity: true,
                 identityOnly: true,
@@ -1660,7 +1662,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                 if (rec.isNullable)
                 {
-                    yield return $"bool {rec.name}IsNull = false";
+                    yield return $"bool? {rec.name}IsNull = null";
                 }
             }
         }
@@ -1775,7 +1777,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     continue;
                 }
 
-                yield return $"if ({rec.name}IsNull)";
+                yield return $"if ({rec.name}IsNull == true)";
                 yield return "{";
 
                 if (allowsOrJoining)
@@ -1789,6 +1791,21 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
                 yield return "    addedCondition = true;";
                 yield return "}";
+                yield return $"else if ({rec.name}IsNull == false)";
+                yield return "{";
+
+                if (allowsOrJoining)
+                {
+                    yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + "{{{rec.name}}} IS NOT NULL";""";
+                }
+                else
+                {
+                    yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + "{{{rec.name}}} IS NOT NULL";""";
+                }
+
+                yield return "    addedCondition = true;";
+                yield return "}";
+
                 yield return string.Empty;
             }
         }

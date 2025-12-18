@@ -934,24 +934,29 @@ public class ComparisonDatabase : IDisposable
         // complex types need transitive mappings built, primitives are direct only
         TransitiveMappingBuilder transitiveBuilder = new(_dbConnection, _loggerFactory, packages);
 
+        loadSourceMaps(sourcePath, "codes", "ConceptMap-*-*.json");
+
         // TODO: determine when we should call this
         if (useInternalTypeMaps)
         {
             loadInternalTypeMaps(packages);
 
             // complex types need transitive mappings built, primitives are direct only when using internal
-            transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
+            transitiveBuilder.BuildTransitiveStructureMappings(FhirArtifactClassEnum.ComplexType);
         }
         else
         {
             loadSourceMaps(sourcePath, "types", "ConceptMap-types-*.json");
 
-            transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.PrimitiveType);
-            transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
+            transitiveBuilder.BuildTransitiveStructureMappings(FhirArtifactClassEnum.PrimitiveType);
+            transitiveBuilder.BuildTransitiveStructureMappings(FhirArtifactClassEnum.ComplexType);
         }
 
         loadSourceMaps(sourcePath, "resources", "ConceptMap-resources-*.json");
-        transitiveBuilder.BuildTransitiveMappings(FhirArtifactClassEnum.ComplexType);
+        transitiveBuilder.BuildTransitiveStructureMappings(FhirArtifactClassEnum.Resource);
+
+        // reconcile records that have mappings and explicit no-map records
+        reconcileStructureNoMaps();
 
         loadSourceMaps(sourcePath, "elements", "ConceptMap-elements-*.json");
 
@@ -959,9 +964,59 @@ public class ComparisonDatabase : IDisposable
 
         loadSourceMaps(sourcePath, "search-params", "ConceptMap-search-params-*.json");
 
-        loadSourceMaps(sourcePath, "codes", "ConceptMap-*-*.json");
 
         return true;
+    }
+
+    private void reconcileStructureNoMaps()
+    {
+        // get the list of all the structure mappings that have no target
+        List<DbStructureMappingRecord> noMapRecords = DbStructureMappingRecord.SelectList(
+            _dbConnection,
+            TargetStructureKeyIsNull: true);
+
+        // iterate over the no-maps to see if there is a derived mapping it needs to override
+        foreach (DbStructureMappingRecord noMapRecord in noMapRecords)
+        {
+            List<DbStructureMappingRecord> otherMaps = DbStructureMappingRecord.SelectList(
+                _dbConnection,
+                SourceFhirPackageKey: noMapRecord.SourceFhirPackageKey,
+                SourceStructureKey: noMapRecord.SourceStructureKey,
+                TargetFhirPackageKey: noMapRecord.TargetFhirPackageKey,
+                TargetStructureKeyIsNull: false);
+
+            foreach (DbStructureMappingRecord otherMap in otherMaps)
+            {
+                // we are using the concept maps as the source of truth
+                if ((noMapRecord.OriginatingConceptMapUrlsLiteral is null) &&
+                    (otherMap.OriginatingConceptMapUrlsLiteral is not null))
+                {
+                    try
+                    {
+                        noMapRecord.Delete(_dbConnection);
+                        DbElementMappingRecord.Delete(_dbConnection, StructureMappingKey: noMapRecord.Key);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError($"Error deleting no-map structure mapping record Key={noMapRecord.Key}: {ex.Message}");
+                    }
+
+                    // once we delete a no-map, we can stop checking other maps for this record
+                    break;
+                }
+
+                try
+                {
+                    // all other scenarios delete the other map
+                    otherMap.Delete(_dbConnection);
+                    DbElementMappingRecord.Delete(_dbConnection, StructureMappingKey: otherMap.Key);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError($"Error deleting structure mapping record Key={otherMap.Key}: {ex.Message}");
+                }
+            }
+        }
     }
 
     private void loadSourceFml(
@@ -1289,7 +1344,7 @@ public class ComparisonDatabase : IDisposable
                         DbElementMappingRecord mapRec = new()
                         {
                             Key = DbElementMappingRecord.GetIndex(),
-                            ResourceMapKey = relevantMap.Key,
+                            StructureMappingKey = relevantMap.Key,
                             SourceFhirPackageKey = sourcePackage.Key,
                             SourceElementKey = sourceElement?.Key,
                             SourceElementId = groupSourceElement.Code,
@@ -1297,6 +1352,8 @@ public class ComparisonDatabase : IDisposable
                             TargetElementKey = null,
                             TargetElementId = null,
                             OriginatingConceptMapUrlsLiteral = cm.Url,
+
+                            ElementKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, null),
 
                             Relationship = null,
                             ConceptDomainRelationship = null,
@@ -1401,7 +1458,7 @@ public class ComparisonDatabase : IDisposable
                     DbElementMappingRecord mapRec = new()
                     {
                         Key = DbElementMappingRecord.GetIndex(),
-                        ResourceMapKey = relevantMap.Key,
+                        StructureMappingKey = relevantMap.Key,
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceElementKey = sourceElement?.Key,
                         SourceElementId = groupSourceElement.Code,
@@ -1409,6 +1466,8 @@ public class ComparisonDatabase : IDisposable
                         TargetElementKey = targetElement?.Key,
                         TargetElementId = elementTarget.Code,
                         OriginatingConceptMapUrlsLiteral = cm.Url,
+
+                        ElementKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, targetElement?.Key),
 
                         Relationship = elementTarget.Relationship,
                         ConceptDomainRelationship = null,
@@ -1504,6 +1563,8 @@ public class ComparisonDatabase : IDisposable
                         TargetStructureKey = null,
                         TargetStructureId = null,
 
+                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+
                         FmlExists = null,
                         FmlUrl = null,
                         FmlFilename = null,
@@ -1542,10 +1603,6 @@ public class ComparisonDatabase : IDisposable
 
                     (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceSd.Id, targetPackage.ShortName, targetSd.Id);
 
-                    string fmlFolder = sourcePackage.ShortName + "to" + targetPackage.ShortName;
-                    string fmlFile = sourceSd.Name + ".fml";
-                    bool fmlExists = File.Exists(Path.Combine(sourceInputPath, fmlFolder, fmlFile));
-
                     // create a record for the database
                     DbStructureMappingRecord mapRec = new()
                     {
@@ -1558,9 +1615,11 @@ public class ComparisonDatabase : IDisposable
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
 
-                        FmlExists = fmlExists,
-                        FmlFilename = fmlFile,
-                        FmlUrl = $"http://hl7.org/fhir/uv/xver/StructureMap/{sourceSd.Name}{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
+                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+
+                        FmlExists = null,
+                        FmlFilename = null,
+                        FmlUrl = null,
 
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
