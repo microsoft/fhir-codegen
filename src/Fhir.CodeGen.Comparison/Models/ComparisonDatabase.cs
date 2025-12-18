@@ -3658,44 +3658,17 @@ public class ComparisonDatabase : IDisposable
 
     private void doElementPostProcessing()
     {
-        //{
-        //    IDbCommand command = _dbConnection.CreateCommand();
-        //    command.CommandText = $"""
-        //    update {DbElement.DefaultTableName}
-        //    set FullCollatedTypeLiteral = 'vsId'
-        //    where Name = 'vsId' and FullCollatedTypeLiteral = 'string' and (BasePath = 'Element.vsId' or IdLong = 'Element.vsId')
-        //    """;
+        throw new Exception("Fix this");
 
-        //    command.ExecuteNonQuery();
-        //}
+        // TODO: update elements that use content references to expand out their child elements
 
-        //{
-        //    List<DbFhirPackage> packages = DbFhirPackage.SelectList(_dbConnection);
+        // get the list of elements that do not have BaseElementKey and BaseStructureKey set, but do have types that are other elements
 
-        //    foreach (DbFhirPackage pm in packages)
-        //    {
-        //        DbStructureDefinition? idSd = DbStructureDefinition.SelectSingle(
-        //            _dbConnection,
-        //            FhirPackageKey: pm.Key,
-        //            Name: "vsId");
+        // update the elements to have the correct keys
 
-        //        if (idSd == null)
-        //        {
-        //            continue;
-        //        }
+        // get the list of elements that are content references (basePath includes a period?)
 
-        //        IDbCommand command = _dbConnection.CreateCommand();
-        //        command.CommandText = $"""
-        //            update {DbElementType.DefaultTableName}
-        //            set TypeName = 'vsId', TypeStructureKey = {idSd.Key}
-        //            where FhirPackageKey = {pm.Key}
-        //            and TypeName = 'string'
-        //            and ElementKey in (select Key from Elements where Name = 'vsId' and (BasePath = 'Element.vsId' or IdLong = 'Element.vsId'))
-        //            """;
-
-        //        command.ExecuteNonQuery();
-        //    }
-        //}
+        // traverse the list of elements and expand (fixing the path) of the child elements
 
         return;
     }
