@@ -1044,14 +1044,21 @@ public class ComparisonDatabase : IDisposable
                 DbFhirPackage targetPackage = packages[targetIndex];
 
                 string relativePath = $"{sourcePackage.ShortName}to{targetPackage.ShortName}";
-
                 string path = Path.Combine(inputPath, relativePath);
-                if (!Directory.Exists(path))
+                if (Directory.Exists(path))
                 {
-                    continue;
+                    loadSourceFml(sourcePackage, targetPackage, path);
                 }
 
-                loadSourceFml(sourcePackage, targetPackage, path);
+                // check the reverse direction
+
+                relativePath = $"{targetPackage.ShortName}to{sourcePackage.ShortName}";
+                path = Path.Combine(inputPath, relativePath);
+                if (Directory.Exists(path))
+                {
+                    loadSourceFml(targetPackage, sourcePackage, path);
+                }
+
             }
         }
 
@@ -1374,7 +1381,7 @@ public class ComparisonDatabase : IDisposable
                             BindingBecameRequired = null,
                             BindingNoLongerRequired = null,
                             BindingTargetChange = null,
-                            BoundValueSetMapKey = null,
+                            BoundValueSetMappingKey = null,
 
                             MaxCardinalityChange = null,
                             BecameProhibited = true,
@@ -1489,7 +1496,7 @@ public class ComparisonDatabase : IDisposable
                         BindingBecameRequired = null,
                         BindingNoLongerRequired = null,
                         BindingTargetChange = null,
-                        BoundValueSetMapKey = null,
+                        BoundValueSetMappingKey = null,
 
                         MaxCardinalityChange = null,
                         BecameProhibited = null,
@@ -1773,6 +1780,8 @@ public class ComparisonDatabase : IDisposable
                     TargetValueSetKey = targetVs.Key,
                     TargetValueSetId = targetVs.Id,
 
+                    ValueSetKeys = getKeyArray(sourcePackage, targetPackage, sourceVs.Key, targetVs.Key),
+
                     ExplicitNoMap = false,
                     Relationship = null,
                     ComputedRelationship = null,
@@ -1816,7 +1825,7 @@ public class ComparisonDatabase : IDisposable
                     // check to see if we already have this in the database
                     DbValueSetConceptMappingRecord? conceptMapRec = DbValueSetConceptMappingRecord.SelectSingle(
                         _dbConnection,
-                        ValueSetMapKey: vsMap.Key,
+                        ValueSetMappingKey: vsMap.Key,
                         SourceValueSetConceptKey: sourceConcept.Key,
                         TargetValueSetConceptKeyIsNull: true);
                     if (conceptMapRec is not null)
@@ -1827,7 +1836,7 @@ public class ComparisonDatabase : IDisposable
                     conceptMapRec = new()
                     {
                         Key = DbValueSetConceptMappingRecord.GetIndex(),
-                        ValueSetMapKey = vsMap.Key,
+                        ValueSetMappingKey = vsMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
@@ -1862,7 +1871,7 @@ public class ComparisonDatabase : IDisposable
                     // check to see if we already have this in the database
                     DbValueSetConceptMappingRecord? conceptMapRec = DbValueSetConceptMappingRecord.SelectSingle(
                         _dbConnection,
-                        ValueSetMapKey: vsMap.Key,
+                        ValueSetMappingKey: vsMap.Key,
                         SourceValueSetConceptKey: sourceConcept.Key,
                         TargetValueSetConceptKey: targetConcept.Key);
 
@@ -1875,7 +1884,7 @@ public class ComparisonDatabase : IDisposable
                     conceptMapRec = new()
                     {
                         Key = DbValueSetConceptMappingRecord.GetIndex(),
-                        ValueSetMapKey = vsMap.Key,
+                        ValueSetMappingKey = vsMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
@@ -2042,16 +2051,20 @@ public class ComparisonDatabase : IDisposable
                     TargetFhirPackageKey = targetPackage.Key,
                     TargetStructureKey = null,
                     TargetStructureId = null,
+
                     StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+
                     FmlExists = null,
                     FmlUrl = null,
                     FmlFilename = null,
+                    OriginatingConceptMapUrlsLiteral = null,
+
                     ExplicitNoMap = false,
                     Relationship = null,
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
                     ComputedRelationship = null,
-                    OriginatingConceptMapUrlsLiteral = null,
+
                     IdLong = idLong,
                     IdShort = idShort,
                     Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
@@ -2130,6 +2143,7 @@ public class ComparisonDatabase : IDisposable
                     FmlExists = null,
                     FmlUrl = null,
                     FmlFilename = null,
+                    OriginatingConceptMapUrlsLiteral = null,
 
                     ExplicitNoMap = false,
                     Relationship = tm.Relationship,
@@ -2137,7 +2151,7 @@ public class ComparisonDatabase : IDisposable
                     ValueDomainRelationship = tm.ValueDomainRelationship,
                     ComputedRelationship = RelationshipComposition.ComputeForDomains(tm.ConceptDomainRelationship, tm.ValueDomainRelationship),
 
-                    OriginatingConceptMapUrlsLiteral = null,
+
                     IdLong = idLong,
                     IdShort = idShort,
                     Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
@@ -2168,13 +2182,13 @@ public class ComparisonDatabase : IDisposable
                     FmlExists = null,
                     FmlUrl = null,
                     FmlFilename = null,
-                    Relationship = null,
+                    OriginatingConceptMapUrlsLiteral = null,
 
                     ExplicitNoMap = false,
+                    Relationship = null,
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
                     ComputedRelationship = null,
-                    OriginatingConceptMapUrlsLiteral = null,
 
                     IdLong = idLong,
                     IdShort = idShort,
@@ -2271,6 +2285,7 @@ public class ComparisonDatabase : IDisposable
                         FmlExists = null,
                         FmlFilename = null,
                         FmlUrl = null,
+                        OriginatingConceptMapUrlsLiteral = cm.Url,
 
                         ExplicitNoMap = true,
                         Relationship = null,
@@ -2278,7 +2293,6 @@ public class ComparisonDatabase : IDisposable
                         ValueDomainRelationship = null,
                         ComputedRelationship = null,
 
-                        OriginatingConceptMapUrlsLiteral = cm.Url,
                         IdLong = idLong,
                         IdShort = idShort,
                         Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
@@ -2562,12 +2576,12 @@ public class ComparisonDatabase : IDisposable
                         InverseComparisonKey = inverseSdComparison?.Key,
                         PackageComparisonKey = dbPackagePair.Key,
                         SourceFhirPackageKey = sourceDbPackage.Key,
-                        TargetFhirPackageKey = targetDbPackage.Key,
                         SourceStructureKey = sourceDbSd.Key,
                         SourceCanonicalVersioned = sourceDbSd.VersionedUrl,
                         SourceCanonicalUnversioned = sourceDbSd.UnversionedUrl,
                         SourceVersion = sourceDbSd.Version,
                         SourceName = sourceDbSd.Name,
+                        TargetFhirPackageKey = targetDbPackage.Key,
                         TargetStructureKey = targetDbSd.Key,
                         TargetCanonicalVersioned = targetDbSd.VersionedUrl,
                         TargetCanonicalUnversioned = targetDbSd.UnversionedUrl,
@@ -4133,6 +4147,85 @@ public class ComparisonDatabase : IDisposable
 
     private void doValueSetPostProcessing(HashSet<string> _escapeValveCodes)
     {
+        // link code systems to value sets where possible
+        {
+            IDbCommand command = _dbConnection.CreateCommand();
+            command.CommandText = $"""
+                UPDATE {DbValueSetConcept.DefaultTableName} 
+                SET {nameof(DbValueSetConcept.CodeSystemConceptKey)} = (
+                    SELECT csc.{nameof(DbCodeSystemConcept.Key)}
+                    FROM {DbCodeSystem.DefaultTableName} cs
+                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
+                    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
+                )
+                WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.CodeSystemConceptKey)} IS NULL
+                  AND EXISTS (
+                    SELECT 1 
+                    FROM {DbCodeSystem.DefaultTableName} cs
+                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
+                    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
+                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
+                  )
+                """;
+
+            command.ExecuteNonQuery();
+        }
+
+        // because we have the wrong version of THO (correct version no longer exists), we need to remove some duplicate definitions
+        {
+            // get the list of value sets rooted in THO that are not bound to structures
+            List<DbValueSet> thoVsList = DbValueSet.SelectList(
+                _dbConnection,
+                UnversionedUrl: "http://terminology.hl7.org/ValueSet/%",
+                BindingCountExtended: 0,
+                compareStringsWithLike: true);
+
+            List<DbValueSet> toDelete = [];
+
+            // traverse the list of THO value sets and see if there is a matching HL7.org value set
+            foreach (DbValueSet thoVs in thoVsList)
+            {
+                DbValueSet? hl7Vs = DbValueSet.SelectSingle(
+                    _dbConnection,
+                    FhirPackageKey: thoVs.FhirPackageKey,
+                    Id: thoVs.Id,
+                    UnversionedUrl: "http://hl7.org/fhir/ValueSet/%",
+                    compareStringsWithLike: true);
+
+                if (hl7Vs is not null)
+                {
+                    toDelete.Add(thoVs);
+                }
+            }
+
+            // delete the offending duplicate value sets
+            if (toDelete.Count > 0)
+            {
+                _logger.LogInformation($"Removing {toDelete.Count} duplicate THO-rooted value sets that have HL7.org counterparts...");
+                DbValueSet.Delete(_dbConnection, toDelete);
+
+                // also need to delete associated concepts
+                IDbCommand command = _dbConnection.CreateCommand();
+                command.CommandText = $"""
+                delete from {DbValueSetConcept.DefaultTableName}
+                where {nameof(DbValueSetConcept.ValueSetKey)} not in
+                (
+                  select distinct {nameof(DbValueSet.Key)}
+                  from {DbValueSet.DefaultTableName}
+                )
+                """;
+
+                int count = command.ExecuteNonQuery();
+                _logger.LogInformation($" Removed {count} associated ValueSetConcept records.");
+            }
+        }
+
+        // mark value sets that contain escape valve codes
         {
             IDbCommand command = _dbConnection.CreateCommand();
             command.CommandText = $"""
@@ -4149,6 +4242,7 @@ public class ComparisonDatabase : IDisposable
             command.ExecuteNonQuery();
         }
 
+        // fix known system URL issues
         {
             IDbCommand command = _dbConnection.CreateCommand();
             command.CommandText = $"""
@@ -4161,6 +4255,7 @@ public class ComparisonDatabase : IDisposable
             command.ExecuteNonQuery();
         }
 
+        // fill in missing display values from code systems
         {
             // update display values from code systems where possible
             IDbCommand command = _dbConnection.CreateCommand();
@@ -4168,26 +4263,40 @@ public class ComparisonDatabase : IDisposable
                 UPDATE {DbValueSetConcept.DefaultTableName} 
                 SET {nameof(DbValueSetConcept.Display)} = (
                     SELECT csc.{nameof(DbCodeSystemConcept.Display)}
-                    FROM {DbCodeSystem.DefaultTableName} cs
-                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
-                    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
-                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
-                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
-                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
+                    FROM {DbCodeSystemConcept.DefaultTableName} csc
+                    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.CodeSystemConceptKey)} = csc.{nameof(DbCodeSystemConcept.Key)}
                 )
                 WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Display)} IS NULL
-                  AND EXISTS (
-                    SELECT 1 
-                    FROM {DbCodeSystem.DefaultTableName} cs
-                    JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
-                    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
-                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
-                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
-                      AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
-                  )
+                  AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.CodeSystemConceptKey)} IS NOT NULL
                 """;
 
             command.ExecuteNonQuery();
+
+            //IDbCommand command = _dbConnection.CreateCommand();
+            //command.CommandText = $"""
+            //    UPDATE {DbValueSetConcept.DefaultTableName} 
+            //    SET {nameof(DbValueSetConcept.Display)} = (
+            //        SELECT csc.{nameof(DbCodeSystemConcept.Display)}
+            //        FROM {DbCodeSystem.DefaultTableName} cs
+            //        JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
+            //        WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
+            //          AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
+            //          AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
+            //          AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
+            //    )
+            //    WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Display)} IS NULL
+            //      AND EXISTS (
+            //        SELECT 1 
+            //        FROM {DbCodeSystem.DefaultTableName} cs
+            //        JOIN {DbCodeSystemConcept.DefaultTableName} csc ON cs.{nameof(DbCodeSystem.Key)} = csc.{nameof(DbCodeSystemConcept.CodeSystemKey)}
+            //        WHERE {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.FhirPackageKey)} = cs.{nameof(DbCodeSystem.FhirPackageKey)}
+            //          AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.System)} = cs.{nameof(DbCodeSystem.UnversionedUrl)}
+            //          AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.SystemVersion)} = cs.{nameof(DbCodeSystem.Version)}
+            //          AND {DbValueSetConcept.DefaultTableName}.{nameof(DbValueSetConcept.Code)} = csc.{nameof(DbCodeSystemConcept.Code)}
+            //      )
+            //    """;
+
+            //command.ExecuteNonQuery();
         }
 
         return;

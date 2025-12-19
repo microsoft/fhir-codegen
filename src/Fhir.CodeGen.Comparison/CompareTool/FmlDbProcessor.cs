@@ -1208,7 +1208,7 @@ public class FmlDbProcessor
                         BindingBecameRequired = null,
                         BindingNoLongerRequired = null,
                         BindingTargetChange = null,
-                        BoundValueSetMapKey = null,
+                        BoundValueSetMappingKey = null,
 
                         MaxCardinalityChange = null,
                         BecameProhibited = null,

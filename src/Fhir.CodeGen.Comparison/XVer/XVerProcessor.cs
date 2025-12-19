@@ -253,8 +253,8 @@ public partial class XVerProcessor
             case "wip":
                 //LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
+                //CompareInDatabase();
 
-                //BuildComparisonPairs();
                 //CompareInDatabase();
                 //GenerateOutcomesFromComparisons();
                 //WriteFhirFromDbOutcomes();
@@ -394,6 +394,7 @@ public partial class XVerProcessor
     /// </summary>
     /// <param name="artifactFilter"></param>
     /// <exception cref="Exception"></exception>
+    [Obsolete]
     public void BuildComparisonPairs(FhirArtifactClassEnum? artifactFilter = null)
     {
         if (_db == null)
@@ -416,8 +417,11 @@ public partial class XVerProcessor
             throw new Exception("Comparison cannot run without a loaded database!");
         }
 
-        FhirDbComparer dbComparer = new(_db, _config.LogFactory);
-        dbComparer.Compare(artifactFilter, _config.ComparisonPairFilterKeys);
+        FhirMappingComparerVs vsComparer = new(_db.DbConnection, _config.LogFactory);
+        vsComparer.Compare();
+
+        //FhirDbComparer dbComparer = new(_db, _config.LogFactory);
+        //dbComparer.Compare(artifactFilter, _config.ComparisonPairFilterKeys);
     }
 
     /// <summary>
@@ -490,8 +494,6 @@ public partial class XVerProcessor
             //_ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);
         }
     }
-
-
 
     private void writeMarkdownRootPrimitiveMaps(string dir)
     {

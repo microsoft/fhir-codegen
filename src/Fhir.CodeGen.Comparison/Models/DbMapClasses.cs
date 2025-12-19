@@ -127,11 +127,11 @@ public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, 
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
-[CgSQLiteIndex(nameof(ValueSetMapKey), nameof(SourceValueSetConceptKey), nameof(TargetValueSetConceptKey))]
+[CgSQLiteIndex(nameof(ValueSetMappingKey), nameof(SourceValueSetConceptKey), nameof(TargetValueSetConceptKey))]
 public partial class DbValueSetConceptMappingRecord : DbMapRecordBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMappingRecord.Key))]
-    public required int ValueSetMapKey { get; set; }
+    public required int ValueSetMappingKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int SourceValueSetConceptKey { get; set; }
@@ -446,7 +446,7 @@ public partial class DbElementMappingRecord : DbMapRecordBase
     public required ChangeIndicationCodes? BindingTargetChange { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMappingRecord.Key))]
-    public required int? BoundValueSetMapKey { get; set; }
+    public required int? BoundValueSetMappingKey { get; set; }
 
     public required ChangeIndicationCodes? MaxCardinalityChange { get; set; }
     public required bool? BecameProhibited { get; set; } // maxCardinality changed to 0

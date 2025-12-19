@@ -120,6 +120,8 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
     public required bool Abstract { get; set; }
     public required string? Properties { get; set; }
 
+    public int? CodeSystemConceptKey { get; set; } = null;
+
     [CgSQLiteIgnore]
     public string FhirKey => $"{System}#{Code}";
 

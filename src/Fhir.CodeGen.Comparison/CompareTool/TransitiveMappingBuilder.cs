@@ -37,8 +37,8 @@ public class TransitiveMappingBuilder
         {
             DbFhirPackage sourcePackage = _packages[sourceIndex];
 
-            // iterate upwards first (skip immediate neigbor)
-            for (int targetIndex = sourceIndex + 2; targetIndex < _packages.Count; targetIndex++)
+            // iterate upwards first
+            for (int targetIndex = sourceIndex + 1; targetIndex < _packages.Count; targetIndex++)
             {
                 DbFhirPackage targetPackage = _packages[targetIndex];
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
@@ -47,8 +47,8 @@ public class TransitiveMappingBuilder
                 buildTransitiveValueSetMappings(sourcePackage, targetPackage, sourceIndex, targetIndex);
             }
 
-            // iterate downwards (skip immediate neigbor)
-            for (int targetIndex = sourceIndex - 2; targetIndex >= 0; targetIndex--)
+            // iterate downwards
+            for (int targetIndex = sourceIndex - 1; targetIndex >= 0; targetIndex--)
             {
                 DbFhirPackage targetPackage = _packages[targetIndex];
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
@@ -100,8 +100,8 @@ public class TransitiveMappingBuilder
 
         foreach (DbValueSet sourceVs in sourceValueSets)
         {
-            // trace this structure through the chain (may produce multiple paths)
-            traceStructureThroughChain(
+            // trace this value set through the chain (may produce multiple paths)
+            traceValueSetThroughChain(
                 sourceVs,
                 chainMappings,
                 sourceIndex,
@@ -122,7 +122,7 @@ public class TransitiveMappingBuilder
         }
     }
 
-    private void traceStructureThroughChain(
+    private void traceValueSetThroughChain(
         DbValueSet sourceVs,
         List<List<DbValueSetMappingRecord>> chainMappings,
         int sourceIndex,
@@ -176,16 +176,37 @@ public class TransitiveMappingBuilder
 
                 if (mappings.Count == 0)
                 {
-                    // No mapping found - value set is unmapped at this step
-                    MappingPath continued = path.Clone();
-                    continued.CurrentKey = null;
-                    continued.CurrentId = null;
-                    continued.Ids.Add(null);
-                    continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
-                    continued.Relationships.Add(null);
-                    continued.CdRelationships.Add(null);
-                    continued.VdRelationships.Add(null);
-                    nextPaths.Add(continued);
+                    // check to see if there is a value set with the same id in the target package
+                    DbValueSet? possibleVs = DbValueSet.SelectSingle(
+                        _dbConnection,
+                        FhirPackageKey: hopPackage.Key,
+                        Id: path.CurrentId);
+
+                    if (possibleVs is null)
+                    {
+                        // No mapping found - value set is unmapped at this step
+                        MappingPath continued = path.Clone();
+                        continued.CurrentKey = null;
+                        continued.CurrentId = null;
+                        continued.Ids.Add(null);
+                        continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
+                        continued.Relationships.Add(null);
+                        continued.CdRelationships.Add(null);
+                        continued.VdRelationships.Add(null);
+                        nextPaths.Add(continued);
+                    }
+                    else
+                    {
+                        // Create a new path for this possible match
+                        MappingPath newPath = path.Clone();
+                        newPath.Relationships.Add(CMR.Equivalent);
+                        newPath.CurrentKey = possibleVs.Key;
+                        newPath.CurrentId = possibleVs.Id;
+                        newPath.Ids.Add(possibleVs.Id);
+                        newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = possibleVs.Key;
+                        newPath.ImplicitBasedOnIds = true;
+                        nextPaths.Add(newPath);
+                    }
                 }
                 else
                 {
@@ -290,7 +311,9 @@ public class TransitiveMappingBuilder
                 IdShort = idShort,
                 Url = $"http://hl7.org/fhir/{_packages[sourceIndex].FhirVersionShort}/ConceptMap/{idLong}",
                 Name = FhirSanitizationUtils.ReformatIdForName(idLong),
-                Title = $"Transitive mapping of {sourceVs.UnversionedUrl} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
+                Title = path.ImplicitBasedOnIds
+                    ? $"Assumed mapping of {sourceVs.UnversionedUrl} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName} based on ID"
+                    : $"Transitive mapping of {sourceVs.UnversionedUrl} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
 
                 TechnicalNotes = $"Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}",
             };
@@ -461,16 +484,37 @@ public class TransitiveMappingBuilder
 
                 if (mappings.Count == 0)
                 {
-                    // No mapping found - structure is unmapped at this step
-                    MappingPath continued = path.Clone();
-                    continued.CurrentKey = null;
-                    continued.CurrentId = null;
-                    continued.Ids.Add(null);
-                    continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
-                    continued.Relationships.Add(null);
-                    continued.CdRelationships.Add(null);
-                    continued.VdRelationships.Add(null);
-                    nextPaths.Add(continued);
+                    // check to see if there is a structure with the same id in the target package
+                    DbStructureDefinition? possibleSd = DbStructureDefinition.SelectSingle(
+                        _dbConnection,
+                        FhirPackageKey: hopPackage.Key,
+                        Id: path.CurrentId);
+
+                    if (possibleSd is null)
+                    {
+                        // No mapping found - structure is unmapped at this step
+                        MappingPath continued = path.Clone();
+                        continued.CurrentKey = null;
+                        continued.CurrentId = null;
+                        continued.Ids.Add(null);
+                        continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
+                        continued.Relationships.Add(null);
+                        continued.CdRelationships.Add(null);
+                        continued.VdRelationships.Add(null);
+                        nextPaths.Add(continued);
+                    }
+                    else
+                    {
+                        // Create a new path for this possible match
+                        MappingPath newPath = path.Clone();
+                        newPath.Relationships.Add(CMR.Equivalent);
+                        newPath.CurrentKey = possibleSd.Key;
+                        newPath.CurrentId = possibleSd.Id;
+                        newPath.Ids.Add(possibleSd.Id);
+                        newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = possibleSd.Key;
+                        newPath.ImplicitBasedOnIds = true;
+                        nextPaths.Add(newPath);
+                    }
                 }
                 else
                 {
@@ -587,7 +631,9 @@ public class TransitiveMappingBuilder
                 IdShort = idShort,
                 Url = $"http://hl7.org/fhir/{_packages[sourceIndex].FhirVersionShort}/ConceptMap/{idLong}",
                 Name = FhirSanitizationUtils.ReformatIdForName(idLong),
-                Title = $"Transitive mapping of {sourceStructure.Name} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
+                Title = path.ImplicitBasedOnIds
+                    ? $"Assumed mapping of {sourceStructure.Name} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName} based on ID"
+                    : $"Transitive mapping of {sourceStructure.Name} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
 
                 TechnicalNotes = $"Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}",
             };
@@ -605,6 +651,7 @@ public class TransitiveMappingBuilder
         public List<CMR?> VdRelationships { get; set; } = [];
         public List<string?> Ids { get; set; } = [];
         public Dictionary<FhirReleases.FhirSequenceCodes, int?> VersionKeys { get; set; } = [];
+        public bool ImplicitBasedOnIds { get; set; } = false;
 
         public MappingPath Clone()
         {
