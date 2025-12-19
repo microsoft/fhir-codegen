@@ -1,4 +1,5 @@
-﻿using Fhir.CodeGen.SQLiteGenerator;
+﻿using System.Diagnostics.CodeAnalysis;
+using Fhir.CodeGen.SQLiteGenerator;
 
 namespace Fhir.CodeGen.Comparison.Models;
 
@@ -15,7 +16,7 @@ public partial class DbExtensionSubstitution : DbRecordBase
 
 [CgSQLiteTable(tableName: "ExternalInclusions")]
 [CgSQLiteIndex(nameof(ResourceType))]
-public partial class  DbExternalInclusion : DbRecordBase
+public partial class  DbExternalInclusion : DbRecordBase, IDbContentWithId
 {
     public required Hl7.Fhir.Model.FHIRAllTypes ResourceType { get; set; }
     public required string Id { get; set; }
@@ -51,7 +52,7 @@ public partial class  DbExternalInclusion : DbRecordBase
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
-public partial class DbValueSet : DbMetadataResource
+public partial class DbValueSet : DbMetadataResource, IDbContentWithId
 {
     public required bool CanExpand { get; set; }
     public required bool? HasEscapeValveCode { get; set; }
@@ -209,7 +210,7 @@ public partial class DbValueSetConcept : DbPackageContent, IEquatable<DbValueSet
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
-public partial class DbStructureDefinition : DbMetadataResource
+public partial class DbStructureDefinition : DbMetadataResource, IDbContentWithId
 {
     public required string? Comment { get; set; }
     public required string? Message { get; set; }
@@ -262,7 +263,7 @@ public partial class DbStructureDefinition : DbMetadataResource
 [CgSQLiteIndex(nameof(ParentElementKey), nameof(ResourceFieldOrder))]
 [CgSQLiteIndex(nameof(BindingValueSetKey))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
-public partial class DbElement : DbPackageContent
+public partial class DbElement : DbPackageContent, IDbContentWithId
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public int StructureKey { get; set; }
@@ -301,11 +302,14 @@ public partial class DbElement : DbPackageContent
 
     public required bool IsInherited { get; set; }
     public required string? BasePath { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int? BaseElementKey { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int? BaseStructureKey { get; set; }
 
+    public required bool DefinedAsContentReference { get; set; }
     public required bool IsSimpleType { get; set; }
     public required bool IsModifier { get; set; }
     public required string? IsModifierReason { get; set; }
@@ -393,6 +397,7 @@ public partial class DbElement : DbPackageContent
         BasePath = null,
         BaseElementKey = null,
         BaseStructureKey = null,
+        DefinedAsContentReference = false,
         IsSimpleType = false,
         IsModifier = false,
         IsModifierReason = null,
@@ -472,7 +477,7 @@ public partial class DbElementType : DbPackageContent
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(UnversionedUrl))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Name))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
-public partial class DbCodeSystem : DbMetadataResource
+public partial class DbCodeSystem : DbMetadataResource, IDbContentWithId
 {
     public required bool? IsCaseSensitive { get; set; }
     public required string? ValueSetVersioned { get; set; }
@@ -567,4 +572,100 @@ public partial class DbCodeSystemFilter : DbPackageContent
     public required string? Description { get; set; }
     public required string Operators { get; set; }
     public required string Value { get; set; }
+}
+
+public interface IDbContentWithId
+{
+    int Key { get; set; }
+    string Id { get; set; }
+}
+
+public class DbContentWithIdCache<T>
+        where T : IDbContentWithId
+{
+    private readonly Dictionary<int, T> _byKey = [];
+    private readonly Dictionary<string, T> _byId = [];
+
+    private readonly Dictionary<int, T> _toAdd = [];
+    private readonly Dictionary<int, T> _toUpdate = [];
+    private readonly Dictionary<int, T> _toDelete = [];
+
+    public bool TryGet(int key, [NotNullWhen(true)] out T? value) => _byKey.TryGetValue(key, out value);
+    public bool TryGet(string id, [NotNullWhen(true)] out T? value) => _byId.TryGetValue(id, out value);
+
+    public T? Get(int key) => _byKey.TryGetValue(key, out T? value) ? value : default(T);
+    public T? Get(string id) => _byId.TryGetValue(id, out T? value) ? value : default(T);
+
+    public IEnumerable<T> Values => _byKey.Values;
+    public int ValueCount => _byKey.Count;
+
+    public IEnumerable<T> ToAdd => _toAdd.Values;
+    public int ToAddCount => _toAdd.Count;
+    public IEnumerable<T> ToUpdate => _toUpdate.Values;
+    public int ToUpdateCount => _toUpdate.Count;
+    public IEnumerable<T> ToDelete => _toDelete.Values;
+    public int ToDeleteCount => _toDelete.Count;
+
+    public void Clear()
+    {
+        _byKey.Clear();
+        _byId.Clear();
+        _toAdd.Clear();
+        _toUpdate.Clear();
+        _toDelete.Clear();
+    }
+
+    public void CacheAdd(T item)
+    {
+        if (item.Id is null)
+        {
+            throw new ArgumentException("Cannot cache item with null Id.");
+        }
+
+        _byKey[item.Key] = item;
+        _byId[item.Id] = item;
+        _toAdd[item.Key] = item;
+    }
+
+    public void CacheUpdate(T item)
+    {
+        _byKey[item.Key] = item;
+        _byId[item.Id] = item;
+        _toUpdate[item.Key] = item;
+    }
+
+    public void CacheDelete(T item)
+    {
+        _byKey[item.Key] = item;
+        _byId[item.Id] = item;
+        _toDelete[item.Key] = item;
+    }
+
+    public void Changed(T item)
+    {
+        if (!_byKey.ContainsKey(item.Key))
+        {
+            _byKey[item.Key] = item;
+        }
+
+        if (!_byId.ContainsKey(item.Id))
+        {
+            _byId[item.Id] = item;
+        }
+
+        if (_toDelete.ContainsKey(item.Key))
+        {
+            _toDelete.Remove(item.Key);
+        }
+
+        if (_toUpdate.ContainsKey(item.Key))
+        {
+            _toUpdate[item.Key] = item;
+            return;
+        }
+
+        _toAdd[item.Key] = item;
+    }
+
+    public int Count => _byKey.Count;
 }

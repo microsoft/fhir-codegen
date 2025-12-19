@@ -251,8 +251,9 @@ public partial class XVerProcessor
         switch (command)
         {
             case "wip":
-                LoadDatabase(true, true);
+                //LoadDatabase(true, true);
                 LoadFhirCrossVersionMaps(preferV1Maps: true);
+
                 //BuildComparisonPairs();
                 //CompareInDatabase();
                 //GenerateOutcomesFromComparisons();

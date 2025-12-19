@@ -3590,7 +3590,7 @@ public class ComparisonDatabase : IDisposable
         doValueSetPostProcessing(_escapeValveCodes);
 
         // do element post-processing
-        doElementPostProcessing();
+        expandContentReferenceElements();
 
         // do code-system post-processing
         doCodeSystemPostProcessing();
@@ -3656,21 +3656,123 @@ public class ComparisonDatabase : IDisposable
         return;
     }
 
-    private void doElementPostProcessing()
+    private void expandContentReferenceElements()
     {
-        throw new Exception("Fix this");
+        // update elements that use content references to expand out their child elements
+        DbContentWithIdCache<DbStructureDefinition> sdCache = new();
+        DbContentWithIdCache<DbElement> edCache = new();
+        
+        // iterate over resources (need to handle individually since we are inserting elements and need to update the resource field order)
+        List<DbStructureDefinition> structures = DbStructureDefinition.SelectList(
+            _dbConnection,
+            ArtifactClass: FhirArtifactClassEnum.Resource);
+        foreach (DbStructureDefinition dbSd in structures)
+        {
+            // get the elements for this structure
+            List<DbElement> elements = DbElement.SelectList(
+                _dbConnection,
+                StructureKey: dbSd.Key,
+                orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
 
-        // TODO: update elements that use content references to expand out their child elements
+            int resourceFieldOrderAdjustment = 0;
 
-        // get the list of elements that do not have BaseElementKey and BaseStructureKey set, but do have types that are other elements
+            foreach (DbElement dbEd in elements)
+            {
+                // if we have an adjustment, need to apply it
+                if (resourceFieldOrderAdjustment != 0)
+                {
+                    dbEd.ResourceFieldOrder += resourceFieldOrderAdjustment;
+                    edCache.CacheUpdate(dbEd);
+                }
 
-        // update the elements to have the correct keys
+                // if this is not a content reference, we are done
+                if (!dbEd.DefinedAsContentReference)
+                {
+                    continue;
+                }
 
-        // get the list of elements that are content references (basePath includes a period?)
+                // do NOT nest into recursive content references
+                if (dbEd.Id.StartsWith(dbEd.FullCollatedTypeLiteral))
+                {
+                    continue;
+                }
 
-        // traverse the list of elements and expand (fixing the path) of the child elements
+                // get all the elements that start at the content reference location
+                List<DbElement> crElements = DbElement.SelectList(
+                    _dbConnection,
+                    FhirPackageKey: dbEd.FhirPackageKey,
+                    StructureKey: dbEd.StructureKey,
+                    Id: dbEd.FullCollatedTypeLiteral + "%",
+                    compareStringsWithLike: true,
+                    orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
 
-        return;
+                if (crElements.Count == 0)
+                {
+                    throw new Exception($"Could not find content reference elements for {dbEd.Id} in structure {dbSd.Name} ({dbSd.VersionedUrl})!");
+                }
+
+                DbElement crElement = crElements[0];
+
+                // update properties on the original element to match the content reference base element
+                dbEd.ChildElementCount = crElement.ChildElementCount;
+                dbEd.FullCollatedTypeLiteral = crElement.FullCollatedTypeLiteral;
+
+                edCache.CacheUpdate(dbEd);
+
+                Dictionary<int, int> parentKeyMappingLookup = [];
+                parentKeyMappingLookup[crElement.Key] = dbEd.Key;
+
+                int prefixLen = crElement.Id.Length;
+
+                // iterate over the elements to create copies with the correct paths (skip the actual content reference element)
+                foreach (DbElement crEd in crElements.Skip(1))
+                {
+                    resourceFieldOrderAdjustment++;
+                    dbSd.SnapshotCount++;
+                    dbSd.DifferentialCount++;
+
+                    int key = DbElement.GetIndex();
+                    parentKeyMappingLookup[crEd.Key] = key;
+
+                    int? mappedParentKey = (crEd.ParentElementKey is not null) && parentKeyMappingLookup.TryGetValue(crEd.ParentElementKey.Value, out int value)
+                        ? value
+                        : null;
+
+                    // can update this object and just insert since we are not changing the original
+                    crEd.Key = key;
+                    crEd.Id = dbEd.Id + crEd.Id[prefixLen..];
+                    crEd.Path = dbEd.Path + crEd.Path[prefixLen..];
+                    crEd.ResourceFieldOrder = dbEd.ResourceFieldOrder + resourceFieldOrderAdjustment;
+                    crEd.ParentElementKey = mappedParentKey;
+
+                    edCache.CacheAdd(crEd);
+                }
+            }
+
+            if (resourceFieldOrderAdjustment != 0)
+            {
+                sdCache.CacheUpdate(dbSd);
+            }
+        }
+
+        // commit our changes
+        if (sdCache.ToUpdateCount > 0)
+        {
+            DbStructureDefinition.Update(_dbConnection, sdCache.ToUpdate);
+            _logger.LogInformation($"Expanded content reference elements in {sdCache.ToUpdateCount} structure definitions.");
+        }
+
+        if (edCache.ToUpdateCount > 0)
+        {
+            DbElement.Update(_dbConnection, edCache.ToUpdate);
+            _logger.LogInformation($"Expanded content reference elements updated {edCache.ToUpdateCount} existing elements.");
+        }
+
+        if (edCache.ToAddCount > 0)
+        {
+            DbElement.Insert(_dbConnection, edCache.ToAdd, ignoreDuplicates: true, insertPrimaryKey: true);
+            _logger.LogInformation($"Expanded content reference elements with {edCache.ToAddCount} new elements.");
+        }
     }
 
     private void addCodeSystemsToDb(
@@ -4746,7 +4848,7 @@ public class ComparisonDatabase : IDisposable
             }
 
             bool isInherited = ed.cgIsInherited(sd);
-            string? basePath = ed.Base?.Path;
+            string basePath = ed.Base?.Path ?? ed.Path;
 
             List<string> completeLiteralComponents = [];
             // build our collated type literals
@@ -4827,6 +4929,7 @@ public class ComparisonDatabase : IDisposable
                 BasePath = basePath,
                 BaseElementKey = null,
                 BaseStructureKey = null,
+                DefinedAsContentReference = !string.IsNullOrEmpty(ed.ContentReference),
                 IsSimpleType = ed.cgIsSimple(),
                 IsModifier = ed.IsModifier == true,
                 IsModifierReason = ed.IsModifierReason,

@@ -578,7 +578,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
 
         string argFilterParams = string.Join(", ", getFnFilterParams(true));
         string argFilters = string.Join(", ", getFnFilterArgs(true));
-        string conditionLinesUsingJoiner2 = string.Join(_line_2, getConditionLines(true, true));
+        string conditionLinesUsingJoiner2 = string.Join(_line_2, getConditionLines(true, true, true));
         string colReaderDirectivesComma5 = string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective));
 
         string genClassVars;
@@ -691,6 +691,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     IDbConnection dbConnection,
                     string? dbTableName = null,
                     bool orJoinConditions = false,
+                    bool compareStringsWithLike = false,
                     {{{argFilterParams}}})
                 {
                     dbTableName ??= "{{{tableName}}}";
@@ -699,6 +700,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
             
                     string joiner = orJoinConditions ? " OR " : " AND ";
+                    string stringComparator = compareStringsWithLike ? " LIKE " : " = ";
                     bool addedCondition = false;
                     {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
             
@@ -725,6 +727,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     string[]? orderByProperties = null,
                     string? orderByDirection = null,
                     bool orJoinConditions = false,
+                    bool compareStringsWithLike = false,
                     int? resultLimit = null,
                     int? resultOffset = null,
                     {{{argFilterParams}}})
@@ -737,6 +740,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
 
                     string joiner = orJoinConditions ? " OR " : " AND ";
+                    string stringComparator = compareStringsWithLike ? " LIKE " : " = ";
                     bool addedCondition = false;
                     {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
 
@@ -785,6 +789,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     string[]? orderByProperties = null,
                     string? orderByDirection = null,
                     bool orJoinConditions = false,
+                    bool compareStringsWithLike = false,
                     int? resultLimit = null,
                     int? resultOffset = null,
                     {{{argFilterParams}}})
@@ -795,6 +800,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
             
                     string joiner = orJoinConditions ? " OR " : " AND ";
+                    string stringComparator = compareStringsWithLike ? " LIKE " : " = ";
                     bool addedCondition = false;
                     {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
                                 
@@ -844,6 +850,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     string[]? orderByProperties = null,
                     string? orderByDirection = null,
                     bool orJoinConditions = false,
+                    bool compareStringsWithLike = false,
                     int? resultLimit = null,
                     int? resultOffset = null,
                     {{{argFilterParams}}})
@@ -856,6 +863,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     command.CommandText = $"SELECT {{{string.Join(", ", tableColInfo.Select(p => p.name))}}} FROM {dbTableName}";
 
                     string joiner = orJoinConditions ? " OR " : " AND ";
+                    string stringComparator = compareStringsWithLike ? " LIKE " : " = ";
                     bool addedCondition = false;
                     {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
 
@@ -903,6 +911,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     IDbConnection dbConnection,
                     string? dbTableName = null,
                     bool orJoinConditions = false,
+                    bool compareStringsWithLike = false,
                     {{{argFilterParams}}})
                 {
                     dbTableName ??= "{{{tableName}}}";
@@ -911,6 +920,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     command.CommandText = $"SELECT COUNT({{{(pkColName is null ? "*" : pkColName)}}}) FROM {dbTableName}";
                     
                     string joiner = orJoinConditions ? " OR " : " AND ";
+                    string stringComparator = compareStringsWithLike ? " LIKE " : " = ";
                     bool addedCondition = false;
                     {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
                                         
@@ -1279,12 +1289,14 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                     IDbConnection dbConnection,
                     string? dbTableName = null,
                     bool orJoinConditions = false,
+                    bool compareStringsWithLike = false,
                     {{{argFilterParams}}})
                 {
                     dbTableName ??= "{{{tableName}}}";
                     {{{(anyColIsJson ? "string? dbJson;" : string.Empty)}}}
 
                     string joiner = orJoinConditions ? " OR " : " AND ";
+                    string stringComparator = compareStringsWithLike ? " LIKE " : " = ";
                                         
                     using (IDbTransaction transaction = dbConnection.BeginTransaction())
                     {
@@ -1374,6 +1386,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             this IDbConnection dbCon,
                             string? dbTableName = null,
                             bool orJoinConditions = false,
+                            bool compareStringsWithLike = false,
                             {{{argFilterParams}}})
                             where T : {{{className}}}
                         {
@@ -1381,6 +1394,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 dbCon,
                                 dbTableName,
                                 orJoinConditions,
+                                compareStringsWithLike,
                                 {{{argFilters}}});
                         }
 
@@ -1390,6 +1404,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             string[]? orderByProperties = null,
                             string? orderByDirection = null,
                             bool orJoinConditions = false,
+                            bool compareStringsWithLike = false,
                             int? resultLimit = null,
                             int? resultOffset = null,
                             {{{argFilterParams}}})
@@ -1401,6 +1416,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 orderByProperties,
                                 orderByDirection,
                                 orJoinConditions,
+                                compareStringsWithLike,
                                 resultLimit,
                                 resultOffset,
                                 {{{argFilters}}});
@@ -1412,6 +1428,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             string[]? orderByProperties = null,
                             string? orderByDirection = null,
                             bool orJoinConditions = false,
+                            bool compareStringsWithLike = false,
                             int? resultLimit = null,
                             int? resultOffset = null,
                             {{{argFilterParams}}})
@@ -1423,6 +1440,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 orderByProperties,
                                 orderByDirection,
                                 orJoinConditions,
+                                compareStringsWithLike,
                                 resultLimit,
                                 resultOffset,
                                 {{{argFilters}}});
@@ -1432,6 +1450,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             this IDbConnection dbCon,
                             string? dbTableName = null,
                             bool orJoinConditions = false,
+                            bool compareStringsWithLike = false,
                             {{{argFilterParams}}})
                             where T : {{{className}}}
                         {
@@ -1439,6 +1458,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                                 dbCon,
                                 dbTableName,
                                 orJoinConditions,
+                                compareStringsWithLike,
                                 {{{argFilters}}});
                         }
                                                             
@@ -1507,9 +1527,14 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                             {{{className}}}.Delete(dbCon, values, dbTableName);
                         }
 
-                        public static void Delete(this IDbConnection dbCon, string? dbTableName = null, bool orJoinConditions = false, {{{argFilterParams}}})
+                        public static void Delete(
+                            this IDbConnection dbCon,
+                            string? dbTableName = null,
+                            bool orJoinConditions = false,
+                            bool compareStringsWithLike = false,
+                            {{{argFilterParams}}})
                         {
-                            {{{className}}}.Delete(dbCon, dbTableName, orJoinConditions, {{{argFilters}}});
+                            {{{className}}}.Delete(dbCon, dbTableName, orJoinConditions, compareStringsWithLike, {{{argFilters}}});
                         }
 
                         public static void Insert(
@@ -1693,7 +1718,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             }
         }
 
-        IEnumerable<string> getConditionLines(bool includeNullFilter, bool allowsOrJoining)
+        IEnumerable<string> getConditionLines(bool includeNullFilter, bool allowsOrJoining, bool allowsStringLike)
         {
             foreach (TableColInfoRec rec in tableColInfo)
             {
@@ -1714,6 +1739,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                         "long" => $$$"""{{{{rec.name}}}Operator}""",
                         "decimal" => $$$"""{{{{rec.name}}}Operator}""",
                         "double" => $$$"""{{{{rec.name}}}Operator}""",
+                        "string" => allowsStringLike ? "{stringComparator}" : "=",
                         _ => "="
                     };
                 }
