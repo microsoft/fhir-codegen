@@ -1361,34 +1361,6 @@ public class ComparisonDatabase : IDisposable
 
                             ExplicitNoMap = true,
                             Relationship = null,
-                            ConceptDomainRelationship = null,
-                            ValueDomainRelationship = null,
-                            ComputedRelationship = null,
-
-                            ElementTypeChange = null,
-                            TypesAddedLiteral = null,
-                            TypesRemovedLiteral = sourceElement?.FullCollatedTypeLiteral,
-                            TypesIdenticalLiteral = null,
-                            TypesMappedLiteral = null,
-
-                            ReferenceTargetChange = null,
-                            ReferenceTargetsAddedLiteral = null,
-                            ReferenceTargetsRemovedLiteral = sourceElement?.FullCollatedReferenceTypesLiteral,
-                            ReferenceTargetsIdenticalLiteral = null,
-                            ReferenceTargetsMappedLiteral = null,
-
-                            BindingStrengthChange = null,
-                            BindingBecameRequired = null,
-                            BindingNoLongerRequired = null,
-                            BindingTargetChange = null,
-                            BoundValueSetMappingKey = null,
-
-                            MaxCardinalityChange = null,
-                            BecameProhibited = true,
-                            BecameMandatory = false,
-                            BecameOptional = false,
-                            BecameArray = false,
-                            BecameScalar = false,
                         };
 
                         elementMapsToAdd.Add(mapRec);
@@ -1476,34 +1448,6 @@ public class ComparisonDatabase : IDisposable
 
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
-                        ConceptDomainRelationship = null,
-                        ValueDomainRelationship = null,
-                        ComputedRelationship = null,
-
-                        ElementTypeChange = null,
-                        TypesAddedLiteral = null,
-                        TypesRemovedLiteral = null,
-                        TypesIdenticalLiteral = null,
-                        TypesMappedLiteral = null,
-
-                        ReferenceTargetChange = null,
-                        ReferenceTargetsAddedLiteral = null,
-                        ReferenceTargetsRemovedLiteral = null,
-                        ReferenceTargetsIdenticalLiteral = null,
-                        ReferenceTargetsMappedLiteral = null,
-
-                        BindingStrengthChange = null,
-                        BindingBecameRequired = null,
-                        BindingNoLongerRequired = null,
-                        BindingTargetChange = null,
-                        BoundValueSetMappingKey = null,
-
-                        MaxCardinalityChange = null,
-                        BecameProhibited = null,
-                        BecameMandatory = null,
-                        BecameOptional = null,
-                        BecameArray = null,
-                        BecameScalar = null,
                     };
 
                     elementMapsToAdd.Add(mapRec);
@@ -1578,10 +1522,6 @@ public class ComparisonDatabase : IDisposable
                         ExplicitNoMap = true,
                         Relationship = null,
 
-                        ConceptDomainRelationship = null,
-                        ValueDomainRelationship = null,
-                        ComputedRelationship = null,
-
                         OriginatingConceptMapUrlsLiteral = cm.Url,
                         IdLong = idLong,
                         IdShort = idShort,
@@ -1631,10 +1571,6 @@ public class ComparisonDatabase : IDisposable
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
-
-                        ConceptDomainRelationship = null,
-                        ValueDomainRelationship = null,
-                        ComputedRelationship = null,
 
                         OriginatingConceptMapUrlsLiteral = cm.Url,
 
@@ -1784,7 +1720,6 @@ public class ComparisonDatabase : IDisposable
 
                     ExplicitNoMap = false,
                     Relationship = null,
-                    ComputedRelationship = null,
 
                     OriginatingConceptMapUrlsLiteral = cm.Url,
 
@@ -1845,7 +1780,6 @@ public class ComparisonDatabase : IDisposable
 
                         ExplicitNoMap = true,
                         Relationship = null,
-                        CodesAreIdentical = false,
                     };
 
                     conceptMapsToAdd.Add(conceptMapRec);
@@ -1894,7 +1828,6 @@ public class ComparisonDatabase : IDisposable
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
-                        CodesAreIdentical = groupSourceElement.Code == elementTarget.Code,
                     };
 
                     conceptMapsToAdd.Add(conceptMapRec);
@@ -2022,9 +1955,6 @@ public class ComparisonDatabase : IDisposable
 
                     ExplicitNoMap = false,
                     Relationship = tm.Relationship,
-                    ConceptDomainRelationship = tm.ConceptDomainRelationship,
-                    ValueDomainRelationship = tm.ValueDomainRelationship,
-                    ComputedRelationship = RelationshipComposition.ComputeForDomains(tm.ConceptDomainRelationship, tm.ValueDomainRelationship),
 
                     OriginatingConceptMapUrlsLiteral = null,
                     IdLong = idLong,
@@ -2061,9 +1991,6 @@ public class ComparisonDatabase : IDisposable
 
                     ExplicitNoMap = false,
                     Relationship = null,
-                    ConceptDomainRelationship = null,
-                    ValueDomainRelationship = null,
-                    ComputedRelationship = null,
 
                     IdLong = idLong,
                     IdShort = idShort,
@@ -2147,10 +2074,6 @@ public class ComparisonDatabase : IDisposable
 
                     ExplicitNoMap = false,
                     Relationship = tm.Relationship,
-                    ConceptDomainRelationship = tm.ConceptDomainRelationship,
-                    ValueDomainRelationship = tm.ValueDomainRelationship,
-                    ComputedRelationship = RelationshipComposition.ComputeForDomains(tm.ConceptDomainRelationship, tm.ValueDomainRelationship),
-
 
                     IdLong = idLong,
                     IdShort = idShort,
@@ -2186,9 +2109,6 @@ public class ComparisonDatabase : IDisposable
 
                     ExplicitNoMap = false,
                     Relationship = null,
-                    ConceptDomainRelationship = null,
-                    ValueDomainRelationship = null,
-                    ComputedRelationship = null,
 
                     IdLong = idLong,
                     IdShort = idShort,
@@ -2289,9 +2209,6 @@ public class ComparisonDatabase : IDisposable
 
                         ExplicitNoMap = true,
                         Relationship = null,
-                        ConceptDomainRelationship = null,
-                        ValueDomainRelationship = null,
-                        ComputedRelationship = null,
 
                         IdLong = idLong,
                         IdShort = idShort,
@@ -2356,9 +2273,6 @@ public class ComparisonDatabase : IDisposable
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
-                        ConceptDomainRelationship = cdRelationship,
-                        ValueDomainRelationship = vdRelationship,
-                        ComputedRelationship = RelationshipComposition.ComputeForDomains(cdRelationship, vdRelationship),
 
                         OriginatingConceptMapUrlsLiteral = cm.Url,
 

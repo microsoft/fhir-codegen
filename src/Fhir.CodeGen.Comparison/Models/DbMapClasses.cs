@@ -23,13 +23,6 @@ public abstract class DbMapRecordBase : DbRecordBase
 
     public required bool ExplicitNoMap { get; set; }
 
-    public bool? IsIdentical { get; set; } = null;
-    public bool? IsEquivalent { get; set; } = null;
-    public bool? IsBroaderThanTarget { get; set; } = null;
-    public bool? IsNarrowerThanTarget { get; set; } = null;
-
-    public bool? IsRenamed { get; set; } = null;
-
     public string? Comments { get; set; } = null;
     public string? TechnicalNotes { get; set; } = null;
 }
@@ -50,15 +43,6 @@ public abstract class DbMapArtifactRecordBase : DbMapRecordBase
     public string? Url { get; set; } = null;
     public string? Name { get; set; } = null;
     public string? Title { get; set; } = null;
-
-    public string? LastReviewedBy { get; set; } = null;
-    public DateTime? LastReviewedOn { get; set; } = null;
-
-    public bool? HasContentUnmapped { get; set; } = null;
-    public bool? HasContentIdentical { get; set; } = null;
-    public bool? HasContentEquivalent { get; set; } = null;
-    public bool? HasContentBroader { get; set; } = null;
-    public bool? HasContentNarrower { get; set; } = null;
 }
 
 [CgSQLiteTable(tableName: "ValueSetMappings")]
@@ -121,9 +105,6 @@ public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, 
             throw new ArgumentException($"Invalid number of ValueSet keys: {value.Length}. Expected 5 or 6.");
         }
     }
-
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ComputedRelationship { get; set; }
-
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
@@ -187,8 +168,6 @@ public partial class DbValueSetConceptMappingRecord : DbMapRecordBase
             throw new ArgumentException($"Invalid number of ValueSet concept keys: {value.Length}. Expected 5 or 6.");
         }
     }
-
-    public required bool? CodesAreIdentical { get; set; }
 }
 
 
@@ -262,11 +241,6 @@ public partial class DbStructureMappingRecord : DbMapArtifactRecordBase
             throw new ArgumentException($"Invalid number of structure keys: {value.Length}. Expected 5 or 6.");
         }
     }
-
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
-
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ComputedRelationship { get; set; }
 
 
     //[CgSQLiteIgnore]
@@ -364,96 +338,6 @@ public partial class DbElementMappingRecord : DbMapRecordBase
         get => OriginatingFmlUrlsLiteral?.Split(", ").ToList();
         set => OriginatingFmlUrlsLiteral = value is null ? null : string.Join(", ", value);
     }
-
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
-
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ComputedRelationship { get; set; }
-
-
-    public required ChangeIndicationCodes? ElementTypeChange { get; set; }
-
-    public required string? TypesAddedLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? TypesAdded
-    {
-        get => TypesAddedLiteral?.Split(", ").ToList();
-        set => TypesAddedLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required string? TypesRemovedLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? TypesRemoved
-    {
-        get => TypesRemovedLiteral?.Split(", ").ToList();
-        set => TypesRemovedLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required string? TypesIdenticalLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? TypesIdentical
-    {
-        get => TypesIdenticalLiteral?.Split(", ").ToList();
-        set => TypesIdenticalLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required string? TypesMappedLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? TypesMapped
-    {
-        get => TypesMappedLiteral?.Split(", ").ToList();
-        set => TypesMappedLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required ChangeIndicationCodes? ReferenceTargetChange { get; set; }
-
-    public required string? ReferenceTargetsAddedLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? ReferenceTargetsAdded
-    {
-        get => ReferenceTargetsAddedLiteral?.Split(", ").ToList();
-        set => ReferenceTargetsAddedLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required string? ReferenceTargetsRemovedLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? ReferenceTargetsRemoved
-    {
-        get => ReferenceTargetsRemovedLiteral?.Split(", ").ToList();
-        set => ReferenceTargetsRemovedLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required string? ReferenceTargetsIdenticalLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? ReferenceTargetsIdentical
-    {
-        get => ReferenceTargetsIdenticalLiteral?.Split(", ").ToList();
-        set => ReferenceTargetsIdenticalLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required string? ReferenceTargetsMappedLiteral { get; set; }
-    [CgSQLiteIgnore]
-    public List<string>? ReferenceTargetsMapped
-    {
-        get => ReferenceTargetsMappedLiteral?.Split(", ").ToList();
-        set => ReferenceTargetsMappedLiteral = value is null ? null : string.Join(", ", value);
-    }
-
-    public required ChangeIndicationCodes? BindingStrengthChange { get; set; }
-    public required bool? BindingBecameRequired { get; set; }
-    public required bool? BindingNoLongerRequired { get; set; }
-
-    public required ChangeIndicationCodes? BindingTargetChange { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMappingRecord.Key))]
-    public required int? BoundValueSetMappingKey { get; set; }
-
-    public required ChangeIndicationCodes? MaxCardinalityChange { get; set; }
-    public required bool? BecameProhibited { get; set; } // maxCardinality changed to 0
-    public required bool? BecameMandatory { get; set; }
-    public required bool? BecameOptional { get; set; }
-    public required bool? BecameArray { get; set; }
-    public required bool? BecameScalar { get; set; }
 }
 
 

@@ -137,8 +137,6 @@ public class TransitiveMappingBuilder
                 CurrentKey = sourceVs.Key,
                 CurrentId = sourceVs.Id,
                 Relationships = [],
-                CdRelationships = [],
-                VdRelationships = [],
                 Ids = [sourceVs.Id],
                 VersionKeys = new Dictionary<FhirReleases.FhirSequenceCodes, int?>
                 {
@@ -191,8 +189,6 @@ public class TransitiveMappingBuilder
                         continued.Ids.Add(null);
                         continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
                         continued.Relationships.Add(null);
-                        continued.CdRelationships.Add(null);
-                        continued.VdRelationships.Add(null);
                         nextPaths.Add(continued);
                     }
                     else
@@ -269,14 +265,7 @@ public class TransitiveMappingBuilder
         if (rec is not null)
         {
             // update with current data
-            rec.ValueSetKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2);
-            rec.ValueSetKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3);
-            rec.ValueSetKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4);
-            rec.ValueSetKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B);
-            rec.ValueSetKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5);
-            rec.ValueSetKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6);
-
-            rec.ComputedRelationship ??= computedRelationship;
+            rec.ValueSetKeys = path.GetVersionKeyArray();
 
             rec.TechnicalNotes = (rec.TechnicalNotes ?? string.Empty) +
                 $" Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}";
@@ -296,16 +285,10 @@ public class TransitiveMappingBuilder
                 TargetValueSetKey = path.CurrentKey,
                 TargetValueSetId = path.CurrentId,
 
-                ValueSetKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2),
-                ValueSetKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3),
-                ValueSetKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4),
-                ValueSetKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B),
-                ValueSetKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5),
-                ValueSetKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6),
+                ValueSetKeys = path.GetVersionKeyArray(),
 
                 ExplicitNoMap = false,
                 Relationship = computedRelationship,
-                ComputedRelationship = computedRelationship,
 
                 IdLong = idLong,
                 IdShort = idShort,
@@ -443,8 +426,6 @@ public class TransitiveMappingBuilder
                 CurrentKey = sourceStructure.Key,
                 CurrentId = sourceStructure.Id,
                 Relationships = [],
-                CdRelationships = [],
-                VdRelationships = [],
                 Ids = [sourceStructure.Id],
                 VersionKeys = new Dictionary<FhirReleases.FhirSequenceCodes, int?>
                 {
@@ -471,8 +452,6 @@ public class TransitiveMappingBuilder
                     continued.Ids.Add(null);
                     continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
                     continued.Relationships.Add(null);
-                    continued.CdRelationships.Add(null);
-                    continued.VdRelationships.Add(null);
                     nextPaths.Add(continued);
                     continue;
                 }
@@ -499,8 +478,6 @@ public class TransitiveMappingBuilder
                         continued.Ids.Add(null);
                         continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
                         continued.Relationships.Add(null);
-                        continued.CdRelationships.Add(null);
-                        continued.VdRelationships.Add(null);
                         nextPaths.Add(continued);
                     }
                     else
@@ -523,8 +500,6 @@ public class TransitiveMappingBuilder
                     {
                         MappingPath newPath = path.Clone();
                         newPath.Relationships.Add(mapping.Relationship);
-                        newPath.CdRelationships.Add(mapping.ConceptDomainRelationship);
-                        newPath.VdRelationships.Add(mapping.ValueDomainRelationship);
                         newPath.CurrentKey = mapping.TargetStructureKey;
                         newPath.CurrentId = mapping.TargetStructureId;
                         newPath.Ids.Add(mapping.TargetStructureId);
@@ -558,8 +533,6 @@ public class TransitiveMappingBuilder
         DbArtifactMapCache<DbStructureMappingRecord> mappingCache)
     {
         CMR? computedRelationship = RelationshipComposition.ComposeChain(path.Relationships);
-        CMR? cdRelationship = RelationshipComposition.ComposeChain(path.CdRelationships);
-        CMR? vdRelationship = RelationshipComposition.ComposeChain(path.VdRelationships);
 
         (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(
             _packages[sourceIndex].ShortName,
@@ -581,16 +554,7 @@ public class TransitiveMappingBuilder
         if (rec is not null)
         {
             // update with current data
-            rec.StructureKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2);
-            rec.StructureKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3);
-            rec.StructureKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4);
-            rec.StructureKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B);
-            rec.StructureKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5);
-            rec.StructureKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6);
-
-            rec.ComputedRelationship ??= computedRelationship;
-            rec.ConceptDomainRelationship ??= cdRelationship;
-            rec.ValueDomainRelationship ??= vdRelationship;
+            rec.StructureKeys = path.GetVersionKeyArray();
 
             rec.TechnicalNotes = (rec.TechnicalNotes ?? string.Empty) + 
                 $" Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}";
@@ -610,18 +574,10 @@ public class TransitiveMappingBuilder
                 TargetStructureKey = path.CurrentKey,
                 TargetStructureId = path.CurrentId,
 
-                StructureKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2),
-                StructureKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3),
-                StructureKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4),
-                StructureKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B),
-                StructureKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5),
-                StructureKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6),
+                StructureKeys = path.GetVersionKeyArray(),
 
                 ExplicitNoMap = false,
                 Relationship = computedRelationship,
-                ComputedRelationship = computedRelationship,
-                ConceptDomainRelationship = cdRelationship,
-                ValueDomainRelationship = vdRelationship,
 
                 FmlExists = false,
                 FmlUrl = null,
@@ -647,11 +603,22 @@ public class TransitiveMappingBuilder
         public int? CurrentKey { get; set; }
         public string? CurrentId { get; set; }
         public List<CMR?> Relationships { get; set; } = [];
-        public List<CMR?> CdRelationships { get; set; } = [];
-        public List<CMR?> VdRelationships { get; set; } = [];
         public List<string?> Ids { get; set; } = [];
         public Dictionary<FhirReleases.FhirSequenceCodes, int?> VersionKeys { get; set; } = [];
         public bool ImplicitBasedOnIds { get; set; } = false;
+
+        public int?[] GetVersionKeyArray()
+        {
+            return new int?[]
+            {
+                VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2),
+                VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3),
+                VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4),
+                VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B),
+                VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5),
+                VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6),
+            };
+        }
 
         public MappingPath Clone()
         {
@@ -660,8 +627,6 @@ public class TransitiveMappingBuilder
                 CurrentKey = CurrentKey,
                 CurrentId = CurrentId,
                 Relationships = [.. Relationships],
-                CdRelationships = [.. CdRelationships],
-                VdRelationships = [.. VdRelationships],
                 Ids = [.. Ids],
                 VersionKeys = new Dictionary<FhirReleases.FhirSequenceCodes, int?>(VersionKeys)
             };

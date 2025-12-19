@@ -1097,9 +1097,6 @@ public class FmlDbProcessor
 
                         ExplicitNoMap = false,
                         Relationship = initialRelationship,
-                        ConceptDomainRelationship = initialRelationship,
-                        ValueDomainRelationship = null,
-                        ComputedRelationship = null,
 
                         OriginatingConceptMapUrlsLiteral = null,
                         IdLong = idLong,
@@ -1188,34 +1185,6 @@ public class FmlDbProcessor
 
                         ExplicitNoMap = false,
                         Relationship = null,
-                        ConceptDomainRelationship = null,
-                        ValueDomainRelationship = null,
-                        ComputedRelationship = null,
-
-                        ElementTypeChange = null,
-                        TypesAddedLiteral = null,
-                        TypesRemovedLiteral = null,
-                        TypesIdenticalLiteral = null,
-                        TypesMappedLiteral = null,
-
-                        ReferenceTargetChange = null,
-                        ReferenceTargetsAddedLiteral = null,
-                        ReferenceTargetsRemovedLiteral = null,
-                        ReferenceTargetsIdenticalLiteral = null,
-                        ReferenceTargetsMappedLiteral = null,
-
-                        BindingStrengthChange = null,
-                        BindingBecameRequired = null,
-                        BindingNoLongerRequired = null,
-                        BindingTargetChange = null,
-                        BoundValueSetMappingKey = null,
-
-                        MaxCardinalityChange = null,
-                        BecameProhibited = null,
-                        BecameMandatory = null,
-                        BecameOptional = null,
-                        BecameArray = null,
-                        BecameScalar = null,
                     };
                     edMappingRecsToAdd.Add(edMappingRec);
                 }

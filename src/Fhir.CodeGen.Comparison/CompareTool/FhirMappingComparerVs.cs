@@ -87,19 +87,6 @@ public class FhirMappingComparerVs
             // update based on no-map data
             if (targetVs is null)
             {
-                mapRec.ComputedRelationship = null;
-                mapRec.HasContentUnmapped = true;
-                mapRec.HasContentIdentical = null;
-                mapRec.HasContentEquivalent = null;
-                mapRec.HasContentBroader = null;
-                mapRec.HasContentNarrower = null;
-
-                mapRec.IsIdentical = null;
-                mapRec.IsEquivalent = null;
-                mapRec.IsBroaderThanTarget = null;
-                mapRec.IsNarrowerThanTarget = null;
-                mapRec.IsRenamed = null;
-
                 mapRec.Comments ??= $"The {sourcePackage.ShortName} Value Set" +
                     $" {sourceVs.Id} ({sourceVs.UnversionedUrl}) has no representation in" +
                     $" FHIR {targetPackage.ShortName}";
@@ -222,9 +209,6 @@ public class FhirMappingComparerVs
                         }
 
                         currentMapping.ExplicitNoMap = false;
-                        currentMapping.IsIdentical = false;
-                        currentMapping.IsEquivalent = false;
-                        currentMapping.CodesAreIdentical = false;
                         currentMapping.Comments = comments;
                         currentMapping.TechnicalNotes = "Auto-generated";
                         currentMapping.Relationship = null;
@@ -241,9 +225,6 @@ public class FhirMappingComparerVs
                         $" FHIR {targetPackage.ShortName}";
 
                     currentMapping.ExplicitNoMap = false;
-                    currentMapping.IsIdentical = sourceConcept.FhirKey == targetConcept.FhirKey;
-                    currentMapping.IsEquivalent = sourceConcept.Code == targetConcept.Code;
-                    currentMapping.CodesAreIdentical = sourceConcept.Code == targetConcept.Code;
                     currentMapping.Comments = comments;
                     currentMapping.TechnicalNotes = "Auto-generated";
                     currentMapping.Relationship ??= CMR.Equivalent;
@@ -329,9 +310,6 @@ public class FhirMappingComparerVs
             ValueSetMappingKey = valueSetMappingRecord.Key,
 
             ExplicitNoMap = false,
-            IsIdentical = (targetConcept is not null) && (sourceConcept.FhirKey == targetConcept.FhirKey),
-            IsEquivalent = (targetConcept is not null) && (sourceConcept.Code == targetConcept.Code),
-            CodesAreIdentical = (targetConcept is not null) && (sourceConcept.Code == targetConcept.Code),
             Comments = comments,
             TechnicalNotes = "Auto-generated",
 
