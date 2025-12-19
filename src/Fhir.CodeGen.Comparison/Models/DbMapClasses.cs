@@ -21,6 +21,8 @@ public abstract class DbMapRecordBase : DbRecordBase
     [CgSQLiteIgnore]
     public bool IsNotMapped => Relationship is null;
 
+    public required bool ExplicitNoMap { get; set; }
+
     public bool? IsIdentical { get; set; } = null;
     public bool? IsEquivalent { get; set; } = null;
     public bool? IsBroaderThanTarget { get; set; } = null;
@@ -61,13 +63,15 @@ public abstract class DbMapArtifactRecordBase : DbMapRecordBase
 
 [CgSQLiteTable(tableName: "ValueSetMappings")]
 [CgSQLiteIndex(nameof(IdLong))]
-public partial class DbValueSetMapRecord : DbMapArtifactRecordBase      //, IDbMapArtifactRecord
+public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, IDbMapArtifactRecord
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int SourceValueSetKey { get; set; }
+    public required string SourceValueSetId { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int? TargetValueSetKey { get; set; }
+    public required string? TargetValueSetId { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
@@ -118,14 +122,15 @@ public partial class DbValueSetMapRecord : DbMapArtifactRecordBase      //, IDbM
         }
     }
 
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ComputedRelationship { get; set; }
 
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
 [CgSQLiteIndex(nameof(ValueSetMapKey), nameof(SourceValueSetConceptKey), nameof(TargetValueSetConceptKey))]
-public partial class DbValueSetConceptMapRecord : DbMapRecordBase
+public partial class DbValueSetConceptMappingRecord : DbMapRecordBase
 {
-    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMapRecord.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMappingRecord.Key))]
     public required int ValueSetMapKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
@@ -201,7 +206,6 @@ public partial class DbStructureMappingRecord : DbMapArtifactRecordBase
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int? TargetStructureKey { get; set; }
-
     public required string? TargetStructureId { get; set; }
 
     public required bool? FmlExists { get; set; }
@@ -353,6 +357,14 @@ public partial class DbElementMappingRecord : DbMapRecordBase
         set => OriginatingConceptMapUrlsLiteral = value is null ? null : string.Join(", ", value);
     }
 
+    public string? OriginatingFmlUrlsLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string>? OriginatingFmlUrls
+    {
+        get => OriginatingFmlUrlsLiteral?.Split(", ").ToList();
+        set => OriginatingFmlUrlsLiteral = value is null ? null : string.Join(", ", value);
+    }
+
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
@@ -433,7 +445,7 @@ public partial class DbElementMappingRecord : DbMapRecordBase
 
     public required ChangeIndicationCodes? BindingTargetChange { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMapRecord.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMappingRecord.Key))]
     public required int? BoundValueSetMapKey { get; set; }
 
     public required ChangeIndicationCodes? MaxCardinalityChange { get; set; }

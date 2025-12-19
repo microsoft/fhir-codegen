@@ -368,16 +368,16 @@ public class ComparisonDatabase : IDisposable
 
     private void dropMapTables(IDbConnection db)
     {
-        DbValueSetMapRecord.DropTable(db);
-        DbValueSetConceptMapRecord.DropTable(db);
+        DbValueSetMappingRecord.DropTable(db);
+        DbValueSetConceptMappingRecord.DropTable(db);
         DbStructureMappingRecord.DropTable(db);
         DbElementMappingRecord.DropTable(db);
     }
 
     private void createMapTables(IDbConnection db)
     {
-        DbValueSetMapRecord.CreateTable(db);
-        DbValueSetConceptMapRecord.CreateTable(db);
+        DbValueSetMappingRecord.CreateTable(db);
+        DbValueSetConceptMappingRecord.CreateTable(db);
         DbStructureMappingRecord.CreateTable(db);
         DbElementMappingRecord.CreateTable(db);
     }
@@ -935,6 +935,7 @@ public class ComparisonDatabase : IDisposable
         TransitiveMappingBuilder transitiveBuilder = new(_dbConnection, _loggerFactory, packages);
 
         loadSourceMaps(sourcePath, "codes", "ConceptMap-*-*.json");
+        transitiveBuilder.BuildTransitiveValueSetMappings();
 
         // TODO: determine when we should call this
         if (useInternalTypeMaps)
@@ -959,11 +960,7 @@ public class ComparisonDatabase : IDisposable
         reconcileStructureNoMaps();
 
         loadSourceMaps(sourcePath, "elements", "ConceptMap-elements-*.json");
-
         loadSourceFml(sourcePath, packages);
-
-        loadSourceMaps(sourcePath, "search-params", "ConceptMap-search-params-*.json");
-
 
         return true;
     }
@@ -1355,6 +1352,7 @@ public class ComparisonDatabase : IDisposable
 
                             ElementKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, null),
 
+                            ExplicitNoMap = true,
                             Relationship = null,
                             ConceptDomainRelationship = null,
                             ValueDomainRelationship = null,
@@ -1469,6 +1467,7 @@ public class ComparisonDatabase : IDisposable
 
                         ElementKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, targetElement?.Key),
 
+                        ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
@@ -1569,6 +1568,7 @@ public class ComparisonDatabase : IDisposable
                         FmlUrl = null,
                         FmlFilename = null,
 
+                        ExplicitNoMap = true,
                         Relationship = null,
 
                         ConceptDomainRelationship = null,
@@ -1621,6 +1621,7 @@ public class ComparisonDatabase : IDisposable
                         FmlFilename = null,
                         FmlUrl = null,
 
+                        ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
 
@@ -1654,8 +1655,8 @@ public class ComparisonDatabase : IDisposable
         DbFhirPackage targetPackage,
         ConceptMap cm)
     {
-        List<DbValueSetMapRecord> valueSetMapsToAdd = [];
-        List<DbValueSetConceptMapRecord> conceptMapsToAdd = [];
+        List<DbValueSetMappingRecord> valueSetMapsToAdd = [];
+        List<DbValueSetConceptMappingRecord> conceptMapsToAdd = [];
 
         // there *should* only be one group, but iterate just in case
         foreach (ConceptMap.GroupComponent group in cm.Group)
@@ -1756,21 +1757,25 @@ public class ComparisonDatabase : IDisposable
             (string vsIdLong, string vsIdShort) = XVerProcessor.GenerateArtifactId(sourcePackage.ShortName, sourceVs.Id, targetPackage.ShortName, targetVs.Id);
 
             // get from the db or create a new map
-            DbValueSetMapRecord? vsMap = DbValueSetMapRecord.SelectSingle(
+            DbValueSetMappingRecord? vsMap = DbValueSetMappingRecord.SelectSingle(
                 _dbConnection,
                 IdLong: vsIdLong);
             if (vsMap is null)
             {
                 vsMap = new()
                 {
-                    Key = DbValueSetMapRecord.GetIndex(),
+                    Key = DbValueSetMappingRecord.GetIndex(),
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceValueSetKey = sourceVs.Key,
+                    SourceValueSetId = sourceVs.Id,
 
                     TargetFhirPackageKey = targetPackage.Key,
                     TargetValueSetKey = targetVs.Key,
+                    TargetValueSetId = targetVs.Id,
 
+                    ExplicitNoMap = false,
                     Relationship = null,
+                    ComputedRelationship = null,
 
                     OriginatingConceptMapUrlsLiteral = cm.Url,
 
@@ -1809,7 +1814,7 @@ public class ComparisonDatabase : IDisposable
                 if (groupSourceElement.NoMap == true)
                 {
                     // check to see if we already have this in the database
-                    DbValueSetConceptMapRecord? conceptMapRec = DbValueSetConceptMapRecord.SelectSingle(
+                    DbValueSetConceptMappingRecord? conceptMapRec = DbValueSetConceptMappingRecord.SelectSingle(
                         _dbConnection,
                         ValueSetMapKey: vsMap.Key,
                         SourceValueSetConceptKey: sourceConcept.Key,
@@ -1821,7 +1826,7 @@ public class ComparisonDatabase : IDisposable
 
                     conceptMapRec = new()
                     {
-                        Key = DbValueSetConceptMapRecord.GetIndex(),
+                        Key = DbValueSetConceptMappingRecord.GetIndex(),
                         ValueSetMapKey = vsMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -1829,6 +1834,7 @@ public class ComparisonDatabase : IDisposable
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetValueSetConceptKey = null,
 
+                        ExplicitNoMap = true,
                         Relationship = null,
                         CodesAreIdentical = false,
                     };
@@ -1854,7 +1860,7 @@ public class ComparisonDatabase : IDisposable
                     }
 
                     // check to see if we already have this in the database
-                    DbValueSetConceptMapRecord? conceptMapRec = DbValueSetConceptMapRecord.SelectSingle(
+                    DbValueSetConceptMappingRecord? conceptMapRec = DbValueSetConceptMappingRecord.SelectSingle(
                         _dbConnection,
                         ValueSetMapKey: vsMap.Key,
                         SourceValueSetConceptKey: sourceConcept.Key,
@@ -1868,7 +1874,7 @@ public class ComparisonDatabase : IDisposable
                     // create a record for the database
                     conceptMapRec = new()
                     {
-                        Key = DbValueSetConceptMapRecord.GetIndex(),
+                        Key = DbValueSetConceptMappingRecord.GetIndex(),
                         ValueSetMapKey = vsMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -1876,6 +1882,7 @@ public class ComparisonDatabase : IDisposable
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetValueSetConceptKey = targetConcept.Key,
 
+                        ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
                         CodesAreIdentical = groupSourceElement.Code == elementTarget.Code,
@@ -2004,6 +2011,7 @@ public class ComparisonDatabase : IDisposable
                     FmlUrl = null,
                     FmlFilename = null,
 
+                    ExplicitNoMap = false,
                     Relationship = tm.Relationship,
                     ConceptDomainRelationship = tm.ConceptDomainRelationship,
                     ValueDomainRelationship = tm.ValueDomainRelationship,
@@ -2038,6 +2046,7 @@ public class ComparisonDatabase : IDisposable
                     FmlExists = null,
                     FmlUrl = null,
                     FmlFilename = null,
+                    ExplicitNoMap = false,
                     Relationship = null,
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
@@ -2122,6 +2131,7 @@ public class ComparisonDatabase : IDisposable
                     FmlUrl = null,
                     FmlFilename = null,
 
+                    ExplicitNoMap = false,
                     Relationship = tm.Relationship,
                     ConceptDomainRelationship = tm.ConceptDomainRelationship,
                     ValueDomainRelationship = tm.ValueDomainRelationship,
@@ -2160,6 +2170,7 @@ public class ComparisonDatabase : IDisposable
                     FmlFilename = null,
                     Relationship = null,
 
+                    ExplicitNoMap = false,
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
                     ComputedRelationship = null,
@@ -2261,8 +2272,8 @@ public class ComparisonDatabase : IDisposable
                         FmlFilename = null,
                         FmlUrl = null,
 
+                        ExplicitNoMap = true,
                         Relationship = null,
-
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
                         ComputedRelationship = null,
@@ -2328,9 +2339,9 @@ public class ComparisonDatabase : IDisposable
                         FmlFilename = fmlFile,
                         FmlUrl = $"http://hl7.org/fhir/uv/xver/StructureMap/{sourceSd.Name}{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}",
 
+                        ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
                         Comments = elementTarget.Comment,
-
                         ConceptDomainRelationship = cdRelationship,
                         ValueDomainRelationship = vdRelationship,
                         ComputedRelationship = RelationshipComposition.ComputeForDomains(cdRelationship, vdRelationship),

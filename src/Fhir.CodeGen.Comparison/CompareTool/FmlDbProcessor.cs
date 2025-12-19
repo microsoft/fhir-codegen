@@ -709,13 +709,19 @@ public class FmlDbProcessor
         if (resolveFmlSymbol(expression.Source, null, null, sourceSymbols, StructureMap.StructureMapInputMode.Source)
             is not FmlSymbolResolutionRecord sourceResovled)
         {
-            throw new Exception($"Failed to resolve source `{expression.Source}` in group {group.Name}");
+            _logger.LogInformation(
+                $" <<< processSimpleCopyExpression for {_fmlFilename} Line: {expression.Line}" +
+                $" Failed to resolve source `{expression.Source}` in group {group.Name}");
+            return;
         }
 
         if (resolveFmlSymbol(expression.Target, null, null, targetSymbols, StructureMap.StructureMapInputMode.Target)
             is not FmlSymbolResolutionRecord targetResolved)
         {
-            throw new Exception($"Failed to resolve target `{expression.Target}` in group {group.Name}");
+            _logger.LogInformation(
+                $" <<< processSimpleCopyExpression for {_fmlFilename} Line: {expression.Line}" +
+                $"Failed to resolve target `{expression.Target}` in group {group.Name}");
+            return;
         }
 
         if (!_relatedPaths.TryGetValue(sourceResovled.ResolvedPath, out HashSet<string>? relatedTargetPaths))
@@ -1041,7 +1047,9 @@ public class FmlDbProcessor
                 // check to see if there are existing mapping records for the structures
                 List<DbStructureMappingRecord> sdMappingRecords = DbStructureMappingRecord.SelectList(
                     _db,
+                    SourceFhirPackageKey: _sourcePackage.Key,
                     SourceStructureKey: sourceSd.Key,
+                    TargetFhirPackageKey: _targetPackage.Key,
                     TargetStructureKey: targetSd.Key);
 
                 // if there are no records, we need to create one
@@ -1052,6 +1060,25 @@ public class FmlDbProcessor
                         sourceSd.Id,
                         _targetPackage.ShortName,
                         targetSd.Id);
+
+                    // check for maps to other targets and no-maps
+                    int otherStructureMapCount = DbStructureMappingRecord.SelectCount(
+                        _db,
+                        SourceFhirPackageKey: _sourcePackage.Key,
+                        SourceStructureKey: sourceSd.Key,
+                        TargetFhirPackageKey: _targetPackage.Key);
+
+                    // if there are *other* maps for this source structure, assume the FML is overly-ambitious and log a warning
+                    if (otherStructureMapCount > 0)
+                    {
+                        // if we do not have a structure mapping record by this point in processing, assume the FML is overly-ambitious
+                        _logger.LogWarning(
+                            $"FML wants to create {idLong}, but" +
+                            $" {_sourcePackage.ShortName}:{sourceSd.Name} has relationships for" +
+                            $" {_targetPackage.ShortName} that do not include {targetSd.Name}.");
+
+                        continue;
+                    }
 
                     structureMappingRec = new()
                     {
@@ -1068,6 +1095,7 @@ public class FmlDbProcessor
                         FmlUrl = _fmlUrl,
                         FmlFilename = Path.GetFileName(_fmlFilename),
 
+                        ExplicitNoMap = false,
                         Relationship = initialRelationship,
                         ConceptDomainRelationship = initialRelationship,
                         ValueDomainRelationship = null,
@@ -1113,7 +1141,9 @@ public class FmlDbProcessor
                     // add no-map records
                     edMappingRecords.AddRange(DbElementMappingRecord.SelectList(
                         _db,
+                        SourceFhirPackageKey: _sourcePackage.Key,
                         StructureMappingKey: structureMappingRec.Key,
+                        TargetFhirPackageKey: _targetPackage.Key,
                         SourceElementKey: sourceEd.Key,
                         TargetElementIdIsNull: true));
                 }
@@ -1130,8 +1160,10 @@ public class FmlDbProcessor
                     // add no-map records
                     edMappingRecords.AddRange(DbElementMappingRecord.SelectList(
                         _db,
+                        SourceFhirPackageKey: _sourcePackage.Key,
                         StructureMappingKey: structureMappingRec.Key,
                         SourceElementId: sourceEd?.Id ?? sourcePath,
+                        TargetFhirPackageKey: _targetPackage.Key,
                         TargetElementIdIsNull: true));
                 }
 
@@ -1149,8 +1181,12 @@ public class FmlDbProcessor
                         TargetElementKey = targetEd?.Key,
                         TargetElementId = targetEd?.Id ?? targetPath,
 
-                        OriginatingConceptMapUrlsLiteral = null,
+                        ElementKeys = getKeyArray(_sourcePackage, _targetPackage, sourceEd?.Key, targetEd?.Key),
 
+                        OriginatingConceptMapUrlsLiteral = null,
+                        OriginatingFmlUrlsLiteral = _fmlUrl,
+
+                        ExplicitNoMap = false,
                         Relationship = null,
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
@@ -1193,6 +1229,18 @@ public class FmlDbProcessor
 
             _logger.LogInformation($"Maps added from FML for {_name}: {sdMappingRecsToAdd.Count} structures, {edMappingRecsToAdd.Count} elements");
         }
+    }
+
+    private int?[] getKeyArray(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        int? sourceKey,
+        int? targetKey)
+    {
+        int?[] keyArray = [null, null, null, null, null, null];
+        keyArray[sourcePackage.PackageArrayIndex] = sourceKey;
+        keyArray[targetPackage.PackageArrayIndex] = targetKey;
+        return keyArray;
     }
 
 }

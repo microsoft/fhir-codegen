@@ -28,6 +28,277 @@ public class TransitiveMappingBuilder
         _packages = packages;
     }
 
+    public void BuildTransitiveValueSetMappings()
+    {
+        _logger.LogInformation("Building transitive value set mappings...");
+
+        // iterate over all the packages to use as source
+        for (int sourceIndex = 0; sourceIndex < _packages.Count; sourceIndex++)
+        {
+            DbFhirPackage sourcePackage = _packages[sourceIndex];
+
+            // iterate upwards first (skip immediate neigbor)
+            for (int targetIndex = sourceIndex + 2; targetIndex < _packages.Count; targetIndex++)
+            {
+                DbFhirPackage targetPackage = _packages[targetIndex];
+                int hopCount = Math.Abs(targetIndex - sourceIndex);
+                _logger.LogInformation(
+                    $"Building transitive value set mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
+                buildTransitiveValueSetMappings(sourcePackage, targetPackage, sourceIndex, targetIndex);
+            }
+
+            // iterate downwards (skip immediate neigbor)
+            for (int targetIndex = sourceIndex - 2; targetIndex >= 0; targetIndex--)
+            {
+                DbFhirPackage targetPackage = _packages[targetIndex];
+                int hopCount = Math.Abs(targetIndex - sourceIndex);
+                _logger.LogInformation(
+                    $"Building transitive value set mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
+                buildTransitiveValueSetMappings(sourcePackage, targetPackage, sourceIndex, targetIndex);
+            }
+        }
+    }
+
+    private void buildTransitiveValueSetMappings(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        int sourceIndex,
+        int targetIndex)
+    {
+        DbArtifactMapCache<DbValueSetMappingRecord> mappingCache = new();
+
+        // get all direct mappings in the chain
+        List<List<DbValueSetMappingRecord>> chainMappings = [];
+
+        int increment = sourceIndex < targetIndex ? 1 : -1;
+        int hops = Math.Abs(targetIndex - sourceIndex);
+
+        int currentSourceIndex = sourceIndex;
+        int currentTargetIndex = sourceIndex + increment;
+
+        for (int step = 0; step < hops; step++)
+        {
+            DbFhirPackage fromPkg = _packages[currentSourceIndex];
+            DbFhirPackage toPkg = _packages[currentTargetIndex];
+
+            List<DbValueSetMappingRecord> directMaps = DbValueSetMappingRecord.SelectList(
+                _dbConnection,
+                SourceFhirPackageKey: fromPkg.Key,
+                TargetFhirPackageKey: toPkg.Key);
+
+            chainMappings.Add(directMaps);
+
+            // increment our indices
+            currentSourceIndex += increment;
+            currentTargetIndex += increment;
+        }
+
+        // Get all source value sets
+        List<DbValueSet> sourceValueSets = DbValueSet.SelectList(
+            _dbConnection,
+            FhirPackageKey: sourcePackage.Key);
+
+        foreach (DbValueSet sourceVs in sourceValueSets)
+        {
+            // trace this structure through the chain (may produce multiple paths)
+            traceStructureThroughChain(
+                sourceVs,
+                chainMappings,
+                sourceIndex,
+                targetIndex,
+                mappingCache);
+        }
+
+        if (mappingCache.ToAddCount > 0)
+        {
+            mappingCache.ToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+            _logger.LogInformation($"  Created {mappingCache.ToAddCount} transitive value set mappings");
+        }
+
+        if (mappingCache.ToUpdateCount > 0)
+        {
+            mappingCache.ToUpdate.Update(_dbConnection);
+            _logger.LogInformation($"  Updated {mappingCache.ToUpdateCount} transitive value set mappings");
+        }
+    }
+
+    private void traceStructureThroughChain(
+        DbValueSet sourceVs,
+        List<List<DbValueSetMappingRecord>> chainMappings,
+        int sourceIndex,
+        int targetIndex,
+        DbArtifactMapCache<DbValueSetMappingRecord> mappingCache)
+    {
+        // Each path tracks: currentKey, currentId, relationships, structureIds, versionKeys
+        List<MappingPath> activePaths =
+        [
+            new MappingPath
+            {
+                CurrentKey = sourceVs.Key,
+                CurrentId = sourceVs.Id,
+                Relationships = [],
+                CdRelationships = [],
+                VdRelationships = [],
+                Ids = [sourceVs.Id],
+                VersionKeys = new Dictionary<FhirReleases.FhirSequenceCodes, int?>
+                {
+                    [_packages[sourceIndex].DefinitionFhirSequence] = sourceVs.Key
+                }
+            }
+        ];
+
+        int increment = sourceIndex < targetIndex ? 1 : -1;
+        int hopIndex = sourceIndex + increment;
+
+        // Walk through each step, expanding paths when multiple mappings exist
+        for (int step = 0; step < chainMappings.Count; step++)
+        {
+            DbFhirPackage hopPackage = _packages[hopIndex];
+            List<MappingPath> nextPaths = [];
+
+            foreach (MappingPath path in activePaths)
+            {
+                if (path.CurrentKey == null)
+                {
+                    // value set doesn't exist from this point forward - continue path as-is
+                    MappingPath continued = path.Clone();
+                    continued.Ids.Add(null);
+                    continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
+                    continued.Relationships.Add(null);
+                    nextPaths.Add(continued);
+                    continue;
+                }
+
+                // Find ALL mappings for this value set in this step
+                List<DbValueSetMappingRecord> mappings = chainMappings[step]
+                    .Where(m => m.SourceValueSetKey == path.CurrentKey)
+                    .ToList();
+
+                if (mappings.Count == 0)
+                {
+                    // No mapping found - value set is unmapped at this step
+                    MappingPath continued = path.Clone();
+                    continued.CurrentKey = null;
+                    continued.CurrentId = null;
+                    continued.Ids.Add(null);
+                    continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
+                    continued.Relationships.Add(null);
+                    continued.CdRelationships.Add(null);
+                    continued.VdRelationships.Add(null);
+                    nextPaths.Add(continued);
+                }
+                else
+                {
+                    // Create a new path for each mapping (handles 1:N splits)
+                    foreach (DbValueSetMappingRecord mapping in mappings)
+                    {
+                        MappingPath newPath = path.Clone();
+                        newPath.Relationships.Add(mapping.Relationship);
+                        newPath.CurrentKey = mapping.TargetValueSetKey;
+                        newPath.CurrentId = mapping.TargetValueSetId;
+                        newPath.Ids.Add(mapping.TargetValueSetId);
+                        newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = mapping.TargetValueSetKey;
+                        nextPaths.Add(newPath);
+                    }
+                }
+            }
+
+            activePaths = nextPaths;
+            hopIndex += increment;
+        }
+
+        // Convert all completed paths to records
+        foreach (MappingPath path in activePaths)
+        {
+            createValueSetMappingRecord(
+                sourceVs,
+                path,
+                sourceIndex,
+                targetIndex,
+                mappingCache);
+        }
+    }
+
+    private void createValueSetMappingRecord(
+        DbValueSet sourceVs,
+        MappingPath path,
+        int sourceIndex,
+        int targetIndex,
+        DbArtifactMapCache<DbValueSetMappingRecord> mappingCache)
+    {
+        CMR? computedRelationship = RelationshipComposition.ComposeChain(path.Relationships);
+
+        (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(
+            _packages[sourceIndex].ShortName,
+            sourceVs.Id,
+            _packages[targetIndex].ShortName,
+            path.CurrentId);
+
+        // check to see if there is an existing record
+        DbValueSetMappingRecord? rec = DbValueSetMappingRecord.SelectSingle(
+            _dbConnection,
+            IdLong: idLong);
+
+        if (rec is null)
+        {
+            // check for cached record
+            mappingCache.TryGet(idLong, out rec);
+        }
+
+        if (rec is not null)
+        {
+            // update with current data
+            rec.ValueSetKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2);
+            rec.ValueSetKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3);
+            rec.ValueSetKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4);
+            rec.ValueSetKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B);
+            rec.ValueSetKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5);
+            rec.ValueSetKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6);
+
+            rec.ComputedRelationship ??= computedRelationship;
+
+            rec.TechnicalNotes = (rec.TechnicalNotes ?? string.Empty) +
+                $" Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}";
+
+            mappingCache.CacheUpdate(rec);
+        }
+        else
+        {
+            // create a new record
+            rec = new()
+            {
+                Key = DbValueSetMappingRecord.GetIndex(),
+                SourceFhirPackageKey = _packages[sourceIndex].Key,
+                TargetFhirPackageKey = _packages[targetIndex].Key,
+                SourceValueSetKey = sourceVs.Key,
+                SourceValueSetId = sourceVs.Id,
+                TargetValueSetKey = path.CurrentKey,
+                TargetValueSetId = path.CurrentId,
+
+                ValueSetKeyR2 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.DSTU2),
+                ValueSetKeyR3 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.STU3),
+                ValueSetKeyR4 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4),
+                ValueSetKeyR4B = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R4B),
+                ValueSetKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5),
+                ValueSetKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6),
+
+                ExplicitNoMap = false,
+                Relationship = computedRelationship,
+                ComputedRelationship = computedRelationship,
+
+                IdLong = idLong,
+                IdShort = idShort,
+                Url = $"http://hl7.org/fhir/{_packages[sourceIndex].FhirVersionShort}/ConceptMap/{idLong}",
+                Name = FhirSanitizationUtils.ReformatIdForName(idLong),
+                Title = $"Transitive mapping of {sourceVs.UnversionedUrl} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
+
+                TechnicalNotes = $"Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}",
+            };
+
+            mappingCache.CacheAdd(rec);
+        }
+    }
+
     /// <summary>
     /// Builds transitive mappings for all non-adjacent version pairs of structures
     /// </summary>
@@ -151,7 +422,7 @@ public class TransitiveMappingBuilder
                 Relationships = [],
                 CdRelationships = [],
                 VdRelationships = [],
-                StructureIds = [sourceStructure.Id],
+                Ids = [sourceStructure.Id],
                 VersionKeys = new Dictionary<FhirReleases.FhirSequenceCodes, int?>
                 {
                     [_packages[sourceIndex].DefinitionFhirSequence] = sourceStructure.Key
@@ -174,7 +445,7 @@ public class TransitiveMappingBuilder
                 {
                     // Structure doesn't exist from this point forward - continue path as-is
                     MappingPath continued = path.Clone();
-                    continued.StructureIds.Add(null);
+                    continued.Ids.Add(null);
                     continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
                     continued.Relationships.Add(null);
                     continued.CdRelationships.Add(null);
@@ -194,7 +465,7 @@ public class TransitiveMappingBuilder
                     MappingPath continued = path.Clone();
                     continued.CurrentKey = null;
                     continued.CurrentId = null;
-                    continued.StructureIds.Add(null);
+                    continued.Ids.Add(null);
                     continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
                     continued.Relationships.Add(null);
                     continued.CdRelationships.Add(null);
@@ -212,7 +483,7 @@ public class TransitiveMappingBuilder
                         newPath.VdRelationships.Add(mapping.ValueDomainRelationship);
                         newPath.CurrentKey = mapping.TargetStructureKey;
                         newPath.CurrentId = mapping.TargetStructureId;
-                        newPath.StructureIds.Add(mapping.TargetStructureId);
+                        newPath.Ids.Add(mapping.TargetStructureId);
                         newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = mapping.TargetStructureKey;
                         nextPaths.Add(newPath);
                     }
@@ -278,7 +549,7 @@ public class TransitiveMappingBuilder
             rec.ValueDomainRelationship ??= vdRelationship;
 
             rec.TechnicalNotes = (rec.TechnicalNotes ?? string.Empty) + 
-                $" Computed transitively through {string.Join("->", path.StructureIds.Where(s => s != null))}";
+                $" Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}";
 
             mappingCache.CacheUpdate(rec);
         }
@@ -302,6 +573,7 @@ public class TransitiveMappingBuilder
                 StructureKeyR5 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R5),
                 StructureKeyR6 = path.VersionKeys.GetValueOrDefault(FhirReleases.FhirSequenceCodes.R6),
 
+                ExplicitNoMap = false,
                 Relationship = computedRelationship,
                 ComputedRelationship = computedRelationship,
                 ConceptDomainRelationship = cdRelationship,
@@ -317,7 +589,7 @@ public class TransitiveMappingBuilder
                 Name = FhirSanitizationUtils.ReformatIdForName(idLong),
                 Title = $"Transitive mapping of {sourceStructure.Name} from {_packages[sourceIndex].ShortName} to {_packages[targetIndex].ShortName}",
 
-                TechnicalNotes = $"Computed transitively through {string.Join("->", path.StructureIds.Where(s => s != null))}",
+                TechnicalNotes = $"Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}",
             };
 
             mappingCache.CacheAdd(rec);
@@ -331,7 +603,7 @@ public class TransitiveMappingBuilder
         public List<CMR?> Relationships { get; set; } = [];
         public List<CMR?> CdRelationships { get; set; } = [];
         public List<CMR?> VdRelationships { get; set; } = [];
-        public List<string?> StructureIds { get; set; } = [];
+        public List<string?> Ids { get; set; } = [];
         public Dictionary<FhirReleases.FhirSequenceCodes, int?> VersionKeys { get; set; } = [];
 
         public MappingPath Clone()
@@ -343,7 +615,7 @@ public class TransitiveMappingBuilder
                 Relationships = [.. Relationships],
                 CdRelationships = [.. CdRelationships],
                 VdRelationships = [.. VdRelationships],
-                StructureIds = [.. StructureIds],
+                Ids = [.. Ids],
                 VersionKeys = new Dictionary<FhirReleases.FhirSequenceCodes, int?>(VersionKeys)
             };
         }
