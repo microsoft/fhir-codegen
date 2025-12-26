@@ -437,7 +437,7 @@ internal static class LaunchUtils
         //rootCommand.AddCommand(webCommand);
 
         //// create our compare command
-        //Command compareCommand = new("compare", "Compare two sets of packages.");
+        //Command compareCommand = new("compare", "CompareValueSets two sets of packages.");
         //foreach (Option option in BuildCliOptions(typeof(ConfigCompare), typeof(ConfigRoot), envConfig))
         //{
         //    // note that 'global' here is just recursive DOWNWARD

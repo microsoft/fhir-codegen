@@ -576,9 +576,9 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             }
         }
 
-        string argFilterParams = string.Join(", ", getFnFilterParams(true));
-        string argFilters = string.Join(", ", getFnFilterArgs(true));
-        string conditionLinesUsingJoiner2 = string.Join(_line_2, getConditionLines(true, true, true));
+        string argFilterParams = string.Join(", ", getFnFilterParams(true, true));
+        string argFilters = string.Join(", ", getFnFilterArgs(true, true));
+        string conditionLinesUsingJoiner2 = string.Join(_line_2, getConditionLines(true, true, true, true));
         string colReaderDirectivesComma5 = string.Join(_comma_line_5, tableColInfo.Select(p => p.readerDirective));
 
         string genClassVars;
@@ -1666,7 +1666,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
             }
         }
 
-        IEnumerable<string> getFnFilterParams(bool includeNullFilter)
+        IEnumerable<string> getFnFilterParams(bool includeNullFilter, bool allowKeysIn)
         {
             foreach (TableColInfoRec rec in tableColInfo)
             {
@@ -1689,10 +1689,15 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 {
                     yield return $"bool? {rec.name}IsNull = null";
                 }
+
+                if (allowKeysIn && (!rec.isArray) && rec.name.EndsWith("Key"))
+                {
+                    yield return $"List<{rec.propType}>? {rec.name}Values = null";
+                }
             }
         }
 
-        IEnumerable<string> getFnFilterArgs(bool includeNullFilter)
+        IEnumerable<string> getFnFilterArgs(bool includeNullFilter, bool allowKeysIn)
         {
             foreach (TableColInfoRec rec in tableColInfo)
             {
@@ -1715,10 +1720,15 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 {
                     yield return $"{rec.name}IsNull";
                 }
+
+                if (allowKeysIn && (!rec.isArray) && rec.name.EndsWith("Key"))
+                {
+                    yield return $"{rec.name}Values";
+                }
             }
         }
 
-        IEnumerable<string> getConditionLines(bool includeNullFilter, bool allowsOrJoining, bool allowsStringLike)
+        IEnumerable<string> getConditionLines(bool includeNullFilter, bool allowsOrJoining, bool allowsStringLike, bool allowKeysIn)
         {
             foreach (TableColInfoRec rec in tableColInfo)
             {
@@ -1752,7 +1762,6 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 {
                     yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + $"{{{rec.name}}} {{{conditionComparator}}} ${{{rec.name}}}";""";
                 }
-
 
                 yield return "    addedCondition = true;";
                 yield return string.Empty;
@@ -1798,41 +1807,73 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 yield return "}";
                 yield return string.Empty;
 
-                if (!includeNullFilter || !rec.isNullable)
+                if (includeNullFilter && rec.isNullable)
                 {
-                    continue;
+                    yield return $"if ({rec.name}IsNull == true)";
+                    yield return "{";
+
+                    if (allowsOrJoining)
+                    {
+                        yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + "{{{rec.name}}} IS NULL";""";
+                    }
+                    else
+                    {
+                        yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + "{{{rec.name}}} IS NULL";""";
+                    }
+
+                    yield return "    addedCondition = true;";
+                    yield return "}";
+                    yield return $"else if ({rec.name}IsNull == false)";
+                    yield return "{";
+
+                    if (allowsOrJoining)
+                    {
+                        yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + "{{{rec.name}}} IS NOT NULL";""";
+                    }
+                    else
+                    {
+                        yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + "{{{rec.name}}} IS NOT NULL";""";
+                    }
+
+                    yield return "    addedCondition = true;";
+                    yield return "}";
+
+                    yield return string.Empty;
                 }
 
-                yield return $"if ({rec.name}IsNull == true)";
-                yield return "{";
-
-                if (allowsOrJoining)
+                if (allowKeysIn && (!rec.isArray) && rec.name.EndsWith("Key"))
                 {
-                    yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + "{{{rec.name}}} IS NULL";""";
-                }
-                else
-                {
-                    yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + "{{{rec.name}}} IS NULL";""";
-                }
+                    yield return $"if (({rec.name}Values is not null) && ({rec.name}Values.Count != 0))";
+                    yield return "{";
 
-                yield return "    addedCondition = true;";
-                yield return "}";
-                yield return $"else if ({rec.name}IsNull == false)";
-                yield return "{";
+                    if (allowsOrJoining)
+                    {
+                        yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + $"{{{rec.name}}} IN ";""";
+                    }
+                    else
+                    {
+                        yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + $"{{{rec.name}}} IN ";""";
+                    }
 
-                if (allowsOrJoining)
-                {
-                    yield return $$$"""    command.CommandText += (addedCondition ? $" {joiner} " : " WHERE ") + "{{{rec.name}}} IS NOT NULL";""";
+                    yield return "    addedCondition = true;";
+                    yield return "    List<string> vParamNames = new();";
+                    yield return string.Empty;
+
+                    yield return $"    for (int vIndex = 0; vIndex < {rec.name}Values.Count; vIndex++)";
+                    yield return "    {";
+                    yield return $$$"""        string vParamName = "{{{rec.name}}}Param" + vIndex.ToString();""";
+                    yield return """        vParamNames.Add("@" + vParamName);""";
+                    yield return string.Empty;
+                    yield return $"        IDbDataParameter vp = command.CreateParameter();";
+                    yield return $"        vp.ParameterName = vParamName;";
+                    yield return $"        vp.Value = {rec.name}Values[vIndex];";
+                    yield return $"        command.Parameters.Add(vp);";
+                    yield return "    }";
+                    yield return string.Empty;
+
+                    yield return $$$"""    command.CommandText += "(" + string.Join(',', vParamNames) + ")";""";
+                    yield return "}";
                 }
-                else
-                {
-                    yield return $$$"""    command.CommandText += (addedCondition ? " AND " : " WHERE ") + "{{{rec.name}}} IS NOT NULL";""";
-                }
-
-                yield return "    addedCondition = true;";
-                yield return "}";
-
-                yield return string.Empty;
             }
         }
 

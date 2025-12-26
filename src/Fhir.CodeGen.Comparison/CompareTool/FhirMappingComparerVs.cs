@@ -4,6 +4,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Fhir.CodeGen.Comparison.Models;
@@ -31,8 +32,12 @@ public class FhirMappingComparerVs
             ?? LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<FhirMappingComparerVs>(); ;
     }
 
-    public void Compare()
+    public void CompareValueSets()
     {
+        // reset outcome tables
+        dropVsOutcomeTables(_db);
+        createVsOutcomeTables(_db);
+        
         List<DbFhirPackage> packages = DbFhirPackage.SelectList(
             _db,
             orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
@@ -46,79 +51,87 @@ public class FhirMappingComparerVs
             for (int j = i + 1; j < packages.Count; j++)
             {
                 DbFhirPackage targetPackage = packages[j];
-                doComparisons(sourcePackage, targetPackage);
+                doComparisonsVs(sourcePackage, targetPackage);
             }
 
             // iterate downward over packages to use as target
             for (int j = i - 1; j >= 0; j--)
             {
                 DbFhirPackage targetPackage = packages[j];
-                doComparisons(sourcePackage, targetPackage);
+                doComparisonsVs(sourcePackage, targetPackage);
             }
         }
     }
 
-    private void doComparisons(
+    private void dropVsOutcomeTables(IDbConnection db)
+    {
+        DbValueSetOutcome.DropTable(db);
+        DbValueSetConceptOutcome.DropTable(db);
+    }
+
+    private void createVsOutcomeTables(IDbConnection db)
+    {
+        DbValueSetOutcome.CreateTable(db);
+        DbValueSetConceptOutcome.CreateTable(db);
+    }
+
+
+    private void doComparisonsVs(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage)
     {
-        DbArtifactMapCache<DbValueSetMappingRecord> vsMapCache = new();
-        DbRecordCache<DbValueSetConceptMappingRecord> vsConceptMapCache = new();
+        DbRecordCache<DbValueSetOutcome> vsOutcomeCache = new();
+        DbRecordCache<DbValueSetConceptOutcome> conceptOutcomeCache = new();
 
-        // get the value set mappings between this source and target
-        List<DbValueSetMappingRecord> mappings = DbValueSetMappingRecord.SelectList(
+        List<DbValueSet> sourceValueSets = DbValueSet.SelectList(
             _db,
-            SourceFhirPackageKey: sourcePackage.Key,
-            TargetFhirPackageKey: targetPackage.Key);
+            FhirPackageKey: sourcePackage.Key,
+            IsExcluded: false);
 
+        // iterate over the source value sets
+        foreach (DbValueSet sourceVs in sourceValueSets)
+        {
+            processValueSet(
+                sourcePackage,
+                targetPackage,
+                sourceVs,
+                vsOutcomeCache,
+                conceptOutcomeCache);
+        }
+
+#if false
         // iterate across the list and perform the comparisons
-        foreach (DbValueSetMappingRecord mapRec in mappings)
+        foreach (DbValueSetMappingRecord vsMapRec in vsMappings)
         {
             // resolve the source (required) and target (optional) value sets
             DbValueSet sourceVs = DbValueSet.SelectSingle(
                 _db,
-                Key: mapRec.SourceValueSetKey)
-                ?? throw new Exception($"Failed to resolve source value set: {mapRec.SourceFhirPackageKey} for mapping: {mapRec.Key} ({mapRec.IdLong})");
+                Key: vsMapRec.SourceValueSetKey)
+                ?? throw new Exception($"Failed to resolve source value set: {vsMapRec.SourceFhirPackageKey} for mapping: {vsMapRec.Key} ({vsMapRec.IdLong})");
 
             DbValueSet? targetVs = DbValueSet.SelectSingle(
                 _db,
-                Key: mapRec.TargetValueSetKey);
+                Key: vsMapRec.TargetValueSetKey);
 
             // update based on no-map data
             if (targetVs is null)
             {
-                mapRec.Comments ??= $"The {sourcePackage.ShortName} Value Set" +
+                vsMapRec.Comments ??= $"The {sourcePackage.ShortName} Value Set" +
                     $" {sourceVs.Id} ({sourceVs.UnversionedUrl}) has no representation in" +
                     $" FHIR {targetPackage.ShortName}";
 
-                vsMapCache.CacheUpdate(mapRec);
+                vsMapCache.CacheUpdate(vsMapRec);
                 continue;
             }
 
-            // resolve the concepts for the source and target value sets
-            List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(
-                _db,
-                ValueSetKey: sourceVs.Key);
-            List<DbValueSetConcept> targetConcepts = DbValueSetConcept.SelectList(
-                _db,
-                ValueSetKey: targetVs.Key);
-
-            // get the concept mappings for this value set mapping
-            List<DbValueSetConceptMappingRecord> conceptMappings = DbValueSetConceptMappingRecord.SelectList(
-                _db,
-                ValueSetMappingKey: mapRec.Key);
-
-            // build lookups
-            ILookup<string, DbValueSetConcept> targetConceptsByFhirKey = targetConcepts.ToLookup(c => c.FhirKey);
-            ILookup<string, DbValueSetConcept> targetConceptsByCode = targetConcepts.ToLookup(c => c.Code);
-            ILookup<int, DbValueSetConcept> targetConceptsByKey = targetConcepts.ToLookup(c => c.Key);
-            ILookup<int, DbValueSetConceptMappingRecord> conceptMappingLookup = conceptMappings.ToLookup(cm => cm.SourceValueSetConceptKey);
 
             // iterate across source concepts to compare to target
             foreach (DbValueSetConcept sourceConcept in sourceConcepts)
             {
-                // check for any existing mappings (0 or more)
-                List<DbValueSetConceptMappingRecord> currentMappings = conceptMappingLookup[sourceConcept.Key].ToList();
+                DbValueSetConceptMappingRecord? conceptMapRec = null;
+
+                // check for any existing vsMappings (0 or more)
+                List<DbValueSetConceptMappingRecord> currentMappings = conceptMappingsBySourceKey[sourceConcept.Key].ToList();
 
                 if (currentMappings.Count == 0)
                 {
@@ -129,58 +142,20 @@ public class FhirMappingComparerVs
                         matches = targetConceptsByCode[sourceConcept.Code].ToList();
                     }
 
-                    // nothing found means no mapping
-                    if (matches.Count == 0)
-                    {
-                        vsConceptMapCache.CacheAdd(
-                            createMappingRecord(
-                                sourcePackage,
-                                targetPackage,
-                                mapRec,
-                                sourceVs,
-                                targetVs,
-                                sourceConcept,
-                                targetConcept: null,
-                                relationship: null));
+                    doConceptComparison(
+                        sourcePackage,
+                        targetPackage,
+                        vsMapRec,
+                        ref conceptMapRec,
+                        sourceVs,
+                        targetVs,
+                        sourceConcept,
+                        matches);
 
-                        continue;
-                    }
 
-                    if (matches.Count == 1)
-                    {
-                        vsConceptMapCache.CacheAdd(
-                            createMappingRecord(
-                                sourcePackage,
-                                targetPackage,
-                                mapRec,
-                                sourceVs,
-                                targetVs,
-                                sourceConcept,
-                                targetConcept: matches[0],
-                                relationship: CMR.Equivalent));
-
-                        continue;
-                    }
-
-                    // multiple matches found - create multiple mappings
-                    foreach (DbValueSetConcept match in matches)
-                    {
-                        vsConceptMapCache.CacheAdd(
-                            createMappingRecord(
-                                sourcePackage,
-                                targetPackage,
-                                mapRec,
-                                sourceVs,
-                                targetVs,
-                                sourceConcept,
-                                targetConcept: match,
-                                relationship: CMR.SourceIsBroaderThanTarget));
-                    }
-
-                    continue;
                 }
 
-                // we have mappings, update them with current info
+                // we have vsMappings, update them with current info
                 foreach (DbValueSetConceptMappingRecord currentMapping in currentMappings)
                 {
                     // if there is a target concept, resolve it
@@ -213,7 +188,7 @@ public class FhirMappingComparerVs
                         currentMapping.TechnicalNotes = "Auto-generated";
                         currentMapping.Relationship = null;
 
-                        vsConceptMapCache.CacheUpdate(currentMapping);
+                        conceptMapCache.CacheUpdate(currentMapping);
                         continue;
                     }
 
@@ -229,91 +204,288 @@ public class FhirMappingComparerVs
                     currentMapping.TechnicalNotes = "Auto-generated";
                     currentMapping.Relationship ??= CMR.Equivalent;
 
-                    vsConceptMapCache.CacheUpdate(currentMapping);
+                    conceptMapCache.CacheUpdate(currentMapping);
                 }
             }
         }
+#endif
 
         // apply changes
-        if (vsMapCache.ToAddCount > 0)
+        if (vsOutcomeCache.ToAddCount > 0)
         {
-            _logger.LogInformation($"Adding {vsMapCache.ToAddCount} value set mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-            vsMapCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+            _logger.LogInformation($"Adding {vsOutcomeCache.ToAddCount} value set outcomes from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            vsOutcomeCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
         }
 
-        if (vsMapCache.ToUpdateCount > 0)
+        if (vsOutcomeCache.ToUpdateCount > 0)
         {
-            _logger.LogInformation($"Updating {vsMapCache.ToUpdateCount} value set mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-            vsMapCache.ToUpdate.Update(_db);
+            _logger.LogInformation($"Updating {vsOutcomeCache.ToUpdateCount} value set outcomes from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            vsOutcomeCache.ToUpdate.Update(_db);
         }
 
-        if (vsConceptMapCache.ToAddCount > 0)
+        if (conceptOutcomeCache.ToAddCount > 0)
         {
-            _logger.LogInformation($"Adding {vsConceptMapCache.ToAddCount} value set concept mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-            vsConceptMapCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+            _logger.LogInformation($"Adding {conceptOutcomeCache.ToAddCount} value set concept outcomes from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            conceptOutcomeCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
         }
 
-        if (vsConceptMapCache.ToUpdateCount > 0)
+        if (conceptOutcomeCache.ToUpdateCount > 0)
         {
-            _logger.LogInformation($"Updating {vsConceptMapCache.ToUpdateCount} value set concept mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-            vsConceptMapCache.ToUpdate.Update(_db);
+            _logger.LogInformation($"Updating {conceptOutcomeCache.ToUpdateCount} value set concept outcomes from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            conceptOutcomeCache.ToUpdate.Update(_db);
         }
     }
 
-    private DbValueSetConceptMappingRecord createMappingRecord(
+    private void processValueSet(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
-        DbValueSetMappingRecord valueSetMappingRecord,
+        DbValueSet sourceVs,
+        DbRecordCache<DbValueSetOutcome> vsOutcomeCache,
+        DbRecordCache<DbValueSetConceptOutcome> conceptOutcomeCache)
+    {
+        // get the value set mappings for this source value set to the target package
+        Dictionary<int, DbValueSetMappingRecord> vsMappings = DbValueSetMappingRecord.SelectDict(
+            _db,
+            SourceFhirPackageKey: sourcePackage.Key,
+            SourceValueSetKey: sourceVs.Key,
+            TargetFhirPackageKey: targetPackage.Key);
+
+        // there should always be at least one mapping (a no-map, if nothing else)
+        if (vsMappings.Count == 0)
+        {
+            throw new Exception($"No value set mappings found from {sourcePackage.ShortName} to {targetPackage.ShortName} for source value set: {sourceVs.VersionedUrl}");
+        }
+
+        List<int> vsMappingKeyValues = vsMappings.Select(vsMap => vsMap.Key).ToList();
+
+        // resolve the list of target value sets
+        Dictionary<int, (DbValueSet vs, List<DbValueSetConcept> concepts)> targetValueSets = [];
+        foreach (DbValueSetMappingRecord vsMapping in vsMappings.Values)
+        {
+            if (vsMapping.TargetValueSetKey is null)
+            {
+                continue;
+            }
+
+            DbValueSet? targetVs = DbValueSet.SelectSingle(
+                _db,
+                Key: vsMapping.TargetValueSetKey.Value);
+            if (targetVs is not null)
+            {
+                targetValueSets[targetVs.Key] = (targetVs, DbValueSetConcept.SelectList(_db, ValueSetKey: targetVs.Key));
+            }
+        }
+
+        // if there are no targets, all outcomes are no-maps
+
+        ILookup<string, DbValueSetConcept> targetConceptsByFhirKey = targetValueSets
+            .Values
+            .SelectMany(tv => tv.concepts)
+            .ToLookup(c => c.FhirKey);
+        ILookup<string, DbValueSetConcept> targetConceptsByCode = targetValueSets
+            .Values
+            .SelectMany(tv => tv.concepts)
+            .ToLookup(c => c.Code);
+
+        // resolve the source concepts
+        List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(
+            _db,
+            ValueSetKey: sourceVs.Key);
+
+        // iterate over the source concepts for this value set
+        foreach (DbValueSetConcept sourceConcept in sourceConcepts)
+        {
+            // check for existing records
+            List<DbValueSetConceptMappingRecord> conceptMappings = DbValueSetConceptMappingRecord.SelectList(
+                _db,
+                SourceValueSetConceptKey: sourceConcept.Key,
+                ValueSetMappingKeyValues: vsMappingKeyValues);
+
+            // if there are no mappings, check for possible target concepts
+            if (conceptMappings.Count == 0)
+            {
+                List<DbValueSetConcept> possibleTargetConcepts = [];
+
+                // first try to match on FHIR key
+                List<DbValueSetConcept> matchesByFhirKey = targetConceptsByFhirKey[sourceConcept.FhirKey].ToList();
+                possibleTargetConcepts.AddRange(matchesByFhirKey);
+
+                // if no matches, try to match on just code
+                if (possibleTargetConcepts.Count == 0)
+                {
+                    List<DbValueSetConcept> matchesByCode = targetConceptsByCode[sourceConcept.Code].ToList();
+                    possibleTargetConcepts.AddRange(matchesByCode);
+                }
+
+                // if still no matches, create no-maps for each mapping
+                if (possibleTargetConcepts.Count == 0)
+                {
+                    foreach (DbValueSetMappingRecord vsMapRec in vsMappings.Values)
+                    {
+                        //DbValueSetConceptMappingRecord conceptMapRec = createMappingRecord(
+                        //        sourcePackage,
+                        //        targetPackage,
+                        //        vsMapRec,
+                        //        sourceVs,
+                        //        targetVs: null,
+                        //        sourceConcept,
+                        //        targetConcept: null,
+                        //        relationship: null);
+
+                        //conceptMappingCache.CacheAdd(conceptMapRec);
+                        //conceptMappings.Add(conceptMapRec);
+                    }
+                    continue;
+                }
+
+                // if one match, create equivalent mapping
+                if (possibleTargetConcepts.Count == 1)
+                {
+                    foreach (DbValueSetMappingRecord vsMapRec in vsMappings.Values)
+                    {
+                        //DbValueSetConceptMappingRecord conceptMapRec = createMappingRecord(
+                        //        sourcePackage,
+                        //        targetPackage,
+                        //        vsMapRec,
+                        //        sourceVs,
+                        //        targetVs: vsMapRec.TargetValueSetKey is null
+                        //            ? null
+                        //            : targetValueSets[vsMapRec.TargetValueSetKey.Value].vs,
+                        //        sourceConcept,
+                        //        targetConcept: possibleTargetConcepts[0],
+                        //        relationship: CMR.Equivalent);
+
+                        //conceptMappingCache.CacheAdd(conceptMapRec);
+                        //conceptMappings.Add(conceptMapRec);
+                    }
+                    continue;
+                }
+
+                // multiple possibleTargetConcepts found - create broader-than mappings
+                foreach (DbValueSetMappingRecord vsMapRec in vsMappings.Values)
+                {
+                    foreach (DbValueSetConcept match in possibleTargetConcepts)
+                    {
+                        //DbValueSetConceptMappingRecord conceptMapRec = createMappingRecord(
+                        //        sourcePackage,
+                        //        targetPackage,
+                        //        vsMapRec,
+                        //        sourceVs,
+                        //        targetVs: vsMapRec.TargetValueSetKey is null
+                        //            ? null
+                        //            : targetValueSets[vsMapRec.TargetValueSetKey.Value].vs,
+                        //        sourceConcept,
+                        //        targetConcept: match,
+                        //        relationship: CMR.SourceIsBroaderThanTarget);
+
+                        //conceptMappingCache.CacheAdd(conceptMapRec);
+                        //conceptMappings.Add(conceptMapRec);
+                    }
+                }
+                continue;
+            }
+
+
+            // iterate over concept mappings to create outcomes
+            foreach (DbValueSetConceptMappingRecord conceptMapping in conceptMappings)
+            {
+                // resolve the vs mapping we are using
+                DbValueSetMappingRecord vsMapping = vsMappings[conceptMapping.ValueSetMappingKey];
+
+                // resolve the target info
+                DbValueSet? targetVs = vsMapping.TargetValueSetKey is null
+                    ? null
+                    : targetValueSets[vsMapping.TargetValueSetKey.Value].vs;
+
+                // create the no-map outcome record
+                DbValueSetConceptOutcome outcomeRec = createOutcome(
+                    sourcePackage,
+                    targetPackage,
+                    sourceVs,
+                    targetVs,
+                    sourceConcept,
+                    targetConcept: conceptMapping.TargetValueSetConceptKey is null
+                        ? null
+                        : targetValueSets[vsMapping.TargetValueSetKey!.Value].concepts
+                            .First(c => c.Key == conceptMapping.TargetValueSetConceptKey.Value),
+                    vsMapping,
+                    conceptMapping);
+
+
+                string? userMessage = conceptMapping.Comments;
+
+                if (userMessage is null)
+                {
+                    if (targetVs is null)
+                    {
+                        userMessage = $"The concept `{sourceConcept.System}#{sourceConcept.Code}` ({sourceConcept.Display}) from" +
+                            $" Value Set `{sourceVs.VersionedUrl}` in" +
+                            $" FHIR {sourcePackage.ShortName} has no representation in" +
+                            $" FHIR {targetPackage.ShortName}";
+
+
+                        continue;
+                    }
+                    userMessage = $"The concept `{sourceConcept.System}#{sourceConcept.Code}` ({sourceConcept.Display}) from" +
+                        $" Value Set `{sourceVs.VersionedUrl}` from" +
+                        $" FHIR {sourcePackage.ShortName} has no representation in" +
+                        $" Value Set `{targetVs.VersionedUrl}` from" +
+                        $" FHIR {targetPackage.ShortName}";
+                }
+
+            }
+        }
+
+    }
+
+    private DbValueSetConceptOutcome createOutcome(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
         DbValueSet sourceVs,
         DbValueSet? targetVs,
         DbValueSetConcept sourceConcept,
         DbValueSetConcept? targetConcept,
-        CMR? relationship = null)
+        DbValueSetMappingRecord valueSetMappingRecord,
+        DbValueSetConceptMappingRecord conceptMapping)
     {
-        string comments;
+        string? userMessage = conceptMapping.Comments;
 
-        if (targetConcept is null)
+        if (userMessage is null)
         {
             if (targetVs is null)
             {
-                comments = $"The concept `{sourceConcept.System}#{sourceConcept.Code}` ({sourceConcept.Display}) from" +
-                    $" Value Set `{sourceVs.UnversionedUrl}` in" +
+                userMessage = $"The concept `{sourceConcept.FhirKey}` ({sourceConcept.Display}) from" +
+                    $" Value Set `{sourceVs.VersionedUrl}` in" +
                     $" FHIR {sourcePackage.ShortName} has no representation in" +
                     $" FHIR {targetPackage.ShortName}";
+            }
+            else if (targetConcept is null)
+            {
+                userMessage = $"The concept `{sourceConcept.FhirKey}` ({sourceConcept.Display}) from" +
+                    $" Value Set `{sourceVs.VersionedUrl}` in" +
+                    $" FHIR {sourcePackage.ShortName} has no representation in" +
+                    $" FHIR {targetPackage.ShortName}" +
+                    $" Value Set `{targetVs.VersionedUrl}`.";
             }
             else
             {
-                comments = $"The concept `{sourceConcept.System}#{sourceConcept.Code}` ({sourceConcept.Display}) from" +
-                    $" Value Set `{sourceVs.UnversionedUrl}` from" +
-                    $" FHIR {sourcePackage.ShortName} has no representation in" +
-                    $" Value Set `{targetVs.UnversionedUrl}` from" +
-                    $" FHIR {targetPackage.ShortName}";
+                userMessage = $"The concept `{sourceConcept.FhirKey}` ({sourceConcept.Display}) from" +
+                        $" Value Set `{sourceVs.VersionedUrl}` from" +
+                        $" FHIR {sourcePackage.ShortName} maps to" +
+                        $" concept `{targetConcept.FhirKey}` in" +
+                        $" Value Set `{targetVs.VersionedUrl}` from" +
+                        $" FHIR {targetPackage.ShortName}";
             }
         }
-        else
+
+        if (targetConcept is null)
         {
-            comments = $"The concept `{sourceConcept.System}#{sourceConcept.Code}` ({sourceConcept.Display}) from" +
-                $" Value Set `{sourceVs.UnversionedUrl}` from" +
-                $" FHIR {sourcePackage.ShortName} maps to" +
-                $" `{targetConcept.System}#{targetConcept.Code}`" +
-                $" Value Set `{targetVs!.UnversionedUrl}` from" +
-                $" FHIR {targetPackage.ShortName}";
         }
 
-        return new()
-        {
-            Key = DbValueSetConceptMappingRecord.GetIndex(),
-            SourceFhirPackageKey = sourcePackage.Key,
-            SourceValueSetConceptKey = sourceConcept.Key,
-            TargetFhirPackageKey = targetPackage.Key,
-            TargetValueSetConceptKey = targetConcept?.Key,
-            ValueSetMappingKey = valueSetMappingRecord.Key,
+        bool isEscapeValve = XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code);
 
-            ExplicitNoMap = false,
-            Comments = comments,
-            TechnicalNotes = "Auto-generated",
-
-            Relationship = relationship,
-        };
+        throw new NotImplementedException();
     }
+
+
 }

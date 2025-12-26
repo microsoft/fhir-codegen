@@ -29,6 +29,7 @@ public class FmlDbProcessor
     private IDbConnection _db;
     private DbFhirPackage _sourcePackage;
     private DbFhirPackage _targetPackage;
+    private int _steps;
     private string _name;
     private FhirStructureMap _fml;
     private string _fmlFilename;
@@ -51,6 +52,7 @@ public class FmlDbProcessor
         _db = db;
         _sourcePackage = sourcePackage;
         _targetPackage = targetPackage;
+        _steps = Math.Abs(sourcePackage.DefinitionFhirSequence - targetPackage.DefinitionFhirSequence);
         _name = name;
         _fml = fml;
         _fmlFilename = filename;
@@ -1083,6 +1085,9 @@ public class FmlDbProcessor
                     structureMappingRec = new()
                     {
                         Key = DbStructureMappingRecord.GetIndex(),
+                        PreviousStepMapRecordKey = null,
+                        Steps = _steps,
+
                         SourceFhirPackageKey = _sourcePackage.Key,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
@@ -1170,6 +1175,9 @@ public class FmlDbProcessor
                     DbElementMappingRecord edMappingRec = new()
                     {
                         Key = DbElementMappingRecord.GetIndex(),
+                        PreviousStepMapRecordKey = null,
+                        Steps = _steps,
+
                         StructureMappingKey = structureMappingRec.Key,
                         SourceFhirPackageKey = _sourcePackage.Key,
                         SourceElementKey = sourceEd?.Key,

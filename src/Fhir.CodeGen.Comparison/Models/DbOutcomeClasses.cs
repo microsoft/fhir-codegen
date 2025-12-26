@@ -1,4 +1,5 @@
-﻿using Fhir.CodeGen.SQLiteGenerator;
+﻿using System.Diagnostics.CodeAnalysis;
+using Fhir.CodeGen.SQLiteGenerator;
 
 namespace Fhir.CodeGen.Comparison.Models;
 

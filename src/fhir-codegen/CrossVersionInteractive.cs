@@ -143,7 +143,7 @@ internal class CrossVersionInteractive
     //    SelectExisting,
     //    SelectPackages,
     //    LoadPackages,
-    //    Compare,
+    //    CompareValueSets,
     //    ProcessOverview,
     //    ProcessValueSets,
     //    ProcessPrimitiveTypes,
@@ -264,7 +264,7 @@ internal class CrossVersionInteractive
     //            }
     //            break;
 
-    //        case UiStateCodes.Compare:
+    //        case UiStateCodes.CompareValueSets:
     //            {
     //                AddCompareUi(w);
     //            }
@@ -603,7 +603,7 @@ internal class CrossVersionInteractive
     //            (bool success, string message) = await TryLoadPackagesAsync();
     //            if (success)
     //            {
-    //                _nextState = UiStateCodes.Compare;
+    //                _nextState = UiStateCodes.CompareValueSets;
     //            }
     //            else
     //            {
@@ -736,7 +736,7 @@ internal class CrossVersionInteractive
 
     //        PackageComparer comparer = new(compareConfig, cache, _dcLeft, _dcRight);
 
-    //        _comparison = comparer.Compare();
+    //        _comparison = comparer.CompareValueSets();
 
     //        return (true, string.Empty);
     //    }

@@ -15,6 +15,8 @@ public abstract class DbMapRecordBase : DbRecordBase
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int TargetFhirPackageKey { get; set; }
 
+    public required int? PreviousStepMapRecordKey { get; set; }
+    public required int Steps { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
 
@@ -105,6 +107,50 @@ public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, 
             throw new ArgumentException($"Invalid number of ValueSet keys: {value.Length}. Expected 5 or 6.");
         }
     }
+
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArray
+    {
+        get
+        {
+            if (TargetValueSetKey is null)
+            {
+                return null;
+            }
+
+            if (ValueSetKeyR2 == TargetValueSetKey) return ValueSetKeyR3;
+            if (ValueSetKeyR3 == TargetValueSetKey) return ValueSetKeyR4;
+            if (ValueSetKeyR4 == TargetValueSetKey) return ValueSetKeyR4B;
+            if (ValueSetKeyR4B == TargetValueSetKey) return ValueSetKeyR5;
+            if (ValueSetKeyR5 == TargetValueSetKey) return ValueSetKeyR6;
+
+            return null;
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int?[] ValueSetKeysInverted =>
+        [ValueSetKeyR6, ValueSetKeyR5, ValueSetKeyR4B, ValueSetKeyR4, ValueSetKeyR3, ValueSetKeyR2];
+
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArrayInverted
+    {
+        get
+        {
+            if (TargetValueSetKey is null)
+            {
+                return null;
+            }
+
+            if (ValueSetKeyR6 == TargetValueSetKey) return ValueSetKeyR5;
+            if (ValueSetKeyR5 == TargetValueSetKey) return ValueSetKeyR4B;
+            if (ValueSetKeyR4B == TargetValueSetKey) return ValueSetKeyR4;
+            if (ValueSetKeyR4 == TargetValueSetKey) return ValueSetKeyR3;
+            if (ValueSetKeyR3 == TargetValueSetKey) return ValueSetKeyR2;
+
+            return null;
+        }
+    }
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
@@ -166,6 +212,55 @@ public partial class DbValueSetConceptMappingRecord : DbMapRecordBase
                 return;
             }
             throw new ArgumentException($"Invalid number of ValueSet concept keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArray
+    {
+        get
+        {
+            if (TargetValueSetConceptKey is null)
+            {
+                return null;
+            }
+
+            if (ValueSetConceptKeyR2 == TargetValueSetConceptKey) return ValueSetConceptKeyR3;
+            if (ValueSetConceptKeyR3 == TargetValueSetConceptKey) return ValueSetConceptKeyR4;
+            if (ValueSetConceptKeyR4 == TargetValueSetConceptKey) return ValueSetConceptKeyR4B;
+            if (ValueSetConceptKeyR4B == TargetValueSetConceptKey) return ValueSetConceptKeyR5;
+            if (ValueSetConceptKeyR5 == TargetValueSetConceptKey) return ValueSetConceptKeyR6;
+
+            return null;
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int?[] ValueSetKeysInverted => [
+        ValueSetConceptKeyR6,
+        ValueSetConceptKeyR5,
+        ValueSetConceptKeyR4B,
+        ValueSetConceptKeyR4,
+        ValueSetConceptKeyR3,
+        ValueSetConceptKeyR2];
+
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArrayInverted
+    {
+        get
+        {
+            if (TargetValueSetConceptKey is null)
+            {
+                return null;
+            }
+
+            if (ValueSetConceptKeyR6 == TargetValueSetConceptKey) return ValueSetConceptKeyR5;
+            if (ValueSetConceptKeyR5 == TargetValueSetConceptKey) return ValueSetConceptKeyR4B;
+            if (ValueSetConceptKeyR4B == TargetValueSetConceptKey) return ValueSetConceptKeyR4;
+            if (ValueSetConceptKeyR4 == TargetValueSetConceptKey) return ValueSetConceptKeyR3;
+            if (ValueSetConceptKeyR3 == TargetValueSetConceptKey) return ValueSetConceptKeyR2;
+
+            return null;
         }
     }
 }
@@ -242,6 +337,49 @@ public partial class DbStructureMappingRecord : DbMapArtifactRecordBase
         }
     }
 
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArray
+    {
+        get
+        {
+            if (TargetStructureKey is null)
+            {
+                return null;
+            }
+
+            if (StructureKeyR2 == TargetStructureKey) return StructureKeyR3;
+            if (StructureKeyR3 == TargetStructureKey) return StructureKeyR4;
+            if (StructureKeyR4 == TargetStructureKey) return StructureKeyR4B;
+            if (StructureKeyR4B == TargetStructureKey) return StructureKeyR5;
+            if (StructureKeyR5 == TargetStructureKey) return StructureKeyR6;
+
+            return null;
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int?[] StructureKeysInverted =>
+        [StructureKeyR6, StructureKeyR5, StructureKeyR4B, StructureKeyR4, StructureKeyR3, StructureKeyR2];
+
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArrayInverted
+    {
+        get
+        {
+            if (TargetStructureKey is null)
+            {
+                return null;
+            }
+
+            if (StructureKeyR6 == TargetStructureKey) return StructureKeyR5;
+            if (StructureKeyR5 == TargetStructureKey) return StructureKeyR4B;
+            if (StructureKeyR4B == TargetStructureKey) return StructureKeyR4;
+            if (StructureKeyR4 == TargetStructureKey) return StructureKeyR3;
+            if (StructureKeyR3 == TargetStructureKey) return StructureKeyR2;
+
+            return null;
+        }
+    }
 
     //[CgSQLiteIgnore]
     //public int SourceArtifactKey => SourceStructureKey;
@@ -320,6 +458,50 @@ public partial class DbElementMappingRecord : DbMapRecordBase
                 return;
             }
             throw new ArgumentException($"Invalid number of element keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArray
+    {
+        get
+        {
+            if (TargetElementKey is null)
+            {
+                return null;
+            }
+
+            if (ElementKeyR2 == TargetElementKey) return ElementKeyR3;
+            if (ElementKeyR3 == TargetElementKey) return ElementKeyR4;
+            if (ElementKeyR4 == TargetElementKey) return ElementKeyR4B;
+            if (ElementKeyR4B == TargetElementKey) return ElementKeyR5;
+            if (ElementKeyR5 == TargetElementKey) return ElementKeyR6;
+
+            return null;
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int?[] ElementKeysInverted =>
+        [ElementKeyR6, ElementKeyR5, ElementKeyR4B, ElementKeyR4, ElementKeyR3, ElementKeyR2];
+
+    [CgSQLiteIgnore]
+    public int? PriorStepFromArrayInverted
+    {
+        get
+        {
+            if (TargetElementKey is null)
+            {
+                return null;
+            }
+
+            if (ElementKeyR6 == TargetElementKey) return ElementKeyR5;
+            if (ElementKeyR5 == TargetElementKey) return ElementKeyR4B;
+            if (ElementKeyR4B == TargetElementKey) return ElementKeyR4;
+            if (ElementKeyR4 == TargetElementKey) return ElementKeyR3;
+            if (ElementKeyR3 == TargetElementKey) return ElementKeyR2;
+
+            return null;
         }
     }
 

@@ -418,10 +418,10 @@ public partial class XVerProcessor
         }
 
         FhirMappingComparerVs vsComparer = new(_db.DbConnection, _config.LogFactory);
-        vsComparer.Compare();
+        vsComparer.CompareValueSets();
 
         //FhirDbComparer dbComparer = new(_db, _config.LogFactory);
-        //dbComparer.Compare(artifactFilter, _config.ComparisonPairFilterKeys);
+        //dbComparer.CompareValueSets(artifactFilter, _config.ComparisonPairFilterKeys);
     }
 
     /// <summary>

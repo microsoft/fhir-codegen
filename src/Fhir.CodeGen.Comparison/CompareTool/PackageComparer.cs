@@ -162,7 +162,7 @@ public class PackageComparer
         Dictionary<string, List<StructureComparison>> extensions = CompareStructures(_source.ExtensionsByUrl, _target.ExtensionsByUrl);
 
         // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
-        //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = Compare(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByUrl, _right.LogicalModelsByUrl);
+        //Dictionary<string, ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec>> logical = CompareValueSets(FhirArtifactClassEnum.LogicalModel, _left.LogicalModelsByUrl, _right.LogicalModelsByUrl);
 
         PackageComparison packageComparison = new()
         {
@@ -1972,7 +1972,7 @@ public class PackageComparer
     }
 
 
-    /// <summary>Compare a set of  value sets.</summary>
+    /// <summary>CompareValueSets a set of  value sets.</summary>
     /// <param name="sourceValueSets">Sets the source value belongs to.</param>
     /// <param name="targetValueSets">Sets the target value belongs to.</param>
     /// <returns>A dictionary indexed by source value set URL, containing a list of mappings that exist.  Most commonly a single mapping.</returns>

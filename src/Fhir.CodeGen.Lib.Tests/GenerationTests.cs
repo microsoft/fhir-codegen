@@ -61,7 +61,7 @@ public class GenerationTestBase : IDisposable
         GC.SuppressFinalize(this);
     }
 
-    /// <summary>Compare generation.</summary>
+    /// <summary>CompareValueSets generation.</summary>
     /// <exception cref="ArgumentException">Thrown when one or more arguments have unsupported or
     ///  illegal values.</exception>
     /// <param name="existingPath">        Full pathname of the existing file.</param>

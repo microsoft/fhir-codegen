@@ -11,7 +11,7 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 
 public class TransitiveMappingBuilder
 {
-    private readonly IDbConnection _dbConnection;
+    private readonly IDbConnection _db;
     private ILoggerFactory? _loggerFactory;
     private readonly ILogger _logger;
     private readonly List<DbFhirPackage> _packages;
@@ -21,7 +21,7 @@ public class TransitiveMappingBuilder
         ILoggerFactory? loggerFactory,
         List<DbFhirPackage> packages)
     {
-        _dbConnection = dbConnection;
+        _db = dbConnection;
         _loggerFactory = loggerFactory;
         _logger = loggerFactory?.CreateLogger<TransitiveMappingBuilder>()
             ?? LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<TransitiveMappingBuilder>();
@@ -82,7 +82,7 @@ public class TransitiveMappingBuilder
             DbFhirPackage toPkg = _packages[currentTargetIndex];
 
             List<DbValueSetMappingRecord> directMaps = DbValueSetMappingRecord.SelectList(
-                _dbConnection,
+                _db,
                 SourceFhirPackageKey: fromPkg.Key,
                 TargetFhirPackageKey: toPkg.Key);
 
@@ -95,7 +95,7 @@ public class TransitiveMappingBuilder
 
         // Get all source value sets
         List<DbValueSet> sourceValueSets = DbValueSet.SelectList(
-            _dbConnection,
+            _db,
             FhirPackageKey: sourcePackage.Key);
 
         foreach (DbValueSet sourceVs in sourceValueSets)
@@ -111,13 +111,13 @@ public class TransitiveMappingBuilder
 
         if (mappingCache.ToAddCount > 0)
         {
-            mappingCache.ToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+            mappingCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
             _logger.LogInformation($"  Created {mappingCache.ToAddCount} transitive value set mappings");
         }
 
         if (mappingCache.ToUpdateCount > 0)
         {
-            mappingCache.ToUpdate.Update(_dbConnection);
+            mappingCache.ToUpdate.Update(_db);
             _logger.LogInformation($"  Updated {mappingCache.ToUpdateCount} transitive value set mappings");
         }
     }
@@ -160,6 +160,7 @@ public class TransitiveMappingBuilder
                 {
                     // value set doesn't exist from this point forward - continue path as-is
                     MappingPath continued = path.Clone();
+                    continued.PreviousKey = path.CurrentKey;
                     continued.Ids.Add(null);
                     continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
                     continued.Relationships.Add(null);
@@ -176,7 +177,7 @@ public class TransitiveMappingBuilder
                 {
                     // check to see if there is a value set with the same id in the target package
                     DbValueSet? possibleVs = DbValueSet.SelectSingle(
-                        _dbConnection,
+                        _db,
                         FhirPackageKey: hopPackage.Key,
                         Id: path.CurrentId);
 
@@ -185,6 +186,7 @@ public class TransitiveMappingBuilder
                         // No mapping found - value set is unmapped at this step
                         MappingPath continued = path.Clone();
                         continued.CurrentKey = null;
+                        continued.PreviousKey = path.CurrentKey;
                         continued.CurrentId = null;
                         continued.Ids.Add(null);
                         continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
@@ -197,6 +199,7 @@ public class TransitiveMappingBuilder
                         MappingPath newPath = path.Clone();
                         newPath.Relationships.Add(CMR.Equivalent);
                         newPath.CurrentKey = possibleVs.Key;
+                        newPath.PreviousKey = path.CurrentKey;
                         newPath.CurrentId = possibleVs.Id;
                         newPath.Ids.Add(possibleVs.Id);
                         newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = possibleVs.Key;
@@ -212,6 +215,7 @@ public class TransitiveMappingBuilder
                         MappingPath newPath = path.Clone();
                         newPath.Relationships.Add(mapping.Relationship);
                         newPath.CurrentKey = mapping.TargetValueSetKey;
+                        newPath.PreviousKey = path.CurrentKey;
                         newPath.CurrentId = mapping.TargetValueSetId;
                         newPath.Ids.Add(mapping.TargetValueSetId);
                         newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = mapping.TargetValueSetKey;
@@ -245,6 +249,9 @@ public class TransitiveMappingBuilder
     {
         CMR? computedRelationship = RelationshipComposition.ComposeChain(path.Relationships);
 
+        // get a previous key if one exists
+        //
+
         (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(
             _packages[sourceIndex].ShortName,
             sourceVs.Id,
@@ -253,7 +260,7 @@ public class TransitiveMappingBuilder
 
         // check to see if there is an existing record
         DbValueSetMappingRecord? rec = DbValueSetMappingRecord.SelectSingle(
-            _dbConnection,
+            _db,
             IdLong: idLong);
 
         if (rec is null)
@@ -261,6 +268,7 @@ public class TransitiveMappingBuilder
             // check for cached record
             mappingCache.TryGet(idLong, out rec);
         }
+
 
         if (rec is not null)
         {
@@ -278,6 +286,9 @@ public class TransitiveMappingBuilder
             rec = new()
             {
                 Key = DbValueSetMappingRecord.GetIndex(),
+                PreviousStepMapRecordKey = null,
+                Steps = Math.Abs(sourceIndex - targetIndex),
+
                 SourceFhirPackageKey = _packages[sourceIndex].Key,
                 TargetFhirPackageKey = _packages[targetIndex].Key,
                 SourceValueSetKey = sourceVs.Key,
@@ -370,7 +381,7 @@ public class TransitiveMappingBuilder
             DbFhirPackage toPkg = _packages[currentTargetIndex];
 
             List<DbStructureMappingRecord> directMaps = DbStructureMappingRecord.SelectList(
-                _dbConnection,
+                _db,
                 SourceFhirPackageKey: fromPkg.Key,
                 TargetFhirPackageKey: toPkg.Key);
 
@@ -383,7 +394,7 @@ public class TransitiveMappingBuilder
 
         // Get all source structures
         List<DbStructureDefinition> sourceStructures = DbStructureDefinition.SelectList(
-            _dbConnection,
+            _db,
             FhirPackageKey: sourcePackage.Key,
             ArtifactClass: artifactClass);
 
@@ -400,13 +411,13 @@ public class TransitiveMappingBuilder
 
         if (mappingCache.ToAddCount > 0)
         {
-            mappingCache.ToAdd.Insert(_dbConnection, ignoreDuplicates: true, insertPrimaryKey: true);
+            mappingCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
             _logger.LogInformation($"  Created {mappingCache.ToAddCount} transitive structure mappings");
         }
 
         if (mappingCache.ToUpdateCount > 0)
         {
-            mappingCache.ToUpdate.Update(_dbConnection);
+            mappingCache.ToUpdate.Update(_db);
             _logger.LogInformation($"  Updated {mappingCache.ToUpdateCount} transitive structure mappings");
         }
     }
@@ -424,6 +435,7 @@ public class TransitiveMappingBuilder
             new MappingPath
             {
                 CurrentKey = sourceStructure.Key,
+                PreviousKey = null,
                 CurrentId = sourceStructure.Id,
                 Relationships = [],
                 Ids = [sourceStructure.Id],
@@ -449,6 +461,7 @@ public class TransitiveMappingBuilder
                 {
                     // Structure doesn't exist from this point forward - continue path as-is
                     MappingPath continued = path.Clone();
+                    continued.PreviousKey = path.CurrentKey;
                     continued.Ids.Add(null);
                     continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
                     continued.Relationships.Add(null);
@@ -465,7 +478,7 @@ public class TransitiveMappingBuilder
                 {
                     // check to see if there is a structure with the same id in the target package
                     DbStructureDefinition? possibleSd = DbStructureDefinition.SelectSingle(
-                        _dbConnection,
+                        _db,
                         FhirPackageKey: hopPackage.Key,
                         Id: path.CurrentId);
 
@@ -474,6 +487,7 @@ public class TransitiveMappingBuilder
                         // No mapping found - structure is unmapped at this step
                         MappingPath continued = path.Clone();
                         continued.CurrentKey = null;
+                        continued.PreviousKey = path.CurrentKey;
                         continued.CurrentId = null;
                         continued.Ids.Add(null);
                         continued.VersionKeys[hopPackage.DefinitionFhirSequence] = null;
@@ -486,6 +500,7 @@ public class TransitiveMappingBuilder
                         MappingPath newPath = path.Clone();
                         newPath.Relationships.Add(CMR.Equivalent);
                         newPath.CurrentKey = possibleSd.Key;
+                        newPath.PreviousKey = path.CurrentKey;
                         newPath.CurrentId = possibleSd.Id;
                         newPath.Ids.Add(possibleSd.Id);
                         newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = possibleSd.Key;
@@ -501,6 +516,7 @@ public class TransitiveMappingBuilder
                         MappingPath newPath = path.Clone();
                         newPath.Relationships.Add(mapping.Relationship);
                         newPath.CurrentKey = mapping.TargetStructureKey;
+                        newPath.PreviousKey = path.CurrentKey;
                         newPath.CurrentId = mapping.TargetStructureId;
                         newPath.Ids.Add(mapping.TargetStructureId);
                         newPath.VersionKeys[hopPackage.DefinitionFhirSequence] = mapping.TargetStructureKey;
@@ -542,7 +558,7 @@ public class TransitiveMappingBuilder
 
         // check to see if there is an existing record
         DbStructureMappingRecord? rec = DbStructureMappingRecord.SelectSingle(
-            _dbConnection,
+            _db,
             IdLong: idLong);
 
         if (rec is null)
@@ -567,6 +583,9 @@ public class TransitiveMappingBuilder
             rec = new()
             {
                 Key = DbStructureMappingRecord.GetIndex(),
+                PreviousStepMapRecordKey = path.PreviousKey,
+                Steps = Math.Abs(sourceIndex - targetIndex),
+
                 SourceFhirPackageKey = _packages[sourceIndex].Key,
                 TargetFhirPackageKey = _packages[targetIndex].Key,
                 SourceStructureKey = sourceStructure.Key,
@@ -601,6 +620,7 @@ public class TransitiveMappingBuilder
     private class MappingPath
     {
         public int? CurrentKey { get; set; }
+        public int? PreviousKey { get; set; }
         public string? CurrentId { get; set; }
         public List<CMR?> Relationships { get; set; } = [];
         public List<string?> Ids { get; set; } = [];
