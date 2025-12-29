@@ -1089,10 +1089,12 @@ public class FmlDbProcessor
                         Steps = _steps,
 
                         SourceFhirPackageKey = _sourcePackage.Key,
+                        SourceFhirSequence = _sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
 
                         TargetFhirPackageKey = _targetPackage.Key,
+                        TargetFhirSequence = _targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
 
@@ -1177,16 +1179,19 @@ public class FmlDbProcessor
                         Key = DbElementMappingRecord.GetIndex(),
                         PreviousStepMapRecordKey = null,
                         Steps = _steps,
-
                         StructureMappingKey = structureMappingRec.Key,
+
                         SourceFhirPackageKey = _sourcePackage.Key,
+                        SourceFhirSequence = _sourcePackage.DefinitionFhirSequence,
                         SourceElementKey = sourceEd?.Key,
                         SourceElementId = sourceEd?.Id ?? sourcePath,
+
                         TargetFhirPackageKey = _targetPackage.Key,
+                        TargetFhirSequence = _targetPackage.DefinitionFhirSequence,
                         TargetElementKey = targetEd?.Key,
                         TargetElementId = targetEd?.Id ?? targetPath,
 
-                        ElementKeys = getKeyArray(_sourcePackage, _targetPackage, sourceEd?.Key, targetEd?.Key),
+                        ContentKeys = getKeyArray(_sourcePackage, _targetPackage, sourceEd?.Key, targetEd?.Key),
 
                         OriginatingConceptMapUrlsLiteral = null,
                         OriginatingFmlUrlsLiteral = _fmlUrl,

@@ -12,8 +12,12 @@ public abstract class DbMapRecordBase : DbRecordBase
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int SourceFhirPackageKey { get; set; }
 
+    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes SourceFhirSequence { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int TargetFhirPackageKey { get; set; }
+
+    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes TargetFhirSequence { get; set; }
 
     public required int? PreviousStepMapRecordKey { get; set; }
     public required int Steps { get; set; }
@@ -27,6 +31,103 @@ public abstract class DbMapRecordBase : DbRecordBase
 
     public string? Comments { get; set; } = null;
     public string? TechnicalNotes { get; set; } = null;
+
+
+    public int? ContentKeyR2 { get; set; } = null;
+    public int? ContentKeyR3 { get; set; } = null;
+    public int? ContentKeyR4 { get; set; } = null;
+    public int? ContentKeyR4B { get; set; } = null;
+    public int? ContentKeyR5 { get; set; } = null;
+    public int? ContentKeyR6 { get; set; } = null;
+
+    [CgSQLiteIgnore]
+    public int?[] ContentKeys
+    {
+        get => [ContentKeyR2, ContentKeyR3, ContentKeyR4, ContentKeyR4B, ContentKeyR5, ContentKeyR6];
+        set
+        {
+            if (value.Length == 5)
+            {
+                ContentKeyR2 = value[0];
+                ContentKeyR3 = value[1];
+                ContentKeyR4 = value[2];
+                ContentKeyR4B = value[3];
+                ContentKeyR5 = value[4];
+                ContentKeyR6 = null;
+                return;
+            }
+            if (value.Length == 6)
+            {
+                ContentKeyR2 = value[0];
+                ContentKeyR3 = value[1];
+                ContentKeyR4 = value[2];
+                ContentKeyR4B = value[3];
+                ContentKeyR5 = value[4];
+                ContentKeyR6 = value[5];
+                return;
+            }
+            throw new ArgumentException($"Invalid number of keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int?[] ContentKeysInverted
+    {
+        get => [ContentKeyR6, ContentKeyR5, ContentKeyR4B, ContentKeyR4, ContentKeyR3, ContentKeyR2];
+    }
+
+    public int? GetContentKeyFromSource(int offsetFromSource)
+    {
+        int targetIndex = (int)SourceFhirSequence - 1;
+
+        int index = (SourceFhirSequence > TargetFhirSequence)
+            ? targetIndex + offsetFromSource
+            : targetIndex - offsetFromSource;
+
+        switch (index)
+        {
+            case 0: return ContentKeyR2;
+            case 1: return ContentKeyR3;
+            case 2: return ContentKeyR4;
+            case 3: return ContentKeyR4B;
+            case 4: return ContentKeyR5;
+            case 5: return ContentKeyR6;
+            default: return null;
+        }
+    }
+
+    public int? GetContentKeyFromTarget(int offsetFromTarget)
+    {
+        int targetIndex = (int)TargetFhirSequence - 1;
+
+        int index = (SourceFhirSequence > TargetFhirSequence)
+            ? targetIndex + offsetFromTarget
+            : targetIndex - offsetFromTarget;
+
+        switch (index)
+        {
+            case 0: return ContentKeyR2;
+            case 1: return ContentKeyR3;
+            case 2: return ContentKeyR4;
+            case 3: return ContentKeyR4B;
+            case 4: return ContentKeyR5;
+            case 5: return ContentKeyR6;
+            default: return null;
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int? PriorContentKeyFromArray => GetContentKeyFromTarget(1);
+
+    [CgSQLiteIgnore]
+    public int? PriorContentKeyFromArrayInverted => GetContentKeyFromSource(1);
+
+
+    //[CgSQLiteIgnore]
+    //public virtual int? SourceKey { get; set; }
+
+    //[CgSQLiteIgnore]
+    //public virtual int? TargetKey { get; set; }
 }
 
 [CgSQLiteBaseClass]
@@ -49,6 +150,8 @@ public abstract class DbMapArtifactRecordBase : DbMapRecordBase
 
 [CgSQLiteTable(tableName: "ValueSetMappings")]
 [CgSQLiteIndex(nameof(IdLong))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetKey))]
 public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, IDbMapArtifactRecord
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
@@ -59,98 +162,11 @@ public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, 
     public required int? TargetValueSetKey { get; set; }
     public required string? TargetValueSetId { get; set; }
 
+    //[CgSQLiteIgnore]
+    //public override int? SourceKey { get => this.SourceValueSetKey; set => this.SourceValueSetKey = value ?? throw new Exception("Source Value Set key cannot be null!"); }
 
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public int? ValueSetKeyR2 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public int? ValueSetKeyR3 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public int? ValueSetKeyR4 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public int? ValueSetKeyR4B { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public int? ValueSetKeyR5 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public int? ValueSetKeyR6 { get; set; } = null;
-
-    [CgSQLiteIgnore]
-    public int?[] ValueSetKeys
-    {
-        get => [ValueSetKeyR2, ValueSetKeyR3, ValueSetKeyR4, ValueSetKeyR4B, ValueSetKeyR5, ValueSetKeyR6];
-        set
-        {
-            if (value.Length == 5)
-            {
-                ValueSetKeyR2 = value[0];
-                ValueSetKeyR3 = value[1];
-                ValueSetKeyR4 = value[2];
-                ValueSetKeyR4B = value[3];
-                ValueSetKeyR5 = value[4];
-                ValueSetKeyR6 = null;
-                return;
-            }
-            if (value.Length == 6)
-            {
-                ValueSetKeyR2 = value[0];
-                ValueSetKeyR3 = value[1];
-                ValueSetKeyR4 = value[2];
-                ValueSetKeyR4B = value[3];
-                ValueSetKeyR5 = value[4];
-                ValueSetKeyR6 = value[5];
-                return;
-            }
-            throw new ArgumentException($"Invalid number of ValueSet keys: {value.Length}. Expected 5 or 6.");
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArray
-    {
-        get
-        {
-            if (TargetValueSetKey is null)
-            {
-                return null;
-            }
-
-            if (ValueSetKeyR2 == TargetValueSetKey) return ValueSetKeyR3;
-            if (ValueSetKeyR3 == TargetValueSetKey) return ValueSetKeyR4;
-            if (ValueSetKeyR4 == TargetValueSetKey) return ValueSetKeyR4B;
-            if (ValueSetKeyR4B == TargetValueSetKey) return ValueSetKeyR5;
-            if (ValueSetKeyR5 == TargetValueSetKey) return ValueSetKeyR6;
-
-            return null;
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int?[] ValueSetKeysInverted =>
-        [ValueSetKeyR6, ValueSetKeyR5, ValueSetKeyR4B, ValueSetKeyR4, ValueSetKeyR3, ValueSetKeyR2];
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArrayInverted
-    {
-        get
-        {
-            if (TargetValueSetKey is null)
-            {
-                return null;
-            }
-
-            if (ValueSetKeyR6 == TargetValueSetKey) return ValueSetKeyR5;
-            if (ValueSetKeyR5 == TargetValueSetKey) return ValueSetKeyR4B;
-            if (ValueSetKeyR4B == TargetValueSetKey) return ValueSetKeyR4;
-            if (ValueSetKeyR4 == TargetValueSetKey) return ValueSetKeyR3;
-            if (ValueSetKeyR3 == TargetValueSetKey) return ValueSetKeyR2;
-
-            return null;
-        }
-    }
+    //[CgSQLiteIgnore]
+    //public override int? TargetKey { get => this.TargetValueSetKey; set => this.TargetValueSetKey = value; }
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
@@ -167,102 +183,12 @@ public partial class DbValueSetConceptMappingRecord : DbMapRecordBase
     public required int? TargetValueSetConceptKey { get; set; }
 
 
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public int? ValueSetConceptKeyR2 { get; set; } = null;
+    //[CgSQLiteIgnore]
+    //public override int? SourceKey { get => this.SourceValueSetConceptKey; set => this.SourceValueSetConceptKey = value ?? throw new Exception("Source concept key cannot be null"); }
 
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public int? ValueSetConceptKeyR3 { get; set; } = null;
+    //[CgSQLiteIgnore]
+    //public override int? TargetKey { get => this.TargetValueSetConceptKey; set => this.TargetValueSetConceptKey = value; }
 
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public int? ValueSetConceptKeyR4 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public int? ValueSetConceptKeyR4B { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public int? ValueSetConceptKeyR5 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public int? ValueSetConceptKeyR6 { get; set; } = null;
-
-    [CgSQLiteIgnore]
-    public int?[] ValueSetConceptKeys
-    {
-        get => [ValueSetConceptKeyR2, ValueSetConceptKeyR3, ValueSetConceptKeyR4, ValueSetConceptKeyR4B, ValueSetConceptKeyR5, ValueSetConceptKeyR6];
-        set
-        {
-            if (value.Length == 5)
-            {
-                ValueSetConceptKeyR2 = value[0];
-                ValueSetConceptKeyR3 = value[1];
-                ValueSetConceptKeyR4 = value[2];
-                ValueSetConceptKeyR4B = value[3];
-                ValueSetConceptKeyR5 = value[4];
-                ValueSetConceptKeyR6 = null;
-                return;
-            }
-            if (value.Length == 6)
-            {
-                ValueSetConceptKeyR2 = value[0];
-                ValueSetConceptKeyR3 = value[1];
-                ValueSetConceptKeyR4 = value[2];
-                ValueSetConceptKeyR4B = value[3];
-                ValueSetConceptKeyR5 = value[4];
-                ValueSetConceptKeyR6 = value[5];
-                return;
-            }
-            throw new ArgumentException($"Invalid number of ValueSet concept keys: {value.Length}. Expected 5 or 6.");
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArray
-    {
-        get
-        {
-            if (TargetValueSetConceptKey is null)
-            {
-                return null;
-            }
-
-            if (ValueSetConceptKeyR2 == TargetValueSetConceptKey) return ValueSetConceptKeyR3;
-            if (ValueSetConceptKeyR3 == TargetValueSetConceptKey) return ValueSetConceptKeyR4;
-            if (ValueSetConceptKeyR4 == TargetValueSetConceptKey) return ValueSetConceptKeyR4B;
-            if (ValueSetConceptKeyR4B == TargetValueSetConceptKey) return ValueSetConceptKeyR5;
-            if (ValueSetConceptKeyR5 == TargetValueSetConceptKey) return ValueSetConceptKeyR6;
-
-            return null;
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int?[] ValueSetKeysInverted => [
-        ValueSetConceptKeyR6,
-        ValueSetConceptKeyR5,
-        ValueSetConceptKeyR4B,
-        ValueSetConceptKeyR4,
-        ValueSetConceptKeyR3,
-        ValueSetConceptKeyR2];
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArrayInverted
-    {
-        get
-        {
-            if (TargetValueSetConceptKey is null)
-            {
-                return null;
-            }
-
-            if (ValueSetConceptKeyR6 == TargetValueSetConceptKey) return ValueSetConceptKeyR5;
-            if (ValueSetConceptKeyR5 == TargetValueSetConceptKey) return ValueSetConceptKeyR4B;
-            if (ValueSetConceptKeyR4B == TargetValueSetConceptKey) return ValueSetConceptKeyR4;
-            if (ValueSetConceptKeyR4 == TargetValueSetConceptKey) return ValueSetConceptKeyR3;
-            if (ValueSetConceptKeyR3 == TargetValueSetConceptKey) return ValueSetConceptKeyR2;
-
-            return null;
-        }
-    }
 }
 
 
@@ -286,105 +212,11 @@ public partial class DbStructureMappingRecord : DbMapArtifactRecordBase
     public required string? FmlUrl { get; set; }
     public required string? FmlFilename { get; set; }
 
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public int? StructureKeyR2 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public int? StructureKeyR3 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public int? StructureKeyR4 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public int? StructureKeyR4B { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public int? StructureKeyR5 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public int? StructureKeyR6 { get; set; } = null;
-
-    [CgSQLiteIgnore]
-    public int?[] StructureKeys
-    {
-        get => [StructureKeyR2, StructureKeyR3, StructureKeyR4, StructureKeyR4B, StructureKeyR5, StructureKeyR6];
-        set
-        {
-            if (value.Length == 5)
-            {
-                StructureKeyR2 = value[0];
-                StructureKeyR3 = value[1];
-                StructureKeyR4 = value[2];
-                StructureKeyR4B = value[3];
-                StructureKeyR5 = value[4];
-                StructureKeyR6 = null;
-                return;
-            }
-
-            if (value.Length == 6)
-            {
-                StructureKeyR2 = value[0];
-                StructureKeyR3 = value[1];
-                StructureKeyR4 = value[2];
-                StructureKeyR4B = value[3];
-                StructureKeyR5 = value[4];
-                StructureKeyR6 = value[5];
-                return;
-            }
-
-            throw new ArgumentException($"Invalid number of structure keys: {value.Length}. Expected 5 or 6.");
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArray
-    {
-        get
-        {
-            if (TargetStructureKey is null)
-            {
-                return null;
-            }
-
-            if (StructureKeyR2 == TargetStructureKey) return StructureKeyR3;
-            if (StructureKeyR3 == TargetStructureKey) return StructureKeyR4;
-            if (StructureKeyR4 == TargetStructureKey) return StructureKeyR4B;
-            if (StructureKeyR4B == TargetStructureKey) return StructureKeyR5;
-            if (StructureKeyR5 == TargetStructureKey) return StructureKeyR6;
-
-            return null;
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int?[] StructureKeysInverted =>
-        [StructureKeyR6, StructureKeyR5, StructureKeyR4B, StructureKeyR4, StructureKeyR3, StructureKeyR2];
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArrayInverted
-    {
-        get
-        {
-            if (TargetStructureKey is null)
-            {
-                return null;
-            }
-
-            if (StructureKeyR6 == TargetStructureKey) return StructureKeyR5;
-            if (StructureKeyR5 == TargetStructureKey) return StructureKeyR4B;
-            if (StructureKeyR4B == TargetStructureKey) return StructureKeyR4;
-            if (StructureKeyR4 == TargetStructureKey) return StructureKeyR3;
-            if (StructureKeyR3 == TargetStructureKey) return StructureKeyR2;
-
-            return null;
-        }
-    }
+    //[CgSQLiteIgnore]
+    //public override int? SourceKey { get => this.SourceStructureKey; set => this.SourceStructureKey = value ?? throw new Exception("Source structure key cannot be null!"); }
 
     //[CgSQLiteIgnore]
-    //public int SourceArtifactKey => SourceStructureKey;
-    //[CgSQLiteIgnore]
-    //public int? TargetArtifactKey => TargetStructureKey;
+    //public override int? TargetKey { get => this.TargetStructureKey; set => this.TargetStructureKey = value; }
 }
 
 public enum ChangeIndicationCodes : int
@@ -412,99 +244,6 @@ public partial class DbElementMappingRecord : DbMapRecordBase
 
     public required string? TargetElementId { get; set; }
 
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public int? ElementKeyR2 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public int? ElementKeyR3 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public int? ElementKeyR4 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public int? ElementKeyR4B { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public int? ElementKeyR5 { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public int? ElementKeyR6 { get; set; } = null;
-
-    [CgSQLiteIgnore]
-    public int?[] ElementKeys
-    {
-        get => [ElementKeyR2, ElementKeyR3, ElementKeyR4, ElementKeyR4B, ElementKeyR5, ElementKeyR6];
-        set
-        {
-            if (value.Length == 5)
-            {
-                ElementKeyR2 = value[0];
-                ElementKeyR3 = value[1];
-                ElementKeyR4 = value[2];
-                ElementKeyR4B = value[3];
-                ElementKeyR5 = value[4];
-                ElementKeyR6 = null;
-                return;
-            }
-            if (value.Length == 6)
-            {
-                ElementKeyR2 = value[0];
-                ElementKeyR3 = value[1];
-                ElementKeyR4 = value[2];
-                ElementKeyR4B = value[3];
-                ElementKeyR5 = value[4];
-                ElementKeyR6 = value[5];
-                return;
-            }
-            throw new ArgumentException($"Invalid number of element keys: {value.Length}. Expected 5 or 6.");
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArray
-    {
-        get
-        {
-            if (TargetElementKey is null)
-            {
-                return null;
-            }
-
-            if (ElementKeyR2 == TargetElementKey) return ElementKeyR3;
-            if (ElementKeyR3 == TargetElementKey) return ElementKeyR4;
-            if (ElementKeyR4 == TargetElementKey) return ElementKeyR4B;
-            if (ElementKeyR4B == TargetElementKey) return ElementKeyR5;
-            if (ElementKeyR5 == TargetElementKey) return ElementKeyR6;
-
-            return null;
-        }
-    }
-
-    [CgSQLiteIgnore]
-    public int?[] ElementKeysInverted =>
-        [ElementKeyR6, ElementKeyR5, ElementKeyR4B, ElementKeyR4, ElementKeyR3, ElementKeyR2];
-
-    [CgSQLiteIgnore]
-    public int? PriorStepFromArrayInverted
-    {
-        get
-        {
-            if (TargetElementKey is null)
-            {
-                return null;
-            }
-
-            if (ElementKeyR6 == TargetElementKey) return ElementKeyR5;
-            if (ElementKeyR5 == TargetElementKey) return ElementKeyR4B;
-            if (ElementKeyR4B == TargetElementKey) return ElementKeyR4;
-            if (ElementKeyR4 == TargetElementKey) return ElementKeyR3;
-            if (ElementKeyR3 == TargetElementKey) return ElementKeyR2;
-
-            return null;
-        }
-    }
-
     public string? OriginatingConceptMapUrlsLiteral { get; set; } = null;
     [CgSQLiteIgnore]
     public List<string>? OriginatingConceptMapUrls
@@ -520,6 +259,13 @@ public partial class DbElementMappingRecord : DbMapRecordBase
         get => OriginatingFmlUrlsLiteral?.Split(", ").ToList();
         set => OriginatingFmlUrlsLiteral = value is null ? null : string.Join(", ", value);
     }
+
+    //[CgSQLiteIgnore]
+    //public override int? SourceKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
+
+    //[CgSQLiteIgnore]
+    //public override int? TargetKey { get => this.TargetElementKey; set => this.TargetElementKey = value; }
+
 }
 
 

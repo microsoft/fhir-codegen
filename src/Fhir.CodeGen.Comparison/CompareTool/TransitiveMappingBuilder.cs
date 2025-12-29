@@ -273,7 +273,7 @@ public class TransitiveMappingBuilder
         if (rec is not null)
         {
             // update with current data
-            rec.ValueSetKeys = path.GetVersionKeyArray();
+            rec.ContentKeys = path.GetVersionKeyArray();
 
             rec.TechnicalNotes = (rec.TechnicalNotes ?? string.Empty) +
                 $" Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}";
@@ -290,13 +290,16 @@ public class TransitiveMappingBuilder
                 Steps = Math.Abs(sourceIndex - targetIndex),
 
                 SourceFhirPackageKey = _packages[sourceIndex].Key,
-                TargetFhirPackageKey = _packages[targetIndex].Key,
+                SourceFhirSequence = _packages[sourceIndex].DefinitionFhirSequence,
                 SourceValueSetKey = sourceVs.Key,
                 SourceValueSetId = sourceVs.Id,
+
+                TargetFhirPackageKey = _packages[targetIndex].Key,
+                TargetFhirSequence = _packages[targetIndex].DefinitionFhirSequence,
                 TargetValueSetKey = path.CurrentKey,
                 TargetValueSetId = path.CurrentId,
 
-                ValueSetKeys = path.GetVersionKeyArray(),
+                ContentKeys = path.GetVersionKeyArray(),
 
                 ExplicitNoMap = false,
                 Relationship = computedRelationship,
@@ -570,7 +573,7 @@ public class TransitiveMappingBuilder
         if (rec is not null)
         {
             // update with current data
-            rec.StructureKeys = path.GetVersionKeyArray();
+            rec.ContentKeys = path.GetVersionKeyArray();
 
             rec.TechnicalNotes = (rec.TechnicalNotes ?? string.Empty) + 
                 $" Computed transitively through {string.Join("->", path.Ids.Where(s => s != null))}";
@@ -587,13 +590,16 @@ public class TransitiveMappingBuilder
                 Steps = Math.Abs(sourceIndex - targetIndex),
 
                 SourceFhirPackageKey = _packages[sourceIndex].Key,
-                TargetFhirPackageKey = _packages[targetIndex].Key,
+                SourceFhirSequence = _packages[sourceIndex].DefinitionFhirSequence,
                 SourceStructureKey = sourceStructure.Key,
                 SourceStructureId = sourceStructure.Id,
+
+                TargetFhirPackageKey = _packages[targetIndex].Key,
+                TargetFhirSequence = _packages[targetIndex].DefinitionFhirSequence,
                 TargetStructureKey = path.CurrentKey,
                 TargetStructureId = path.CurrentId,
 
-                StructureKeys = path.GetVersionKeyArray(),
+                ContentKeys = path.GetVersionKeyArray(),
 
                 ExplicitNoMap = false,
                 Relationship = computedRelationship,

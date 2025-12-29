@@ -9,18 +9,22 @@ public enum OutcomeValueSetActionCodes
     /// The value set is used with the same name in the target version.
     /// </summary>
     UseValueSetSameName,
+
     /// <summary>
     /// The value set is used but has been renamed in the target version.
     /// </summary>
     UseValueSetRenamed,
+
     /// <summary>
     /// The value set has no valid mapping to the target version, so a cross-version defined value set must be used.
     /// </summary>
     UseCrossVersionDefinition,
+
     /// <summary>
     /// The value set exists in the target version with the same name, but additional concepts are required from a cross-version defined value set.
     /// </summary>
     UseSameNameAndCrossVersion,
+
     /// <summary>
     /// The value set has been renamed in the target version, and additional concepts are required from a cross-version defined value set.
     /// </summary>
@@ -33,18 +37,22 @@ public enum OutcomeValueSetConceptActionCodes
     /// The concept is used with the same code in the target version.
     /// </summary>
     UseConceptSameCode,
+
     /// <summary>
     /// The concept is used but has been changed to a different code in the target version.
     /// </summary>
     UseConceptChangedCode,
+
     /// <summary>
     /// The concept has no valid mapping to the target version.
     /// </summary>
     UnmappedConcept,
+
     /// <summary>
     /// The concept has no valid mapping to the target version, so a cross-version defined concept must be used.
     /// </summary>
     UseCrossVersionDefinition,
+
     /// <summary>
     /// The concept is mapped to a different value set in the target version.
     /// </summary>

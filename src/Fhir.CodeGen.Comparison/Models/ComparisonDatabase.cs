@@ -1019,18 +1019,20 @@ public class ComparisonDatabase : IDisposable
         DbStructureMappingRecord inverseSdMapping = new()
         {
             Key = DbStructureMappingRecord.GetIndex(),
-            PreviousStepMapRecordKey = sdMapping.PriorStepFromArrayInverted,
+            PreviousStepMapRecordKey = sdMapping.PriorContentKeyFromArrayInverted,
             Steps = sdMapping.Steps,
 
             SourceFhirPackageKey = targetPackage.Key,
+            SourceFhirSequence = targetPackage.DefinitionFhirSequence,
             SourceStructureKey = targetSd.Key,
             SourceStructureId = targetSd.Id,
 
             TargetFhirPackageKey = sourcePackage.Key,
+            TargetFhirSequence = sourcePackage.DefinitionFhirSequence,
             TargetStructureKey = sourceSd.Key,
             TargetStructureId = sourceSd.Id,
 
-            StructureKeys = sdMapping.StructureKeysInverted,
+            ContentKeys = sdMapping.ContentKeysInverted,
 
             ExplicitNoMap = false,
             Relationship = invertRelationship(sdMapping.Relationship),
@@ -1069,15 +1071,17 @@ public class ComparisonDatabase : IDisposable
             DbElementMappingRecord inverseElementMapping = new()
             {
                 Key = DbElementMappingRecord.GetIndex(),
-                PreviousStepMapRecordKey = elementMapping.PriorStepFromArrayInverted,
+                PreviousStepMapRecordKey = elementMapping.PriorContentKeyFromArrayInverted,
                 Steps = elementMapping.Steps,
                 StructureMappingKey = inverseSdMapping.Key,
 
                 SourceFhirPackageKey = inverseSdMapping.SourceFhirPackageKey,
+                SourceFhirSequence = inverseSdMapping.SourceFhirSequence,
                 SourceElementKey = elementMapping.TargetElementKey.Value,
                 SourceElementId = elementMapping.TargetElementId!,
 
                 TargetFhirPackageKey = inverseSdMapping.TargetFhirPackageKey,
+                TargetFhirSequence = inverseSdMapping.TargetFhirSequence,
                 TargetElementKey = elementMapping.SourceElementKey,
                 TargetElementId = elementMapping.SourceElementId,
 
@@ -1184,18 +1188,20 @@ public class ComparisonDatabase : IDisposable
         DbValueSetMappingRecord inverseVsMapping = new()
         {
             Key = DbValueSetMappingRecord.GetIndex(),
-            PreviousStepMapRecordKey = vsMapping.PriorStepFromArrayInverted,
+            PreviousStepMapRecordKey = vsMapping.PriorContentKeyFromArrayInverted,
             Steps = vsMapping.Steps,
 
             SourceFhirPackageKey = targetPackage.Key,
+            SourceFhirSequence = targetPackage.DefinitionFhirSequence,
             SourceValueSetKey = targetVs.Key,
             SourceValueSetId = targetVs.Id,
 
             TargetFhirPackageKey = sourcePackage.Key,
+            TargetFhirSequence = sourcePackage.DefinitionFhirSequence,
             TargetValueSetKey = sourceVs.Key,
             TargetValueSetId = sourceVs.Id,
 
-            ValueSetKeys = vsMapping.ValueSetKeysInverted,
+            ContentKeys = vsMapping.ContentKeysInverted,
 
             ExplicitNoMap = false,
             Relationship = invertRelationship(vsMapping.Relationship),
@@ -1231,14 +1237,16 @@ public class ComparisonDatabase : IDisposable
             DbValueSetConceptMappingRecord inverseConceptMapping = new()
             {
                 Key = DbValueSetConceptMappingRecord.GetIndex(),
-                PreviousStepMapRecordKey = conceptMapping.PriorStepFromArrayInverted,
+                PreviousStepMapRecordKey = conceptMapping.PriorContentKeyFromArrayInverted,
                 Steps = conceptMapping.Steps,
                 ValueSetMappingKey = inverseVsMapping.Key,
 
                 SourceFhirPackageKey = inverseVsMapping.SourceFhirPackageKey,
+                SourceFhirSequence = inverseVsMapping.SourceFhirSequence,
                 SourceValueSetConceptKey = conceptMapping.TargetValueSetConceptKey.Value,
 
                 TargetFhirPackageKey = inverseVsMapping.TargetFhirPackageKey,
+                TargetFhirSequence = inverseVsMapping.TargetFhirSequence,
                 TargetValueSetConceptKey = conceptMapping.SourceValueSetConceptKey,
 
                 Relationship = invertRelationship(conceptMapping.Relationship),
@@ -1585,9 +1593,12 @@ public class ComparisonDatabase : IDisposable
             Steps = Math.Abs(sourcePackage.DefinitionFhirSequence - targetPackage.DefinitionFhirSequence),
 
             SourceFhirPackageKey = sourcePackage.Key,
+            SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
             SourceElementKey = sourceElement.Key,
             SourceElementId = sourceElement.Id,
+
             TargetFhirPackageKey = targetPackage.Key,
+            TargetFhirSequence = targetPackage.DefinitionFhirSequence,
             TargetElementKey = targetElement?.Key,
             TargetElementId = targetElement?.Id,
 
@@ -1922,8 +1933,11 @@ public class ComparisonDatabase : IDisposable
             Steps = Math.Abs(sourcePackage.DefinitionFhirSequence - targetPackage.DefinitionFhirSequence),
 
             SourceFhirPackageKey = sourcePackage.Key,
+            SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
             SourceValueSetConceptKey = sourceConcept.Key,
+
             TargetFhirPackageKey = targetPackage.Key,
+            TargetFhirSequence = targetPackage.DefinitionFhirSequence,
             TargetValueSetConceptKey = targetConcept?.Key,
             ValueSetMappingKey = valueSetMappingRecord.Key,
 
@@ -1978,12 +1992,12 @@ public class ComparisonDatabase : IDisposable
         {
             string sourceColName = priorTargetPackage.DefinitionFhirSequence switch
             {
-                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbValueSetMappingRecord.ValueSetKeyR2),
-                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbValueSetMappingRecord.ValueSetKeyR3),
-                FhirReleases.FhirSequenceCodes.R4 => nameof(DbValueSetMappingRecord.ValueSetKeyR4),
-                FhirReleases.FhirSequenceCodes.R4B => nameof(DbValueSetMappingRecord.ValueSetKeyR4B),
-                FhirReleases.FhirSequenceCodes.R5 => nameof(DbValueSetMappingRecord.ValueSetKeyR5),
-                FhirReleases.FhirSequenceCodes.R6 => nameof(DbValueSetMappingRecord.ValueSetKeyR6),
+                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbValueSetMappingRecord.ContentKeyR2),
+                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbValueSetMappingRecord.ContentKeyR3),
+                FhirReleases.FhirSequenceCodes.R4 => nameof(DbValueSetMappingRecord.ContentKeyR4),
+                FhirReleases.FhirSequenceCodes.R4B => nameof(DbValueSetMappingRecord.ContentKeyR4B),
+                FhirReleases.FhirSequenceCodes.R5 => nameof(DbValueSetMappingRecord.ContentKeyR5),
+                FhirReleases.FhirSequenceCodes.R6 => nameof(DbValueSetMappingRecord.ContentKeyR6),
                 _ => throw new Exception($"Unsupported FHIR version code: {priorTargetPackage.DefinitionFhirSequence}"),
             };
 
@@ -2002,12 +2016,12 @@ public class ComparisonDatabase : IDisposable
         {
             string sourceColName = priorTargetPackage.DefinitionFhirSequence switch
             {
-                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbValueSetConceptMappingRecord.ValueSetConceptKeyR2),
-                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbValueSetConceptMappingRecord.ValueSetConceptKeyR3),
-                FhirReleases.FhirSequenceCodes.R4 => nameof(DbValueSetConceptMappingRecord.ValueSetConceptKeyR4),
-                FhirReleases.FhirSequenceCodes.R4B => nameof(DbValueSetConceptMappingRecord.ValueSetConceptKeyR4B),
-                FhirReleases.FhirSequenceCodes.R5 => nameof(DbValueSetConceptMappingRecord.ValueSetConceptKeyR5),
-                FhirReleases.FhirSequenceCodes.R6 => nameof(DbValueSetConceptMappingRecord.ValueSetConceptKeyR6),
+                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbValueSetConceptMappingRecord.ContentKeyR2),
+                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbValueSetConceptMappingRecord.ContentKeyR3),
+                FhirReleases.FhirSequenceCodes.R4 => nameof(DbValueSetConceptMappingRecord.ContentKeyR4),
+                FhirReleases.FhirSequenceCodes.R4B => nameof(DbValueSetConceptMappingRecord.ContentKeyR4B),
+                FhirReleases.FhirSequenceCodes.R5 => nameof(DbValueSetConceptMappingRecord.ContentKeyR5),
+                FhirReleases.FhirSequenceCodes.R6 => nameof(DbValueSetConceptMappingRecord.ContentKeyR6),
                 _ => throw new Exception($"Unsupported FHIR version code: {priorTargetPackage.DefinitionFhirSequence}"),
             };
 
@@ -2067,12 +2081,12 @@ public class ComparisonDatabase : IDisposable
         {
             string sourceColName = priorTargetPackage.DefinitionFhirSequence switch
             {
-                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbStructureMappingRecord.StructureKeyR2),
-                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbStructureMappingRecord.StructureKeyR3),
-                FhirReleases.FhirSequenceCodes.R4 => nameof(DbStructureMappingRecord.StructureKeyR4),
-                FhirReleases.FhirSequenceCodes.R4B => nameof(DbStructureMappingRecord.StructureKeyR4B),
-                FhirReleases.FhirSequenceCodes.R5 => nameof(DbStructureMappingRecord.StructureKeyR5),
-                FhirReleases.FhirSequenceCodes.R6 => nameof(DbStructureMappingRecord.StructureKeyR6),
+                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbStructureMappingRecord.ContentKeyR2),
+                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbStructureMappingRecord.ContentKeyR3),
+                FhirReleases.FhirSequenceCodes.R4 => nameof(DbStructureMappingRecord.ContentKeyR4),
+                FhirReleases.FhirSequenceCodes.R4B => nameof(DbStructureMappingRecord.ContentKeyR4B),
+                FhirReleases.FhirSequenceCodes.R5 => nameof(DbStructureMappingRecord.ContentKeyR5),
+                FhirReleases.FhirSequenceCodes.R6 => nameof(DbStructureMappingRecord.ContentKeyR6),
                 _ => throw new Exception($"Unsupported FHIR version code: {priorTargetPackage.DefinitionFhirSequence}"),
             };
 
@@ -2091,12 +2105,12 @@ public class ComparisonDatabase : IDisposable
         {
             string sourceColName = priorTargetPackage.DefinitionFhirSequence switch
             {
-                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbElementMappingRecord.ElementKeyR2),
-                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbElementMappingRecord.ElementKeyR3),
-                FhirReleases.FhirSequenceCodes.R4 => nameof(DbElementMappingRecord.ElementKeyR4),
-                FhirReleases.FhirSequenceCodes.R4B => nameof(DbElementMappingRecord.ElementKeyR4B),
-                FhirReleases.FhirSequenceCodes.R5 => nameof(DbElementMappingRecord.ElementKeyR5),
-                FhirReleases.FhirSequenceCodes.R6 => nameof(DbElementMappingRecord.ElementKeyR6),
+                FhirReleases.FhirSequenceCodes.DSTU2 => nameof(DbElementMappingRecord.ContentKeyR2),
+                FhirReleases.FhirSequenceCodes.STU3 => nameof(DbElementMappingRecord.ContentKeyR3),
+                FhirReleases.FhirSequenceCodes.R4 => nameof(DbElementMappingRecord.ContentKeyR4),
+                FhirReleases.FhirSequenceCodes.R4B => nameof(DbElementMappingRecord.ContentKeyR4B),
+                FhirReleases.FhirSequenceCodes.R5 => nameof(DbElementMappingRecord.ContentKeyR5),
+                FhirReleases.FhirSequenceCodes.R6 => nameof(DbElementMappingRecord.ContentKeyR6),
                 _ => throw new Exception($"Unsupported FHIR version code: {priorTargetPackage.DefinitionFhirSequence}"),
             };
 
@@ -2499,15 +2513,19 @@ public class ComparisonDatabase : IDisposable
                             StructureMappingKey = relevantMap.Key,
                             PreviousStepMapRecordKey = null,
                             Steps = steps,
+
                             SourceFhirPackageKey = sourcePackage.Key,
+                            SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                             SourceElementKey = sourceElement?.Key,
                             SourceElementId = groupSourceElement.Code,
+
                             TargetFhirPackageKey = targetPackage.Key,
+                            TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                             TargetElementKey = null,
                             TargetElementId = null,
                             OriginatingConceptMapUrlsLiteral = cm.Url,
 
-                            ElementKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, null),
+                            ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, null),
 
                             ExplicitNoMap = true,
                             Relationship = null,
@@ -2588,15 +2606,19 @@ public class ComparisonDatabase : IDisposable
                         StructureMappingKey = relevantMap.Key,
                         PreviousStepMapRecordKey = null,
                         Steps = steps,
+
                         SourceFhirPackageKey = sourcePackage.Key,
+                        SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceElementKey = sourceElement?.Key,
                         SourceElementId = groupSourceElement.Code,
+
                         TargetFhirPackageKey = targetPackage.Key,
+                        TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetElementKey = targetElement?.Key,
                         TargetElementId = elementTarget.Code,
                         OriginatingConceptMapUrlsLiteral = cm.Url,
 
-                        ElementKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, targetElement?.Key),
+                        ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceElement?.Key, targetElement?.Key),
 
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
@@ -2662,14 +2684,16 @@ public class ComparisonDatabase : IDisposable
                         Steps = steps,
 
                         SourceFhirPackageKey = sourcePackage.Key,
+                        SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
 
                         TargetFhirPackageKey = targetPackage.Key,
+                        TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = null,
                         TargetStructureId = null,
 
-                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+                        ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
 
                         FmlExists = null,
                         FmlUrl = null,
@@ -2714,14 +2738,16 @@ public class ComparisonDatabase : IDisposable
                         Steps = steps,
 
                         SourceFhirPackageKey = sourcePackage.Key,
+                        SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
 
                         TargetFhirPackageKey = targetPackage.Key,
+                        TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
 
-                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+                        ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
 
                         FmlExists = null,
                         FmlFilename = null,
@@ -2873,14 +2899,16 @@ public class ComparisonDatabase : IDisposable
                     Steps = steps,
 
                     SourceFhirPackageKey = sourcePackage.Key,
+                    SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceValueSetKey = sourceVs.Key,
                     SourceValueSetId = sourceVs.Id,
 
                     TargetFhirPackageKey = targetPackage.Key,
+                    TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetValueSetKey = targetVs.Key,
                     TargetValueSetId = targetVs.Id,
 
-                    ValueSetKeys = getKeyArray(sourcePackage, targetPackage, sourceVs.Key, targetVs.Key),
+                    ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceVs.Key, targetVs.Key),
 
                     ExplicitNoMap = false,
                     Relationship = null,
@@ -2941,15 +2969,14 @@ public class ComparisonDatabase : IDisposable
                         Steps = steps,
 
                         SourceFhirPackageKey = sourcePackage.Key,
+                        SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceValueSetConceptKey = sourceConcept.Key,
+
                         TargetFhirPackageKey = targetPackage.Key,
+                        TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetValueSetConceptKey = null,
 
-                        ValueSetConceptKeys = getKeyArray(
-                            sourcePackage,
-                            targetPackage,
-                            sourceConcept.Key,
-                            targetKey: null),
+                        ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceConcept.Key, targetKey: null),
 
                         ExplicitNoMap = true,
                         Relationship = null,
@@ -2996,15 +3023,14 @@ public class ComparisonDatabase : IDisposable
                         Steps = steps,
 
                         SourceFhirPackageKey = sourcePackage.Key,
+                        SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceValueSetConceptKey = sourceConcept.Key,
+
                         TargetFhirPackageKey = targetPackage.Key,
+                        TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetValueSetConceptKey = targetConcept.Key,
 
-                        ValueSetConceptKeys = getKeyArray(
-                            sourcePackage,
-                            targetPackage,
-                            sourceConcept.Key,
-                            targetConcept.Key),
+                        ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceConcept.Key, targetConcept.Key),
 
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
@@ -3125,13 +3151,16 @@ public class ComparisonDatabase : IDisposable
                     Steps = steps,
 
                     SourceFhirPackageKey = sourcePackage.Key,
+                    SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+
                     TargetFhirPackageKey = targetPackage.Key,
+                    TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = targetSd.Key,
                     TargetStructureId = tm.TargetType,
 
-                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+                    ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
 
                     FmlExists = null,
                     FmlUrl = null,
@@ -3163,13 +3192,16 @@ public class ComparisonDatabase : IDisposable
                     Steps = steps,
 
                     SourceFhirPackageKey = sourcePackage.Key,
+                    SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+
                     TargetFhirPackageKey = targetPackage.Key,
+                    TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = null,
                     TargetStructureId = null,
 
-                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+                    ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
 
                     FmlExists = null,
                     FmlUrl = null,
@@ -3250,13 +3282,16 @@ public class ComparisonDatabase : IDisposable
                     Steps = steps,
 
                     SourceFhirPackageKey = sourcePackage.Key,
+                    SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+
                     TargetFhirPackageKey = targetPackage.Key,
+                    TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = targetSd.Key,
                     TargetStructureId = tm.TargetType,
 
-                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+                    ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
 
                     FmlExists = null,
                     FmlUrl = null,
@@ -3288,13 +3323,16 @@ public class ComparisonDatabase : IDisposable
                     Steps = steps,
 
                     SourceFhirPackageKey = sourcePackage.Key,
+                    SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+
                     TargetFhirPackageKey = targetPackage.Key,
+                    TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = null,
                     TargetStructureId = null,
 
-                    StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+                    ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
 
                     FmlExists = null,
                     FmlUrl = null,
@@ -3391,14 +3429,16 @@ public class ComparisonDatabase : IDisposable
                         Steps = steps,
 
                         SourceFhirPackageKey = sourcePackage.Key,
+                        SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
 
                         TargetFhirPackageKey = targetPackage.Key,
+                        TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = null,
                         TargetStructureId = null,
 
-                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
+                        ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, null),
 
                         FmlExists = null,
                         FmlFilename = null,
@@ -3458,14 +3498,16 @@ public class ComparisonDatabase : IDisposable
                         Steps = steps,
 
                         SourceFhirPackageKey = sourcePackage.Key,
+                        SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
 
                         TargetFhirPackageKey = targetPackage.Key,
+                        TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
 
-                        StructureKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
+                        ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceSd.Key, targetSd.Key),
 
                         FmlExists = fmlExists,
                         FmlFilename = fmlFile,
