@@ -953,6 +953,9 @@ public partial class XVerProcessor
                             IsEquivalent = false,
                             IsBroaderThanTarget = false,
                             IsNarrowerThanTarget = false,
+                            CodeLiteralsMatch = false,
+                            CodeTreatedAsEscapeValve = false,
+
                             FullyMapsToThisTarget = false,
                             FullyMapsAcrossAllTargets = false,
                             ConceptDomainRelationship = null,
@@ -1001,6 +1004,9 @@ public partial class XVerProcessor
                                 IsIdentical = false,
                                 IsEquivalent = false,
                                 IsBroaderThanTarget = false,
+                                CodeLiteralsMatch = false,
+                                CodeTreatedAsEscapeValve = false,
+
                                 IsNarrowerThanTarget = false,
                                 FullyMapsToThisTarget = false,
                                 FullyMapsAcrossAllTargets = false,
@@ -1060,7 +1066,7 @@ public partial class XVerProcessor
 
                             //IsRenamed = !multipleContentTargets &&
                             //    ((conceptComparison.Relationship == CMR.Equivalent) || (conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget)) &&
-                            //    (conceptComparison.CodesAreIdentical != true),
+                            //    (conceptComparison.CodeLiteralsMatch != true),
                             IsRenamed = (sourceConcept.Code != targetConcept.Code),
 
                             IsUnmapped = false,
@@ -1068,6 +1074,8 @@ public partial class XVerProcessor
                             IsEquivalent = conceptComparison.Relationship == CMR.Equivalent,
                             IsBroaderThanTarget = conceptComparison.Relationship == CMR.SourceIsBroaderThanTarget,
                             IsNarrowerThanTarget = conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
+                            CodeLiteralsMatch = (sourceConcept.Code == targetConcept.Code),
+                            CodeTreatedAsEscapeValve = false,
 
                             FullyMapsToThisTarget = (conceptComparison.Relationship == CMR.Equivalent) || (conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget),
                             FullyMapsAcrossAllTargets = conceptComparisons.All(cc => cc.Relationship != CMR.SourceIsBroaderThanTarget),

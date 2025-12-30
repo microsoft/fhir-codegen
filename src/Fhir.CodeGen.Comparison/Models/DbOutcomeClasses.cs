@@ -57,6 +57,9 @@ public enum OutcomeValueSetConceptActionCodes
     /// The concept is mapped to a different value set in the target version.
     /// </summary>
     MappedElsewhere,
+
+    UseCodeAndCrossVersion,
+    UseOneOfMultipleCodes,
 }
 
 public enum OutcomeStructureActionCodes
@@ -293,6 +296,9 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
 
     public required string? TargetValueSetConceptSystem { get; set; }
     public required string? TargetValueSetConceptCode { get; set; }
+
+    public required bool CodeLiteralsMatch { get; set; }
+    public required bool CodeTreatedAsEscapeValve { get; set; }
 
     public required OutcomeValueSetConceptActionCodes? OutcomeAction { get; set; }
 }

@@ -151,7 +151,7 @@ public abstract class DbMapArtifactRecordBase : DbMapRecordBase
 [CgSQLiteTable(tableName: "ValueSetMappings")]
 [CgSQLiteIndex(nameof(IdLong))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetKey), nameof(Key))]
 public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, IDbMapArtifactRecord
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
@@ -171,6 +171,7 @@ public partial class DbValueSetMappingRecord : DbMapArtifactRecordBase      //, 
 
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
 [CgSQLiteIndex(nameof(ValueSetMappingKey), nameof(SourceValueSetConceptKey), nameof(TargetValueSetConceptKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetConceptKey), nameof(Key))]
 public partial class DbValueSetConceptMappingRecord : DbMapRecordBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMappingRecord.Key))]
