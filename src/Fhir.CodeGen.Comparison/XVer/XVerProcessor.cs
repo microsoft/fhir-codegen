@@ -252,9 +252,9 @@ public partial class XVerProcessor
         {
             case "wip":
                 //LoadDatabase(true, true);
-                //LoadFhirCrossVersionMaps(preferV1Maps: true);
-                LoadDatabase(false, false);
-                CompareInDatabase();
+                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                //LoadDatabase(false, false);
+                //CompareInDatabase();
 
                 //CompareInDatabase();
                 //GenerateOutcomesFromComparisons();

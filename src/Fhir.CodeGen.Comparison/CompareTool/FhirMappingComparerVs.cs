@@ -52,55 +52,29 @@ public class FhirMappingComparerVs
             _db,
             orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
 
-        // iterate over packages to use as source
-        for (int i = 0; i < packages.Count; i++)
+        // we want to process closer versions first, so we do a stepped approach
+        for (int stepSize = 1; stepSize < packages.Count; stepSize++)
         {
-            DbFhirPackage sourcePackage = packages[i];
-
-            // iterate upward over packages to use as target
-            for (int j = i + 1; j < packages.Count; j++)
+            for (int i = 0; i < packages.Count - stepSize; i++)
             {
-                DbFhirPackage targetPackage = packages[j];
+                DbFhirPackage sourcePackage = packages[i];
+                DbFhirPackage targetPackage = packages[i + stepSize];
+
+                // ascending
+                _logger.LogInformation($"Processing {sourcePackage.ShortName} -> {targetPackage.ShortName}");
                 doComparisonsVs(sourcePackage, targetPackage);
                 applyCachedChanges(sourcePackage, targetPackage);
-            }
 
-            // iterate downward over packages to use as target
-            for (int j = i - 1; j >= 0; j--)
-            {
-                DbFhirPackage targetPackage = packages[j];
-                doComparisonsVs(sourcePackage, targetPackage);
-                applyCachedChanges(sourcePackage, targetPackage);
+                // descending
+                _logger.LogInformation($"Processing {targetPackage.ShortName} -> {sourcePackage.ShortName}");
+                doComparisonsVs(targetPackage, sourcePackage);
+                applyCachedChanges(targetPackage, sourcePackage);
             }
         }
     }
 
     private void applyCachedChanges(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
     {
-        //if (_vsMappingCache.ToAddCount > 0)
-        //{
-        //    _logger.LogInformation($"Adding {_vsMappingCache.ToAddCount} value set mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-        //    _vsMappingCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
-        //}
-
-        //if (_vsMappingCache.ToUpdateCount > 0)
-        //{
-        //    _logger.LogInformation($"Updating {_vsMappingCache.ToUpdateCount} value set mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-        //    _vsMappingCache.ToUpdate.Update(_db);
-        //}
-
-        //if (_conceptMappingCache.ToAddCount > 0)
-        //{
-        //    _logger.LogInformation($"Adding {_conceptMappingCache.ToAddCount} value set concept mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-        //    _conceptMappingCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
-        //}
-
-        //if (_conceptMappingCache.ToUpdateCount > 0)
-        //{
-        //    _logger.LogInformation($"Updating {_conceptMappingCache.ToUpdateCount} value set concept mappings from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-        //    _conceptMappingCache.ToUpdate.Update(_db);
-        //}
-
         if (_vsOutcomeCache.ToAddCount > 0)
         {
             _logger.LogInformation($"Adding {_vsOutcomeCache.ToAddCount} value set outcomes from {sourcePackage.ShortName} to {targetPackage.ShortName}");
@@ -125,8 +99,6 @@ public class FhirMappingComparerVs
             _conceptOutcomeCache.ToUpdate.Update(_db);
         }
 
-        //_vsMappingCache.Clear();
-        //_conceptMappingCache.Clear();
         _vsOutcomeCache.Clear();
         _conceptOutcomeCache.Clear();
     }
@@ -153,7 +125,7 @@ public class FhirMappingComparerVs
             FhirPackageKey: sourcePackage.Key,
             IsExcluded: false);
 
-        _logger.LogInformation($"Performing Value Set comparisons for {sourceValueSets.Count} value sets from FHIR {sourcePackage.ShortName} to {targetPackage.ShortName}");
+        _logger.LogInformation($"Performing Value Set comparisons for {sourceValueSets.Count} value sets from FHIR {sourcePackage.ShortName} to {targetPackage.ShortName}...");
 
         int i = 0;
 
@@ -162,7 +134,7 @@ public class FhirMappingComparerVs
         {
             if ((++i % 100) == 0)
             {
-                _logger.LogInformation($"Processing Value Set ({sourceValueSets.Count}) : #{i}");
+                _logger.LogInformation($"Processing Value Set #: {i}...");
             }
 
             // process this value set

@@ -1603,6 +1603,7 @@ public class ComparisonDatabase : IDisposable
             TargetElementId = targetElement?.Id,
 
             StructureMappingKey = sdMappingRecord.Key,
+            ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceElement.Key, targetElement?.Key),
 
             ExplicitNoMap = false,
             Comments = comments,
@@ -1614,25 +1615,43 @@ public class ComparisonDatabase : IDisposable
 
     private void addMissingConceptMappings()
     {
-        // iterate over packages to use as source
-        for (int i = 0; i < _packages.Count; i++)
+        // we want to process closer versions first, so we do a stepped approach
+        for (int stepSize = 1; stepSize < _packages.Count; stepSize++)
         {
-            DbFhirPackage sourcePackage = _packages[i];
-
-            // iterate upward over packages to use as target
-            for (int j = i + 1; j < _packages.Count; j++)
+            for (int i = 0; i < _packages.Count - stepSize; i++)
             {
-                DbFhirPackage targetPackage = _packages[j];
+                DbFhirPackage sourcePackage = _packages[i];
+                DbFhirPackage targetPackage = _packages[i + stepSize];
+
+                // ascending
+                _logger.LogInformation($"Adding missing concepts for {sourcePackage.ShortName} -> {targetPackage.ShortName}");
                 addMissingConceptMappings(sourcePackage, targetPackage);
-            }
 
-            // iterate downward over packages to use as target
-            for (int j = i - 1; j >= 0; j--)
-            {
-                DbFhirPackage targetPackage = _packages[j];
+                // descending
+                _logger.LogInformation($"Adding missing concepts for {targetPackage.ShortName} -> {sourcePackage.ShortName}");
                 addMissingConceptMappings(sourcePackage, targetPackage);
             }
         }
+
+        //// iterate over packages to use as source
+        //for (int i = 0; i < _packages.Count; i++)
+        //{
+        //    DbFhirPackage sourcePackage = _packages[i];
+
+        //    // iterate upward over packages to use as target
+        //    for (int j = i + 1; j < _packages.Count; j++)
+        //    {
+        //        DbFhirPackage targetPackage = _packages[j];
+        //        addMissingConceptMappings(sourcePackage, targetPackage);
+        //    }
+
+        //    // iterate downward over packages to use as target
+        //    for (int j = i - 1; j >= 0; j--)
+        //    {
+        //        DbFhirPackage targetPackage = _packages[j];
+        //        addMissingConceptMappings(sourcePackage, targetPackage);
+        //    }
+        //}
     }
 
     private void addMissingConceptMappings(
@@ -1940,6 +1959,8 @@ public class ComparisonDatabase : IDisposable
             TargetFhirSequence = targetPackage.DefinitionFhirSequence,
             TargetValueSetConceptKey = targetConcept?.Key,
             ValueSetMappingKey = valueSetMappingRecord.Key,
+
+            ContentKeys = getKeyArray(sourcePackage, targetPackage, sourceConcept.Key, targetConcept?.Key),
 
             ExplicitNoMap = false,
             Comments = comments,
