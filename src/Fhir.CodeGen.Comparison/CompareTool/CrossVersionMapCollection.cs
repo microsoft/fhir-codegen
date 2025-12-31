@@ -165,6 +165,11 @@ public class CrossVersionMapCollection
 
     public void SaveValueSetConceptMaps(string path, bool includeMapSubdir = true)
     {
+        if (_dc.ConceptMapsByUrl.Count == 0)
+        {
+            return;
+        }
+
         string dir = includeMapSubdir ? Path.Combine(path, $"{_sourceRLiteral}to{_targetRLiteral}") : path;
 
         if (!Directory.Exists(dir))
@@ -183,6 +188,15 @@ public class CrossVersionMapCollection
 
             // update the last edit date
             cm.DateElement = new FhirDateTime(DateTimeOffset.Now);
+
+            // fix the URL
+            cm.Url = $"http://hl7.org/fhir/uv/xver/{_sourceShortVersion}/ConceptMap/{cm.Id}";
+
+            // remove usage context
+            cm.UseContext = [];
+
+            // remove the package source extension if present
+            cm.RemoveExtension(CommonDefinitions.ExtUrlPackageSource);
 
             // filename is the FHIR-core style ResourceName-IdLong.json
             string filename = Path.Combine(dir, $"ConceptMap-{cm.Id}.json");
@@ -1116,6 +1130,16 @@ public class CrossVersionMapCollection
                         _urlMap.Add(fhirUrl.Value, cm.Url);
                     }
                 }
+
+                // add any known element-based name maps into our lookup table
+                foreach (RelatedArtifact ra in cm.RelatedArtifact)
+                {
+                    if (ra.Type == RelatedArtifact.RelatedArtifactType.Predecessor &&
+                        !string.IsNullOrEmpty(ra.Resource))
+                    {
+                        _urlMap.Add(ra.Resource!, cm.Url);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1126,7 +1150,7 @@ public class CrossVersionMapCollection
         return addedAny;
     }
 
-    private bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, string key)
+    internal bool TryLoadOfficialConceptMaps(string fhirCrossRepoPath, string key)
     {
         string path = Path.Combine(fhirCrossRepoPath, "input", key);
         if (!Directory.Exists(path))
@@ -1408,6 +1432,9 @@ public class CrossVersionMapCollection
             //throw new Exception($"Invalid concept map {filename}: expected 1 group, found {cm.Group.Count}");
         }
 
+        string? originalSourceScope = cm.SourceScope?.ToString();
+        string? originalTargetScope = cm.TargetScope?.ToString();
+
         string sourceScopeUrl = string.Empty;
         string targetScopeUrl = string.Empty;
 
@@ -1430,6 +1457,8 @@ public class CrossVersionMapCollection
             }
         }
 
+        string? originalId = cm.Id;
+        string? originalName = cm.Name;
         int sourcePipeIndex = sourceScopeUrl.LastIndexOf('|');
         int targetPipeIndex = targetScopeUrl.LastIndexOf('|');
 
@@ -1462,7 +1491,14 @@ public class CrossVersionMapCollection
             _urlMap.Add(originalMapUrl, localUrl);
 
             // keep track of the original URL we can round-trip back
-            existing.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
+            existing.RelatedArtifact.Add(new()
+            {
+                Type = RelatedArtifact.RelatedArtifactType.Predecessor,
+                Resource = originalMapUrl,
+                Label = originalName,
+                Display = $"Id: {originalId ?? cm.Id}\nSource: {originalSourceScope ?? sourceScopeUrl}\nTarget: {originalTargetScope ?? targetScopeUrl}",
+            });
+            //existing.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
 
             // nothing else to do with this map
             return;
@@ -1473,7 +1509,15 @@ public class CrossVersionMapCollection
         cm.Url = localUrl;
         cm.Name = localConceptMapId;
         cm.Title = GetConceptMapTitle(leftName, rightName);
-        cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
+
+        cm.RelatedArtifact.Add(new()
+        {
+            Type = RelatedArtifact.RelatedArtifactType.Predecessor,
+            Resource = originalMapUrl,
+            Label = originalName,
+            Display = $"Id: {originalId ?? cm.Id}\nSource: {originalSourceScope ?? sourceScopeUrl}\nTarget: {originalTargetScope ?? targetScopeUrl}",
+        });
+        //cm.AddExtension(CommonDefinitions.ExtUrlConceptMapAdditionalUrls, new FhirUrl(originalMapUrl));
 
         addUseContextTarget(cm, CommonDefinitions.ConceptMapUsageContextValueSet);
 
@@ -1568,7 +1612,7 @@ public class CrossVersionMapCollection
         _ => sourcePath,
     };
 
-    private bool TryLoadSourceConceptMaps(string crossRepoPath, CrossVersionMapTypeCodes mapType)
+    internal bool TryLoadSourceConceptMaps(string crossRepoPath, CrossVersionMapTypeCodes mapType)
     {
         string rootPath = Path.Combine(crossRepoPath, $"{_sourceRLiteral}_{_targetRLiteral}", "maps");
         if (!Directory.Exists(rootPath))
@@ -1621,6 +1665,16 @@ public class CrossVersionMapCollection
                                 {
                                     // use the official URL as the key
                                     _urlMap.Add(fhirUrl.Value, cm.Url);
+                                }
+                            }
+
+                            // add any known element-based name maps into our lookup table
+                            foreach (RelatedArtifact ra in cm.RelatedArtifact)
+                            {
+                                if (ra.Type == RelatedArtifact.RelatedArtifactType.Predecessor &&
+                                    !string.IsNullOrEmpty(ra.Resource))
+                                {
+                                    _urlMap.Add(ra.Resource!, cm.Url);
                                 }
                             }
                         }

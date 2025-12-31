@@ -2045,24 +2045,25 @@ public partial class DefinitionCollection
         if (_valueSetsByVersionedUrl.TryGetValue(vsUrl, out ValueSet? existing) && (existing != null))
         {
             // sort out unexpanded vs expanded vs multiple expansions
-            if ((valueSet.Expansion != null) && (existing.Expansion == null))
+            if ((valueSet.Expansion is not null) && (existing.Expansion is null))
             {
                 existing.Expansion = new();
 
                 // copy the expansion into the existing
                 valueSet.Expansion.CopyTo(existing.Expansion);
             }
-            else if ((valueSet.Expansion == null) && (existing.Expansion != null))
+            else if ((valueSet.Expansion is null) && (existing.Expansion is not null))
             {
-                valueSet.Expansion = new();
+                // TODO: Bug in 5.x Firely SDK does not copy the *resource* correctly - just use the one with the expansion for now
+                //valueSet.Expansion = new();
 
-                // copy the existing expansion into the new record
-                existing.Expansion.CopyTo(valueSet.Expansion);
+                //// copy the existing expansion into the new record
+                //existing.Expansion.CopyTo(valueSet.Expansion);
 
-                // copy the new record into the existing to keep the most recent in all dictionaries
-                valueSet.CopyTo(existing);
+                //// copy the new record into the existing to keep the most recent in all dictionaries
+                //valueSet.CopyTo(existing);
             }
-            else if ((valueSet.Expansion != null) && (existing.Expansion != null))
+            else if ((valueSet.Expansion is not null) && (existing.Expansion is not null))
             {
                 // merge the expansion values
                 existing.Expansion.Contains = existing.Expansion.Contains.Union(valueSet.Expansion.Contains).ToList();
@@ -2081,8 +2082,10 @@ public partial class DefinitionCollection
 
                 if (existingUpdated < incomingUpdated)
                 {
-                    // copy the new record into the existing to keep the most recent in all dictionaries
-                    valueSet.CopyTo(existing);
+                    // TODO: Bug in 5.x Firely SDK does not copy the *resource* correctly - just use the one with the expansion for now
+                    _valueSetsByVersionedUrl[vsUrl] = valueSet;
+                    //// copy the new record into the existing to keep the most recent in all dictionaries
+                    //valueSet.CopyTo(existing);
                 }
             }
 

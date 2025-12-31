@@ -276,9 +276,14 @@ public class FhirMappingComparerVs
                 OutcomeAction = null,
 
                 PotentialGenResourceType = "ValueSet",
-                PotentialGenLongId = vsMapping.IdLong,
-                PotentialGenShortId = vsMapping.IdShort,
-                PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.ShortName}/ValueSet/{vsMapping.IdLong}",
+                PotentialGenLongId = null,
+                PotentialGenShortId = null,
+                PotentialGenUrl = null,
+
+                //PotentialGenResourceType = "ValueSet",
+                //PotentialGenLongId = vsMapping.IdLong,
+                //PotentialGenShortId = vsMapping.IdShort,
+                //PotentialGenUrl = $"http://hl7.org/fhir/{sourcePackage.ShortName}/ValueSet/{vsMapping.IdLong}",
             };
 
             vsOutcomesByMappingKey[vsMapping.Key] = vsOutcome;

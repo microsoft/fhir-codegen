@@ -44,7 +44,7 @@ public class TransitiveMappingBuilder
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
                 _logger.LogInformation(
                     $"Building transitive value set mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
-                buildTransitiveValueSetMappings(sourcePackage, targetPackage, sourceIndex, targetIndex);
+                //buildTransitiveValueSetMappings(sourcePackage, targetPackage, sourceIndex, targetIndex);
             }
 
             // iterate downwards
@@ -54,11 +54,12 @@ public class TransitiveMappingBuilder
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
                 _logger.LogInformation(
                     $"Building transitive value set mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
-                buildTransitiveValueSetMappings(sourcePackage, targetPackage, sourceIndex, targetIndex);
+                //buildTransitiveValueSetMappings(sourcePackage, targetPackage, sourceIndex, targetIndex);
             }
         }
     }
 
+#if false
     private void buildTransitiveValueSetMappings(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
@@ -318,7 +319,7 @@ public class TransitiveMappingBuilder
             mappingCache.CacheAdd(rec);
         }
     }
-
+#endif
     /// <summary>
     /// Builds transitive mappings for all non-adjacent version pairs of structures
     /// </summary>
@@ -345,7 +346,7 @@ public class TransitiveMappingBuilder
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
                 _logger.LogInformation(
                     $"Building transitive structure mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
-                buildTransitiveStructureMappings(sourcePackage, targetPackage, sourceIndex, targetIndex, artifactClass);
+                //buildTransitiveStructureMappings(sourcePackage, targetPackage, sourceIndex, targetIndex, artifactClass);
             }
 
             // iterate downwards (skip immediate neigbor)
@@ -355,11 +356,12 @@ public class TransitiveMappingBuilder
                 int hopCount = Math.Abs(targetIndex - sourceIndex);
                 _logger.LogInformation(
                     $"Building transitive structure mappings: {sourcePackage.ShortName} -> {targetPackage.ShortName} ({hopCount} hops)");
-                buildTransitiveStructureMappings(sourcePackage, targetPackage, sourceIndex, targetIndex, artifactClass);
+                //buildTransitiveStructureMappings(sourcePackage, targetPackage, sourceIndex, targetIndex, artifactClass);
             }
         }
     }
 
+#if false
     private void buildTransitiveStructureMappings(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
@@ -658,4 +660,5 @@ public class TransitiveMappingBuilder
             };
         }
     }
+#endif
 }

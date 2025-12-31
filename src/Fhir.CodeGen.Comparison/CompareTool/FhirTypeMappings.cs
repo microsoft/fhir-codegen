@@ -265,11 +265,15 @@ public class FhirTypeMappings
                 return InitialComplexTypeMaps_R4_R3;
             case (FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.R4B):
                 return InitialComplexTypeMaps_R4_R4B;
+            case (FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.R5):
+                return InitialComplexTypeMaps_R4B_R5;
             case (FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R4):
                 return InitialComplexTypeMaps_R4B_R4;
             case (FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R5):
                 return InitialComplexTypeMaps_R4B_R5;
             case (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B):
+                return InitialComplexTypeMaps_R5_R4B;
+            case (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4):
                 return InitialComplexTypeMaps_R5_R4B;
             default:
                 return [];

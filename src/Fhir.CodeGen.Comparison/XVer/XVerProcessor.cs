@@ -22,6 +22,7 @@ using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Comparison.CrossVersionSource;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
@@ -115,6 +116,7 @@ public partial class XVerProcessor
         "http://hl7.org/fhir/ValueSet/all-languages",
         "http://tools.ietf.org/html/bcp47",             // DSTU2 version of all-languages
         "http://hl7.org/fhir/ValueSet/mimetypes",
+        "http://www.rfc-editor.org/bcp/bcp13.txt",      // BCP 13 version of mimetypes
         "http://hl7.org/fhir/ValueSet/timezones",
         //"http://hl7.org/fhir/ValueSet/use-context",
         //"http://hl7.org/fhir/ValueSet/jurisdiction",
@@ -251,8 +253,11 @@ public partial class XVerProcessor
         switch (command)
         {
             case "wip":
+
+                //UpdateValueSetMaps();
+
                 //LoadDatabase(true, true);
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                LoadFhirCrossVersionMaps();
                 //LoadDatabase(false, false);
                 //CompareInDatabase();
 
@@ -261,9 +266,13 @@ public partial class XVerProcessor
                 //WriteFhirFromDbOutcomes();
                 break;
 
+            case "update-vs-maps":
+                UpdateValueSetMaps();
+                break;
+
             case "load":
                 LoadDatabase(true, true);
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                LoadFhirCrossVersionMaps();
                 break;
 
             case "load-base":
@@ -272,7 +281,7 @@ public partial class XVerProcessor
 
             case "load-maps":
                 LoadDatabase(_config.ReloadDatabase, true);
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                LoadFhirCrossVersionMaps();
                 break;
 
             //case "create-db":
@@ -328,13 +337,79 @@ public partial class XVerProcessor
 
             default:
                 LoadDatabase(true, true);
-                LoadFhirCrossVersionMaps(preferV1Maps: true);
+                LoadFhirCrossVersionMaps();
                 BuildComparisonPairs();
                 CompareInDatabase();
                 GenerateOutcomesFromComparisons();
                 //WriteDocsFromDatabase();
                 WriteFhirFromDatabase();
                 break;
+        }
+    }
+
+    public void UpdateValueSetMaps()
+    {
+        if (string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
+        {
+            throw new Exception("Cannot update source maps without a source path!");
+        }
+
+        // load definitions if we have not done so
+        if (_definitions.Length == 0)
+        {
+            loadDefinitionCollections();
+        }
+
+        // iterate over all the packages in our collection
+        for (int i = 0; i < _definitions.Length; i++)
+        {
+            DefinitionCollection sourceDc = _definitions[i];
+
+            // iterate up
+            for (int j = i + 1; j < _definitions.Length; j++)
+            {
+                DefinitionCollection targetDc = _definitions[j];
+
+                _logger.LogInformation($"Updating value set maps for {sourceDc.Name} -> {targetDc.Name}");
+
+                // create our map collection
+                CrossVersionMapCollection mapCollection = new(
+                    sourceDc,
+                    targetDc,
+                    _dbPath,
+                    _config.LogFactory);
+
+                // load only the value set concepts
+                if (mapCollection.TryLoadOfficialConceptMaps(_config.CrossVersionMapSourcePath, "codes"))
+                {
+                    mapCollection.SaveValueSetConceptMaps(
+                        Path.Combine(_config.CrossVersionMapSourcePath, "input", "codes-v2"),
+                        includeMapSubdir: false);
+                }
+            }
+
+            // iterate down
+            for (int j = i - 1; j >= 0; j--)
+            {
+                DefinitionCollection targetDc = _definitions[j];
+
+                _logger.LogInformation($"Updating value set maps for {sourceDc.Name} -> {targetDc.Name}");
+
+                // create our map collection
+                CrossVersionMapCollection mapCollection = new(
+                    sourceDc,
+                    targetDc,
+                    _dbPath,
+                    _config.LogFactory);
+
+                // load only the value set concepts
+                if (mapCollection.TryLoadOfficialConceptMaps(_config.CrossVersionMapSourcePath, "codes"))
+                {
+                    mapCollection.SaveValueSetConceptMaps(
+                        Path.Combine(_config.CrossVersionMapSourcePath, "input", "codes-v2"),
+                        includeMapSubdir: false);
+                }
+            }
         }
     }
 
@@ -462,9 +537,8 @@ public partial class XVerProcessor
     /// <remarks>
     /// This is only used to convert origin maps into the database.
     /// </remarks>
-    /// <param name="preferV1Maps">Indicates whether to prefer version 1 maps.</param>
     /// <exception cref="InvalidOperationException">Thrown when there are less than two definitions available for comparison.</exception>
-    public void LoadFhirCrossVersionMaps(bool preferV1Maps)
+    public void LoadFhirCrossVersionMaps()
     {
         //// need definitions loaded in order for existing cross-version maps to be usable
         //if (_definitions.Length == 0)
@@ -486,10 +560,10 @@ public partial class XVerProcessor
             }
         }
 
-        // if this is a core comparison and we have a location, try to load existing cross-version maps
+        MappingLoader mappingLoader = new(_db.DbConnection, _loggerFactory);
         if (!string.IsNullOrEmpty(_config.CrossVersionMapSourcePath))
         {
-            _ = _db.TryLoadCrossVersionSourceMaps(
+            _ = mappingLoader.TryLoadCrossVersionSourceMaps(
                 _config.CrossVersionMapSourcePath,
                 _config.UseInternalTypeMaps);
             //_ = _db.TryLoadFhirCrossVersionMaps(_config.CrossVersionMapSourcePath);

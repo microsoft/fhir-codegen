@@ -110,10 +110,10 @@ internal static class LaunchUtils
                 //("docs-sd", "Build Markdown docs for Structure from the database"),
                 ("fhir", "Build FHIR artifacts from the database"),
                 ("wip", "Work in progress shortcut. TODO: Remove"),
+                ("update-vs-maps", "Update the FHIR Cross Version maps for value sets"),
 
                 ("convert-from-maps", "Create XVer DB from existing maps"),
                 ("update-maps", "Update the FHIR Cross Version maps"),
-                ("update-vs-maps", "Update the FHIR Cross Version maps for value sets"),
                 ("update-type-maps", "Update the FHIR Cross Version maps for data types"),
                 ("update-resource-maps", "Update the FHIR Cross Version maps for resources"),
                 ("build-docs", "Build Markdown Documentation for Review"),

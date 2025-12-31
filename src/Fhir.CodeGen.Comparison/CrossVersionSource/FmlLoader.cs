@@ -14,9 +14,10 @@ using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.MappingLanguage;
 using Hl7.Fhir.Model;
 using Microsoft.Extensions.Logging;
+using Octokit;
 using static Fhir.CodeGen.Comparison.CompareTool.CrossVersionMapCollection;
 
-namespace Fhir.CodeGen.Comparison.CompareTool;
+namespace Fhir.CodeGen.Comparison.CrossVersionSource;
 
 /// <summary>
 /// 
@@ -24,48 +25,41 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 /// <remarks>
 /// TODO: This is mostly pulled from CrossVersionMapCollection and needs to be refactored.
 /// </remarks>
-public class FmlDbProcessor
+public class FmlLoader
 {
+    private MappingLoader _mappingLoader;
     private IDbConnection _db;
-    private DbFhirPackage _sourcePackage;
-    private DbFhirPackage _targetPackage;
-    private int _steps;
-    private string _name;
-    private FhirStructureMap _fml;
-    private string _fmlFilename;
+    private List<DbFhirPackage> _packages;
+    private DbFhirPackage? _sourcePackage = null;
+    private DbFhirPackage? _targetPackage = null;
+    private string? _name = null;
+    private FhirStructureMap? _fml = null;
+    private string? _fmlFilename = null;
     private string? _fmlUrl;
+    private int _sourceFileKey = -1;
 
     private ILoggerFactory? _loggerFactory;
     private ILogger _logger;
 
     private Dictionary<string, HashSet<string>> _relatedPaths;
+    private HashSet<(string src, string tgt)> _simpleTargetPaths;
 
-    public FmlDbProcessor(
+    public FmlLoader(
+        MappingLoader mappingLoader,
         IDbConnection db,
-        DbFhirPackage sourcePackage,
-        DbFhirPackage targetPackage,
-        string filename,
-        string name,
-        FhirStructureMap fml,
+        List<DbFhirPackage> packages,
         ILoggerFactory? loggerFactory = null)
     {
+        _mappingLoader = mappingLoader;
         _db = db;
-        _sourcePackage = sourcePackage;
-        _targetPackage = targetPackage;
-        _steps = Math.Abs(sourcePackage.DefinitionFhirSequence - targetPackage.DefinitionFhirSequence);
-        _name = name;
-        _fml = fml;
-        _fmlFilename = filename;
+        _packages = packages;
 
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory?.CreateLogger<FmlDbProcessor>()
-            ?? LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<FmlDbProcessor>();
-
-        _fmlUrl = fml.MetadataByPath.ContainsKey("url")
-            ? fml.MetadataByPath["url"]?.Literal?.ValueAsString
-            : null;
+        _logger = loggerFactory?.CreateLogger<FmlLoader>()
+            ?? LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<FmlLoader>();
 
         _relatedPaths = [];
+        _simpleTargetPaths = [];
     }
 
     private record class FmlSymbolResolutionRecord
@@ -79,8 +73,144 @@ public class FmlDbProcessor
     }
 
 
-    public void ProcessElementRelationships()
+    public void LoadSourceFml(string basePath)
     {
+        string inputPath = Path.Combine(basePath, "input");
+        if (!Directory.Exists(inputPath))
+        {
+            _logger.LogWarning($"Path not found: {inputPath}");
+            return;
+        }
+
+        // iterate over the source packages
+        for (int sourceIndex = 0; sourceIndex < _packages.Count - 1; sourceIndex++)
+        {
+            DbFhirPackage sourcePackage = _packages[sourceIndex];
+
+            // iterate over the target packages
+            for (int targetIndex = sourceIndex + 1; targetIndex < _packages.Count; targetIndex++)
+            {
+                // skip same package
+                if (sourceIndex == targetIndex)
+                {
+                    continue;
+                }
+
+                DbFhirPackage targetPackage = _packages[targetIndex];
+
+                string relativePath = $"{sourcePackage.ShortName}to{targetPackage.ShortName}";
+                string path = Path.Combine(inputPath, relativePath);
+                if (Directory.Exists(path))
+                {
+                    loadSourceFml(sourcePackage, targetPackage, path);
+                }
+
+                // check the reverse direction
+                relativePath = $"{targetPackage.ShortName}to{sourcePackage.ShortName}";
+                path = Path.Combine(inputPath, relativePath);
+                if (Directory.Exists(path))
+                {
+                    loadSourceFml(targetPackage, sourcePackage, path);
+                }
+
+            }
+        }
+    }
+
+
+    private void loadSourceFml(
+        DbFhirPackage sourcePackage,
+        DbFhirPackage targetPackage,
+        string path)
+    {
+        _logger.LogInformation($"Loading FML maps from: {path}");
+
+        _sourcePackage = sourcePackage;
+        _targetPackage = targetPackage;
+
+        string sourceToTargetNoR = $"{sourcePackage.ShortName[1..]}to{targetPackage.ShortName[1..]}";
+        int sourceToTargetNoRLen = sourceToTargetNoR.Length;
+
+        FhirMappingLanguage fmlParser = new();
+
+        // files have different naming conventions in each directory, so just process anything FML
+        string[] files = Directory.GetFiles(path, $"*.fml", SearchOption.TopDirectoryOnly);
+        foreach (string filename in files)
+        {
+            try
+            {
+                string fmlContent = File.ReadAllText(filename);
+
+                if (!fmlParser.TryParse(fmlContent, out FhirStructureMap? fml))
+                {
+                    _logger.LogError($"Error loading {filename}: could not parse");
+                    continue;
+                }
+
+                // extract the name root
+                string name;
+
+                if (fml.MetadataByPath.TryGetValue("name", out MetadataDeclaration? nameMeta))
+                {
+                    name = nameMeta.Literal?.ValueAsString ?? throw new Exception($"Cross-version structure maps require a metadata name property: {filename}");
+                }
+                else
+                {
+                    name = Path.GetFileNameWithoutExtension(filename);
+                }
+
+                if (name.EndsWith(sourceToTargetNoR, StringComparison.OrdinalIgnoreCase))
+                {
+                    name = name[..^sourceToTargetNoRLen];
+                }
+
+                if (name.Equals("primitives", StringComparison.OrdinalIgnoreCase))
+                {
+                    // skip primitive type map - we have that information internally already, see FhirTypeMappings.cs
+                    continue;
+                }
+
+                // process this file
+                processFml(
+                    filename,
+                    name,
+                    fml);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error loading {filename}: {ex.Message}");
+            }
+        }
+    }
+
+    private void processFml(
+        string filename,
+        string name,
+        FhirStructureMap fml)
+    {
+        if ((_sourcePackage is null) || (_targetPackage is null))
+        {
+            throw new Exception("Source and target packages must be set before processing FML");
+        }
+
+        _name = name;
+        _fml = fml;
+        _fmlFilename = filename;
+
+        _fmlUrl = fml.MetadataByPath.ContainsKey("url")
+            ? fml.MetadataByPath["url"]?.Literal?.ValueAsString
+            : null;
+
+        _fmlUrl ??= $"http://hl7.org/fhir/uv/xver/StructureMap/{Path.GetFileNameWithoutExtension(filename)}";
+
+        _relatedPaths.Clear();
+        _simpleTargetPaths.Clear();
+
+        _sourceFileKey = _mappingLoader.getOrCreateMappingSourceFileKey(
+            filename,
+            MappingLoader.SourceFileTypeCodes.FML,
+            _fmlUrl);
+
         Dictionary<string, FmlSymbolResolutionRecord> structures = [];
 
         // process the initial structure declarations to get the aliases
@@ -257,11 +387,11 @@ public class FmlDbProcessor
         string? alias,
         string? typeIdentifier,
         Dictionary<string, FmlSymbolResolutionRecord> symbolTable,
-        Hl7.Fhir.Model.StructureMap.StructureMapInputMode mode)
+        StructureMap.StructureMapInputMode mode)
     {
         int packageKey = mode == StructureMap.StructureMapInputMode.Source
-            ? _sourcePackage.Key
-            : _targetPackage.Key;
+            ? _sourcePackage!.Key
+            : _targetPackage!.Key;
 
         // check for a type identifier
         if (typeIdentifier is not null)
@@ -733,6 +863,7 @@ public class FmlDbProcessor
         }
 
         relatedTargetPaths.Add(targetResolved.ResolvedPath);
+        _simpleTargetPaths.Add((sourceResovled.ResolvedPath, targetResolved.ResolvedPath));
     }
 
     [Obsolete]
@@ -968,8 +1099,13 @@ public class FmlDbProcessor
 
     private void reconcileElementMapFmlPathsInDb()
     {
-        List<DbStructureMappingRecord> sdMappingRecsToAdd = [];
-        List<DbElementMappingRecord> edMappingRecsToAdd = [];
+        if ((_sourcePackage is null) || (_targetPackage is null))
+        {
+            throw new InvalidOperationException("Source or target package not set");
+        }
+
+        DbRecordCache<DbStructureMappingRecord> sdMappingCache = new();
+        DbRecordCache<DbElementMappingRecord> edMappingCache = new();
 
         // look for elements that target other elements
         foreach ((string sourcePath, HashSet<string> targetPaths) in _relatedPaths)
@@ -1079,14 +1215,14 @@ public class FmlDbProcessor
                             $" {_sourcePackage.ShortName}:{sourceSd.Name} has relationships for" +
                             $" {_targetPackage.ShortName} that do not include {targetSd.Name}.");
 
+                        // TODO: need to ensure the paths are fully reconciled, then just add the records for later referencing (ok if they do not resolve now)
+
                         continue;
                     }
 
                     structureMappingRec = new()
                     {
                         Key = DbStructureMappingRecord.GetIndex(),
-                        PreviousStepMapRecordKey = null,
-                        Steps = _steps,
 
                         SourceFhirPackageKey = _sourcePackage.Key,
                         SourceFhirSequence = _sourcePackage.DefinitionFhirSequence,
@@ -1098,35 +1234,26 @@ public class FmlDbProcessor
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
 
-                        FmlExists = true,
-                        FmlUrl = _fmlUrl,
-                        FmlFilename = Path.GetFileName(_fmlFilename),
+                        ConceptMapSourceKey = null,
+                        FmlSourceKey = _sourceFileKey,
 
                         ExplicitNoMap = false,
                         Relationship = initialRelationship,
-
-                        OriginatingConceptMapUrlsLiteral = null,
-                        IdLong = idLong,
-                        IdShort = idShort,
-                        Url = $"http://hl7.org/fhir/{_sourcePackage.FhirVersionShort}/ConceptMap/{idLong}",
-                        Name = FhirSanitizationUtils.ReformatIdForName(idLong),
-                        Title = $"Concept Map of FHIR {_sourcePackage.ShortName} resource {sourceSd.Name} to FHIR {_targetPackage.ShortName}"
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
                     };
 
-                    sdMappingRecsToAdd.Add(structureMappingRec);
+                    sdMappingCache.CacheAdd(structureMappingRec);
                     sdMappingRecords.Add(structureMappingRec);
                 }
                 else
                 {
                     structureMappingRec = sdMappingRecords[0];
 
-                    if (structureMappingRec.FmlFilename != Path.GetFileName(_fmlFilename))
+                    if (structureMappingRec.FmlSourceKey != _sourceFileKey)
                     {
-                        structureMappingRec.FmlExists = true;
-                        structureMappingRec.FmlUrl = _fmlUrl;
-                        structureMappingRec.FmlFilename = Path.GetFileName(_fmlFilename);
-
-                        structureMappingRec.Update(_db);
+                        structureMappingRec.FmlSourceKey = _sourceFileKey;
+                        sdMappingCache.CacheUpdate(structureMappingRec);
                     }
                 }
 
@@ -1177,8 +1304,6 @@ public class FmlDbProcessor
                     DbElementMappingRecord edMappingRec = new()
                     {
                         Key = DbElementMappingRecord.GetIndex(),
-                        PreviousStepMapRecordKey = null,
-                        Steps = _steps,
                         StructureMappingKey = structureMappingRec.Key,
 
                         SourceFhirPackageKey = _sourcePackage.Key,
@@ -1191,38 +1316,44 @@ public class FmlDbProcessor
                         TargetElementKey = targetEd?.Key,
                         TargetElementId = targetEd?.Id ?? targetPath,
 
-                        ContentKeys = getKeyArray(_sourcePackage, _targetPackage, sourceEd?.Key, targetEd?.Key),
-
-                        OriginatingConceptMapUrlsLiteral = null,
-                        OriginatingFmlUrlsLiteral = _fmlUrl,
+                        ConceptMapSourceKey = null,
+                        FmlSourceKey = _sourceFileKey,
+                        FmlIsSimpleCopy = _simpleTargetPaths.Contains((sourceEd?.Id ?? sourcePath, targetEd?.Id ?? targetPath)),
 
                         ExplicitNoMap = false,
                         Relationship = null,
+                        ConceptDomainRelationship = null,
+                        ValueDomainRelationship = null,
                     };
-                    edMappingRecsToAdd.Add(edMappingRec);
+                    edMappingCache.CacheAdd(edMappingRec);
+                }
+                else
+                {
+                    // check for updating FML source key
+                    foreach (DbElementMappingRecord edMappingRec in edMappingRecords)
+                    {
+                        if (edMappingRec.FmlSourceKey != _sourceFileKey)
+                        {
+                            edMappingRec.FmlSourceKey = _sourceFileKey;
+                            edMappingRec.FmlIsSimpleCopy = _simpleTargetPaths.Contains((sourceEd?.Id ?? sourcePath, targetEd?.Id ?? targetPath));
+                            edMappingCache.CacheUpdate(edMappingRec);
+                        }
+                    }
                 }
             }
         }
 
-        if (sdMappingRecsToAdd.Count > 0 || edMappingRecsToAdd.Count > 0)
+        if ((sdMappingCache.Count > 0) || (edMappingCache.Count > 0))
         {
-            sdMappingRecsToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
-            edMappingRecsToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+            sdMappingCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+            sdMappingCache.ToUpdate.Update(_db);
 
-            _logger.LogInformation($"Maps added from FML for {_name}: {sdMappingRecsToAdd.Count} structures, {edMappingRecsToAdd.Count} elements");
+            edMappingCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+            edMappingCache.ToUpdate.Update(_db);
+
+            _logger.LogInformation($"Maps from FML for {_name}: {sdMappingCache.Count} structures, {edMappingCache.Count} elements");
         }
     }
 
-    private int?[] getKeyArray(
-        DbFhirPackage sourcePackage,
-        DbFhirPackage targetPackage,
-        int? sourceKey,
-        int? targetKey)
-    {
-        int?[] keyArray = [null, null, null, null, null, null];
-        keyArray[sourcePackage.PackageArrayIndex] = sourceKey;
-        keyArray[targetPackage.PackageArrayIndex] = targetKey;
-        return keyArray;
-    }
 
 }

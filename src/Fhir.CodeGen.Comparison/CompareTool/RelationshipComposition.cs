@@ -78,36 +78,36 @@ public static class RelationshipComposition
         return result;
     }
 
-    /// <summary>
-    /// Composes ChangeIndicationCodes across a chain
-    /// </summary>
-    public static ChangeIndicationCodes? ComposeChanges(IEnumerable<ChangeIndicationCodes?> changes)
-    {
-        bool hasNarrowed = false;
-        bool hasBroadened = false;
+    ///// <summary>
+    ///// Composes ChangeIndicationCodes across a chain
+    ///// </summary>
+    //public static ChangeIndicationCodes? ComposeChanges(IEnumerable<ChangeIndicationCodes?> changes)
+    //{
+    //    bool hasNarrowed = false;
+    //    bool hasBroadened = false;
 
-        foreach (var change in changes.Where(c => c.HasValue))
-        {
-            switch (change!.Value)
-            {
-                case ChangeIndicationCodes.Narrowed:
-                    hasNarrowed = true;
-                    break;
-                case ChangeIndicationCodes.Broadened:
-                    hasBroadened = true;
-                    break;
-            }
-        }
+    //    foreach (var change in changes.Where(c => c.HasValue))
+    //    {
+    //        switch (change!.Value)
+    //        {
+    //            case ChangeIndicationCodes.Narrowed:
+    //                hasNarrowed = true;
+    //                break;
+    //            case ChangeIndicationCodes.Broadened:
+    //                hasBroadened = true;
+    //                break;
+    //        }
+    //    }
 
-        if (hasNarrowed && hasBroadened)
-            return ChangeIndicationCodes.NoChange; // Cancelled out (or could be "Changed")
+    //    if (hasNarrowed && hasBroadened)
+    //        return ChangeIndicationCodes.NoChange; // Cancelled out (or could be "Changed")
 
-        if (hasNarrowed)
-            return ChangeIndicationCodes.Narrowed;
+    //    if (hasNarrowed)
+    //        return ChangeIndicationCodes.Narrowed;
 
-        if (hasBroadened)
-            return ChangeIndicationCodes.Broadened;
+    //    if (hasBroadened)
+    //        return ChangeIndicationCodes.Broadened;
 
-        return ChangeIndicationCodes.NoChange;
-    }
+    //    return ChangeIndicationCodes.NoChange;
+    //}
 }
