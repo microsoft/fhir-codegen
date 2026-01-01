@@ -313,6 +313,9 @@ public class FmlLoader
             }
         }
 
+        FmlSymbolResolutionRecord? rootSource = null;
+        FmlSymbolResolutionRecord? rootTarget = null;
+
         // process each of the groups in the FML to extract prefixPath maps
         foreach ((string groupName, GroupDeclaration group) in _fml.GroupsByName)
         {
@@ -343,6 +346,7 @@ public class FmlLoader
                                 };
 
                                 sourceSymbols[gp.Identifier] = r;
+                                rootSource = r;
                                 //parameters.Add(r);
                             }
                         }
@@ -359,6 +363,7 @@ public class FmlLoader
                                 };
 
                                 targetSymbols[gp.Identifier] = r;
+                                rootTarget = r;
                                 //parameters.Add(r);
                             }
                         }
@@ -376,10 +381,19 @@ public class FmlLoader
                 group,
                 sourceSymbols,
                 targetSymbols,
-                []);
+                [],
+                rootSource,
+                rootTarget);
         }
 
-        reconcileElementMapFmlPathsInDb();
+        if ((rootSource is null) || (rootTarget is null))
+        {
+            throw new Exception($"No processable groups found in {_name} ({_fmlFilename})");
+        }
+
+        reconcileElementMapFmlPathsInDb(
+            rootSource,
+            rootTarget);
     }
 
     private FmlSymbolResolutionRecord? resolveFmlSymbol(
@@ -557,6 +571,8 @@ public class FmlLoader
         Dictionary<string, FmlSymbolResolutionRecord> sourceSymbols,
         Dictionary<string, FmlSymbolResolutionRecord> targetSymbols,
         List<FmlSymbolResolutionRecord> parameters,
+        FmlSymbolResolutionRecord? rootSource,
+        FmlSymbolResolutionRecord? rootTarget,
         HashSet<string>? groupCallStack = null)
     {
         groupCallStack ??= [];
@@ -641,7 +657,9 @@ public class FmlLoader
                         expression.MappingExpression,
                         sourceSymbols,
                         targetSymbols,
-                        groupCallStack);
+                        groupCallStack,
+                        rootSource,
+                        rootTarget);
                 }
                 catch (Exception ex)
                 {
@@ -661,7 +679,9 @@ public class FmlLoader
         FmlGroupExpression expression,
         Dictionary<string, FmlSymbolResolutionRecord> sourceSymbols,
         Dictionary<string, FmlSymbolResolutionRecord> targetSymbols,
-        HashSet<string> groupCallStack)
+        HashSet<string> groupCallStack,
+        FmlSymbolResolutionRecord? rootSource,
+        FmlSymbolResolutionRecord? rootTarget)
     {
         Dictionary<string, FmlSymbolResolutionRecord> localSourceSymbols = [];
         Dictionary<string, FmlSymbolResolutionRecord> localTargetSymbols = [];
@@ -824,6 +844,8 @@ public class FmlLoader
                         [],
                         [],
                         dependentParams,
+                        rootSource,
+                        rootTarget,
                         groupCallStack);
                 }
 
@@ -1097,7 +1119,9 @@ public class FmlLoader
         }
     }
 
-    private void reconcileElementMapFmlPathsInDb()
+    private void reconcileElementMapFmlPathsInDb(
+        FmlSymbolResolutionRecord rootSource,
+        FmlSymbolResolutionRecord rootTarget)
     {
         if ((_sourcePackage is null) || (_targetPackage is null))
         {
@@ -1124,30 +1148,42 @@ public class FmlLoader
             foreach (string targetPath in targetPaths)
             {
                 // check for source and target paths being the same
-                if (sourcePath == targetPath)
-                {
-                    continue;
-                }
+                //if (sourcePath == targetPath)
+                //{
+                //    continue;
+                //}
 
                 // grab the source and target type info to check for mappings
                 string sourceTypeName = sourcePath.Split('.')[0];
                 string targetTypeName = targetPath.Split('.')[0];
 
-                // make sure we have a source structure
-                if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourceTypeName)
-                    is not DbStructureDefinition sourceSd)
-                {
-                    _logger.LogError($"Could not resolve source type {sourceTypeName} for {sourcePath} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
-                    continue;
-                }
+                // we want all paths related to the root structure they started from in FML
+                DbStructureDefinition sourceSd = rootSource.Structure;
 
-                // make sure we have a target structure
-                if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: _targetPackage.Key, Id: targetTypeName)
-                    is not DbStructureDefinition targetSd)
-                {
-                    _logger.LogError($"Could not resolve target structure {targetTypeName} for {targetPath} in {_sourcePackage.ShortName}to{_targetPackage.ShortName}");
-                    continue;
-                }
+                //// make sure we have a source structure
+                //if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourceTypeName)
+                //    is not DbStructureDefinition sourceSd)
+                //{
+                //    _logger.LogError(
+                //        $"Could not resolve source type {sourceTypeName} for {sourcePath}" +
+                //        $" in {_sourcePackage.ShortName}to{_targetPackage.ShortName}." +
+                //        $" Falling back to root source: {rootSource.Structure.Id}");
+                //    continue;
+                //}
+
+                // we want all paths related to the root structure they started from in FML
+                DbStructureDefinition targetSd = rootTarget.Structure;
+
+                //// make sure we have a target structure
+                //if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: _targetPackage.Key, Id: targetTypeName)
+                //    is not DbStructureDefinition targetSd)
+                //{
+                //    _logger.LogError(
+                //        $"Could not resolve target structure {targetTypeName} for {targetPath}" +
+                //        $" in {_sourcePackage.ShortName}to{_targetPackage.ShortName}." +
+                //        $" Falling back to root target: {rootTarget.Structure.Id}");
+                //    continue;
+                //}
 
                 // try to get a source element
                 DbElement? sourceEd = DbElement.SelectSingle(_db, FhirPackageKey: _sourcePackage.Key, Id: sourcePath);
@@ -1214,9 +1250,6 @@ public class FmlLoader
                             $"FML wants to create {idLong}, but" +
                             $" {_sourcePackage.ShortName}:{sourceSd.Name} has relationships for" +
                             $" {_targetPackage.ShortName} that do not include {targetSd.Name}.");
-
-                        // TODO: need to ensure the paths are fully reconciled, then just add the records for later referencing (ok if they do not resolve now)
-
                         continue;
                     }
 

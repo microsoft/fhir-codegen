@@ -257,9 +257,9 @@ public partial class XVerProcessor
                 //UpdateValueSetMaps();
 
                 //LoadDatabase(true, true);
-                LoadFhirCrossVersionMaps();
+                //LoadFhirCrossVersionMaps();
                 //LoadDatabase(false, false);
-                //CompareInDatabase();
+                CompareInDatabase();
 
                 //CompareInDatabase();
                 //GenerateOutcomesFromComparisons();
