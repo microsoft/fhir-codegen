@@ -48,6 +48,18 @@ public class ValueSetComparer
         };
     }
 
+    private class ConceptPathTracker
+    {
+        public required DbValueSetConcept SourceConcept { get; init; }
+        public int? CurrentConceptKey { get; set; }
+        public required int?[] ContentKeys { get; set; }
+        public CMR? Relationship { get; set; }
+        public bool IsIdentical { get; set; }
+        public bool CodeLiteralsAreIdentical { get; set; }
+    }
+
+
+
     private readonly IDbConnection _db;
 
     private ILoggerFactory _loggerFactory;
@@ -96,6 +108,7 @@ public class ValueSetComparer
             }
         }
     }
+
     private void applyCachedChanges(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
     {
         if (_vsComparisonCache.ToAddCount > 0)
@@ -303,7 +316,7 @@ public class ValueSetComparer
                 {
                     SourceConcept = sourceConcept,
                     CurrentConceptKey = cc.TargetConceptKey,
-                    ContentKeys = buildInitialContentKeys(sourceIndex, sourceConcept.Key, sourceIndex + increment, cc.TargetConceptKey),
+                    ContentKeys = getKeyArray(sourceIndex, sourceConcept.Key, sourceIndex + increment, cc.TargetConceptKey),
                     Relationship = cc.Relationship,
                     IsIdentical = cc.IsIdentical == true,
                     CodeLiteralsAreIdentical = cc.CodeLiteralsAreIdentical == true,
@@ -396,17 +409,7 @@ public class ValueSetComparer
         }
     }
 
-    private class ConceptPathTracker
-    {
-        public required DbValueSetConcept SourceConcept { get; init; }
-        public int? CurrentConceptKey { get; set; }
-        public required int?[] ContentKeys { get; set; }
-        public CMR? Relationship { get; set; }
-        public bool IsIdentical { get; set; }
-        public bool CodeLiteralsAreIdentical { get; set; }
-    }
-
-    private int?[] buildInitialContentKeys(int sourceIndex, int sourceKey, int targetIndex, int? targetKey)
+    private int?[] getKeyArray(int sourceIndex, int sourceKey, int targetIndex, int? targetKey)
     {
         int?[] result = [null, null, null, null, null, null];
         result[sourceIndex] = sourceKey;
@@ -1114,7 +1117,6 @@ public class ValueSetComparer
             UserMessage = userMessage,
         };
     }
-
 
     private DbValueSetConceptComparison createComparison(
         ValueSetComparisonTrackingRecord vsTrackingRecord,

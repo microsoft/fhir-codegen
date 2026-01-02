@@ -401,8 +401,8 @@ public partial class DbValueSetConceptComparison : DbComparisonBase
 }
 
 
-
 [CgSQLiteTable(tableName: "StructureComparisons")]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceStructureKey))]
 public partial class DbStructureComparison : DbArtifactComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -420,14 +420,15 @@ public partial class DbStructureComparison : DbArtifactComparisonBase
     [CgSQLiteForeignKey(referenceTable: "StructureMappings", referenceColumn: nameof(DbStructureMapping.Key))]
     public required int? StructureMappingKey { get; set; }
 
+    public required bool? ElementRelativePathsAreIdentical { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 }
 
 
-
 [CgSQLiteTable(tableName: "ElementComparisons")]
+[CgSQLiteIndex(nameof(StructureComparisonKey))]
 public partial class DbElementComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
@@ -459,6 +460,11 @@ public partial class DbElementComparison : DbComparisonBase
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+
+    public required bool? RelativePathsAreIdentical { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementMappings", referenceColumn: nameof(DbElementMapping.Key))]
+    public int? ElementMappingKey { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
