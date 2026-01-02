@@ -1001,7 +1001,7 @@ Class="vs-dialog-container">
         }
 
         // resolve the package comparison
-        DbFhirPackageComparisonPair? packagePair = DbFhirPackageComparisonPair.SelectSingle(
+        FhirPackageComparisonPair? packagePair = FhirPackageComparisonPair.SelectSingle(
             Xver.DbConnection,
             SourcePackageKey: _packages[sourcePackageIndex].Key,
             TargetPackageKey: _packages[targetPackageIndex].Key);
@@ -1014,7 +1014,7 @@ Class="vs-dialog-container">
             return;
         }
 
-        DbFhirPackageComparisonPair? reversePair = DbFhirPackageComparisonPair.SelectSingle(
+        FhirPackageComparisonPair? reversePair = FhirPackageComparisonPair.SelectSingle(
             Xver.DbConnection,
             SourcePackageKey: _packages[targetPackageIndex].Key,
             TargetPackageKey: _packages[sourcePackageIndex].Key);
@@ -1068,7 +1068,7 @@ Class="vs-dialog-container">
             TechnicalMessage = null,
             UserMessage = null,
             IsIdentical = false,
-            CodesAreIdentical = false,
+            CodeLiteralsAreIdentical = false,
         };
 
         DbComparisonCache<DbValueSetComparison> vsComparisons = new();
@@ -1089,13 +1089,13 @@ Class="vs-dialog-container">
             reversePair);
 
         // apply our changes
-        vsComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
-        vsComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
-        vsComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+        vsComparisons.ToAdd.Insert(Xver.DbConnection);
+        vsComparisons.ToUpdate.Update(Xver.DbConnection);
+        vsComparisons.ToDelete.Delete(Xver.DbConnection);
 
-        conceptComparisons.ComparisonsToAdd.Insert(Xver.DbConnection);
-        conceptComparisons.ComparisonsToUpdate.Update(Xver.DbConnection);
-        conceptComparisons.ComparisonsToDelete.Delete(Xver.DbConnection);
+        conceptComparisons.ToAdd.Insert(Xver.DbConnection);
+        conceptComparisons.ToUpdate.Update(Xver.DbConnection);
+        conceptComparisons.ToDelete.Delete(Xver.DbConnection);
 
         // force reload of our UI contents
         LoadValueSet(true);

@@ -610,7 +610,7 @@ public class CrossVersionTests
     //{
     //    // Download the cross version packages zip file
     //    // http://fhir.org/packages/xver-packages.zip
-    //    string crossVersionPackages = Path.Combine(
+    //    string crossVersionPackages = Contents.Combine(
     //        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
     //        "FhirCrossVersionTests");
     //    if (!Directory.Exists(crossVersionPackages))
@@ -620,7 +620,7 @@ public class CrossVersionTests
     //    Console.WriteLine($"Cross version cache located in {crossVersionPackages}");
     //    Console.ResetColor();
 
-    //    string crossVersionPackagesZipFile = Path.Combine(crossVersionPackages, "xver-packages.zip");
+    //    string crossVersionPackagesZipFile = Contents.Combine(crossVersionPackages, "xver-packages.zip");
 
     //    if (!File.Exists(crossVersionPackagesZipFile))
     //    {
@@ -642,7 +642,7 @@ public class CrossVersionTests
     //            if ((item.Name.EndsWith(".as.r5.tgz") || item.Name.EndsWith("hl7.fhir.r5.core.tgz")) && !item.Name.StartsWith("."))
     //            {
     //                Console.Write($"Verifying cache for {item.Name}");
-    //                var path = Path.Combine(
+    //                var path = Contents.Combine(
     //                    crossVersionPackages,
     //                    item.Name.Split('.').Skip(2).First());
     //                if (!Directory.Exists(path))
@@ -664,7 +664,7 @@ public class CrossVersionTests
     //                                && a.Name.Contains("/StructureDefinition-"))
     //                            {
     //                                // Console.WriteLine($"{a.Name}");
-    //                                await a.ExtractToFileAsync(Path.Combine(path, a.Name.Replace("package/", "")), true);
+    //                                await a.ExtractToFileAsync(Contents.Combine(path, a.Name.Replace("package/", "")), true);
     //                            }
     //                            a = await r.GetNextEntryAsync();
     //                        }

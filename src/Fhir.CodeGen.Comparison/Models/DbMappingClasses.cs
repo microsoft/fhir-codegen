@@ -10,28 +10,28 @@ public static class DbMappingClasses
     public static void LoadIndices(IDbConnection db)
     {
         DbMappingSourceFile.LoadMaxKey(db);
-        DbValueSetMappingRecord.LoadMaxKey(db);
-        DbValueSetConceptMappingRecord.LoadMaxKey(db);
-        DbStructureMappingRecord.LoadMaxKey(db);
-        DbElementMappingRecord.LoadMaxKey(db);
+        DbValueSetMapping.LoadMaxKey(db);
+        DbValueSetConceptMapping.LoadMaxKey(db);
+        DbStructureMapping.LoadMaxKey(db);
+        DbElementMapping.LoadMaxKey(db);
     }
 
     public static void DropTables(IDbConnection db)
     {
         DbMappingSourceFile.DropTable(db);
-        DbValueSetMappingRecord.DropTable(db);
-        DbValueSetConceptMappingRecord.DropTable(db);
-        DbStructureMappingRecord.DropTable(db);
-        DbElementMappingRecord.DropTable(db);
+        DbValueSetMapping.DropTable(db);
+        DbValueSetConceptMapping.DropTable(db);
+        DbStructureMapping.DropTable(db);
+        DbElementMapping.DropTable(db);
     }
 
     public static void CreateTables(IDbConnection db)
     {
         DbMappingSourceFile.CreateTable(db);
-        DbValueSetMappingRecord.CreateTable(db);
-        DbValueSetConceptMappingRecord.CreateTable(db);
-        DbStructureMappingRecord.CreateTable(db);
-        DbElementMappingRecord.CreateTable(db);
+        DbValueSetMapping.CreateTable(db);
+        DbValueSetConceptMapping.CreateTable(db);
+        DbStructureMapping.CreateTable(db);
+        DbElementMapping.CreateTable(db);
     }
 }
 
@@ -49,7 +49,7 @@ public partial class DbMappingSourceFile : DbRecordBase
 
 
 [CgSQLiteBaseClass]
-public abstract class DbMappingRecordBase : DbRecordBase
+public abstract class DbMappingBase : DbRecordBase
 {
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int SourceFhirPackageKey { get; set; }
@@ -170,7 +170,7 @@ public abstract class DbMappingRecordBase : DbRecordBase
 }
 
 [CgSQLiteBaseClass]
-public abstract class DbMappingArtifactRecordBase : DbMappingRecordBase
+public abstract class DbMappingArtifactBase : DbMappingBase
 {
     [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
     public required int? ConceptMapSourceKey { get; set; } = null;
@@ -185,10 +185,10 @@ public abstract class DbMappingArtifactRecordBase : DbMappingRecordBase
 
 [CgSQLiteTable(tableName: "ValueSetMappings")]
 //[CgSQLiteIndex(nameof(IdLong))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetKey), nameof(Key))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetKey), nameof(TargetValueSetKey), nameof(Key))]
 [CgSQLiteIndex(nameof(SourceValueSetKey), nameof(TargetValueSetKey))]
-public partial class DbValueSetMappingRecord : DbMappingArtifactRecordBase      //, IDbMapArtifactRecord
+public partial class DbValueSetMapping : DbMappingArtifactBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int SourceValueSetKey { get; set; }
@@ -212,9 +212,9 @@ public partial class DbValueSetMappingRecord : DbMappingArtifactRecordBase      
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
 [CgSQLiteIndex(nameof(ValueSetMappingKey), nameof(SourceValueSetConceptKey), nameof(TargetValueSetConceptKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetConceptKey), nameof(Key))]
-public partial class DbValueSetConceptMappingRecord : DbMappingRecordBase
+public partial class DbValueSetConceptMapping : DbMappingBase
 {
-    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMappingRecord.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMapping.Key))]
     public required int ValueSetMappingKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
@@ -238,7 +238,7 @@ public partial class DbValueSetConceptMappingRecord : DbMappingRecordBase
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureId), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
-public partial class DbStructureMappingRecord : DbMappingArtifactRecordBase
+public partial class DbStructureMapping : DbMappingArtifactBase
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int SourceStructureKey { get; set; }
@@ -267,9 +267,9 @@ public partial class DbStructureMappingRecord : DbMappingArtifactRecordBase
 [CgSQLiteTable(tableName: "ElementMappings")]
 [CgSQLiteIndex(nameof(StructureMappingKey), nameof(SourceElementKey), nameof(TargetElementKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceElementId), nameof(TargetElementId))]
-public partial class DbElementMappingRecord : DbMappingRecordBase
+public partial class DbElementMapping : DbMappingBase
 {
-    [CgSQLiteForeignKey(referenceTable: "StructureMappings", referenceColumn: nameof(DbStructureMappingRecord.Key))]
+    [CgSQLiteForeignKey(referenceTable: "StructureMappings", referenceColumn: nameof(DbStructureMapping.Key))]
     public required int? StructureMappingKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]

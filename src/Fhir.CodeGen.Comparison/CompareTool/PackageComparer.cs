@@ -255,7 +255,7 @@ public class PackageComparer
                 foreach (ValueSetComparison c in vcs)
                 {
                     //string name = GetName(c.Left, c.Right);
-                    //string filename = Path.Combine(subDir, $"{name}.md");
+                    //string filename = Contents.Combine(subDir, $"{name}.md");
                     string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
 
                     using ExportStreamWriter writer = CreateMarkdownWriter(filename);
@@ -365,7 +365,7 @@ public class PackageComparer
         // TODO(ginoc): Logical models are tracked by URL in collections, but structure mapping is done by name.
         //WriteComparisonOverview(mdWriter, "Logical Models", logical.Values);
 
-        //mdSubDir = Path.Combine(outputDir, "LogicalModels");
+        //mdSubDir = Contents.Combine(outputDir, "LogicalModels");
         //if (!Directory.Exists(mdSubDir))
         //{
         //    Directory.CreateDirectory(mdSubDir);
@@ -373,7 +373,7 @@ public class PackageComparer
 
         //foreach (ComparisonRecord<StructureInfoRec, ElementInfoRec, ElementTypeInfoRec> c in logical.Values)
         //{
-        //string filename = Path.Combine(mdSubDir, $"{c.CompositeName}.md");
+        //string filename = Contents.Combine(mdSubDir, $"{c.CompositeName}.md");
 
         //    using ExportStreamWriter writer = CreateMarkdownWriter(filename);
         //    {
@@ -1306,7 +1306,7 @@ public class PackageComparer
     //    {
     //        return;
     //    }
-    //    string filename = Path.Combine(outputDir, $"ConceptMap-{cm.IdLong}.json");
+    //    string filename = Contents.Combine(outputDir, $"ConceptMap-{cm.IdLong}.json");
 
     //    try
     //    {
@@ -1338,7 +1338,7 @@ public class PackageComparer
     //            continue;
     //        }
 
-    //        string filename = Path.Combine(outputDir, $"ConceptMap-{cm.IdLong}.json");
+    //        string filename = Contents.Combine(outputDir, $"ConceptMap-{cm.IdLong}.json");
 
     //        try
     //        {
@@ -2715,7 +2715,7 @@ public class PackageComparer
                 //{
                 //    Target = GetInfo(targetElement),
                 //    Relationship = CMR.IsEquivalent,
-                //    Message = $"{_sourceRLiteral} `{sourceEd.Path}` is assumed equivalent to {_targetRLiteral} `{targetElement.Path}` (no map, but paths match)",
+                //    Message = $"{_sourceRLiteral} `{sourceEd.Contents}` is assumed equivalent to {_targetRLiteral} `{targetElement.Contents}` (no map, but paths match)",
                 //});
             }
 

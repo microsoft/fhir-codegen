@@ -1148,7 +1148,7 @@ Class="ed-dialog-container">
             if (mapLRComparison.Key != _focusElementRow[mappingLeftColId]?.RightComparison?.Key)
             {
                 mapLRComparison.IsIdentical = null;
-                mapLRComparison.ElementTypeComparisonKey = null;
+                mapLRComparison.CollatedTypeComparisonKey = null;
                 mapLRComparison.BoundValueSetComparisonKey = null;
             }
         }
@@ -1192,7 +1192,7 @@ Class="ed-dialog-container">
             if (mapRLComparison.Key != _focusElementRow[mappingRightColId]?.LeftComparison?.Key)
             {
                 mapRLComparison.IsIdentical = null;
-                mapRLComparison.ElementTypeComparisonKey = null;
+                mapRLComparison.CollatedTypeComparisonKey = null;
                 mapRLComparison.BoundValueSetComparisonKey = null;
             }
         }
@@ -1416,7 +1416,7 @@ Class="ed-dialog-container">
         }
 
         // resolve the package comparison
-        DbFhirPackageComparisonPair? packagePair = DbFhirPackageComparisonPair.SelectSingle(
+        FhirPackageComparisonPair? packagePair = FhirPackageComparisonPair.SelectSingle(
             Xver.DbConnection,
             SourcePackageKey: _packages[sourcePackageIndex].Key,
             TargetPackageKey: _packages[targetPackageIndex].Key);
@@ -1426,7 +1426,7 @@ Class="ed-dialog-container">
             return;
         }
 
-        DbFhirPackageComparisonPair? reversePair = DbFhirPackageComparisonPair.SelectSingle(
+        FhirPackageComparisonPair? reversePair = FhirPackageComparisonPair.SelectSingle(
             Xver.DbConnection,
             SourcePackageKey: _packages[targetPackageIndex].Key,
             TargetPackageKey: _packages[sourcePackageIndex].Key);
@@ -1501,21 +1501,21 @@ Class="ed-dialog-container">
             reversePair);
 
         // apply our changes
-        sdComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
-        sdComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
-        sdComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
+        sdComparisonCache.ToAdd.Insert(Xver.DbConnection);
+        sdComparisonCache.ToUpdate.Update(Xver.DbConnection);
+        sdComparisonCache.ToDelete.Delete(Xver.DbConnection);
 
-        edComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
-        edComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
-        edComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
+        edComparisonCache.ToAdd.Insert(Xver.DbConnection);
+        edComparisonCache.ToUpdate.Update(Xver.DbConnection);
+        edComparisonCache.ToDelete.Delete(Xver.DbConnection);
 
-        collatedTypeComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
-        collatedTypeComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
-        collatedTypeComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
+        collatedTypeComparisonCache.ToAdd.Insert(Xver.DbConnection);
+        collatedTypeComparisonCache.ToUpdate.Update(Xver.DbConnection);
+        collatedTypeComparisonCache.ToDelete.Delete(Xver.DbConnection);
 
-        typeComparisonCache.ComparisonsToAdd.Insert(Xver.DbConnection);
-        typeComparisonCache.ComparisonsToUpdate.Update(Xver.DbConnection);
-        typeComparisonCache.ComparisonsToDelete.Delete(Xver.DbConnection);
+        typeComparisonCache.ToAdd.Insert(Xver.DbConnection);
+        typeComparisonCache.ToUpdate.Update(Xver.DbConnection);
+        typeComparisonCache.ToDelete.Delete(Xver.DbConnection);
 
         // force reload of our UI contents
         LoadStructure(true);

@@ -149,10 +149,10 @@ internal class CrossVersionResolver : IAsyncResourceResolver
             System.Diagnostics.Trace.WriteLine($"Cross Version package cache folder does not exist {crossVersionPackages}");
         }
 
-        //dstu2 = new DirectorySource(Path.Combine(crossVersionPackages, "r2b"), settingsDir);
-        //stu3 = new DirectorySource(Path.Combine(crossVersionPackages, "r3"), settingsDir);
-        //r4 = new DirectorySource(Path.Combine(crossVersionPackages, "r4"), settingsDir);
-        //r4b = new DirectorySource(Path.Combine(crossVersionPackages, "r4b"), settingsDir);
+        //dstu2 = new DirectorySource(Contents.Combine(crossVersionPackages, "r2b"), settingsDir);
+        //stu3 = new DirectorySource(Contents.Combine(crossVersionPackages, "r3"), settingsDir);
+        //r4 = new DirectorySource(Contents.Combine(crossVersionPackages, "r4"), settingsDir);
+        //r4b = new DirectorySource(Contents.Combine(crossVersionPackages, "r4b"), settingsDir);
         //r5 = ZipSource.CreateValidationSource();
     }
 

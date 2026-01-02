@@ -960,7 +960,7 @@ public partial class XVerProcessor
                 Directory.CreateDirectory(inputDir);
             }
 
-            //string fshDir = Path.Combine(inputDir, "fsh");
+            //string fshDir = Contents.Combine(inputDir, "fsh");
             //if (!Directory.Exists(fshDir))
             //{
             //    Directory.CreateDirectory(fshDir);
@@ -1153,7 +1153,7 @@ public partial class XVerProcessor
             //        ? $"dependencies:\n    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n{string.Join('\n', deps)}"
             //        : string.Empty;
 
-            //    string filename = Path.Combine(dir, "sushi-config.yaml");
+            //    string filename = Contents.Combine(dir, "sushi-config.yaml");
             //    string contents = $$$"""
             //        # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
             //        # │  The properties below are used to create the ImplementationGuide resource. The most commonly   │
@@ -1568,7 +1568,7 @@ public partial class XVerProcessor
             //        ? $"dependencies:\n    # {targetPackage.PackageId} : {targetPackage.PackageVersion}\n{string.Join('\n', deps)}"
             //        : string.Empty;
 
-            //    string filename = Path.Combine(dir, "sushi-config.yaml");
+            //    string filename = Contents.Combine(dir, "sushi-config.yaml");
             //    string contents = $$$"""
             //        # ╭─────────────────────────Commonly Used ImplementationGuide Properties───────────────────────────╮
             //        # │  The properties below are used to create the ImplementationGuide resource. The most commonly   │
@@ -1946,7 +1946,7 @@ public partial class XVerProcessor
             //        """;
 
             //    string filename = "package.manifest.json";
-            //    File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), pmJson);
+            //    File.WriteAllText(Contents.Combine(fhirDir, packageId, "package", filename), pmJson);
             //}
 
             //// build and write the .index.json file
@@ -1959,7 +1959,7 @@ public partial class XVerProcessor
             //        xverProfiles,
             //        indexInfo);
             //    string filename = ".index.json";
-            //    File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), JsonSerializer.Serialize(contentIndex));
+            //    File.WriteAllText(Contents.Combine(fhirDir, packageId, "package", filename), JsonSerializer.Serialize(contentIndex));
             //}
 
             //// build and write the package.json file
@@ -2004,7 +2004,7 @@ public partial class XVerProcessor
             //    };
 
             //    string filename = "package.json";
-            //    File.WriteAllText(Path.Combine(fhirDir, packageId, "package", filename), JsonSerializer.Serialize(cpm));
+            //    File.WriteAllText(Contents.Combine(fhirDir, packageId, "package", filename), JsonSerializer.Serialize(cpm));
             //}
         }
 

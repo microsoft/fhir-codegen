@@ -202,7 +202,7 @@ public class ComparisonDatabase : IDisposable
         try
         {
             DbFhirPackage.LoadMaxKey(_db);
-            //DbFhirPackageComparisonPair.LoadMaxKey(_db);
+            //FhirPackageComparisonPair.LoadMaxKey(_db);
 
             DbCodeSystem.LoadMaxKey(_db);
             DbCodeSystemPropertyDefinition.LoadMaxKey(_db);
@@ -337,7 +337,7 @@ public class ComparisonDatabase : IDisposable
             default:
                 {
                     DbFhirPackage.Insert(targetDb, DbFhirPackage.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    //DbFhirPackageComparisonPair.Insert(targetDb, DbFhirPackageComparisonPair.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //FhirPackageComparisonPair.Insert(targetDb, FhirPackageComparisonPair.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
 
                     DbCodeSystem.Insert(targetDb, DbCodeSystem.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbCodeSystemPropertyDefinition.Insert(targetDb, DbCodeSystemPropertyDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
@@ -430,7 +430,7 @@ public class ComparisonDatabase : IDisposable
             default:
                 {
                     DbFhirPackage.DropTable(db);
-                    //DbFhirPackageComparisonPair.DropTable(db);
+                    //FhirPackageComparisonPair.DropTable(db);
 
                     DbCodeSystem.DropTable(db);
                     DbCodeSystemPropertyDefinition.DropTable(db);
@@ -526,7 +526,7 @@ public class ComparisonDatabase : IDisposable
             default:
                 {
                     DbFhirPackage.CreateTable(db);
-                    //DbFhirPackageComparisonPair.CreateTable(db);
+                    //FhirPackageComparisonPair.CreateTable(db);
 
                     DbCodeSystem.CreateTable(db);
                     DbCodeSystemPropertyDefinition.CreateTable(db);
@@ -2143,6 +2143,9 @@ public class ComparisonDatabase : IDisposable
             return false;
         }
 
+        throw new NotImplementedException("This call is deprecated.");
+
+#if false
         DbComparisonCache<DbValueSetComparison> vsComparisons = new();
         DbComparisonCache<DbValueSetConceptComparison> conceptComparisons = new();
 
@@ -2220,28 +2223,28 @@ public class ComparisonDatabase : IDisposable
 
         _logger.LogInformation("Inserting existing cross version maps into the database...");
 
-        _db.Insert(vsComparisons.ComparisonsToAdd, insertPrimaryKey: true);
+        _db.Insert(vsComparisons.ToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {vsComparisons.Count} ValueSet Comparisons");
 
-        _db.Insert(conceptComparisons.ComparisonsToAdd, insertPrimaryKey: true);
+        _db.Insert(conceptComparisons.ToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {conceptComparisons.Count} ValueSet Concept Comparisons");
 
         _db.Insert(unresolvedConceptComparisons);
         _logger.LogInformation($" <<< added {unresolvedConceptComparisons.Count} Unresolved ValueSet Concept Comparisons");
 
-        _db.Insert(sdComparisons.ComparisonsToAdd, insertPrimaryKey: true);
+        _db.Insert(sdComparisons.ToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {sdComparisons.Count} Structure Comparisons");
 
         _db.Insert(unresolvedSdComparisons, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {unresolvedSdComparisons.Count} Unresolved Structure Comparisons");
 
-        _db.Insert(elementComparisons.ComparisonsToAdd, insertPrimaryKey: true);
+        _db.Insert(elementComparisons.ToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {elementComparisons.Count} Element Comparisons");
 
-        _db.Insert(collatedTypeComparisons.ComparisonsToAdd, insertPrimaryKey: true);
+        _db.Insert(collatedTypeComparisons.ToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {collatedTypeComparisons.Count} Collated Type Comparisons");
 
-        _db.Insert(typeComparisons.ComparisonsToAdd, insertPrimaryKey: true);
+        _db.Insert(typeComparisons.ToAdd, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {typeComparisons.Count} Type Comparisons");
 
         _db.Insert(unresolvedElementComparisons, insertPrimaryKey: true);
@@ -2740,7 +2743,7 @@ public class ComparisonDatabase : IDisposable
                 TargetElementKey = targetDbElement?.Key,
                 TargetStructureUrl = targetStructureUrl,
                 TargetElementToken = targetToken,
-                ElementTypeComparisonKey = null,
+                CollatedTypeComparisonKey = null,
                 BoundValueSetComparisonKey = null,
                 IsGenerated = false,
                 LastReviewedBy = null,
@@ -2950,7 +2953,7 @@ public class ComparisonDatabase : IDisposable
                 LastReviewedBy = null,
                 LastReviewedOn = null,
                 IsIdentical = null,
-                CodesAreIdentical = null,
+                CodeLiteralsAreIdentical = null,
                 TechnicalMessage = $"Imported from existing ConceptMap {cm.Id} ({cm.Url}).",
                 UserMessage = $"Mapping of FHIR {sourceDbPackage.ShortName}:{sourceDbVs.Name} to {targetDbPackage.ShortName}:{targetDbVs.Name}",
             };
@@ -3149,7 +3152,7 @@ public class ComparisonDatabase : IDisposable
                     LastReviewedBy = null,
                     LastReviewedOn = null,
                     IsIdentical = null,
-                    CodesAreIdentical = null,
+                    CodeLiteralsAreIdentical = null,
                 };
 
                 conceptComparisons.CacheAdd(nonMappedComparison);
@@ -3233,7 +3236,7 @@ public class ComparisonDatabase : IDisposable
                 LastReviewedBy = null,
                 LastReviewedOn = null,
                 IsIdentical = null,
-                CodesAreIdentical = null,
+                CodeLiteralsAreIdentical = null,
             };
 
             conceptComparisons.CacheAdd(mappedComparison);
@@ -3255,6 +3258,7 @@ public class ComparisonDatabase : IDisposable
                 }
             }
         }
+#endif
     }
 
     public static string GetCompositeName(

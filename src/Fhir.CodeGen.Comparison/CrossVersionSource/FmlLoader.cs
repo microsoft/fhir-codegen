@@ -1128,8 +1128,8 @@ public class FmlLoader
             throw new InvalidOperationException("Source or target package not set");
         }
 
-        DbRecordCache<DbStructureMappingRecord> sdMappingCache = new();
-        DbRecordCache<DbElementMappingRecord> edMappingCache = new();
+        DbRecordCache<DbStructureMapping> sdMappingCache = new();
+        DbRecordCache<DbElementMapping> edMappingCache = new();
 
         // look for elements that target other elements
         foreach ((string sourcePath, HashSet<string> targetPaths) in _relatedPaths)
@@ -1216,10 +1216,10 @@ public class FmlLoader
                 //    continue;
                 //}
 
-                DbStructureMappingRecord structureMappingRec;
+                DbStructureMapping structureMappingRec;
 
                 // check to see if there are existing mapping records for the structures
-                List<DbStructureMappingRecord> sdMappingRecords = DbStructureMappingRecord.SelectList(
+                List<DbStructureMapping> sdMappingRecords = DbStructureMapping.SelectList(
                     _db,
                     SourceFhirPackageKey: _sourcePackage.Key,
                     SourceStructureKey: sourceSd.Key,
@@ -1236,7 +1236,7 @@ public class FmlLoader
                         targetSd.Id);
 
                     // check for maps to other targets and no-maps
-                    int otherStructureMapCount = DbStructureMappingRecord.SelectCount(
+                    int otherStructureMapCount = DbStructureMapping.SelectCount(
                         _db,
                         SourceFhirPackageKey: _sourcePackage.Key,
                         SourceStructureKey: sourceSd.Key,
@@ -1255,7 +1255,7 @@ public class FmlLoader
 
                     structureMappingRec = new()
                     {
-                        Key = DbStructureMappingRecord.GetIndex(),
+                        Key = DbStructureMapping.GetIndex(),
 
                         SourceFhirPackageKey = _sourcePackage.Key,
                         SourceFhirSequence = _sourcePackage.DefinitionFhirSequence,
@@ -1291,19 +1291,19 @@ public class FmlLoader
                 }
 
                 // check to see if there are existing element mapping records
-                List<DbElementMappingRecord> edMappingRecords;
+                List<DbElementMapping> edMappingRecords;
 
                 if ((sourceEd is not null) && (targetEd is not null))
                 {
                     // check for explicit matches
-                    edMappingRecords = DbElementMappingRecord.SelectList(
+                    edMappingRecords = DbElementMapping.SelectList(
                         _db,
                         StructureMappingKey: structureMappingRec.Key,
                         SourceElementKey: sourceEd.Key,
                         TargetElementKey: targetEd.Key);
 
                     // add no-map records
-                    edMappingRecords.AddRange(DbElementMappingRecord.SelectList(
+                    edMappingRecords.AddRange(DbElementMapping.SelectList(
                         _db,
                         SourceFhirPackageKey: _sourcePackage.Key,
                         StructureMappingKey: structureMappingRec.Key,
@@ -1314,7 +1314,7 @@ public class FmlLoader
                 else
                 {
                     // check for path-based matches
-                    edMappingRecords = DbElementMappingRecord.SelectList(
+                    edMappingRecords = DbElementMapping.SelectList(
                         _db,
                         SourceFhirPackageKey: _sourcePackage.Key,
                         TargetFhirPackageKey: _targetPackage.Key,
@@ -1322,7 +1322,7 @@ public class FmlLoader
                         TargetElementId: targetEd?.Id ?? targetPath);
 
                     // add no-map records
-                    edMappingRecords.AddRange(DbElementMappingRecord.SelectList(
+                    edMappingRecords.AddRange(DbElementMapping.SelectList(
                         _db,
                         SourceFhirPackageKey: _sourcePackage.Key,
                         StructureMappingKey: structureMappingRec.Key,
@@ -1334,9 +1334,9 @@ public class FmlLoader
                 // if there are no records, we need to create one
                 if (edMappingRecords.Count == 0)
                 {
-                    DbElementMappingRecord edMappingRec = new()
+                    DbElementMapping edMappingRec = new()
                     {
-                        Key = DbElementMappingRecord.GetIndex(),
+                        Key = DbElementMapping.GetIndex(),
                         StructureMappingKey = structureMappingRec.Key,
 
                         SourceFhirPackageKey = _sourcePackage.Key,
@@ -1363,7 +1363,7 @@ public class FmlLoader
                 else
                 {
                     // check for updating FML source key
-                    foreach (DbElementMappingRecord edMappingRec in edMappingRecords)
+                    foreach (DbElementMapping edMappingRec in edMappingRecords)
                     {
                         if (edMappingRec.FmlSourceKey != _sourceFileKey)
                         {

@@ -48,6 +48,8 @@ public static class DbComparisonExtensions
         string TargetElementTypeLiteral,
         string? dbTableName = null)
     {
+        throw new NotImplementedException();
+#if false
         dbTableName ??= DbElementTypeComparison.DefaultTableName;
 
         IDbCommand command = dbConnection.CreateCommand();
@@ -106,6 +108,7 @@ public static class DbComparisonExtensions
             CMR.NotRelatedTo => change ?? CMR.NotRelatedTo,
             _ => change ?? existing ?? CMR.NotRelatedTo,
         };
+#endif
     }
 
     //public static string GetCompositeName<T>(this DbCanonicalComparison<T> comparison)
@@ -126,7 +129,7 @@ public static class DbComparisonExtensions
     //        $"{FhirSanitizationUtils.SanitizeForProperty(comparison.Target.Name).ToPascalCase()}";
     //}
 
-    //public static string GetCompositeName(this DbFhirPackageComparisonPair packagePair, DbCanonicalResource source, DbCanonicalResource? target)
+    //public static string GetCompositeName(this FhirPackageComparisonPair packagePair, DbCanonicalResource source, DbCanonicalResource? target)
     //{
     //    if (target == null)
     //    {

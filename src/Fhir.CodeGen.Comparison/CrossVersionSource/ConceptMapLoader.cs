@@ -97,7 +97,7 @@ public class ConceptMapLoader
         bool loadPrimitives = true,
         bool loadComplex = true)
     {
-        List<DbStructureMappingRecord> toAdd = [];
+        List<DbStructureMapping> toAdd = [];
 
         // add the primitive type mappings first
         if (loadPrimitives)
@@ -124,11 +124,11 @@ public class ConceptMapLoader
         }
     }
 
-    private List<DbStructureMappingRecord> buildInternalPrimitiveTypeMapRecs(
+    private List<DbStructureMapping> buildInternalPrimitiveTypeMapRecs(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage)
     {
-        List<DbStructureMappingRecord> toAdd = [];
+        List<DbStructureMapping> toAdd = [];
 
         // get the source and target primitive types
         List<DbStructureDefinition> sourceTypes = DbStructureDefinition.SelectList(
@@ -164,9 +164,9 @@ public class ConceptMapLoader
                 mapsAdded = true;
 
                 // create the structure mapping record
-                DbStructureMappingRecord mappingRec = new()
+                DbStructureMapping mappingRec = new()
                 {
-                    Key = DbStructureMappingRecord.GetIndex(),
+                    Key = DbStructureMapping.GetIndex(),
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -194,9 +194,9 @@ public class ConceptMapLoader
             if (!mapsAdded)
             {
                 // create the structure mapping record
-                DbStructureMappingRecord mappingRec = new()
+                DbStructureMapping mappingRec = new()
                 {
-                    Key = DbStructureMappingRecord.GetIndex(),
+                    Key = DbStructureMapping.GetIndex(),
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -223,7 +223,7 @@ public class ConceptMapLoader
         return toAdd;
     }
 
-    private List<DbStructureMappingRecord> buildInternalComplexTypeMapRecs(
+    private List<DbStructureMapping> buildInternalComplexTypeMapRecs(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage)
     {
@@ -250,7 +250,7 @@ public class ConceptMapLoader
             ArtifactClass: FhirArtifactClassEnum.ComplexType)
             .ToDictionary(sd => sd.Id, sd => sd);
 
-        List<DbStructureMappingRecord> toAdd = [];
+        List<DbStructureMapping> toAdd = [];
 
         // iterate over the source types
         foreach (DbStructureDefinition sourceSd in sourceTypes)
@@ -270,9 +270,9 @@ public class ConceptMapLoader
                 mapsAdded = true;
 
                 // create the structure mapping record
-                DbStructureMappingRecord mappingRec = new()
+                DbStructureMapping mappingRec = new()
                 {
-                    Key = DbStructureMappingRecord.GetIndex(),
+                    Key = DbStructureMapping.GetIndex(),
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -301,9 +301,9 @@ public class ConceptMapLoader
             if (!mapsAdded)
             {
                 // create the structure mapping record
-                DbStructureMappingRecord mappingRec = new()
+                DbStructureMapping mappingRec = new()
                 {
-                    Key = DbStructureMappingRecord.GetIndex(),
+                    Key = DbStructureMapping.GetIndex(),
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -514,7 +514,7 @@ public class ConceptMapLoader
         ConceptMap cm,
         string conceptMapFilename)
     {
-        List<DbElementMappingRecord> elementMapsToAdd = [];
+        List<DbElementMapping> elementMapsToAdd = [];
 
         int sourceFileKey = _mappingLoader.getOrCreateMappingSourceFileKey(
             conceptMapFilename,
@@ -552,11 +552,11 @@ public class ConceptMapLoader
                 if (groupSourceElement.NoMap == true)
                 {
                     // see if there are maps we can apply this to
-                    List<DbStructureMappingRecord> relevantMaps;
+                    List<DbStructureMapping> relevantMaps;
 
                     if (sourceElement is null)
                     {
-                        relevantMaps = DbStructureMappingRecord.SelectList(
+                        relevantMaps = DbStructureMapping.SelectList(
                             _db,
                             SourceFhirPackageKey: sourcePackage.Key,
                             SourceStructureId: groupSourceElement.Code.Split('.').First(),
@@ -564,7 +564,7 @@ public class ConceptMapLoader
                     }
                     else
                     {
-                        relevantMaps = DbStructureMappingRecord.SelectList(
+                        relevantMaps = DbStructureMapping.SelectList(
                             _db,
                             SourceFhirPackageKey: sourcePackage.Key,
                             SourceStructureKey: sourceElement.StructureKey,
@@ -579,11 +579,11 @@ public class ConceptMapLoader
                         //throw new Exception($"No relevant structure maps found for source element: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
                     }
 
-                    foreach (DbStructureMappingRecord relevantMap in relevantMaps)
+                    foreach (DbStructureMapping relevantMap in relevantMaps)
                     {
-                        DbElementMappingRecord mapRec = new()
+                        DbElementMapping mapRec = new()
                         {
-                            Key = DbElementMappingRecord.GetIndex(),
+                            Key = DbElementMapping.GetIndex(),
                             StructureMappingKey = relevantMap.Key,
 
                             SourceFhirPackageKey = sourcePackage.Key,
@@ -622,7 +622,7 @@ public class ConceptMapLoader
                         Id: elementTarget.Code);
 
                     // see if there are maps we can apply this to
-                    DbStructureMappingRecord? relevantMap;
+                    DbStructureMapping? relevantMap;
 
                     if (targetElement is null)
                     {
@@ -630,7 +630,7 @@ public class ConceptMapLoader
 
                         if (sourceElement is null)
                         {
-                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                            relevantMap = DbStructureMapping.SelectSingle(
                                 _db,
                                 SourceFhirPackageKey: sourcePackage.Key,
                                 SourceStructureId: groupSourceElement.Code.Split('.').First(),
@@ -639,7 +639,7 @@ public class ConceptMapLoader
                         }
                         else
                         {
-                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                            relevantMap = DbStructureMapping.SelectSingle(
                                 _db,
                                 SourceFhirPackageKey: sourcePackage.Key,
                                 SourceStructureKey: sourceElement.StructureKey,
@@ -651,7 +651,7 @@ public class ConceptMapLoader
                     {
                         if (sourceElement is null)
                         {
-                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                            relevantMap = DbStructureMapping.SelectSingle(
                                 _db,
                                 SourceFhirPackageKey: sourcePackage.Key,
                                 SourceStructureId: groupSourceElement.Code.Split('.').First(),
@@ -660,7 +660,7 @@ public class ConceptMapLoader
                         }
                         else
                         {
-                            relevantMap = DbStructureMappingRecord.SelectSingle(
+                            relevantMap = DbStructureMapping.SelectSingle(
                                 _db,
                                 SourceFhirPackageKey: sourcePackage.Key,
                                 SourceStructureKey: sourceElement.StructureKey,
@@ -686,9 +686,9 @@ public class ConceptMapLoader
                         : null;
 
                     // create a record for the database
-                    DbElementMappingRecord mapRec = new()
+                    DbElementMapping mapRec = new()
                     {
-                        Key = DbElementMappingRecord.GetIndex(),
+                        Key = DbElementMapping.GetIndex(),
                         StructureMappingKey = relevantMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -731,7 +731,7 @@ public class ConceptMapLoader
         string conceptMapFilename,
         string sourceInputPath)
     {
-        List<DbStructureMappingRecord> resourceMapsToAdd = [];
+        List<DbStructureMapping> resourceMapsToAdd = [];
 
         int sourceFileKey = _mappingLoader.getOrCreateMappingSourceFileKey(
             conceptMapFilename,
@@ -768,9 +768,9 @@ public class ConceptMapLoader
                 // check for no map
                 if (groupSourceElement.NoMap == true)
                 {
-                    DbStructureMappingRecord mapRec = new()
+                    DbStructureMapping mapRec = new()
                     {
-                        Key = DbStructureMappingRecord.GetIndex(),
+                        Key = DbStructureMapping.GetIndex(),
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -821,9 +821,9 @@ public class ConceptMapLoader
                         : null;
 
                     // create a record for the database
-                    DbStructureMappingRecord mapRec = new()
+                    DbStructureMapping mapRec = new()
                     {
-                        Key = DbStructureMappingRecord.GetIndex(),
+                        Key = DbStructureMapping.GetIndex(),
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -870,8 +870,8 @@ public class ConceptMapLoader
             MappingLoader.SourceFileTypeCodes.ConceptMap,
             cm.Url);
 
-        List<DbValueSetMappingRecord> valueSetMapsToAdd = [];
-        List<DbValueSetConceptMappingRecord> conceptMapsToAdd = [];
+        List<DbValueSetMapping> valueSetMapsToAdd = [];
+        List<DbValueSetConceptMapping> conceptMapsToAdd = [];
 
         //List<string> originalUrls = [];
         //foreach (Extension ext in cm.GetExtensions(CommonDefinitions.ExtUrlConceptMapAdditionalUrls))
@@ -966,43 +966,43 @@ public class ConceptMapLoader
             return (0, 0);
         }
 
+        // get from the db or create a new map
+        DbValueSetMapping? vsMap = DbValueSetMapping.SelectSingle(
+            _db,
+            SourceValueSetKey: sourceVs.Key,
+            TargetValueSetKey: targetVs.Key);
+        if (vsMap is null)
+        {
+            vsMap = new()
+            {
+                Key = DbValueSetMapping.GetIndex(),
+
+                SourceFhirPackageKey = sourcePackage.Key,
+                SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
+                SourceValueSetKey = sourceVs.Key,
+                SourceValueSetId = sourceVs.Id,
+                SourceValueSetUrl = sourceVs.UnversionedUrl,
+                SourceValueSetVersion = sourceVs.Version,
+
+                TargetFhirPackageKey = targetPackage.Key,
+                TargetFhirSequence = targetPackage.DefinitionFhirSequence,
+                TargetValueSetKey = targetVs.Key,
+                TargetValueSetId = targetVs.Id,
+                TargetValueSetUrl = targetVs.UnversionedUrl,
+                TargetValueSetVersion = targetVs.Version,
+
+                ConceptMapSourceKey = sourceFileKey,
+
+                ExplicitNoMap = false,
+                Relationship = null,
+            };
+
+            valueSetMapsToAdd.Add(vsMap);
+        }
+
         // groups are systems within the value sets
         foreach (ConceptMap.GroupComponent group in cm.Group)
         {
-            // get from the db or create a new map
-            DbValueSetMappingRecord? vsMap = DbValueSetMappingRecord.SelectSingle(
-                _db,
-                SourceValueSetKey: sourceVs.Key,
-                TargetValueSetKey: targetVs.Key);
-            if (vsMap is null)
-            {
-                vsMap = new()
-                {
-                    Key = DbValueSetMappingRecord.GetIndex(),
-
-                    SourceFhirPackageKey = sourcePackage.Key,
-                    SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
-                    SourceValueSetKey = sourceVs.Key,
-                    SourceValueSetId = sourceVs.Id,
-                    SourceValueSetUrl = sourceVs.UnversionedUrl,
-                    SourceValueSetVersion = sourceVs.Version,
-
-                    TargetFhirPackageKey = targetPackage.Key,
-                    TargetFhirSequence = targetPackage.DefinitionFhirSequence,
-                    TargetValueSetKey = targetVs.Key,
-                    TargetValueSetId = targetVs.Id,
-                    TargetValueSetUrl = targetVs.UnversionedUrl,
-                    TargetValueSetVersion = targetVs.Version,
-
-                    ConceptMapSourceKey = sourceFileKey,
-
-                    ExplicitNoMap = false,
-                    Relationship = null,
-                };
-
-                valueSetMapsToAdd.Add(vsMap);
-            }
-
             // iterate over the source elements of the map
             foreach (ConceptMap.SourceElementComponent groupSourceElement in group.Element)
             {
@@ -1010,11 +1010,12 @@ public class ConceptMapLoader
                 DbValueSetConcept? sourceConcept = DbValueSetConcept.SelectSingle(
                     _db,
                     ValueSetKey: sourceVs.Key,
+                    System: group.Source,
                     Code: groupSourceElement.Code);
                 if (sourceConcept is null)
                 {
                     // TODO: These are incorrect source mappings and need to be fixed, just not right now
-                    _logger.LogWarning($"Invalid source concept literal `{groupSourceElement.Code}`" +
+                    _logger.LogWarning($"Invalid source concept literal `{group.Source}#{groupSourceElement.Code}`" +
                         $" for Value Set: `{sourceVs.VersionedUrl}` from map: {cm.Url} ({cm.Id})" +
                         $" - fix the map!");
                     continue;
@@ -1026,7 +1027,7 @@ public class ConceptMapLoader
                 if (groupSourceElement.NoMap == true)
                 {
                     // check to see if we already have this in the database
-                    DbValueSetConceptMappingRecord? conceptMapRec = DbValueSetConceptMappingRecord.SelectSingle(
+                    DbValueSetConceptMapping? conceptMapRec = DbValueSetConceptMapping.SelectSingle(
                         _db,
                         ValueSetMappingKey: vsMap.Key,
                         SourceValueSetConceptKey: sourceConcept.Key,
@@ -1039,7 +1040,7 @@ public class ConceptMapLoader
                     // create a record for the database
                     conceptMapRec = new()
                     {
-                        Key = DbValueSetConceptMappingRecord.GetIndex(),
+                        Key = DbValueSetConceptMapping.GetIndex(),
                         ValueSetMappingKey = vsMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -1068,12 +1069,13 @@ public class ConceptMapLoader
                     DbValueSetConcept? targetConcept = DbValueSetConcept.SelectSingle(
                         _db,
                         ValueSetKey: targetVs.Key,
+                        System: group.Target,
                         Code: elementTarget.Code);
 
                     if (targetConcept is null)
                     {
                         // TODO: These are incorrect source mappings and need to be fixed, just not right now
-                        _logger.LogWarning($"Invalid target concept literal `{elementTarget.Code}`" +
+                        _logger.LogWarning($"Invalid target concept literal `{group.Target}#{elementTarget.Code}`" +
                             $" for Value Set: `{sourceVs.VersionedUrl}` source: `{groupSourceElement.Code}`" +
                             $" from map: {cm.Url} ({cm.Id}) - fix the map!");
                         continue;
@@ -1084,7 +1086,7 @@ public class ConceptMapLoader
                     }
 
                     // check to see if we already have this in the database
-                    DbValueSetConceptMappingRecord? conceptMapRec = DbValueSetConceptMappingRecord.SelectSingle(
+                    DbValueSetConceptMapping? conceptMapRec = DbValueSetConceptMapping.SelectSingle(
                         _db,
                         ValueSetMappingKey: vsMap.Key,
                         SourceValueSetConceptKey: sourceConcept.Key,
@@ -1098,7 +1100,7 @@ public class ConceptMapLoader
                     // create a record for the database
                     conceptMapRec = new()
                     {
-                        Key = DbValueSetConceptMappingRecord.GetIndex(),
+                        Key = DbValueSetConceptMapping.GetIndex(),
                         ValueSetMappingKey = vsMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -1138,7 +1140,7 @@ public class ConceptMapLoader
         string conceptMapFilename,
         string sourceInputPath)
     {
-        List<DbStructureMappingRecord> typeDefinitionMapsToAdd = [];
+        List<DbStructureMapping> typeDefinitionMapsToAdd = [];
 
         int sourceFileKey = _mappingLoader.getOrCreateMappingSourceFileKey(
             conceptMapFilename,
@@ -1181,9 +1183,9 @@ public class ConceptMapLoader
                 // check for no map
                 if (groupSourceElement.NoMap == true)
                 {
-                    DbStructureMappingRecord mapRec = new()
+                    DbStructureMapping mapRec = new()
                     {
-                        Key = DbStructureMappingRecord.GetIndex(),
+                        Key = DbStructureMapping.GetIndex(),
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -1234,9 +1236,9 @@ public class ConceptMapLoader
                         : null;
 
                     // create a record for the database
-                    DbStructureMappingRecord mapRec = new()
+                    DbStructureMapping mapRec = new()
                     {
-                        Key = DbStructureMappingRecord.GetIndex(),
+                        Key = DbStructureMapping.GetIndex(),
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,

@@ -91,7 +91,7 @@ internal class CrossVersionInteractive
     //    {
     //        string filename = config.ExistingComparisonPath.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
     //            ? config.ExistingComparisonPath
-    //            : Path.Combine(config.ExistingComparisonPath, "comparison.json");
+    //            : Contents.Combine(config.ExistingComparisonPath, "comparison.json");
 
     //        if (TryLoadExistingComparison(filename))
     //        {

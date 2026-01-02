@@ -76,9 +76,9 @@ public partial class XVerProcessor
 
         // grab the FHIR Packages we are processing
         List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.ShortName)]);
-        List<DbFhirPackageComparisonPair> packageComparisonPairs = DbFhirPackageComparisonPair.SelectList(
-            _db.DbConnection,
-            orderByProperties: [nameof(DbFhirPackageComparisonPair.SourcePackageKey), nameof(DbFhirPackageComparisonPair.TargetPackageKey)]);
+        List<FhirPackageComparisonPair> packageComparisonPairs = FhirPackageComparisonPair.GetPairs(packages)
+            .OrderBy(p => p.SortKey)
+            .ToList();
 
         // iterate over the list of packages
         foreach (DbFhirPackage package in packages)
@@ -146,7 +146,7 @@ public partial class XVerProcessor
 
     private void writeMarkdownStructures(
         List<DbFhirPackage> packages,
-        List<DbFhirPackageComparisonPair> packageComparisonPairs,
+        List<FhirPackageComparisonPair> packageComparisonPairs,
         DbFhirPackage package,
         string dir,
         FhirArtifactClassEnum artifactClass)
@@ -537,8 +537,8 @@ public partial class XVerProcessor
                 $"{arrows}" +
                 $"<br/>`{comparison.Relationship}`" +
                 $"<br/>- DBKey: `{comparison.Key}`" +
-                $"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
-                $"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
+                //$"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
+                //$"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
                 $"<br/>- Identical: `{comparison.IsIdentical ?? false}`" +
                 $"<br/>{arrows}";
         }
@@ -616,7 +616,7 @@ public partial class XVerProcessor
 
     private void writeMarkdownValueSets(
         List<DbFhirPackage> packages,
-        List<DbFhirPackageComparisonPair> packageComparisonPairs,
+        List<FhirPackageComparisonPair> packageComparisonPairs,
         DbFhirPackage package,
         string dir)
     {
@@ -1170,8 +1170,8 @@ public partial class XVerProcessor
                 $"{arrows}" +
                 $"<br/>`{comparison.Relationship}`" +
                 $"<br/>- DBKey: `{comparison.Key}`" +
-                $"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
-                $"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
+                //$"<br/>- Reviewed: `{comparison.LastReviewedOn?.ToString("o") ?? "n/a"}`" +
+                //$"<br/>- By: `{comparison.LastReviewedBy ?? "n/a"}`" +
                 $"<br/>- Identical: `{comparison.IsIdentical ?? false}`" +
                 $"<br/>{arrows}";
 

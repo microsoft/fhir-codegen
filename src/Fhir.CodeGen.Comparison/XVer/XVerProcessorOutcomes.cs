@@ -164,14 +164,14 @@ public partial class XVerProcessor
 
         // grab the FHIR Packages we are processing
         List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.ShortName)]);
-        List<DbFhirPackageComparisonPair> packageComparisonPairs = DbFhirPackageComparisonPair.SelectList(
-            _db.DbConnection,
-            orderByProperties: [nameof(DbFhirPackageComparisonPair.SourcePackageKey), nameof(DbFhirPackageComparisonPair.TargetPackageKey)]);
+        List<FhirPackageComparisonPair> packageComparisonPairs = FhirPackageComparisonPair.GetPairs(packages)
+            .OrderBy(p => p.SortKey)
+            .ToList();
 
         HashSet<(int sourcePackageKey, int targetPackageKey)> processedPackagePairs = [];
 
         // traverse all the processed pairs to build the neighbor-pair elementOutcomes
-        foreach (DbFhirPackageComparisonPair packagePair in packageComparisonPairs)
+        foreach (FhirPackageComparisonPair packagePair in packageComparisonPairs)
         {
             _logger.LogInformation(
                 $"Processing outcomes for package pair: {packagePair.SourcePackageShortName} -> {packagePair.TargetPackageShortName}");
@@ -720,7 +720,7 @@ public partial class XVerProcessor
     private void generateOutcomes(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
-        DbFhirPackageComparisonPair? packagePair)
+        FhirPackageComparisonPair packagePair)
     {
         // process value sets
         generateOutcomesVs(
@@ -804,7 +804,7 @@ public partial class XVerProcessor
     private void generateOutcomesVs(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
-        DbFhirPackageComparisonPair? packagePair)
+        FhirPackageComparisonPair? packagePair)
     {
         List<DbValueSetOutcome> vsOutcomesToAdd = [];
         List<DbValueSetConceptOutcome> vsConceptOutcomesToAdd = [];
@@ -1070,7 +1070,7 @@ public partial class XVerProcessor
                             IsRenamed = (sourceConcept.Code != targetConcept.Code),
 
                             IsUnmapped = false,
-                            IsIdentical = conceptComparison.CodesAreIdentical == true,
+                            IsIdentical = conceptComparison.CodeLiteralsAreIdentical == true,
                             IsEquivalent = conceptComparison.Relationship == CMR.Equivalent,
                             IsBroaderThanTarget = conceptComparison.Relationship == CMR.SourceIsBroaderThanTarget,
                             IsNarrowerThanTarget = conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
@@ -1169,7 +1169,7 @@ public partial class XVerProcessor
     private void generateOutcomesSd(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
-        DbFhirPackageComparisonPair? packagePair)
+        FhirPackageComparisonPair? packagePair)
     {
         List<DbStructureOutcome> sdOutcomesToAdd = [];
         List<DbElementOutcome> elementOutcomesToAdd = [];
@@ -1816,7 +1816,7 @@ public partial class XVerProcessor
             //    (string sourceVersion, string targetVersion) = packageVersions[packageId];
 
             //    // create the comparisonIndex file
-            //    using ExportStreamWriter indexWriter = createMarkdownWriter(Path.Combine(fhirDir, packageId, "input", "pagecontent", "lookup.md"), false, false);
+            //    using ExportStreamWriter indexWriter = createMarkdownWriter(Contents.Combine(fhirDir, packageId, "input", "pagecontent", "lookup.md"), false, false);
             //    indexWriter.WriteLine($"### FHIR {packageId} Cross-Version Artifact Lookup");
             //    indexWriter.WriteLine();
             //    indexWriter.WriteLine("The following table links to documentation for the source version of FHIR, for implementers to understand if there is an extension for the element they are trying to use.");

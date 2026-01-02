@@ -2988,7 +2988,7 @@ public class CrossVersionMapCollection
                 if (sourceSD != null && !string.IsNullOrEmpty(sourceSD.Path))
                 {
                     var excludeKeys = comparison.ElementComparisons.Keys.Where(k => !k.StartsWith($"{sourceSD.Path}.") || k.Substring(sourceSD.Path.Length + 1).Contains('.') || k.EndsWith(".id") || k.EndsWith(".extension") || k.EndsWith(".modifierExtension")).ToArray();
-                    foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Path))
+                    foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Contents))
                     {
                         // remove this element
                         comparison.ElementComparisons.Remove(key);
@@ -3022,7 +3022,7 @@ public class CrossVersionMapCollection
                         }
 
                         excludeKeys = comparison.ElementComparisons.Keys.Where(k => excludeProperties.Contains(k)).ToArray();
-                        foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Path))
+                        foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Contents))
                         {
                             // remove this element
                             comparison.ElementComparisons.Remove(key);
@@ -3030,7 +3030,7 @@ public class CrossVersionMapCollection
                     }
                     // Remove any properties in the comparisons that indicate there is no target for the property
                     excludeKeys = comparison.ElementComparisons.Where(ec => !ec.Value.TargetMappings.Any()).Select(kvp => kvp.Key).ToArray();
-                    foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Path))
+                    foreach (var key in excludeKeys) // comparison.ElementComparisons.ContainsKey(sourceSD?.Contents))
                     {
                         // remove this element
                         comparison.ElementComparisons.Remove(key);
@@ -3068,7 +3068,7 @@ public class CrossVersionMapCollection
                 Console.Write("Warning: Elements were not mapped for this type\n");
                 foreach (var comparisonElement in comparison.ElementComparisons)
                 {
-                    // Console.Write($"    {comparisonElement.Key} -> {String.Join(", ", comparisonElement.Value.TargetMappings.Select(tm => tm.Target?.Path))} // {comparisonElement.Value.Message}\n");
+                    // Console.Write($"    {comparisonElement.Key} -> {String.Join(", ", comparisonElement.Value.TargetMappings.Select(tm => tm.Target?.Contents))} // {comparisonElement.Value.Message}\n");
                     ReportIssue(issues, $"{comparisonElement.Key} -> {String.Join(", ", comparisonElement.Value.TargetMappings.Select(tm => tm.Target?.Path))} // {comparisonElement.Value.Message}", OperationOutcome.IssueType.Incomplete, OperationOutcome.IssueSeverity.Warning);
                     GenerateMapRule(issues, comparisonElement, parameterTypesByName, group);
                 }
@@ -3271,7 +3271,7 @@ public class CrossVersionMapCollection
             // Check that the comparison includes this rule.
             if (comparison != null && sourceV != null)
             {
-                // var ec = comparison.ElementComparisons.Values.Where(ec => ec.Source.Path == sourceV.Element?.Path);
+                // var ec = comparison.ElementComparisons.Values.Where(ec => ec.Source.Contents == sourceV.Element?.Contents);
                 if (comparison.ElementComparisons.ContainsKey(sourceV.PropertyPath))
                 {
                     // remove this element (but probably want to check that it is used correctly too)
@@ -3388,7 +3388,7 @@ internal static class ElementDefinitionNavigatorExtensions
 {
     public static string DebugString(this ElementDefinitionNavigator Element, bool includeTypes = true)
     {
-        // return $"{Definition.CanonicalUrl}|{Definition.Version} # {Element.Path} ({String.Join(",", Element.Current.Type.Select(t => t.Code))})";
+        // return $"{Definition.CanonicalUrl}|{Definition.Version} # {Element.Contents} ({String.Join(",", Element.Current.Type.Select(t => t.Code))})";
         if (includeTypes)
             return $"{Element.Path}|{Element.StructureDefinition.Version} ({String.Join(",", Element.Current.Type.Select(t =>
             {

@@ -119,7 +119,7 @@
         {
             ElementProjectionForUi proj = rec.ElementProjections.First();
 
-            if (proj.Comparison.NoMap == true)
+            if (proj.Comparison.NotMapped == true)
             {
                 return "⚠️ " + rec.Element.UiDisplayWithType;
                 // return $"{rec.Element.IdLong} !! not mapped";

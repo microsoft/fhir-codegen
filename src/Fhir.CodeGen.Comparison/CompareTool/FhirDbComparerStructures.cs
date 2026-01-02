@@ -14,11 +14,12 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 
 public partial class FhirDbComparer
 {
+#if false
     private void buildStructureComparisonPairsForSource(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
-        DbFhirPackageComparisonPair packageForwardPair,
-        DbFhirPackageComparisonPair packageReversePair,
+        FhirPackageComparisonPair packageForwardPair,
+        FhirPackageComparisonPair packageReversePair,
         bool allowUpdates = true)
     {
         _sdComparisonCache.Clear();
@@ -253,9 +254,9 @@ public partial class FhirDbComparer
         }
 
         // apply database changes
-        _sdComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-        _sdComparisonCache.ComparisonsToUpdate.Update(_db);
-        _sdComparisonCache.ComparisonsToDelete.Delete(_db);
+        _sdComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+        _sdComparisonCache.ToUpdate.Update(_db);
+        _sdComparisonCache.ToDelete.Delete(_db);
     }
 
     public (DbStructureComparison? inverted, bool? changed) UpdateInversion(
@@ -264,7 +265,7 @@ public partial class FhirDbComparer
     {
         bool addedInverse = false;
 
-        DbFhirPackageComparisonPair? inversePackagePair = DbFhirPackageComparisonPair.SelectSingle(
+        FhirPackageComparisonPair? inversePackagePair = FhirPackageComparisonPair.SelectSingle(
             _db,
             SourcePackageKey: forwardComparison.TargetFhirPackageKey,
             TargetPackageKey: forwardComparison.SourceFhirPackageKey);
@@ -381,9 +382,9 @@ public partial class FhirDbComparer
         }
 
         // apply our concept changes
-        edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-        edComparisonCache.ComparisonsToUpdate.Update(_db);
-        edComparisonCache.ComparisonsToDelete.Delete(_db);
+        edComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+        edComparisonCache.ToUpdate.Update(_db);
+        edComparisonCache.ToDelete.Delete(_db);
 
         // return the comparison in case the caller needs it
         return (inverseComparsion, edComparisonCache.Count != 0);
@@ -452,35 +453,35 @@ public partial class FhirDbComparer
         }
 
         // apply the changes to the structure comparisons
-        if (sdComparisonCache.ComparisonsToAdd.Any())
+        if (sdComparisonCache.ToAdd.Any())
         {
-            sdComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
+            sdComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
-        if (sdComparisonCache.ComparisonsToUpdate.Any())
+        if (sdComparisonCache.ToUpdate.Any())
         {
-            sdComparisonCache.ComparisonsToUpdate.Update(_db);
+            sdComparisonCache.ToUpdate.Update(_db);
         }
 
-        if (sdComparisonCache.ComparisonsToDelete.Any())
+        if (sdComparisonCache.ToDelete.Any())
         {
-            sdComparisonCache.ComparisonsToDelete.Delete(_db);
+            sdComparisonCache.ToDelete.Delete(_db);
         }
 
         // apply the changes to the element comparisons
-        if (edComparisonCache.ComparisonsToAdd.Any())
+        if (edComparisonCache.ToAdd.Any())
         {
-            edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
+            edComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
-        if (edComparisonCache.ComparisonsToUpdate.Any())
+        if (edComparisonCache.ToUpdate.Any())
         {
-            edComparisonCache.ComparisonsToUpdate.Update(_db);
+            edComparisonCache.ToUpdate.Update(_db);
         }
 
-        if (edComparisonCache.ComparisonsToDelete.Any())
+        if (edComparisonCache.ToDelete.Any())
         {
-            edComparisonCache.ComparisonsToDelete.Delete(_db);
+            edComparisonCache.ToDelete.Delete(_db);
         }
     }
 
@@ -545,17 +546,17 @@ public partial class FhirDbComparer
         }
 
         // apply the changes to the concept comparisons
-        edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-        edComparisonCache.ComparisonsToUpdate.Update(_db);
-        edComparisonCache.ComparisonsToDelete.Delete(_db);
+        edComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+        edComparisonCache.ToUpdate.Update(_db);
+        edComparisonCache.ToDelete.Delete(_db);
     }
 
     private void doStructureComparisons(
         DbFhirPackage sourcePackage,
         DbStructureDefinition sourceSd,
         DbFhirPackage targetPackage,
-        DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair)
+        FhirPackageComparisonPair forwardPair,
+        FhirPackageComparisonPair reversePair)
     {
         // check for a existing comparisons
         List<DbStructureComparison> forwardComparisons = _sdComparisonCache.ForSource(sourceSd.Key)
@@ -629,8 +630,8 @@ public partial class FhirDbComparer
         DbFhirPackage targetPackage,
         DbStructureDefinition targetSd,
         DbStructureComparison forwardComparison,
-        DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair)
+        FhirPackageComparisonPair forwardPair,
+        FhirPackageComparisonPair reversePair)
     {
         DbStructureComparison inverseComparison = findOrCreateInverse(
             forwardComparison,
@@ -777,8 +778,8 @@ public partial class FhirDbComparer
     private DbStructureComparison findOrCreateInverse(
         DbStructureComparison forwardComparison,
         DbComparisonCache<DbStructureComparison> sdComparisonCache,
-        DbFhirPackageComparisonPair forwardPair,
-        DbFhirPackageComparisonPair reversePair)
+        FhirPackageComparisonPair forwardPair,
+        FhirPackageComparisonPair reversePair)
     {
         // look for an inverse comparison
         DbStructureComparison? inverseComparison = null;
@@ -944,7 +945,7 @@ public partial class FhirDbComparer
 
     private DbStructureComparison invert(
         DbStructureComparison other,
-        DbFhirPackageComparisonPair reversePair)
+        FhirPackageComparisonPair reversePair)
     {
         // if this is a primitive mapping, override some properties
         if (FhirTypeMappings.TryGetMapping(other.TargetName!, other.SourceName, out FhirTypeMappings.CodeGenTypeMapping? tm))
@@ -1019,4 +1020,5 @@ public partial class FhirDbComparer
             IsIdentical = other.IsIdentical,
         };
     }
+#endif
 }

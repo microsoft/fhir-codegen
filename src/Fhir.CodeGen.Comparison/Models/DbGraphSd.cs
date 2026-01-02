@@ -50,9 +50,9 @@ public class DbGraphSd
         public DbStructureDefinition? RightSd { get; set; } = null;
         public DbStructureComparison? RightComparison { get; set; } = null;
         IDbComparisonCell? IDbComparisonCell.LeftCell => LeftCell;
-        DbPackageComparisonContent? IDbComparisonCell.LeftComparison => LeftComparison;
+        DbComparisonBase? IDbComparisonCell.LeftComparison => LeftComparison;
         IDbComparisonCell? IDbComparisonCell.RightCell => RightCell;
-        DbPackageComparisonContent? IDbComparisonCell.RightComparison => RightComparison;
+        DbComparisonBase? IDbComparisonCell.RightComparison => RightComparison;
 
         object ICloneable.Clone() => this with { };
 
@@ -375,7 +375,7 @@ public class DbGraphSd
             }
 
             if ((edges.Count == 1) &&
-                (edges[0].NoMap == true))
+                (edges[0].NotMapped == true))
             {
                 if (projectRight)
                 {
@@ -404,9 +404,10 @@ public class DbGraphSd
                 DbElement element = DbElement.SelectSingle(_graph._db, Key: edge.TargetElementKey)
                     ?? throw new Exception($"Failed to resolve compared element: {edge.TargetElementKey}!");
 
-                DbElementComparison? inverseEdge = edge.InverseComparisonKey == null
-                    ? null
-                    : DbElementComparison.SelectSingle(_graph._db, Key: edge.InverseComparisonKey);
+                DbElementComparison? inverseEdge = null;
+                //DbElementComparison? inverseEdge = edge.InverseComparisonKey == null
+                //    ? null
+                //    : DbElementComparison.SelectSingle(_graph._db, Key: edge.InverseComparisonKey);
 
                 DbElementRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(false);
                 if (projectRight == true)
@@ -528,9 +529,9 @@ public class DbGraphSd
         public DbValueSetComparison? RightVsComparison { get; set; } = null;
 
         IDbComparisonCell? IDbComparisonCell.LeftCell => LeftCell;
-        DbPackageComparisonContent? IDbComparisonCell.LeftComparison => LeftComparison;
+        DbComparisonBase? IDbComparisonCell.LeftComparison => LeftComparison;
         IDbComparisonCell? IDbComparisonCell.RightCell => RightCell;
-        DbPackageComparisonContent? IDbComparisonCell.RightComparison => RightComparison;
+        DbComparisonBase? IDbComparisonCell.RightComparison => RightComparison;
 
         object ICloneable.Clone() => this with { };
     }
@@ -731,9 +732,10 @@ public class DbGraphSd
         // iterate over our neighbors
         foreach (DbStructureComparison edge in edges)
         {
-            DbStructureComparison? inverseEdge = edge.InverseComparisonKey == null
-                ? null
-                : DbStructureComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
+            DbStructureComparison? inverseEdge = null;
+            //DbStructureComparison? inverseEdge = edge.InverseComparisonKey == null
+            //    ? null
+            //    : DbStructureComparison.SelectSingle(_db, Key: edge.InverseComparisonKey);
 
             DbSdRow row = edges.Count == 1 ? incomingRow : incomingRow.DeepCopy(false);
             if (projectRight == true)

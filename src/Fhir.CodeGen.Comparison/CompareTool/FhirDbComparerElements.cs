@@ -13,6 +13,7 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 
 public partial class FhirDbComparer
 {
+#if false
     private List<DbElementComparison> doElementComparisons(
         DbComparisonCache<DbStructureComparison> sdComparisonCache,
         DbComparisonCache<DbElementComparison> edComparisonCache,
@@ -82,7 +83,7 @@ public partial class FhirDbComparer
                         Relationship = relationship,
                         ConceptDomainRelationship = null,
                         ValueDomainRelationship = null,
-                        ElementTypeComparisonKey = null,
+                        CollatedTypeComparisonKey = null,
                         BoundValueSetComparisonKey = ((sourceElement.BindingValueSetKey != null) && (targetElement.BindingValueSetKey != null))
                             ? DbValueSetComparison.SelectSingle(
                                 _db,
@@ -128,7 +129,7 @@ public partial class FhirDbComparer
                     Relationship = null,
                     ConceptDomainRelationship = null,
                     ValueDomainRelationship = null,
-                    ElementTypeComparisonKey = null,
+                    CollatedTypeComparisonKey = null,
                     BoundValueSetComparisonKey = null,
                     NoMap = true,
                     TechnicalMessage = $"No mapping exists and no literal match found - created no-map entry for `{sourceSd.Name}`: `{sourceElement.Id}`",
@@ -269,7 +270,7 @@ public partial class FhirDbComparer
                         targetPackage,
                         targetElement);
 
-                    if (elementComparison.ElementTypeComparisonKey != collatedTypeComparison.Key)
+                    if (elementComparison.CollatedTypeComparisonKey != collatedTypeComparison.Key)
                     {
                         changed = true;
                     }
@@ -430,7 +431,7 @@ public partial class FhirDbComparer
                         elementComparison.NoMap = noMap;
                         elementComparison.IsGenerated = isGenerated;
                         elementComparison.TechnicalMessage = string.Join(" ", messages);
-                        elementComparison.ElementTypeComparisonKey = collatedTypeComparison.Key;
+                        elementComparison.CollatedTypeComparisonKey = collatedTypeComparison.Key;
                         elementComparison.BoundValueSetComparisonKey = boundValueSetComparison?.Key;
                         edComparisonCache.Changed(elementComparison);
                     }
@@ -792,7 +793,7 @@ public partial class FhirDbComparer
             TargetElementKey = other.SourceElementKey,
             TargetElementToken = other.SourceElementToken,
             StructureComparisonKey = reverseCanonicalComparison.Key,
-            ElementTypeComparisonKey = inverseTypeComparisonKey,
+            CollatedTypeComparisonKey = inverseTypeComparisonKey,
             BoundValueSetComparisonKey = boundValueSetComparisonKey,
             Relationship = invert(other.Relationship),
             ConceptDomainRelationship = invert(other.ConceptDomainRelationship),
@@ -808,5 +809,5 @@ public partial class FhirDbComparer
             IsIdentical = other.IsIdentical,
         };
     }
-
+#endif
 }

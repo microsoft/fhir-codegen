@@ -15,13 +15,49 @@ public enum BidirectionalRelationshipCodes
     Mismatched,
 }
 
+public static class DbComparisonClasses
+{
+    public static void LoadIndices(IDbConnection db)
+    {
+        DbValueSetComparison.LoadMaxKey(db);
+        DbValueSetConceptComparison.LoadMaxKey(db);
+
+        DbStructureComparison.LoadMaxKey(db);
+
+        DbElementComparison.LoadMaxKey(db);
+        DbCollatedTypeComparison.LoadMaxKey(db);
+    }
+
+    public static void DropTables(IDbConnection db)
+    {
+        DbValueSetComparison.DropTable(db);
+        DbValueSetConceptComparison.DropTable(db);
+
+        DbStructureComparison.DropTable(db);
+
+        DbElementComparison.DropTable(db);
+        DbCollatedTypeComparison.DropTable(db);
+    }
+
+    public static void CreateTables(IDbConnection db)
+    {
+        DbValueSetComparison.CreateTable(db);
+        DbValueSetConceptComparison.CreateTable(db);
+
+        DbStructureComparison.CreateTable(db);
+
+        DbElementComparison.CreateTable(db);
+        DbCollatedTypeComparison.CreateTable(db);
+    }
+}
+
 public interface IDbComparisonCell
 {
     IDbComparisonCell? LeftCell { get; }
-    DbPackageComparisonContent? LeftComparison { get; }
+    DbComparisonBase? LeftComparison { get; }
 
     IDbComparisonCell? RightCell { get; }
-    DbPackageComparisonContent? RightComparison { get; }
+    DbComparisonBase? RightComparison { get; }
 }
 
 public static class DbComparisonCellExtensions
@@ -149,136 +185,184 @@ public static class DbComparisonCellExtensions
 }
 
 
-[CgSQLiteTable(tableName: "PackageComparisonPairs")]
-public partial class DbFhirPackageComparisonPair : DbRecordBase
-{
-    public int InverseComparisonKey { get; set; } = -1;
-
-    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
-    public required int SourcePackageKey { get; set; }
-
-    public required string SourcePackageShortName { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
-    public required int TargetPackageKey { get; set; }
-
-    public required string TargetPackageShortName { get; set; }
-
-    public DateTime ProcessedAt { get; set; } = DateTime.UtcNow;
-}
-
-
-public interface IDbPackageComparisonContent
-{
-    int Key { get; }
-    int? InverseComparisonKey { get; }
-    int PackageComparisonKey { get; }
-    int SourceFhirPackageKey { get; }
-    int TargetFhirPackageKey { get; }
-
-    int SourceContentKey { get; }
-    int? TargetContentKey { get; }
-}
-
 [CgSQLiteBaseClass]
-public abstract class DbPackageComparisonContent : DbRecordBase
+public abstract class DbComparisonBase : DbRecordBase
 {
-    public int? InverseComparisonKey { get; set; } = -1;
-
-    [CgSQLiteForeignKey(referenceTable: "PackageComparisonPairs", referenceColumn: nameof(DbFhirPackageComparisonPair.Key))]
-    public required int PackageComparisonKey { get; set; }
-
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int SourceFhirPackageKey { get; set; }
+
+    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes SourceFhirSequence { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
     public required int TargetFhirPackageKey { get; set; }
 
+    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes TargetFhirSequence { get; set; }
+
+    public required int Steps { get; set; }
+
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
+    public required bool NotMapped { get; set; }
+    public required bool? IsIdentical { get; set; }
+
     public required string? TechnicalMessage { get; set; }
     public required string? UserMessage { get; set; }
-    public required bool? IsGenerated { get; set; }
-    public string? LastReviewedBy { get; set; } = null;
-    public DateTime? LastReviewedOn { get; set; } = null;
+    //public required bool? IsGenerated { get; set; }
+    //public string? LastReviewedBy { get; set; } = null;
+    //public DateTime? LastReviewedOn { get; set; } = null;
+
+    public int? ContentKeyR2 { get; set; } = null;
+    public int? ContentKeyR3 { get; set; } = null;
+    public int? ContentKeyR4 { get; set; } = null;
+    public int? ContentKeyR4B { get; set; } = null;
+    public int? ContentKeyR5 { get; set; } = null;
+    public int? ContentKeyR6 { get; set; } = null;
+
+    [CgSQLiteIgnore]
+    public int?[] ContentKeys
+    {
+        get => [ContentKeyR2, ContentKeyR3, ContentKeyR4, ContentKeyR4B, ContentKeyR5, ContentKeyR6];
+        set
+        {
+            switch (value.Length)
+            {
+                case 0:
+                    ContentKeyR2 = null;
+                    ContentKeyR3 = null;
+                    ContentKeyR4 = null;
+                    ContentKeyR4B = null;
+                    ContentKeyR5 = null;
+                    ContentKeyR6 = null;
+                    return;
+
+                case 5:
+                    ContentKeyR2 = value[0];
+                    ContentKeyR3 = value[1];
+                    ContentKeyR4 = value[2];
+                    ContentKeyR4B = value[3];
+                    ContentKeyR5 = value[4];
+                    ContentKeyR6 = null;
+                    return;
+
+                case 6:
+                    ContentKeyR2 = value[0];
+                    ContentKeyR3 = value[1];
+                    ContentKeyR4 = value[2];
+                    ContentKeyR4B = value[3];
+                    ContentKeyR5 = value[4];
+                    ContentKeyR6 = value[5];
+                    return;
+            }
+
+            throw new ArgumentException($"Invalid number of keys: {value.Length}. Expected 5 or 6.");
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int?[] ContentKeysInverted
+    {
+        get => [ContentKeyR6, ContentKeyR5, ContentKeyR4B, ContentKeyR4, ContentKeyR3, ContentKeyR2];
+    }
+
+    public int? GetContentKeyFromSource(int offsetFromSource)
+    {
+        int targetIndex = (int)SourceFhirSequence - 1;
+
+        int index = (SourceFhirSequence > TargetFhirSequence)
+            ? targetIndex + offsetFromSource
+            : targetIndex - offsetFromSource;
+
+        switch (index)
+        {
+            case 0: return ContentKeyR2;
+            case 1: return ContentKeyR3;
+            case 2: return ContentKeyR4;
+            case 3: return ContentKeyR4B;
+            case 4: return ContentKeyR5;
+            case 5: return ContentKeyR6;
+            default: return null;
+        }
+    }
+
+    public int? GetContentKeyFromTarget(int offsetFromTarget)
+    {
+        int targetIndex = (int)TargetFhirSequence - 1;
+
+        int index = (SourceFhirSequence > TargetFhirSequence)
+            ? targetIndex + offsetFromTarget
+            : targetIndex - offsetFromTarget;
+
+        switch (index)
+        {
+            case 0: return ContentKeyR2;
+            case 1: return ContentKeyR3;
+            case 2: return ContentKeyR4;
+            case 3: return ContentKeyR4B;
+            case 4: return ContentKeyR5;
+            case 5: return ContentKeyR6;
+            default: return null;
+        }
+    }
+
+    [CgSQLiteIgnore]
+    public int? PriorContentKeyFromArray => GetContentKeyFromTarget(1);
+
+    [CgSQLiteIgnore]
+    public int? PriorContentKeyFromArrayInverted => GetContentKeyFromSource(1);
+
+
+    [CgSQLiteIgnore]
+    public virtual int SourceContentKey { get; set; }
+
+    [CgSQLiteIgnore]
+    public virtual int? TargetContentKey { get; set; }
+}
+
+[CgSQLiteBaseClass]
+public abstract class DbArtifactComparisonBase : DbComparisonBase
+{
+    public required string SourceCanonicalVersioned { get; set; }
+    public required string SourceCanonicalUnversioned { get; set; }
+    public required string SourceId { get; set; }
+    public required string SourceName { get; set; }
+    public required string SourceVersion { get; set; }
+
+    public required string? TargetCanonicalVersioned { get; set; }
+    public required string? TargetCanonicalUnversioned { get; set; }
+    public required string? TargetId { get; set; }
+    public required string? TargetName { get; set; }
+    public required string? TargetVersion { get; set; }
 }
 
 
 [CgSQLiteTable(tableName: "ValueSetComparisons")]
-[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceValueSetKey))]
-[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey))]
-[CgSQLiteIndex(nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey))]
-public partial class DbValueSetComparison : DbPackageComparisonContent, IDbPackageComparisonContent
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceValueSetKey))]
+public partial class DbValueSetComparison : DbArtifactComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int SourceValueSetKey { get; set; }
 
-    public required string SourceCanonicalVersioned { get; set; }
-    public required string SourceCanonicalUnversioned { get; set; }
-    public required string SourceName { get; set; }
-    public required string SourceVersion { get; set; }
+    [CgSQLiteIgnore]
+    public override int SourceContentKey { get => this.SourceValueSetKey; set => this.SourceValueSetKey = value; }
+
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int? TargetValueSetKey { get; set; }
 
-    public required string? TargetCanonicalVersioned { get; set; }
-    public required string? TargetCanonicalUnversioned { get; set; }
-    public required string? TargetName { get; set; }
-    public required string? TargetVersion { get; set; }
-
-    public required string CompositeName { get; set; }
-    public required string? SourceConceptMapUrl { get; set; }
-    public required string? SourceConceptMapAdditionalUrls { get; set; }
-
-    public required bool? IsIdentical { get; set; }
-    public required bool? CodesAreIdentical { get; set; }
-
     [CgSQLiteIgnore]
-    public int SourceContentKey => SourceValueSetKey;
-    [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetValueSetKey;
+    public override int? TargetContentKey { get => this.TargetValueSetKey; set => this.TargetValueSetKey = value; }
 
-    private static DbValueSetComparison _empty = EmptyCopy;
 
-    [CgSQLiteIgnore]
-    public static DbValueSetComparison Empty => _empty;
+    [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMapping.Key))]
+    public required int? ValueSetMappingKey { get; set; }
 
-    [CgSQLiteIgnore]
-    public static DbValueSetComparison EmptyCopy => new()
-    {
-        Key = -1,
-        PackageComparisonKey = -1,
-        SourceFhirPackageKey = -1,
-        SourceValueSetKey = -1,
-        SourceCanonicalVersioned = string.Empty,
-        SourceCanonicalUnversioned = string.Empty,
-        SourceName = string.Empty,
-        SourceVersion = string.Empty,
-        TargetFhirPackageKey = -1,
-        TargetValueSetKey = null,
-        TargetCanonicalVersioned = null,
-        TargetCanonicalUnversioned = null,
-        TargetName = null,
-        TargetVersion = null,
-        CompositeName = string.Empty,
-        SourceConceptMapUrl = null,
-        SourceConceptMapAdditionalUrls = null,
-        Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
-        TechnicalMessage = null,
-        UserMessage = null,
-        IsGenerated = false,
-        IsIdentical = null,
-        CodesAreIdentical = null,
-    };
+
+    public required bool? CodeLiteralsAreIdentical { get; set; }
+
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptComparisons")]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey))]
-[CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceConceptKey), nameof(TargetConceptKey))]
-[CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey))]
-[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey), nameof(TargetConceptKey))]
-[CgSQLiteIndex(nameof(ValueSetComparisonKey), nameof(SourceValueSetKey), nameof(TargetConceptKey))]
-[CgSQLiteIndex(nameof(SourceValueSetKey), nameof(SourceConceptKey), nameof(TargetFhirPackageKey))]
-public partial class DbValueSetConceptComparison : DbPackageComparisonContent, IDbPackageComparisonContent
+public partial class DbValueSetConceptComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
     public required int ValueSetComparisonKey { get; set; }
@@ -286,161 +370,65 @@ public partial class DbValueSetConceptComparison : DbPackageComparisonContent, I
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int SourceValueSetKey { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int? TargetValueSetKey { get; set; }
-
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int SourceConceptKey { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public required int? TargetConceptKey { get; set; }
-
-    public required bool? NoMap { get; set; }
-    public required bool? IsIdentical { get; set; }
-    public required bool? CodesAreIdentical { get; set; }
-
     [CgSQLiteIgnore]
-    public int SourceContentKey => SourceConceptKey;
-    [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetConceptKey;
+    public override int SourceContentKey { get => this.SourceConceptKey; set => this.SourceConceptKey = value; }
 
-    private static DbValueSetConceptComparison _empty = EmptyCopy;
-
-    [CgSQLiteIgnore]
-    public static DbValueSetConceptComparison Empty => _empty;
-
-    [CgSQLiteIgnore]
-    public static DbValueSetConceptComparison EmptyCopy => new()
-    {
-        Key = -1,
-        PackageComparisonKey = -1,
-        ValueSetComparisonKey = -1,
-        SourceFhirPackageKey = -1,
-        SourceValueSetKey = -1,
-        SourceConceptKey = -1,
-        TargetFhirPackageKey = -1,
-        TargetValueSetKey = null,
-        TargetConceptKey = null,
-        Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
-        TechnicalMessage = null,
-        UserMessage = null,
-        NoMap = null,
-        IsGenerated = false,
-        IsIdentical = null,
-        CodesAreIdentical = null,
-    };
-
-}
-
-[CgSQLiteTable(tableName: "UnresolvedConceptComparisons")]
-public partial class DbUnresolvedConceptComparison : DbPackageComparisonContent
-{
-    [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
-    public int ValueSetComparisonKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
-    public required int SourceValueSetKey { get; set; }
+    public required string SourceSystem { get; set; }
+    public required string SourceCode { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int? TargetValueSetKey { get; set; }
 
-
-    public required string ConceptMapId { get; set; }
-    public required string ConceptMapUrl { get; set; }
-
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcept", referenceColumn: nameof(DbValueSetConcept.Key))]
-    public required int? SourceConceptKey { get; set; }
-    public required bool SourceConceptExists { get; set; } = false;
-    public required string SourceSystem { get; set; }
-    public required string SourceCode { get; set; }
-    public required string? SourceDisplay { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ValueSetConcept", referenceColumn: nameof(DbValueSetConcept.Key))]
+    [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int? TargetConceptKey { get; set; }
-    public required bool? TargetConceptExists { get; set; }
+
+    [CgSQLiteIgnore]
+    public override int? TargetContentKey { get => this.TargetConceptKey; set => this.TargetConceptKey = value; }
+
     public required string? TargetSystem { get; set; }
     public required string? TargetCode { get; set; }
-    public required string? TargetDisplay { get; set; }
 
-    public required bool? NoMap { get; set; }
+    [CgSQLiteForeignKey(referenceTable: "ValueSetConceptMappings", referenceColumn: nameof(DbValueSetConceptMapping.Key))]
+    public int? ValueSetConceptMappingKey { get; set; }
+
+
+    public required bool? CodeLiteralsAreIdentical { get; set; }
+    public required bool SourceCodeTreatedAsEscapeValve { get; set; }
+    public required bool? TargetCodeTreatedAsEscapeValve { get; set; }
 }
 
-public enum StructureReviewTypeCodes : int
-{
-    None = 0,
-    StructureMappings = 1,
-    ElementMappings = 2,
-    Complete = 3,
-}
+
 
 [CgSQLiteTable(tableName: "StructureComparisons")]
-[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceStructureKey))]
-[CgSQLiteIndex(nameof(PackageComparisonKey), nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
-public partial class DbStructureComparison : DbPackageComparisonContent, IDbPackageComparisonContent
+public partial class DbStructureComparison : DbArtifactComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int SourceStructureKey { get; set; }
 
-    public required string SourceCanonicalVersioned { get; set; }
-    public required string SourceCanonicalUnversioned { get; set; }
-    public required string SourceName { get; set; }
-    public required string SourceVersion { get; set; }
+    [CgSQLiteIgnore]
+    public override int SourceContentKey { get => this.SourceStructureKey; set => this.SourceStructureKey = value; }
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int? TargetStructureKey { get; set; }
-    public required string? TargetCanonicalVersioned { get; set; }
-    public required string? TargetCanonicalUnversioned { get; set; }
-    public required string? TargetName { get; set; }
-    public required string? TargetVersion { get; set; }
 
-    public required string CompositeName { get; set; }
-    public required string? SourceOverviewConceptMapUrl { get; set; }
-    public required string? SourceStructureFmlUrl { get; set; }
+    [CgSQLiteIgnore]
+    public override int? TargetContentKey { get => this.TargetStructureKey; set => this.TargetStructureKey = value; }
+
+    [CgSQLiteForeignKey(referenceTable: "StructureMappings", referenceColumn: nameof(DbStructureMapping.Key))]
+    public required int? StructureMappingKey { get; set; }
+
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
-    public required bool? IsIdentical { get; set; }
-
-    public required StructureReviewTypeCodes? ReviewType { get; set; }
-
-    [CgSQLiteIgnore]
-    public int SourceContentKey => SourceStructureKey;
-    [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetStructureKey;
-
 }
 
-
-[CgSQLiteTable(tableName: "UnresolvedStructureComparisons")]
-public partial class DbUnresolvedStructureComparison : DbPackageComparisonContent
-{
-    public required string ConceptMapId { get; set; }
-    public required string ConceptMapUrl { get; set; }
-
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int? SourceStructureKey { get; set; }
-
-    public required string? SourceCanonicalVersioned { get; set; }
-    public required string? SourceCanonicalUnversioned { get; set; }
-    public required string? SourceName { get; set; }
-    public required string? SourceVersion { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int? TargetStructureKey { get; set; }
-    public required string? TargetCanonicalVersioned { get; set; }
-    public required string? TargetCanonicalUnversioned { get; set; }
-    public required string? TargetName { get; set; }
-    public required string? TargetVersion { get; set; }
-}
 
 
 [CgSQLiteTable(tableName: "ElementComparisons")]
-[CgSQLiteIndex(nameof(StructureComparisonKey), nameof(SourceStructureKey), nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
-[CgSQLiteIndex(nameof(StructureComparisonKey), nameof(SourceElementKey), nameof(TargetElementKey))]
-[CgSQLiteIndex(nameof(StructureComparisonKey))]
-public partial class DbElementComparison : DbPackageComparisonContent, IDbPackageComparisonContent
+public partial class DbElementComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
     public required int StructureComparisonKey { get; set; }
@@ -448,85 +436,52 @@ public partial class DbElementComparison : DbPackageComparisonContent, IDbPackag
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int SourceStructureKey { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int SourceElementKey { get; set; }
+
+    [CgSQLiteIgnore]
+    public override int SourceContentKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
+
+    public required string SourceElementToken { get; set; }
+
+
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int? TargetStructureKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public required int SourceElementKey { get; set; }
-    public required string SourceStructureUrl { get; set; }
-    public required string SourceElementToken { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int? TargetElementKey { get; set; }
-    public required string? TargetStructureUrl { get; set; }
+
+    [CgSQLiteIgnore]
+    public override int? TargetContentKey { get => this.TargetElementKey; set => this.TargetElementKey = value; }
+
     public required string? TargetElementToken { get; set; }
 
-    public required bool? NoMap { get; set; }
+
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
+
     [CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
-    public required int? ElementTypeComparisonKey { get; set; }
+    public required int? CollatedTypeComparisonKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
     public required int? BoundValueSetComparisonKey { get; set; }
-
-    public required bool? IsIdentical { get; set; }
-
-    [CgSQLiteIgnore]
-    public int SourceContentKey => SourceElementKey;
-    [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetElementKey;
-
-
-    private static DbElementComparison _empty = EmptyCopy;
-
-    [CgSQLiteIgnore]
-    public static DbElementComparison Empty => _empty;
-
-    [CgSQLiteIgnore]
-    public static DbElementComparison EmptyCopy => new()
-    {
-        Key = -1,
-        PackageComparisonKey = -1,
-        StructureComparisonKey = -1,
-        SourceFhirPackageKey = -1,
-        SourceStructureKey = -1,
-        SourceElementKey = -1,
-        SourceStructureUrl = string.Empty,
-        SourceElementToken = string.Empty,
-        TargetFhirPackageKey = -1,
-        TargetStructureKey = null,
-        TargetElementKey = null,
-        TargetStructureUrl = null,
-        TargetElementToken = null,
-        Relationship = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship.NotRelatedTo,
-        ConceptDomainRelationship = null,
-        ValueDomainRelationship = null,
-        TechnicalMessage = null,
-        UserMessage = null,
-        NoMap = null,
-        IsGenerated = false,
-        IsIdentical = null,
-        ElementTypeComparisonKey = null,
-        BoundValueSetComparisonKey = null,
-    };
 }
 
 [CgSQLiteTable(tableName: "CollatedTypeComparisons")]
-//[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
-//[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey))]
-public partial class DbCollatedTypeComparison : DbPackageComparisonContent, IDbPackageComparisonContent
+public partial class DbCollatedTypeComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
     public required int ElementComparisonKey { get; set; }
-
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
     public required int SourceElementKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbElementType.Key))]
     public required int SourceCollatedTypeKey { get; set; }
+
+    [CgSQLiteIgnore]
+    public override int SourceContentKey { get => this.SourceCollatedTypeKey; set => this.SourceCollatedTypeKey = value; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
@@ -535,89 +490,21 @@ public partial class DbCollatedTypeComparison : DbPackageComparisonContent, IDbP
     [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbElementType.Key))]
     public required int? TargetCollatedTypeKey { get; set; }
 
-    public required bool? NoMap { get; set; }
+    [CgSQLiteIgnore]
+    public override int? TargetContentKey { get => this.TargetCollatedTypeKey; set => this.TargetCollatedTypeKey = value; }
+
+
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
-
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TargetProfileRelationship { get; set; }
     public required string TargetProfileMessage { get; set; }
+
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TypeProfileRelationship { get; set; }
     public required string TypeProfileMessage { get; set; }
-
-    [CgSQLiteIgnore]
-    public int SourceContentKey => SourceElementKey;
-    [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetElementKey;
-}
-
-[CgSQLiteTable(tableName: "ElementTypeComparisons")]
-[CgSQLiteIndex(nameof(CollatedTypeComparisonKey), nameof(SourceTypeKey))]
-[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
-[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey), nameof(SourceTypeKey))]
-//[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceElementTypeLiteral), nameof(TargetElementTypeLiteral))]
-public partial class DbElementTypeComparison : DbPackageComparisonContent, IDbPackageComparisonContent
-{
-    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
-    public required int ElementComparisonKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "CollatedTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
-    public required int CollatedTypeComparisonKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
-    public required int SourceElementKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
-    public required int SourceTypeKey { get; set; }
-
-    public required string SourceTypeLiteral { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
-    public required int? TargetElementKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
-    public required int? TargetTypeKey { get; set; }
-
-    public required string? TargetTypeLiteral { get; set; }
-
-    public required bool? NoMap { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
-
-    [CgSQLiteIgnore]
-    public int SourceContentKey => SourceTypeKey;
-    [CgSQLiteIgnore]
-    public int? TargetContentKey => TargetTypeKey;
-}
-
-
-[CgSQLiteTable(tableName: "UnresolvedElementComparisons")]
-public partial class DbUnresolvedElementComparison : DbPackageComparisonContent
-{
-    [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
-    public required int? StructureComparisonKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "UnresolvedStructureComparisons", referenceColumn: nameof(DbUnresolvedStructureComparison.Key))]
-    public required int? UnresolvedStructureComparisonKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int? SourceStructureKey { get; set; }
-
-    public required string SourceStructureUrl { get; set; }
-    public required string SourceElementToken { get; set; }
-    public required bool SourceElementExists { get; set; } = false;
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int? TargetStructureKey { get; set; }
-
-    public required string? TargetStructureUrl { get; set; }
-    public required string? TargetElementToken { get; set; }
-    public required bool TargetElementExists { get; set; } = false;
-
-    public required bool? NoMap { get; set; }
 }
 
 public class DbComparisonCache<T>
-        where T : IDbPackageComparisonContent
+        where T : DbComparisonBase
 {
     private readonly Dictionary<int, T> _byKey = [];
     private readonly Dictionary<(int sourceKey, int? targetKey), T> _byPair = [];
@@ -628,6 +515,9 @@ public class DbComparisonCache<T>
 
     public bool TryGet(int key, [NotNullWhen(true)] out T? value) => _byKey.TryGetValue(key, out value);
     public bool TryGet((int sourceKey, int? targetKey) pair, [NotNullWhen(true)] out T? value) => _byPair.TryGetValue(pair, out value);
+
+    public bool Contains(int key) => _byKey.ContainsKey(key);
+    public bool Contains((int sourceKey, int? targetKey) pair) => _byPair.ContainsKey(pair);
 
     public T? Get(int key) => _byKey.TryGetValue(key, out T? value) ? value : default(T);
     public T? Get(int sourceKey, int? targetKey) => _byPair.TryGetValue((sourceKey, targetKey), out T? value) ? value : default(T);
@@ -647,10 +537,16 @@ public class DbComparisonCache<T>
     }
 
     public IEnumerable<T> Values => _byKey.Values;
+    public int ValueCount => _byKey.Count;
 
-    public IEnumerable<T> ComparisonsToAdd => _toAdd.Values;
-    public IEnumerable<T> ComparisonsToUpdate => _toUpdate.Values;
-    public IEnumerable<T> ComparisonsToDelete => _toDelete.Values;
+    public IEnumerable<T> ToAdd => _toAdd.Values;
+    public int ToAddCount => _toAdd.Count;
+
+    public IEnumerable<T> ToUpdate => _toUpdate.Values;
+    public int ToUpdateCount => _toUpdate.Count;
+
+    public IEnumerable<T> ToDelete => _toDelete.Values;
+    public int ToDeleteCount => _toDelete.Count;
 
     public void Clear()
     {
@@ -711,19 +607,3 @@ public class DbComparisonCache<T>
     public int Count => _byKey.Count;
 }
 
-
-//public partial class DbXverSourceFml : DbPackageComparisonContent
-//{
-//    [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
-//    public required int? StructureComparisonKey { get; set; }
-
-//    [CgSQLiteForeignKey(referenceTable: "UnresolvedStructureComparisons", referenceColumn: nameof(DbUnresolvedStructureComparison.Key))]
-//    public required int? UnresolvedStructureComparisonKey { get; set; }
-
-//    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-//    public required int? SourceStructureKey { get; set; }
-
-//    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-//    public required int? TargetStructureKey { get; set; }
-
-//}

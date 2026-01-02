@@ -1181,9 +1181,9 @@ public partial class XVerProcessor
 
         // grab the FHIR Packages we are processing
         List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db.DbConnection, orderByProperties: [nameof(DbFhirPackage.ShortName)]);
-        List<DbFhirPackageComparisonPair> packageComparisonPairs = DbFhirPackageComparisonPair.SelectList(
-            _db.DbConnection,
-            orderByProperties: [nameof(DbFhirPackageComparisonPair.SourcePackageKey), nameof(DbFhirPackageComparisonPair.TargetPackageKey)]);
+        List<FhirPackageComparisonPair> packageComparisonPairs = FhirPackageComparisonPair.GetPairs(packages)
+            .OrderBy(p => p.SortKey)
+            .ToList();
 
         ConcurrentDictionary<int, string> differentialVsBySourceKey = [];
 
@@ -1741,8 +1741,8 @@ public partial class XVerProcessor
         //    string packageDir = createExportPackageDir(fhirDir, focusPackage, targetPackage);
 
         //    packageDir = _config.XverExportForPublisher
-        //        ? Path.Combine(packageDir, "input", "vocabulary")
-        //        : Path.Combine(packageDir, "sourcePackage");
+        //        ? Contents.Combine(packageDir, "input", "vocabulary")
+        //        : Contents.Combine(packageDir, "sourcePackage");
         //    if (!Directory.Exists(packageDir))
         //    {
         //        Directory.CreateDirectory(packageDir);
@@ -1750,7 +1750,7 @@ public partial class XVerProcessor
 
         //    // write the value set to a file
         //    string filename = $"ValueSet-{originalDbVs.IdLong}.json";
-        //    string path = Path.Combine(packageDir, filename);
+        //    string path = Contents.Combine(packageDir, filename);
         //    File.WriteAllText(path, originalDbVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
         //}
     }
@@ -2537,7 +2537,7 @@ public partial class XVerProcessor
 
         string xverPackageId = getPackageId(sourcePackage, targetPackage);
 
-        //string sdId = $"{focusPackage.ShortName}-{element.Path}-for-{targetPackage.ShortName}";
+        //string sdId = $"{focusPackage.ShortName}-{element.Contents}-for-{targetPackage.ShortName}";
         string sdId = $"ext-{sourcePackage.ShortName}-{collapsePathForId(element.Path)}";
 
         bool isRootElement = element.ResourceFieldOrder == 0;
@@ -2665,7 +2665,7 @@ public partial class XVerProcessor
         StructureDefinition extSd = new()
         {
             Id = sdId,
-            //CanonicalUrl = $"http://hl7.org/fhir/uv/xver/{focusPackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
+            //CanonicalUrl = $"http://hl7.org/fhir/uv/xver/{focusPackage.FhirVersionShort}/StructureDefinition/extension-{element.Contents.Replace("[x]", string.Empty)}",
             Url = $"http://hl7.org/fhir/{sourcePackage.FhirVersionShort}/StructureDefinition/extension-{element.Path.Replace("[x]", string.Empty)}",
             Name = FhirSanitizationUtils.ReformatIdForName(sdId),
             Version = _crossDefinitionVersion,

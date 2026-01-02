@@ -340,7 +340,7 @@ public class Program
     //        WebApplicationBuilder builder = null!;
 
     //        // when packaging as a dotnet tool, we need to do some directory shenanigans for the static content root
-    //        string root = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location ?? AppContext.BaseDirectory) ?? string.Empty;
+    //        string root = Contents.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location ?? AppContext.BaseDirectory) ?? string.Empty;
     //        if (!string.IsNullOrEmpty(root))
     //        {
     //            string webRoot = FindRelativeDir(root, "staticwebassets", false);

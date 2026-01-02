@@ -90,13 +90,12 @@ public partial class FhirDbComparer
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
 
-    private DbComparisonCache<DbValueSetComparison> _vsComparisonCache = new();
-    private DbComparisonCache<DbValueSetConceptComparison> _conceptComparisonCache = new();
+    //private DbComparisonCache<DbValueSetComparison> _vsComparisonCache = new();
+    //private DbComparisonCache<DbValueSetConceptComparison> _conceptComparisonCache = new();
 
     private DbComparisonCache<DbStructureComparison> _sdComparisonCache = new();
     private DbComparisonCache<DbElementComparison> _edComparisonCache = new();
     private DbComparisonCache<DbCollatedTypeComparison> _collatedTypeComparisonCache = new();
-    private DbComparisonCache<DbElementTypeComparison> _typeComparisonCache = new();
 
     public FhirDbComparer(
         ComparisonDatabase db,
@@ -109,6 +108,21 @@ public partial class FhirDbComparer
         _db = db.DbConnection;
     }
 
+    public void Compare()
+    {
+        // ensure out tables exist and are empty
+        DbComparisonClasses.DropTables(_db);
+        DbComparisonClasses.CreateTables(_db);
+
+        // create our value set comparer
+        ValueSetComparer vsComparer = new(_db, _loggerFactory);
+
+        // run our value set comparisons
+        vsComparer.CompareValueSets();
+
+    }
+
+#if false
     public void BuildComparisonPairs(
         FhirArtifactClassEnum? artifactFilter = null,
         HashSet<int>? comparisonPairFilterSet = null,
@@ -228,9 +242,12 @@ public partial class FhirDbComparer
 
         return (packageForwardPair, packageReversePair);
     }
+#endif
 
+#if false
+    [Obsolete]
     public void Compare(
-        FhirArtifactClassEnum? artifactFilter = null,
+        FhirArtifactClassEnum? artifactFilter,
         HashSet<int>? comparisonPairFilterSet = null,
         bool allowUpdates = true)
     {
@@ -316,10 +333,10 @@ public partial class FhirDbComparer
                 }
 
                 // update the database
-                _vsComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-                _vsComparisonCache.ComparisonsToUpdate.Update(_db);
-                _conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-                _conceptComparisonCache.ComparisonsToUpdate.Update(_db);
+                _vsComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+                _vsComparisonCache.ToUpdate.Update(_db);
+                _conceptComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+                _conceptComparisonCache.ToUpdate.Update(_db);
             }
 
             // any structure triggers all of them
@@ -377,12 +394,12 @@ public partial class FhirDbComparer
                 }
 
                 // update the database
-                _sdComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-                _sdComparisonCache.ComparisonsToUpdate.Update(_db);
-                _edComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-                _edComparisonCache.ComparisonsToUpdate.Update(_db);
-                _collatedTypeComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-                _collatedTypeComparisonCache.ComparisonsToUpdate.Update(_db);
+                _sdComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+                _sdComparisonCache.ToUpdate.Update(_db);
+                _edComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+                _edComparisonCache.ToUpdate.Update(_db);
+                _collatedTypeComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+                _collatedTypeComparisonCache.ToUpdate.Update(_db);
                 _typeComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
                 _typeComparisonCache.ComparisonsToUpdate.Update(_db);
             }
@@ -400,7 +417,9 @@ public partial class FhirDbComparer
             FhirArtifactClassEnum.LogicalModel,
             ];
     }
+#endif
 
+#if false
     private void doElementComparisonPostProcessing()
     {
         {
@@ -445,7 +464,7 @@ public partial class FhirDbComparer
             }
         }
     }
-
+#endif
 
     internal static CMR? RelationshipForCounts(int? sourceCount, int? targetCount)
     {
@@ -464,7 +483,7 @@ public partial class FhirDbComparer
         };
     }
 
-    private CMR applyRelationship(CMR? existing, CMR? change) => existing switch
+    internal static CMR ApplyRelationship(CMR? existing, CMR? change) => existing switch
     {
         CMR.Equivalent => change ?? CMR.Equivalent,
         CMR.RelatedTo => (change == CMR.NotRelatedTo) ? CMR.NotRelatedTo : CMR.RelatedTo,
@@ -477,6 +496,7 @@ public partial class FhirDbComparer
     };
 
 
+#if false
     private DbFhirPackageComparisonPair invert(DbFhirPackageComparisonPair other)
     {
         return new()
@@ -488,7 +508,7 @@ public partial class FhirDbComparer
             TargetPackageShortName = other.SourcePackageShortName,
         };
     }
-
+#endif
 
 
     private CMR? invert(CMR? existing) => existing switch

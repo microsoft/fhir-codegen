@@ -258,7 +258,6 @@ public partial class XVerProcessor
 
                 //LoadDatabase(true, true);
                 //LoadFhirCrossVersionMaps();
-                //LoadDatabase(false, false);
                 CompareInDatabase();
 
                 //CompareInDatabase();
@@ -478,8 +477,8 @@ public partial class XVerProcessor
             throw new Exception("Cannot build comparison pairs without a loaded database!");
         }
 
-        FhirDbComparer dbComparer = new(_db, _config.LogFactory);
-        dbComparer.BuildComparisonPairs(artifactFilter, _config.ComparisonPairFilterKeys);
+        //FhirDbComparer dbComparer = new(_db, _config.LogFactory);
+        //dbComparer.BuildComparisonPairs(artifactFilter, _config.ComparisonPairFilterKeys);
     }
 
     /// <summary>
@@ -488,16 +487,21 @@ public partial class XVerProcessor
     /// <param name="artifactFilter">Optional artifact type filter.</param>
     public void CompareInDatabase(FhirArtifactClassEnum? artifactFilter = null)
     {
-        if (_db == null)
+        if (_db is null)
         {
-            throw new Exception("Comparison cannot run without a loaded database!");
+            LoadDatabase(false, false);
         }
 
-        FhirMappingComparerVs vsComparer = new(_db.DbConnection, _config.LogFactory);
-        vsComparer.CompareValueSets();
+        if (_db is null)
+        {
+            throw new Exception("Cannot compare without a loaded database!");
+        }
 
-        //FhirDbComparer dbComparer = new(_db, _config.LogFactory);
-        //dbComparer.CompareValueSets(artifactFilter, _config.ComparisonPairFilterKeys);
+        //FhirMappingComparerVs vsComparer = new(_db.DbConnection, _config.LogFactory);
+        //vsComparer.CompareValueSets();
+
+        FhirDbComparer comparer = new(_db, _config.LogFactory);
+        comparer.Compare();
     }
 
     /// <summary>

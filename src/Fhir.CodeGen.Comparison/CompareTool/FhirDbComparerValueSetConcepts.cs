@@ -14,6 +14,7 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 public partial class FhirDbComparer
 {
 
+#if false
     private List<DbValueSetConceptComparison> doValueSetConceptComparisons(
         DbComparisonCache<DbValueSetConceptComparison> conceptComparisonCache,
         DbFhirPackage sourcePackage,
@@ -111,7 +112,7 @@ public partial class FhirDbComparer
                         LastReviewedBy = null,
                         LastReviewedOn = null,
                         IsIdentical = isIdentical,
-                        CodesAreIdentical = codeIsIdentical,
+                        CodeLiteralsAreIdentical = codeIsIdentical,
                     };
 
                     conceptComparisonCache.CacheAdd(comp);
@@ -141,7 +142,7 @@ public partial class FhirDbComparer
                     LastReviewedBy = null,
                     LastReviewedOn = null,
                     IsIdentical = null,
-                    CodesAreIdentical = null,
+                    CodeLiteralsAreIdentical = null,
                 };
 
                 // insert into the database
@@ -522,4 +523,5 @@ public partial class FhirDbComparer
             }
         }
     }
+#endif
 }

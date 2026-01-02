@@ -21,8 +21,8 @@ public class FhirMappingComparerVs
     private ILoggerFactory? _loggerFactory;
     private ILogger _logger;
 
-    //DbRecordCache<DbValueSetMappingRecord> _vsMappingCache;
-    //DbRecordCache<DbValueSetConceptMappingRecord> _conceptMappingCache;
+    //DbRecordCache<DbValueSetMapping> _vsMappingCache;
+    //DbRecordCache<DbValueSetConceptMapping> _conceptMappingCache;
 
     private DbRecordCache<DbValueSetOutcome> _vsOutcomeCache;
     private DbRecordCache<DbValueSetConceptOutcome> _conceptOutcomeCache;
@@ -153,7 +153,7 @@ public class FhirMappingComparerVs
         //_logger.LogInformation($"processSourceValueSet <<< {sourceVs.VersionedUrl} from {sourcePackage.ShortName} to {targetPackage.ShortName}");
 
         // get all mappings for this value set from the source package to the target package
-        Dictionary<int, DbValueSetMappingRecord> vsMappings = DbValueSetMappingRecord.SelectDict(
+        Dictionary<int, DbValueSetMapping> vsMappings = DbValueSetMapping.SelectDict(
             _db,
             SourceFhirPackageKey: sourcePackage.Key,
             SourceValueSetKey: sourceVs.Key,
@@ -175,15 +175,15 @@ public class FhirMappingComparerVs
             ValueSetKey: sourceVs.Key);
 
         // get all the concept mappings for all the value set mappings
-        List<DbValueSetConceptMappingRecord> conceptMappings = DbValueSetConceptMappingRecord.SelectList(
+        List<DbValueSetConceptMapping> conceptMappings = DbValueSetConceptMapping.SelectList(
             _db,
             ValueSetMappingKeyValues: vsMappingKeyValues);
 
         // create a lookup of concept mappings by source concept key
-        ILookup<int, DbValueSetConceptMappingRecord> conceptMappingsBySourceKey = conceptMappings
+        ILookup<int, DbValueSetConceptMapping> conceptMappingsBySourceKey = conceptMappings
             .ToLookup(cm => cm.SourceValueSetConceptKey);
 
-        ILookup<(int, int?), DbValueSetConceptMappingRecord> conceptMappingsBySourceAndTargetVs = conceptMappings
+        ILookup<(int, int?), DbValueSetConceptMapping> conceptMappingsBySourceAndTargetVs = conceptMappings
             .ToLookup(cm => (cm.SourceValueSetConceptKey, vsMappings.GetValueOrDefault(cm.ValueSetMappingKey)?.TargetValueSetKey));
 
         List<int> targetValueSetKeys = vsMappings.Values
@@ -207,7 +207,7 @@ public class FhirMappingComparerVs
         Dictionary<int, int> inverseVsTargetCounts = [];
         foreach (int targetVsKey in targetValueSetKeys)
         {
-            inverseVsTargetCounts[targetVsKey] = DbValueSetMappingRecord.SelectCount(
+            inverseVsTargetCounts[targetVsKey] = DbValueSetMapping.SelectCount(
                 _db,
                 SourceFhirPackageKey: sourcePackage.Key,
                 TargetValueSetKey: targetVsKey);
@@ -223,7 +223,7 @@ public class FhirMappingComparerVs
         Dictionary<int, int> inverseConceptTargetCounts = [];
         foreach (int targetConceptKey in targetConceptKeys)
         {
-            inverseConceptTargetCounts[targetConceptKey] = DbValueSetConceptMappingRecord.SelectCount(
+            inverseConceptTargetCounts[targetConceptKey] = DbValueSetConceptMapping.SelectCount(
                 _db,
                 SourceFhirPackageKey: sourcePackage.Key,
                 TargetValueSetConceptKey: targetConceptKey);
@@ -233,7 +233,7 @@ public class FhirMappingComparerVs
         Dictionary<int, bool> allConceptsFullyMapByMappingKey = [];
 
         // iterate over the mappings to create shell outcomes
-        foreach (DbValueSetMappingRecord vsMapping in vsMappings.Values)
+        foreach (DbValueSetMapping vsMapping in vsMappings.Values)
         {
             DbValueSet? targetVs = vsMapping.TargetValueSetKey is null
                 ? null
@@ -306,17 +306,17 @@ public class FhirMappingComparerVs
         {
             List<DbValueSetConceptOutcome> currentConceptOutcomes = [];
 
-            List<DbValueSetConceptMappingRecord> conceptMappingsForSource = conceptMappingsBySourceKey[sourceConcept.Key]
+            List<DbValueSetConceptMapping> conceptMappingsForSource = conceptMappingsBySourceKey[sourceConcept.Key]
                 .ToList();
 
             // determine if this concept is an 'escape valve' code
             bool isEscapeValve = XVerProcessor._escapeValveCodes.Contains(sourceConcept.Code);
 
             // iterate over each of the mappings for THIS SOURCE CONCEPT
-            foreach (DbValueSetConceptMappingRecord conceptMapping in conceptMappingsForSource)
+            foreach (DbValueSetConceptMapping conceptMapping in conceptMappingsForSource)
             {
                 // resolve the vs mapping we are using
-                DbValueSetMappingRecord vsMapping = vsMappings[conceptMapping.ValueSetMappingKey];
+                DbValueSetMapping vsMapping = vsMappings[conceptMapping.ValueSetMappingKey];
 
                 // resolve the target value set (if any)
                 DbValueSet? targetVs = vsMapping.TargetValueSetKey is null
@@ -491,7 +491,7 @@ public class FhirMappingComparerVs
         // finalize outcome records using pre-built lookup
         foreach ((int vsMappingKey, DbValueSetOutcome vsOutcome) in vsOutcomesByMappingKey)
         {
-            DbValueSetMappingRecord vsMapping = vsMappings[vsMappingKey];
+            DbValueSetMapping vsMapping = vsMappings[vsMappingKey];
 
             DbValueSet? targetVs = vsMapping.TargetValueSetKey is null
                 ? null
@@ -543,8 +543,8 @@ public class FhirMappingComparerVs
         DbValueSet? targetVs,
         DbValueSetConcept sourceConcept,
         DbValueSetConcept? targetConcept,
-        DbValueSetMappingRecord valueSetMappingRecord,
-        DbValueSetConceptMappingRecord conceptMapping)
+        DbValueSetMapping valueSetMappingRecord,
+        DbValueSetConceptMapping conceptMapping)
     {
         string? userMessage = conceptMapping.Comments;
 

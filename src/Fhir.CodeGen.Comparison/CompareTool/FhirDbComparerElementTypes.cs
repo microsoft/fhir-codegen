@@ -13,6 +13,7 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 
 public partial class FhirDbComparer
 {
+#if false
     private record class TypeComparisonTrackingRecord
     {
         public required CollatedType? TargetCollated { get; set; }
@@ -798,5 +799,5 @@ public partial class FhirDbComparer
                 $"Target added {typeName} {profileType} profiles: {(string.Join(", ", addedProfiles))}, removed {profileType} profiles: {(string.Join(", ", missingProfiles))}");
         }
     }
-
+#endif
 }

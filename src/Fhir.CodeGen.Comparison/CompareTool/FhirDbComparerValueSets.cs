@@ -13,6 +13,7 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 
 public partial class FhirDbComparer
 {
+#if false
     private void buildValueSetComparisonPairsForSource(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
@@ -133,7 +134,7 @@ public partial class FhirDbComparer
                         UserMessage = $"Value Set {sourcePackage.ShortName}:{sourceVs.Name} (`{sourceVs.VersionedUrl}`)" +
                             $" maps to {targetPackage.ShortName}:{targetVs.Name} (`{targetVs.VersionedUrl}`)",
                         IsIdentical = false,
-                        CodesAreIdentical = false,
+                        CodeLiteralsAreIdentical = false,
                     };
 
                     _vsComparisonCache.CacheAdd(vsc);
@@ -249,9 +250,9 @@ public partial class FhirDbComparer
         }
 
         // apply database changes
-        _vsComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-        _vsComparisonCache.ComparisonsToUpdate.Update(_db);
-        _vsComparisonCache.ComparisonsToDelete.Delete(_db);
+        _vsComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+        _vsComparisonCache.ToUpdate.Update(_db);
+        _vsComparisonCache.ToDelete.Delete(_db);
     }
 
 
@@ -315,7 +316,7 @@ public partial class FhirDbComparer
             reversePair);
 
         // check for identical system and code flags
-        if ((forwardComparison.IsIdentical == null) || (forwardComparison.CodesAreIdentical == null))
+        if ((forwardComparison.IsIdentical == null) || (forwardComparison.CodeLiteralsAreIdentical == null))
         {
             // select only active and concrete concepts
             List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(_db, ValueSetKey: sourceVs.Key, Inactive: false, Abstract: false);
@@ -324,7 +325,7 @@ public partial class FhirDbComparer
             if (sourceConcepts.Count != targetConcepts.Count)
             {
                 forwardComparison.IsIdentical = false;
-                forwardComparison.CodesAreIdentical = false;
+                forwardComparison.CodeLiteralsAreIdentical = false;
             }
             else
             {
@@ -333,7 +334,7 @@ public partial class FhirDbComparer
                 if (sourceConcepts.All(c => targetCombined.Contains(c.FhirKey)))
                 {
                     forwardComparison.IsIdentical = true;
-                    forwardComparison.CodesAreIdentical = true;
+                    forwardComparison.CodeLiteralsAreIdentical = true;
                 }
                 else
                 {
@@ -342,12 +343,12 @@ public partial class FhirDbComparer
                     if (sourceConcepts.All(c => targetCodes.Contains(c.Code)))
                     {
                         forwardComparison.IsIdentical = false;
-                        forwardComparison.CodesAreIdentical = true;
+                        forwardComparison.CodeLiteralsAreIdentical = true;
                     }
                     else
                     {
                         forwardComparison.IsIdentical = false;
-                        forwardComparison.CodesAreIdentical = false;
+                        forwardComparison.CodeLiteralsAreIdentical = false;
                     }
                 }
             }
@@ -355,10 +356,10 @@ public partial class FhirDbComparer
             vsComparisonCache.Changed(forwardComparison);
         }
 
-        if ((inverseComparison.IsIdentical == null) || (inverseComparison.CodesAreIdentical == null))
+        if ((inverseComparison.IsIdentical == null) || (inverseComparison.CodeLiteralsAreIdentical == null))
         {
             inverseComparison.IsIdentical = forwardComparison.IsIdentical;
-            inverseComparison.CodesAreIdentical = forwardComparison.CodesAreIdentical;
+            inverseComparison.CodeLiteralsAreIdentical = forwardComparison.CodeLiteralsAreIdentical;
 
             vsComparisonCache.Changed(inverseComparison);
         }
@@ -648,9 +649,9 @@ public partial class FhirDbComparer
         }
 
         // apply the changes to the concept comparisons
-        conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-        conceptComparisonCache.ComparisonsToUpdate.Update(_db);
-        conceptComparisonCache.ComparisonsToDelete.Delete(_db);
+        conceptComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+        conceptComparisonCache.ToUpdate.Update(_db);
+        conceptComparisonCache.ToDelete.Delete(_db);
     }
 
     public void MarkVsMappingsReviewed(
@@ -716,35 +717,35 @@ public partial class FhirDbComparer
         }
 
         // apply the changes to the structure comparisons
-        if (vsComparisonCache.ComparisonsToAdd.Any())
+        if (vsComparisonCache.ToAdd.Any())
         {
-            vsComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
+            vsComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
-        if (vsComparisonCache.ComparisonsToUpdate.Any())
+        if (vsComparisonCache.ToUpdate.Any())
         {
-            vsComparisonCache.ComparisonsToUpdate.Update(_db);
+            vsComparisonCache.ToUpdate.Update(_db);
         }
 
-        if (vsComparisonCache.ComparisonsToDelete.Any())
+        if (vsComparisonCache.ToDelete.Any())
         {
-            vsComparisonCache.ComparisonsToDelete.Delete(_db);
+            vsComparisonCache.ToDelete.Delete(_db);
         }
 
         // apply the changes to the element comparisons
-        if (conceptComparisonCache.ComparisonsToAdd.Any())
+        if (conceptComparisonCache.ToAdd.Any())
         {
-            conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
+            conceptComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
         }
 
-        if (conceptComparisonCache.ComparisonsToUpdate.Any())
+        if (conceptComparisonCache.ToUpdate.Any())
         {
-            conceptComparisonCache.ComparisonsToUpdate.Update(_db);
+            conceptComparisonCache.ToUpdate.Update(_db);
         }
 
-        if (conceptComparisonCache.ComparisonsToDelete.Any())
+        if (conceptComparisonCache.ToDelete.Any())
         {
-            conceptComparisonCache.ComparisonsToDelete.Delete(_db);
+            conceptComparisonCache.ToDelete.Delete(_db);
         }
     }
 
@@ -875,9 +876,9 @@ public partial class FhirDbComparer
         }
 
         // apply our concept changes
-        conceptComparisonCache.ComparisonsToAdd.Insert(_db, insertPrimaryKey: true);
-        conceptComparisonCache.ComparisonsToUpdate.Update(_db);
-        conceptComparisonCache.ComparisonsToDelete.Delete(_db);
+        conceptComparisonCache.ToAdd.Insert(_db, insertPrimaryKey: true);
+        conceptComparisonCache.ToUpdate.Update(_db);
+        conceptComparisonCache.ToDelete.Delete(_db);
 
         // return the comparison in case the caller needs it
         return (inverseComparsion, conceptComparisonCache.Count != 0);
@@ -921,7 +922,7 @@ public partial class FhirDbComparer
             UserMessage = $"Mapping from FHIR {iSourcePackage?.ShortName}:{iSourceVs?.Name} (`{iSourceVs?.VersionedUrl}`) " +
                 $"to FHIR {iTargetPackage?.ShortName}:{iTargetVs?.Name} (`{iTargetVs?.VersionedUrl}`)",
             IsIdentical = other.IsIdentical,
-            CodesAreIdentical = other.CodesAreIdentical,
+            CodeLiteralsAreIdentical = other.CodeLiteralsAreIdentical,
         };
     }
 
@@ -962,7 +963,8 @@ public partial class FhirDbComparer
             UserMessage = $"`{iSourceConcept?.System}`#`{iSourceConcept?.Code}`" +
                 $" maps to FHIR `{iTargetConcept?.System}`#`{iTargetConcept?.Code}`",
             IsIdentical = other.IsIdentical,
-            CodesAreIdentical = other.CodesAreIdentical,
+            CodeLiteralsAreIdentical = other.CodeLiteralsAreIdentical,
         };
     }
+#endif
 }
