@@ -48,7 +48,7 @@ public class ValueSetComparer
         };
     }
 
-    private class ConceptPathTracker
+    private class ConceptTrackingRecord
     {
         public required DbValueSetConcept SourceConcept { get; init; }
         public int? CurrentConceptKey { get; set; }
@@ -57,7 +57,6 @@ public class ValueSetComparer
         public bool IsIdentical { get; set; }
         public bool CodeLiteralsAreIdentical { get; set; }
     }
-
 
 
     private readonly IDbConnection _db;
@@ -234,7 +233,7 @@ public class ValueSetComparer
         }
 
         // create our value set comparison
-        DbValueSetComparison vsComparison = createComparison(
+        DbValueSetComparison vsComparison = createValueSetComparison(
             trackingRecord,
             isIdentical,
             codeLiteralsAreIdentical,
@@ -295,7 +294,7 @@ public class ValueSetComparer
                 int?[] contentKeys = new int?[6];
                 contentKeys[sourceIndex] = sourceConcept.Key;
 
-                DbValueSetConceptComparison noMapComparison = createComparison(
+                DbValueSetConceptComparison noMapComparison = createConceptComparison(
                     trackingRecord,
                     sourceConcept,
                     targetConcept: null,
@@ -311,8 +310,8 @@ public class ValueSetComparer
             }
 
             // follow the concept through each step
-            List<ConceptPathTracker> currentPaths = initialComparisons
-                .Select(cc => new ConceptPathTracker
+            List<ConceptTrackingRecord> currentPaths = initialComparisons
+                .Select(cc => new ConceptTrackingRecord
                 {
                     SourceConcept = sourceConcept,
                     CurrentConceptKey = cc.TargetConceptKey,
@@ -332,9 +331,9 @@ public class ValueSetComparer
 
                 int stepTargetIndex = sourceIndex + (increment * (step + 1));
 
-                List<ConceptPathTracker> nextPaths = [];
+                List<ConceptTrackingRecord> nextPaths = [];
 
-                foreach (ConceptPathTracker path in currentPaths)
+                foreach (ConceptTrackingRecord path in currentPaths)
                 {
                     // if current concept is null, continue with null
                     if (path.CurrentConceptKey is null)
@@ -364,7 +363,7 @@ public class ValueSetComparer
                         int?[] newContentKeys = path.ContentKeys.ToArray();
                         newContentKeys[stepTargetIndex] = nextComp.TargetConceptKey;
 
-                        nextPaths.Add(new ConceptPathTracker
+                        nextPaths.Add(new ConceptTrackingRecord
                         {
                             SourceConcept = sourceConcept,
                             CurrentConceptKey = nextComp.TargetConceptKey,
@@ -380,7 +379,7 @@ public class ValueSetComparer
             }
 
             // create the final concept comparison records for each completed path
-            foreach (ConceptPathTracker path in currentPaths)
+            foreach (ConceptTrackingRecord path in currentPaths)
             {
                 DbValueSetConcept? targetConcept = null;
                 bool? targetConceptIsEscape = null;
@@ -393,7 +392,7 @@ public class ValueSetComparer
                         : XVerProcessor._escapeValveCodes.Contains(targetConcept.Code);
                 }
 
-                DbValueSetConceptComparison conceptComparison = createComparison(
+                DbValueSetConceptComparison conceptComparison = createConceptComparison(
                     trackingRecord,
                     sourceConcept,
                     targetConcept,
@@ -439,7 +438,7 @@ public class ValueSetComparer
                 // get the intermediate content steps
 
                 // build the concept comparison db record
-                DbValueSetConceptComparison conceptComparison = createComparison(
+                DbValueSetConceptComparison conceptComparison = createConceptComparison(
                     trackingRecord,
                     sourceConcept,
                     targetConcept: null,
@@ -458,7 +457,7 @@ public class ValueSetComparer
             bool vsCodeLiteralsAreIdentical = conceptComparisons.All(cc => cc.CodeLiteralsAreIdentical == true);
 
             // create our value set comparison
-            DbValueSetComparison noMapComparison = createComparison(
+            DbValueSetComparison noMapComparison = createValueSetComparison(
                 trackingRecord,
                 vsAreIdentical,
                 vsCodeLiteralsAreIdentical,
@@ -519,7 +518,7 @@ public class ValueSetComparer
                     $" in `{trackingRecord.ExplicitMappingSource?.Url}` (`{trackingRecord.ExplicitMappingSource?.Filename}`)";
 
                 // build the concept comparison db record
-                DbValueSetConceptComparison conceptComparison = createComparison(
+                DbValueSetConceptComparison conceptComparison = createConceptComparison(
                     trackingRecord,
                     sourceConcept,
                     targetConcept,
@@ -579,7 +578,7 @@ public class ValueSetComparer
                 }
 
                 // build the concept comparison db record
-                DbValueSetConceptComparison conceptComparison = createComparison(
+                DbValueSetConceptComparison conceptComparison = createConceptComparison(
                     trackingRecord,
                     sourceConcept,
                     targetConcept,
@@ -615,7 +614,7 @@ public class ValueSetComparer
         bool codeLiteralsAreIdentical = conceptComparisons.All(cc => cc.CodeLiteralsAreIdentical == true);
 
         // create our value set comparison
-        DbValueSetComparison vsComparison = createComparison(
+        DbValueSetComparison vsComparison = createValueSetComparison(
             trackingRecord,
             isIdentical,
             codeLiteralsAreIdentical,
@@ -1039,37 +1038,7 @@ public class ValueSetComparer
         return trackingRecords;
     }
 
-
-    //private List<ValueSetComparisonTrackingRecord> expandPaths(
-    //    DbFhirPackage sourcePackage,
-    //    DbFhirPackage targetPackage,
-    //    List<ValueSetComparisonTrackingRecord> trackingRecords)
-    //{
-    //    int startStepIndex = sourcePackage.PackageArrayIndex;
-    //    int endStepIndex = targetPackage.PackageArrayIndex;
-
-    //    int steps = Math.Abs(endStepIndex - startStepIndex);
-
-    //    // if there is only a single step, we have nothing to do
-    //    if (steps == 1)
-    //    {
-    //        return trackingRecords;
-    //    }
-
-    //    int increment = startStepIndex < endStepIndex ? 1 : -1;
-
-    //    for (int step = 1; step <= steps; step++)
-    //    {
-    //        int intermediateStepIndex = startStepIndex + (increment * (step - 1));
-    //        DbFhirPackage intermediatePackage = _packages[intermediateStepIndex];
-
-    //        // 
-
-    //    }
-
-    //}
-
-    private DbValueSetComparison createComparison(
+    private DbValueSetComparison createValueSetComparison(
         ValueSetComparisonTrackingRecord vsTrackingRecord,
         bool isIdentical,
         bool codeLiteralsAreIdentical,
@@ -1118,7 +1087,7 @@ public class ValueSetComparer
         };
     }
 
-    private DbValueSetConceptComparison createComparison(
+    private DbValueSetConceptComparison createConceptComparison(
         ValueSetComparisonTrackingRecord vsTrackingRecord,
         DbValueSetConcept sourceConcept,
         DbValueSetConcept? targetConcept,

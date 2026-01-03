@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
 using Hl7.Fhir.Model;
@@ -15,7 +16,7 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 
 public class StructureComparer
 {
-    private class StructureComparisonTrackingRecord
+    internal class StructureComparisonTrackingRecord
     {
         public required DbFhirPackage SourcePackage { get; init; }
         public required DbStructureDefinition SourceStructure { get; init; }
@@ -50,18 +51,6 @@ public class StructureComparer
         };
     }
 
-    private class ElementPathTracker
-    {
-        public required DbElement SourceElement { get; init; }
-        public int? CurrentElementKey { get; set; }
-        public required int?[] ContentKeys { get; set; }
-        public CMR? Relationship { get; set; }
-        public CMR? ConceptDomainRelationship { get; set; }
-        public CMR? ValueDomainRelationship { get; set; }
-        public bool IsIdentical { get; set; }
-        public bool RelativePathsAreIdentical { get; set; }
-    }
-
     private readonly IDbConnection _db;
 
     private ILoggerFactory _loggerFactory;
@@ -71,6 +60,8 @@ public class StructureComparer
     private DbComparisonCache<DbElementComparison> _elementComparisonCache;
 
     private List<DbFhirPackage> _packages = [];
+
+    private ElementComparer? _elementComparer = null;
 
     public StructureComparer(
         IDbConnection db,
@@ -89,6 +80,12 @@ public class StructureComparer
     {
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
+
+        _elementComparer = new(
+            _db,
+            _loggerFactory,
+            _elementComparisonCache,
+            _packages);
 
         // we want to process closer versions first, so we do a stepped approach
         for (int stepSize = 1; stepSize < _packages.Count; stepSize++)
@@ -148,48 +145,63 @@ public class StructureComparer
 
         int steps = Math.Abs(targetIndex - sourceIndex);
 
-        List<DbStructureDefinition> sourceStructures = DbStructureDefinition.SelectList(_db, FhirPackageKey: sourcePackage.Key);
-        _logger.LogInformation($" <<< processing {sourcePackage.ShortName} Structures, count: {sourceStructures.Count}");
-
-        // iterate over each structure in the source package
-        foreach (DbStructureDefinition sourceSd in sourceStructures)
+        foreach (FhirArtifactClassEnum artifactClass in getOrderedArtifactClasses())
         {
-            // skip structures we know we will not process
-            if (XVerProcessor._exclusionSet.Contains(sourceSd.UnversionedUrl))
-            {
-                continue;
-            }
+            List<DbStructureDefinition> sourceStructures = DbStructureDefinition.SelectList(
+                _db,
+                FhirPackageKey: sourcePackage.Key,
+                ArtifactClass: artifactClass);
+            _logger.LogInformation($" <<< processing {sourcePackage.ShortName} {artifactClass}s, count: {sourceStructures.Count}");
 
-            // when we have a single step, do the comparisons directly
-            if (steps == 1)
+            // iterate over each structure in the source package
+            foreach (DbStructureDefinition sourceSd in sourceStructures)
             {
-                // discover targets
-                List<StructureComparisonTrackingRecord> trackingRecords = buildNeighborComparisonPaths(
-                    sourcePackage,
-                    sourceSd,
-                    targetPackage);
-
-                // do the comparisons
-                foreach (StructureComparisonTrackingRecord trackingRecord in trackingRecords)
+                // skip structures we know we will not process
+                if (XVerProcessor._exclusionSet.Contains(sourceSd.UnversionedUrl))
                 {
-                    doComparison(trackingRecord);
+                    continue;
                 }
-            }
-            else
-            {
-                // discover targets
-                List<StructureComparisonTrackingRecord> trackingRecords = discoverTransitivePaths(
-                    sourcePackage,
-                    sourceSd,
-                    targetPackage);
 
-                // do the comparisons transitively
-                foreach (StructureComparisonTrackingRecord trackingRecord in trackingRecords)
+                // when we have a single step, do the comparisons directly
+                if (steps == 1)
                 {
-                    doTransitiveComparison(trackingRecord);
+                    // discover targets
+                    List<StructureComparisonTrackingRecord> trackingRecords = buildNeighborComparisonPaths(
+                        sourcePackage,
+                        sourceSd,
+                        targetPackage);
+
+                    // do the comparisons
+                    foreach (StructureComparisonTrackingRecord trackingRecord in trackingRecords)
+                    {
+                        doComparison(trackingRecord);
+                    }
+                }
+                else
+                {
+                    // discover targets
+                    List<StructureComparisonTrackingRecord> trackingRecords = discoverTransitivePaths(
+                        sourcePackage,
+                        sourceSd,
+                        targetPackage);
+
+                    // do the comparisons transitively
+                    foreach (StructureComparisonTrackingRecord trackingRecord in trackingRecords)
+                    {
+                        doTransitiveComparison(trackingRecord);
+                    }
                 }
             }
         }
+
+        return;
+
+        FhirArtifactClassEnum[] getOrderedArtifactClasses() => [
+            FhirArtifactClassEnum.PrimitiveType,
+            FhirArtifactClassEnum.ComplexType,
+            FhirArtifactClassEnum.Resource,
+            FhirArtifactClassEnum.Profile,
+            ];
     }
 
     private void doTransitiveComparison(StructureComparisonTrackingRecord trackingRecord)
@@ -198,7 +210,7 @@ public class StructureComparer
         trackingRecord.ComparisonRecordKey ??= DbStructureComparison.GetIndex();
 
         // build the relevant element comparison records
-        doTransitiveElementComparisons(trackingRecord);
+        List<DbElementComparison> elementComparisons = _elementComparer!.DoTransitiveElementComparisons(trackingRecord);
 
         // determine the relationship based on the comparison steps
         CMR? sdRelationship = CMR.Equivalent;
@@ -256,239 +268,18 @@ public class StructureComparer
         _sdComparisonCache.CacheAdd(sdComparison);
     }
 
-    private void doTransitiveElementComparisons(StructureComparisonTrackingRecord trackingRecord)
-    {
-        if (trackingRecord.ComparisonSteps.Count == 0)
-        {
-            throw new Exception("Cannot build transitive comparisons without comparison steps!");
-        }
-
-        int sourceIndex = trackingRecord.SourcePackage.PackageArrayIndex;
-        int targetIndex = trackingRecord.TargetPackage.PackageArrayIndex;
-        int increment = sourceIndex < targetIndex ? 1 : -1;
-
-        // get element comparisons for each step, keyed by StructureComparisonKey
-        Dictionary<int, List<DbElementComparison>> stepElementComparisons = [];
-        foreach (DbStructureComparison sdCompStep in trackingRecord.ComparisonSteps)
-        {
-            List<DbElementComparison> elementComparisons = DbElementComparison.SelectList(
-                _db,
-                StructureComparisonKey: sdCompStep.Key);
-            stepElementComparisons[sdCompStep.Key] = elementComparisons;
-        }
-
-        // get the initial source elements
-        List<DbElement> sourceElements = DbElement.SelectList(
-            _db,
-            StructureKey: trackingRecord.SourceStructure.Key);
-
-        // get the target elements (if we have a target)
-        Dictionary<int, DbElement> targetElements = trackingRecord.TargetStructure is null
-            ? []
-            : DbElement.SelectDict(_db, StructureKey: trackingRecord.TargetStructure.Key);
-
-        // build a lookup from source element key to the first step's element comparisons
-        ILookup<int, DbElementComparison> firstStepBySourceElement = stepElementComparisons[trackingRecord.ComparisonSteps[0].Key]
-            .ToLookup(ec => ec.SourceElementKey);
-
-        // iterate over each source element and follow it through the transitive steps
-        foreach (DbElement sourceElement in sourceElements)
-        {
-            // get the initial element comparisons for this source element
-            List<DbElementComparison> initialComparisons = firstStepBySourceElement[sourceElement.Key].ToList();
-
-            // if there are no initial comparisons, this is a no-map
-            if (initialComparisons.Count == 0)
-            {
-                int?[] contentKeys = new int?[6];
-                contentKeys[sourceIndex] = sourceElement.Key;
-
-                DbElementComparison noMapComparison = createElementComparison(
-                    trackingRecord,
-                    sourceElement,
-                    targetElement: null,
-                    elementComparisonKey: DbElementComparison.GetIndex(),
-                    relationship: null,
-                    cdRelationship: null,
-                    vdRelationship: null,
-                    technicalMessage: null,
-                    userMessage: null,
-                    contentStepKeys: contentKeys,
-                    boundVsComparison: null,
-                    collatedTypeComparison: null);
-
-                _elementComparisonCache.CacheAdd(noMapComparison);
-                continue;
-            }
-
-            // follow the element through each step
-            List<ElementPathTracker> currentPaths = initialComparisons
-                .Select(ec => new ElementPathTracker
-                {
-                    SourceElement = sourceElement,
-                    CurrentElementKey = ec.TargetElementKey,
-                    ContentKeys = getKeyArray(sourceIndex, sourceElement.Key, sourceIndex + increment, ec.TargetElementKey),
-                    Relationship = ec.Relationship,
-                    IsIdentical = ec.IsIdentical == true,
-                    RelativePathsAreIdentical = ec.RelativePathsAreIdentical == true,
-                })
-                .ToList();
-
-            // process subsequent steps
-            for (int step = 1; step < trackingRecord.ComparisonSteps.Count; step++)
-            {
-                DbStructureComparison stepComparison = trackingRecord.ComparisonSteps[step];
-                List<DbElementComparison> stepElements = stepElementComparisons[stepComparison.Key];
-                ILookup<int, DbElementComparison> stepBySourceElement = stepElements.ToLookup(ec => ec.SourceElementKey);
-
-                int stepTargetIndex = sourceIndex + (increment * (step + 1));
-
-                List<ElementPathTracker> nextPaths = [];
-
-                foreach (ElementPathTracker path in currentPaths)
-                {
-                    // if current element is null, continue with null
-                    if (path.CurrentElementKey is null)
-                    {
-                        path.ContentKeys[stepTargetIndex] = null;
-                        nextPaths.Add(path);
-                        continue;
-                    }
-
-                    // get the next comparisons for this element
-                    List<DbElementComparison> nextComparisons = stepBySourceElement[path.CurrentElementKey.Value].ToList();
-
-                    if (nextComparisons.Count == 0)
-                    {
-                        // no mapping found - treat as no-map from this point
-                        path.CurrentElementKey = null;
-                        path.Relationship = FhirDbComparer.ApplyRelationship(path.Relationship, null);
-                        path.IsIdentical = false;
-                        path.RelativePathsAreIdentical = false;
-                        nextPaths.Add(path);
-                        continue;
-                    }
-
-                    // expand paths for each next comparison
-                    foreach (DbElementComparison nextComp in nextComparisons)
-                    {
-                        int?[] newContentKeys = path.ContentKeys.ToArray();
-                        newContentKeys[stepTargetIndex] = nextComp.TargetElementKey;
-
-                        nextPaths.Add(new ElementPathTracker
-                        {
-                            SourceElement = sourceElement,
-                            CurrentElementKey = nextComp.TargetElementKey,
-                            ContentKeys = newContentKeys,
-                            Relationship = FhirDbComparer.ApplyRelationship(path.Relationship, nextComp.Relationship),
-                            ConceptDomainRelationship = FhirDbComparer.ApplyRelationship(path.ConceptDomainRelationship, nextComp.ConceptDomainRelationship),
-                            ValueDomainRelationship = FhirDbComparer.ApplyRelationship(path.ValueDomainRelationship, nextComp.ValueDomainRelationship),
-                            IsIdentical = path.IsIdentical && (nextComp.IsIdentical == true),
-                            RelativePathsAreIdentical = path.RelativePathsAreIdentical && (nextComp.RelativePathsAreIdentical == true),
-                        });
-                    }
-                }
-
-                currentPaths = nextPaths;
-            }
-
-            // create the final element comparison records for each completed path
-            foreach (ElementPathTracker path in currentPaths)
-            {
-                DbElement? targetElement = null;
-
-                if (path.CurrentElementKey is not null)
-                {
-                    targetElements.TryGetValue(path.CurrentElementKey.Value, out targetElement);
-                }
-
-                DbValueSetComparison? boundVsComparison = null;
-                if ((sourceElement.BindingValueSetKey is not null) &&
-                    (targetElement?.BindingValueSetKey is not null))
-                {
-                    boundVsComparison = DbValueSetComparison.SelectSingle(
-                           _db,
-                           SourceValueSetKey: sourceElement.BindingValueSetKey,
-                           TargetValueSetKey: targetElement.BindingValueSetKey);
-                }
-
-                int elementComparisonKey = DbElementComparison.GetIndex();
-
-                DbCollatedTypeComparison? etComparison = null;
-                if (targetElement is not null)
-                {
-                    etComparison = doCollatedTypeComparison(
-                        sourceElement,
-                        targetElement,
-                        elementComparisonKey);
-                }
-
-                // build the element comparison db record
-                DbElementComparison elementComparison = createElementComparison(
-                    trackingRecord,
-                    sourceElement,
-                    targetElement,
-                    elementComparisonKey,
-                    path.Relationship,
-                    path.ConceptDomainRelationship,
-                    path.ValueDomainRelationship,
-                    boundVsComparison: boundVsComparison,
-                    collatedTypeComparison: etComparison,
-                    technicalMessage: null,
-                    userMessage: null,
-                    contentStepKeys: path.ContentKeys);
-
-                _elementComparisonCache.CacheAdd(elementComparison);
-            }
-        }
-    }
-
-    private int?[] getKeyArray(int sourceIndex, int sourceKey, int targetIndex, int? targetKey)
-    {
-        int?[] result = [null, null, null, null, null, null];
-        result[sourceIndex] = sourceKey;
-        result[targetIndex] = targetKey;
-        return result;
-    }
 
     private void doComparison(StructureComparisonTrackingRecord trackingRecord)
     {
         DbStructureDefinition sourceSd = trackingRecord.SourceStructure;
         DbStructureDefinition? targetSd = trackingRecord.TargetStructure;
 
-        // get the source elements
-        List<DbElement> sourceElements = DbElement.SelectList(
-            _db,
-            StructureKey: trackingRecord.SourceStructure.Key);
-
         // track local comparisons so we can build the structure comparison
-        List<DbElementComparison> elementComparisons = [];
+        List<DbElementComparison> elementComparisons = _elementComparer!.DoElementComparisons(trackingRecord);
 
         // if there is no target structure, every element is a no map
         if (targetSd is null)
         {
-            // create our element comparisons
-            foreach (DbElement sourceElement in sourceElements)
-            {
-                // build the element comparison db record
-                DbElementComparison elementComparison = createElementComparison(
-                    trackingRecord,
-                    sourceElement,
-                    targetElement: null,
-                    elementComparisonKey: DbElementComparison.GetIndex(),
-                    relationship: null,
-                    cdRelationship: null,
-                    vdRelationship: null,
-                    technicalMessage: null,
-                    userMessage: null,
-                    contentStepKeys: getKeyArray(trackingRecord.SourcePackage, sourceElement.Key),
-                    boundVsComparison: null,
-                    collatedTypeComparison: null);
-
-                _elementComparisonCache.CacheAdd(elementComparison);
-                elementComparisons.Add(elementComparison);
-            }
-
             bool sdAreIdentical = elementComparisons.All(ec => ec.IsIdentical == true);
             bool elementRelativePathsAreIdentical = elementComparisons.All(ec => ec.RelativePathsAreIdentical == true);
 
@@ -511,200 +302,6 @@ public class StructureComparer
             _sdComparisonCache.CacheAdd(noMapComparison);
 
             return;
-        }
-
-        // get the target elements
-        Dictionary<int, DbElement> targetElements = DbElement.SelectDict(
-            _db,
-            StructureKey: targetSd.Key);
-
-        // get any explicit element mappings
-        List<DbElementMapping> elementMappings = trackingRecord.ExplicitMapping is null
-            ? []
-            : DbElementMapping.SelectList(_db, StructureMappingKey: trackingRecord.ExplicitMapping.Key);
-
-        // create lookups
-        ILookup<string, DbElement> targetElementsByPath = targetElements.Values.ToLookup(e => e.Path);
-        ILookup<int, DbElementMapping> elementMappingsBySourceKey = elementMappings
-            .Where(m => m.SourceElementKey is not null)
-            .ToLookup(m => m.SourceElementKey!.Value);
-        ILookup<string, DbElementMapping> elementMappingsBySourceId = elementMappings.ToLookup(m => m.SourceElementId);
-
-        // iterate over each source element
-        foreach (DbElement sourceElement in sourceElements)
-        {
-            CMR? elementRelationship = null;
-            CMR? elementConceptRelationship = null;
-            CMR? elementValueRelationship = null;
-            string? technicalMessage = null;
-            string? userMessage = null;
-
-            // check for an explicit mapping first
-            DbElementMapping? mapping = elementMappingsBySourceKey[sourceElement.Key].FirstOrDefault();
-            if (mapping is not null)
-            {
-                int mappedElementComparisonKey = DbElementComparison.GetIndex();
-
-                DbElement? targetElement = null;
-
-                if (mapping.TargetElementKey is not null)
-                {
-                    targetElements.TryGetValue(mapping.TargetElementKey.Value, out targetElement);
-                }
-
-                // use the explicit relationship
-                elementRelationship = mapping.Relationship;
-                elementConceptRelationship = mapping.ConceptDomainRelationship;
-                elementValueRelationship = mapping.ValueDomainRelationship;
-
-                technicalMessage = $"Using explicit mapping" +
-                    $" from `{sourceSd.VersionedUrl}`" +
-                    $" to `{targetSd.VersionedUrl}`" +
-                    $" in `{trackingRecord.ExplicitMappingSource?.Url}` (`{trackingRecord.ExplicitMappingSource?.Filename}`)";
-
-                DbValueSetComparison? boundValueSetComparsion = null;
-                if ((sourceElement.BindingValueSetKey is not null) &&
-                    (targetElement?.BindingValueSetKey is not null))
-                {
-                    boundValueSetComparsion = DbValueSetComparison.SelectSingle(
-                           _db,
-                           SourceValueSetKey: sourceElement.BindingValueSetKey,
-                           TargetValueSetKey: targetElement.BindingValueSetKey);
-                }
-
-                // still need to build the type comparisons, even if we are mapped
-                DbCollatedTypeComparison? mappedTypeComparison = null;
-                if (targetElement is not null)
-                {
-                    mappedTypeComparison = doCollatedTypeComparison(
-                        sourceElement,
-                        targetElement,
-                        mappedElementComparisonKey);
-                }
-
-                // build the element comparison db record
-                DbElementComparison elementComparison = createElementComparison(
-                    trackingRecord,
-                    sourceElement,
-                    targetElement,
-                    mappedElementComparisonKey,
-                    elementRelationship,
-                    elementConceptRelationship,
-                    elementValueRelationship,
-                    boundVsComparison: boundValueSetComparsion,
-                    collatedTypeComparison: mappedTypeComparison,
-                    technicalMessage,
-                    mapping.Comments,
-                    contentStepKeys: getKeyArray(
-                        trackingRecord.SourcePackage,
-                        sourceElement.Key,
-                        trackingRecord.TargetPackage,
-                        targetElement?.Key));
-
-                _elementComparisonCache.CacheAdd(elementComparison);
-                elementComparisons.Add(elementComparison);
-
-                continue;
-            }
-
-            // no explicit mapping, try to find by path
-            List<DbElement> possibleTargets = targetElementsByPath[sourceElement.Path].ToList();
-
-            if (possibleTargets.Count > 1)
-            {
-                technicalMessage = $"Multiple target elements with path {sourceElement.Path} found in target structure {trackingRecord.TargetStructure!.Name}";
-                userMessage = $"Multiple elements with path {sourceElement.Path} found in target structure.";
-            }
-
-            // if no targets found by path, this is a no-map
-            if (possibleTargets.Count == 0)
-            {
-                DbElementComparison noMapComparison = createElementComparison(
-                    trackingRecord,
-                    sourceElement,
-                    targetElement: null,
-                    elementComparisonKey: DbElementComparison.GetIndex(),
-                    relationship: null,
-                    cdRelationship: null,
-                    vdRelationship: null,
-                    technicalMessage: null,
-                    userMessage: null,
-                    contentStepKeys: getKeyArray(
-                        trackingRecord.SourcePackage,
-                        sourceElement.Key,
-                        trackingRecord.TargetPackage,
-                        null),
-                    boundVsComparison: null,
-                    collatedTypeComparison: null);
-                _elementComparisonCache.CacheAdd(noMapComparison);
-                elementComparisons.Add(noMapComparison);
-                continue;
-            }
-
-            // iterate over the possible targets
-            foreach (DbElement targetElement in possibleTargets)
-            {
-                int elementComparisonKey = DbElementComparison.GetIndex();
-
-                DbValueSetComparison? boundVsComparison = null;
-                if ((sourceElement.BindingValueSetKey is not null) &&
-                    (targetElement.BindingValueSetKey is not null))
-                {
-                    boundVsComparison = DbValueSetComparison.SelectSingle(
-                           _db,
-                           SourceValueSetKey: sourceElement.BindingValueSetKey,
-                           TargetValueSetKey: targetElement.BindingValueSetKey);
-                }
-
-                bool vsIsEquivalent = (boundVsComparison is null) || (boundVsComparison.Relationship == CMR.Equivalent);
-
-                DbCollatedTypeComparison etComparison = doCollatedTypeComparison(
-                        sourceElement,
-                        targetElement,
-                        elementComparisonKey);
-
-                bool elementIsIdentical = (possibleTargets.Count == 1) &&
-                    (sourceElement.Id == targetElement.Id) &&
-                    (etComparison.Relationship == CMR.Equivalent) &&
-                    vsIsEquivalent;
-                bool elementIsEquivalent = elementIsIdentical ||
-                    ((possibleTargets.Count == 1) && (etComparison.Relationship == CMR.Equivalent) && vsIsEquivalent);
-                bool elementIsBroaderThanTarget = (possibleTargets.Count > 1) || (etComparison.Relationship == CMR.SourceIsBroaderThanTarget);
-
-                if (elementIsIdentical)
-                {
-                    elementRelationship = CMR.Equivalent;
-                }
-                else if (elementIsEquivalent)
-                {
-                    elementRelationship = CMR.Equivalent;
-                }
-                else if (elementIsBroaderThanTarget)
-                {
-                    elementRelationship = CMR.SourceIsBroaderThanTarget;
-                }
-
-                // build the element comparison db record
-                DbElementComparison elementComparison = createElementComparison(
-                    trackingRecord,
-                    sourceElement,
-                    targetElement,
-                    elementComparisonKey,
-                    elementRelationship,
-                    elementConceptRelationship,
-                    elementValueRelationship,
-                    boundVsComparison: boundVsComparison,
-                    collatedTypeComparison: etComparison,
-                    technicalMessage,
-                    userMessage,
-                    contentStepKeys: getKeyArray(
-                        trackingRecord.SourcePackage,
-                        sourceElement.Key,
-                        trackingRecord.TargetPackage,
-                        targetElement.Key));
-                _elementComparisonCache.CacheAdd(elementComparison);
-                elementComparisons.Add(elementComparison);
-            }
         }
 
         // determine the relationship based on the element comparisons
@@ -764,63 +361,6 @@ public class StructureComparer
                 targetSd.Key));
 
         _sdComparisonCache.CacheAdd(sdComparison);
-    }
-
-
-    private DbCollatedTypeComparison doCollatedTypeComparison(
-        DbElement sourceElement,
-        DbElement targetElement,
-        int elementComparisonKey)
-    {
-        DbCollatedTypeComparison? existing = DbCollatedTypeComparison.SelectSingle(
-                        _db,
-                        SourceElementKey: sourceElement.Key,
-                        TargetElementKey: targetElement.Key);
-        if (existing is not null)
-        {
-            return existing;
-        }
-
-        DbCollatedType? sourceCollated = DbCollatedType.SelectSingle(
-            _db,
-            ElementKey: sourceElement.Key);
-        if (sourceCollated is null)
-        {
-            throw new Exception($"Source element {sourceElement.Id} ({sourceElement.Key}) has no collated type!");
-        }
-
-        DbCollatedType? targetCollated = DbCollatedType.SelectSingle(
-            _db,
-            ElementKey: targetElement.Key);
-        if (targetCollated is null)
-        {
-            throw new Exception($"Target element {targetElement.Id} ({targetElement.Key}) has no collated type!");
-        }
-
-        // create new comparison
-        DbCollatedTypeComparison newComparison = new()
-        {
-            SourceFhirPackageKey = sourceElement.FhirPackageKey,
-            SourceElementKey = sourceElement.Key,
-            SourceCollatedTypeKey = sourceCollated.Key,
-
-            TargetFhirPackageKey = targetElement.FhirPackageKey,
-            TargetElementKey = targetElement.Key,
-            TargetCollatedTypeKey = targetCollated.Key,
-
-            ElementComparisonKey = elementComparisonKey,
-        };
-        newComparison.Insert(_db, insertPrimaryKey: true);
-        return newComparison;
-    }
-
-    private int?[] getKeyArray(
-        DbFhirPackage sourcePackage,
-        int sourceKey)
-    {
-        int?[] result = [null, null, null, null, null, null];
-        result[sourcePackage.PackageArrayIndex] = sourceKey;
-        return result;
     }
 
     private int?[] getKeyArray(
@@ -1241,69 +781,6 @@ public class StructureComparer
 
             TechnicalMessage = technicalMessage,
             UserMessage = userMessage,
-        };
-    }
-
-    private DbElementComparison createElementComparison(
-        StructureComparisonTrackingRecord sdTrackingRecord,
-        DbElement sourceElement,
-        DbElement? targetElement,
-        int elementComparisonKey,
-        CMR? relationship,
-        CMR? cdRelationship,
-        CMR? vdRelationship,
-        DbValueSetComparison? boundVsComparison,
-        DbCollatedTypeComparison? collatedTypeComparison,
-        string? technicalMessage,
-        string? userMessage,
-        int?[] contentStepKeys)
-    {
-        sdTrackingRecord.ComparisonRecordKey ??= DbStructureComparison.GetIndex();
-
-        bool? isIdentical = targetElement is null
-            ? null
-            : (sourceElement.Id == targetElement.Id);
-
-        bool? relativePathsAreIdentical = targetElement is null
-            ? null
-            : (sourceElement.Id[sourceElement.StructureName.Length..] == targetElement.Id[targetElement.StructureName.Length..]);
-
-        return new()
-        {
-            Key = elementComparisonKey,
-            StructureComparisonKey = sdTrackingRecord.ComparisonRecordKey.Value,
-            ElementMappingKey = sdTrackingRecord.ExplicitMapping?.Key,
-
-            Steps = Math.Abs(sdTrackingRecord.SourcePackage.DefinitionFhirSequence - sdTrackingRecord.TargetPackage.DefinitionFhirSequence),
-
-            SourceFhirPackageKey = sdTrackingRecord.SourcePackage.Key,
-            SourceFhirSequence = sdTrackingRecord.SourcePackage.DefinitionFhirSequence,
-            SourceStructureKey = sdTrackingRecord.SourceStructure.Key,
-            SourceElementKey = sourceElement.Key,
-            SourceElementToken = sourceElement.Path,
-
-            TargetFhirPackageKey = sdTrackingRecord.TargetPackage.Key,
-            TargetFhirSequence = sdTrackingRecord.TargetPackage.DefinitionFhirSequence,
-            TargetStructureKey = sdTrackingRecord.TargetStructure?.Key,
-            TargetElementKey = targetElement?.Key,
-            TargetElementToken = targetElement?.Path,
-
-            ContentKeys = contentStepKeys,
-
-            Relationship = relationship,
-            ConceptDomainRelationship = cdRelationship,
-            ValueDomainRelationship = vdRelationship,
-
-            NotMapped = targetElement is null,
-
-            IsIdentical = isIdentical,
-            RelativePathsAreIdentical = relativePathsAreIdentical,
-
-            TechnicalMessage = technicalMessage,
-            UserMessage = userMessage,
-
-            BoundValueSetComparisonKey = boundVsComparison?.Key,
-            CollatedTypeComparisonKey = collatedTypeComparison?.Key,
         };
     }
 }

@@ -503,10 +503,10 @@ public partial class DbCollatedTypeComparison : DbComparisonBase
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TargetProfileRelationship { get; set; }
-    public required string TargetProfileMessage { get; set; }
+    public required string? TargetProfileMessage { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TypeProfileRelationship { get; set; }
-    public required string TypeProfileMessage { get; set; }
+    public required string? TypeProfileMessage { get; set; }
 }
 
 public class DbComparisonCache<T>
