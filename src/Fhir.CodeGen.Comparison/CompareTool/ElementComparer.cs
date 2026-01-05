@@ -214,7 +214,7 @@ public class ElementComparer
 
                     if (nextComparisons.Count == 0)
                     {
-                        // no mapping found - treat as no-map from this point
+                        // no explicitMapping found - treat as no-map from this point
                         path.CurrentElementKey = null;
                         path.Relationship = FhirDbComparer.ApplyRelationship(path.Relationship, null);
                         path.IsIdentical = false;
@@ -343,7 +343,6 @@ public class ElementComparer
             return elementComparisons;
         }
 
-
         // get the target elements
         Dictionary<int, DbElement> targetElements = DbElement.SelectDict(
             _db,
@@ -370,37 +369,71 @@ public class ElementComparer
             string? technicalMessage = null;
             string? userMessage = null;
 
-            // check for an explicit mapping first
-            DbElementMapping? mapping = elementMappingsBySourceKey[sourceElement.Key].FirstOrDefault();
-            if (mapping is not null)
+            bool addedMappings = false;
+
+            // check for explicit mappings first
+            List<DbElementMapping> explicitMappings = elementMappingsBySourceKey[sourceElement.Key].ToList();
+            foreach (DbElementMapping explicitMapping in explicitMappings ?? [])
             {
+                if (explicitMapping is null)
+                {
+                    continue;
+                }
+
+                addedMappings = true;
+
+                bool targetIsHigherLevelThanExplicit = false;
                 int mappedElementComparisonKey = DbElementComparison.GetIndex();
 
                 DbElement? targetElement = null;
 
-                if (mapping.TargetElementKey is not null)
+                if (explicitMapping.TargetElementKey is not null)
                 {
-                    targetElements.TryGetValue(mapping.TargetElementKey.Value, out targetElement);
+                    targetElements.TryGetValue(explicitMapping.TargetElementKey.Value, out targetElement);
+                }
+
+                // if we have not resolved an element from the mapping yet, move upwards until we find one
+                if ((explicitMapping.TargetElementId is not null) &&
+                    (explicitMapping.TargetElementKey is null))
+                {
+                    int dotCount = explicitMapping.TargetElementId.Count(c => c == '.');
+                    string[] components = explicitMapping.TargetElementId.Split('.');
+                    while (dotCount >= 1)
+                    {
+                        string testId = string.Join('.', components.Take(dotCount + 1));
+                        targetElement = targetElements.Values.FirstOrDefault(e => e.Id == testId);
+                        if (targetElement is not null)
+                        {
+                            targetIsHigherLevelThanExplicit = true;
+                            break;
+                        }
+                        dotCount--;
+                    }
                 }
 
                 // use the explicit relationship
-                elementRelationship = mapping.Relationship;
-                elementConceptRelationship = mapping.ConceptDomainRelationship;
-                elementValueRelationship = mapping.ValueDomainRelationship;
+                elementRelationship = explicitMapping.Relationship;
+                elementConceptRelationship = explicitMapping.ConceptDomainRelationship;
+                elementValueRelationship = explicitMapping.ValueDomainRelationship;
 
                 technicalMessage = $"Using explicit mapping" +
                     $" from `{sourceSd.VersionedUrl}`" +
                     $" to `{targetSd.VersionedUrl}`" +
                     $" in `{trackingRecord.ExplicitMappingSource?.Url}` (`{trackingRecord.ExplicitMappingSource?.Filename}`)";
 
+                if (targetIsHigherLevelThanExplicit)
+                {
+                    technicalMessage += $"; mapped to higher-level target element `{targetElement?.Id}`";
+                }
+
                 DbValueSetComparison? boundValueSetComparsion = null;
                 if ((sourceElement.BindingValueSetKey is not null) &&
                     (targetElement?.BindingValueSetKey is not null))
                 {
                     boundValueSetComparsion = DbValueSetComparison.SelectSingle(
-                           _db,
-                           SourceValueSetKey: sourceElement.BindingValueSetKey,
-                           TargetValueSetKey: targetElement.BindingValueSetKey);
+                            _db,
+                            SourceValueSetKey: sourceElement.BindingValueSetKey,
+                            TargetValueSetKey: targetElement.BindingValueSetKey);
                 }
 
                 // still need to build the type comparisons, even if we are mapped
@@ -427,7 +460,7 @@ public class ElementComparer
                     boundVsComparison: boundValueSetComparsion,
                     collatedTypeComparison: mappedTypeComparison,
                     technicalMessage,
-                    mapping.Comments,
+                    explicitMapping.Comments,
                     contentStepKeys: getKeyArray(
                         trackingRecord.SourcePackage,
                         sourceElement.Key,
@@ -436,11 +469,14 @@ public class ElementComparer
 
                 _elementComparisonCache.CacheAdd(elementComparison);
                 elementComparisons.Add(elementComparison);
+            }
 
+            if (addedMappings)
+            {
                 continue;
             }
 
-            // no explicit mapping, try to find by path
+            // no explicit explicitMapping, try to find by path
             List<DbElement> possibleTargets = targetElementsByPath[sourceElement.Path].ToList();
 
             if (possibleTargets.Count > 1)
@@ -661,7 +697,7 @@ public class ElementComparer
                 }
             }
 
-            // look for a compatible mapping among types, based on structure comparisons in the database
+            // look for a compatible explicitMapping among types, based on structure comparisons in the database
             foreach (DbElementType targetType in targetTypeList)
             {
                 // we can only test types when both sides have resolved structures

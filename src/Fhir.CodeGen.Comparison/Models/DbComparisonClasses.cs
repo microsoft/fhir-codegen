@@ -363,6 +363,7 @@ public partial class DbValueSetComparison : DbArtifactComparisonBase
 
 [CgSQLiteTable(tableName: "ValueSetConceptComparisons")]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey))]
+[CgSQLiteIndex(nameof(SourceValueSetKey), nameof(TargetValueSetKey))]
 public partial class DbValueSetConceptComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
@@ -404,6 +405,7 @@ public partial class DbValueSetConceptComparison : DbComparisonBase
 
 [CgSQLiteTable(tableName: "StructureComparisons")]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceStructureKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceStructureKey), nameof(TargetStructureKey))]
 public partial class DbStructureComparison : DbArtifactComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -476,6 +478,7 @@ public partial class DbElementComparison : DbComparisonBase
 }
 
 [CgSQLiteTable(tableName: "CollatedTypeComparisons")]
+[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
 public partial class DbCollatedTypeComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
