@@ -992,6 +992,7 @@ public class ConceptMapLoader
                 TargetValueSetVersion = targetVs.Version,
 
                 ConceptMapSourceKey = sourceFileKey,
+                FmlSourceKey = null,
 
                 ExplicitNoMap = false,
                 Relationship = null,

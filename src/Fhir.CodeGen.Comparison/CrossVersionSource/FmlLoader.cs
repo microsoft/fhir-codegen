@@ -1128,6 +1128,8 @@ public class FmlLoader
             throw new InvalidOperationException("Source or target package not set");
         }
 
+        Dictionary<(int, int), DbStructureMapping> addedMappings = [];
+
         DbRecordCache<DbStructureMapping> sdMappingCache = new();
         DbRecordCache<DbElementMapping> edMappingCache = new();
 
@@ -1219,12 +1221,14 @@ public class FmlLoader
                 DbStructureMapping structureMappingRec;
 
                 // check to see if there are existing mapping records for the structures
-                List<DbStructureMapping> sdMappingRecords = DbStructureMapping.SelectList(
-                    _db,
-                    SourceFhirPackageKey: _sourcePackage.Key,
-                    SourceStructureKey: sourceSd.Key,
-                    TargetFhirPackageKey: _targetPackage.Key,
-                    TargetStructureKey: targetSd.Key);
+                List<DbStructureMapping> sdMappingRecords = addedMappings.TryGetValue((sourceSd.Key, targetSd.Key), out DbStructureMapping? localMapping)
+                    ? [localMapping]
+                    : DbStructureMapping.SelectList(
+                        _db,
+                        SourceFhirPackageKey: _sourcePackage.Key,
+                        SourceStructureKey: sourceSd.Key,
+                        TargetFhirPackageKey: _targetPackage.Key,
+                        TargetStructureKey: targetSd.Key);
 
                 // if there are no records, we need to create one
                 if (sdMappingRecords.Count == 0)
@@ -1278,6 +1282,7 @@ public class FmlLoader
 
                     sdMappingCache.CacheAdd(structureMappingRec);
                     sdMappingRecords.Add(structureMappingRec);
+                    addedMappings.Add((sourceSd.Key, targetSd.Key), structureMappingRec);
                 }
                 else
                 {

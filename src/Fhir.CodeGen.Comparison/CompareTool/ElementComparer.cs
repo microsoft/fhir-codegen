@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Common.Models;
@@ -32,12 +33,10 @@ public class ElementComparer
 
     private class ElementTypeTrackingRecord
     {
-        public required DbElementType SourceType { get; init; }
+        public required DbElementType? SourceType { get; init; }
         public required DbElementType? TargetType { get; set; }
 
         public required CMR? Relationship { get; set; }
-        public required CMR? ConceptDomainRelationship { get; set; }
-        public required CMR? ValueDomainRelationship { get; set; }
 
         public required CMR? TargetProfileRelationship { get; set; }
         public required string? TargetProfileMessage { get; set; }
@@ -47,6 +46,40 @@ public class ElementComparer
 
         public required string? UserMessage { get; set; }
         public required string? TechnicalMessage { get; set; }
+
+        public int? SourceTypeKey => SourceType?.Key;
+        public string? SourceTypeSymbol => SourceType?.Literal;
+
+        public bool IsIdentical =>
+            (SourceType is not null) &&
+            (TargetType is not null) &&
+            (Relationship == CMR.Equivalent) &&
+            (SourceType.TypeName == TargetType.TypeName) &&
+            (SourceType.TargetProfile == TargetType.TargetProfile) &&
+            (SourceType.TypeProfile == TargetType.TypeProfile);
+
+        public bool IsEquivalent =>
+            (SourceType is not null) &&
+            (TargetType is not null) &&
+            (Relationship == CMR.Equivalent);
+
+        public bool IsBroaderThanTarget =>
+            (SourceType is not null) &&
+            (TargetType is not null) &&
+            (Relationship == CMR.SourceIsBroaderThanTarget);
+
+        public bool IsNarrowerThanTarget =>
+            (SourceType is not null) &&
+            (TargetType is not null) &&
+            (Relationship == CMR.SourceIsNarrowerThanTarget);
+
+        public bool IsAdded =>
+            (SourceType is null) &&
+            (TargetType is not null);
+
+        public bool IsRemoved =>
+            (SourceType is not null) &&
+            (TargetType is null);
     }
 
     private readonly IDbConnection _db;
@@ -55,6 +88,7 @@ public class ElementComparer
     private ILogger _logger;
 
     private DbComparisonCache<DbElementComparison> _elementComparisonCache;
+    private DbComparisonCache<DbCollatedTypeComparison> _collatedTypeComparisonCache;
 
     private List<DbFhirPackage> _packages = [];
 
@@ -62,12 +96,14 @@ public class ElementComparer
         IDbConnection db,
         ILoggerFactory loggerFactory,
         DbComparisonCache<DbElementComparison> elementComparisonCache,
+        DbComparisonCache<DbCollatedTypeComparison> collatedTypeComparisonCache,
         List<DbFhirPackage> packages)
     {
         _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger<FhirDbComparer>();
         _db = db;
         _elementComparisonCache = elementComparisonCache;
+        _collatedTypeComparisonCache = collatedTypeComparisonCache;
         _packages = packages;
     }
 
@@ -530,7 +566,17 @@ public class ElementComparer
             ElementKey: sourceElement.Key);
         if (sourceCollated is null)
         {
-            throw new Exception($"Source element {sourceElement.Id} ({sourceElement.Key}) has no collated type!");
+            // check to see if this element has a base element key set
+            if ((sourceElement.BaseElementKey is not null) &&
+                (DbElement.SelectSingle(_db, Key: sourceElement.BaseElementKey) is DbElement be) &&
+                (DbCollatedType.SelectSingle(_db, ElementKey: be.Key) is DbCollatedType bect))
+            {
+                sourceCollated = bect;
+            }
+            else
+            {
+                throw new Exception($"Source element {sourceElement.Id} ({sourceElement.Key}) has no collated type!");
+            }
         }
 
         DbCollatedType? targetCollated = DbCollatedType.SelectSingle(
@@ -538,7 +584,17 @@ public class ElementComparer
             ElementKey: targetElement.Key);
         if (targetCollated is null)
         {
-            throw new Exception($"Target element {targetElement.Id} ({targetElement.Key}) has no collated type!");
+            // check to see if this element has a base element key set
+            if ((targetElement.BaseElementKey is not null) &&
+                (DbElement.SelectSingle(_db, Key: targetElement.BaseElementKey) is DbElement be) &&
+                (DbCollatedType.SelectSingle(_db, ElementKey: be.Key) is DbCollatedType bect))
+            {
+                targetCollated = bect;
+            }
+            else
+            {
+                throw new Exception($"Target element {targetElement.Id} ({targetElement.Key}) has no collated type!");
+            }
         }
 
         // get the source types
@@ -548,8 +604,6 @@ public class ElementComparer
         // get the target types
         List<DbElementType> targetTypeList = DbElementType.SelectList(_db, ElementKey: targetElement.Key);
         ILookup<string?, DbElementType> targetTypesByName = targetTypeList.ToLookup(et => et.TypeName);
-
-
 
         // start by assuming everything is a no-map
         Dictionary<DbElementType, DbElementType?> sourceTargetTypeMappings = sourceTypeList.ToDictionary(et => et, et => (DbElementType?)null);
@@ -654,7 +708,9 @@ public class ElementComparer
             }
         }
 
-        // process our granular type pairs - compare or add as no-map
+        HashSet<int> processedTargetTypeKeys = [];
+
+        // process our granular type pairs
         List<ElementTypeTrackingRecord> individualTypeComparisons = [];
 
         foreach ((DbElementType sourceType, DbElementType? targetType) in sourceTargetTypeMappings)
@@ -667,8 +723,34 @@ public class ElementComparer
                 targetType);
 
             individualTypeComparisons.Add(etr);
+
+            if (targetType is not null)
+            {
+                processedTargetTypeKeys.Add(targetType.Key);
+            }
         }
 
+        // add records for any remaining target types (these are additions)
+        foreach (DbElementType targetType in targetTypeList)
+        {
+            if (processedTargetTypeKeys.Contains(targetType.Key))
+            {
+                continue;
+            }
+
+            individualTypeComparisons.Add(new()
+            {
+                SourceType = null,
+                TargetType = targetType,
+                Relationship = null,
+                TargetProfileRelationship = null,
+                TargetProfileMessage = null,
+                TypeProfileRelationship = null,
+                TypeProfileMessage = null,
+                UserMessage = $"FHIR {targetPackage.ShortName} added type `{targetType.Literal}`, which is not present in FHIR {sourcePackage.ShortName}",
+                TechnicalMessage = "Added type - no source type mapping",
+            });
+        }
 
 
         // create collated type comparison from individual comparisons
@@ -679,58 +761,13 @@ public class ElementComparer
             targetPackage,
             targetElement,
             targetCollated,
-            individualTypeComparisons);
-
-        // update individual comparisons with collated comparison key
-        foreach (DbElementTypeComparison typeComparison in individualTypeComparisons)
-        {
-            typeComparison.CollatedTypeComparisonKey = collatedComparison.Key;
-        }
-
-        // check for an inverse collated comparison
-        if ((elementComparison.InverseComparisonKey != null) &&
-            (elementComparison.InverseComparisonKey != -1))
-        {
-            DbCollatedTypeComparison? collatedInverse = DbCollatedTypeComparison.SelectSingle(
-                _db,
-                PackageComparisonKey: packageReversePair.Key,
-                ElementComparisonKey: elementComparison.InverseComparisonKey);
-
-            if (collatedInverse != null)
-            {
-                collatedComparison.InverseComparisonKey = collatedInverse.Key;
-
-                collatedInverse.InverseComparisonKey = collatedComparison.Key;
-                collatedTypeComparisonCache.Changed(collatedInverse);
-            }
-        }
-
-        // add to caches
-        collatedTypeComparisonCache.CacheAdd(collatedComparison);
-        foreach (DbElementTypeComparison typeComparison in individualTypeComparisons)
-        {
-            typeComparisonCache.CacheAdd(typeComparison);
-        }
-
-        //return (collatedComparison, individualTypeComparisons);
+            elementComparisonKey,
+            individualTypeComparisons,
+            getKeyArray(sourcePackage, sourceCollated.Key, targetPackage, targetCollated?.Key));
 
 
-
-        // create new comparison
-        DbCollatedTypeComparison newComparison = new()
-        {
-            SourceFhirPackageKey = sourceElement.FhirPackageKey,
-            SourceElementKey = sourceElement.Key,
-            SourceCollatedTypeKey = sourceCollated.Key,
-
-            TargetFhirPackageKey = targetElement.FhirPackageKey,
-            TargetElementKey = targetElement.Key,
-            TargetCollatedTypeKey = targetCollated.Key,
-
-            ElementComparisonKey = elementComparisonKey,
-        };
-        newComparison.Insert(_db, insertPrimaryKey: true);
-        return newComparison;
+        _collatedTypeComparisonCache.CacheAdd(collatedComparison);
+        return collatedComparison;
     }
 
 
@@ -746,16 +783,18 @@ public class ElementComparer
             {
                 SourceType = sourceType,
                 TargetType = null,
-                Relationship = CMR.SourceIsBroaderThanTarget,
-                ConceptDomainRelationship = CMR.SourceIsBroaderThanTarget,
-                ValueDomainRelationship = CMR.SourceIsBroaderThanTarget,
+                Relationship = null,
+                TargetProfileRelationship = null,
+                TargetProfileMessage = null,
+                TypeProfileRelationship = null,
+                TypeProfileMessage = null,
+
                 UserMessage = $"FHIR {sourcePackage.ShortName} Type `{sourceType.Literal}` has no mapping in FHIR {targetPackage.ShortName}",
                 TechnicalMessage = "No target type mapping",
             };
         }
 
-        CMR? conceptDomainRelationship = null;
-        CMR? valueDomainRelationship = null;
+        CMR? relationship = CMR.Equivalent;
         List<string> userMessages = [];
         List<string> technicalMessages = [];
 
@@ -770,8 +809,7 @@ public class ElementComparer
                     TargetStructureKey: targetType.TypeStructureKey);
             if (sdComparison is not null)
             {
-                conceptDomainRelationship = sdComparison.ConceptDomainRelationship;
-                valueDomainRelationship = sdComparison.ValueDomainRelationship;
+                relationship = FhirDbComparer.ApplyRelationship(relationship,  sdComparison.Relationship);
 
                 if (!string.IsNullOrEmpty(sdComparison.TechnicalMessage))
                 {
@@ -780,35 +818,39 @@ public class ElementComparer
             }
         }
 
-        // compare type profiles
-        (CMR typeProfileRelationship, string typeProfileMessage) = compareTypeProfiles(sourceType, targetType);
-        valueDomainRelationship = FhirDbComparer.ApplyRelationship(valueDomainRelationship, typeProfileRelationship);
-        if (!string.IsNullOrEmpty(typeProfileMessage))
-        {
-            userMessages.Add(typeProfileMessage);
-        }
-
         // compare target profiles
         (CMR targetProfileRelationship, string targetProfileMessage) = compareTargetProfiles(sourceType, targetType);
-        valueDomainRelationship = FhirDbComparer.ApplyRelationship(valueDomainRelationship, targetProfileRelationship);
-        if (!string.IsNullOrEmpty(targetProfileMessage))
+        if ((sourceType.TargetProfile is not null) || (targetType.TargetProfile is not null))
         {
-            userMessages.Add(targetProfileMessage);
+            //relationship = FhirDbComparer.ApplyRelationship(relationship, targetProfileRelationship);
+            if (!string.IsNullOrEmpty(targetProfileMessage))
+            {
+                userMessages.Add(targetProfileMessage);
+            }
         }
 
-        // default relationships if not set
-        conceptDomainRelationship ??= CMR.Equivalent;
-        valueDomainRelationship ??= CMR.Equivalent;
+        // compare type profiles
+        (CMR typeProfileRelationship, string typeProfileMessage) = compareTypeProfiles(sourceType, targetType);
+        if ((sourceType.TypeProfile is not null) || (targetType.TypeProfile is not null))
+        {
+            //relationship = FhirDbComparer.ApplyRelationship(relationship, typeProfileRelationship);
+            if (!string.IsNullOrEmpty(typeProfileMessage))
+            {
+                userMessages.Add(typeProfileMessage);
+            }
+        }
 
         return new()
         {
             SourceType = sourceType,
             TargetType = targetType,
-            Relationship = calculateOverallRelationship(conceptDomainRelationship, valueDomainRelationship),
-            ConceptDomainRelationship = conceptDomainRelationship,
-            ValueDomainRelationship = valueDomainRelationship,
+            Relationship = relationship,
             UserMessage = string.Join(" ", userMessages),
             TechnicalMessage = string.Join(" ", technicalMessages),
+            TargetProfileRelationship = targetProfileRelationship,
+            TargetProfileMessage = targetProfileMessage,
+            TypeProfileRelationship = typeProfileRelationship,
+            TypeProfileMessage = typeProfileMessage,
         };
     }
 
@@ -999,45 +1041,130 @@ public class ElementComparer
         List<ElementTypeTrackingRecord> typeComparisons,
         int?[] contentStepKeys)
     {
-        bool? isIdentical = targetElement is null
-            ? null
-            : (sourceElement.Id == targetElement.Id);
+        CMR? relationship = CMR.Equivalent;
+        CMR? targetProfileRelationship = CMR.Equivalent;
+        CMR? typeProfileRelationship = CMR.Equivalent;
 
-        bool? relativePathsAreIdentical = targetElement is null
-            ? null
-            : (sourceElement.Id[sourceElement.StructureName.Length..] == targetElement.Id[targetElement.StructureName.Length..]);
+        List<string> targetProfileMessages = [];
+        List<string> typeProfileMessages = [];
+        List<string> technicalMessages = [];
+        List<string> userMessages = [];
 
-        List<string> targetProfileMessages = typeComparisons
-            .Select(etr => etr.TargetProfileMessage)
-            .Where(v => v is not null)!
-            .ToList<string>();
+        List<int> identicalTypesKeys = [];
+        List<string> identicalTypesSymbols = [];
+        List<int> equivalentTypesKeys = [];
+        List<string> equivalentTypesSymbols = [];
+        List<int> broaderTypesKeys = [];
+        List<string> broaderTypesSymbols = [];
+        List<int> narrowerTypesKeys = [];
+        List<string> narrowerTypesSymbols = [];
+        List<int> addedTypesKeys = [];
+        List<string> addedTypesSymbols = [];
+        List<int> removedTypesKeys = [];
+        List<string> removedTypesSymbols = [];
+
+        foreach (ElementTypeTrackingRecord etr in typeComparisons)
+        {
+            relationship = FhirDbComparer.ApplyRelationship(relationship, etr.Relationship);
+
+            if (etr.TechnicalMessage is not null)
+            {
+                technicalMessages.Add(etr.TechnicalMessage);
+            }
+
+            if (etr.UserMessage is not null)
+            {
+                userMessages.Add(etr.UserMessage);
+            }
+
+            if (etr.IsIdentical)
+            {
+                identicalTypesKeys.Add(etr.SourceType!.Key);
+                identicalTypesSymbols.Add(etr.SourceType!.Literal);
+
+            }
+
+            if (etr.IsEquivalent)
+            {
+                equivalentTypesKeys.Add(etr.SourceType!.Key);
+                equivalentTypesSymbols.Add(etr.SourceType!.Literal);
+            }
+            else if (etr.IsBroaderThanTarget)
+            {
+                broaderTypesKeys.Add(etr.SourceType!.Key);
+                broaderTypesSymbols.Add(etr.SourceType!.Literal);
+            }
+            else if (etr.IsNarrowerThanTarget)
+            {
+                narrowerTypesKeys.Add(etr.SourceType!.Key);
+                narrowerTypesSymbols.Add(etr.SourceType!.Literal);
+            }
+            else if (etr.IsAdded)
+            {
+                addedTypesKeys.Add(etr.TargetType!.Key);
+                addedTypesSymbols.Add(etr.TargetType!.Literal);
+            }
+            else if (etr.IsRemoved)
+            {
+                removedTypesKeys.Add(etr.SourceType!.Key);
+                removedTypesSymbols.Add(etr.SourceType!.Literal);
+            }
+
+            if ((etr.SourceType?.TargetProfile is not null) || (etr.TargetType?.TargetProfile is not null))
+            {
+                targetProfileRelationship = FhirDbComparer.ApplyRelationship(targetProfileRelationship, etr.TargetProfileRelationship);
+                if (etr.TargetProfileMessage is not null)
+                {
+                    targetProfileMessages.Add(etr.TargetProfileMessage);
+                }
+            }
+
+            if ((etr.SourceType?.TypeProfile is not null) || (etr.TargetType?.TypeProfile is not null))
+            {
+                typeProfileRelationship = FhirDbComparer.ApplyRelationship(typeProfileRelationship, etr.TypeProfileRelationship);
+                if (etr.TypeProfileMessage is not null)
+                {
+                    typeProfileMessages.Add(etr.TypeProfileMessage);
+                }
+            }
+        }
+
+        bool isIdentical = (identicalTypesKeys.Count == typeComparisons.Count) &&
+            (sourceElement.Id == targetElement?.Id);
+
+        if ((identicalTypesKeys.Count == typeComparisons.Count) ||
+            (equivalentTypesKeys.Count == typeComparisons.Count))
+        {
+            relationship = CMR.Equivalent;
+        }
+        else if ((broaderTypesKeys.Count > 0) &&
+            (narrowerTypesKeys.Count == 0) &&
+            (removedTypesKeys.Count == 0))
+        {
+            relationship = CMR.SourceIsBroaderThanTarget;
+        }
+        else if ((narrowerTypesKeys.Count > 0) &&
+            (broaderTypesKeys.Count == 0) &&
+            (addedTypesKeys.Count == 0))
+        {
+            relationship = CMR.SourceIsNarrowerThanTarget;
+        }
+        else
+        {
+            relationship = CMR.RelatedTo;
+        }
 
         string? targetProfileMessage = targetProfileMessages.Count == 0
             ? null
             : string.Join(' ', targetProfileMessages);
 
-        List<string> typeProfileMessages = typeComparisons
-            .Select(etr => etr.TypeProfileMessage)
-            .Where(v => v is not null)!
-            .ToList<string>();
-
         string? typeProfileMessage = typeProfileMessages.Count == 0
             ? null
             : string.Join(' ', typeProfileMessages);
 
-        List<string> technicalMessages = typeComparisons
-            .Select(etr => etr.TechnicalMessage)
-            .Where(v => v is not null)!
-            .ToList<string>();
-
         string? technicalMessage = technicalMessages.Count == 0
             ? null
             : string.Join(' ', technicalMessages);
-
-        List<string> userMessages = typeComparisons
-            .Select(etr => etr.UserMessage)
-            .Where(v => v is not null)!
-            .ToList<string>();
 
         string? userMessage = userMessages.Count == 0
             ? null
@@ -1064,17 +1191,27 @@ public class ElementComparer
             ContentKeys = contentStepKeys,
 
             Relationship = relationship,
-            ConceptDomainRelationship = cdRelationship,
-            ValueDomainRelationship = vdRelationship,
-
-            TargetProfileRelationship = ?,
+            TargetProfileRelationship = targetProfileRelationship,
             TargetProfileMessage = targetProfileMessage,
-            TypeProfileRelationship = ?,
+            TypeProfileRelationship = typeProfileRelationship,
             TypeProfileMessage = typeProfileMessage,
 
             NotMapped = targetElement is null,
 
             IsIdentical = isIdentical,
+
+            IdenticalTypesKeys = identicalTypesKeys,
+            IdenticalTypesSymbols = identicalTypesSymbols,
+            EquivalentTypesKeys = equivalentTypesKeys,
+            EquivalentTypesSymbols = equivalentTypesSymbols,
+            BroaderTypesKeys = broaderTypesKeys,
+            BroaderTypesSymbols = broaderTypesSymbols,
+            NarrowerTypesKeys = narrowerTypesKeys,
+            NarrowerTypesSymbols = narrowerTypesSymbols,
+            AddedTypesKeys = addedTypesKeys,
+            AddedTypesSymbols = addedTypesSymbols,
+            RemovedTypesKeys = removedTypesKeys,
+            RemovedTypesSymbols = removedTypesSymbols,
 
             TechnicalMessage = technicalMessage,
             UserMessage = userMessage,

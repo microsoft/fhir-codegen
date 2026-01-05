@@ -130,9 +130,6 @@ public partial class DbStructureMapping : DbMappingArtifactBase
     public required string? TargetStructureId { get; set; }
 
 
-    [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
-    public required int? FmlSourceKey { get; set; } = null;
-
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 }

@@ -58,6 +58,7 @@ public class StructureComparer
 
     private DbComparisonCache<DbStructureComparison> _sdComparisonCache;
     private DbComparisonCache<DbElementComparison> _elementComparisonCache;
+    private DbComparisonCache<DbCollatedTypeComparison> _collatedTypeComparisonCache;
 
     private List<DbFhirPackage> _packages = [];
 
@@ -74,6 +75,7 @@ public class StructureComparer
 
         _sdComparisonCache = new();
         _elementComparisonCache = new();
+        _collatedTypeComparisonCache = new();
     }
 
     public void CompareStructures()
@@ -85,6 +87,7 @@ public class StructureComparer
             _db,
             _loggerFactory,
             _elementComparisonCache,
+            _collatedTypeComparisonCache,
             _packages);
 
         // we want to process closer versions first, so we do a stepped approach
@@ -134,8 +137,21 @@ public class StructureComparer
             _elementComparisonCache.ToUpdate.Update(_db);
         }
 
+        if (_collatedTypeComparisonCache.ToAddCount > 0)
+        {
+            _logger.LogInformation($"Adding {_collatedTypeComparisonCache.ToAddCount} collated type comparisons from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            _collatedTypeComparisonCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+        }
+
+        if (_collatedTypeComparisonCache.ToUpdateCount > 0)
+        {
+            _logger.LogInformation($"Updating {_collatedTypeComparisonCache.ToUpdateCount} collated type comparisons from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            _collatedTypeComparisonCache.ToUpdate.Update(_db);
+        }
+
         _sdComparisonCache.Clear();
         _elementComparisonCache.Clear();
+        _collatedTypeComparisonCache.Clear();
     }
 
     private void doComparison(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
@@ -559,6 +575,8 @@ public class StructureComparer
                 targetUrls.Add(targetSd.UnversionedUrl);
                 if (!targetKeys.Add(targetSd.Key))
                 {
+                    //_logger.LogError($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
+                    //continue;
                     throw new Exception($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
                 }
             }

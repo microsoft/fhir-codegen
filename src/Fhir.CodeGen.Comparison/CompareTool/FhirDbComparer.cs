@@ -120,6 +120,11 @@ public partial class FhirDbComparer
         // run our value set comparisons
         vsComparer.CompareValueSets();
 
+        // create our structure comparer
+        StructureComparer sdComparer = new(_db, _loggerFactory);
+
+        // run our structure comparisons
+        sdComparer.CompareStructures();
     }
 
 #if false
