@@ -172,11 +172,13 @@ public class ConceptMapLoader
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+                    SourceStructureUrl = sourceSd.UnversionedUrl,
 
                     TargetFhirPackageKey = targetPackage.Key,
                     TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = targetSd.Key,
                     TargetStructureId = tm.TargetType,
+                    TargetStructureUrl = targetSd.UnversionedUrl,
 
                     ConceptMapSourceKey = null,
                     FmlSourceKey = null,
@@ -202,11 +204,13 @@ public class ConceptMapLoader
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+                    SourceStructureUrl = sourceSd.UnversionedUrl,
 
                     TargetFhirPackageKey = targetPackage.Key,
                     TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = null,
                     TargetStructureId = null,
+                    TargetStructureUrl = null,
 
                     ConceptMapSourceKey = null,
                     FmlSourceKey = null,
@@ -278,11 +282,13 @@ public class ConceptMapLoader
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+                    SourceStructureUrl = sourceSd.UnversionedUrl,
 
                     TargetFhirPackageKey = targetPackage.Key,
                     TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = targetSd.Key,
                     TargetStructureId = tm.TargetType,
+                    TargetStructureUrl = targetSd.UnversionedUrl,
 
                     ConceptMapSourceKey = null,
                     FmlSourceKey = null,
@@ -309,11 +315,13 @@ public class ConceptMapLoader
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                     SourceStructureKey = sourceSd.Key,
                     SourceStructureId = sourceSd.Id,
+                    SourceStructureUrl = sourceSd.UnversionedUrl,
 
                     TargetFhirPackageKey = targetPackage.Key,
                     TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                     TargetStructureKey = null,
                     TargetStructureId = null,
+                    TargetStructureUrl = null,
 
                     ConceptMapSourceKey = null,
                     FmlSourceKey = null,
@@ -366,6 +374,7 @@ public class ConceptMapLoader
             _ => throw new Exception($"Invalid source map relative path: {relativePath}")
         };
 
+        int fallbackTypeMapCount = 0;
         int typeMapCount = 0;
         int valueSetMapCount = 0;
         int valueSetConceptMapCount = 0;
@@ -382,6 +391,23 @@ public class ConceptMapLoader
             if (sourceMapType == SourceMapTypeCodes.Codes)
             {
                 (sourceVersion, targetVersion) = _mappingLoader.getSequenceFromFilename(filename);
+            }
+            else if (filename.EndsWith("ConceptMap-types-fallback.json", StringComparison.OrdinalIgnoreCase))
+            {
+                object? tfLoaded = _loader!.ParseContentsSystemTextStream("fhir+json", typeof(ConceptMap), path: filename);
+                if (tfLoaded is not ConceptMap tfCM)
+                {
+                    _logger.LogError($"Error loading {filename}: could not parse as ConceptMap");
+                    continue;
+                }
+
+                int addedMapCount = loadSourceTypeFallbackMap(
+                            tfCM,
+                            Path.GetFileName(filename),
+                            inputPath);
+                fallbackTypeMapCount += addedMapCount;
+
+                continue;
             }
             else
             {
@@ -489,16 +515,16 @@ public class ConceptMapLoader
         switch (sourceMapType)
         {
             case SourceMapTypeCodes.Types:
-                _logger.LogInformation($"Loaded {typeMapCount} Type Definition map records from: {path}");
+                _logger.LogInformation($"Loaded {typeMapCount} Type Definition and {fallbackTypeMapCount} fallback type mappings from: {path}");
                 break;
             case SourceMapTypeCodes.Codes:
-                _logger.LogInformation($"Loaded {valueSetMapCount} ValueSet and {valueSetConceptMapCount} ValueSet.Concept map records from: {path}");
+                _logger.LogInformation($"Loaded {valueSetMapCount} ValueSet and {valueSetConceptMapCount} ValueSet.Concept mappings from: {path}");
                 break;
             case SourceMapTypeCodes.Resources:
-                _logger.LogInformation($"Loaded {resourceMapCount} Resource map records from: {path}");
+                _logger.LogInformation($"Loaded {resourceMapCount} Resource mappings from: {path}");
                 break;
             case SourceMapTypeCodes.Elements:
-                _logger.LogInformation($"Loaded {elementMapCount} Element map records from: {path}");
+                _logger.LogInformation($"Loaded {elementMapCount} Element mappings from: {path}");
                 break;
             case SourceMapTypeCodes.SearchParams:
                 break;
@@ -776,11 +802,13 @@ public class ConceptMapLoader
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
+                        SourceStructureUrl = sourceSd.UnversionedUrl,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = null,
                         TargetStructureId = null,
+                        TargetStructureUrl = null,
 
                         ConceptMapSourceKey = sourceFileKey,
                         FmlSourceKey = null,
@@ -829,11 +857,13 @@ public class ConceptMapLoader
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
+                        SourceStructureUrl = sourceSd.UnversionedUrl,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
+                        TargetStructureUrl = targetSd.UnversionedUrl,
 
                         ConceptMapSourceKey = sourceFileKey,
                         FmlSourceKey = null,
@@ -1192,11 +1222,13 @@ public class ConceptMapLoader
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
+                        SourceStructureUrl = sourceSd.UnversionedUrl,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = null,
                         TargetStructureId = null,
+                        TargetStructureUrl = null,
 
                         ConceptMapSourceKey = sourceFileKey,
                         FmlSourceKey = null,
@@ -1245,11 +1277,13 @@ public class ConceptMapLoader
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
+                        SourceStructureUrl = sourceSd.UnversionedUrl,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
+                        TargetStructureUrl = targetSd.UnversionedUrl,
 
                         ConceptMapSourceKey = sourceFileKey,
                         FmlSourceKey = null,
@@ -1272,6 +1306,191 @@ public class ConceptMapLoader
         //_logger.LogInformation($"Inserted {elementMapsToAdd.Count} Type Definition Map records");
 
         return typeDefinitionMapsToAdd.Count;
+    }
+
+    private int loadSourceTypeFallbackMap(
+        ConceptMap cm,
+        string conceptMapFilename,
+        string sourceInputPath)
+    {
+        List<DbStructureMappingFallback> fallbackMappingsToAdd = [];
+
+        int sourceFileKey = _mappingLoader.getOrCreateMappingSourceFileKey(
+            conceptMapFilename,
+            MappingLoader.SourceFileTypeCodes.ConceptMap,
+            cm.Url);
+
+        List<HashSet<string>> typesPerPackage = [];
+        foreach (DbFhirPackage package in _packages)
+        {
+            List<DbStructureDefinition> structures = DbStructureDefinition.SelectList(
+                _db,
+                FhirPackageKey: package.Key);
+
+            HashSet<string> packageTypes = [];
+
+            foreach (DbStructureDefinition sd in structures)
+            {
+                packageTypes.Add(sd.Id);
+            }
+
+            typesPerPackage.Add(packageTypes);
+        }
+
+        // the type fallback map is special - we need to parse while looping over the package pairs
+        for (int sourceIndex = 0; sourceIndex < _packages.Count; sourceIndex++)
+        {
+            DbFhirPackage sourcePackage = _packages[sourceIndex];
+
+            for (int targetIndex = 0; targetIndex < _packages.Count; targetIndex++)
+            {
+                if (targetIndex == sourceIndex)
+                {
+                    continue;
+                }
+
+                DbFhirPackage targetPackage = _packages[targetIndex];
+
+                HashSet<string> sourceTypes = typesPerPackage[sourceIndex];
+                HashSet<string> targetTypes = typesPerPackage[targetIndex];
+
+                // there *should* only be one group, but iterate just in case
+                foreach (ConceptMap.GroupComponent group in cm.Group)
+                {
+                    // ensure we are in a valid data type grouping
+                    if (!group.Source.EndsWith("fhir-types", StringComparison.Ordinal))
+                    {
+                        throw new Exception($"Invalid source group: {group.Source} in map: {cm.Url} ({cm.Id})!");
+                    }
+
+                    if (!group.Target.EndsWith("fhir-types", StringComparison.Ordinal))
+                    {
+                        throw new Exception($"Invalid target group: {group.Target} in map: {cm.Url} ({cm.Id})!");
+                    }
+
+                    // iterate over the source elements of the map
+                    foreach (ConceptMap.SourceElementComponent groupSourceElement in group.Element)
+                    {
+                        // check to see if this type is present in the source version
+                        if (!sourceTypes.Contains(groupSourceElement.Code))
+                        {
+                            continue;
+                        }
+
+                        // resolve the source type
+                        DbStructureDefinition? sourceSd = DbStructureDefinition.SelectSingle(
+                            _db,
+                            FhirPackageKey: sourcePackage.Key,
+                            Id: groupSourceElement.Code);
+                        if (sourceSd is null)
+                        {
+                            throw new Exception($"Invalid source type: `{groupSourceElement.Code}` in map: {cm.Url} ({cm.Id})!");
+                        }
+
+                        // check for no map
+                        if (groupSourceElement.NoMap == true)
+                        {
+                            DbStructureMappingFallback mapRec = new()
+                            {
+                                Key = DbStructureMappingFallback.GetIndex(),
+
+                                SourceFhirPackageKey = sourcePackage.Key,
+                                SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
+                                SourceStructureKey = sourceSd.Key,
+                                SourceStructureId = sourceSd.Id,
+                                SourceStructureUrl = sourceSd.UnversionedUrl,
+
+                                TargetFhirPackageKey = targetPackage.Key,
+                                TargetFhirSequence = targetPackage.DefinitionFhirSequence,
+                                TargetStructureKey = null,
+                                TargetStructureId = null,
+                                TargetStructureUrl = null,
+
+                                ConceptMapSourceKey = sourceFileKey,
+                                FmlSourceKey = null,
+
+                                ExplicitNoMap = true,
+                                Relationship = null,
+                                ConceptDomainRelationship = null,
+                                ValueDomainRelationship = null,
+                            };
+
+                            fallbackMappingsToAdd.Add(mapRec);
+                            continue;
+                        }
+
+                        // iterate over the map targets
+                        foreach (ConceptMap.TargetElementComponent elementTarget in groupSourceElement.Target)
+                        {
+                            // check to see if this type is present in the target version
+                            if (!targetTypes.Contains(elementTarget.Code))
+                            {
+                                continue;
+                            }
+
+                            // resolve the target type
+                            DbStructureDefinition? targetSd = DbStructureDefinition.SelectSingle(
+                                _db,
+                                FhirPackageKey: targetPackage.Key,
+                                Id: elementTarget.Code);
+
+                            if (targetSd is null)
+                            {
+                                throw new Exception($"Invalid target type: `{elementTarget.Code}` for source: {groupSourceElement.Code} in map: {cm.Url} ({cm.Id})!");
+                            }
+
+                            // get extended relationship properties if they exist
+                            CMR? cdRelationship = elementTarget.Property
+                                .FirstOrDefault(p => p.Code == ConceptMapProperties.PropertyCodeConceptDomainRelationship)?.Value is Code cdCodeValue
+                                ? EnumUtility.ParseLiteral<CMR>(cdCodeValue.Value)
+                                : null;
+
+                            CMR? vdRelationship = elementTarget.Property
+                                .FirstOrDefault(p => p.Code == ConceptMapProperties.PropertyCodeValueDomainRelationship)?.Value is Code vdCodeValue
+                                ? EnumUtility.ParseLiteral<CMR>(vdCodeValue.Value)
+                                : null;
+
+                            // create a record for the database
+                            DbStructureMappingFallback mapRec = new()
+                            {
+                                Key = DbStructureMappingFallback.GetIndex(),
+
+                                SourceFhirPackageKey = sourcePackage.Key,
+                                SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
+                                SourceStructureKey = sourceSd.Key,
+                                SourceStructureId = sourceSd.Id,
+                                SourceStructureUrl = sourceSd.UnversionedUrl,
+
+                                TargetFhirPackageKey = targetPackage.Key,
+                                TargetFhirSequence = targetPackage.DefinitionFhirSequence,
+                                TargetStructureKey = targetSd.Key,
+                                TargetStructureId = targetSd.Id,
+                                TargetStructureUrl = targetSd.UnversionedUrl,
+
+                                ConceptMapSourceKey = sourceFileKey,
+                                FmlSourceKey = null,
+
+                                ExplicitNoMap = false,
+                                Relationship = elementTarget.Relationship,
+                                Comments = elementTarget.Comment,
+
+                                ConceptDomainRelationship = cdRelationship,
+                                ValueDomainRelationship = vdRelationship,
+                            };
+
+                            fallbackMappingsToAdd.Add(mapRec);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        // insert into the database
+        fallbackMappingsToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+        //_logger.LogInformation($"Inserted {elementMapsToAdd.Count} Type Definition Map records");
+
+        return fallbackMappingsToAdd.Count;
     }
 
 }

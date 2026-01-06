@@ -257,10 +257,13 @@ public partial class XVerProcessor
                 //UpdateValueSetMaps();
 
                 //LoadDatabase(true, true);
-                //LoadFhirCrossVersionMaps();
-                CompareInDatabase();
 
+                LoadFhirCrossVersionMaps();
+
+                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
+                CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
                 //CompareInDatabase();
+
                 //GenerateOutcomesFromComparisons();
                 //WriteFhirFromDbOutcomes();
                 break;
@@ -501,7 +504,37 @@ public partial class XVerProcessor
         //vsComparer.CompareValueSets();
 
         FhirDbComparer comparer = new(_db, _config.LogFactory);
-        comparer.Compare();
+        switch (artifactFilter)
+        {
+            case FhirArtifactClassEnum.CodeSystem:
+            case FhirArtifactClassEnum.ValueSet:
+                comparer.Compare(processValueSets: true, processStructures: false);
+                break;
+
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.Extension:
+                comparer.Compare(processValueSets: false, processStructures: true);
+                break;
+
+            default:
+                comparer.Compare();
+                break;
+        }
+
+        if (artifactFilter is null)
+        {
+            comparer.Compare();
+        }
+
+        if ((artifactFilter is null) ||
+            (artifactFilter == FhirArtifactClassEnum.ValueSet))
+        {
+
+        }
+
     }
 
     /// <summary>

@@ -225,8 +225,12 @@ public class StructureComparer
         // get our key (if necessary)
         trackingRecord.ComparisonRecordKey ??= DbStructureComparison.GetIndex();
 
-        // build the relevant element comparison records
-        List<DbElementComparison> elementComparisons = _elementComparer!.DoTransitiveElementComparisons(trackingRecord);
+        // build element comparisons for everything but primitives
+        List<DbElementComparison> elementComparisons =
+            (trackingRecord.SourceStructure.ArtifactClass == FhirArtifactClassEnum.PrimitiveType) ||
+            (trackingRecord.TargetStructure?.ArtifactClass == FhirArtifactClassEnum.PrimitiveType)
+            ? []
+            : _elementComparer!.DoTransitiveElementComparisons(trackingRecord);
 
         // determine the relationship based on the comparison steps
         CMR? sdRelationship = CMR.Equivalent;
@@ -290,8 +294,12 @@ public class StructureComparer
         DbStructureDefinition sourceSd = trackingRecord.SourceStructure;
         DbStructureDefinition? targetSd = trackingRecord.TargetStructure;
 
-        // track local comparisons so we can build the structure comparison
-        List<DbElementComparison> elementComparisons = _elementComparer!.DoElementComparisons(trackingRecord);
+        // do element comparisons on everything but primitives
+        List<DbElementComparison> elementComparisons =
+            (sourceSd.ArtifactClass == FhirArtifactClassEnum.PrimitiveType) ||
+            (targetSd?.ArtifactClass == FhirArtifactClassEnum.PrimitiveType)
+            ? []
+            : _elementComparer!.DoElementComparisons(trackingRecord);
 
         // if there is no target structure, every element is a no map
         if (targetSd is null)
@@ -321,7 +329,7 @@ public class StructureComparer
         }
 
         // determine the relationship based on the element comparisons
-        CMR? sdRelationship = CMR.Equivalent;
+        CMR? sdRelationship = trackingRecord.ExplicitMapping?.Relationship ?? CMR.Equivalent;
         if (elementComparisons.Any(ec => ec.NotMapped) ||
             elementComparisons.Any(ec => ec.Relationship == CMR.SourceIsBroaderThanTarget))
         {
@@ -368,8 +376,8 @@ public class StructureComparer
             relationship: sdRelationship,
             cdRelationship: sdConceptRelationship,
             vdRelationship: sdValueRelationship,
-            technicalMessage: null,
-            userMessage: null,
+            technicalMessage: trackingRecord.ExplicitMapping?.TechnicalNotes,
+            userMessage: trackingRecord.ExplicitMapping?.Comments,
             contentStepKeys: getKeyArray(
                 trackingRecord.SourcePackage,
                 sourceSd.Key,
@@ -544,7 +552,7 @@ public class StructureComparer
         int sourceIndex = sourcePackage.PackageArrayIndex;
         int targetIndex = targetPackage.PackageArrayIndex;
 
-        // check for explicit mappings for this structure to the target package LAST
+        // check for explicit mappings for this structure to the target package
         List<DbStructureMapping> mappings = DbStructureMapping.SelectList(
             _db,
             SourceFhirPackageKey: sourcePackage.Key,
@@ -722,6 +730,60 @@ public class StructureComparer
 
                 tr.Contents[sourceIndex] = sourceSd;
                 tr.Contents[targetIndex] = inverseSourceSd;
+
+                trackingRecords.Add(tr);
+            }
+        }
+
+        // check for fallback mappings for this structure to the target package if necessary
+        if (trackingRecords.Count == 0)
+        {
+            List<DbStructureMappingFallback> fallbackMappings = DbStructureMappingFallback.SelectList(
+            _db,
+            SourceFhirPackageKey: sourcePackage.Key,
+            SourceStructureKey: sourceSd.Key,
+            TargetFhirPackageKey: targetPackage.Key);
+
+            // iterate over the mappings to add to our tracking records
+            foreach (DbStructureMappingFallback mapping in fallbackMappings)
+            {
+                // resolve the target structure (if necessary)
+                DbStructureDefinition? targetSd = mapping.TargetStructureKey is null
+                    ? null
+                    : DbStructureDefinition.SelectSingle(_db, Key: mapping.TargetStructureKey);
+
+                if ((targetSd is null) &&
+                    (mapping.TargetStructureKey is not null))
+                {
+                    throw new Exception($"Unable to resolve target structure with key {mapping.TargetStructureKey} for mapping {mapping.Key}");
+                }
+
+                if (targetSd is not null)
+                {
+                    targetIds.Add(targetSd.Id);
+                    targetUrls.Add(targetSd.UnversionedUrl);
+                    if (!targetKeys.Add(targetSd.Key))
+                    {
+                        //_logger.LogError($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
+                        //continue;
+                        throw new Exception($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
+                    }
+                }
+
+                int? mappingSourceKey = mapping.ConceptMapSourceKey ?? mapping.FmlSourceKey ?? null;
+
+                StructureComparisonTrackingRecord tr = new()
+                {
+                    SourcePackage = sourcePackage,
+                    SourceStructure = sourceSd,
+                    TargetPackage = targetPackage,
+                    TargetStructure = targetSd,
+                    ExplicitMapping = mapping,
+                    ExplicitMappingSource = mappingSourceKey is null ? null : DbMappingSourceFile.SelectSingle(_db, Key: mappingSourceKey),
+                };
+
+                tr.Contents[sourceIndex] = sourceSd;
+                tr.Contents[targetIndex] = targetSd;
 
                 trackingRecords.Add(tr);
             }

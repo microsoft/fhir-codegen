@@ -29,26 +29,42 @@ public static class DbComparisonClasses
         DbCollatedTypeComparison.LoadMaxKey(db);
     }
 
-    public static void DropTables(IDbConnection db)
+    public static void DropTables(
+        IDbConnection db,
+        bool forValueSets = true,
+        bool forStructures = true)
     {
-        DbValueSetComparison.DropTable(db);
-        DbValueSetConceptComparison.DropTable(db);
+        if (forValueSets)
+        {
+            DbValueSetComparison.DropTable(db);
+            DbValueSetConceptComparison.DropTable(db);
+        }
 
-        DbStructureComparison.DropTable(db);
-
-        DbElementComparison.DropTable(db);
-        DbCollatedTypeComparison.DropTable(db);
+        if (forStructures)
+        {
+            DbStructureComparison.DropTable(db);
+            DbElementComparison.DropTable(db);
+            DbCollatedTypeComparison.DropTable(db);
+        }
     }
 
-    public static void CreateTables(IDbConnection db)
+    public static void CreateTables(
+        IDbConnection db,
+        bool forValueSets = true,
+        bool forStructures = true)
     {
-        DbValueSetComparison.CreateTable(db);
-        DbValueSetConceptComparison.CreateTable(db);
+        if (forValueSets)
+        {
+            DbValueSetComparison.CreateTable(db);
+            DbValueSetConceptComparison.CreateTable(db);
+        }
 
-        DbStructureComparison.CreateTable(db);
-
-        DbElementComparison.CreateTable(db);
-        DbCollatedTypeComparison.CreateTable(db);
+        if (forStructures)
+        {
+            DbStructureComparison.CreateTable(db);
+            DbElementComparison.CreateTable(db);
+            DbCollatedTypeComparison.CreateTable(db);
+        }
     }
 }
 
@@ -446,7 +462,7 @@ public partial class DbElementComparison : DbComparisonBase
     [CgSQLiteIgnore]
     public override int SourceContentKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
 
-    public required string SourceElementToken { get; set; }
+    public required string SourceElementId { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -458,7 +474,7 @@ public partial class DbElementComparison : DbComparisonBase
     [CgSQLiteIgnore]
     public override int? TargetContentKey { get => this.TargetElementKey; set => this.TargetElementKey = value; }
 
-    public required string? TargetElementToken { get; set; }
+    public required string? TargetElementId { get; set; }
 
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }

@@ -108,23 +108,31 @@ public partial class FhirDbComparer
         _db = db.DbConnection;
     }
 
-    public void Compare()
+    public void Compare(
+        bool processValueSets = true,
+        bool processStructures = true)
     {
         // ensure out tables exist and are empty
-        DbComparisonClasses.DropTables(_db);
-        DbComparisonClasses.CreateTables(_db);
+        DbComparisonClasses.DropTables(_db, forValueSets: processValueSets, forStructures: processStructures);
+        DbComparisonClasses.CreateTables(_db, forValueSets: processValueSets, forStructures: processStructures);
 
-        // create our value set comparer
-        ValueSetComparer vsComparer = new(_db, _loggerFactory);
+        if (processValueSets)
+        {
+            // create our value set comparer
+            ValueSetComparer vsComparer = new(_db, _loggerFactory);
 
-        // run our value set comparisons
-        vsComparer.CompareValueSets();
+            // run our value set comparisons
+            vsComparer.CompareValueSets();
+        }
 
-        // create our structure comparer
-        StructureComparer sdComparer = new(_db, _loggerFactory);
+        if (processStructures)
+        {
+            // create our structure comparer
+            StructureComparer sdComparer = new(_db, _loggerFactory);
 
-        // run our structure comparisons
-        sdComparer.CompareStructures();
+            // run our structure comparisons
+            sdComparer.CompareStructures();
+        }
     }
 
 #if false

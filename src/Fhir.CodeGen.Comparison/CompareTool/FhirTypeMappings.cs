@@ -115,6 +115,7 @@ public class FhirTypeMappings
     /// </summary>
     /// <remarks>
     /// The mappings are used to determine how types are converted or compared during code generation.
+    /// ConceptDomain, ValueDomain, Relationship
     /// </remarks>
     internal static readonly CodeGenTypeMapping[] PrimitiveMappings = [
         new("base64Binary", "base64Binary", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
@@ -132,7 +133,7 @@ public class FhirTypeMappings
         new("code", "uri", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),
 
         new("date", "date", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
-        new("date", "dateTime", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsBroaderThanTarget),
+        new("date", "dateTime", CMR.Equivalent, CMR.SourceIsNarrowerThanTarget, CMR.SourceIsNarrowerThanTarget),
 
         new("dateTime", "dateTime", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
         new("dateTime", "date", CMR.Equivalent, CMR.SourceIsBroaderThanTarget, CMR.SourceIsBroaderThanTarget),

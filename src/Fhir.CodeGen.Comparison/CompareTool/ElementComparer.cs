@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Security.AccessControl;
@@ -12,6 +13,7 @@ using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
 using Hl7.Fhir.Model;
 using Microsoft.Extensions.Logging;
+using Octokit;
 using static Fhir.CodeGen.Comparison.CompareTool.StructureComparer;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
@@ -130,15 +132,23 @@ public class ElementComparer
             stepElementComparisons[sdCompStep.Key] = currentStepComparisons;
         }
 
-        // get the initial source elements
+        // get the initial source elements that are not extension or id elements
         List<DbElement> sourceElements = DbElement.SelectList(
             _db,
-            StructureKey: trackingRecord.SourceStructure.Key);
+            StructureKey: trackingRecord.SourceStructure.Key)
+            .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+            .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+                (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+            .ToList();
 
-        // get the target elements (if we have a target)
+        // get the target elements that are not extension or id elements (if we have a target)
         Dictionary<int, DbElement> targetElements = trackingRecord.TargetStructure is null
             ? []
-            : DbElement.SelectDict(_db, StructureKey: trackingRecord.TargetStructure.Key);
+            : DbElement.SelectList(_db, StructureKey: trackingRecord.TargetStructure.Key)
+                .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+                .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+                    (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+                .ToDictionary(e => e.Key);
 
         // build a lookup from source element key to the first step's element comparisons
         ILookup<int, DbElementComparison> firstStepBySourceElement = stepElementComparisons[trackingRecord.ComparisonSteps[0].Key]
@@ -310,10 +320,14 @@ public class ElementComparer
         DbStructureDefinition sourceSd = trackingRecord.SourceStructure;
         DbStructureDefinition? targetSd = trackingRecord.TargetStructure;
 
-        // get the source elements
+        // get the source elements that are not id and extension elements
         List<DbElement> sourceElements = DbElement.SelectList(
             _db,
-            StructureKey: trackingRecord.SourceStructure.Key);
+            StructureKey: trackingRecord.SourceStructure.Key)
+            .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+            .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+                (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+            .ToList();
 
         // if there is no target structure, every element is a no map
         if (targetSd is null)
@@ -343,10 +357,14 @@ public class ElementComparer
             return elementComparisons;
         }
 
-        // get the target elements
-        Dictionary<int, DbElement> targetElements = DbElement.SelectDict(
+        // get the target elements that are not extensions or id elements
+        Dictionary<int, DbElement> targetElements = DbElement.SelectList(
             _db,
-            StructureKey: targetSd.Key);
+            StructureKey: targetSd.Key)
+            .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+            .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+                (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+            .ToDictionary(e => e.Key);
 
         // get any explicit element mappings
         List<DbElementMapping> elementMappings = trackingRecord.ExplicitMapping is null
@@ -412,9 +430,9 @@ public class ElementComparer
                 }
 
                 // use the explicit relationship
-                elementRelationship = explicitMapping.Relationship;
-                elementConceptRelationship = explicitMapping.ConceptDomainRelationship;
-                elementValueRelationship = explicitMapping.ValueDomainRelationship;
+                elementRelationship = explicitMapping.Relationship ?? CMR.Equivalent;
+                elementConceptRelationship = explicitMapping.ConceptDomainRelationship ?? CMR.Equivalent;
+                elementValueRelationship = explicitMapping.ValueDomainRelationship ?? CMR.Equivalent;
 
                 technicalMessage = $"Using explicit mapping" +
                     $" from `{sourceSd.VersionedUrl}`" +
@@ -651,13 +669,15 @@ public class ElementComparer
             if (targetTypesByName.Contains(sourceType.TypeName))
             {
                 // check to see if any of our matched types have the same type and target profiles
-                DbElementType? literalMatchType = targetTypesByName[sourceType.TypeName].FirstOrDefault(sourceType.IsEquivalent);
+                List<DbElementType> literalMatchType = targetTypesByName[sourceType.TypeName].ToList();
+
+                DbElementType? literalEquvialent = literalMatchType.FirstOrDefault(sourceType.IsEquivalent);
                 if (literalMatchType != null)
                 {
                     // override any existing mappings, since this is an exact match
-                    sourceTargetTypeMappings[sourceType] = literalMatchType;
+                    sourceTargetTypeMappings[sourceType] = literalEquvialent;
+                    continue;
                 }
-                continue;
             }
 
             // check to see if this is a quantity type and look for quantity matches
@@ -697,6 +717,8 @@ public class ElementComparer
                 }
             }
 
+            bool haveMapping = false;
+
             // look for a compatible explicitMapping among types, based on structure comparisons in the database
             foreach (DbElementType targetType in targetTypeList)
             {
@@ -706,7 +728,7 @@ public class ElementComparer
                 {
                     continue;
                 }
-
+                
                 int matchCount = DbStructureComparison.SelectCount(
                     _db,
                     SourceFhirPackageKey: sourceElement.FhirPackageKey,
@@ -724,9 +746,24 @@ public class ElementComparer
                         TargetStructureKey: targetType.TypeStructureKey);
                 }
 
+                if (matchCount == 0)
+                {
+                    matchCount = DbStructureMappingFallback.SelectCount(
+                        _db,
+                        SourceFhirPackageKey: sourceElement.FhirPackageKey,
+                        SourceStructureKey: sourceType.TypeStructureKey,
+                        TargetFhirPackageKey: targetElement.FhirPackageKey,
+                        TargetStructureKey: targetType.TypeStructureKey);
+                }
+
                 // if we did not find a target, keep looking
                 if (matchCount == 0)
                 {
+                    //_logger.LogWarning(
+                    //    $"{sourcePackage.ShortName}->{targetPackage.ShortName}" +
+                    //    $" type {sourceType.Literal}->{targetType.Literal}" +
+                    //    $" has no mapping!" +
+                    //    $" {sourceElement.Id} -> {targetElement.Id}");
                     continue;
                 }
 
@@ -734,13 +771,24 @@ public class ElementComparer
                 if (sourceType.HaveEquivalentProfiles(targetType))
                 {
                     sourceTargetTypeMappings[sourceType] = targetType;
+                    haveMapping = true;
                     break;
                 }
                 else if (sourceTargetTypeMappings[sourceType] == null)
                 {
                     sourceTargetTypeMappings[sourceType] = targetType;
+                    haveMapping = true;
                     continue;
                 }
+            }
+
+            if ((!haveMapping) && (sourceTypeList.Count <= 2))
+            {
+                _logger.LogWarning(
+                    $"{sourcePackage.ShortName}->{targetPackage.ShortName}" +
+                    $" {sourceElement.Id} type {sourceType.Literal}" +
+                    $" has no mapping" +
+                    $" into {targetElement.Id} ({targetElement.FullCollatedTypeLiteral})");
             }
         }
 
@@ -896,7 +944,13 @@ public class ElementComparer
         string[] sourceProfiles = string.IsNullOrEmpty(sourceType.TypeProfile) ? [] : [sourceType.TypeProfile];
         string[] targetProfiles = string.IsNullOrEmpty(targetType.TypeProfile) ? [] : [targetType.TypeProfile];
 
-        return compareProfiles(sourceProfiles, targetProfiles, $"{sourceType.Literal}:{targetType.Literal}", "type");
+        return compareProfiles(
+            sourceType,
+            targetType,
+            sourceProfiles,
+            targetProfiles,
+            $"{sourceType.Literal}:{targetType.Literal}",
+            "type");
     }
 
     private (CMR relationship, string message) compareTargetProfiles(DbElementType sourceType, DbElementType targetType)
@@ -904,11 +958,22 @@ public class ElementComparer
         string[] sourceProfiles = string.IsNullOrEmpty(sourceType.TargetProfile) ? [] : [sourceType.TargetProfile];
         string[] targetProfiles = string.IsNullOrEmpty(targetType.TargetProfile) ? [] : [targetType.TargetProfile];
 
-        return compareProfiles(sourceProfiles, targetProfiles, $"{sourceType.Literal}:{targetType.Literal}", "target");
+        return compareProfiles(
+            sourceType,
+            targetType,
+            sourceProfiles,
+            targetProfiles,
+            $"{sourceType.Literal}:{targetType.Literal}",
+            "target");
     }
 
-
-    private (CMR relationship, string message) compareProfiles(string[] sourceProfileList, string[] targetProfileList, string typeName, string profileType)
+    private (CMR relationship, string message) compareProfiles(
+        DbElementType sourceType,
+        DbElementType targetType,
+        string[] sourceProfileList,
+        string[] targetProfileList,
+        string typeName,
+        string profileType)
     {
         if ((sourceProfileList.Length == 0) && (targetProfileList.Length == 0))
         {
@@ -930,6 +995,44 @@ public class ElementComparer
 
         List<string> missingProfiles = sourceTypeProfiles.Except(targetTypeProfiles).ToList();
         List<string> addedProfiles = targetTypeProfiles.Except(sourceTypeProfiles).ToList();
+
+        // if we have missing profiles, check to see if they map to what we have
+        if (missingProfiles.Count > 0)
+        {
+            List<DbStructureDefinition> sourceProfileStructures = [];
+            foreach (string sp in sourceProfileList)
+            {
+                if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: sourceType.FhirPackageKey, UnversionedUrl: sp)
+                    is DbStructureDefinition spSd)
+                {
+                    sourceProfileStructures.Add(spSd);
+                }
+            }
+
+            List<DbStructureDefinition> targetProfileStructures = [];
+            foreach (string tp in targetProfileList)
+            {
+                if (DbStructureDefinition.SelectSingle(_db, FhirPackageKey: targetType.FhirPackageKey, UnversionedUrl: tp)
+                    is DbStructureDefinition tpSd)
+                {
+                    targetProfileStructures.Add(tpSd);
+                }
+            }
+
+            foreach (string missingSourceProfile in missingProfiles)
+            {
+                List<DbStructureMapping> explicitMapped = DbStructureMapping.SelectList(
+                    _db,
+                    SourceFhirPackageKey: sourceType.FhirPackageKey,
+                    SourceStructureUrl: missingSourceProfile,
+                    TargetFhirPackageKey: targetType.FhirPackageKey,
+                    TargetStructureKeyValues: targetProfileStructures.Select(sd => sd.Key).ToList());
+
+                Debug.Fail("working...");
+            }
+        }
+
+        // 
 
         if ((missingProfiles.Count == 0) && (addedProfiles.Count == 0))
         {
@@ -1039,13 +1142,13 @@ public class ElementComparer
             SourceFhirSequence = sdTrackingRecord.SourcePackage.DefinitionFhirSequence,
             SourceStructureKey = sdTrackingRecord.SourceStructure.Key,
             SourceElementKey = sourceElement.Key,
-            SourceElementToken = sourceElement.Path,
+            SourceElementId = sourceElement.Path,
 
             TargetFhirPackageKey = sdTrackingRecord.TargetPackage.Key,
             TargetFhirSequence = sdTrackingRecord.TargetPackage.DefinitionFhirSequence,
             TargetStructureKey = sdTrackingRecord.TargetStructure?.Key,
             TargetElementKey = targetElement?.Key,
-            TargetElementToken = targetElement?.Path,
+            TargetElementId = targetElement?.Path,
 
             ContentKeys = contentStepKeys,
 
