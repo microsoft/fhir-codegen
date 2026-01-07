@@ -799,7 +799,7 @@ public class FmlLoader
             {
                 string name = dependentInvocation.Identifier;
 
-                if (_fml.GroupsByName.TryGetValue(name, out GroupDeclaration? dependentGroup))
+                if (_fml!.GroupsByName.TryGetValue(name, out GroupDeclaration? dependentGroup))
                 {
                     List<FmlSymbolResolutionRecord> dependentParams = [];
                     foreach (FmlInvocationParam invocationParam in dependentInvocation.Parameters)
@@ -901,7 +901,7 @@ public class FmlLoader
         if (sourcePrefix.Length > 2048 || targetPrefix.Length > 2048)
         {
             // A safety check on missing recursive definitions...
-            _logger.LogWarning($"{_fml.MapDirective?.Url ?? _fml.MetadataByPath["url"]?.Literal?.Value} {group.Name} Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
+            _logger.LogWarning($"{_fml!.MapDirective?.Url ?? _fml.MetadataByPath["url"]?.Literal?.Value} {group.Name} Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
             throw new ApplicationException($"Path likely in a recursive loop {sourcePrefix} -> {targetPrefix}");
         }
 
@@ -1100,7 +1100,7 @@ public class FmlLoader
                             foreach (FmlInvocation dependentInvocation in exp.MappingExpression.DependentExpression.Invocations)
                             {
                                 string fnName = dependentInvocation.Identifier;
-                                if (fnName != group.Name && _fml.GroupsByName.TryGetValue(fnName, out GroupDeclaration? dependentGroup))
+                                if (fnName != group.Name && _fml!.GroupsByName.TryGetValue(fnName, out GroupDeclaration? dependentGroup))
                                 {
                                     if (dependentGroupCallStack == null || !dependentGroupCallStack.Contains(fnName))
                                     {
@@ -1260,16 +1260,19 @@ public class FmlLoader
                     structureMappingRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        IsFallback = false,                 // there are no fallback FML files
 
                         SourceFhirPackageKey = _sourcePackage.Key,
                         SourceFhirSequence = _sourcePackage.DefinitionFhirSequence,
                         SourceStructureKey = sourceSd.Key,
                         SourceStructureId = sourceSd.Id,
+                        SourceStructureUrl = sourceSd.UnversionedUrl,
 
                         TargetFhirPackageKey = _targetPackage.Key,
                         TargetFhirSequence = _targetPackage.DefinitionFhirSequence,
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
+                        TargetStructureUrl = targetSd.UnversionedUrl,
 
                         ConceptMapSourceKey = null,
                         FmlSourceKey = _sourceFileKey,

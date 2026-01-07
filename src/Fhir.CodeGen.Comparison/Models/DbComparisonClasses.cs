@@ -26,7 +26,8 @@ public static class DbComparisonClasses
         DbStructureComparison.LoadMaxKey(db);
 
         DbElementComparison.LoadMaxKey(db);
-        DbCollatedTypeComparison.LoadMaxKey(db);
+        //DbCollatedTypeComparison.LoadMaxKey(db);
+        DbElementTypeComparison.LoadMaxKey(db);
     }
 
     public static void DropTables(
@@ -44,7 +45,8 @@ public static class DbComparisonClasses
         {
             DbStructureComparison.DropTable(db);
             DbElementComparison.DropTable(db);
-            DbCollatedTypeComparison.DropTable(db);
+            //DbCollatedTypeComparison.DropTable(db);
+            DbElementTypeComparison.DropTable(db);
         }
     }
 
@@ -63,7 +65,8 @@ public static class DbComparisonClasses
         {
             DbStructureComparison.CreateTable(db);
             DbElementComparison.CreateTable(db);
-            DbCollatedTypeComparison.CreateTable(db);
+            //DbCollatedTypeComparison.CreateTable(db);
+            DbElementTypeComparison.CreateTable(db);
         }
     }
 }
@@ -476,49 +479,21 @@ public partial class DbElementComparison : DbComparisonBase
 
     public required string? TargetElementId { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "ElementMappings", referenceColumn: nameof(DbElementMapping.Key))]
+    public int? ElementMappingKey { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
     public required bool? RelativePathsAreIdentical { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "ElementMappings", referenceColumn: nameof(DbElementMapping.Key))]
-    public int? ElementMappingKey { get; set; }
-
-
-    [CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
-    public required int? CollatedTypeComparisonKey { get; set; }
-
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
     public required int? BoundValueSetComparisonKey { get; set; }
-}
 
-[CgSQLiteTable(tableName: "CollatedTypeComparisons")]
-[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
-public partial class DbCollatedTypeComparison : DbComparisonBase
-{
-    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
-    public required int ElementComparisonKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
-    public required int SourceElementKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbElementType.Key))]
-    public required int SourceCollatedTypeKey { get; set; }
-
-    [CgSQLiteIgnore]
-    public override int SourceContentKey { get => this.SourceCollatedTypeKey; set => this.SourceCollatedTypeKey = value; }
-
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElementType.Key))]
-    public required int? TargetElementKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbElementType.Key))]
-    public required int? TargetCollatedTypeKey { get; set; }
-
-    [CgSQLiteIgnore]
-    public override int? TargetContentKey { get => this.TargetCollatedTypeKey; set => this.TargetCollatedTypeKey = value; }
-
+    //[CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
+    //public required int? CollatedTypeComparisonKey { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TypeRelationship { get; set; }
+    public required string? TypeMessage { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TargetProfileRelationship { get; set; }
     public required string? TargetProfileMessage { get; set; }
@@ -526,271 +501,349 @@ public partial class DbCollatedTypeComparison : DbComparisonBase
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TypeProfileRelationship { get; set; }
     public required string? TypeProfileMessage { get; set; }
 
+}
 
-    public string? IdenticalTypesKeysLiteral { get; set; } = null;
+//[CgSQLiteTable(tableName: "CollatedTypeComparisons")]
+//[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
+//public partial class DbCollatedTypeComparison : DbComparisonBase
+//{
+//    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
+//    public required int ElementComparisonKey { get; set; }
+
+//    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+//    public required int SourceElementKey { get; set; }
+
+//    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
+//    public required int SourceCollatedTypeKey { get; set; }
+
+//    [CgSQLiteIgnore]
+//    public override int SourceContentKey { get => this.SourceCollatedTypeKey; set => this.SourceCollatedTypeKey = value; }
+
+
+//    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+//    public required int? TargetElementKey { get; set; }
+
+//    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
+//    public required int? TargetCollatedTypeKey { get; set; }
+
+//    [CgSQLiteIgnore]
+//    public override int? TargetContentKey { get => this.TargetCollatedTypeKey; set => this.TargetCollatedTypeKey = value; }
+
+
+//    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TargetProfileRelationship { get; set; }
+//    public required string? TargetProfileMessage { get; set; }
+
+//    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TypeProfileRelationship { get; set; }
+//    public required string? TypeProfileMessage { get; set; }
+
+
+//    //public string? IdenticalTypesKeysLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<int> IdenticalTypesKeys
+//    //{
+//    //    get => IdenticalTypesKeysLiteral is null
+//    //        ? []
+//    //        : (IdenticalTypesKeysLiteral
+//    //            .Split(',')
+//    //            .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
+//    //            .Where(v => v is not null) as IEnumerable<int>)!
+//    //            .ToList();
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            IdenticalTypesKeysLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        IdenticalTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? IdenticalTypesSymbolsLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<string> IdenticalTypesSymbols
+//    //{
+//    //    get => IdenticalTypesSymbolsLiteral is null
+//    //        ? []
+//    //        : IdenticalTypesSymbolsLiteral.Split(',').ToList();
+
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            IdenticalTypesSymbolsLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        IdenticalTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+
+//    //public string? EquivalentTypesKeysLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<int> EquivalentTypesKeys
+//    //{
+//    //    get => EquivalentTypesKeysLiteral is null
+//    //        ? []
+//    //        : (EquivalentTypesKeysLiteral
+//    //            .Split(',')
+//    //            .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
+//    //            .Where(v => v is not null) as IEnumerable<int>)!
+//    //            .ToList();
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            EquivalentTypesKeysLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        EquivalentTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? EquivalentTypesSymbolsLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<string> EquivalentTypesSymbols
+//    //{
+//    //    get => EquivalentTypesSymbolsLiteral is null
+//    //        ? []
+//    //        : EquivalentTypesSymbolsLiteral.Split(',').ToList();
+
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            EquivalentTypesSymbolsLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        EquivalentTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+
+//    //public string? BroaderTypesKeysLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<int> BroaderTypesKeys
+//    //{
+//    //    get => BroaderTypesKeysLiteral is null
+//    //        ? []
+//    //        : (BroaderTypesKeysLiteral
+//    //            .Split(',')
+//    //            .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
+//    //            .Where(v => v is not null) as IEnumerable<int>)!
+//    //            .ToList();
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            BroaderTypesKeysLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        BroaderTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? BroaderTypesSymbolsLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<string> BroaderTypesSymbols
+//    //{
+//    //    get => BroaderTypesSymbolsLiteral is null
+//    //        ? []
+//    //        : BroaderTypesSymbolsLiteral.Split(',').ToList();
+
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            BroaderTypesSymbolsLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        BroaderTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? NarrowerTypesKeysLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<int> NarrowerTypesKeys
+//    //{
+//    //    get => NarrowerTypesKeysLiteral is null
+//    //        ? []
+//    //        : (NarrowerTypesKeysLiteral
+//    //            .Split(',')
+//    //            .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
+//    //            .Where(v => v is not null) as IEnumerable<int>)!
+//    //            .ToList();
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            NarrowerTypesKeysLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        NarrowerTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? NarrowerTypesSymbolsLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<string> NarrowerTypesSymbols
+//    //{
+//    //    get => NarrowerTypesSymbolsLiteral is null
+//    //        ? []
+//    //        : NarrowerTypesSymbolsLiteral.Split(',').ToList();
+
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            NarrowerTypesSymbolsLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        NarrowerTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? AddedTypesKeysLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<int> AddedTypesKeys
+//    //{
+//    //    get => AddedTypesKeysLiteral is null
+//    //        ? []
+//    //        : (AddedTypesKeysLiteral
+//    //            .Split(',')
+//    //            .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
+//    //            .Where(v => v is not null) as IEnumerable<int>)!
+//    //            .ToList();
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            AddedTypesKeysLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        AddedTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? AddedTypesSymbolsLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<string> AddedTypesSymbols
+//    //{
+//    //    get => AddedTypesSymbolsLiteral is null
+//    //        ? []
+//    //        : AddedTypesSymbolsLiteral.Split(',').ToList();
+
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            AddedTypesSymbolsLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        AddedTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? RemovedTypesKeysLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<int> RemovedTypesKeys
+//    //{
+//    //    get => RemovedTypesKeysLiteral is null
+//    //        ? []
+//    //        : (RemovedTypesKeysLiteral
+//    //            .Split(',')
+//    //            .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
+//    //            .Where(v => v is not null) as IEnumerable<int>)!
+//    //            .ToList();
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            RemovedTypesKeysLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        RemovedTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+
+//    //public string? RemovedTypesSymbolsLiteral { get; set; } = null;
+//    //[CgSQLiteIgnore]
+//    //public List<string> RemovedTypesSymbols
+//    //{
+//    //    get => RemovedTypesSymbolsLiteral is null
+//    //        ? []
+//    //        : RemovedTypesSymbolsLiteral.Split(',').ToList();
+
+//    //    set
+//    //    {
+//    //        if (value.Count == 0)
+//    //        {
+//    //            RemovedTypesSymbolsLiteral = null;
+//    //            return;
+//    //        }
+
+//    //        RemovedTypesKeysLiteral = string.Join(',', value);
+//    //    }
+//    //}
+//}
+
+
+[CgSQLiteTable(tableName: "ElementTypeComparisons")]
+[CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetElementKey))]
+public partial class DbElementTypeComparison : DbComparisonBase
+{
+    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
+    public required int ElementComparisonKey { get; set; }
+
+    //[CgSQLiteForeignKey(referenceTable: "CollatedTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
+    //public required int CollatedTypeComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int SourceElementKey { get; set; }
+
+    //[CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
+    //public required int SourceCollatedTypeKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int SourceElementTypeKey { get; set; }
+
     [CgSQLiteIgnore]
-    public List<int> IdenticalTypesKeys
-    {
-        get => IdenticalTypesKeysLiteral is null
-            ? []
-            : (IdenticalTypesKeysLiteral
-                .Split(',')
-                .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
-                .Where(v => v is not null) as IEnumerable<int>)!
-                .ToList();
-        set
-        {
-            if (value.Count == 0)
-            {
-                IdenticalTypesKeysLiteral = null;
-                return;
-            }
+    public override int SourceContentKey { get => this.SourceElementTypeKey; set => this.SourceElementTypeKey = value; }
 
-            IdenticalTypesKeysLiteral = string.Join(',', value);
-        }
-    }
 
-    public string? IdenticalTypesSymbolsLiteral { get; set; } = null;
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int? TargetElementKey { get; set; }
+
+    //[CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
+    //public required int? TargetCollatedTypeKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementTypes", referenceColumn: nameof(DbElementType.Key))]
+    public required int? TargetElementTypeKey { get; set; }
+
     [CgSQLiteIgnore]
-    public List<string> IdenticalTypesSymbols
-    {
-        get => IdenticalTypesSymbolsLiteral is null
-            ? []
-            : IdenticalTypesSymbolsLiteral.Split(',').ToList();
-
-        set
-        {
-            if (value.Count == 0)
-            {
-                IdenticalTypesSymbolsLiteral = null;
-                return;
-            }
-
-            IdenticalTypesKeysLiteral = string.Join(',', value);
-        }
-    }
+    public override int? TargetContentKey { get => this.TargetElementTypeKey; set => this.TargetElementTypeKey = value; }
 
 
-    public string? EquivalentTypesKeysLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<int> EquivalentTypesKeys
-    {
-        get => EquivalentTypesKeysLiteral is null
-            ? []
-            : (EquivalentTypesKeysLiteral
-                .Split(',')
-                .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
-                .Where(v => v is not null) as IEnumerable<int>)!
-                .ToList();
-        set
-        {
-            if (value.Count == 0)
-            {
-                EquivalentTypesKeysLiteral = null;
-                return;
-            }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TargetProfileRelationship { get; set; }
+    public required string? TargetProfileMessage { get; set; }
 
-            EquivalentTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? EquivalentTypesSymbolsLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<string> EquivalentTypesSymbols
-    {
-        get => EquivalentTypesSymbolsLiteral is null
-            ? []
-            : EquivalentTypesSymbolsLiteral.Split(',').ToList();
-
-        set
-        {
-            if (value.Count == 0)
-            {
-                EquivalentTypesSymbolsLiteral = null;
-                return;
-            }
-
-            EquivalentTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-
-    public string? BroaderTypesKeysLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<int> BroaderTypesKeys
-    {
-        get => BroaderTypesKeysLiteral is null
-            ? []
-            : (BroaderTypesKeysLiteral
-                .Split(',')
-                .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
-                .Where(v => v is not null) as IEnumerable<int>)!
-                .ToList();
-        set
-        {
-            if (value.Count == 0)
-            {
-                BroaderTypesKeysLiteral = null;
-                return;
-            }
-
-            BroaderTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? BroaderTypesSymbolsLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<string> BroaderTypesSymbols
-    {
-        get => BroaderTypesSymbolsLiteral is null
-            ? []
-            : BroaderTypesSymbolsLiteral.Split(',').ToList();
-
-        set
-        {
-            if (value.Count == 0)
-            {
-                BroaderTypesSymbolsLiteral = null;
-                return;
-            }
-
-            BroaderTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? NarrowerTypesKeysLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<int> NarrowerTypesKeys
-    {
-        get => NarrowerTypesKeysLiteral is null
-            ? []
-            : (NarrowerTypesKeysLiteral
-                .Split(',')
-                .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
-                .Where(v => v is not null) as IEnumerable<int>)!
-                .ToList();
-        set
-        {
-            if (value.Count == 0)
-            {
-                NarrowerTypesKeysLiteral = null;
-                return;
-            }
-
-            NarrowerTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? NarrowerTypesSymbolsLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<string> NarrowerTypesSymbols
-    {
-        get => NarrowerTypesSymbolsLiteral is null
-            ? []
-            : NarrowerTypesSymbolsLiteral.Split(',').ToList();
-
-        set
-        {
-            if (value.Count == 0)
-            {
-                NarrowerTypesSymbolsLiteral = null;
-                return;
-            }
-
-            NarrowerTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? AddedTypesKeysLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<int> AddedTypesKeys
-    {
-        get => AddedTypesKeysLiteral is null
-            ? []
-            : (AddedTypesKeysLiteral
-                .Split(',')
-                .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
-                .Where(v => v is not null) as IEnumerable<int>)!
-                .ToList();
-        set
-        {
-            if (value.Count == 0)
-            {
-                AddedTypesKeysLiteral = null;
-                return;
-            }
-
-            AddedTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? AddedTypesSymbolsLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<string> AddedTypesSymbols
-    {
-        get => AddedTypesSymbolsLiteral is null
-            ? []
-            : AddedTypesSymbolsLiteral.Split(',').ToList();
-
-        set
-        {
-            if (value.Count == 0)
-            {
-                AddedTypesSymbolsLiteral = null;
-                return;
-            }
-
-            AddedTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? RemovedTypesKeysLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<int> RemovedTypesKeys
-    {
-        get => RemovedTypesKeysLiteral is null
-            ? []
-            : (RemovedTypesKeysLiteral
-                .Split(',')
-                .Select(v => int.TryParse(v, out int iv) ? (int)iv : (int?)null)
-                .Where(v => v is not null) as IEnumerable<int>)!
-                .ToList();
-        set
-        {
-            if (value.Count == 0)
-            {
-                RemovedTypesKeysLiteral = null;
-                return;
-            }
-
-            RemovedTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
-    public string? RemovedTypesSymbolsLiteral { get; set; } = null;
-    [CgSQLiteIgnore]
-    public List<string> RemovedTypesSymbols
-    {
-        get => RemovedTypesSymbolsLiteral is null
-            ? []
-            : RemovedTypesSymbolsLiteral.Split(',').ToList();
-
-        set
-        {
-            if (value.Count == 0)
-            {
-                RemovedTypesSymbolsLiteral = null;
-                return;
-            }
-
-            RemovedTypesKeysLiteral = string.Join(',', value);
-        }
-    }
-
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TypeProfileRelationship { get; set; }
+    public required string? TypeProfileMessage { get; set; }
 }
 
 public class DbComparisonCache<T>
-        where T : DbComparisonBase
+    where T : DbComparisonBase
 {
     private readonly Dictionary<int, T> _byKey = [];
     private readonly Dictionary<(int sourceKey, int? targetKey), T> _byPair = [];

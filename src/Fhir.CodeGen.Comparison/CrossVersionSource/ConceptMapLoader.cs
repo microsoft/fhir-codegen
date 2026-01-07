@@ -167,6 +167,7 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -199,6 +200,7 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -277,6 +279,7 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -310,6 +313,7 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -797,6 +801,7 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -852,6 +857,7 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -1217,6 +1223,7 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -1272,6 +1279,7 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -1313,7 +1321,7 @@ public class ConceptMapLoader
         string conceptMapFilename,
         string sourceInputPath)
     {
-        List<DbStructureMappingFallback> fallbackMappingsToAdd = [];
+        List<DbStructureMapping> fallbackMappingsToAdd = [];
 
         int sourceFileKey = _mappingLoader.getOrCreateMappingSourceFileKey(
             conceptMapFilename,
@@ -1390,9 +1398,10 @@ public class ConceptMapLoader
                         // check for no map
                         if (groupSourceElement.NoMap == true)
                         {
-                            DbStructureMappingFallback mapRec = new()
+                            DbStructureMapping mapRec = new()
                             {
-                                Key = DbStructureMappingFallback.GetIndex(),
+                                Key = DbStructureMapping.GetIndex(),
+                                IsFallback = true,
 
                                 SourceFhirPackageKey = sourcePackage.Key,
                                 SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -1451,9 +1460,10 @@ public class ConceptMapLoader
                                 : null;
 
                             // create a record for the database
-                            DbStructureMappingFallback mapRec = new()
+                            DbStructureMapping mapRec = new()
                             {
-                                Key = DbStructureMappingFallback.GetIndex(),
+                                Key = DbStructureMapping.GetIndex(),
+                                IsFallback = true,
 
                                 SourceFhirPackageKey = sourcePackage.Key,
                                 SourceFhirSequence = sourcePackage.DefinitionFhirSequence,

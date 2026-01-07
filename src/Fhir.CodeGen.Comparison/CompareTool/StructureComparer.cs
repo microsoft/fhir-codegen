@@ -18,6 +18,8 @@ public class StructureComparer
 {
     internal class StructureComparisonTrackingRecord
     {
+        public required FhirPackageComparisonPair PackagePair { get; init; }
+
         public required DbFhirPackage SourcePackage { get; init; }
         public required DbStructureDefinition SourceStructure { get; init; }
         public required DbFhirPackage TargetPackage { get; set; }
@@ -36,6 +38,7 @@ public class StructureComparer
 
         public StructureComparisonTrackingRecord Clone() => new()
         {
+            PackagePair = this.PackagePair,
             SourcePackage = this.SourcePackage,
             SourceStructure = this.SourceStructure,
             TargetPackage = this.TargetPackage,
@@ -58,7 +61,7 @@ public class StructureComparer
 
     private DbComparisonCache<DbStructureComparison> _sdComparisonCache;
     private DbComparisonCache<DbElementComparison> _elementComparisonCache;
-    private DbComparisonCache<DbCollatedTypeComparison> _collatedTypeComparisonCache;
+    private DbComparisonCache<DbElementTypeComparison> _elementTypeComparisonCache;
 
     private List<DbFhirPackage> _packages = [];
 
@@ -75,44 +78,72 @@ public class StructureComparer
 
         _sdComparisonCache = new();
         _elementComparisonCache = new();
-        _collatedTypeComparisonCache = new();
+        _elementTypeComparisonCache = new();
     }
 
-    public void CompareStructures()
+    public void CompareStructures(int? maxStepSize = null)
     {
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
 
-        _elementComparer = new(
-            _db,
-            _loggerFactory,
-            _elementComparisonCache,
-            _collatedTypeComparisonCache,
-            _packages);
+        List<FhirPackageComparisonPair> packagePairs = [];
+        maxStepSize ??= _packages.Count - 1;
 
         // we want to process closer versions first, so we do a stepped approach
-        for (int stepSize = 1; stepSize < _packages.Count; stepSize++)
+        for (int stepSize = 1; stepSize <= maxStepSize; stepSize++)
         {
             for (int i = 0; i < _packages.Count - stepSize; i++)
             {
                 DbFhirPackage sourcePackage = _packages[i];
                 DbFhirPackage targetPackage = _packages[i + stepSize];
 
-                // ascending
-                _logger.LogInformation($"Processing {sourcePackage.ShortName} -> {targetPackage.ShortName}");
-                doComparison(sourcePackage, targetPackage);
-                applyCachedChanges(sourcePackage, targetPackage);
-
-                // descending
-                _logger.LogInformation($"Processing {targetPackage.ShortName} -> {sourcePackage.ShortName}");
-                doComparison(targetPackage, sourcePackage);
-                applyCachedChanges(targetPackage, sourcePackage);
+                packagePairs.Add(new(sourcePackage, targetPackage));
+                packagePairs.Add(new(targetPackage, sourcePackage));
             }
         }
+
+        _elementComparer = new(
+            _db,
+            _loggerFactory,
+            _elementComparisonCache,
+            _elementTypeComparisonCache,
+            _packages);
+
+        // iterate over our pairs in the order we built them
+        foreach (FhirPackageComparisonPair packagePair in packagePairs)
+        {
+            // ascending
+            _logger.LogInformation($"Processing {packagePair.SourcePackageShortName} -> {packagePair.TargetPackageShortName}");
+            doComparison(packagePair);
+            applyCachedChanges(packagePair);
+        }
+
+        //// we want to process closer versions first, so we do a stepped approach
+        //for (int stepSize = 1; stepSize < _packages.Count; stepSize++)
+        //{
+        //    for (int i = 0; i < _packages.Count - stepSize; i++)
+        //    {
+        //        DbFhirPackage sourcePackage = _packages[i];
+        //        DbFhirPackage targetPackage = _packages[i + stepSize];
+
+        //        // ascending
+        //        _logger.LogInformation($"Processing {sourcePackage.ShortName} -> {targetPackage.ShortName}");
+        //        doComparison(sourcePackage, targetPackage);
+        //        applyCachedChanges(sourcePackage, targetPackage);
+
+        //        // descending
+        //        _logger.LogInformation($"Processing {targetPackage.ShortName} -> {sourcePackage.ShortName}");
+        //        doComparison(targetPackage, sourcePackage);
+        //        applyCachedChanges(targetPackage, sourcePackage);
+        //    }
+        //}
     }
 
-    private void applyCachedChanges(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
+    private void applyCachedChanges(FhirPackageComparisonPair packagePair)
     {
+        DbFhirPackage sourcePackage = packagePair.SourcePackage;
+        DbFhirPackage targetPackage = packagePair.TargetPackage;
+
         if (_sdComparisonCache.ToAddCount > 0)
         {
             _logger.LogInformation($"Adding {_sdComparisonCache.ToAddCount} structure comparisons from {sourcePackage.ShortName} to {targetPackage.ShortName}");
@@ -137,25 +168,29 @@ public class StructureComparer
             _elementComparisonCache.ToUpdate.Update(_db);
         }
 
-        if (_collatedTypeComparisonCache.ToAddCount > 0)
+        if (_elementTypeComparisonCache.ToAddCount > 0)
         {
-            _logger.LogInformation($"Adding {_collatedTypeComparisonCache.ToAddCount} collated type comparisons from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-            _collatedTypeComparisonCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+            _logger.LogInformation($"Adding {_elementTypeComparisonCache.ToAddCount} element type comparisons from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            _elementTypeComparisonCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
         }
 
-        if (_collatedTypeComparisonCache.ToUpdateCount > 0)
+        if (_elementTypeComparisonCache.ToUpdateCount > 0)
         {
-            _logger.LogInformation($"Updating {_collatedTypeComparisonCache.ToUpdateCount} collated type comparisons from {sourcePackage.ShortName} to {targetPackage.ShortName}");
-            _collatedTypeComparisonCache.ToUpdate.Update(_db);
+            _logger.LogInformation($"Updating {_elementTypeComparisonCache.ToUpdateCount} element type comparisons from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            _elementTypeComparisonCache.ToUpdate.Update(_db);
         }
+
 
         _sdComparisonCache.Clear();
         _elementComparisonCache.Clear();
-        _collatedTypeComparisonCache.Clear();
+        _elementTypeComparisonCache.Clear();
     }
 
-    private void doComparison(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
+    private void doComparison(FhirPackageComparisonPair packagePair)
     {
+        DbFhirPackage sourcePackage = packagePair.SourcePackage;
+        DbFhirPackage targetPackage = packagePair.TargetPackage;
+
         int sourceIndex = sourcePackage.PackageArrayIndex;
         int targetIndex = targetPackage.PackageArrayIndex;
 
@@ -183,9 +218,8 @@ public class StructureComparer
                 {
                     // discover targets
                     List<StructureComparisonTrackingRecord> trackingRecords = buildNeighborComparisonPaths(
-                        sourcePackage,
-                        sourceSd,
-                        targetPackage);
+                        packagePair,
+                        sourceSd);
 
                     // do the comparisons
                     foreach (StructureComparisonTrackingRecord trackingRecord in trackingRecords)
@@ -197,9 +231,8 @@ public class StructureComparer
                 {
                     // discover targets
                     List<StructureComparisonTrackingRecord> trackingRecords = discoverTransitivePaths(
-                        sourcePackage,
-                        sourceSd,
-                        targetPackage);
+                        packagePair,
+                        sourceSd);
 
                     // do the comparisons transitively
                     foreach (StructureComparisonTrackingRecord trackingRecord in trackingRecords)
@@ -252,6 +285,7 @@ public class StructureComparer
         // check for an explicit mapping of this pair
         DbStructureMapping? sdMapping = DbStructureMapping.SelectSingle(
             _db,
+            IsFallback: false,
             SourceFhirPackageKey: trackingRecord.SourcePackage.Key,
             SourceStructureKey: trackingRecord.SourceStructure.Key,
             TargetFhirPackageKey: trackingRecord.TargetPackage.Key,
@@ -400,10 +434,12 @@ public class StructureComparer
     }
 
     private List<StructureComparisonTrackingRecord> discoverTransitivePaths(
-        DbFhirPackage sourcePackage,
-        DbStructureDefinition sourceSd,
-        DbFhirPackage targetPackage)
+        FhirPackageComparisonPair packagePair,
+        DbStructureDefinition sourceSd)
     {
+        DbFhirPackage sourcePackage = packagePair.SourcePackage;
+        DbFhirPackage targetPackage = packagePair.TargetPackage;
+
         int sourceIndex = sourcePackage.PackageArrayIndex;
         int targetIndex = targetPackage.PackageArrayIndex;
 
@@ -462,6 +498,7 @@ public class StructureComparer
 
             StructureComparisonTrackingRecord tr = new()
             {
+                PackagePair = packagePair,
                 SourcePackage = sourcePackage,
                 SourceStructure = sourceSd,
                 TargetPackage = targetPackage,
@@ -544,10 +581,12 @@ public class StructureComparer
     }
 
     private List<StructureComparisonTrackingRecord> buildNeighborComparisonPaths(
-        DbFhirPackage sourcePackage,
-        DbStructureDefinition sourceSd,
-        DbFhirPackage targetPackage)
+        FhirPackageComparisonPair packagePair,
+        DbStructureDefinition sourceSd)
     {
+        DbFhirPackage sourcePackage = packagePair.SourcePackage;
+        DbFhirPackage targetPackage = packagePair.TargetPackage;
+
         List<StructureComparisonTrackingRecord> trackingRecords = [];
         int sourceIndex = sourcePackage.PackageArrayIndex;
         int targetIndex = targetPackage.PackageArrayIndex;
@@ -555,6 +594,7 @@ public class StructureComparer
         // check for explicit mappings for this structure to the target package
         List<DbStructureMapping> mappings = DbStructureMapping.SelectList(
             _db,
+            IsFallback: false,
             SourceFhirPackageKey: sourcePackage.Key,
             SourceStructureKey: sourceSd.Key,
             TargetFhirPackageKey: targetPackage.Key);
@@ -583,7 +623,7 @@ public class StructureComparer
                 targetUrls.Add(targetSd.UnversionedUrl);
                 if (!targetKeys.Add(targetSd.Key))
                 {
-                    //_logger.LogError($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
+                    //_logger.LogError($"Duplicate target structure key {targetSd.Key} for fallbackMapping {fallbackMapping.Key}");
                     //continue;
                     throw new Exception($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
                 }
@@ -593,6 +633,7 @@ public class StructureComparer
 
             StructureComparisonTrackingRecord tr = new()
             {
+                PackagePair = packagePair,
                 SourcePackage = sourcePackage,
                 SourceStructure = sourceSd,
                 TargetPackage = targetPackage,
@@ -620,6 +661,7 @@ public class StructureComparer
 
             StructureComparisonTrackingRecord tr = new()
             {
+                PackagePair = packagePair,
                 SourcePackage = sourcePackage,
                 SourceStructure = sourceSd,
                 TargetPackage = targetPackage,
@@ -647,6 +689,7 @@ public class StructureComparer
 
             StructureComparisonTrackingRecord tr = new()
             {
+                PackagePair = packagePair,
                 SourcePackage = sourcePackage,
                 SourceStructure = sourceSd,
                 TargetPackage = targetPackage,
@@ -676,12 +719,11 @@ public class StructureComparer
 
                 StructureComparisonTrackingRecord tr = new()
                 {
+                    PackagePair = packagePair,
                     SourcePackage = sourcePackage,
                     SourceStructure = sourceSd,
                     TargetPackage = targetPackage,
                     TargetStructure = possibleTargetSd,
-                    ExplicitMapping = null,
-                    ExplicitMappingSource = null,
                 };
 
                 tr.Contents[sourceIndex] = sourceSd;
@@ -696,36 +738,44 @@ public class StructureComparer
         {
             List<DbStructureMapping> inverseMappings = DbStructureMapping.SelectList(
                 _db,
+                IsFallback: false,
                 SourceFhirPackageKey: targetPackage.Key,
                 TargetFhirPackageKey: sourcePackage.Key,
                 TargetStructureKey: sourceSd.Key);
 
             // iterate over the mappings to add to our tracking records
-            foreach (DbStructureMapping mapping in inverseMappings)
+            foreach (DbStructureMapping inverseMapping in inverseMappings)
             {
                 // resolve the source structure
-                DbStructureDefinition? inverseSourceSd = DbStructureDefinition.SelectSingle(_db, Key: mapping.SourceStructureKey);
+                DbStructureDefinition? inverseSourceSd = DbStructureDefinition.SelectSingle(_db, Key: inverseMapping.SourceStructureKey);
 
                 if (inverseSourceSd is null)
                 {
-                    throw new Exception($"Unable to resolve structure with key {mapping.SourceStructureKey} for mapping {mapping.Key}");
+                    throw new Exception($"Unable to resolve structure with key {inverseMapping.SourceStructureKey} for mapping {inverseMapping.Key}");
                 }
 
                 targetIds.Add(inverseSourceSd.Id);
                 targetUrls.Add(inverseSourceSd.UnversionedUrl);
                 if (!targetKeys.Add(inverseSourceSd.Key))
                 {
-                    throw new Exception($"Duplicate target structure key {inverseSourceSd.Key} for mapping {mapping.Key}");
+                    throw new Exception($"Duplicate target structure key {inverseSourceSd.Key} for mapping {inverseMapping.Key}");
                 }
+
+                DbMappingSourceFile? mappingSource = inverseMapping.ConceptMapSourceKey is not null
+                    ? DbMappingSourceFile.SelectSingle(_db, Key: inverseMapping.ConceptMapSourceKey)
+                    : inverseMapping.FmlSourceKey is not null
+                    ? DbMappingSourceFile.SelectSingle(_db, Key: inverseMapping.FmlSourceKey)
+                    : null;
 
                 StructureComparisonTrackingRecord tr = new()
                 {
+                    PackagePair = packagePair,
                     SourcePackage = sourcePackage,
                     SourceStructure = sourceSd,
                     TargetPackage = targetPackage,
                     TargetStructure = inverseSourceSd,
-                    ExplicitMapping = mapping,
-                    ExplicitMappingSource = null,
+                    ExplicitMapping = inverseMapping,
+                    ExplicitMappingSource = mappingSource,
                 };
 
                 tr.Contents[sourceIndex] = sourceSd;
@@ -735,71 +785,74 @@ public class StructureComparer
             }
         }
 
-        // check for fallback mappings for this structure to the target package if necessary
-        if (trackingRecords.Count == 0)
-        {
-            List<DbStructureMappingFallback> fallbackMappings = DbStructureMappingFallback.SelectList(
-            _db,
-            SourceFhirPackageKey: sourcePackage.Key,
-            SourceStructureKey: sourceSd.Key,
-            TargetFhirPackageKey: targetPackage.Key);
+        // TODO: I do not think we want to build the comparisons for fallback mappings...
 
-            // iterate over the mappings to add to our tracking records
-            foreach (DbStructureMappingFallback mapping in fallbackMappings)
-            {
-                // resolve the target structure (if necessary)
-                DbStructureDefinition? targetSd = mapping.TargetStructureKey is null
-                    ? null
-                    : DbStructureDefinition.SelectSingle(_db, Key: mapping.TargetStructureKey);
+        //// check for fallback mappings for this structure to the target package if necessary
+        //if (trackingRecords.Count == 0)
+        //{
+        //    List<DbStructureMapping> fallbackMappings = DbStructureMapping.SelectList(
+        //        _db,
+        //        IsFallback: true,
+        //        SourceFhirPackageKey: sourcePackage.Key,
+        //        SourceStructureKey: sourceSd.Key,
+        //        TargetFhirPackageKey: targetPackage.Key);
 
-                if ((targetSd is null) &&
-                    (mapping.TargetStructureKey is not null))
-                {
-                    throw new Exception($"Unable to resolve target structure with key {mapping.TargetStructureKey} for mapping {mapping.Key}");
-                }
+        //    // iterate over the mappings to add to our tracking records
+        //    foreach (DbStructureMapping fallbackMapping in fallbackMappings)
+        //    {
+        //        // resolve the target structure (if necessary)
+        //        DbStructureDefinition? targetSd = fallbackMapping.TargetStructureKey is null
+        //            ? null
+        //            : DbStructureDefinition.SelectSingle(_db, Key: fallbackMapping.TargetStructureKey);
 
-                if (targetSd is not null)
-                {
-                    targetIds.Add(targetSd.Id);
-                    targetUrls.Add(targetSd.UnversionedUrl);
-                    if (!targetKeys.Add(targetSd.Key))
-                    {
-                        //_logger.LogError($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
-                        //continue;
-                        throw new Exception($"Duplicate target structure key {targetSd.Key} for mapping {mapping.Key}");
-                    }
-                }
+        //        if ((targetSd is null) &&
+        //            (fallbackMapping.TargetStructureKey is not null))
+        //        {
+        //            throw new Exception($"Unable to resolve target structure with key {fallbackMapping.TargetStructureKey} for mapping {fallbackMapping.Key}");
+        //        }
 
-                int? mappingSourceKey = mapping.ConceptMapSourceKey ?? mapping.FmlSourceKey ?? null;
+        //        if (targetSd is not null)
+        //        {
+        //            targetIds.Add(targetSd.Id);
+        //            targetUrls.Add(targetSd.UnversionedUrl);
+        //            if (!targetKeys.Add(targetSd.Key))
+        //            {
+        //                //_logger.LogError($"Duplicate target structure key {targetSd.Key} for fallbackMapping {fallbackMapping.Key}");
+        //                //continue;
+        //                throw new Exception($"Duplicate target structure key {targetSd.Key} for mapping {fallbackMapping.Key}");
+        //            }
+        //        }
 
-                StructureComparisonTrackingRecord tr = new()
-                {
-                    SourcePackage = sourcePackage,
-                    SourceStructure = sourceSd,
-                    TargetPackage = targetPackage,
-                    TargetStructure = targetSd,
-                    ExplicitMapping = mapping,
-                    ExplicitMappingSource = mappingSourceKey is null ? null : DbMappingSourceFile.SelectSingle(_db, Key: mappingSourceKey),
-                };
+        //        int? mappingSourceKey = fallbackMapping.ConceptMapSourceKey ?? fallbackMapping.FmlSourceKey ?? null;
 
-                tr.Contents[sourceIndex] = sourceSd;
-                tr.Contents[targetIndex] = targetSd;
+        //        StructureComparisonTrackingRecord tr = new()
+        //        {
+        //            PackagePair = packagePair,
+        //            SourcePackage = sourcePackage,
+        //            SourceStructure = sourceSd,
+        //            TargetPackage = targetPackage,
+        //            TargetStructure = targetSd,
+        //            ExplicitMapping = fallbackMapping,
+        //            ExplicitMappingSource = mappingSourceKey is null ? null : DbMappingSourceFile.SelectSingle(_db, Key: mappingSourceKey),
+        //        };
 
-                trackingRecords.Add(tr);
-            }
-        }
+        //        tr.Contents[sourceIndex] = sourceSd;
+        //        tr.Contents[targetIndex] = targetSd;
+
+        //        trackingRecords.Add(tr);
+        //    }
+        //}
 
         // if we still have no targets, treat as a no map
         if (trackingRecords.Count == 0)
         {
             StructureComparisonTrackingRecord tr = new()
             {
+                PackagePair = packagePair,
                 SourcePackage = sourcePackage,
                 SourceStructure = sourceSd,
                 TargetPackage = targetPackage,
                 TargetStructure = null,
-                ExplicitMapping = null,
-                ExplicitMappingSource = null,
             };
 
             tr.Contents[sourceIndex] = sourceSd;

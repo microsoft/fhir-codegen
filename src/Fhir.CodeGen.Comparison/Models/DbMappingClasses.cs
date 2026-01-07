@@ -14,7 +14,6 @@ public static class DbMappingClasses
         DbValueSetConceptMapping.LoadMaxKey(db);
         DbStructureMapping.LoadMaxKey(db);
         DbElementMapping.LoadMaxKey(db);
-        DbStructureMappingFallback.LoadMaxKey(db);
     }
 
     public static void DropTables(IDbConnection db)
@@ -24,7 +23,6 @@ public static class DbMappingClasses
         DbValueSetConceptMapping.DropTable(db);
         DbStructureMapping.DropTable(db);
         DbElementMapping.DropTable(db);
-        DbStructureMappingFallback.DropTable(db);
     }
 
     public static void CreateTables(IDbConnection db)
@@ -34,7 +32,6 @@ public static class DbMappingClasses
         DbValueSetConceptMapping.CreateTable(db);
         DbStructureMapping.CreateTable(db);
         DbElementMapping.CreateTable(db);
-        DbStructureMappingFallback.CreateTable(db);
     }
 }
 
@@ -118,11 +115,11 @@ public partial class DbValueSetConceptMapping : DbMappingBase
 
 
 [CgSQLiteTable(tableName: "StructureMappings")]
-[CgSQLiteIndex(nameof(SourceStructureKey), nameof(TargetStructureKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureId), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureUrl), nameof(TargetFhirPackageKey), nameof(TargetStructureUrl))]
+[CgSQLiteIndex(nameof(IsFallback), nameof(SourceStructureKey), nameof(TargetStructureKey))]
+[CgSQLiteIndex(nameof(IsFallback), nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
+[CgSQLiteIndex(nameof(IsFallback), nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
+[CgSQLiteIndex(nameof(IsFallback), nameof(SourceFhirPackageKey), nameof(SourceStructureId), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
+[CgSQLiteIndex(nameof(IsFallback), nameof(SourceFhirPackageKey), nameof(SourceStructureUrl), nameof(TargetFhirPackageKey), nameof(TargetStructureUrl))]
 public partial class DbStructureMapping : DbMappingArtifactBase
 {
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -135,29 +132,7 @@ public partial class DbStructureMapping : DbMappingArtifactBase
     public required string? TargetStructureId { get; set; }
     public required string? TargetStructureUrl { get; set; }
 
-
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
-}
-
-[CgSQLiteTable(tableName: "StructureMappingFallbacks")]
-[CgSQLiteIndex(nameof(SourceStructureKey), nameof(TargetStructureKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureId), nameof(TargetFhirPackageKey), nameof(TargetStructureId))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureUrl), nameof(TargetFhirPackageKey), nameof(TargetStructureUrl))]
-public partial class DbStructureMappingFallback : DbMappingArtifactBase
-{
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int SourceStructureKey { get; set; }
-    public required string SourceStructureId { get; set; }
-    public required string SourceStructureUrl { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int? TargetStructureKey { get; set; }
-    public required string? TargetStructureId { get; set; }
-    public required string? TargetStructureUrl { get; set; }
-
+    public required bool IsFallback { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }

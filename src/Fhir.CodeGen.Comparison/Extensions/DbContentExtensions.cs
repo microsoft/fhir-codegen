@@ -121,28 +121,28 @@ public static class DbContentExtensions
         return Convert.ToInt32(command.ExecuteScalar());
     }
 
-    public static int UpdateCollatedTypeStructureKeys(
-        this IDbConnection dbConnection,
-        int FhirPackageKey,
-        string? collatedTypeTableName = null,
-        string? structureTableName = null)
-    {
-        collatedTypeTableName ??= DbCollatedType.DefaultTableName;
-        structureTableName ??= DbStructureDefinition.DefaultTableName;
+    //public static int UpdateCollatedTypeStructureKeys(
+    //    this IDbConnection dbConnection,
+    //    int FhirPackageKey,
+    //    string? collatedTypeTableName = null,
+    //    string? structureTableName = null)
+    //{
+    //    collatedTypeTableName ??= DbCollatedType.DefaultTableName;
+    //    structureTableName ??= DbStructureDefinition.DefaultTableName;
 
-        IDbCommand command = dbConnection.CreateCommand();
-        command.CommandText = $$$"""
-            UPDATE {{{collatedTypeTableName}}}
-            SET
-                {{{nameof(DbCollatedType.TypeStructureKey)}}} = S.{{{nameof(DbStructureDefinition.Key)}}}
-            FROM {{{structureTableName}}} S
-            WHERE {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.TypeName)}}} = S.{{{nameof(DbStructureDefinition.Id)}}}
-            AND {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.FhirPackageKey)}}} = S.{{{nameof(DbStructureDefinition.FhirPackageKey)}}}
-            AND {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.FhirPackageKey)}}} = {{{FhirPackageKey}}}
-            """;
+    //    IDbCommand command = dbConnection.CreateCommand();
+    //    command.CommandText = $$$"""
+    //        UPDATE {{{collatedTypeTableName}}}
+    //        SET
+    //            {{{nameof(DbCollatedType.TypeStructureKey)}}} = S.{{{nameof(DbStructureDefinition.Key)}}}
+    //        FROM {{{structureTableName}}} S
+    //        WHERE {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.TypeName)}}} = S.{{{nameof(DbStructureDefinition.Id)}}}
+    //        AND {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.FhirPackageKey)}}} = S.{{{nameof(DbStructureDefinition.FhirPackageKey)}}}
+    //        AND {{{collatedTypeTableName}}}.{{{nameof(DbCollatedType.FhirPackageKey)}}} = {{{FhirPackageKey}}}
+    //        """;
 
-        return command.ExecuteNonQuery();
-    }
+    //    return command.ExecuteNonQuery();
+    //}
 
     public static int UpdateElementTypeStructureKeys(
         this IDbConnection dbConnection,
@@ -167,6 +167,60 @@ public static class DbContentExtensions
         return command.ExecuteNonQuery();
     }
 
+    public static int UpdateElementTypeProfileStructureKeys(
+        this IDbConnection dbConnection,
+        int FhirPackageKey,
+        string? elementTypeTableName = null,
+        string? structureTableName = null)
+    {
+        elementTypeTableName ??= DbElementType.DefaultTableName;
+        structureTableName ??= DbStructureDefinition.DefaultTableName;
+
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = $$$"""
+            UPDATE {{{elementTypeTableName}}}
+            SET
+                {{{nameof(DbElementType.TypeProfileStructureKey)}}} = S.Key
+            FROM {{{structureTableName}}} S
+            WHERE {{{elementTypeTableName}}}.{{{nameof(DbElementType.TypeProfile)}}} IS NOT NULL
+            AND (
+                {{{elementTypeTableName}}}.{{{nameof(DbElementType.TypeProfile)}}} = S.{{{nameof(DbStructureDefinition.Id)}}}
+                OR {{{elementTypeTableName}}}.{{{nameof(DbElementType.TypeProfile)}}} = S.{{{nameof(DbStructureDefinition.UnversionedUrl)}}}
+                )
+            AND {{{elementTypeTableName}}}.{{{nameof(DbElementType.FhirPackageKey)}}} = S.{{{nameof(DbStructureDefinition.FhirPackageKey)}}}
+            AND {{{elementTypeTableName}}}.{{{nameof(DbElementType.FhirPackageKey)}}} = {{{FhirPackageKey}}}
+            """;
+
+        return command.ExecuteNonQuery();
+    }
+
+    public static int UpdateElementTargetProfileStructureKeys(
+        this IDbConnection dbConnection,
+        int FhirPackageKey,
+        string? elementTypeTableName = null,
+        string? structureTableName = null)
+    {
+        elementTypeTableName ??= DbElementType.DefaultTableName;
+        structureTableName ??= DbStructureDefinition.DefaultTableName;
+
+        IDbCommand command = dbConnection.CreateCommand();
+        command.CommandText = $$$"""
+            UPDATE {{{elementTypeTableName}}}
+            SET
+                {{{nameof(DbElementType.TargetProfileStructureKey)}}} = S.Key
+            FROM {{{structureTableName}}} S
+            WHERE {{{elementTypeTableName}}}.{{{nameof(DbElementType.TargetProfile)}}} IS NOT NULL
+            AND (
+                {{{elementTypeTableName}}}.{{{nameof(DbElementType.TargetProfile)}}} = S.{{{nameof(DbStructureDefinition.Id)}}}
+                OR {{{elementTypeTableName}}}.{{{nameof(DbElementType.TargetProfile)}}} = S.{{{nameof(DbStructureDefinition.UnversionedUrl)}}}
+                )
+            AND {{{elementTypeTableName}}}.{{{nameof(DbElementType.FhirPackageKey)}}} = S.{{{nameof(DbStructureDefinition.FhirPackageKey)}}}
+            AND {{{elementTypeTableName}}}.{{{nameof(DbElementType.FhirPackageKey)}}} = {{{FhirPackageKey}}}
+            """;
+
+        return command.ExecuteNonQuery();
+    }
+
     public static int UpdateElementBaseKeys(
         this IDbConnection dbConnection,
         int FhirPackageKey,
@@ -183,6 +237,7 @@ public static class DbContentExtensions
             FROM {{{dbTableName}}} E
             WHERE {{{dbTableName}}}.{{{nameof(DbElement.Key)}}} = E.{{{nameof(DbElement.Key)}}}
             AND {{{dbTableName}}}.{{{nameof(DbElement.BasePath)}}} is not NULL
+            AND {{{dbTableName}}}.{{{nameof(DbElement.BasePath)}}} = E.{{{nameof(DbElement.Id)}}}
             AND {{{dbTableName}}}.{{{nameof(DbElement.BaseElementKey)}}} is NULL
             AND {{{dbTableName}}}.{{{nameof(DbElement.FhirPackageKey)}}} = {{{FhirPackageKey}}}
             """;

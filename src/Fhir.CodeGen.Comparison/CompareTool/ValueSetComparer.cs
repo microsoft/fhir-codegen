@@ -82,13 +82,15 @@ public class ValueSetComparer
         _conceptComparisonCache = new();
     }
 
-    public void CompareValueSets()
+    public void CompareValueSets(int? maxStepSize = null)
     {
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
 
+        maxStepSize ??= _packages.Count - 1;
+
         // we want to process closer versions first, so we do a stepped approach
-        for (int stepSize = 1; stepSize < _packages.Count; stepSize++)
+        for (int stepSize = 1; stepSize <= maxStepSize; stepSize++)
         {
             for (int i = 0; i < _packages.Count - stepSize; i++)
             {

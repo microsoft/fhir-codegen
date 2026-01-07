@@ -1,7 +1,89 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using Fhir.CodeGen.SQLiteGenerator;
 
 namespace Fhir.CodeGen.Comparison.Models;
+
+public static class DbContentClasses
+{
+    public static void LoadIndices(IDbConnection db)
+    {
+        DbCodeSystem.LoadMaxKey(db);
+        DbCodeSystemConcept.LoadMaxKey(db);
+        DbCodeSystemConceptProperty.LoadMaxKey(db);
+        DbCodeSystemPropertyDefinition.LoadMaxKey(db);
+        DbCodeSystemFilter.LoadMaxKey(db);
+
+        DbValueSet.LoadMaxKey(db);
+        DbValueSetConcept.LoadMaxKey(db);
+
+        DbStructureDefinition.LoadMaxKey(db);
+        DbElement.LoadMaxKey(db);
+        DbElementAdditionalBinding.LoadMaxKey(db);
+        DbElementType.LoadMaxKey(db);
+
+        DbExtensionSubstitution.LoadMaxKey(db);
+        DbExternalInclusion.LoadMaxKey(db);
+    }
+
+    public static void DropTables(
+        IDbConnection db,
+        bool forTerminologies = true,
+        bool forStructures = true)
+    {
+        if (forTerminologies)
+        {
+            DbCodeSystem.DropTable(db);
+            DbCodeSystemConcept.DropTable(db);
+            DbCodeSystemConceptProperty.DropTable(db);
+            DbCodeSystemPropertyDefinition.DropTable(db);
+            DbCodeSystemFilter.DropTable(db);
+
+            DbValueSet.DropTable(db);
+            DbValueSetConcept.DropTable(db);
+        }
+
+        if (forStructures)
+        {
+            DbStructureDefinition.DropTable(db);
+            DbElement.DropTable(db);
+            DbElementAdditionalBinding.DropTable(db);
+            DbElementType.DropTable(db);
+
+            DbExtensionSubstitution.DropTable(db);
+            DbExternalInclusion.DropTable(db);
+        }
+    }
+
+    public static void CreateTables(
+        IDbConnection db,
+        bool forTerminologies = true,
+        bool forStructures = true)
+    {
+        if (forTerminologies)
+        {
+            DbCodeSystem.CreateTable(db);
+            DbCodeSystemConcept.CreateTable(db);
+            DbCodeSystemConceptProperty.CreateTable(db);
+            DbCodeSystemPropertyDefinition.CreateTable(db);
+            DbCodeSystemFilter.CreateTable(db);
+
+            DbValueSet.CreateTable(db);
+            DbValueSetConcept.CreateTable(db);
+        }
+
+        if (forStructures)
+        {
+            DbStructureDefinition.CreateTable(db);
+            DbElement.CreateTable(db);
+            DbElementAdditionalBinding.CreateTable(db);
+            DbElementType.CreateTable(db);
+
+            DbExtensionSubstitution.CreateTable(db);
+            DbExternalInclusion.CreateTable(db);
+        }
+    }
+}
 
 
 [CgSQLiteTable(tableName: "ExtensionSubstitutions")]
@@ -294,7 +376,7 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
     public required string? SliceName { get; set; }
 
     public required string FullCollatedTypeLiteral { get; set; }
-    public required string? FullCollatedReferenceTypesLiteral { get; set; }
+    //public required string? FullCollatedReferenceTypesLiteral { get; set; }
 
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
@@ -389,7 +471,7 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
         MaxCardinalityString = string.Empty,
         SliceName = null,
         FullCollatedTypeLiteral = string.Empty,
-        FullCollatedReferenceTypesLiteral = null,
+        //FullCollatedReferenceTypesLiteral = null,
         ValueSetBindingStrength = null,
         BindingValueSet = null,
         BindingValueSetKey = null,
@@ -426,25 +508,26 @@ public partial class DbElementAdditionalBinding : DbPackageContent
     public required bool? SatisfiedBySingleRepetition { get; set; }
 }
 
-[CgSQLiteTable(tableName: "CollatedTypes")]
-[CgSQLiteIndex(nameof(ElementKey))]
-[CgSQLiteIndex(nameof(ElementKey), nameof(TypeName))]
-public partial class DbCollatedType : DbPackageContent
-{
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int StructureKey { get; set; }
+//[CgSQLiteTable(tableName: "CollatedTypes")]
+//[CgSQLiteIndex(nameof(ElementKey))]
+//[CgSQLiteIndex(nameof(ElementKey), nameof(TypeName))]
+//public partial class DbCollatedType : DbPackageContent
+//{
+//    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+//    public required int StructureKey { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
-    public required int ElementKey { get; set; }
-    public required string CollatedLiteral { get; set; }
+//    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+//    public required int ElementKey { get; set; }
+//    public required string CollatedLiteral { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
-    public required int? TypeStructureKey { get; set; }
-    public required string TypeName { get; set; }
-}
+//    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+//    public required int? TypeStructureKey { get; set; }
+//    public required string TypeName { get; set; }
+//}
 
 [CgSQLiteTable(tableName: "ElementTypes")]
 [CgSQLiteIndex(nameof(ElementKey))]
+//[CgSQLiteIndex(nameof(CollatedTypeKey))]
 [CgSQLiteIndex(nameof(ElementKey), nameof(TypeName))]
 [CgSQLiteIndex(nameof(ElementKey), nameof(TypeName), nameof(TypeProfile), nameof(TargetProfile))]
 [CgSQLiteIndex(nameof(TypeName))]
@@ -457,15 +540,21 @@ public partial class DbElementType : DbPackageContent
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int ElementKey { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
-    public required int CollatedTypeKey { get; set; }
+    //[CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
+    //public required int CollatedTypeKey { get; set; }
 
     public required string? TypeName { get; set; }
-    public required string? TypeProfile { get; set; }
-    public required string? TargetProfile { get; set; }
-
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int? TypeStructureKey { get; set; }
+
+
+    public required string? TypeProfile { get; set; }
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TypeProfileStructureKey { get; set; }
+
+    public required string? TargetProfile { get; set; }
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TargetProfileStructureKey { get; set; }
 
     [CgSQLiteIgnore]
     public string Literal =>

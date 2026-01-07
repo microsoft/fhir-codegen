@@ -258,10 +258,11 @@ public partial class XVerProcessor
 
                 //LoadDatabase(true, true);
 
-                LoadFhirCrossVersionMaps();
+                //LoadFhirCrossVersionMaps();
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
-                CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
+                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
+                CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, 1);
                 //CompareInDatabase();
 
                 //GenerateOutcomesFromComparisons();
@@ -488,7 +489,9 @@ public partial class XVerProcessor
     /// Runs the comparison process in the loaded database, can filter by artifact type.
     /// </summary>
     /// <param name="artifactFilter">Optional artifact type filter.</param>
-    public void CompareInDatabase(FhirArtifactClassEnum? artifactFilter = null)
+    public void CompareInDatabase(
+        FhirArtifactClassEnum? artifactFilter = null,
+        int? maxStepSize = null)
     {
         if (_db is null)
         {
@@ -508,7 +511,10 @@ public partial class XVerProcessor
         {
             case FhirArtifactClassEnum.CodeSystem:
             case FhirArtifactClassEnum.ValueSet:
-                comparer.Compare(processValueSets: true, processStructures: false);
+                comparer.Compare(
+                    processValueSets: true,
+                    processStructures: false,
+                    maxStepSize: maxStepSize);
                 break;
 
             case FhirArtifactClassEnum.PrimitiveType:
@@ -516,25 +522,16 @@ public partial class XVerProcessor
             case FhirArtifactClassEnum.Resource:
             case FhirArtifactClassEnum.Profile:
             case FhirArtifactClassEnum.Extension:
-                comparer.Compare(processValueSets: false, processStructures: true);
+                comparer.Compare(
+                    processValueSets: false,
+                    processStructures: true,
+                    maxStepSize: maxStepSize);
                 break;
 
             default:
-                comparer.Compare();
+                comparer.Compare(maxStepSize: maxStepSize);
                 break;
         }
-
-        if (artifactFilter is null)
-        {
-            comparer.Compare();
-        }
-
-        if ((artifactFilter is null) ||
-            (artifactFilter == FhirArtifactClassEnum.ValueSet))
-        {
-
-        }
-
     }
 
     /// <summary>

@@ -93,9 +93,8 @@ public partial class FhirDbComparer
     //private DbComparisonCache<DbValueSetComparison> _vsComparisonCache = new();
     //private DbComparisonCache<DbValueSetConceptComparison> _conceptComparisonCache = new();
 
-    private DbComparisonCache<DbStructureComparison> _sdComparisonCache = new();
-    private DbComparisonCache<DbElementComparison> _edComparisonCache = new();
-    private DbComparisonCache<DbCollatedTypeComparison> _collatedTypeComparisonCache = new();
+    //private DbComparisonCache<DbStructureComparison> _sdComparisonCache = new();
+    //private DbComparisonCache<DbElementComparison> _edComparisonCache = new();
 
     public FhirDbComparer(
         ComparisonDatabase db,
@@ -110,7 +109,8 @@ public partial class FhirDbComparer
 
     public void Compare(
         bool processValueSets = true,
-        bool processStructures = true)
+        bool processStructures = true,
+        int? maxStepSize = null)
     {
         // ensure out tables exist and are empty
         DbComparisonClasses.DropTables(_db, forValueSets: processValueSets, forStructures: processStructures);
@@ -122,7 +122,7 @@ public partial class FhirDbComparer
             ValueSetComparer vsComparer = new(_db, _loggerFactory);
 
             // run our value set comparisons
-            vsComparer.CompareValueSets();
+            vsComparer.CompareValueSets(maxStepSize: maxStepSize);
         }
 
         if (processStructures)
@@ -131,7 +131,7 @@ public partial class FhirDbComparer
             StructureComparer sdComparer = new(_db, _loggerFactory);
 
             // run our structure comparisons
-            sdComparer.CompareStructures();
+            sdComparer.CompareStructures(maxStepSize: maxStepSize);
         }
     }
 

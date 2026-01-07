@@ -185,7 +185,7 @@ public class ComparisonDatabase : IDisposable
         _db = new SqliteConnection(connectionString);
         _db.Open();
 
-        getCurrentIndexValues();
+        DbContentClasses.LoadIndices(_db);
 
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
     }
@@ -196,55 +196,6 @@ public class ComparisonDatabase : IDisposable
     public string DbFilePath => _dbPath;
 
     public IDbConnection DbConnection => _db;
-
-    private void getCurrentIndexValues()
-    {
-        try
-        {
-            DbFhirPackage.LoadMaxKey(_db);
-            //FhirPackageComparisonPair.LoadMaxKey(_db);
-
-            DbCodeSystem.LoadMaxKey(_db);
-            DbCodeSystemPropertyDefinition.LoadMaxKey(_db);
-            DbCodeSystemFilter.LoadMaxKey(_db);
-            DbCodeSystemConcept.LoadMaxKey(_db);
-            DbCodeSystemConceptProperty.LoadMaxKey(_db);
-
-            DbValueSet.LoadMaxKey(_db);
-            DbValueSetConcept.LoadMaxKey(_db);
-
-            DbStructureDefinition.LoadMaxKey(_db);
-            DbElement.LoadMaxKey(_db);
-            DbElementType.LoadMaxKey(_db);
-            DbCollatedType.LoadMaxKey(_db);
-            DbElementAdditionalBinding.LoadMaxKey(_db);
-
-            //DbValueSetComparison.LoadMaxKey(_db);
-            //DbValueSetConceptComparison.LoadMaxKey(_db);
-            //DbUnresolvedConceptComparison.LoadMaxKey(_db);
-
-            //DbStructureComparison.LoadMaxKey(_db);
-            //DbUnresolvedStructureComparison.LoadMaxKey(_db);
-
-            //DbElementComparison.LoadMaxKey(_db);
-            //DbElementTypeComparison.LoadMaxKey(_db);
-            //DbCollatedTypeComparison.LoadMaxKey(_db);
-            //DbUnresolvedElementComparison.LoadMaxKey(_db);
-
-            DbExtensionSubstitution.LoadMaxKey(_db);
-            DbExternalInclusion.LoadMaxKey(_db);
-
-            //DbValueSetOutcome.LoadMaxKey(_db);
-            //DbValueSetConceptOutcome.LoadMaxKey(_db);
-
-            //DbStructureOutcome.LoadMaxKey(_db);
-            //DbElementOutcome.LoadMaxKey(_db);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogWarning(ex, "Failed to get current index values from the database, assuming tables are all new.");
-        }
-    }
 
     public bool LoadFromSourceDb(
         string sourceDbPath,
@@ -270,18 +221,26 @@ public class ComparisonDatabase : IDisposable
         sourceConnection.Open();
 
         // recreate all local tables
-        dropTables(_db, artifactFilter);
-        createTables(_db, artifactFilter);
+        DbContentClasses.DropTables(
+            _db,
+            forTerminologies: artifactFilter is null || artifactFilter == FhirArtifactClassEnum.ValueSet,
+            forStructures: artifactFilter is null | artifactFilter == FhirArtifactClassEnum.Resource);
+
+        DbContentClasses.CreateTables(
+            _db,
+            forTerminologies: artifactFilter is null || artifactFilter == FhirArtifactClassEnum.ValueSet,
+            forStructures: artifactFilter is null | artifactFilter == FhirArtifactClassEnum.Resource);
 
         // copy contents of each type
         copyContents(sourceConnection, _db, artifactFilter);
 
         // update our current index values
-        getCurrentIndexValues();
+        DbContentClasses.LoadIndices(_db);
 
         return true;
     }
 
+    [Obsolete("There is no reason to have source databases any more, will remove once confirmed.")]
     private void copyContents(
         IDbConnection sourceDb,
         IDbConnection targetDb,
@@ -320,7 +279,7 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     //DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     //DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
@@ -354,7 +313,7 @@ public class ComparisonDatabase : IDisposable
                     DbStructureDefinition.Insert(targetDb, DbStructureDefinition.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElement.Insert(targetDb, DbElement.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElementType.Insert(targetDb, DbElementType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                    DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
+                    //DbCollatedType.Insert(targetDb, DbCollatedType.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbElementAdditionalBinding.Insert(targetDb, DbElementAdditionalBinding.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     //DbStructureComparison.Insert(targetDb, DbStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     //DbUnresolvedStructureComparison.Insert(targetDb, DbUnresolvedStructureComparison.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
@@ -365,199 +324,6 @@ public class ComparisonDatabase : IDisposable
 
                     DbExtensionSubstitution.Insert(targetDb, DbExtensionSubstitution.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
                     DbExternalInclusion.Insert(targetDb, DbExternalInclusion.SelectList(sourceDb), ignoreDuplicates: true, insertPrimaryKey: true);
-                }
-                break;
-        }
-    }
-
-
-    private void dropTables(
-        IDbConnection db,
-        FhirArtifactClassEnum? processFilter = null)
-    {
-        switch (processFilter)
-        {
-            case FhirArtifactClassEnum.CodeSystem:
-                {
-                    DbCodeSystem.DropTable(db);
-                    DbCodeSystemPropertyDefinition.DropTable(db);
-                    DbCodeSystemFilter.DropTable(db);
-                    DbCodeSystemConcept.DropTable(db);
-                    DbCodeSystemConceptProperty.DropTable(db);
-                    DbExternalInclusion.DropTable(db);
-                }
-                break;
-
-            case FhirArtifactClassEnum.ValueSet:
-                {
-                    DbValueSet.DropTable(db);
-                    DbValueSetConcept.DropTable(db);
-                    //DbValueSetComparison.DropTable(db);
-                    //DbValueSetConceptComparison.DropTable(db);
-                    DbExternalInclusion.DropTable(db);
-
-                    //DbValueSetOutcome.DropTable(db);
-                    //DbValueSetConceptOutcome.DropTable(db);
-                }
-                break;
-
-            case FhirArtifactClassEnum.PrimitiveType:
-            case FhirArtifactClassEnum.ComplexType:
-            case FhirArtifactClassEnum.Resource:
-            case FhirArtifactClassEnum.Profile:
-            case FhirArtifactClassEnum.LogicalModel:
-                {
-                    DbStructureDefinition.DropTable(db);
-                    DbElement.DropTable(db);
-                    DbElementType.DropTable(db);
-                    DbCollatedType.DropTable(db);
-                    DbElementAdditionalBinding.DropTable(db);
-                    //DbStructureComparison.DropTable(db);
-                    //DbUnresolvedStructureComparison.DropTable(db);
-                    //DbElementComparison.DropTable(db);
-                    //DbElementTypeComparison.DropTable(db);
-                    //DbCollatedTypeComparison.DropTable(db);
-                    //DbUnresolvedElementComparison.DropTable(db);
-
-                    DbExtensionSubstitution.DropTable(db);
-                    DbExternalInclusion.DropTable(db);
-
-                    //DbStructureOutcome.DropTable(db);
-                    //DbElementOutcome.DropTable(db);
-                }
-                break;
-
-            default:
-                {
-                    DbFhirPackage.DropTable(db);
-                    //FhirPackageComparisonPair.DropTable(db);
-
-                    DbCodeSystem.DropTable(db);
-                    DbCodeSystemPropertyDefinition.DropTable(db);
-                    DbCodeSystemFilter.DropTable(db);
-                    DbCodeSystemConcept.DropTable(db);
-                    DbCodeSystemConceptProperty.DropTable(db);
-
-                    DbValueSet.DropTable(db);
-                    DbValueSetConcept.DropTable(db);
-                    //DbValueSetComparison.DropTable(db);
-                    //DbValueSetConceptComparison.DropTable(db);
-                    //DbUnresolvedConceptComparison.DropTable(db);
-
-                    //DbValueSetOutcome.DropTable(db);
-                    //DbValueSetConceptOutcome.DropTable(db);
-
-                    DbStructureDefinition.DropTable(db);
-                    DbElement.DropTable(db);
-                    DbElementType.DropTable(db);
-                    DbCollatedType.DropTable(db);
-                    DbElementAdditionalBinding.DropTable(db);
-                    //DbStructureComparison.DropTable(db);
-                    //DbUnresolvedStructureComparison.DropTable(db);
-                    //DbElementComparison.DropTable(db);
-                    //DbElementTypeComparison.DropTable(db);
-                    //DbCollatedTypeComparison.DropTable(db);
-                    //DbUnresolvedElementComparison.DropTable(db);
-
-                    DbExtensionSubstitution.DropTable(db);
-                    DbExternalInclusion.DropTable(db);
-
-                    //DbStructureOutcome.DropTable(db);
-                    //DbElementOutcome.DropTable(db);
-                }
-                break;
-        }
-    }
-
-    private void createTables(
-        IDbConnection db,
-        FhirArtifactClassEnum? processFilter = null)
-    {
-        switch (processFilter)
-        {
-            case FhirArtifactClassEnum.CodeSystem:
-                {
-                    DbCodeSystem.CreateTable(db);
-                    DbCodeSystemPropertyDefinition.CreateTable(db);
-                    DbCodeSystemFilter.CreateTable(db);
-                    DbCodeSystemConcept.CreateTable(db);
-                    DbCodeSystemConceptProperty.CreateTable(db);
-                    DbExternalInclusion.CreateTable(db);
-                }
-                break;
-
-            case FhirArtifactClassEnum.ValueSet:
-                {
-                    DbValueSet.CreateTable(db);
-                    DbValueSetConcept.CreateTable(db);
-                    //DbValueSetComparison.CreateTable(db);
-                    //DbValueSetConceptComparison.CreateTable(db);
-                    DbExternalInclusion.CreateTable(db);
-
-                    //DbValueSetOutcome.CreateTable(db);
-                    //DbValueSetConceptOutcome.CreateTable(db);
-                }
-                break;
-
-            case FhirArtifactClassEnum.PrimitiveType:
-            case FhirArtifactClassEnum.ComplexType:
-            case FhirArtifactClassEnum.Resource:
-            case FhirArtifactClassEnum.Profile:
-            case FhirArtifactClassEnum.LogicalModel:
-                {
-                    DbStructureDefinition.CreateTable(db);
-                    DbElement.CreateTable(db);
-                    DbElementType.CreateTable(db);
-                    DbCollatedType.CreateTable(db);
-                    DbElementAdditionalBinding.CreateTable(db);
-                    //DbStructureComparison.CreateTable(db);
-                    //DbUnresolvedStructureComparison.CreateTable(db);
-                    //DbElementComparison.CreateTable(db);
-                    //DbElementTypeComparison.CreateTable(db);
-                    //DbCollatedTypeComparison.CreateTable(db);
-                    //DbUnresolvedElementComparison.CreateTable(db);
-                    DbExternalInclusion.CreateTable(db);
-
-                    //DbStructureOutcome.CreateTable(db);
-                    //DbElementOutcome.CreateTable(db);
-                }
-                break;
-
-            default:
-                {
-                    DbFhirPackage.CreateTable(db);
-                    //FhirPackageComparisonPair.CreateTable(db);
-
-                    DbCodeSystem.CreateTable(db);
-                    DbCodeSystemPropertyDefinition.CreateTable(db);
-                    DbCodeSystemFilter.CreateTable(db);
-                    DbCodeSystemConcept.CreateTable(db);
-                    DbCodeSystemConceptProperty.CreateTable(db);
-
-                    DbValueSet.CreateTable(db);
-                    DbValueSetConcept.CreateTable(db);
-                    //DbValueSetComparison.CreateTable(db);
-                    //DbValueSetConceptComparison.CreateTable(db);
-                    //DbUnresolvedConceptComparison.CreateTable(db);
-                    //DbValueSetOutcome.CreateTable(db);
-                    //DbValueSetConceptOutcome.CreateTable(db);
-
-                    DbStructureDefinition.CreateTable(db);
-                    DbElement.CreateTable(db);
-                    DbCollatedType.CreateTable(db);
-                    DbElementType.CreateTable(db);
-                    DbElementAdditionalBinding.CreateTable(db);
-                    //DbStructureComparison.CreateTable(db);
-                    //DbUnresolvedStructureComparison.CreateTable(db);
-                    //DbElementComparison.CreateTable(db);
-                    //DbElementTypeComparison.CreateTable(db);
-                    //DbCollatedTypeComparison.CreateTable(db);
-                    //DbUnresolvedElementComparison.CreateTable(db);
-                    //DbStructureOutcome.CreateTable(db);
-                    //DbElementOutcome.CreateTable(db);
-
-                    DbExtensionSubstitution.CreateTable(db);
-                    DbExternalInclusion.CreateTable(db);
                 }
                 break;
         }
@@ -753,11 +519,11 @@ public class ComparisonDatabase : IDisposable
 
         if (ensureDeleted)
         {
-            dropTables(_db);
+            DbContentClasses.DropTables(_db);
         }
 
-        // create all our tables
-        createTables(_db);
+        // create all our tables (non-destructive)
+        DbContentClasses.CreateTables(_db);
 
         foreach ((DefinitionCollection dc, DcInfoRec _) in _definitions)
         {
@@ -4263,7 +4029,6 @@ public class ComparisonDatabase : IDisposable
     {
         Dictionary<string, DbStructureDefinition> dbStructures = [];
         Dictionary<string, DbElement> dbElements = [];
-        List<DbCollatedType> dbCollatedTypes = [];
         List<DbElementType> dbElementTypes = [];
         List<DbElementAdditionalBinding> dbAdditionalBindings = [];
 
@@ -4399,9 +4164,6 @@ public class ComparisonDatabase : IDisposable
         _db.Insert(dbElements.Values, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbElements.Count} Elements");
 
-        _db.Insert(dbCollatedTypes, insertPrimaryKey: true);
-        _logger.LogInformation($" <<< added {dbCollatedTypes.Count} Collated Element Types");
-
         _db.Insert(dbElementTypes, insertPrimaryKey: true);
         _logger.LogInformation($" <<< added {dbElementTypes.Count} Discrete Element Types");
 
@@ -4411,11 +4173,17 @@ public class ComparisonDatabase : IDisposable
         int affectedRows;
 
         // after all the records are inserted, execute any remaining key-resolution queries
-        affectedRows = _db.UpdateCollatedTypeStructureKeys(pm.Key);
-        _logger.LogInformation($" <<< updated {affectedRows} Collated Type Structure Keys");
+        //affectedRows = _db.UpdateCollatedTypeStructureKeys(pm.Key);
+        //_logger.LogInformation($" <<< updated {affectedRows} Collated Type Structure Keys");
 
         affectedRows = _db.UpdateElementTypeStructureKeys(pm.Key);
         _logger.LogInformation($" <<< updated {affectedRows} Element Type Structure Keys");
+
+        affectedRows = _db.UpdateElementTypeProfileStructureKeys(pm.Key);
+        _logger.LogInformation($" <<< updated {affectedRows} Element Type Profile Structure Keys");
+
+        affectedRows = _db.UpdateElementTargetProfileStructureKeys(pm.Key);
+        _logger.LogInformation($" <<< updated {affectedRows} Element Target Profile Structure Keys");
 
         affectedRows = _db.UpdateElementBaseKeys(pm.Key);
         _logger.LogInformation($" <<< updated {affectedRows} Element Base Keys");
@@ -4451,45 +4219,29 @@ public class ComparisonDatabase : IDisposable
                 includeRoot: false,
                 skipSlices: true).Count();
 
-            Dictionary<string, DbCollatedType> currentCollatedTypes = [];
             List<DbElementType> currentElementTypes = [];
-            Dictionary<string, List<string>> literalAccumulator = [];
+            Dictionary<string, (List<string> targetProfiles, List<string> typeProfiles)> literalAccumulator = [];
 
             int? bindingVsKey = ed.Binding?.ValueSet == null
                 ? null
                 : (DbValueSet.SelectSingle(_db, FhirPackageKey: pm.Key, UnversionedUrl: ed.Binding?.ValueSet)?.Key
                   ?? DbValueSet.SelectSingle(_db, FhirPackageKey: pm.Key, VersionedUrl: ed.Binding?.ValueSet)?.Key);
 
-            IEnumerable<ElementDefinition.TypeRefComponent> definedTypes = ed.Type.Select(tr => tr.cgAsR5());
-            foreach (ElementDefinition.TypeRefComponent tr in definedTypes)
+            IEnumerable<ElementDefinition.TypeRefComponent> elementTypes = ed.Type.Select(tr => tr.cgAsR5());
+            foreach (ElementDefinition.TypeRefComponent tr in elementTypes)
             {
                 string typeName = tr.cgName();
 
-                if (!currentCollatedTypes.TryGetValue(typeName, out DbCollatedType? collatedType))
+                if (!literalAccumulator.TryGetValue(typeName, out (List<string> targetProfiles, List<string> typeProfiles) accumulator))
                 {
-                    collatedType = new()
-                    {
-                        Key = DbCollatedType.GetIndex(),
-                        FhirPackageKey = dbStructure.FhirPackageKey,
-                        StructureKey = dbStructure.Key,
-                        ElementKey = elementKey,
-                        TypeName = typeName,
-                        CollatedLiteral = string.Empty,
-                        TypeStructureKey = null,
-                    };
-                    currentCollatedTypes.Add(typeName, collatedType);
-                    dbCollatedTypes.Add(collatedType);
-                }
-                if (!literalAccumulator.TryGetValue(collatedType.TypeName, out List<string>? literalComponents))
-                {
-                    literalComponents = [];
-                    literalAccumulator.Add(collatedType.TypeName, literalComponents);
+                    accumulator = ([], []);
+                    literalAccumulator.Add(typeName, accumulator);
                 }
 
                 if ((tr.ProfileElement.Count == 0) &&
                     (tr.TargetProfileElement.Count == 0))
                 {
-                    string tl = literalForType(tr.cgName(), null, null);
+                    //string tl = literalForType(tr.cgName(), null, null);
 
                     DbElementType et = new()
                     {
@@ -4497,11 +4249,12 @@ public class ComparisonDatabase : IDisposable
                         FhirPackageKey = dbStructure.FhirPackageKey,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
-                        CollatedTypeKey = collatedType.Key,
                         TypeName = typeName,
-                        TypeProfile = null,
-                        TargetProfile = null,
                         TypeStructureKey = null,
+                        TypeProfile = null,
+                        TypeProfileStructureKey = null,
+                        TargetProfile = null,
+                        TargetProfileStructureKey = null,
                     };
                     currentElementTypes.Add(et);
                     dbElementTypes.Add( et);
@@ -4513,22 +4266,23 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical tp in tr.TargetProfile)
                     {
-                        string tl = literalForType(tr.cgName(), null, tp.Value);
+                        //string tl = literalForType(tr.cgName(), null, tp.Value);
                         DbElementType et = new()
                         {
                             Key = DbElementType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
-                            CollatedTypeKey = collatedType.Key,
                             TypeName = typeName,
-                            TypeProfile = null,
-                            TargetProfile = tp.Value,
                             TypeStructureKey = null,
+                            TypeProfile = null,
+                            TypeProfileStructureKey = null,
+                            TargetProfile = tp.Value,
+                            TargetProfileStructureKey = null,
                         };
                         currentElementTypes.Add(et);
                         dbElementTypes.Add(et);
-                        literalComponents.Add(tp.Value);
+                        accumulator.targetProfiles.Add(tp.Value);
                     }
 
                     continue;
@@ -4538,22 +4292,23 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical p in tr.Profile)
                     {
-                        string tl = literalForType(tr.cgName(), p.Value, null);
+                        //string tl = literalForType(tr.cgName(), p.Value, null);
                         DbElementType et = new()
                         {
                             Key = DbElementType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
-                            CollatedTypeKey = collatedType.Key,
                             TypeName = typeName,
-                            TypeProfile = p.Value,
-                            TargetProfile = null,
                             TypeStructureKey = null,
+                            TypeProfile = p.Value,
+                            TypeProfileStructureKey = null,
+                            TargetProfile = null,
+                            TargetProfileStructureKey = null,
                         };
                         currentElementTypes.Add(et);
                         dbElementTypes.Add(et);
-                        literalComponents.Add(p.Value);
+                        accumulator.typeProfiles.Add(p.Value);
                     }
 
                     continue;
@@ -4563,58 +4318,49 @@ public class ComparisonDatabase : IDisposable
                 {
                     foreach (Canonical tp in tr.TargetProfile)
                     {
-                        string tl = literalForType(tr.cgName(), p.Value, tp.Value);
+                        //string tl = literalForType(tr.cgName(), p.Value, tp.Value);
                         DbElementType et = new()
                         {
                             Key = DbElementType.GetIndex(),
                             FhirPackageKey = dbStructure.FhirPackageKey,
                             StructureKey = dbStructure.Key,
                             ElementKey = elementKey,
-                            CollatedTypeKey = collatedType.Key,
                             TypeName = typeName,
-                            TypeProfile = p.Value,
-                            TargetProfile = tp.Value,
                             TypeStructureKey = null,
+                            TypeProfile = p.Value,
+                            TypeProfileStructureKey = null,
+                            TargetProfile = tp.Value,
+                            TargetProfileStructureKey = null,
                         };
                         currentElementTypes.Add(et);
                         dbElementTypes.Add(et);
-                        literalComponents.Add($"{p.Value}[{tp.Value}]");
+                        accumulator.targetProfiles.Add(tp.Value);
+                        accumulator.typeProfiles.Add(p.Value);
+                        //literalComponents.Add($"{p.Value}[{tp.Value}]");
                     }
                 }
             }
 
             if (currentElementTypes.Count == 0)
             {
+                string resolvedTypeName;
+
                 if (ed.ElementId == sd.Id)
                 {
-                    string tl = literalForType(sd.Id, null, null);
-                    if (!currentCollatedTypes.TryGetValue(tl, out DbCollatedType? collatedType))
-                    {
-                        collatedType = new()
-                        {
-                            Key = DbCollatedType.GetIndex(),
-                            FhirPackageKey = dbStructure.FhirPackageKey,
-                            StructureKey = dbStructure.Key,
-                            ElementKey = elementKey,
-                            TypeName = tl,
-                            CollatedLiteral = string.Empty,
-                            TypeStructureKey = null,
-                        };
-                        currentCollatedTypes.Add(tl, collatedType);
-                        dbCollatedTypes.Add(collatedType);
-                    }
-
+                    resolvedTypeName = sd.Id;
+                    //string tl = literalForType(sd.Id, null, null);
                     DbElementType et = new()
                     {
                         Key = DbElementType.GetIndex(),
                         FhirPackageKey = dbStructure.FhirPackageKey,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
-                        CollatedTypeKey = collatedType.Key,
                         TypeName = sd.Id,
-                        TypeProfile = null,
-                        TargetProfile = null,
                         TypeStructureKey = null,
+                        TypeProfile = null,
+                        TypeProfileStructureKey = null,
+                        TargetProfile = null,
+                        TargetProfileStructureKey = null,
                     };
                     currentElementTypes.Add(et);
                     dbElementTypes.Add(et);
@@ -4622,22 +4368,8 @@ public class ComparisonDatabase : IDisposable
                 else
                 {
                     string btn = ed.cgBaseTypeName(dc, true);
-                    string tl = literalForType(btn, null, null);
-                    if (!currentCollatedTypes.TryGetValue(tl, out DbCollatedType? collatedType))
-                    {
-                        collatedType = new()
-                        {
-                            Key = DbCollatedType.GetIndex(),
-                            FhirPackageKey = dbStructure.FhirPackageKey,
-                            StructureKey = dbStructure.Key,
-                            ElementKey = elementKey,
-                            TypeName = tl,
-                            CollatedLiteral = string.Empty,
-                            TypeStructureKey = null,
-                        };
-                        currentCollatedTypes.Add(tl, collatedType);
-                        dbCollatedTypes.Add(collatedType);
-                    }
+                    resolvedTypeName = btn;
+                    //string tl = literalForType(btn, null, null);
 
                     DbElementType et = new()
                     {
@@ -4645,14 +4377,21 @@ public class ComparisonDatabase : IDisposable
                         FhirPackageKey = dbStructure.FhirPackageKey,
                         StructureKey = dbStructure.Key,
                         ElementKey = elementKey,
-                        CollatedTypeKey = collatedType.Key,
                         TypeName = btn,
-                        TypeProfile = null,
-                        TargetProfile = null,
                         TypeStructureKey = null,
+                        TypeProfile = null,
+                        TypeProfileStructureKey = null,
+                        TargetProfile = null,
+                        TargetProfileStructureKey = null,
                     };
                     currentElementTypes.Add(et);
                     dbElementTypes.Add(et);
+                }
+
+                if (!literalAccumulator.TryGetValue(resolvedTypeName, out (List<string> targetProfiles, List<string> typeProfiles) accumulator))
+                {
+                    accumulator = ([], []);
+                    literalAccumulator.Add(resolvedTypeName, accumulator);
                 }
             }
 
@@ -4689,40 +4428,35 @@ public class ComparisonDatabase : IDisposable
             string basePath = ed.Base?.Path ?? ed.Path;
 
             List<string> completeLiteralComponents = [];
-            // build our collated type literals
-            foreach ((string typeName, DbCollatedType collatedType) in currentCollatedTypes)
+            foreach ((string typeName, (List<string> targetProfiles, List<string> typeProfiles)) in literalAccumulator)
             {
-                if (!literalAccumulator.TryGetValue(typeName, out List<string>? literalComponents))
+                string current = typeName;
+
+                if (typeProfiles.Count != 0)
                 {
-                    literalComponents = [];
-                    literalAccumulator.Add(typeName, literalComponents);
+                    current += "[" + string.Join(',', typeProfiles) + "]";
                 }
 
-                if (literalComponents.Count == 0)
+                if (targetProfiles.Count != 0)
                 {
-                    collatedType.CollatedLiteral = typeName; // no components, just the type name
-                }
-                else
-                {
-                    // multiple components, sort and join them
-                    collatedType.CollatedLiteral = typeName + "(" + string.Join(", ", literalComponents.OrderBy(lc => lc)) + ")";
+                    current += "(" + string.Join(',', targetProfiles) + ")";
                 }
 
-                completeLiteralComponents.Add(collatedType.CollatedLiteral);
+                completeLiteralComponents.Add(current);
             }
 
-            string typeGroupLiteral = string.Join(", ", completeLiteralComponents.Order());
+            string fullTypeLiteral = string.Join(", ", completeLiteralComponents.Order());
 
-            List<string> completeTargetLiterals = [];
-            foreach (DbElementType currentElementType in currentElementTypes)
-            {
-                if (currentElementType.TargetProfile is null)
-                {
-                    continue;
-                }
+            //List<string> completeTargetLiterals = [];
+            //foreach (DbElementType currentElementType in currentElementTypes)
+            //{
+            //    if (currentElementType.TargetProfile is null)
+            //    {
+            //        continue;
+            //    }
 
-                completeLiteralComponents.Add(currentElementType.TargetProfile);
-            }
+            //    completeLiteralComponents.Add(currentElementType.TargetProfile);
+            //}
 
             int resourceFieldOrder = ed.cgFieldOrder();
             int? parentElementDbKey = null;
@@ -4759,10 +4493,10 @@ public class ComparisonDatabase : IDisposable
                 BindingValueSetKey = bindingVsKey,
                 BindingDescription = ed.Binding?.Description,
                 AdditionalBindingCount = additionalBindingCount,
-                FullCollatedTypeLiteral = typeGroupLiteral,
-                FullCollatedReferenceTypesLiteral = completeTargetLiterals.Count == 0
-                    ? null
-                    : string.Join(", ", completeTargetLiterals.Order()),
+                FullCollatedTypeLiteral = fullTypeLiteral,
+                //FullCollatedReferenceTypesLiteral = completeTargetLiterals.Count == 0
+                //    ? null
+                //    : string.Join(", ", completeTargetLiterals.Order()),
                 IsInherited = isInherited,
                 BasePath = basePath,
                 BaseElementKey = null,
