@@ -112,31 +112,10 @@ public class StructureComparer
         // iterate over our pairs in the order we built them
         foreach (FhirPackageComparisonPair packagePair in packagePairs)
         {
-            // ascending
             _logger.LogInformation($"Processing {packagePair.SourcePackageShortName} -> {packagePair.TargetPackageShortName}");
             doComparison(packagePair);
             applyCachedChanges(packagePair);
         }
-
-        //// we want to process closer versions first, so we do a stepped approach
-        //for (int stepSize = 1; stepSize < _packages.Count; stepSize++)
-        //{
-        //    for (int i = 0; i < _packages.Count - stepSize; i++)
-        //    {
-        //        DbFhirPackage sourcePackage = _packages[i];
-        //        DbFhirPackage targetPackage = _packages[i + stepSize];
-
-        //        // ascending
-        //        _logger.LogInformation($"Processing {sourcePackage.ShortName} -> {targetPackage.ShortName}");
-        //        doComparison(sourcePackage, targetPackage);
-        //        applyCachedChanges(sourcePackage, targetPackage);
-
-        //        // descending
-        //        _logger.LogInformation($"Processing {targetPackage.ShortName} -> {sourcePackage.ShortName}");
-        //        doComparison(targetPackage, sourcePackage);
-        //        applyCachedChanges(targetPackage, sourcePackage);
-        //    }
-        //}
     }
 
     private void applyCachedChanges(FhirPackageComparisonPair packagePair)

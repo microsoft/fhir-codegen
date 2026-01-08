@@ -24,6 +24,7 @@ using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.CrossVersionSource;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Comparison.Outcomes;
 using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Language;
@@ -262,8 +263,14 @@ public partial class XVerProcessor
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
-                CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
+                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //CompareInDatabase();
+
+                GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
+                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
+                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
+                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
+                //GenerateOutcomes();
 
                 //GenerateOutcomesFromComparisons();
                 //WriteFhirFromDbOutcomes();
@@ -484,6 +491,53 @@ public partial class XVerProcessor
         //FhirDbComparer dbComparer = new(_db, _config.LogFactory);
         //dbComparer.BuildComparisonPairs(artifactFilter, _config.ComparisonPairFilterKeys);
     }
+
+    /// <summary>
+    /// Runs the comparison process in the loaded database, can filter by artifact type.
+    /// </summary>
+    /// <param name="artifactFilter">Optional artifact type filter.</param>
+    public void GenerateOutcomes(
+        FhirArtifactClassEnum? artifactFilter = null,
+        int? maxStepSize = null)
+    {
+        if (_db is null)
+        {
+            LoadDatabase(false, false);
+        }
+
+        if (_db is null)
+        {
+            throw new Exception("Cannot compare without a loaded database!");
+        }
+
+        OutcomeGenerator generator = new(_db, _config.LogFactory);
+        switch (artifactFilter)
+        {
+            case FhirArtifactClassEnum.CodeSystem:
+            case FhirArtifactClassEnum.ValueSet:
+                generator.GenerateOutcomes(
+                    processValueSets: true,
+                    processStructures: false,
+                    maxStepSize: maxStepSize);
+                break;
+
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.Extension:
+                //generator.Compare(
+                //    processValueSets: false,
+                //    processStructures: true,
+                //    maxStepSize: maxStepSize);
+                break;
+
+            default:
+                //generator.Compare(maxStepSize: maxStepSize);
+                break;
+        }
+    }
+
 
     /// <summary>
     /// Runs the comparison process in the loaded database, can filter by artifact type.

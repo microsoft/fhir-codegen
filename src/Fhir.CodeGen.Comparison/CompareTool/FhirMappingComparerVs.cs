@@ -145,11 +145,13 @@ public class FhirMappingComparerVs
         }
     }
 
+    [Obsolete]
     private void processSourceValueSet(
         DbFhirPackage sourcePackage,
         DbValueSet sourceVs,
         DbFhirPackage targetPackage)
     {
+#if false
         //_logger.LogInformation($"processSourceValueSet <<< {sourceVs.VersionedUrl} from {sourcePackage.ShortName} to {targetPackage.ShortName}");
 
         // get all mappings for this value set from the source package to the target package
@@ -412,14 +414,14 @@ public class FhirMappingComparerVs
                     SourceFhirPackageKey = sourcePackage.Key,
                     SourceValueSetKey = sourceConcept.ValueSetKey,
                     SourceValueSetConceptKey = sourceConcept.Key,
-                    SourceValueSetConceptSystem = sourceConcept.System,
-                    SourceValueSetConceptCode = sourceConcept.Code,
+                    SourceSystem = sourceConcept.System,
+                    SourceCode = sourceConcept.Code,
 
                     TargetFhirPackageKey = targetPackage.Key,
                     TargetValueSetKey = targetVs?.Key,
                     TargetValueSetConceptKey = targetConcept?.Key,
-                    TargetValueSetConceptSystem = targetConcept?.System,
-                    TargetValueSetConceptCode = targetConcept?.Code,
+                    TargetSystem = targetConcept?.System,
+                    TargetCode = targetConcept?.Code,
 
                     TotalTargetCount = mappingCount,
                     TotalSourceCount = inverseTargetCount,
@@ -534,6 +536,7 @@ public class FhirMappingComparerVs
                     : OutcomeValueSetActionCodes.UseRenamedAndCrossVersion;
             }
         }
+#endif
     }
 
     private DbValueSetConceptOutcome createOutcome(

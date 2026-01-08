@@ -202,12 +202,14 @@ public partial class XVerProcessor
         // TODO: traverse the packages to extend elementOutcomes to non-neighbor pairs (all combinatorial elementOutcomes)
     }
 
+    [Obsolete]
     private void updateStructureOutcomeActions(
         List<DbStructureOutcome> outcomes,
         DbStructureDefinition targetBasicStructure,
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage)
     {
+#if false
         // traverse structure elementOutcomes without actions
         foreach (DbStructureOutcome outcome in outcomes)
         {
@@ -264,6 +266,7 @@ public partial class XVerProcessor
                 outcome.OutcomeAction = OutcomeStructureActionCodes.UseStructureSameName;
             }
         }
+#endif
     }
 
     private bool elementCannotHaveExtension(DbElement e) => 
@@ -280,6 +283,7 @@ public partial class XVerProcessor
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage)
     {
+#if false
         // build a lookup for structure elementOutcomes
         ILookup<int, DbStructureOutcome> structureOutcomeLookup = structureOutcomes.ToLookup(so => so.Key);
 
@@ -396,8 +400,8 @@ public partial class XVerProcessor
                         elementOutcome.TargetStructureKey = targetBasicStructure.Key;
                         elementOutcome.TargetElementKey = rootBasicElement?.Key;
                         elementOutcome.TargetElementId = rootBasicElement?.Id;
-                        elementOutcome.TargetElementResourceOrder = rootBasicElement?.ResourceFieldOrder;
-                        elementOutcome.TargetElementComponentOrder = rootBasicElement?.ComponentFieldOrder;
+                        elementOutcome.TargetResourceOrder = rootBasicElement?.ResourceFieldOrder;
+                        elementOutcome.TargetComponentOrder = rootBasicElement?.ComponentFieldOrder;
 
                         elementOutcome.Comments += "\n\n" +
                             $"The FHIR {sourcePackage.ShortName} Resource `{sdOutcome.SourceStructureName}` has no" +
@@ -428,8 +432,8 @@ public partial class XVerProcessor
                 elementOutcome.TargetStructureKey = targetBasicStructure.Key;
                 elementOutcome.TargetElementKey = targetBasicElement.Key;
                 elementOutcome.TargetElementId = targetBasicElement.Path;
-                elementOutcome.TargetElementResourceOrder = targetBasicElement.ResourceFieldOrder;
-                elementOutcome.TargetElementComponentOrder = targetBasicElement.ComponentFieldOrder;
+                elementOutcome.TargetResourceOrder = targetBasicElement.ResourceFieldOrder;
+                elementOutcome.TargetComponentOrder = targetBasicElement.ComponentFieldOrder;
 
                 elementOutcome.Comments += "\n\n" +
                     $"The FHIR {sourcePackage.ShortName} Resource `{sdOutcome.SourceStructureName}` has no mapping" +
@@ -550,6 +554,7 @@ public partial class XVerProcessor
             elementOutcomesForThisSource.Clear();
             isFullyMapped = false;
         }
+#endif
     }
 
     private void updateValueSetOutcomeActions(List<DbValueSetOutcome> outcomes)
@@ -645,14 +650,14 @@ public partial class XVerProcessor
 
             // check for unmapped
             if (outcome.IsUnmapped ||
-                (outcome.TargetValueSetConceptCode is null))
+                (outcome.TargetCode is null))
             {
                 // check to see if this concept has a mapping to another value set
-                if (conceptOutcomeLookup[outcome.SourceValueSetConceptKey].Any(o => !o.IsUnmapped && (o.TargetValueSetConceptCode is not null)))
+                if (conceptOutcomeLookup[outcome.SourceValueSetConceptKey].Any(o => !o.IsUnmapped && (o.TargetCode is not null)))
                 {
                     outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.MappedElsewhere;
                     outcome.Comments += "\n\n" +
-                        $"The FHIR {sourcePackage.ShortName} ValueSet Concept `{outcome.SourceValueSetConceptCode}` has no mapping" +
+                        $"The FHIR {sourcePackage.ShortName} ValueSet Concept `{outcome.SourceCode}` has no mapping" +
                         $" in FHIR {targetPackage.ShortName} for this ValueSet, but does have a mapping to another ValueSet." +
                         $" Review other ValueSets in FHIR {targetPackage.ShortName} for the mapped concept.";
                 }
@@ -660,7 +665,7 @@ public partial class XVerProcessor
                 {
                     outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition;
                     outcome.Comments += "\n\n" +
-                        $"The FHIR {sourcePackage.ShortName} ValueSet Concept `{outcome.SourceValueSetConceptCode}` has no mapping" +
+                        $"The FHIR {sourcePackage.ShortName} ValueSet Concept `{outcome.SourceCode}` has no mapping" +
                         $" in FHIR {targetPackage.ShortName}.";
                 }
 
@@ -671,7 +676,7 @@ public partial class XVerProcessor
             if (outcome.IsIdentical || outcome.IsEquivalent)
             {
                 // check for same code
-                if (outcome.SourceValueSetConceptCode == outcome.TargetValueSetConceptCode)
+                if (outcome.SourceCode == outcome.TargetCode)
                 {
                     outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.UseConceptSameCode;
                 }
@@ -682,9 +687,9 @@ public partial class XVerProcessor
 
                 outcome.Comments += "\n\n" +
                     $"The FHIR {sourcePackage.ShortName} ValueSet Concept" +
-                    $" `{outcome.SourceValueSetConceptSystem}`#`{outcome.SourceValueSetConceptCode}` is mapped as" +
+                    $" `{outcome.SourceSystem}`#`{outcome.SourceCode}` is mapped as" +
                     $" equivalent to FHIR {targetPackage.ShortName} ValueSet Concept" +
-                    $" `{outcome.TargetValueSetConceptSystem}`#`{outcome.TargetValueSetConceptCode}`.";
+                    $" `{outcome.TargetSystem}`#`{outcome.TargetCode}`.";
 
                 continue;
             }
@@ -693,9 +698,9 @@ public partial class XVerProcessor
             outcome.OutcomeAction = OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition;
             outcome.Comments += "\n\n" +
                 $"The FHIR {sourcePackage.ShortName} ValueSet Concept" +
-                $" `{outcome.SourceValueSetConceptSystem}`#`{outcome.SourceValueSetConceptCode}` is mapped as" +
+                $" `{outcome.SourceSystem}`#`{outcome.SourceCode}` is mapped as" +
                 $" a non-equivalent concept to FHIR {targetPackage.ShortName} ValueSet Concept" +
-                $" `{outcome.TargetValueSetConceptSystem}`#`{outcome.TargetValueSetConceptCode}`." +
+                $" `{outcome.TargetSystem}`#`{outcome.TargetCode}`." +
                 $" Implementers must determine which of the definitions are appropriate for use.";
         }
 
@@ -806,6 +811,7 @@ public partial class XVerProcessor
         DbFhirPackage targetPackage,
         FhirPackageComparisonPair? packagePair)
     {
+#if false
         List<DbValueSetOutcome> vsOutcomesToAdd = [];
         List<DbValueSetConceptOutcome> vsConceptOutcomesToAdd = [];
 
@@ -935,12 +941,12 @@ public partial class XVerProcessor
                             TargetFhirPackageKey = targetPackage.Key,
                             SourceValueSetKey = sourceVs.Key,
                             SourceValueSetConceptKey = sourceConcept.Key,
-                            SourceValueSetConceptSystem = sourceConcept.System,
-                            SourceValueSetConceptCode = sourceConcept.Code,
+                            SourceSystem = sourceConcept.System,
+                            SourceCode = sourceConcept.Code,
                             TargetValueSetKey = targetVs.Key,
                             TargetValueSetConceptKey = null,
-                            TargetValueSetConceptSystem = null,
-                            TargetValueSetConceptCode = null,
+                            TargetSystem = null,
+                            TargetCode = null,
 
                             ValueSetOutcomeKey = vsOutcomeKeys[comparisonIndex],
 
@@ -987,12 +993,12 @@ public partial class XVerProcessor
                                 TargetFhirPackageKey = targetPackage.Key,
                                 SourceValueSetKey = sourceVs.Key,
                                 SourceValueSetConceptKey = sourceConcept.Key,
-                                SourceValueSetConceptSystem = sourceConcept.System,
-                                SourceValueSetConceptCode = sourceConcept.Code,
+                                SourceSystem = sourceConcept.System,
+                                SourceCode = sourceConcept.Code,
                                 TargetValueSetKey = targetVs.Key,
                                 TargetValueSetConceptKey = null,
-                                TargetValueSetConceptSystem = null,
-                                TargetValueSetConceptCode = null,
+                                TargetSystem = null,
+                                TargetCode = null,
 
                                 ValueSetOutcomeKey = vsOutcomeKeys[comparisonIndex],
 
@@ -1052,12 +1058,12 @@ public partial class XVerProcessor
                             TargetFhirPackageKey = targetPackage.Key,
                             SourceValueSetKey = sourceVs.Key,
                             SourceValueSetConceptKey = sourceConcept.Key,
-                            SourceValueSetConceptSystem = sourceConcept.System,
-                            SourceValueSetConceptCode = sourceConcept.Code,
+                            SourceSystem = sourceConcept.System,
+                            SourceCode = sourceConcept.Code,
                             TargetValueSetKey = targetVs.Key,
                             TargetValueSetConceptKey = conceptComparison.TargetConceptKey,
-                            TargetValueSetConceptSystem = targetConcept.System,
-                            TargetValueSetConceptCode = targetConcept.Code,
+                            TargetSystem = targetConcept.System,
+                            TargetCode = targetConcept.Code,
 
                             ValueSetOutcomeKey = vsOutcomeKeys[comparisonIndex],
 
@@ -1164,6 +1170,7 @@ public partial class XVerProcessor
         vsConceptOutcomesToAdd.Insert(_db.DbConnection, insertPrimaryKey: true);
         _logger.LogInformation(
             $"Inserted {vsConceptOutcomesToAdd.Count} ValueSet Concept outcomes for source package {sourcePackage.ShortName} to target package {targetPackage.ShortName}.");
+#endif
     }
 
     private void generateOutcomesSd(
@@ -1171,6 +1178,7 @@ public partial class XVerProcessor
         DbFhirPackage targetPackage,
         FhirPackageComparisonPair? packagePair)
     {
+#if false
         List<DbStructureOutcome> sdOutcomesToAdd = [];
         List<DbElementOutcome> elementOutcomesToAdd = [];
 
@@ -1317,14 +1325,14 @@ public partial class XVerProcessor
                             SourceStructureKey = sourceSd.Key,
                             SourceElementKey = sourceElement.Key,
                             SourceElementId = sourceElement.Id,
-                            SourceElementResourceOrder = sourceElement.ResourceFieldOrder,
-                            SourceElementComponentOrder = sourceElement.ComponentFieldOrder,
+                            SourceResourceOrder = sourceElement.ResourceFieldOrder,
+                            SourceComponentOrder = sourceElement.ComponentFieldOrder,
 
                             TargetStructureKey = targetSd.Key,
                             TargetElementKey = null,
                             TargetElementId = null,
-                            TargetElementResourceOrder = null,
-                            TargetElementComponentOrder = null,
+                            TargetResourceOrder = null,
+                            TargetComponentOrder = null,
 
                             ExtensionSubstitutionKey = null,
                             RelatedAncestorOutcomeKey = null,
@@ -1376,14 +1384,14 @@ public partial class XVerProcessor
                                 SourceStructureKey = sourceSd.Key,
                                 SourceElementKey = sourceElement.Key,
                                 SourceElementId = sourceElement.Id,
-                                SourceElementResourceOrder = sourceElement.ResourceFieldOrder,
-                                SourceElementComponentOrder = sourceElement.ComponentFieldOrder,
+                                SourceResourceOrder = sourceElement.ResourceFieldOrder,
+                                SourceComponentOrder = sourceElement.ComponentFieldOrder,
 
                                 TargetStructureKey = targetSd.Key,
                                 TargetElementKey = null,
                                 TargetElementId = null,
-                                TargetElementResourceOrder = null,
-                                TargetElementComponentOrder = null,
+                                TargetResourceOrder = null,
+                                TargetComponentOrder = null,
 
                                 StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
@@ -1447,14 +1455,14 @@ public partial class XVerProcessor
                             SourceStructureKey = sourceSd.Key,
                             SourceElementKey = sourceElement.Key,
                             SourceElementId = sourceElement.Id,
-                            SourceElementResourceOrder = sourceElement.ResourceFieldOrder,
-                            SourceElementComponentOrder = sourceElement.ComponentFieldOrder,
+                            SourceResourceOrder = sourceElement.ResourceFieldOrder,
+                            SourceComponentOrder = sourceElement.ComponentFieldOrder,
 
                             TargetStructureKey = targetSd.Key,
                             TargetElementKey = elementComparison.TargetElementKey,
                             TargetElementId = targetElement.Id,
-                            TargetElementResourceOrder = targetElement.ResourceFieldOrder,
-                            TargetElementComponentOrder = targetElement.ComponentFieldOrder,
+                            TargetResourceOrder = targetElement.ResourceFieldOrder,
+                            TargetComponentOrder = targetElement.ComponentFieldOrder,
 
                             StructureOutcomeKey = sdOutcomeKeys[comparisonIndex],
 
@@ -1560,6 +1568,7 @@ public partial class XVerProcessor
         elementOutcomesToAdd.Insert(_db.DbConnection, insertPrimaryKey: true);
         _logger.LogInformation(
             $"Inserted {elementOutcomesToAdd.Count} Element outcomes for source package {sourcePackage.ShortName} to target package {targetPackage.ShortName}.");
+#endif
     }
 
 

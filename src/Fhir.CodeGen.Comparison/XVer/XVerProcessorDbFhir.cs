@@ -348,7 +348,7 @@ public partial class XVerProcessor
                 _db.DbConnection,
                 StructureOutcomeKey: outcome.Key,
                 OutcomeAction: OutcomeElementActionCodes.UseExtension,
-                orderByProperties: [nameof(DbElementOutcome.SourceElementResourceOrder)]);
+                orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
 
             foreach (DbElementOutcome elementOutcome in elementOutcomes)
             {
@@ -409,7 +409,7 @@ public partial class XVerProcessor
             _db.DbConnection,
             SourceElementKey: sourceElement.ParentElementKey!.Value,
             TargetFhirPackageKey: targetPackage.Key,
-            TargetElementIdIsNull: false);
+            TargetIdIsNull: false);
 
         List<DbElement> contextElements = [];
         List<StructureDefinition.ContextComponent> contexts = [];
@@ -463,7 +463,7 @@ public partial class XVerProcessor
             HashSet<string> usedContextPaths = [];
             foreach (DbElementOutcome contextOutcome in elementOutcomesWithTargets)
             {
-                if (!usedContextPaths.Add(contextOutcome.TargetElementId!))
+                if (!usedContextPaths.Add(contextOutcome.TargetId!))
                 {
                     continue;
                 }
@@ -626,7 +626,7 @@ public partial class XVerProcessor
             StructureOutcomeKey: structureOutcome.Key,
             OutcomeAction: OutcomeElementActionCodes.UseExtensionFromAncestor,
             RelatedAncestorOutcomeKey: elementOutcome.Key,
-            orderByProperties: [nameof(DbElementOutcome.SourceElementResourceOrder)]);
+            orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
 
 
 
