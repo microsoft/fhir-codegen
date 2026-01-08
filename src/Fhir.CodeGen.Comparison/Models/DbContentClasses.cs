@@ -443,6 +443,9 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
         }
     }
 
+    [CgSQLiteIgnore]
+    public int Depth => Id.Count('.') + 1;
+
     private static DbElement _empty = EmptyCopy;
 
     [CgSQLiteIgnore]

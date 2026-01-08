@@ -380,9 +380,42 @@ public class ElementComparer
             .ToLookup(m => m.SourceElementKey!.Value);
         ILookup<string, DbElementMapping> elementMappingsBySourceId = elementMappings.ToLookup(m => m.SourceElementId);
 
+        Dictionary<int, List<DbElementComparison>> comparisonsByParentKey = [];
+        Dictionary<int, List<DbElementComparison>> comparisonsBySourceKey = [];
+        Dictionary<int, List<int>> sourceKeysByDepth = [];
+
         // iterate over each source element
         foreach (DbElement sourceElement in sourceElements)
         {
+            List<DbElementComparison>? parentElementComparisons;
+
+            if (sourceElement.ParentElementKey is null)
+            {
+                parentElementComparisons = [];
+                comparisonsByParentKey[-1] = parentElementComparisons;
+            }
+            else if (!comparisonsByParentKey.TryGetValue(sourceElement.ParentElementKey.Value, out parentElementComparisons))
+            {
+                parentElementComparisons = [];
+                comparisonsByParentKey[sourceElement.ParentElementKey.Value] = parentElementComparisons;
+            }
+
+            if (!comparisonsBySourceKey.TryGetValue(sourceElement.Key, out List<DbElementComparison>? currentElementComparisons))
+            {
+                currentElementComparisons = [];
+                comparisonsBySourceKey[sourceElement.Key] = currentElementComparisons;
+            }
+
+            int sourceElementDepth = sourceElement.Depth;
+
+            if (!sourceKeysByDepth.TryGetValue(sourceElementDepth, out List<int>? elementsAtDepth))
+            {
+                elementsAtDepth = [];
+                sourceKeysByDepth[sourceElementDepth] = elementsAtDepth;
+            }
+
+            elementsAtDepth.Add(sourceElement.Key);
+
             CMR? elementRelationship = null;
             CMR? elementConceptRelationship = null;
             CMR? elementValueRelationship = null;
@@ -484,6 +517,8 @@ public class ElementComparer
 
                 _elementComparisonCache.CacheAdd(elementComparison);
                 elementComparisons.Add(elementComparison);
+                parentElementComparisons.Add(elementComparison);
+                currentElementComparisons.Add(elementComparison);
             }
 
             if (addedMappings)
@@ -491,13 +526,15 @@ public class ElementComparer
                 continue;
             }
 
+            string targetPath = targetSd.Name + sourceElement.Id[sourceSd.Name.Length..]; 
+
             // no explicit explicitMapping, try to find by path
-            List<DbElement> possibleTargets = targetElementsByPath[sourceElement.Path].ToList();
+            List<DbElement> possibleTargets = targetElementsByPath[targetPath].ToList();
 
             if (possibleTargets.Count > 1)
             {
-                technicalMessage = $"Multiple target elements with path {sourceElement.Path} found in target structure {trackingRecord.TargetStructure!.Name}";
-                userMessage = $"Multiple elements with path {sourceElement.Path} found in target structure.";
+                technicalMessage = $"Multiple target elements with path {targetPath} found in target structure {trackingRecord.TargetStructure!.Name}";
+                userMessage = $"Multiple elements with path {targetPath} found in target structure.";
             }
 
             // if no targets found by path, this is a no-map
@@ -522,6 +559,8 @@ public class ElementComparer
                     typeComparison: null);
                 _elementComparisonCache.CacheAdd(noMapComparison);
                 elementComparisons.Add(noMapComparison);
+                parentElementComparisons.Add(noMapComparison);
+                currentElementComparisons.Add(noMapComparison);
                 continue;
             }
 
@@ -593,9 +632,62 @@ public class ElementComparer
                         targetElement.Key));
                 _elementComparisonCache.CacheAdd(elementComparison);
                 elementComparisons.Add(elementComparison);
+                parentElementComparisons.Add(elementComparison);
+                currentElementComparisons.Add(elementComparison);
             }
         }
 
+        // elements with child elements need to be updated based on their child relationships
+        foreach ((int depth, List<int> elementKeysAtDepth) in sourceKeysByDepth.OrderByDescending(kvp => kvp.Key))
+        {
+            // iterate over the keys
+            foreach (int currentSourceKey in elementKeysAtDepth)
+            {
+                // check for comparisons where this element is the parent
+                if (!comparisonsByParentKey.TryGetValue(currentSourceKey, out List<DbElementComparison>? childComparisons))
+                {
+                    // this element has no children
+                    continue;
+                }
+
+                // if we have child comparisons, we first need to resolve the current comparison so we can update it
+                if (!comparisonsBySourceKey.TryGetValue(currentSourceKey, out List<DbElementComparison>? currentComparisons))
+                {
+                    // this element has no comparisons
+                    throw new Exception("Failed to resolve comparisons during post-processing!");
+                }
+
+                // iterate over the current comparisons
+                foreach (DbElementComparison currentComparison in currentComparisons)
+                {
+                    if (currentComparison.NotMapped)
+                    {
+                        continue;
+                    }
+
+                    CMR? relationship = currentComparison.Relationship ?? CMR.Equivalent;
+
+                    // apply child comparisons
+                    foreach (DbElementComparison childComparison in childComparisons)
+                    {
+                        // only process relationship changes based on matching structure
+                        if (childComparison.TargetStructureKey != currentComparison.TargetStructureKey)
+                        {
+                            continue;
+                        }
+
+                        relationship = FhirDbComparer.ApplyRelationship(relationship, childComparison.Relationship);
+
+                        currentComparison.TechnicalMessage ??= string.Empty;
+                        currentComparison.TechnicalMessage +=
+                            $"\nComparison from child element: `{childComparison.SourceElementId}`->`{childComparison.TargetElementId}`" +
+                            $" of {childComparison.Relationship} applied.";
+                    }
+                }
+            }
+        }
+
+        // return our list of element comparisons
         return elementComparisons;
     }
 
