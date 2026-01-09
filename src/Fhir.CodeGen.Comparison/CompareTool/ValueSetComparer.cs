@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -158,6 +159,8 @@ public class ValueSetComparer
             {
                 continue;
             }
+
+            Debug.Fail("Concept comparisons are currently wrong - WIP.");
 
             // when we have a single step, do the comparisons directly
             if (steps == 1)
