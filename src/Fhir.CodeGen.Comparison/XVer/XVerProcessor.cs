@@ -266,10 +266,10 @@ public partial class XVerProcessor
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //CompareInDatabase();
 
-                GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
+                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
-                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
+                GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes();
 
                 //GenerateOutcomesFromComparisons();
@@ -526,14 +526,17 @@ public partial class XVerProcessor
             case FhirArtifactClassEnum.Resource:
             case FhirArtifactClassEnum.Profile:
             case FhirArtifactClassEnum.Extension:
-                //generator.Compare(
-                //    processValueSets: false,
-                //    processStructures: true,
-                //    maxStepSize: maxStepSize);
+                generator.GenerateOutcomes(
+                    processValueSets: false,
+                    processStructures: true,
+                    maxStepSize: maxStepSize);
                 break;
 
             default:
-                //generator.Compare(maxStepSize: maxStepSize);
+                generator.GenerateOutcomes(
+                    processValueSets: true,
+                    processStructures: true,
+                    maxStepSize: maxStepSize);
                 break;
         }
     }
@@ -1096,6 +1099,72 @@ public partial class XVerProcessor
         string idShort = $"{sourcePackageShortName}-{shortSource}-for-{targetPackageShortName}-{shortTarget}";
 
         return (idLong, idShort);
+    }
+
+    internal static (string idLong, string idShort) GenerateExtensionId(
+        string sourcePackageShortName,
+        string sourceElementPath)
+    {
+        string idLong = $"extension-{sourceElementPath.Replace("[x]", string.Empty)}";
+        string idShort = $"ext-{sourcePackageShortName}-{collapsePathForId(sourceElementPath)}";
+
+        return (idLong, idShort);
+
+        string collapsePathForId(string path)
+        {
+            string pathClean = path.Replace("[x]", string.Empty);
+            string[] components = pathClean.Split('.');
+            switch (components.Length)
+            {
+                case 0:
+                    return pathClean;
+
+                case 1:
+                    return pathClean;
+
+                case 2:
+                    {
+                        if (pathClean.Length > 45)
+                        {
+                            string rName = (components[0].Length > 20)
+                                ? new string(components[0].Where(char.IsUpper).ToArray())
+                                : components[0];
+
+                            string eName = (components[1].Length > 20)
+                                ? $"{components[1][0]}" + new string(components[1].Where(char.IsUpper).ToArray())
+                                : components[1];
+
+                            return rName + "." + eName;
+                        }
+
+                        return pathClean;
+                    }
+
+                default:
+                    {
+                        // use the full first and last, and one character from each in-between
+                        if (components[0].Length > 20)
+                        {
+                            components[0] = new string(components[0].Where(char.IsUpper).ToArray());
+                        }
+
+                        for (int i = 1; i < components.Length - 1; i++)
+                        {
+                            if (components[i].Length > 3)
+                            {
+                                components[i] = $"{components[i][0]}{components[i][1]}";
+                            }
+                        }
+
+                        if (components.Last().Length > 20)
+                        {
+                            components[components.Length - 1] = $"{components[components.Length - 1][0]}" + new string(components[0].Where(char.IsUpper).ToArray());
+                        }
+
+                        return string.Join('.', components);
+                    }
+            }
+        }
     }
 
 }

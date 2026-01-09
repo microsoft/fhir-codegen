@@ -44,6 +44,8 @@ public enum OutcomeValueSetActionCodes
 
 public enum OutcomeValueSetConceptActionCodes
 {
+
+
     /// <summary>
     /// The concept is used with the same code in the target version.
     /// </summary>
@@ -200,6 +202,8 @@ public abstract class DbOutcomeBase : DbRecordBase
     public required int TargetFhirPackageKey { get; set; }
     public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes TargetFhirSequence { get; set; }
 
+    public required bool RequiresXVerDefinition { get; set; }
+
     /// <summary>
     /// Number of artifacts that this artifact maps *to*:
     /// - 0: no target (has no equivalent artifact)
@@ -233,54 +237,6 @@ public abstract class DbOutcomeBase : DbRecordBase
     public required string Comments { get; set; }
 
 
-    public int? ContentKeyR2 { get; set; } = null;
-    public int? ContentKeyR3 { get; set; } = null;
-    public int? ContentKeyR4 { get; set; } = null;
-    public int? ContentKeyR4B { get; set; } = null;
-    public int? ContentKeyR5 { get; set; } = null;
-    public int? ContentKeyR6 { get; set; } = null;
-
-    [CgSQLiteIgnore]
-    public int?[] ContentKeys
-    {
-        get => [ContentKeyR2, ContentKeyR3, ContentKeyR4, ContentKeyR4B, ContentKeyR5, ContentKeyR6];
-        set
-        {
-            switch (value.Length)
-            {
-                case 0:
-                    ContentKeyR2 = null;
-                    ContentKeyR3 = null;
-                    ContentKeyR4 = null;
-                    ContentKeyR4B = null;
-                    ContentKeyR5 = null;
-                    ContentKeyR6 = null;
-                    return;
-
-                case 5:
-                    ContentKeyR2 = value[0];
-                    ContentKeyR3 = value[1];
-                    ContentKeyR4 = value[2];
-                    ContentKeyR4B = value[3];
-                    ContentKeyR5 = value[4];
-                    ContentKeyR6 = null;
-                    return;
-
-                case 6:
-                    ContentKeyR2 = value[0];
-                    ContentKeyR3 = value[1];
-                    ContentKeyR4 = value[2];
-                    ContentKeyR4B = value[3];
-                    ContentKeyR5 = value[4];
-                    ContentKeyR6 = value[5];
-                    return;
-            }
-
-            throw new ArgumentException($"Invalid number of keys: {value.Length}. Expected 5 or 6.");
-        }
-    }
-
-
     [CgSQLiteIgnore]
     public virtual int ComparisonKey { get; set; }
 
@@ -294,10 +250,12 @@ public abstract class DbOutcomeBase : DbRecordBase
 [CgSQLiteBaseClass]
 public abstract class DbArtifactOutcomeBase : DbOutcomeBase
 {
-    public required string? PotentialGenResourceType { get; set; }
+    // TODO: Remove all of these - just here for sanity during development
+
+    //public required string? PotentialGenResourceType { get; set; }
     public required string? PotentialGenLongId { get; set; }
-    public required string? PotentialGenShortId { get; set; }
-    public required string? PotentialGenUrl { get; set; }
+    //public required string? PotentialGenShortId { get; set; }
+    //public required string? PotentialGenUrl { get; set; }
 
     public required string SourceCanonicalVersioned { get; set; }
     public required string SourceCanonicalUnversioned { get; set; }
@@ -335,7 +293,7 @@ public partial class DbValueSetOutcome : DbArtifactOutcomeBase
 
 
 
-    public required OutcomeValueSetActionCodes? OutcomeAction { get; set; }
+    //public required OutcomeValueSetActionCodes? OutcomeAction { get; set; }
 
     [CgSQLiteIgnore]
     public Hl7.Fhir.Model.ValueSet? GeneratedValueSet { get; set; } = null;
@@ -361,9 +319,6 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
     [CgSQLiteIgnore]
     public override int SourceContentKey { get => this.SourceValueSetConceptKey; set => this.SourceValueSetConceptKey = value; }
 
-    public required string SourceSystem { get; set; }
-    public required string SourceCode { get; set; }
-
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int? TargetValueSetKey { get; set; }
 
@@ -372,14 +327,19 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
     [CgSQLiteIgnore]
     public override int? TargetContentKey { get => this.TargetValueSetConceptKey; set => this.TargetValueSetConceptKey = value; }
 
+    // TODO: Remove these - just here for development
+
+    public required string SourceSystem { get; set; }
+    public required string SourceCode { get; set; }
+
     public required string? TargetSystem { get; set; }
     public required string? TargetCode { get; set; }
 
-    public required bool CodeLiteralsMatch { get; set; }
-    public required bool SourceCodeTreatedAsEscapeValve { get; set; }
-    public required bool? TargetCodeTreatedAsEscapeValve { get; set; }
+    //public required bool CodeLiteralsMatch { get; set; }
+    //public required bool SourceCodeTreatedAsEscapeValve { get; set; }
+    //public required bool? TargetCodeTreatedAsEscapeValve { get; set; }
 
-    public required OutcomeValueSetConceptActionCodes? OutcomeAction { get; set; }
+    //public required OutcomeValueSetConceptActionCodes? OutcomeAction { get; set; }
 }
 
 
@@ -406,11 +366,11 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
     public required Fhir.CodeGen.Common.Models.FhirArtifactClassEnum? TargetArtifactClass { get; set; } = null;
 
 
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+    //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
 
-    public required OutcomeStructureActionCodes? OutcomeAction { get; set; }
+    //public required OutcomeStructureActionCodes? OutcomeAction { get; set; }
 
     [CgSQLiteIgnore]
     public Hl7.Fhir.Model.StructureDefinition? GeneratedProfile { get; set; } = null;
@@ -419,8 +379,8 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
 [CgSQLiteTable(tableName: "ElementOutcomes")]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceResourceOrder))]
-[CgSQLiteIndex(nameof(StructureOutcomeKey), nameof(OutcomeAction), nameof(RelatedAncestorOutcomeKey), nameof(SourceResourceOrder))]
+//[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceResourceOrder))]
+//[CgSQLiteIndex(nameof(StructureOutcomeKey), nameof(OutcomeAction), nameof(PartOfElementOutcomeKey), nameof(SourceResourceOrder))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
@@ -441,12 +401,12 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public override int SourceContentKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
 
 
-    public required int SourceResourceOrder { get; set; }
-    public required int SourceComponentOrder { get; set; }
+    //public required int SourceResourceOrder { get; set; }
+    //public required int SourceComponentOrder { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key), modelTypeName: nameof(DbStructureDefinition))]
-    public required int TargetStructureKey { get; set; }
+    public required int? TargetStructureKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key), modelTypeName: nameof(DbElement))]
     public required int? TargetElementKey { get; set; }
@@ -454,23 +414,22 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public override int? TargetContentKey { get => this.TargetElementKey; set => this.TargetElementKey = value; }
 
 
-    public required int? TargetResourceOrder { get; set; }
-    public required int? TargetComponentOrder { get; set; }
+    //public required int? TargetResourceOrder { get; set; }
+    //public required int? TargetComponentOrder { get; set; }
 
 
-    [CgSQLiteForeignKey(referenceTable: "ExtensionSubstituions", referenceColumn: nameof(DbExtensionSubstitution.Key), modelTypeName: nameof(DbExtensionSubstitution))]
-    public required int? ExtensionSubstitutionKey { get; set; }
+    //[CgSQLiteForeignKey(referenceTable: "ExtensionSubstituions", referenceColumn: nameof(DbExtensionSubstitution.Key), modelTypeName: nameof(DbExtensionSubstitution))]
+    //public required int? ExtensionSubstitutionKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
-    public required int? RelatedAncestorOutcomeKey { get; set; }
+    public required int? PartOfElementOutcomeKey { get; set; }
 
 
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
-    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
+    //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
+    //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 
 
-
-    public required OutcomeElementActionCodes? OutcomeAction { get; set; }
+    //public required OutcomeElementActionCodes? OutcomeAction { get; set; }
 
     [CgSQLiteIgnore]
     public Hl7.Fhir.Model.StructureDefinition? GeneratedExtension { get; set; } = null;

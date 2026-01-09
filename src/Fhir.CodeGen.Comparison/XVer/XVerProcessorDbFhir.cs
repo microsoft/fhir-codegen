@@ -285,6 +285,8 @@ public partial class XVerProcessor
         string packageId,
         string packageDir)
     {
+        throw new NotImplementedException("Transitioning outcome structures...");
+#if false
         _logger.LogInformation($"  Writing Value Sets for: {packageId}");
 
         string extensionDir = _config.XverExportForPublisher
@@ -384,6 +386,7 @@ public partial class XVerProcessor
 
 
         return exported;
+#endif
     }
 
     private StructureDefinition createExtension(
@@ -396,6 +399,8 @@ public partial class XVerProcessor
         DbStructureDefinition? targetSd,
         DbElementOutcome elementOutcome)
     {
+        throw new NotImplementedException("Transitioning outcome structures...");
+#if false
         // resolve the the element definitions
         DbElement sourceElement = DbElement.SelectSingle(_db!.DbConnection, Key: elementOutcome.SourceElementKey)
             ?? throw new Exception($"Failed to resolve source element with key {elementOutcome.SourceElementKey} for outcome {elementOutcome.Key}!");
@@ -631,6 +636,7 @@ public partial class XVerProcessor
 
 
         return extSd;
+#endif
     }
 
 
@@ -640,6 +646,8 @@ public partial class XVerProcessor
         string packageId,
         string packageDir)
     {
+        throw new NotImplementedException("Transitioning outcome structures...");
+#if false
         _logger.LogInformation($"  Writing Value Sets for: {packageId}");
 
         string vocabDir = _config.XverExportForPublisher
@@ -868,6 +876,7 @@ public partial class XVerProcessor
         }
 
         return exported;
+#endif
     }
 
     private List<XVerIgFileRecord> writeXverCodeSystems(

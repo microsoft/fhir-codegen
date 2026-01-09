@@ -45,11 +45,8 @@ public class OutcomeGenerator
 
         if (processStructures)
         {
-            //// create our structure comparer
-            //StructureComparer sdComparer = new(_db, _loggerFactory);
-
-            //// run our structure comparisons
-            //sdComparer.CompareStructures(maxStepSize: maxStepSize);
+            StructureOutcomeGenerator sdGenerator = new(_db, _loggerFactory);
+            sdGenerator.CreateOutcomesForStructures(maxStepSize: maxStepSize);
         }
     }
 }

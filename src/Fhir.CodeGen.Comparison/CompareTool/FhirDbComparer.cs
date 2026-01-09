@@ -90,8 +90,8 @@ public partial class FhirDbComparer
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
 
-    //private DbComparisonCache<DbValueSetComparison> _vsOutcomeCache = new();
-    //private DbComparisonCache<DbValueSetConceptComparison> _conceptOutcomeCache = new();
+    //private DbComparisonCache<DbValueSetComparison> _sdOutcomeCache = new();
+    //private DbComparisonCache<DbValueSetConceptComparison> _edOutcomeCache = new();
 
     //private DbComparisonCache<DbStructureComparison> _sdComparisonCache = new();
     //private DbComparisonCache<DbElementComparison> _edComparisonCache = new();

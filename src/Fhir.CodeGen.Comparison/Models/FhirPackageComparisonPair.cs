@@ -35,6 +35,8 @@ public class FhirPackageComparisonPair
         TargetPackage = targetPackage;
     }
 
+    public int Distance => Math.Abs(SourceFhirSequence - TargetFhirSequence);
+
     public static List<FhirPackageComparisonPair> GetPairs(List<DbFhirPackage> packages)
     {
         List<FhirPackageComparisonPair> pairs = [];

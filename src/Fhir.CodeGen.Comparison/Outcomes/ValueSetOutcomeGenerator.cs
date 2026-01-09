@@ -24,7 +24,6 @@ public class ValueSetOutcomeGenerator
     private DbRecordCache<DbValueSetOutcome> _vsOutcomeCache;
     private DbRecordCache<DbValueSetConceptOutcome> _conceptOutcomeCache;
 
-
     public ValueSetOutcomeGenerator(
         IDbConnection db,
         ILoggerFactory loggerFactory)
@@ -102,7 +101,7 @@ public class ValueSetOutcomeGenerator
 
     private void buildOutcomes(FhirPackageComparisonPair packagePair)
     {
-        _logger.LogInformation($" Generating ValueSet Outcomes for {packagePair.SourcePackageShortName}->{packagePair.TargetPackageShortName}...");
+        _logger.LogInformation($"Generating ValueSet Outcomes for {packagePair.SourcePackageShortName}->{packagePair.TargetPackageShortName}...");
 
         // just get all the source and target value sets now to avoid hitting the db so much
         Dictionary<int, DbValueSet> allSourceValueSets = DbValueSet.SelectDict(_db, FhirPackageKey: packagePair.SourcePackageKey);
@@ -116,7 +115,7 @@ public class ValueSetOutcomeGenerator
             TargetFhirPackageKey: packagePair.TargetPackageKey);
 
         _logger.LogInformation(
-            $" ValueSet comparisons: {vsComparisons.Count}, from" +
+            $"ValueSet comparisons: {vsComparisons.Count}, from" +
             $" {allSourceValueSets.Count} Value Sets" +
             $" to {allTargetValueSets.Count} Value Sets");
 
@@ -126,7 +125,7 @@ public class ValueSetOutcomeGenerator
             TargetFhirPackageKey: packagePair.TargetPackageKey);
 
         _logger.LogInformation(
-            $" ValueSet Concept comparisons: {conceptComparisons.Count}, from" +
+            $"ValueSet Concept comparisons: {conceptComparisons.Count}, from" +
             $" {allSourceConcepts.Count} Value Set Concepts" +
             $" to {allTargetConcepts.Count} Value Set Concepts");
 
@@ -194,8 +193,8 @@ public class ValueSetOutcomeGenerator
                         (conceptComparison.Relationship == CMR.Equivalent) ||
                         (conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget))
                     {
-                        fullyMappedConceptKeys.Add(conceptComparison.SourceConceptKey);
-                        currentlyMappedComparisonKeys.Add(conceptComparison.SourceConceptKey);
+                        fullyMappedConceptKeys.Add(conceptComparison.SourceContentKey);
+                        currentlyMappedComparisonKeys.Add(conceptComparison.SourceContentKey);
                     }
                 }
             }
@@ -221,20 +220,22 @@ public class ValueSetOutcomeGenerator
                 if ((targetVs is null) ||
                     sourceComparison.NotMapped)
                 {
-                    OutcomeValueSetActionCodes noMapAction;
+                    bool noMapVsRequiresXVer = fullyMapsAcrossAllTargets != true;
 
-                    if (fullyMapsAcrossAllTargets)
-                    {
-                        noMapAction = OutcomeValueSetActionCodes.UseOtherValueSets;
-                    }
-                    else if (sourceComparisons.Count > 1)
-                    {
-                        noMapAction = OutcomeValueSetActionCodes.UseOtherAndCrossVersion;
-                    }
-                    else
-                    {
-                        noMapAction = OutcomeValueSetActionCodes.UseCrossVersionDefinition;
-                    }
+                    //OutcomeValueSetActionCodes noMapAction;
+
+                    //if (fullyMapsAcrossAllTargets)
+                    //{
+                    //    noMapAction = OutcomeValueSetActionCodes.UseOtherValueSets;
+                    //}
+                    //else if (sourceComparisons.Count > 1)
+                    //{
+                    //    noMapAction = OutcomeValueSetActionCodes.UseOtherAndCrossVersion;
+                    //}
+                    //else
+                    //{
+                    //    noMapAction = OutcomeValueSetActionCodes.UseCrossVersionDefinition;
+                    //}
 
                     // build our no-map outcome
                     DbValueSetOutcome noMapOutcome = new()
@@ -245,27 +246,16 @@ public class ValueSetOutcomeGenerator
                         SourceFhirPackageKey = packagePair.SourcePackageKey,
                         SourceFhirSequence = packagePair.SourceFhirSequence,
                         SourceValueSetKey = sourceVs.Key,
-                        SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
-                        SourceCanonicalVersioned = sourceVs.VersionedUrl,
-                        SourceVersion = sourceVs.Version,
-                        SourceId = sourceVs.Id,
-                        SourceName = sourceVs.Name,
                         TotalSourceCount = -1,
 
                         TargetFhirPackageKey = packagePair.TargetPackageKey,
                         TargetFhirSequence = packagePair.TargetFhirSequence,
                         TargetValueSetKey = null,
-                        TargetCanonicalUnversioned = null,
-                        TargetCanonicalVersioned = null,
-                        TargetVersion = null,
-                        TargetId = null,
-                        TargetName = null,
+
                         TotalTargetCount = totalTargetCount,
 
-                        PotentialGenResourceType = "ValueSet",
-                        PotentialGenLongId = idLong,
-                        PotentialGenShortId = idShort,
-                        PotentialGenUrl = url,
+                        RequiresXVerDefinition = noMapVsRequiresXVer,
+
 
                         IsRenamed = false,
                         IsUnmapped = false,
@@ -278,9 +268,25 @@ public class ValueSetOutcomeGenerator
                         FullyMapsAcrossAllTargets = fullyMapsAcrossAllTargets,
 
                         Comments = sourceComparison.UserMessage ?? sourceComparison.TechnicalMessage ?? "TODO",
-                        OutcomeAction = noMapAction,
 
-                        ContentKeys = sourceComparison.ContentKeys,
+                        //OutcomeAction = noMapAction,
+                        //ContentKeys = sourceComparison.ContentKeys,
+
+                        SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
+                        SourceCanonicalVersioned = sourceVs.VersionedUrl,
+                        SourceVersion = sourceVs.Version,
+                        SourceId = sourceVs.Id,
+                        SourceName = sourceVs.Name,
+                        TargetCanonicalUnversioned = null,
+                        TargetCanonicalVersioned = null,
+                        TargetVersion = null,
+                        TargetId = null,
+                        TargetName = null,
+                        PotentialGenLongId = idLong,
+                        //PotentialGenResourceType = "ValueSet",
+                        //PotentialGenShortId = idShort,
+                        //PotentialGenUrl = url,
+
                     };
 
                     _vsOutcomeCache.CacheAdd(noMapOutcome);
@@ -288,16 +294,16 @@ public class ValueSetOutcomeGenerator
                     // build our no-map concept outcomes
                     foreach (DbValueSetConceptComparison conceptComparison in conceptComparsionsByVsComparisonKey[sourceComparison.Key])
                     {
-                        OutcomeValueSetConceptActionCodes noMapConceptAction = noMapAction switch
-                        {
-                            OutcomeValueSetActionCodes.UseOtherValueSets => OutcomeValueSetConceptActionCodes.MappedElsewhere,
-                            OutcomeValueSetActionCodes.UseOtherAndCrossVersion => fullyMappedConceptKeys.Contains(conceptComparison.SourceConceptKey)
-                                ? OutcomeValueSetConceptActionCodes.MappedElsewhere
-                                : OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
-                            _ => OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
-                        };
+                        //OutcomeValueSetConceptActionCodes noMapConceptAction = noMapAction switch
+                        //{
+                        //    OutcomeValueSetActionCodes.UseOtherValueSets => OutcomeValueSetConceptActionCodes.MappedElsewhere,
+                        //    OutcomeValueSetActionCodes.UseOtherAndCrossVersion => fullyMappedConceptKeys.Contains(conceptComparison.SourceConceptKey)
+                        //        ? OutcomeValueSetConceptActionCodes.MappedElsewhere
+                        //        : OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
+                        //    _ => OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
+                        //};
 
-                        DbValueSetConcept sourceConcept = allSourceConcepts[conceptComparison.SourceConceptKey];
+                        DbValueSetConcept sourceConcept = allSourceConcepts[conceptComparison.SourceContentKey];
 
                         DbValueSetConceptOutcome noMapConceptOutcome = new()
                         {
@@ -309,17 +315,15 @@ public class ValueSetOutcomeGenerator
                             SourceFhirSequence = packagePair.SourceFhirSequence,
                             SourceValueSetKey = sourceVs.Key,
                             SourceValueSetConceptKey = sourceConcept.Key,
-                            SourceSystem = sourceConcept.System,
-                            SourceCode = sourceConcept.Code,
                             TotalSourceCount = -1,
 
                             TargetFhirPackageKey = packagePair.TargetPackageKey,
                             TargetFhirSequence = packagePair.TargetFhirSequence,
                             TargetValueSetKey = null,
                             TargetValueSetConceptKey = null,
-                            TargetSystem = null,
-                            TargetCode = null,
                             TotalTargetCount = -1,
+
+                            RequiresXVerDefinition = noMapVsRequiresXVer,
 
                             IsRenamed = false,
                             IsUnmapped = false,
@@ -331,14 +335,18 @@ public class ValueSetOutcomeGenerator
                             FullyMapsToThisTarget = false,
                             FullyMapsAcrossAllTargets = fullyMappedConceptKeys.Contains(sourceConcept.Key),
 
-                            CodeLiteralsMatch = false,
-                            SourceCodeTreatedAsEscapeValve = conceptComparison.SourceCodeTreatedAsEscapeValve,
-                            TargetCodeTreatedAsEscapeValve = false,
-
                             Comments = sourceComparison.UserMessage ?? sourceComparison.TechnicalMessage ?? "TODO",
-                            OutcomeAction = noMapConceptAction,
 
-                            ContentKeys = conceptComparison.ContentKeys,
+                            //OutcomeAction = noMapConceptAction,
+                            //ContentKeys = conceptComparison.ContentKeys,
+                            //CodeLiteralsMatch = false,
+                            //SourceCodeTreatedAsEscapeValve = conceptComparison.SourceCodeTreatedAsEscapeValve,
+                            //TargetCodeTreatedAsEscapeValve = false,
+
+                            SourceSystem = sourceConcept.System,
+                            SourceCode = sourceConcept.Code,
+                            TargetSystem = null,
+                            TargetCode = null,
                         };
 
                         _conceptOutcomeCache.CacheAdd(noMapConceptOutcome);
@@ -361,27 +369,33 @@ public class ValueSetOutcomeGenerator
 
                 bool fullyMapsToThisTarget = fullyMappedConceptKeysByComparisonKey[sourceComparison.Key].Count == sourceConcepts.Count;
 
-                OutcomeValueSetActionCodes vsAction;
+                bool vsRequiresXVer;
+
+                //OutcomeValueSetActionCodes vsAction;
 
                 if (isIdentical)
                 {
-                    vsAction = OutcomeValueSetActionCodes.UseValueSetSameName;
+                    //vsAction = OutcomeValueSetActionCodes.UseValueSetSameName;
+                    vsRequiresXVer = false;
                 }
                 else if (isEquivalent)
                 {
-                    vsAction = OutcomeValueSetActionCodes.UseValueSetRenamed;
+                    //vsAction = OutcomeValueSetActionCodes.UseValueSetRenamed;
+                    vsRequiresXVer = false;
                 }
                 else if (fullyMapsAcrossAllTargets)
                 {
-                    vsAction = sourceVs.Id == targetVs.Id
-                        ? OutcomeValueSetActionCodes.UseValueSetSameName
-                        : OutcomeValueSetActionCodes.UseValueSetRenamed;
+                    //vsAction = sourceVs.Id == targetVs.Id
+                    //    ? OutcomeValueSetActionCodes.UseValueSetSameName
+                    //    : OutcomeValueSetActionCodes.UseValueSetRenamed;
+                    vsRequiresXVer = false;
                 }
                 else
                 {
-                    vsAction = sourceVs.Id == targetVs.Id
-                        ? OutcomeValueSetActionCodes.UseSameNameAndCrossVersion
-                        : OutcomeValueSetActionCodes.UseRenamedAndCrossVersion;
+                    //vsAction = sourceVs.Id == targetVs.Id
+                    //    ? OutcomeValueSetActionCodes.UseSameNameAndCrossVersion
+                    //    : OutcomeValueSetActionCodes.UseRenamedAndCrossVersion;
+                    vsRequiresXVer = true;
                 }
 
                 // create our value set outcome
@@ -393,27 +407,14 @@ public class ValueSetOutcomeGenerator
                     SourceFhirPackageKey = packagePair.SourcePackageKey,
                     SourceFhirSequence = packagePair.SourceFhirSequence,
                     SourceValueSetKey = sourceVs.Key,
-                    SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
-                    SourceCanonicalVersioned = sourceVs.VersionedUrl,
-                    SourceVersion = sourceVs.Version,
-                    SourceId = sourceVs.Id,
-                    SourceName = sourceVs.Name,
                     TotalSourceCount = -1,
 
                     TargetFhirPackageKey = packagePair.TargetPackageKey,
                     TargetFhirSequence = packagePair.TargetFhirSequence,
                     TargetValueSetKey = targetVs.Key,
-                    TargetCanonicalUnversioned = targetVs.UnversionedUrl,
-                    TargetCanonicalVersioned = targetVs.VersionedUrl,
-                    TargetVersion = targetVs.Version,
-                    TargetId = targetVs.Id,
-                    TargetName = targetVs.Name,
                     TotalTargetCount = totalTargetCount,
 
-                    PotentialGenResourceType = "ValueSet",
-                    PotentialGenLongId = idLong,
-                    PotentialGenShortId = idShort,
-                    PotentialGenUrl = url,
+                    RequiresXVerDefinition = vsRequiresXVer,
 
                     IsRenamed = isRenamed,
                     IsUnmapped = isUnmapped,
@@ -426,9 +427,24 @@ public class ValueSetOutcomeGenerator
                     FullyMapsAcrossAllTargets = fullyMapsAcrossAllTargets,
 
                     Comments = sourceComparison.UserMessage ?? sourceComparison.TechnicalMessage ?? "TODO",
-                    OutcomeAction = vsAction,
 
-                    ContentKeys = sourceComparison.ContentKeys,
+                    //OutcomeAction = vsAction,
+                    //ContentKeys = sourceComparison.ContentKeys,
+
+                    SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
+                    SourceCanonicalVersioned = sourceVs.VersionedUrl,
+                    SourceVersion = sourceVs.Version,
+                    SourceId = sourceVs.Id,
+                    SourceName = sourceVs.Name,
+                    TargetCanonicalUnversioned = targetVs.UnversionedUrl,
+                    TargetCanonicalVersioned = targetVs.VersionedUrl,
+                    TargetVersion = targetVs.Version,
+                    TargetId = targetVs.Id,
+                    TargetName = targetVs.Name,
+                    PotentialGenLongId = idLong,
+                    //PotentialGenResourceType = "ValueSet",
+                    //PotentialGenShortId = idShort,
+                    //PotentialGenUrl = url,
                 };
 
                 _vsOutcomeCache.CacheAdd(vsOutcome);
@@ -438,39 +454,51 @@ public class ValueSetOutcomeGenerator
                 // build our concept outcomes
                 foreach (DbValueSetConceptComparison conceptComparison in conceptComparsionsByVsComparisonKey[sourceComparison.Key])
                 {
-                    DbValueSetConcept sourceConcept = allSourceConcepts[conceptComparison.SourceConceptKey];
-                    DbValueSetConcept? targetConcept = conceptComparison.TargetConceptKey is null
+                    DbValueSetConcept sourceConcept = allSourceConcepts[conceptComparison.SourceContentKey];
+                    DbValueSetConcept? targetConcept = conceptComparison.TargetContentKey is null
                         ? null
-                        : allTargetConcepts[conceptComparison.TargetConceptKey.Value];
+                        : allTargetConcepts[conceptComparison.TargetContentKey.Value];
 
-                    OutcomeValueSetConceptActionCodes conceptAction = vsAction switch
-                    {
-                        OutcomeValueSetActionCodes.UseValueSetSameName => (sourceConcept.Code == targetConcept?.Code)
-                            ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
-                            : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
-                        OutcomeValueSetActionCodes.UseValueSetRenamed => (sourceConcept.Code == targetConcept?.Code)
-                            ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
-                            : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
+                    bool conceptFullyMapsToThisTarget = currentlyMappedComparisonKeys.Contains(sourceConcept.Key);
+                    bool conceptFullyMapsAcrossAllTargets = fullyMappedConceptKeys.Contains(sourceConcept.Key);
 
-                        OutcomeValueSetActionCodes.UseSameNameAndCrossVersion => (targetConcept is null)
-                            ? OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition
-                            : (sourceConcept.Code == targetConcept?.Code)
-                            ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
-                            : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
+                    bool conceptRequiresXVer = !conceptFullyMapsToThisTarget && !conceptFullyMapsAcrossAllTargets;
 
-                        OutcomeValueSetActionCodes.UseRenamedAndCrossVersion => (targetConcept is null)
-                            ? OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition
-                            : (sourceConcept.Code == targetConcept?.Code)
-                            ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
-                            : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
+                    //bool conceptRequiresXVer = conceptComparison.Relationship switch
+                    //{
+                    //    CMR.Equivalent => false,
+                    //    CMR.SourceIsNarrowerThanTarget => false,
+                    //    _ => true,
+                    //};
 
-                        OutcomeValueSetActionCodes.UseOtherValueSets => OutcomeValueSetConceptActionCodes.MappedElsewhere,
-                        OutcomeValueSetActionCodes.UseOtherAndCrossVersion => fullyMappedConceptKeys.Contains(conceptComparison.SourceConceptKey)
-                            ? OutcomeValueSetConceptActionCodes.MappedElsewhere
-                            : OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
+                    //OutcomeValueSetConceptActionCodes conceptAction = vsAction switch
+                    //{
+                    //    OutcomeValueSetActionCodes.UseValueSetSameName => (sourceConcept.Code == targetConcept?.Code)
+                    //        ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
+                    //        : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
+                    //    OutcomeValueSetActionCodes.UseValueSetRenamed => (sourceConcept.Code == targetConcept?.Code)
+                    //        ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
+                    //        : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
 
-                        _ => OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
-                    };
+                    //    OutcomeValueSetActionCodes.UseSameNameAndCrossVersion => (targetConcept is null)
+                    //        ? OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition
+                    //        : (sourceConcept.Code == targetConcept?.Code)
+                    //        ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
+                    //        : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
+
+                    //    OutcomeValueSetActionCodes.UseRenamedAndCrossVersion => (targetConcept is null)
+                    //        ? OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition
+                    //        : (sourceConcept.Code == targetConcept?.Code)
+                    //        ? OutcomeValueSetConceptActionCodes.UseConceptSameCode
+                    //        : OutcomeValueSetConceptActionCodes.UseConceptChangedCode,
+
+                    //    OutcomeValueSetActionCodes.UseOtherValueSets => OutcomeValueSetConceptActionCodes.MappedElsewhere,
+                    //    OutcomeValueSetActionCodes.UseOtherAndCrossVersion => fullyMappedConceptKeys.Contains(conceptComparison.SourceConceptKey)
+                    //        ? OutcomeValueSetConceptActionCodes.MappedElsewhere
+                    //        : OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
+
+                    //    _ => OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
+                    //};
 
                     DbValueSetConceptOutcome conceptOutcome = new()
                     {
@@ -482,17 +510,15 @@ public class ValueSetOutcomeGenerator
                         SourceFhirSequence = packagePair.SourceFhirSequence,
                         SourceValueSetKey = sourceVs.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
-                        SourceSystem = sourceConcept.System,
-                        SourceCode = sourceConcept.Code,
                         TotalSourceCount = -1,
 
                         TargetFhirPackageKey = packagePair.TargetPackageKey,
                         TargetFhirSequence = packagePair.TargetFhirSequence,
                         TargetValueSetKey = targetVs.Key,
                         TargetValueSetConceptKey = targetConcept?.Key,
-                        TargetSystem = targetConcept?.System,
-                        TargetCode = targetConcept?.Code,
                         TotalTargetCount = -1,
+
+                        RequiresXVerDefinition = conceptRequiresXVer,
 
                         IsRenamed = targetConcept is null ? false : (sourceConcept.Code != targetConcept.Code),
                         IsUnmapped = targetConcept is null || conceptComparison.NotMapped,
@@ -501,17 +527,22 @@ public class ValueSetOutcomeGenerator
                         IsBroaderThanTarget = conceptComparison.Relationship == CMR.SourceIsBroaderThanTarget,
                         IsNarrowerThanTarget = conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
 
-                        FullyMapsToThisTarget = currentlyMappedComparisonKeys.Contains(sourceConcept.Key),
-                        FullyMapsAcrossAllTargets = fullyMappedConceptKeys.Contains(sourceConcept.Key),
-
-                        CodeLiteralsMatch = sourceConcept.Code == targetConcept?.Code,
-                        SourceCodeTreatedAsEscapeValve = conceptComparison.SourceCodeTreatedAsEscapeValve,
-                        TargetCodeTreatedAsEscapeValve = conceptComparison.TargetCodeTreatedAsEscapeValve,
+                        FullyMapsToThisTarget = conceptFullyMapsToThisTarget,
+                        FullyMapsAcrossAllTargets = conceptFullyMapsAcrossAllTargets,
 
                         Comments = sourceComparison.UserMessage ?? sourceComparison.TechnicalMessage ?? "TODO",
-                        OutcomeAction = conceptAction,
 
-                        ContentKeys = conceptComparison.ContentKeys,
+                        //OutcomeAction = conceptAction,
+                        //ContentKeys = conceptComparison.ContentKeys,
+
+                        //CodeLiteralsMatch = sourceConcept.Code == targetConcept?.Code,
+                        //SourceCodeTreatedAsEscapeValve = conceptComparison.SourceCodeTreatedAsEscapeValve,
+                        //TargetCodeTreatedAsEscapeValve = conceptComparison.TargetCodeTreatedAsEscapeValve,
+
+                        SourceSystem = sourceConcept.System,
+                        SourceCode = sourceConcept.Code,
+                        TargetSystem = targetConcept?.System,
+                        TargetCode = targetConcept?.Code,
                     };
 
                     _conceptOutcomeCache.CacheAdd(conceptOutcome);

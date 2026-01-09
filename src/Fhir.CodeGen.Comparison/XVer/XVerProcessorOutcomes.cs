@@ -559,6 +559,8 @@ public partial class XVerProcessor
 
     private void updateValueSetOutcomeActions(List<DbValueSetOutcome> outcomes)
     {
+        throw new NotImplementedException("Transitioning outcome structures...");
+#if false
         // traverse the value set elementOutcomes without actions
         foreach (DbValueSetOutcome outcome in outcomes)
         {
@@ -599,6 +601,7 @@ public partial class XVerProcessor
                 outcome.OutcomeAction = OutcomeValueSetActionCodes.UseSameNameAndCrossVersion;
             }
         }
+#endif
     }
 
     private void updateValueSetConceptOutcomeActions(
@@ -607,6 +610,8 @@ public partial class XVerProcessor
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage)
     {
+        throw new NotImplementedException("Transitioning outcome structures...");
+#if false
         // build a lookup for elementOutcomes based on source concept key
         ILookup<int, DbValueSetConceptOutcome> conceptOutcomeLookup = outcomes.ToLookup(o => o.SourceValueSetConceptKey);
 
@@ -719,6 +724,7 @@ public partial class XVerProcessor
             conceptOutcomesForThisSource.Clear();
         }
         isFullyMapped = false;
+#endif
     }
 
 
