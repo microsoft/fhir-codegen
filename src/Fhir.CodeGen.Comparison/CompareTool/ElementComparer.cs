@@ -31,6 +31,7 @@ public class ElementComparer
         public CMR? ValueDomainRelationship { get; set; }
         public bool IsIdentical { get; set; }
         public bool RelativePathsAreIdentical { get; set; }
+        public List<string> TechnicalMessages { get; set; } = [];
     }
 
     private class ElementTypeTrackingRecord
@@ -202,6 +203,7 @@ public class ElementComparer
                     Relationship = ec.Relationship,
                     IsIdentical = ec.IsIdentical == true,
                     RelativePathsAreIdentical = ec.RelativePathsAreIdentical == true,
+                    TechnicalMessages = ec.TechnicalMessage is null ? [] : [ec.TechnicalMessage],
                 })
                 .ToList();
 
@@ -256,6 +258,9 @@ public class ElementComparer
                             ValueDomainRelationship = FhirDbComparer.ApplyRelationship(path.ValueDomainRelationship, nextComp.ValueDomainRelationship),
                             IsIdentical = path.IsIdentical && (nextComp.IsIdentical == true),
                             RelativePathsAreIdentical = path.RelativePathsAreIdentical && (nextComp.RelativePathsAreIdentical == true),
+                            TechnicalMessages = nextComp.TechnicalMessage is null
+                                ? [.. path.TechnicalMessages]
+                                : [.. path.TechnicalMessages, nextComp.TechnicalMessage],
                         });
                     }
                 }
@@ -267,6 +272,8 @@ public class ElementComparer
             foreach (ElementTrackingRecord path in currentPaths)
             {
                 DbElement? targetElement = null;
+                CMR? relationship = path.Relationship;
+                string? technicalMessage = path.TechnicalMessages.Count == 0 ? null : string.Join('\n', path.TechnicalMessages);
 
                 if (path.CurrentElementKey is not null)
                 {
@@ -291,6 +298,22 @@ public class ElementComparer
                     targetElement,
                     elementComparisonKey);
 
+                // apply element type relationship to overall relationship
+                if (etr.TypeRelationship is not null)
+                {
+                    relationship = FhirDbComparer.ApplyRelationship(relationship, etr.TypeRelationship);
+                    technicalMessage += $"\n" +
+                        $"Type relationship of {etr.TypeRelationship} applied to comparison.";
+                }
+
+                // apply bound vs relationship to overall relationship
+                if (boundVsComparison is not null)
+                {
+                    relationship = FhirDbComparer.ApplyRelationship(relationship, boundVsComparison.Relationship);
+                    technicalMessage += $"\n" +
+                        $"Value set binding relationship of {boundVsComparison.Relationship} applied to comparison.";
+                }
+
                 // build the element comparison db record
                 DbElementComparison elementComparison = createElementComparison(
                     trackingRecord,
@@ -302,7 +325,7 @@ public class ElementComparer
                     path.ValueDomainRelationship,
                     boundVsComparison: boundVsComparison,
                     typeComparison: etr,
-                    technicalMessage: null,
+                    technicalMessage: technicalMessage,
                     userMessage: null,
                     contentStepKeys: path.ContentKeys);
 
@@ -496,6 +519,22 @@ public class ElementComparer
                     targetElement,
                     mappedElementComparisonKey);
 
+                // apply element type relationship to overall relationship
+                if (mappedTypeComparison.TypeRelationship is not null)
+                {
+                    elementRelationship = FhirDbComparer.ApplyRelationship(elementRelationship, mappedTypeComparison.TypeRelationship);
+                    technicalMessage += $"\n" +
+                        $"Type relationship of {mappedTypeComparison.TypeRelationship} applied to comparison.";
+                }
+
+                // apply bound vs relationship to overall relationship
+                if (boundValueSetComparsion is not null)
+                {
+                    elementRelationship = FhirDbComparer.ApplyRelationship(elementRelationship, boundValueSetComparsion.Relationship);
+                    technicalMessage += $"\n" +
+                        $"Value set binding relationship of {boundValueSetComparsion.Relationship} applied to comparison.";
+                }
+
                 // build the element comparison db record
                 DbElementComparison elementComparison = createElementComparison(
                     trackingRecord,
@@ -548,7 +587,7 @@ public class ElementComparer
                     relationship: null,
                     cdRelationship: null,
                     vdRelationship: null,
-                    technicalMessage: null,
+                    technicalMessage: technicalMessage,
                     userMessage: null,
                     contentStepKeys: getKeyArray(
                         trackingRecord.SourcePackage,
@@ -610,6 +649,22 @@ public class ElementComparer
                 else if (elementIsBroaderThanTarget)
                 {
                     targetRelationship = CMR.SourceIsBroaderThanTarget;
+                }
+
+                // apply element type relationship to overall relationship
+                if (typeComparison.TypeRelationship is not null)
+                {
+                    targetRelationship = FhirDbComparer.ApplyRelationship(targetRelationship, typeComparison.TypeRelationship);
+                    technicalMessage += $"\n" +
+                        $"Type relationship of {typeComparison.TypeRelationship} applied to comparison.";
+                }
+
+                // apply bound vs relationship to overall relationship
+                if (boundVsComparison is not null)
+                {
+                    targetRelationship = FhirDbComparer.ApplyRelationship(targetRelationship, boundVsComparison.Relationship);
+                    technicalMessage += $"\n" +
+                        $"Value set binding relationship of {boundVsComparison.Relationship} applied to comparison.";
                 }
 
                 // build the element comparison db record

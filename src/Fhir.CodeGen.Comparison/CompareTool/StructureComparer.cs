@@ -341,17 +341,25 @@ public class StructureComparer
             return;
         }
 
+        List<string> technicalMessages = [];
+        if (trackingRecord.ExplicitMapping?.Comments is not null)
+        {
+            technicalMessages.Add(trackingRecord.ExplicitMapping.Comments);
+        }
+
         // determine the relationship based on the element comparisons
         CMR? sdRelationship = trackingRecord.ExplicitMapping?.Relationship ?? CMR.Equivalent;
         if (elementComparisons.Any(ec => ec.NotMapped) ||
             elementComparisons.Any(ec => ec.Relationship == CMR.SourceIsBroaderThanTarget))
         {
             sdRelationship = FhirDbComparer.ApplyRelationship(sdRelationship, CMR.SourceIsBroaderThanTarget);
+            technicalMessages.Add("One or more elements are not mapped or broader than their target element.");
         }
 
         if (elementComparisons.Any(ec => ec.Relationship == CMR.SourceIsNarrowerThanTarget))
         {
             sdRelationship = FhirDbComparer.ApplyRelationship(sdRelationship, CMR.SourceIsNarrowerThanTarget);
+            technicalMessages.Add("One or more elements are narrower than their target element.");
         }
 
         CMR? sdConceptRelationship = CMR.Equivalent;
@@ -379,7 +387,28 @@ public class StructureComparer
         }
 
         bool isIdentical = elementComparisons.All(ec => ec.IsIdentical == true);
+        if (isIdentical)
+        {
+            technicalMessages.Add("All elements are identical.");
+        }
+
         bool relativePathsAreIdentical = elementComparisons.All(ec => ec.RelativePathsAreIdentical == true);
+        if (relativePathsAreIdentical)
+        {
+            technicalMessages.Add("All element relative paths are identical.");
+        }
+
+        // include the element counts in the relationship (structures with more elements are broader)
+        if (sourceSd.SnapshotCount > targetSd.SnapshotCount)
+        {
+            sdRelationship = FhirDbComparer.ApplyRelationship(sdRelationship, CMR.SourceIsBroaderThanTarget);
+            technicalMessages.Add($"Source structure has more elements ({sourceSd.SnapshotCount}) than target structure ({targetSd.SnapshotCount}).");
+        }
+        else if (sourceSd.SnapshotCount < targetSd.SnapshotCount)
+        {
+            sdRelationship = FhirDbComparer.ApplyRelationship(sdRelationship, CMR.SourceIsNarrowerThanTarget);
+            technicalMessages.Add($"Source structure has fewer elements ({sourceSd.SnapshotCount}) than target structure ({targetSd.SnapshotCount}).");
+        }
 
         // create our structure comparison
         DbStructureComparison sdComparison = createStructureComparison(
@@ -389,7 +418,7 @@ public class StructureComparer
             relationship: sdRelationship,
             cdRelationship: sdConceptRelationship,
             vdRelationship: sdValueRelationship,
-            technicalMessage: trackingRecord.ExplicitMapping?.TechnicalNotes,
+            technicalMessage: technicalMessages.Count == 0 ? null : string.Join('\n', technicalMessages),
             userMessage: trackingRecord.ExplicitMapping?.Comments,
             contentStepKeys: getKeyArray(
                 trackingRecord.SourcePackage,

@@ -57,6 +57,7 @@ public class ValueSetComparer
         public CMR? Relationship { get; set; }
         public bool IsIdentical { get; set; }
         public bool CodeLiteralsAreIdentical { get; set; }
+        public List<string> TechnicalMessages { get; set; } = [];
     }
 
 
@@ -160,8 +161,6 @@ public class ValueSetComparer
                 continue;
             }
 
-            Debug.Fail("Concept comparisons are currently wrong - WIP.");
-
             // when we have a single step, do the comparisons directly
             if (steps == 1)
             {
@@ -206,13 +205,17 @@ public class ValueSetComparer
         CMR? vsRelationship = CMR.Equivalent;
         bool isIdentical = true;
         bool codeLiteralsAreIdentical = true;
-        string? technicalMessage = null;
+        List<string> technicalMessages = [];
 
         foreach (DbValueSetComparison comparisonStep in trackingRecord.ComparisonSteps)
         {
             vsRelationship = FhirDbComparer.ApplyRelationship(vsRelationship, comparisonStep.Relationship);
             isIdentical = isIdentical && (comparisonStep.IsIdentical == true);
             codeLiteralsAreIdentical = codeLiteralsAreIdentical && (comparisonStep.CodeLiteralsAreIdentical == true);
+            if (comparisonStep.TechnicalMessage is not null)
+            {
+                technicalMessages.Add(comparisonStep.TechnicalMessage);
+            }
         }
 
         // check for an explicit mapping of this pair
@@ -231,10 +234,10 @@ public class ValueSetComparer
                 : DbMappingSourceFile.SelectSingle(_db, Key: vsMapping.ConceptMapSourceKey);
             vsRelationship = vsMapping.Relationship ?? vsRelationship;
 
-            technicalMessage = $"Using explicit mapping" +
+            technicalMessages.Add($"Using explicit mapping" +
                 $" from `{trackingRecord.SourceValueSet.VersionedUrl}`" +
                 $" to `{trackingRecord.TargetValueSet?.VersionedUrl}`" +
-                $" in `{trackingRecord.ExplicitMappingSource?.Url}` (`{trackingRecord.ExplicitMappingSource?.Filename}`)";
+                $" in `{trackingRecord.ExplicitMappingSource?.Url}` (`{trackingRecord.ExplicitMappingSource?.Filename}`)");
         }
 
         // create our value set comparison
@@ -243,7 +246,7 @@ public class ValueSetComparer
             isIdentical,
             codeLiteralsAreIdentical,
             relationship: vsRelationship,
-            technicalMessage: technicalMessage,
+            technicalMessage: technicalMessages.Count == 0 ? null : string.Join('\n', technicalMessages),
             userMessage: null,
             contentStepKeys: trackingRecord.ContentKeys);
 
@@ -324,6 +327,7 @@ public class ValueSetComparer
                     Relationship = cc.Relationship,
                     IsIdentical = cc.IsIdentical == true,
                     CodeLiteralsAreIdentical = cc.CodeLiteralsAreIdentical == true,
+                    TechnicalMessages = cc.TechnicalMessage is null ? [] : [cc.TechnicalMessage],
                 })
                 .ToList();
 
@@ -376,6 +380,9 @@ public class ValueSetComparer
                             Relationship = FhirDbComparer.ApplyRelationship(path.Relationship, nextComp.Relationship),
                             IsIdentical = path.IsIdentical && (nextComp.IsIdentical == true),
                             CodeLiteralsAreIdentical = path.CodeLiteralsAreIdentical && (nextComp.CodeLiteralsAreIdentical == true),
+                            TechnicalMessages = nextComp.TechnicalMessage is null
+                                ? [..path.TechnicalMessages]
+                                : [..path.TechnicalMessages, nextComp.TechnicalMessage],
                         });
                     }
                 }
@@ -404,7 +411,7 @@ public class ValueSetComparer
                     path.Relationship,
                     sourceConceptIsEscape: sourceConceptIsEscape,
                     targetConceptIsEscape: targetConceptIsEscape,
-                    technicalMessage: null,
+                    technicalMessage: path.TechnicalMessages.Count == 0 ? null : string.Join('\n', path.TechnicalMessages),
                     userMessage: null,
                     contentStepKeys: path.ContentKeys);
 
@@ -440,8 +447,6 @@ public class ValueSetComparer
             // create our concept comparisons
             foreach (DbValueSetConcept sourceConcept in sourceConcepts)
             {
-                // get the intermediate content steps
-
                 // build the concept comparison db record
                 DbValueSetConceptComparison conceptComparison = createConceptComparison(
                     trackingRecord,
@@ -522,6 +527,56 @@ public class ValueSetComparer
                     $" to `{targetVs.VersionedUrl}`" +
                     $" in `{trackingRecord.ExplicitMappingSource?.Url}` (`{trackingRecord.ExplicitMappingSource?.Filename}`)";
 
+                bool? targetConceptIsEscape = targetConcept is null
+                    ? null
+                    : XVerProcessor._escapeValveCodes.Contains(targetConcept.Code);
+
+                // check for escape-valve tracking
+                if (sourceConceptIsEscape)
+                {
+                    if (targetConcept is null)
+                    {
+                        // this is a no-map, just add a message
+                        technicalMessage += $"\nNote that the source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code and has no mapping.";
+                    }
+                    else if (targetConceptIsEscape != true)
+                    {
+                        // the source concept is broader than the target
+                        conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                        technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                            $" and mapped to a non-escape-valve code (`{targetConcept.Code}`)," +
+                            $" the source is broader than the target.";
+                    }
+                    else
+                    {
+                        // check the active counts
+                        if (sourceVs.ActiveConcreteConceptCount == targetVs.ActiveConcreteConceptCount)
+                        {
+                            conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.Equivalent);
+                            technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                                $" and the source value set contains the same number of concepts as the target" +
+                                $" ({sourceVs.ActiveConcreteConceptCount} vs. {targetVs.ActiveConcreteConceptCount})," +
+                                $" we can assume equivalence.";
+                        }
+                        else if (sourceVs.ActiveConcreteConceptCount > targetVs.ActiveConcreteConceptCount)
+                        {
+                            conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                            technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                                $" and the source value set contains more concepts than the target" +
+                                $" ({sourceVs.ActiveConcreteConceptCount} vs. {targetVs.ActiveConcreteConceptCount})," +
+                                $" the source is narrower than the target.";
+                        }
+                        else
+                        {
+                            conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                            technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                                $" and the source value set contains fewer concepts than the target" +
+                                $" ({sourceVs.ActiveConcreteConceptCount} vs. {targetVs.ActiveConcreteConceptCount})," +
+                                $" the source is broader than the target.";
+                        }
+                    }
+                }
+
                 // build the concept comparison db record
                 DbValueSetConceptComparison conceptComparison = createConceptComparison(
                     trackingRecord,
@@ -529,7 +584,7 @@ public class ValueSetComparer
                     targetConcept,
                     conceptRelationship,
                     sourceConceptIsEscape: sourceConceptIsEscape,
-                    targetConceptIsEscape: targetConcept is null ? null : XVerProcessor._escapeValveCodes.Contains(targetConcept.Code),
+                    targetConceptIsEscape: targetConceptIsEscape,
                     technicalMessage,
                     mapping.Comments,
                     contentStepKeys: getKeyArray(
@@ -566,20 +621,72 @@ public class ValueSetComparer
             // iterate over the possible targets
             foreach (DbValueSetConcept targetConcept in possibleTargets)
             {
+                // be optimistic
+                conceptRelationship = CMR.Equivalent;
+
+                int possibleTargetsInValueSetCount = possibleTargets.Where(tc => tc.ValueSetKey == targetConcept.ValueSetKey).Count();
+
+                // check for multiple possible targets in this target value set
+                if (possibleTargetsInValueSetCount > 1)
+                {
+                    technicalMessage += "\nMultiple mapping targets exist in the same value set, so the source is broader than any individual target.";
+                    conceptRelationship = CMR.SourceIsBroaderThanTarget;
+                }
+
                 bool codeLiteralsMatch = targetConcept.Code == sourceConcept.Code;
-                bool conceptIsRenamed = (possibleTargets.Count == 1) && (!codeLiteralsMatch);
-                bool conceptIsIdentical = (possibleTargets.Count == 1) && (targetConcept.FhirKey == sourceConcept.FhirKey);
-                bool conceptIsEquivalent = conceptIsIdentical || (possibleTargets.Count == 1);
-                bool conceptIsBroaderThanTarget = possibleTargets.Count > 1;
-                bool? conceptIsNarrowerThanTarget = null;
+                bool conceptIsRenamed = (conceptRelationship == CMR.Equivalent) && (!codeLiteralsMatch);
+                bool conceptIsIdentical = (conceptRelationship == CMR.Equivalent) && (targetConcept.FhirKey == sourceConcept.FhirKey);
+                bool conceptIsEquivalent = conceptRelationship == CMR.Equivalent;
+                //bool conceptIsBroaderThanTarget = possibleTargetsInValueSetCount > 1;
+                //bool? conceptIsNarrowerThanTarget = null;
+
+                bool targetConceptIsEscape = XVerProcessor._escapeValveCodes.Contains(targetConcept.Code);
 
                 // if this is an escape-valve code, we need to compare the counts of concepts too
                 if (sourceConceptIsEscape)
                 {
                     conceptIsIdentical = conceptIsIdentical && (sourceVs.ActiveConcreteConceptCount == targetVs.ActiveConcreteConceptCount);
                     conceptIsEquivalent = conceptIsEquivalent && (sourceVs.ActiveConcreteConceptCount == targetVs.ActiveConcreteConceptCount);
-                    conceptIsBroaderThanTarget = conceptIsBroaderThanTarget || (sourceVs.ActiveConcreteConceptCount < targetVs.ActiveConcreteConceptCount);
-                    conceptIsNarrowerThanTarget = sourceVs.ActiveConcreteConceptCount > targetVs.ActiveConcreteConceptCount;
+
+                    // check for escape-valve tracking
+                    if (targetConceptIsEscape != true)
+                    {
+                        // the source concept is broader than the target
+                        conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                        technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                            $" and mapped to a non-escape-valve code (`{targetConcept.Code}`)," +
+                            $" the source is broader than the target.";
+                    }
+                    else
+                    {
+                        // check the active counts
+                        if (sourceVs.ActiveConcreteConceptCount == targetVs.ActiveConcreteConceptCount)
+                        {
+                            conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.Equivalent);
+                            technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                                $" and the source value set contains the same number of concepts as the target" +
+                                $" ({sourceVs.ActiveConcreteConceptCount} vs. {targetVs.ActiveConcreteConceptCount})," +
+                                $" we can assume equivalence.";
+                        }
+                        else if (sourceVs.ActiveConcreteConceptCount > targetVs.ActiveConcreteConceptCount)
+                        {
+                            //conceptIsNarrowerThanTarget = true;
+                            conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.SourceIsNarrowerThanTarget);
+                            technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                                $" and the source value set contains more concepts than the target" +
+                                $" ({sourceVs.ActiveConcreteConceptCount} vs. {targetVs.ActiveConcreteConceptCount})," +
+                                $" the source is narrower than the target.";
+                        }
+                        else
+                        {
+                            //conceptIsBroaderThanTarget = true;
+                            conceptRelationship = FhirDbComparer.ApplyRelationship(conceptRelationship, CMR.SourceIsBroaderThanTarget);
+                            technicalMessage += $"\nSince source concept `{sourceConcept.Code}` is flagged as an 'escape-valve' code" +
+                                $" and the source value set contains fewer concepts than the target" +
+                                $" ({sourceVs.ActiveConcreteConceptCount} vs. {targetVs.ActiveConcreteConceptCount})," +
+                                $" the source is broader than the target.";
+                        }
+                    }
                 }
 
                 // build the concept comparison db record
@@ -589,7 +696,7 @@ public class ValueSetComparer
                     targetConcept,
                     conceptRelationship,
                     sourceConceptIsEscape: sourceConceptIsEscape,
-                    targetConceptIsEscape: XVerProcessor._escapeValveCodes.Contains(targetConcept.Code),
+                    targetConceptIsEscape: targetConceptIsEscape,
                     technicalMessage,
                     userMessage,
                     contentStepKeys: getKeyArray(
@@ -602,21 +709,50 @@ public class ValueSetComparer
             }
         }
 
+        List<string> technicalMessages = [];
+
         // determine the conceptRelationship based on the concept comparisons
         CMR? vsRelationship = CMR.Equivalent;
         if (conceptComparisons.Any(cc => cc.NotMapped) ||
             conceptComparisons.Any(cc => cc.Relationship == CMR.SourceIsBroaderThanTarget))
         {
             vsRelationship = FhirDbComparer.ApplyRelationship(vsRelationship, CMR.SourceIsBroaderThanTarget);
+            technicalMessages.Add("One or more source concepts are either not mapped or broader than their targets, so the value set relationship is broadened.");
         }
 
         if (conceptComparisons.Any(cc => cc.Relationship == CMR.SourceIsNarrowerThanTarget))
         {
             vsRelationship = FhirDbComparer.ApplyRelationship(vsRelationship, CMR.SourceIsNarrowerThanTarget);
+            technicalMessages.Add("One or more source concepts are narrower than their targets, so the value set relationship is narrowed.");
         }
 
         bool isIdentical = conceptComparisons.All(cc => cc.IsIdentical == true);
         bool codeLiteralsAreIdentical = conceptComparisons.All(cc => cc.CodeLiteralsAreIdentical == true);
+
+        if (isIdentical)
+        {
+            technicalMessages.Add("All concepts in the comparison are listed as identical.");
+        }
+        else if (codeLiteralsAreIdentical)
+        {
+            technicalMessages.Add("All concepts in the comparison are have code literals listed as identical.");
+        }
+
+        // include the relative concept counts in the relationship (value sets with more concepts are broader)
+        if (sourceVs.ActiveConcreteConceptCount > targetVs.ActiveConcreteConceptCount)
+        {
+            vsRelationship = FhirDbComparer.ApplyRelationship(vsRelationship, CMR.SourceIsBroaderThanTarget);
+            technicalMessages.Add($"The source value set has more active concepts ({sourceVs.ActiveConcreteConceptCount}) than the target ({targetVs.ActiveConcreteConceptCount}), so the source is broader than the target.");
+        }
+        else if (sourceVs.ActiveConcreteConceptCount < targetVs.ActiveConcreteConceptCount)
+        {
+            vsRelationship = FhirDbComparer.ApplyRelationship(vsRelationship, CMR.SourceIsNarrowerThanTarget);
+            technicalMessages.Add($"The source value set has fewer active concepts ({sourceVs.ActiveConcreteConceptCount}) than the target ({targetVs.ActiveConcreteConceptCount}), so the source is narrower than the target.");
+        }
+        else
+        {
+            technicalMessages.Add($"The source and target value sets have the same number of active concepts ({sourceVs.ActiveConcreteConceptCount}).");
+        }
 
         // create our value set comparison
         DbValueSetComparison vsComparison = createValueSetComparison(
@@ -624,7 +760,7 @@ public class ValueSetComparer
             isIdentical,
             codeLiteralsAreIdentical,
             relationship: vsRelationship,
-            technicalMessage: null,
+            technicalMessage: technicalMessages.Count == 0 ? null : string.Join('\n', technicalMessages),
             userMessage: null,
             contentStepKeys: getKeyArray(
                 trackingRecord.SourcePackage,
