@@ -444,6 +444,8 @@ public partial class DbStructureComparison : DbArtifactComparisonBase
 
     public required bool? ElementRelativePathsAreIdentical { get; set; }
 
+    public required bool IsBasedOnFallbackMapping { get; set; }
+
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 }
@@ -489,6 +491,14 @@ public partial class DbElementComparison : DbComparisonBase
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
     public required int? BoundValueSetComparisonKey { get; set; }
+    public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? BoundValueSetRelationship { get; set; }
+
+    public required bool? SourceRequiresMoreValues { get; set; }
+    public required bool? TargetRequiresMoreValues { get; set; }
+
+    public required bool? SourceAllowsMoreValues { get; set; }
+    public required bool? TargetAllowsMoreValues { get; set; }
+
 
     //[CgSQLiteForeignKey(referenceTable: "ElementTypeComparisons", referenceColumn: nameof(DbCollatedTypeComparison.Key))]
     //public required int? CollatedTypeComparisonKey { get; set; }

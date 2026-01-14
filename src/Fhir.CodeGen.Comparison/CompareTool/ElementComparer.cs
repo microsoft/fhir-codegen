@@ -298,22 +298,6 @@ public class ElementComparer
                     targetElement,
                     elementComparisonKey);
 
-                // apply element type relationship to overall relationship
-                if (etr.TypeRelationship is not null)
-                {
-                    relationship = FhirDbComparer.ApplyRelationship(relationship, etr.TypeRelationship);
-                    technicalMessage += $"\n" +
-                        $"Type relationship of {etr.TypeRelationship} applied to comparison.";
-                }
-
-                // apply bound vs relationship to overall relationship
-                if (boundVsComparison is not null)
-                {
-                    relationship = FhirDbComparer.ApplyRelationship(relationship, boundVsComparison.Relationship);
-                    technicalMessage += $"\n" +
-                        $"Value set binding relationship of {boundVsComparison.Relationship} applied to comparison.";
-                }
-
                 // build the element comparison db record
                 DbElementComparison elementComparison = createElementComparison(
                     trackingRecord,
@@ -519,22 +503,6 @@ public class ElementComparer
                     targetElement,
                     mappedElementComparisonKey);
 
-                // apply element type relationship to overall relationship
-                if (mappedTypeComparison.TypeRelationship is not null)
-                {
-                    elementRelationship = FhirDbComparer.ApplyRelationship(elementRelationship, mappedTypeComparison.TypeRelationship);
-                    technicalMessage += $"\n" +
-                        $"Type relationship of {mappedTypeComparison.TypeRelationship} applied to comparison.";
-                }
-
-                // apply bound vs relationship to overall relationship
-                if (boundValueSetComparsion is not null)
-                {
-                    elementRelationship = FhirDbComparer.ApplyRelationship(elementRelationship, boundValueSetComparsion.Relationship);
-                    technicalMessage += $"\n" +
-                        $"Value set binding relationship of {boundValueSetComparsion.Relationship} applied to comparison.";
-                }
-
                 // build the element comparison db record
                 DbElementComparison elementComparison = createElementComparison(
                     trackingRecord,
@@ -649,22 +617,6 @@ public class ElementComparer
                 else if (elementIsBroaderThanTarget)
                 {
                     targetRelationship = CMR.SourceIsBroaderThanTarget;
-                }
-
-                // apply element type relationship to overall relationship
-                if (typeComparison.TypeRelationship is not null)
-                {
-                    targetRelationship = FhirDbComparer.ApplyRelationship(targetRelationship, typeComparison.TypeRelationship);
-                    technicalMessage += $"\n" +
-                        $"Type relationship of {typeComparison.TypeRelationship} applied to comparison.";
-                }
-
-                // apply bound vs relationship to overall relationship
-                if (boundVsComparison is not null)
-                {
-                    targetRelationship = FhirDbComparer.ApplyRelationship(targetRelationship, boundVsComparison.Relationship);
-                    technicalMessage += $"\n" +
-                        $"Value set binding relationship of {boundVsComparison.Relationship} applied to comparison.";
                 }
 
                 // build the element comparison db record
@@ -1438,17 +1390,95 @@ public class ElementComparer
         ElementTypeComparer.ElementTypeComparisonTrackingRecord? typeComparison,
         string? technicalMessage,
         string? userMessage,
-        int?[] contentStepKeys)
+        int?[] contentStepKeys,
+        bool applyRelatedRelationships = true)
     {
         sdTrackingRecord.ComparisonRecordKey ??= DbStructureComparison.GetIndex();
 
-        bool? isIdentical = targetElement is null
-            ? null
-            : (sourceElement.Id == targetElement.Id);
+        bool? isIdentical;
+        bool? relativePathsAreIdentical;
+        bool? sourceRequiresMoreValues;
+        bool? targetRequiresMoreValues;
+        bool? sourceAllowsMoreValues;
+        bool? targetAllowsMoreValues;
 
-        bool? relativePathsAreIdentical = targetElement is null
-            ? null
-            : (sourceElement.Id[sourceElement.StructureName.Length..] == targetElement.Id[targetElement.StructureName.Length..]);
+        if (targetElement is null)
+        {
+            isIdentical = null;
+            relativePathsAreIdentical = null;
+            sourceRequiresMoreValues = null;
+            targetRequiresMoreValues = null;
+            sourceAllowsMoreValues = null;
+            targetAllowsMoreValues = null;
+        }
+        else
+        {
+            isIdentical = sourceElement.Id == targetElement.Id;
+            relativePathsAreIdentical = sourceElement.Id[sourceElement.StructureName.Length..] == targetElement.Id[targetElement.StructureName.Length..];
+            sourceRequiresMoreValues = sourceElement.MinCardinality > targetElement.MinCardinality;
+            targetRequiresMoreValues = targetElement.MinCardinality > sourceElement.MinCardinality;
+
+            if ((sourceElement.MaxCardinality == -1) && (targetElement.MaxCardinality != -1))
+            {
+                sourceAllowsMoreValues = true;
+            }
+            else if ((targetElement.MaxCardinality == -1) && (sourceElement.MaxCardinality != -1))
+            {
+                sourceAllowsMoreValues = false;
+            }
+            else
+            {
+                sourceAllowsMoreValues = sourceElement.MaxCardinality > targetElement.MaxCardinality;
+            }
+
+            if ((targetElement.MaxCardinality == -1) && (sourceElement.MaxCardinality != -1))
+            {
+                targetAllowsMoreValues = true;
+            }
+            else if ((sourceElement.MaxCardinality == -1) && (targetElement.MaxCardinality != -1))
+            {
+                targetAllowsMoreValues = false;
+            }
+            else
+            {
+                targetAllowsMoreValues = targetElement.MaxCardinality > sourceElement.MaxCardinality;
+            }
+
+            if (applyRelatedRelationships && (sourceAllowsMoreValues == true))
+            {
+                relationship = FhirDbComparer.ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                technicalMessage += $"\n" +
+                    $"Source element ({sourceElement.MaxCardinalityString}) allows more values than the target ({targetElement.MaxCardinalityString}).";
+
+            }
+
+            if (applyRelatedRelationships && (targetAllowsMoreValues == true))
+            {
+                relationship = FhirDbComparer.ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                technicalMessage += $"\n" +
+                    $"Source element ({sourceElement.MaxCardinalityString}) allows fewer values than the target ({targetElement.MaxCardinalityString}).";
+            }
+
+            // apply bound vs relationship to overall relationship - only if the binding is required on either side
+            if (applyRelatedRelationships &&
+                (boundVsComparison?.Relationship is not null) &&
+                ((sourceElement.ValueSetBindingStrength == BindingStrength.Required) || (targetElement.ValueSetBindingStrength == BindingStrength.Required)))
+            {
+                relationship = FhirDbComparer.ApplyRelationship(relationship, boundVsComparison.Relationship);
+                technicalMessage += $"\n" +
+                    $"Value set binding relationship of {boundVsComparison.Relationship} applied to comparison," +
+                    $" source is a {sourceElement.ValueSetBindingStrength} to `{sourceElement.BindingValueSet}`," +
+                    $" target is a {targetElement.ValueSetBindingStrength} to `{targetElement.BindingValueSet}`.";
+            }
+
+            // apply element type relationship to overall relationship
+            if (applyRelatedRelationships && (typeComparison?.TypeRelationship is not null))
+            {
+                relationship = FhirDbComparer.ApplyRelationship(relationship, typeComparison.TypeRelationship);
+                technicalMessage += $"\n" +
+                    $"Type relationship of {typeComparison.TypeRelationship} applied to comparison.";
+            }
+        }
 
         return new()
         {
@@ -1476,6 +1506,9 @@ public class ElementComparer
             ConceptDomainRelationship = cdRelationship,
             ValueDomainRelationship = vdRelationship,
 
+            BoundValueSetComparisonKey = boundVsComparison?.Key,
+            BoundValueSetRelationship = boundVsComparison?.Relationship,
+
             TypeRelationship = typeComparison?.TypeRelationship,
             TypeMessage = typeComparison?.TypeMessage,
             TypeProfileRelationship = typeComparison?.TypeProfileRelationship,
@@ -1487,11 +1520,13 @@ public class ElementComparer
 
             IsIdentical = isIdentical,
             RelativePathsAreIdentical = relativePathsAreIdentical,
+            SourceRequiresMoreValues = sourceRequiresMoreValues,
+            TargetRequiresMoreValues = targetRequiresMoreValues,
+            SourceAllowsMoreValues = sourceAllowsMoreValues,
+            TargetAllowsMoreValues = targetAllowsMoreValues,
 
             TechnicalMessage = technicalMessage,
             UserMessage = userMessage,
-
-            BoundValueSetComparisonKey = boundVsComparison?.Key,
         };
     }
 

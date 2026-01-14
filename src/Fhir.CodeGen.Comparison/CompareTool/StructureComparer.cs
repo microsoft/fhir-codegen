@@ -192,8 +192,9 @@ public class StructureComparer
                     continue;
                 }
 
-                // when we have a single step, do the comparisons directly
-                if (steps == 1)
+                // when we have a single step or primitive types, do the comparisons directly
+                if ((steps == 1) ||
+                    (sourceSd.ArtifactClass == FhirArtifactClassEnum.PrimitiveType))
                 {
                     // discover targets
                     List<StructureComparisonTrackingRecord> trackingRecords = buildNeighborComparisonPaths(
@@ -916,6 +917,7 @@ public class StructureComparer
             ValueDomainRelationship = vdRelationship,
 
             NotMapped = sdTrackingRecord.TargetStructure is null,
+            IsBasedOnFallbackMapping = sdTrackingRecord.ExplicitMapping?.IsFallback == true,
 
             IsIdentical = isIdentical,
             ElementRelativePathsAreIdentical = relativePathsAreIdentical,
