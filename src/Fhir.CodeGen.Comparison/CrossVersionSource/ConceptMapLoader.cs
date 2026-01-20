@@ -167,6 +167,10 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    ConceptMapSourceKey = null,
+                    ConceptMapFilename = null,
+                    FmlSourceKey = null,
+                    FmlFilename = null,
                     IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
@@ -180,9 +184,6 @@ public class ConceptMapLoader
                     TargetStructureKey = targetSd.Key,
                     TargetStructureId = tm.TargetType,
                     TargetStructureUrl = targetSd.UnversionedUrl,
-
-                    ConceptMapSourceKey = null,
-                    FmlSourceKey = null,
 
                     ExplicitNoMap = false,
                     Relationship = tm.Relationship,
@@ -200,6 +201,10 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    ConceptMapSourceKey = null,
+                    ConceptMapFilename = null,
+                    FmlSourceKey = null,
+                    FmlFilename = null,
                     IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
@@ -213,9 +218,6 @@ public class ConceptMapLoader
                     TargetStructureKey = null,
                     TargetStructureId = null,
                     TargetStructureUrl = null,
-
-                    ConceptMapSourceKey = null,
-                    FmlSourceKey = null,
 
                     ExplicitNoMap = false,
                     Relationship = null,
@@ -279,6 +281,10 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    ConceptMapSourceKey = null,
+                    ConceptMapFilename = null,
+                    FmlSourceKey = null,
+                    FmlFilename = null,
                     IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
@@ -292,9 +298,6 @@ public class ConceptMapLoader
                     TargetStructureKey = targetSd.Key,
                     TargetStructureId = tm.TargetType,
                     TargetStructureUrl = targetSd.UnversionedUrl,
-
-                    ConceptMapSourceKey = null,
-                    FmlSourceKey = null,
 
                     ExplicitNoMap = false,
                     Relationship = tm.Relationship,
@@ -313,6 +316,10 @@ public class ConceptMapLoader
                 DbStructureMapping mappingRec = new()
                 {
                     Key = DbStructureMapping.GetIndex(),
+                    ConceptMapSourceKey = null,
+                    ConceptMapFilename = null,
+                    FmlSourceKey = null,
+                    FmlFilename = null,
                     IsFallback = false,
 
                     SourceFhirPackageKey = sourcePackage.Key,
@@ -326,9 +333,6 @@ public class ConceptMapLoader
                     TargetStructureKey = null,
                     TargetStructureId = null,
                     TargetStructureUrl = null,
-
-                    ConceptMapSourceKey = null,
-                    FmlSourceKey = null,
 
                     ExplicitNoMap = false,
                     Relationship = null,
@@ -614,6 +618,10 @@ public class ConceptMapLoader
                         DbElementMapping mapRec = new()
                         {
                             Key = DbElementMapping.GetIndex(),
+                            ConceptMapSourceKey = sourceFileKey,
+                            ConceptMapFilename = conceptMapFilename,
+                            FmlSourceKey = null,
+                            FmlFilename = null,
                             StructureMappingKey = relevantMap.Key,
 
                             SourceFhirPackageKey = sourcePackage.Key,
@@ -626,8 +634,6 @@ public class ConceptMapLoader
                             TargetElementKey = null,
                             TargetElementId = null,
 
-                            ConceptMapSourceKey = sourceFileKey,
-                            FmlSourceKey = null,
                             FmlIsSimpleCopy = null,
 
                             ExplicitNoMap = true,
@@ -719,6 +725,10 @@ public class ConceptMapLoader
                     DbElementMapping mapRec = new()
                     {
                         Key = DbElementMapping.GetIndex(),
+                        ConceptMapSourceKey = sourceFileKey,
+                        ConceptMapFilename = conceptMapFilename,
+                        FmlSourceKey = null,
+                        FmlFilename = null,
                         StructureMappingKey = relevantMap.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -731,8 +741,6 @@ public class ConceptMapLoader
                         TargetElementKey = targetElement?.Key,
                         TargetElementId = elementTarget.Code,
 
-                        ConceptMapSourceKey = sourceFileKey,
-                        FmlSourceKey = null,
                         FmlIsSimpleCopy = null,
 
                         ExplicitNoMap = false,
@@ -801,6 +809,10 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        ConceptMapSourceKey = sourceFileKey,
+                        ConceptMapFilename = conceptMapFilename,
+                        FmlSourceKey = null,
+                        FmlFilename = null,
                         IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -814,9 +826,6 @@ public class ConceptMapLoader
                         TargetStructureKey = null,
                         TargetStructureId = null,
                         TargetStructureUrl = null,
-
-                        ConceptMapSourceKey = sourceFileKey,
-                        FmlSourceKey = null,
 
                         ExplicitNoMap = true,
                         Relationship = null,
@@ -857,6 +866,10 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        ConceptMapSourceKey = sourceFileKey,
+                        ConceptMapFilename = conceptMapFilename,
+                        FmlSourceKey = null,
+                        FmlFilename = null,
                         IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -870,9 +883,6 @@ public class ConceptMapLoader
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
                         TargetStructureUrl = targetSd.UnversionedUrl,
-
-                        ConceptMapSourceKey = sourceFileKey,
-                        FmlSourceKey = null,
 
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
@@ -1012,6 +1022,10 @@ public class ConceptMapLoader
             vsMap = new()
             {
                 Key = DbValueSetMapping.GetIndex(),
+                ConceptMapSourceKey = sourceFileKey,
+                ConceptMapFilename = conceptMapFilename,
+                FmlSourceKey = null,
+                FmlFilename = null,
 
                 SourceFhirPackageKey = sourcePackage.Key,
                 SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
@@ -1026,9 +1040,6 @@ public class ConceptMapLoader
                 TargetValueSetId = targetVs.Id,
                 TargetValueSetUrl = targetVs.UnversionedUrl,
                 TargetValueSetVersion = targetVs.Version,
-
-                ConceptMapSourceKey = sourceFileKey,
-                FmlSourceKey = null,
 
                 ExplicitNoMap = false,
                 Relationship = null,
@@ -1079,14 +1090,24 @@ public class ConceptMapLoader
                     {
                         Key = DbValueSetConceptMapping.GetIndex(),
                         ValueSetMappingKey = vsMap.Key,
+                        ConceptMapSourceKey = sourceFileKey,
+                        ConceptMapFilename = conceptMapFilename,
+                        FmlSourceKey = null,
+                        FmlFilename = null,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
+                        SourceValueSetKey = sourceVs.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
+                        SourceSystem = sourceConcept.System,
+                        SourceCode = sourceConcept.Code,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
+                        TargetValueSetKey = targetVs.Key,
                         TargetValueSetConceptKey = null,
+                        TargetSystem = null,
+                        TargetCode = null,
 
                         ExplicitNoMap = true,
                         Relationship = null,
@@ -1139,14 +1160,24 @@ public class ConceptMapLoader
                     {
                         Key = DbValueSetConceptMapping.GetIndex(),
                         ValueSetMappingKey = vsMap.Key,
+                        ConceptMapSourceKey = sourceFileKey,
+                        ConceptMapFilename = conceptMapFilename,
+                        FmlSourceKey = null,
+                        FmlFilename = null,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
+                        SourceValueSetKey = sourceVs.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
+                        SourceSystem = sourceConcept.System,
+                        SourceCode = sourceConcept.Code,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
+                        TargetValueSetKey = targetVs.Key,
                         TargetValueSetConceptKey = targetConcept.Key,
+                        TargetSystem = targetConcept.System,
+                        TargetCode = targetConcept.Code,
 
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
@@ -1223,6 +1254,10 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        ConceptMapSourceKey = sourceFileKey,
+                        ConceptMapFilename = conceptMapFilename,
+                        FmlSourceKey = null,
+                        FmlFilename = null,
                         IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -1236,9 +1271,6 @@ public class ConceptMapLoader
                         TargetStructureKey = null,
                         TargetStructureId = null,
                         TargetStructureUrl = null,
-
-                        ConceptMapSourceKey = sourceFileKey,
-                        FmlSourceKey = null,
 
                         ExplicitNoMap = true,
                         Relationship = null,
@@ -1279,6 +1311,10 @@ public class ConceptMapLoader
                     DbStructureMapping mapRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        ConceptMapSourceKey = sourceFileKey,
+                        ConceptMapFilename = conceptMapFilename,
+                        FmlSourceKey = null,
+                        FmlFilename = null,
                         IsFallback = false,
 
                         SourceFhirPackageKey = sourcePackage.Key,
@@ -1292,9 +1328,6 @@ public class ConceptMapLoader
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
                         TargetStructureUrl = targetSd.UnversionedUrl,
-
-                        ConceptMapSourceKey = sourceFileKey,
-                        FmlSourceKey = null,
 
                         ExplicitNoMap = false,
                         Relationship = elementTarget.Relationship,
@@ -1401,6 +1434,10 @@ public class ConceptMapLoader
                             DbStructureMapping mapRec = new()
                             {
                                 Key = DbStructureMapping.GetIndex(),
+                                ConceptMapSourceKey = sourceFileKey,
+                                ConceptMapFilename = conceptMapFilename,
+                                FmlSourceKey = null,
+                                FmlFilename = null,
                                 IsFallback = true,
 
                                 SourceFhirPackageKey = sourcePackage.Key,
@@ -1414,9 +1451,6 @@ public class ConceptMapLoader
                                 TargetStructureKey = null,
                                 TargetStructureId = null,
                                 TargetStructureUrl = null,
-
-                                ConceptMapSourceKey = sourceFileKey,
-                                FmlSourceKey = null,
 
                                 ExplicitNoMap = true,
                                 Relationship = null,
@@ -1463,6 +1497,10 @@ public class ConceptMapLoader
                             DbStructureMapping mapRec = new()
                             {
                                 Key = DbStructureMapping.GetIndex(),
+                                ConceptMapSourceKey = sourceFileKey,
+                                ConceptMapFilename = conceptMapFilename,
+                                FmlSourceKey = null,
+                                FmlFilename = null,
                                 IsFallback = true,
 
                                 SourceFhirPackageKey = sourcePackage.Key,
@@ -1476,9 +1514,6 @@ public class ConceptMapLoader
                                 TargetStructureKey = targetSd.Key,
                                 TargetStructureId = targetSd.Id,
                                 TargetStructureUrl = targetSd.UnversionedUrl,
-
-                                ConceptMapSourceKey = sourceFileKey,
-                                FmlSourceKey = null,
 
                                 ExplicitNoMap = false,
                                 Relationship = elementTarget.Relationship,

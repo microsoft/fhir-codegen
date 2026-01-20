@@ -61,6 +61,15 @@ public abstract class DbMappingBase : DbRecordBase
 
     public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes TargetFhirSequence { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
+    public required int? ConceptMapSourceKey { get; set; } = null;
+    public required string? ConceptMapFilename { get; set; }
+
+
+    [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
+    public required int? FmlSourceKey { get; set; } = null;
+    public required string? FmlFilename { get; set; }
+
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? Relationship { get; set; }
 
     public required bool ExplicitNoMap { get; set; }
@@ -72,11 +81,6 @@ public abstract class DbMappingBase : DbRecordBase
 [CgSQLiteBaseClass]
 public abstract class DbMappingArtifactBase : DbMappingBase
 {
-    [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
-    public required int? ConceptMapSourceKey { get; set; } = null;
-
-    [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
-    public required int? FmlSourceKey { get; set; } = null;
 }
 
 [CgSQLiteTable(tableName: "ValueSetMappings")]
@@ -101,16 +105,30 @@ public partial class DbValueSetMapping : DbMappingArtifactBase
 [CgSQLiteTable(tableName: "ValueSetConceptMappings")]
 [CgSQLiteIndex(nameof(ValueSetMappingKey), nameof(SourceValueSetConceptKey), nameof(TargetValueSetConceptKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetValueSetConceptKey), nameof(Key))]
+[CgSQLiteIndex(nameof(SourceValueSetKey), nameof(TargetValueSetKey))]
 public partial class DbValueSetConceptMapping : DbMappingBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetMappings", referenceColumn: nameof(DbValueSetMapping.Key))]
     public required int ValueSetMappingKey { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int SourceValueSetKey { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int SourceValueSetConceptKey { get; set; }
 
+    public required string SourceSystem { get; set; }
+    public required string SourceCode { get; set; }
+
+
+    [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
+    public required int? TargetValueSetKey { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int? TargetValueSetConceptKey { get; set; }
+
+    public required string? TargetSystem { get; set; }
+    public required string? TargetCode { get; set; }
 }
 
 
@@ -157,11 +175,11 @@ public partial class DbElementMapping : DbMappingBase
 
     public required string? TargetElementId { get; set; }
 
-    [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
-    public required int? ConceptMapSourceKey { get; set; } = null;
+    //[CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
+    //public required int? ConceptMapSourceKey { get; set; } = null;
 
-    [CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
-    public required int? FmlSourceKey { get; set; } = null;
+    //[CgSQLiteForeignKey(referenceTable: "MappingSourceFiles", referenceColumn: nameof(DbMappingSourceFile.Key))]
+    //public required int? FmlSourceKey { get; set; } = null;
 
     public required bool? FmlIsSimpleCopy { get; set; } = null;
 

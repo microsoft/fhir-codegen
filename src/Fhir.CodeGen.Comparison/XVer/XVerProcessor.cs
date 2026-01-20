@@ -261,9 +261,10 @@ public partial class XVerProcessor
 
                 //LoadFhirCrossVersionMaps();
 
+                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
-                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
+                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
                 //CompareInDatabase();
 
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);

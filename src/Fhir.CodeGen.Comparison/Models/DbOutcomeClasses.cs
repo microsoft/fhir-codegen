@@ -348,9 +348,9 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
 public partial class DbStructureOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
-    public required int StructureComparisonKey { get; set; }
+    public required int? StructureComparisonKey { get; set; }
     [CgSQLiteIgnore]
-    public override int ComparisonKey { get => this.StructureComparisonKey; set => this.StructureComparisonKey = value; }
+    public override int ComparisonKey { get => this.StructureComparisonKey ?? -1; set => this.StructureComparisonKey = value; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
@@ -387,9 +387,9 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required int StructureOutcomeKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
-    public required int ElementComparisonKey { get; set; }
+    public required int? ElementComparisonKey { get; set; }
     [CgSQLiteIgnore]
-    public override int ComparisonKey { get => this.ElementComparisonKey; set => this.ElementComparisonKey = value; }
+    public override int ComparisonKey { get => this.ElementComparisonKey ?? -1; set => this.ElementComparisonKey = value; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key), modelTypeName: nameof(DbStructureDefinition))]

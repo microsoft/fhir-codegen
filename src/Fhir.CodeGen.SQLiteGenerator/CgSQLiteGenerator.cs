@@ -2109,6 +2109,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     private static Dictionary<string, string> _sqliteNullableReadDirectives = new()
     {
         { "bool", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetBoolean({2})" },
+        { "bool?", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetBoolean({2})" },
         { "byte", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetByte({2})" },
         { "byte[]", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetBytes({2})" },
         { "char", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetChar({2})" },
@@ -2122,6 +2123,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "Guid", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetGuid({2})" },
         { "short", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt16({2})" },
         { "int", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt32({2})" },
+        { "int?", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt32({2})" },
         { "long", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetInt64({2})" },
         { "sbyte", "(sbyte){0} = {1}.IsDBNull({2}) ? null : {1}.GetByte({2})" },
         { "string", "{0} = {1}.IsDBNull({2}) ? null : {1}.GetString({2})" },
@@ -2140,6 +2142,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
     private static Dictionary<string, string> _sqliteTypeMap = new()
     {
         { "bool", "INTEGER" },
+        { "bool?", "INTEGER" },
         { "byte", "INTEGER" },
         { "byte[]", "BLOB" },
         { "char", "TEXT" },
@@ -2153,6 +2156,7 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
         { "Guid", "TEXT" },
         { "short", "INTEGER" },
         { "int", "INTEGER" },
+        { "int?", "INTEGER" },
         { "long", "INTEGER" },
         { "sbyte", "INTEGER" },
         { "string", "TEXT" },

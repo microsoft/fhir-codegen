@@ -537,6 +537,17 @@ public partial class DbElementAdditionalBinding : DbPackageContent
 [CgSQLiteIndex(nameof(TypeName), nameof(TypeProfile), nameof(TargetProfile))]
 public partial class DbElementType : DbPackageContent
 {
+    private static readonly string[] _quantityTypes = [
+            "Quantity",
+            "Age",
+            "Count",
+            "Distance",
+            "Duration",
+            "Money",
+            "MoneyQuantity",
+            "SimpleQuantity",
+            ];
+
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int StructureKey { get; set; }
 
@@ -564,7 +575,6 @@ public partial class DbElementType : DbPackageContent
         (string.IsNullOrEmpty(TypeName) ? string.Empty : TypeName) +
         (string.IsNullOrEmpty(TypeProfile) ? string.Empty : $"[{TypeProfile}]") +
         (string.IsNullOrEmpty(TargetProfile) ? string.Empty : $"({TargetProfile})");
-
 }
 
 [CgSQLiteTable(tableName: "CodeSystems")]

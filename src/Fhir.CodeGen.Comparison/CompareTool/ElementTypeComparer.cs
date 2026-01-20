@@ -254,11 +254,6 @@ public class ElementTypeComparer
                 else
                 {
                     targetType = targetTypesByTypeStructureKey[typeStructureMapping.TargetStructureKey.Value].FirstOrDefault();
-
-                    if (targetType is null)
-                    {
-                        Console.Write("");
-                    }
                 }
 
                 DbElementTypeComparison? etc = doElementTypeComparison(
@@ -344,43 +339,16 @@ public class ElementTypeComparer
         if ((targetType is null) || (typeStructureMapping is null))
         {
             return null;
-            //DbElementTypeComparison noMapTypeComparison = new()
-            //{
-            //    Key = DbElementTypeComparison.GetIndex(),
-            //    Steps = Math.Abs(packagePair.SourceFhirSequence - packagePair.TargetFhirSequence),
-            //    ElementComparisonKey = elementComparisonKey,
-
-            //    SourceFhirPackageKey = packagePair.SourcePackageKey,
-            //    SourceFhirSequence = packagePair.SourceFhirSequence,
-            //    SourceElementKey = sourceElement.Key,
-            //    SourceElementTypeKey = sourceType.Key,
-
-            //    TargetFhirPackageKey = packagePair.TargetPackageKey,
-            //    TargetFhirSequence = packagePair.TargetFhirSequence,
-            //    TargetElementKey = null,
-            //    TargetElementTypeKey = null,
-
-            //    NotMapped = true,
-            //    IsIdentical = null,
-
-            //    Relationship = null,
-            //    TechnicalMessage = null,
-            //    UserMessage = null,
-
-            //    TargetProfileRelationship = null,
-            //    TargetProfileMessage = null,
-
-            //    TypeProfileRelationship = null,
-            //    TypeProfileMessage = null,
-            //};
-
-            //_elementTypeComparisonCache.CacheAdd(noMapTypeComparison);
-            //return noMapTypeComparison;
         }
 
+        // if either is a quantity type or there are no profiles, do a simple comparison
+        bool isSimple = sourceType.IsQuantityType() ||
+            targetType.IsQuantityType() ||
+            ((sourceType.TargetProfile is null) && (sourceType.TypeProfile is null)) ||
+            ((targetType.TargetProfile is null) && (targetType.TypeProfile is null));
+
         // if there are no profiles, comparison is simple
-        if ((sourceType.TargetProfile is null) && (sourceType.TypeProfile is null) &&
-            (targetType.TargetProfile is null) && (targetType.TypeProfile is null))
+        if (isSimple)
         {
             DbElementTypeComparison etc = new()
             {
@@ -391,12 +359,16 @@ public class ElementTypeComparer
                 SourceFhirPackageKey = packagePair.SourcePackageKey,
                 SourceFhirSequence = packagePair.SourceFhirSequence,
                 SourceElementKey = sourceElement.Key,
+                SourceElementId = sourceElement.Id,
                 SourceElementTypeKey = sourceType.Key,
+                SourceTypeLiteral = sourceType.Literal,
 
                 TargetFhirPackageKey = packagePair.TargetPackageKey,
                 TargetFhirSequence = packagePair.TargetFhirSequence,
                 TargetElementKey = targetElement.Key,
+                TargetElementId = targetElement.Id,
                 TargetElementTypeKey = targetType.Key,
+                TargetTypeLiteral = targetType.Literal,
 
                 NotMapped = targetType == null,
                 IsIdentical = null,
@@ -429,12 +401,16 @@ public class ElementTypeComparer
                 SourceFhirPackageKey = packagePair.SourcePackageKey,
                 SourceFhirSequence = packagePair.SourceFhirSequence,
                 SourceElementKey = sourceElement.Key,
+                SourceElementId = sourceElement.Id,
                 SourceElementTypeKey = sourceType.Key,
+                SourceTypeLiteral = sourceType.Literal,
 
                 TargetFhirPackageKey = packagePair.TargetPackageKey,
                 TargetFhirSequence = packagePair.TargetFhirSequence,
                 TargetElementKey = targetElement.Key,
+                TargetElementId = targetElement.Id,
                 TargetElementTypeKey = targetType.Key,
+                TargetTypeLiteral = targetType.Literal,
 
                 NotMapped = false,
                 IsIdentical = null,
@@ -468,12 +444,16 @@ public class ElementTypeComparer
                 SourceFhirPackageKey = packagePair.SourcePackageKey,
                 SourceFhirSequence = packagePair.SourceFhirSequence,
                 SourceElementKey = sourceElement.Key,
+                SourceElementId = sourceElement.Id,
                 SourceElementTypeKey = sourceType.Key,
+                SourceTypeLiteral = sourceType.Literal,
 
                 TargetFhirPackageKey = packagePair.TargetPackageKey,
                 TargetFhirSequence = packagePair.TargetFhirSequence,
                 TargetElementKey = targetElement.Key,
+                TargetElementId = targetElement.Id,
                 TargetElementTypeKey = targetType.Key,
+                TargetTypeLiteral = targetType.Literal,
 
                 NotMapped = false,
                 IsIdentical = null,
@@ -586,12 +566,16 @@ public class ElementTypeComparer
             SourceFhirPackageKey = packagePair.SourcePackageKey,
             SourceFhirSequence = packagePair.SourceFhirSequence,
             SourceElementKey = sourceElement.Key,
+            SourceElementId = sourceElement.Id,
             SourceElementTypeKey = sourceType.Key,
+            SourceTypeLiteral = sourceType.Literal,
 
             TargetFhirPackageKey = packagePair.TargetPackageKey,
             TargetFhirSequence = packagePair.TargetFhirSequence,
             TargetElementKey = targetElement.Key,
+            TargetElementId = targetElement.Id,
             TargetElementTypeKey = targetType.Key,
+            TargetTypeLiteral = targetType.Literal,
 
             NotMapped = false,
             IsIdentical = null,
@@ -694,12 +678,16 @@ public class ElementTypeComparer
                 SourceFhirPackageKey = packagePair.SourcePackageKey,
                 SourceFhirSequence = packagePair.SourceFhirSequence,
                 SourceElementKey = sourceElement.Key,
+                SourceElementId = sourceElement.Id,
                 SourceElementTypeKey = sourceType.Key,
+                SourceTypeLiteral = sourceType.Literal,
 
                 TargetFhirPackageKey = packagePair.TargetPackageKey,
                 TargetFhirSequence = packagePair.TargetFhirSequence,
                 TargetElementKey = null,
+                TargetElementId = null,
                 TargetElementTypeKey = null,
+                TargetTypeLiteral = null,
 
                 NotMapped = true,
                 IsIdentical = null,

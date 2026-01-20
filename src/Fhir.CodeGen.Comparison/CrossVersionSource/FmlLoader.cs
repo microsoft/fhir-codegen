@@ -37,6 +37,7 @@ public class FmlLoader
     private string? _fmlFilename = null;
     private string? _fmlUrl;
     private int _sourceFileKey = -1;
+    private string _sourceFilename = string.Empty;
 
     private ILoggerFactory? _loggerFactory;
     private ILogger _logger;
@@ -102,7 +103,7 @@ public class FmlLoader
                 string path = Path.Combine(inputPath, relativePath);
                 if (Directory.Exists(path))
                 {
-                    loadSourceFml(sourcePackage, targetPackage, path);
+                    loadSourceFml(sourcePackage, targetPackage, path, inputPath);
                 }
 
                 // check the reverse direction
@@ -110,7 +111,7 @@ public class FmlLoader
                 path = Path.Combine(inputPath, relativePath);
                 if (Directory.Exists(path))
                 {
-                    loadSourceFml(targetPackage, sourcePackage, path);
+                    loadSourceFml(targetPackage, sourcePackage, path, inputPath);
                 }
 
             }
@@ -121,7 +122,8 @@ public class FmlLoader
     private void loadSourceFml(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
-        string path)
+        string path,
+        string inputPath)
     {
         _logger.LogInformation($"Loading FML maps from: {path}");
 
@@ -174,7 +176,8 @@ public class FmlLoader
                 processFml(
                     filename,
                     name,
-                    fml);
+                    fml,
+                    inputPath);
             }
             catch (Exception ex)
             {
@@ -186,7 +189,8 @@ public class FmlLoader
     private void processFml(
         string filename,
         string name,
-        FhirStructureMap fml)
+        FhirStructureMap fml,
+        string inputPath)
     {
         if ((_sourcePackage is null) || (_targetPackage is null))
         {
@@ -210,6 +214,8 @@ public class FmlLoader
             filename,
             MappingLoader.SourceFileTypeCodes.FML,
             _fmlUrl);
+
+        _sourceFilename = Path.GetRelativePath(inputPath, filename);
 
         Dictionary<string, FmlSymbolResolutionRecord> structures = [];
 
@@ -1260,6 +1266,10 @@ public class FmlLoader
                     structureMappingRec = new()
                     {
                         Key = DbStructureMapping.GetIndex(),
+                        ConceptMapSourceKey = null,
+                        ConceptMapFilename = null,
+                        FmlSourceKey = _sourceFileKey,
+                        FmlFilename = _sourceFilename,
                         IsFallback = false,                 // there are no fallback FML files
 
                         SourceFhirPackageKey = _sourcePackage.Key,
@@ -1273,9 +1283,6 @@ public class FmlLoader
                         TargetStructureKey = targetSd.Key,
                         TargetStructureId = targetSd.Id,
                         TargetStructureUrl = targetSd.UnversionedUrl,
-
-                        ConceptMapSourceKey = null,
-                        FmlSourceKey = _sourceFileKey,
 
                         ExplicitNoMap = false,
                         Relationship = initialRelationship,
@@ -1345,6 +1352,11 @@ public class FmlLoader
                     DbElementMapping edMappingRec = new()
                     {
                         Key = DbElementMapping.GetIndex(),
+                        ConceptMapSourceKey = null,
+                        ConceptMapFilename = null,
+                        FmlSourceKey = _sourceFileKey,
+                        FmlFilename = _sourceFilename,
+
                         StructureMappingKey = structureMappingRec.Key,
 
                         SourceFhirPackageKey = _sourcePackage.Key,
@@ -1357,8 +1369,6 @@ public class FmlLoader
                         TargetElementKey = targetEd?.Key,
                         TargetElementId = targetEd?.Id ?? targetPath,
 
-                        ConceptMapSourceKey = null,
-                        FmlSourceKey = _sourceFileKey,
                         FmlIsSimpleCopy = _simpleTargetPaths.Contains((sourceEd?.Id ?? sourcePath, targetEd?.Id ?? targetPath)),
 
                         ExplicitNoMap = false,

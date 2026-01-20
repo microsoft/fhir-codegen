@@ -6,6 +6,7 @@ using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
 using Microsoft.Extensions.Logging;
@@ -20,11 +21,40 @@ public class ElementOutcomeGenerator
         public required DbElement SourceElement { get; set; }
         public List<DbElementOutcome> ElementOutcomes { get; set; } = [];
         public List<DbElementComparison> ElementComparisons { get; set; } = [];
+        public Dictionary<int, DbElement> TargetElements { get; set; } = [];
         public List<string> Messages { get; set; } = [];
         public bool IsFullyMappedAcrossAllTargets { get; set; } = false;
         public List<DbElementComparison> MapsToIndividualTargets { get; set; } = [];
         public List<List<DbElementComparison>> MapsToCombinationOfTargets { get; set; } = [];
         public int DiscreteTargetCount { get; set; } = 0;
+        public CMR? QuantityBasedRelationship { get; set; } = null;
+        public CMR? BoundValueSetRelationship { get; set; } = null;
+    }
+    private class ChildTypeMappingResult
+    {
+        /// <summary>The parent source type being evaluated.</summary>
+        public required DbElementType SourceParentType { get; set; }
+
+        /// <summary>True if all significant children have valid type mappings.</summary>
+        public required bool AllChildrenMapped { get; set; }
+
+        /// <summary>Mapping information for each child that has mappings.</summary>
+        public required Dictionary<int, ChildMappingInfo> ChildMappings { get; set; } = [];
+
+        /// <summary>Child elements that lack valid type mappings.</summary>
+        public required List<DbElement> UnmappedChildren { get; set; } = [];
+    }
+
+    private class ChildMappingInfo
+    {
+        /// <summary>The child element being mapped.</summary>
+        public required DbElement ChildElement { get; set; }
+
+        /// <summary>Valid type comparisons for this child.</summary>
+        public required List<DbElementTypeComparison> TypeComparisons { get; set; } = [];
+
+        /// <summary>Target element keys this child maps to.</summary>
+        public required HashSet<int> TargetElementKeys { get; set; } = [];
     }
 
     private readonly IDbConnection _db;
@@ -107,6 +137,97 @@ public class ElementOutcomeGenerator
         _etcComparisonsBySourceElementKey = _etcComparisons.ToLookup(c => c.SourceElementKey);
     }
 
+    public void ProcessNoMapStructure(
+        DbStructureDefinition sourceSd,
+        DbStructureOutcome sdOutcome)
+    {
+        if (sourceSd.ArtifactClass == Common.Models.FhirArtifactClassEnum.PrimitiveType)
+        {
+            return;
+        }
+
+        List<DbElement> sourceElements = _allSourceElementsBySdKey[sourceSd.Key].ToList();
+
+        if (sourceElements.Count == 0)
+        {
+            throw new Exception($"No elements found for structure `{sourceSd.Name}`");
+        }
+
+        DbElement rootEd = sourceElements[0];
+        DbElementOutcome? rootEdOutcome = null;
+
+        // iterate over the source elements for this structure to create no-map outcomes
+        foreach (DbElement sourceEd in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
+        {
+            (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
+                _packagePair.SourcePackageShortName,
+                sourceEd.Id);
+
+            // create the non-mapped element outcome
+            DbElementOutcome elementOutcome = new()
+            {
+                Key = DbElementOutcome.GetIndex(),
+                StructureOutcomeKey = sdOutcome.Key,
+                ElementComparisonKey = null,
+
+                SourceFhirPackageKey = _packagePair.SourcePackageKey,
+                SourceFhirSequence = _packagePair.SourceFhirSequence,
+                SourceStructureKey = sourceSd.Key,
+                SourceElementKey = sourceEd.Key,
+                TotalSourceCount = -1,
+
+                TargetFhirPackageKey = _packagePair.TargetPackageKey,
+                TargetFhirSequence = _packagePair.TargetFhirSequence,
+                TargetStructureKey = sourceSd.Key,
+                TargetElementKey = sourceEd.Key,
+                TotalTargetCount = 0,
+
+                RequiresXVerDefinition = true,
+                PartOfElementOutcomeKey = rootEdOutcome?.Key,
+
+                IsRenamed = false,
+                IsUnmapped = true,
+                IsIdentical = false,
+                IsEquivalent = false,
+                IsBroaderThanTarget = false,
+                IsNarrowerThanTarget = false,
+
+                FullyMapsToThisTarget = false,
+                FullyMapsAcrossAllTargets = false,
+
+                Comments =
+                    $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
+                    $" since structure FHIR {_packagePair.SourceFhirSequence} is not mapped.",
+
+                SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
+                SourceCanonicalVersioned = sourceSd.VersionedUrl,
+                SourceVersion = sourceSd.Version,
+                SourceId = sourceEd.Id,
+                SourceName = sourceEd.Name,
+                TargetCanonicalUnversioned = null,
+                TargetCanonicalVersioned = null,
+                TargetVersion = null,
+                TargetId = null,
+                TargetName = null,
+                PotentialGenLongId = rootEdOutcome?.PotentialGenLongId ?? idLong,
+                //PotentialGenShortId = idShort,
+                //PotentialGenUrl = extUrl,
+            };
+
+            if (sourceEd.ResourceFieldOrder == 0)
+            {
+                rootEdOutcome = elementOutcome;
+            }
+
+            _edOutcomeCache.CacheAdd(elementOutcome);
+        }
+    }
+
+    private bool relationshipMaps(CMR? relationship) =>
+        (relationship is null) ||
+        (relationship == CMR.Equivalent) ||
+        (relationship == CMR.SourceIsNarrowerThanTarget);
+
     public void ProcessStructure(
         DbStructureDefinition sourceSd,
         Dictionary<int, StructureOutcomeGenerator.StructureOutcomeTrackingRecord> structureTrackingRecords)
@@ -147,15 +268,26 @@ public class ElementOutcomeGenerator
                         .Where(tk => tk is not null)
                         .Distinct()
                         .Count(),
+                    TargetElements = elementComparisons
+                        .Where(ec => ec.TargetElementKey is not null)
+                        .Select(ec => ec.TargetElementKey!.Value)
+                        .Distinct()
+                        .Select(key => _allTargetElements[key])
+                        .ToDictionary(te => te.Key),
                 };
                 elementTrackingRecords[sourceEd.Key] = elementTrackingRec;
             }
 
             // easy check for any single comparison that fully maps
-            List<DbElementComparison> fullyMappedComparisons = elementComparisons.Where(ec =>
-                (ec.IsIdentical == true) ||
-                (ec.Relationship == CMR.Equivalent) ||
-                (ec.Relationship == CMR.SourceIsNarrowerThanTarget))
+            List<DbElementComparison> fullyMappedComparisons = elementComparisons
+                .Where(ec =>
+                    (ec.TargetElementId is not null) &&
+                    (ec.Relationship is not null) &&
+                    relationshipMaps(ec.Relationship) &&
+                    relationshipMaps(ec.BoundValueSetRelationship) &&
+                    relationshipMaps(ec.TypeRelationship) &&
+                    relationshipMaps(ec.TypeProfileRelationship) &&
+                    relationshipMaps(ec.TargetProfileRelationship))
                 .ToList();
 
             if (fullyMappedComparisons.Count != 0)
@@ -164,14 +296,14 @@ public class ElementOutcomeGenerator
 
                 elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
                 elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
-
                 elementTrackingRec.Messages.Add(
-                    $"Element `{sourceEd.Id}` is fully mapped to individual targets:" +
+                    $"Element `{sourceEd.Id}` has fully-mapped types to individual targets:" +
                     $" {string.Join(", ", fullyMappedComparisons.Select(fmc => $"`{fmc.TargetElementId}`"))}");
 
                 continue;
             }
 
+            // resolve the target elements involved in the comparisons
             Dictionary<int, DbElement> currentTargetElements = [];
             foreach (DbElementComparison ec in elementComparisons)
             {
@@ -184,6 +316,8 @@ public class ElementOutcomeGenerator
                 DbElement targetEd = _allTargetElements[ec.TargetContentKey!.Value];
                 currentTargetElements[targetEd.Key] = targetEd;
             }
+
+            elementTrackingRec.TargetElements = currentTargetElements;
 
             // check the types to see if they map across all targets
             Dictionary<int, DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
@@ -199,10 +333,227 @@ public class ElementOutcomeGenerator
             foreach (DbElementTypeComparison etc in etComparisons)
             {
                 if ((etc.IsIdentical == true) ||
-                    (etc.Relationship == CMR.Equivalent) ||
-                    (etc.Relationship == CMR.SourceIsNarrowerThanTarget))
+                    relationshipMaps(etc.Relationship))
                 {
                     unmappedTypes.Remove(etc.SourceElementTypeKey);
+
+                    elementTrackingRec.Messages.Add(
+                        $"Element `{sourceEd.Id}` type `{etc.SourceTypeLiteral}`" +
+                        $" maps to target element `{etc.TargetElementId}` type `{etc.TargetTypeLiteral}`" +
+                        $" with relationship {etc.Relationship}.");
+
+                    if (unmappedTypes.Count == 0)
+                    {
+                        fullyMappedElementsAllTargets.Add(sourceEd.Key);
+
+                        elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
+                        elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
+                        elementTrackingRec.Messages.Add(
+                            $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
+                            $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
+
+                        break;
+                    }
+                }
+            }
+
+            // check if unmapped types are quantity types
+            if (unmappedTypes.Count > 0)
+            {
+                DbStructureComparison? pairQuantityComparison = DbStructureComparison.SelectSingle(
+                    _db,
+                    SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                    SourceId: "Quantity",
+                    TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                    TargetId: "Quantity");
+
+                CMR qRelationship = pairQuantityComparison?.Relationship ?? CMR.Equivalent;
+
+                // iterate over each unmapped type to see if it is a quantity type
+                foreach (DbElementType unmappedType in unmappedTypes.Values)
+                {
+                    if (!unmappedType.IsQuantityType())
+                    {
+                        continue;
+                    }
+
+                    string sourceNormalizedTypeName = unmappedType.GetNormalizedName();
+
+                    // build a list of target types and their elements (elements will be duplicated)
+                    List<(DbElement, DbElementType)> targetQuantityTypes = [];
+                    foreach (DbElement te in currentTargetElements.Values)
+                    {
+                        if (!_targetElementTypesByElementKey.Contains(te.Key))
+                        {
+                            continue;
+                        }
+
+                        IEnumerable<DbElementType> targetTypes = _targetElementTypesByElementKey[te.Key];
+
+                        foreach (DbElementType tet in targetTypes)
+                        {
+                            if (tet.IsQuantityType())
+                            {
+                                targetQuantityTypes.Add((te, tet));
+                            }
+                        }
+                    }
+
+                    // resolve a source structure for the normalized type name
+                    DbStructureDefinition? sourceQSd = DbStructureDefinition.SelectSingle(
+                        _db,
+                        FhirPackageKey: _packagePair.SourcePackageKey,
+                        Name: sourceNormalizedTypeName);
+                    
+                    if ((sourceQSd is null) &&
+                        (sourceNormalizedTypeName != "Quantity"))
+                    {
+                        // use the base Quantity type
+                        sourceQSd = DbStructureDefinition.SelectSingle(
+                            _db,
+                            FhirPackageKey: _packagePair.SourcePackageKey,
+                            Name: "Quantity");
+                    }
+
+                    if (sourceQSd is null)
+                    {
+                        continue;
+                    }
+
+                    // iterate over any matches
+                    foreach ((DbElement targetEd, DbElementType targetType) in targetQuantityTypes)
+                    {
+                        string targetNormalizedTypeName = targetType.GetNormalizedName();
+
+                        // if the source and target normalized names are the same, we can assume equivalence anyway
+                        if (sourceNormalizedTypeName == targetNormalizedTypeName)
+                        {
+                            elementTrackingRec.Messages.Add(
+                                $"Element `{sourceEd.Id}` normalized quantity type `{sourceNormalizedTypeName}`" +
+                                $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
+                                $" with assumed equivalence based on profile and type matching.");
+
+                            unmappedTypes.Remove(unmappedType.Key);
+                            if (unmappedTypes.Count == 0)
+                            {
+                                fullyMappedElementsAllTargets.Add(sourceEd.Key);
+
+                                elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
+                                elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
+                                elementTrackingRec.Messages.Add(
+                                    $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
+                                    $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
+
+                                elementTrackingRec.QuantityBasedRelationship = qRelationship;
+
+                                break;
+                            }
+
+                            continue;
+                        }
+
+                        // resolve a target structure for the normalized type name
+                        DbStructureDefinition? targetQSd = DbStructureDefinition.SelectSingle(
+                            _db,
+                            FhirPackageKey: _packagePair.TargetPackageKey,
+                            Name: targetNormalizedTypeName);
+
+                        if ((targetQSd is null) &&
+                            (targetNormalizedTypeName != "Quantity"))
+                        {
+                            // use the base Quantity type
+                            targetQSd = DbStructureDefinition.SelectSingle(
+                                _db,
+                                FhirPackageKey: _packagePair.TargetPackageKey,
+                                Name: "Quantity");
+                        }
+
+                        if (targetQSd is null)
+                        {
+                            continue;
+                        }
+
+                        // check for comparison between the structures
+                        DbStructureComparison? qComparison = DbStructureComparison.SelectSingle(
+                            _db,
+                            SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                            SourceStructureKey: sourceQSd.Key,
+                            TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                            TargetStructureKey: targetQSd.Key);
+
+                        if ((qComparison is not null) &&
+                            relationshipMaps(qComparison.Relationship))
+                        {
+                            elementTrackingRec.Messages.Add(
+                                $"Element `{sourceEd.Id}` normalized quantity type `{sourceNormalizedTypeName}`" +
+                                $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
+                                $" with relationship {qComparison.Relationship}.");
+
+                            unmappedTypes.Remove(unmappedType.Key);
+                            if (unmappedTypes.Count == 0)
+                            {
+                                fullyMappedElementsAllTargets.Add(sourceEd.Key);
+
+                                elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
+                                elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
+                                elementTrackingRec.Messages.Add(
+                                    $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
+                                    $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
+
+                                elementTrackingRec.QuantityBasedRelationship = qComparison.Relationship ?? qRelationship;
+
+                                break;
+                            }
+
+                            continue;
+                        }
+
+                        // if there is no comparison, check to see if there is a mapping (primary first, then we'll check fallback)
+                        DbStructureMapping? qMapping = DbStructureMapping.SelectSingle(
+                            _db,
+                            IsFallback: false,
+                            SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                            SourceStructureKey: sourceQSd.Key,
+                            TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                            TargetStructureKey: targetQSd.Key);
+
+                        qMapping ??= DbStructureMapping.SelectSingle(
+                            _db,
+                            IsFallback: true,
+                            SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                            SourceStructureKey: sourceQSd.Key,
+                            TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                            TargetStructureKey: targetQSd.Key);
+
+                        if ((qMapping is not null) &&
+                            relationshipMaps(qMapping.Relationship))
+                        {
+                            elementTrackingRec.Messages.Add(
+                                $"Element `{sourceEd.Id}` normalized quantity type `{sourceNormalizedTypeName}`" +
+                                $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
+                                $" with relationship {qMapping.Relationship}" +
+                                $" (source ConceptMap: `{(qMapping.ConceptMapFilename ?? "-")}`, source FML: `{(qMapping.FmlFilename ?? "-")}`).");
+
+                            unmappedTypes.Remove(unmappedType.Key);
+                            if (unmappedTypes.Count == 0)
+                            {
+                                fullyMappedElementsAllTargets.Add(sourceEd.Key);
+
+                                elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
+                                elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
+                                elementTrackingRec.Messages.Add(
+                                    $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
+                                    $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
+
+                                elementTrackingRec.QuantityBasedRelationship = qMapping.Relationship ?? qRelationship;
+
+                                break;
+                            }
+
+                            continue;
+                        }
+                    }
+
                     if (unmappedTypes.Count == 0)
                     {
                         break;
@@ -210,7 +561,39 @@ public class ElementOutcomeGenerator
                 }
             }
 
-            // if we have any unmapped types, then this element is NOT mapped across all targets
+            // check if unmapped types can be handled via child element mappings (distributed mapping)
+            if ((unmappedTypes.Count > 0) &&
+                (sourceEd.ChildElementCount == 0))
+            {
+                List<ChildTypeMappingResult> childMappingResults = [];
+
+                // iterate over each unmapped type to check if its children provide mappings
+                foreach (DbElementType unmappedType in unmappedTypes.Values)
+                {
+                    ChildTypeMappingResult cmr = checkChildElementMappings(
+                        unmappedType,
+                        sourceEd,
+                        currentTargetElements);
+                    childMappingResults.Add(cmr);
+                }
+
+                // process the results and update unmappedTypes accordingly
+                HashSet<int> resolvedViaChildren = processChildMappingResults(
+                    unmappedTypes,
+                    childMappingResults,
+                    elementTrackingRec,
+                    sourceEd);
+
+                // if we resolved any types via children, log summary
+                if (resolvedViaChildren.Count > 0)
+                {
+                    elementTrackingRec.Messages.Add(
+                        $"Element `{sourceEd.Id}` resolved {resolvedViaChildren.Count} unmapped type(s)" +
+                        $" via distributed child element mappings");
+                }
+            }
+
+            // if we still have unmapped types, then this element is not fully mapped across all targets
             if (unmappedTypes.Count != 0)
             {
                 elementTrackingRec.Messages.Add(
@@ -223,74 +606,8 @@ public class ElementOutcomeGenerator
                 continue;
             }
 
-            bool vsMappingOk = true;
-
-            // we need to check bound value set relationships for fully-mapping, but only if the source is required
-            if (sourceEd.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required)
-            {
-                // need to check each target's bound value set relationship
-                vsMappingOk = false;
- 
-                foreach (DbElementComparison ec in elementComparisons)
-                {
-                    if ((ec.TargetStructureKey is null) ||
-                        (ec.TargetContentKey is null))
-                    {
-                        continue;
-                    }
-
-                    DbElement targetEd = currentTargetElements[ec.TargetContentKey!.Value];
-
-                    // if the source and target are required, we need to consider the vs relationship
-                    if (targetEd.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required)
-                    {
-                        // if the vs relationship is equivalent or source narrower, then we are good
-                        if ((ec.BoundValueSetRelationship == CMR.Equivalent) ||
-                            (ec.BoundValueSetRelationship == CMR.SourceIsNarrowerThanTarget))
-                        {
-                            vsMappingOk = true;
-
-                            elementTrackingRec.Messages.Add(
-                                $"Element `{sourceEd.Id}` has a required binding to `{sourceEd.BindingValueSet}`" +
-                                $" and maps to `{targetEd.Id}` that has a required binding to `{targetEd.BindingValueSet}`" +
-                                $" - the value set relationship is {ec.BoundValueSetRelationship}, which is considered fully-mapped.");
-
-                            elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
-                            if (elementComparisons.Count == 1)
-                            {
-                                elementTrackingRec.MapsToIndividualTargets = elementComparisons;
-                            }
-                            else
-                            {
-                                elementTrackingRec.MapsToCombinationOfTargets.Add(elementComparisons);
-                            }
-
-                            continue;
-                        }
-
-                        elementTrackingRec.Messages.Add(
-                            $"Element `{sourceEd.Id}` has a required binding to `{sourceEd.BindingValueSet}`" +
-                            $" and maps to `{targetEd.Id}` that has a required binding to `{targetEd.BindingValueSet}`" +
-                            $" - the value set relationship is {ec.BoundValueSetRelationship}, which is NOT considered fully-mapped.");
-
-                        continue;
-                    }
-                }
-            }
-            else if (sourceEd.BindingValueSetKey is not null)
-            {
-                elementTrackingRec.Messages.Add(
-                    $"Element `{sourceEd.Id}` has a {sourceEd.ValueSetBindingStrength} binding to `{sourceEd.BindingValueSet}`," +
-                    $" which allows for any value and is not considered for full-mapping.");
-            }
-
-            if (!vsMappingOk)
-            {
-                continue;
-            }
-
             elementTrackingRec.Messages.Add(
-                $"Element `{sourceEd.Id}` is considered fully-mapped across: " +
+                $"Element `{sourceEd.Id}` has fully-mapped types across: " +
                 $" {string.Join(", ", currentTargetElements.Values.Select(te => $"`{te.Id}`"))}");
 
             elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
@@ -301,6 +618,74 @@ public class ElementOutcomeGenerator
             else
             {
                 elementTrackingRec.MapsToCombinationOfTargets.Add(elementComparisons);
+            }
+        }
+
+        // iterate over our tracking records to check valueset mapping (if necessary)
+        foreach (ElementOutcomeTrackingRecord elementTrackingRec in elementTrackingRecords.Values)
+        {
+            DbElement sourceEd = elementTrackingRec.SourceElement;
+
+            if (sourceEd.ValueSetBindingStrength != Hl7.Fhir.Model.BindingStrength.Required)
+            {
+                if (sourceEd.ValueSetBindingStrength is not null)
+                {
+                    elementTrackingRec.Messages.Add(
+                        $"Element `{sourceEd.Id}` has a" +
+                        $" {sourceEd.ValueSetBindingStrength} binding to" +
+                        $" `{sourceEd.BindingValueSet}`," +
+                        $" which allows for any value and is not considered for full-mapping.");
+                }
+
+                continue;
+            }
+
+            bool vsMappingHasValidTarget = false;
+            DbElement? mappingTargetEd = null;
+            CMR? boundVsRelationship = CMR.Equivalent;
+
+            foreach (DbElementComparison ec in elementTrackingRec.ElementComparisons)
+            {
+                if ((ec.TargetStructureKey is null) ||
+                    (ec.TargetContentKey is null))
+                {
+                    continue;
+                }
+
+                boundVsRelationship = FhirDbComparer.ApplyRelationship(boundVsRelationship, ec.BoundValueSetRelationship);
+
+                DbElement targetEd = elementTrackingRec.TargetElements[ec.TargetContentKey!.Value];
+
+                // if the source and target are required, we need to consider the vs relationship
+                if (targetEd.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required)
+                {
+                    // if the vs relationship is equivalent or source narrower, then we are good
+                    if (relationshipMaps(ec.BoundValueSetRelationship))
+                    {
+                        vsMappingHasValidTarget = true;
+                        mappingTargetEd = targetEd;
+
+                        elementTrackingRec.Messages.Add(
+                            $"Element `{sourceEd.Id}` has a required binding to `{sourceEd.BindingValueSet}`" +
+                            $" and maps to `{targetEd.Id}` that has a required binding to `{targetEd.BindingValueSet}`" +
+                            $" - the value set relationship is {ec.BoundValueSetRelationship}, which is considered fully-mapped.");
+
+                        break;
+                    }
+
+                    elementTrackingRec.Messages.Add(
+                        $"Element `{sourceEd.Id}` has a required binding to `{sourceEd.BindingValueSet}`" +
+                        $" and maps to `{targetEd.Id}` that has a required binding to `{targetEd.BindingValueSet}`" +
+                        $" - the value set relationship is {ec.BoundValueSetRelationship}, which is NOT considered fully-mapped.");
+
+                    continue;
+                }
+            }
+
+            elementTrackingRec.BoundValueSetRelationship = boundVsRelationship;
+            if (!vsMappingHasValidTarget)
+            {
+                elementTrackingRec.IsFullyMappedAcrossAllTargets = false;
             }
         }
 
@@ -364,10 +749,10 @@ public class ElementOutcomeGenerator
         //        }
 
         //        // check the types to see if they map across all targets
-        //        Dictionary<int, DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
+        //        Dictionary<int, DbElementType> sourceChildEts = _sourceElementTypesByElementKey[sourceEd.Key]
         //            .ToDictionary(et => et.Key);
 
-        //        Dictionary<int, DbElementType> unmappedTypes = sourceEts
+        //        Dictionary<int, DbElementType> unmappedTypes = sourceChildEts
         //            .Select(kvp => kvp)
         //            .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -449,9 +834,18 @@ public class ElementOutcomeGenerator
                 _packagePair.SourcePackageShortName,
                 sourceEd.Id);
 
+            bool isRootElement = sourceEd.ResourceFieldOrder == 0;
+
+
             // iterate over the structure tracking records to create outcomes
             foreach (StructureOutcomeGenerator.StructureOutcomeTrackingRecord sdTr in structureTrackingRecords.Values)
             {
+                // check for root elements - their behavior is different
+                if (sourceEd.ResourceFieldOrder == 0)
+                {
+
+                }
+
                 sdTr.IsFullyMappedAcrossAllTargets = sdTr.IsFullyMappedAcrossAllTargets &&
                     edTr.IsFullyMappedAcrossAllTargets;
 
@@ -588,7 +982,7 @@ public class ElementOutcomeGenerator
 
                         Comments = edTr.Messages.Count > 0
                             ? string.Join('\n', edTr.Messages)
-                            : elementComparison.UserMessage ?? elementComparison.TechnicalMessage ?? "TODO",
+                            : elementComparison.TechnicalMessage ?? elementComparison.UserMessage ?? "TODO",
 
                         SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
                         SourceCanonicalVersioned = sourceSd.VersionedUrl,
@@ -618,4 +1012,270 @@ public class ElementOutcomeGenerator
             }
         }
     }
+
+    /// <summary>
+    /// Determines if an unmapped source type can be fully represented through mappings of its child elements to target elements.
+    /// </summary>
+    /// <param name="unmappedType">The source type that lacks a direct mapping</param>
+    /// <param name="sourceElement">The source element containing this type</param>
+    /// <returns>Result indicating if all children are mapped and how</returns>
+    private ChildTypeMappingResult checkChildElementMappings(
+        DbElementType unmappedType,
+        DbElement sourceElement,
+        Dictionary<int, DbElement> currentTargetElements)
+    {
+        ChildTypeMappingResult result = new()
+        {
+            SourceParentType = unmappedType,
+            AllChildrenMapped = false,
+            ChildMappings = [],
+            UnmappedChildren = []
+        };
+
+        // type must have a resolved structure to check children
+        if (unmappedType.TypeStructureKey is null)
+        {
+            return result;
+        }
+
+        // get the child elements of this type structure, but filter out elements we should ignore (root, id, extension)
+        List<DbElement> typeChildren = _allSourceElementsBySdKey[unmappedType.TypeStructureKey.Value]
+            .Where(ed =>
+                (ed.ResourceFieldOrder != 0) &&
+                (ed.Name != "id") &&
+                (ed.Name != "extension"))
+            .ToList();
+
+        // if there are no meaningful child elements, this type can't be distributed
+        if (typeChildren.Count == 0)
+        {
+            return result;
+        }
+
+        // build a list of target types and their elements (elements will be duplicated)
+        List<(DbElement, DbElementType)> targetTypes = [];
+        foreach (DbElement te in currentTargetElements.Values)
+        {
+            if (!_targetElementTypesByElementKey.Contains(te.Key))
+            {
+                continue;
+            }
+
+            IEnumerable<DbElementType> currentTargetTypes = _targetElementTypesByElementKey[te.Key];
+
+            foreach (DbElementType tet in currentTargetTypes)
+            {
+                targetTypes.Add((te, tet));
+            }
+        }
+
+        // iterate over the child elements to try and map the types
+        foreach (DbElement childEd in typeChildren)
+        {
+            // check for existing comparisons
+            List<DbElementTypeComparison> childTypeComparisons = _etcComparisonsBySourceElementKey[childEd.Key].ToList();
+
+            // find valid mappings (identical, equivalent, or source is narrower)
+            List<DbElementTypeComparison> validMappings = childTypeComparisons
+                .Where(etc =>
+                    (etc.IsIdentical == true) ||
+                    (etc.Relationship == CMR.Equivalent) ||
+                    (etc.Relationship == CMR.SourceIsNarrowerThanTarget))
+                .ToList();
+
+            // if we have valid mappings, use them
+            if (validMappings.Count > 0)
+            {
+                // Track the child's mappings
+                HashSet<int> targetElementKeys = validMappings
+                    .Where(vm => vm.TargetElementKey.HasValue)
+                    .Select(vm => vm.TargetElementKey!.Value)
+                    .ToHashSet();
+
+                result.ChildMappings[childEd.Key] = new ChildMappingInfo
+                {
+                    ChildElement = childEd,
+                    TypeComparisons = validMappings,
+                    TargetElementKeys = targetElementKeys
+                };
+
+                continue;
+            }
+
+            bool childElementIsMapped = false;
+            List<DbElementType> sourceChildEts = _sourceElementTypesByElementKey[childEd.Key].ToList();
+
+            // iterate over the types in this source child element to try and find quantity-based mappings
+            foreach (DbElementType sourceChildElementType in sourceChildEts)
+            {
+                if (sourceChildElementType.TypeStructureKey is null)
+                {
+                    continue;
+                }
+
+                // resolve a source structure for current type
+                DbStructureDefinition? sourceCETSd = DbStructureDefinition.SelectSingle(
+                    _db,
+                    FhirPackageKey: _packagePair.SourcePackageKey,
+                    Key: sourceChildElementType.TypeStructureKey);
+
+                if (sourceCETSd is null)
+                {
+                    throw new Exception(
+                        $"Cannot find structure definition for source child element type `{sourceChildElementType.Literal}`" +
+                        $" (key {sourceChildElementType.Key}) in package key {_packagePair.SourcePackageKey}");
+                }
+
+                // iterate over any potential matches
+                foreach ((DbElement targetEd, DbElementType targetType) in targetTypes)
+                {
+                    if (targetType.TypeStructureKey is null)
+                    {
+                        continue;
+                    }
+
+                    // resolve a target structure for the target type
+                    DbStructureDefinition? targetCETSd = DbStructureDefinition.SelectSingle(
+                        _db,
+                        FhirPackageKey: _packagePair.TargetPackageKey,
+                        Key: targetType.TypeStructureKey);
+
+                    if (targetCETSd is null)
+                    {
+                        throw new Exception(
+                            $"Cannot find structure definition for target child element type `{targetType.Literal}`" +
+                            $" (key {targetType.Key}) in package key {_packagePair.TargetPackageKey}");
+                    }
+
+                    // check for comparison between the structures
+                    DbStructureComparison? cetComparison = DbStructureComparison.SelectSingle(
+                        _db,
+                        SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                        SourceStructureKey: sourceCETSd.Key,
+                        TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                        TargetStructureKey: targetCETSd.Key);
+
+                    if ((cetComparison is not null) &&
+                        ((cetComparison.Relationship == CMR.Equivalent) || (cetComparison.Relationship == CMR.SourceIsNarrowerThanTarget)))
+                    {
+                        childElementIsMapped = true;
+                        result.ChildMappings[childEd.Key] = new ChildMappingInfo
+                        {
+                            ChildElement = childEd,
+                            TypeComparisons = validMappings,
+                            TargetElementKeys = [targetEd.Key],
+                        };
+
+                        continue;
+                    }
+
+                    // if there is no comparison, check to see if there is a mapping (primary first, then we'll check fallback)
+                    DbStructureMapping? cetMapping = DbStructureMapping.SelectSingle(
+                        _db,
+                        IsFallback: false,
+                        SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                        SourceStructureKey: sourceCETSd.Key,
+                        TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                        TargetStructureKey: targetCETSd.Key);
+
+                    cetMapping ??= DbStructureMapping.SelectSingle(
+                        _db,
+                        IsFallback: true,
+                        SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                        SourceStructureKey: sourceCETSd.Key,
+                        TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                        TargetStructureKey: targetCETSd.Key);
+
+                    if ((cetMapping is not null) &&
+                        ((cetMapping.Relationship == CMR.Equivalent) || (cetMapping.Relationship == CMR.SourceIsNarrowerThanTarget)))
+                    {
+                        childElementIsMapped = true;
+                        result.ChildMappings[childEd.Key] = new ChildMappingInfo
+                        {
+                            ChildElement = childEd,
+                            TypeComparisons = validMappings,
+                            TargetElementKeys = [targetEd.Key],
+                        };
+
+                        continue;
+                    }
+                }
+            }
+
+            if (!childElementIsMapped)
+            {
+                result.UnmappedChildren.Add(childEd);
+                continue;
+            }
+        }
+
+        // All children must be mapped for distributed mapping to work
+        result.AllChildrenMapped = (result.UnmappedChildren.Count == 0);
+
+        return result;
+    }
+
+    /// <summary>
+    /// Processes the results of child mapping checks and updates tracking accordingly.
+    /// </summary>
+    /// <param name="unmappedTypes">Dictionary of unmapped types (will be modified)</param>
+    /// <param name="childMappingResults">Results from checking child mappings</param>
+    /// <param name="elementTrackingRec">The tracking record to update with messages</param>
+    /// <param name="sourceElement">The source element being processed</param>
+    /// <returns>Set of unmapped type keys that were successfully handled via children</returns>
+    private HashSet<int> processChildMappingResults(
+        Dictionary<int, DbElementType> unmappedTypes,
+        List<ChildTypeMappingResult> childMappingResults,
+        ElementOutcomeTrackingRecord elementTrackingRec,
+        DbElement sourceElement)
+    {
+        HashSet<int> resolvedTypeKeys = [];
+
+        foreach (ChildTypeMappingResult cmr in childMappingResults)
+        {
+            if (!cmr.AllChildrenMapped)
+            {
+                // Not all children mapped - log what's missing if there are unmapped children
+                if (cmr.UnmappedChildren.Count > 0)
+                {
+                    elementTrackingRec.Messages.Add(
+                        $"Element `{sourceElement.Id}` has unmapped type `{cmr.SourceParentType.Literal}` -" +
+                        $" cannot distribute via children because the following children lack mappings:" +
+                        $" {string.Join(", ", cmr.UnmappedChildren.Select(uc => $"`{uc.Id}`"))}");
+                }
+                continue;
+            }
+
+            // All children are mapped - this is a successful distributed mapping
+
+            // Build a detailed message about the distribution
+            List<string> childMappingDescriptions = cmr.ChildMappings.Values
+                .Select(cmi =>
+                {
+                    // Get target element names
+                    List<string> targetNames = cmi.TargetElementKeys
+                        .Select(tek => _allTargetElements.TryGetValue(tek, out DbElement? te)
+                            ? te.Id
+                            : $"Unknown({tek})")
+                        .ToList();
+
+                    return $"`{cmi.ChildElement.Name}` -> {string.Join(", ", targetNames.Select(tn => $"`{tn}`"))}";
+                })
+                .ToList();
+
+            elementTrackingRec.Messages.Add(
+                $"Element `{sourceElement.Id}` has unmapped type `{cmr.SourceParentType.Literal}` -" +
+                $" type is distributed across target elements via child mappings:" +
+                $" {string.Join("; ", childMappingDescriptions)}");
+
+            // Remove from unmapped types using the CORRECT KEY (parent type key, not child type key)
+            if (unmappedTypes.Remove(cmr.SourceParentType.Key))
+            {
+                resolvedTypeKeys.Add(cmr.SourceParentType.Key);
+            }
+        }
+
+        return resolvedTypeKeys;
+    }
+
 }

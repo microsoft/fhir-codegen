@@ -355,7 +355,8 @@ public abstract class DbArtifactComparisonBase : DbComparisonBase
 
 
 [CgSQLiteTable(tableName: "ValueSetComparisons")]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceValueSetKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(TargetValueSetKey), nameof(Key))]
 public partial class DbValueSetComparison : DbArtifactComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
@@ -377,12 +378,13 @@ public partial class DbValueSetComparison : DbArtifactComparisonBase
 
 
     public required bool? CodeLiteralsAreIdentical { get; set; }
-
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptComparisons")]
 [CgSQLiteIndex(nameof(ValueSetComparisonKey))]
-[CgSQLiteIndex(nameof(SourceValueSetKey), nameof(TargetValueSetKey))]
+[CgSQLiteIndex(nameof(SourceValueSetKey), nameof(TargetConceptKey), nameof(Key))]
+[CgSQLiteIndex(nameof(SourceConceptKey), nameof(TargetValueSetKey), nameof(Key))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceFhirPackageKey))]
 public partial class DbValueSetConceptComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
@@ -822,6 +824,8 @@ public partial class DbElementTypeComparison : DbComparisonBase
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int SourceElementKey { get; set; }
 
+    public required string SourceElementId { get; set; }
+
     //[CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
     //public required int SourceCollatedTypeKey { get; set; }
 
@@ -831,9 +835,12 @@ public partial class DbElementTypeComparison : DbComparisonBase
     [CgSQLiteIgnore]
     public override int SourceContentKey { get => this.SourceElementTypeKey; set => this.SourceElementTypeKey = value; }
 
+    public required string SourceTypeLiteral { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int? TargetElementKey { get; set; }
+
+    public required string? TargetElementId { get; set; }
 
     //[CgSQLiteForeignKey(referenceTable: "CollatedTypes", referenceColumn: nameof(DbCollatedType.Key))]
     //public required int? TargetCollatedTypeKey { get; set; }
@@ -844,6 +851,7 @@ public partial class DbElementTypeComparison : DbComparisonBase
     [CgSQLiteIgnore]
     public override int? TargetContentKey { get => this.TargetElementTypeKey; set => this.TargetElementTypeKey = value; }
 
+    public required string? TargetTypeLiteral { get; set; }
 
     public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? TargetProfileRelationship { get; set; }
     public required string? TargetProfileMessage { get; set; }

@@ -163,6 +163,17 @@ public class StructureOutcomeGenerator
                 .ToList();
             if (structureComparisons.Count == 0)
             {
+                // create our structure no-map outcome
+                DbStructureOutcome noMapSdOutcome = createNoMapStructureOutcome(
+                    packagePair,
+                    sourceSd,
+                    structureOutcomeKey: null,
+                    structureComparisonKey: null,
+                    comments: null);
+
+                // create our element no-map outcomes
+                elementOutcomeGenerator.ProcessNoMapStructure(sourceSd, noMapSdOutcome);
+
                 continue;
             }
 
@@ -229,62 +240,36 @@ public class StructureOutcomeGenerator
                     string noMapComments;
                     if (sdTr.Messages.Count > 0)
                     {
-                        noMapComments = string.Join('\n', sdTr.Messages);
+                        noMapComments =
+                            $"FHIR {packagePair.SourceFhirSequence} `{sourceSd.Name}` does not map to" +
+                            $" FHIR {packagePair.TargetFhirSequence}." +
+                            $"\n{string.Join('\n', sdTr.Messages)}";
                     }
                     else
                     {
-                        noMapComments = sdTr.StructureComparison.UserMessage ?? sdTr.StructureComparison.TechnicalMessage ?? "TODO";
+                        noMapComments =
+                            $"FHIR {packagePair.SourceFhirSequence} `{sourceSd.Name}` does not map to" +
+                            $" FHIR {packagePair.TargetFhirSequence}.";
+                        if (sdTr.StructureComparison.TechnicalMessage is not null)
+                        {
+                            noMapComments += "\n" + sdTr.StructureComparison.TechnicalMessage;
+                        }
+                        if (sdTr.StructureComparison.UserMessage is not null)
+                        {
+                            noMapComments += "\n" + sdTr.StructureComparison.UserMessage;
+                        }
                     }
 
-                    // build our no-map outcome
-                    DbStructureOutcome noMapOutcome = new()
-                    {
-                        Key = sdTr.StructureOutcomeKey,
-                        StructureComparisonKey = sdTr.StructureComparison.Key,
+                    // create our no-map structure outcome
+                    DbStructureOutcome noMapSdOutcome = createNoMapStructureOutcome(
+                        packagePair,
+                        sourceSd,
+                        structureOutcomeKey: null,
+                        structureComparisonKey: null,
+                        comments: noMapComments);
 
-                        SourceFhirPackageKey = packagePair.SourcePackageKey,
-                        SourceFhirSequence = packagePair.SourceFhirSequence,
-                        SourceStructureKey = sourceSd.Key,
-                        SourceArtifactClass = sourceSd.ArtifactClass,
-                        TotalSourceCount = -1,
+                    // element outcomes have been created in the element outcome generator
 
-                        TargetFhirPackageKey = packagePair.TargetPackageKey,
-                        TargetFhirSequence = packagePair.TargetFhirSequence,
-                        TargetStructureKey = null,
-                        TargetArtifactClass = null,
-
-                        TotalTargetCount = discreteTargetCount,
-
-                        RequiresXVerDefinition = noMapSdRequiresXVer,
-
-                        IsRenamed = false,
-                        IsUnmapped = false,
-                        IsIdentical = false,
-                        IsEquivalent = false,
-                        IsBroaderThanTarget = false,
-                        IsNarrowerThanTarget = false,
-
-                        FullyMapsToThisTarget = false,
-                        FullyMapsAcrossAllTargets = sdTr.IsFullyMappedAcrossAllTargets,
-
-                        Comments = noMapComments,
-
-                        SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
-                        SourceCanonicalVersioned = sourceSd.VersionedUrl,
-                        SourceVersion = sourceSd.Version,
-                        SourceId = sourceSd.Id,
-                        SourceName = sourceSd.Name,
-                        TargetCanonicalUnversioned = null,
-                        TargetCanonicalVersioned = null,
-                        TargetVersion = null,
-                        TargetId = null,
-                        TargetName = null,
-                        PotentialGenLongId = idLong,
-                        //PotentialGenShortId = idShort,
-                        //PotentialGenUrl = url,
-                    };
-
-                    _sdOutcomeCache.CacheAdd(noMapOutcome);
                     continue;
                 }
 
@@ -319,11 +304,24 @@ public class StructureOutcomeGenerator
                 string comments;
                 if (sdTr.Messages.Count > 0)
                 {
-                    comments = string.Join('\n', sdTr.Messages);
+                    comments =
+                        $"FHIR {packagePair.SourceFhirSequence} `{sourceSd.Name}` is mapped to " +
+                        $" FHIR {packagePair.TargetFhirSequence} `{targetSd.Name}`." +
+                        $"\n{string.Join('\n', sdTr.Messages)}";
                 }
                 else
                 {
-                    comments = sdTr.StructureComparison.UserMessage ?? sdTr.StructureComparison.TechnicalMessage ?? "TODO";
+                    comments = 
+                        $"FHIR {packagePair.SourceFhirSequence} `{sourceSd.Name}` is mapped to " +
+                        $" FHIR {packagePair.TargetFhirSequence} `{targetSd.Name}`.";
+                    if (sdTr.StructureComparison.TechnicalMessage is not null)
+                    {
+                        comments += "\n" + sdTr.StructureComparison.TechnicalMessage;
+                    }
+                    if (sdTr.StructureComparison.UserMessage is not null)
+                    {
+                        comments += "\n" + sdTr.StructureComparison.UserMessage;
+                    }
                 }
 
                 // create our structure outcome
@@ -689,5 +687,76 @@ public class StructureOutcomeGenerator
 
             //}
         }
+    }
+
+    private DbStructureOutcome createNoMapStructureOutcome(
+        FhirPackageComparisonPair packagePair,
+        DbStructureDefinition sourceSd,
+        int? structureOutcomeKey,
+        int? structureComparisonKey,
+        string? comments)
+    {
+        (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(
+            packagePair.SourcePackageShortName,
+            sourceSd.Id,
+            packagePair.TargetPackageShortName);
+
+        string url = $"http://hl7.org/fhir/{packagePair.SourcePackageShortName}/StructureDefinition/{idLong}";
+
+        structureOutcomeKey ??= DbStructureOutcome.GetIndex();
+        comments ??=
+            $"FHIR {packagePair.SourceFhirSequence} `{sourceSd.Name}` does not map to" +
+            $" FHIR {packagePair.TargetFhirSequence}.";
+
+        // build our no-map outcome
+        DbStructureOutcome noMapOutcome = new()
+        {
+            Key = structureOutcomeKey!.Value,
+            StructureComparisonKey = structureComparisonKey,
+
+            SourceFhirPackageKey = packagePair.SourcePackageKey,
+            SourceFhirSequence = packagePair.SourceFhirSequence,
+            SourceStructureKey = sourceSd.Key,
+            SourceArtifactClass = sourceSd.ArtifactClass,
+            TotalSourceCount = -1,
+
+            TargetFhirPackageKey = packagePair.TargetPackageKey,
+            TargetFhirSequence = packagePair.TargetFhirSequence,
+            TargetStructureKey = null,
+            TargetArtifactClass = null,
+
+            TotalTargetCount = 0,
+
+            RequiresXVerDefinition = true,
+
+            IsRenamed = false,
+            IsUnmapped = false,
+            IsIdentical = false,
+            IsEquivalent = false,
+            IsBroaderThanTarget = false,
+            IsNarrowerThanTarget = false,
+
+            FullyMapsToThisTarget = false,
+            FullyMapsAcrossAllTargets = false,
+
+            Comments = comments,
+
+            SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
+            SourceCanonicalVersioned = sourceSd.VersionedUrl,
+            SourceVersion = sourceSd.Version,
+            SourceId = sourceSd.Id,
+            SourceName = sourceSd.Name,
+            TargetCanonicalUnversioned = null,
+            TargetCanonicalVersioned = null,
+            TargetVersion = null,
+            TargetId = null,
+            TargetName = null,
+            PotentialGenLongId = idLong,
+            //PotentialGenShortId = idShort,
+            //PotentialGenUrl = url,
+        };
+
+        _sdOutcomeCache.CacheAdd(noMapOutcome);
+        return noMapOutcome;
     }
 }
