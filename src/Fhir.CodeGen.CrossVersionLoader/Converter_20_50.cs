@@ -5,11 +5,14 @@
 
 using Hl7.Fhir.ElementModel;
 using Fhir.CodeGen.CrossVersionLoader.Convert_20_50;
+using Hl7.Fhir.Model;
 
 namespace Fhir.CodeGen.CrossVersionLoader;
 
 public class Converter_20_50
 {
+    internal FHIRVersion SourceFhirVersion => FHIRVersion.N1_0_2;
+
     internal PrimitiveExtractor _primitive;
     internal Address_20_50 _address;
     internal Age_20_50 _age;

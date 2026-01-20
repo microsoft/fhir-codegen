@@ -33,6 +33,8 @@ public class StructureDefinition_30_50 : ICrossVersionProcessor<StructureDefinit
         // ensure the root element has a base type and valid min/max values
         Normalization.VerifyRootElementType(v);
 
+        v.FhirVersion = _converter.SourceFhirVersion;
+
         return v;
 	}
 

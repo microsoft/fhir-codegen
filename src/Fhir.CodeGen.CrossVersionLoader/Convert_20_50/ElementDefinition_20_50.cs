@@ -221,7 +221,6 @@ public class ElementDefinition_20_50 : ICrossVersionProcessor<ElementDefinition>
             }
         }
 
-
         // note: we do not have IDs yet, but they will be generated at the StructureDefinition level
 
         return v;

@@ -24,7 +24,9 @@ public class CapabilityStatement_30_50 : ICrossVersionProcessor<CapabilityStatem
 			Process(child, v);
 		}
 
-		return v;
+        v.FhirVersion = _converter.SourceFhirVersion;
+
+        return v;
 	}
 
 	public void Process(ISourceNode node, CapabilityStatement current)

@@ -24,7 +24,9 @@ public class CapabilityStatement_20_50 : ICrossVersionProcessor<CapabilityStatem
 			Process(child, v);
 		}
 
-		return v;
+        v.FhirVersion = _converter.SourceFhirVersion;     // flag this resource is from DSTU2
+
+        return v;
 	}
 
 	public void Process(ISourceNode node, CapabilityStatement current)

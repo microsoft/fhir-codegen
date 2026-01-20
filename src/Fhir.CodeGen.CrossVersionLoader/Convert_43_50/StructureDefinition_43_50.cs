@@ -35,6 +35,8 @@ public class StructureDefinition_43_50 : ICrossVersionProcessor<StructureDefinit
         //// remove snapshots - we will rebuild them from the differentials later.
         //v.Snapshot = null;
 
+        v.FhirVersion = _converter.SourceFhirVersion;
+
         return v;
 	}
 

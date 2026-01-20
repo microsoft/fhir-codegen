@@ -3,13 +3,16 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using Hl7.Fhir.ElementModel;
 using Fhir.CodeGen.CrossVersionLoader.Convert_43_50;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Model;
 
 namespace Fhir.CodeGen.CrossVersionLoader;
 
 public class Converter_43_50
 {
+    internal FHIRVersion SourceFhirVersion => FHIRVersion.N4_3_0;
+
     internal PrimitiveExtractor _primitive;
     internal Address_43_50 _address;
     internal Age_43_50 _age;
