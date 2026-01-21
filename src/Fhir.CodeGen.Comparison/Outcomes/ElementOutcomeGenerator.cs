@@ -175,6 +175,18 @@ public class ElementOutcomeGenerator
         }
     }
 
+    private bool skipElement(
+        DbElement ed,
+        bool skipFirstElement = true,
+        bool skipIds = true,
+        bool skipExtensions = true,
+        bool skipModifierExtenions = true) =>
+            (skipFirstElement && (ed.ResourceFieldOrder == 0)) ||
+            (skipIds && ((ed.BasePath == "id") || (ed.BasePath == "Element.id") || (ed.BasePath == "Resource.id"))) ||
+            (skipExtensions && ((ed.Name == "extension") || (ed.FullCollatedTypeLiteral == "Extension"))) ||
+            (skipModifierExtenions &&
+                ((ed.Name == "modifierExtension") || (ed.BasePath == "DomainResource.modifierExtension") || (ed.BasePath == "BackboneElement.modifierExtension")));
+
     public void ProcessNoMapStructure(
         DbStructureDefinition sourceSd,
         DbStructureOutcome sdOutcome)
@@ -184,11 +196,15 @@ public class ElementOutcomeGenerator
             return;
         }
 
-        List<DbElement> sourceElements = _allSourceElementsBySdKey[sourceSd.Key].ToList();
+        // get the elements of this structure, but filter out elements we should ignore
+        List<DbElement> sourceElements = _allSourceElementsBySdKey[sourceSd.Key]
+            .Where(ed => !skipElement(ed, skipFirstElement: false))
+            .ToList();
 
         if (sourceElements.Count == 0)
         {
-            throw new Exception($"No elements found for structure `{sourceSd.Name}`");
+            // this is a special type like 'datatype', just itnore it
+            return;
         }
 
         DbElement rootEd = sourceElements[0];
@@ -206,7 +222,6 @@ public class ElementOutcomeGenerator
             string comments =
                 $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
                 $" since structure FHIR {_packagePair.SourceFhirSequence} is not mapped.";
-
 
             bool requiresXVerDefinition = true;
 
@@ -323,6 +338,7 @@ public class ElementOutcomeGenerator
         }
 
         Dictionary<int, DbElement> sourceElements = _allSourceElementsBySdKey[sourceSd.Key]
+            .Where(ed => !skipElement(ed, skipFirstElement: false))
             .ToDictionary(c => c.Key);
 
         //Dictionary<int, Dictionary<int, DbElement>> targetElementsBySdKey = [];
@@ -1285,12 +1301,9 @@ public class ElementOutcomeGenerator
             return result;
         }
 
-        // get the child elements of this type structure, but filter out elements we should ignore (root, id, extension)
+        // get the child elements of this type structure, but filter out elements we should ignore (root, id, extension, modifierExtension)
         List<DbElement> typeChildren = _allSourceElementsBySdKey[unmappedType.TypeStructureKey.Value]
-            .Where(ed =>
-                (ed.ResourceFieldOrder != 0) &&
-                (ed.Name != "id") &&
-                (ed.Name != "extension"))
+            .Where(ed => !skipElement(ed))
             .ToList();
 
         // if there are no meaningful child elements, this type can't be distributed
