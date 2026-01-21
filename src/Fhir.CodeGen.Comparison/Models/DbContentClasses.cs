@@ -398,6 +398,9 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
     public required bool IsModifier { get; set; }
     public required string? IsModifierReason { get; set; }
 
+    public string NameClean() => Name.EndsWith("[x]", StringComparison.Ordinal)
+        ? Name[..^3]
+        : Name;
 
     [CgSQLiteIgnore]
     public string UiDisplay

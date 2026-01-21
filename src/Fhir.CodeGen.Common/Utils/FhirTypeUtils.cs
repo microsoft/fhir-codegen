@@ -60,6 +60,9 @@ public static class FhirTypeUtils
     /// <returns>True if it succeeds, false if it fails.</returns>
     public static bool TryGetPrimitiveInfo(string fhirType, [NotNullWhen(true)] out FhirPrimitiveInfoRec rec) => _fhirPrimitiveInfo.TryGetValue(fhirType, out rec);
 
+    public static bool IsPrimitiveType(string fhirType) => _fhirPrimitiveInfo.ContainsKey(fhirType);
+
+
     /// <summary>Type from XML type.</summary>
     /// <param name="xmlType"> Type of the XML.</param>
     /// <param name="fhirType">[out] Type in FHIR.</param>
@@ -294,5 +297,4 @@ public static class FhirTypeUtils
 
         return !string.IsNullOrEmpty(fhirType);
     }
-
 }

@@ -21,6 +21,8 @@ public class StructureOutcomeGenerator
         public required DbStructureComparison StructureComparison { get; set; }
         public required DbStructureDefinition? TargetStructure { get; set; }
 
+        public DbElement? RootElement { get; set; } = null;
+
         public required int StructureOutcomeKey { get; set; }
 
         public List<DbElementOutcome> ElementOutcomes { get; set; } = [];
@@ -476,7 +478,7 @@ public class StructureOutcomeGenerator
             //                TotalTargetCount = -1,
 
             //                RequiresXVerDefinition = noMapSdRequiresXVer,
-            //                PartOfElementOutcomeKey = null,
+            //                AncestorElementOutcomeKey = null,
 
             //                IsRenamed = false,
             //                IsUnmapped = false,
@@ -645,7 +647,7 @@ public class StructureOutcomeGenerator
             //    //        TotalTargetCount = -1,
 
             //    //        RequiresXVerDefinition = elementRequiresXVer,
-            //    //        PartOfElementOutcomeKey = partOfXVerOutcomeKey,
+            //    //        AncestorElementOutcomeKey = partOfXVerOutcomeKey,
 
             //    //        IsRenamed = targetElement is null ? false : (sourceElement.Name != targetElement.Name),
             //    //        IsUnmapped = targetElement is null || elementComparison.NotMapped,

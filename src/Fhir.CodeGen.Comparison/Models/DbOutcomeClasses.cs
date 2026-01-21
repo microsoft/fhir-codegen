@@ -380,7 +380,7 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
 //[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceResourceOrder))]
-//[CgSQLiteIndex(nameof(StructureOutcomeKey), nameof(OutcomeAction), nameof(PartOfElementOutcomeKey), nameof(SourceResourceOrder))]
+//[CgSQLiteIndex(nameof(StructureOutcomeKey), nameof(OutcomeAction), nameof(AncestorElementOutcomeKey), nameof(SourceResourceOrder))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
@@ -422,8 +422,33 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     //public required int? ExtensionSubstitutionKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
-    public required int? PartOfElementOutcomeKey { get; set; }
+    public required int? AncestorElementOutcomeKey { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
+    public required int? ParentElementOutcomeKey { get; set; }
+
+    public required string? BasicElementEquivalent { get; set; }
+    public required bool SourceIsModifier { get; set; }
+    public required bool DefineAsModifier { get; set; }
+    public string? ExtensionContextsLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string> ExtensionContexts
+    {
+        get => ExtensionContextsLiteral is null
+            ? []
+            : ExtensionContextsLiteral.Split(',').ToList();
+
+        set
+        {
+            if (value.Count == 0)
+            {
+                ExtensionContextsLiteral = null;
+                return;
+            }
+
+            ExtensionContextsLiteral = string.Join(',', value);
+        }
+    }
 
     //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }

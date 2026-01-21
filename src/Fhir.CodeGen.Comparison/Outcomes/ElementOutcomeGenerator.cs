@@ -5,11 +5,16 @@ using System.Linq;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using Fhir.CodeGen.Common.Models;
+using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
+using Hl7.Fhir.Model;
 using Microsoft.Extensions.Logging;
+using Octokit;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Outcomes;
@@ -63,6 +68,7 @@ public class ElementOutcomeGenerator
     private ILogger _logger;
 
     private readonly FhirPackageComparisonPair _packagePair;
+    private readonly Dictionary<string, string?> _targetBasicElements;
 
     private readonly Dictionary<int, DbElement> _allSourceElements;
     private readonly ILookup<int, DbElement> _allSourceElementsBySdKey;
@@ -135,6 +141,38 @@ public class ElementOutcomeGenerator
         _edComparsionsBySourceStructureKey = _edComparisons.ToLookup(c => c.SourceStructureKey);
 
         _etcComparisonsBySourceElementKey = _etcComparisons.ToLookup(c => c.SourceElementKey);
+
+        _targetBasicElements = [];
+
+        // check for a basic structure
+        DbStructureDefinition? targetBasicResource = DbStructureDefinition.SelectSingle(
+            _db,
+            FhirPackageKey: _packagePair.TargetPackageKey,
+            Name: "Basic",
+            ArtifactClass: FhirArtifactClassEnum.Resource);
+        if (targetBasicResource != null)
+        {
+            // get the elements for this structure
+            List<DbElement> targetBasicElements = DbElement.SelectList(
+                _db,
+                StructureKey: targetBasicResource.Key,
+                orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+
+            // iterate over the elements
+            foreach (DbElement element in targetBasicElements)
+            {
+                // skip root, elements with empty paths, and `code` element
+                if ((element.ResourceFieldOrder == 0) ||
+                    string.IsNullOrEmpty(element.Path) ||
+                    element.Path.Equals("Basic.code", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                // add the path to the dictionary, but strip "Basic" from the front
+                _targetBasicElements.Add(element.Path.Substring(5), element.BasePath);
+            }
+        }
     }
 
     public void ProcessNoMapStructure(
@@ -156,12 +194,54 @@ public class ElementOutcomeGenerator
         DbElement rootEd = sourceElements[0];
         DbElementOutcome? rootEdOutcome = null;
 
+        Dictionary<int, DbElementOutcome> edKeyOutcomeLookup = [];
+
         // iterate over the source elements for this structure to create no-map outcomes
         foreach (DbElement sourceEd in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
         {
             (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
                 sourceEd.Id);
+
+            string comments =
+                $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
+                $" since structure FHIR {_packagePair.SourceFhirSequence} is not mapped.";
+
+
+            bool requiresXVerDefinition = true;
+
+            DbElementOutcome? parentOutcome = null;
+
+            if ((sourceEd.ParentElementKey is not null) &&
+                edKeyOutcomeLookup.TryGetValue(sourceEd.ParentElementKey!.Value, out DbElementOutcome? parentOutcomeValue))
+            {
+                parentOutcome = parentOutcomeValue;
+                requiresXVerDefinition = requiresXVerDefinition || parentOutcome.RequiresXVerDefinition;
+            }
+
+            List<string> contexts = [];
+
+            bool defineAsModifier = sourceEd.IsModifier;
+            if (sourceEd.ResourceFieldOrder == 0)
+            {
+                contexts.Add("Basic");
+            }
+            else if (parentOutcome is not null)
+            {
+                contexts.Add(parentOutcome.PotentialGenLongId ?? parentOutcome.SourceName);
+            }
+
+            // check to see if we are trying to define an extension onto basic that has a matching basic path
+            string? basicBasePath = null;
+            if (_targetBasicElements.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
+            {
+                requiresXVerDefinition = false;
+                comments +=
+                    $"\nElement matches Basic element path `{basicBasePath}`," +
+                    $" use that element instead.";
+                contexts = [];
+                parentOutcome = null;
+            }
 
             // create the non-mapped element outcome
             DbElementOutcome elementOutcome = new()
@@ -182,8 +262,13 @@ public class ElementOutcomeGenerator
                 TargetElementKey = sourceEd.Key,
                 TotalTargetCount = 0,
 
-                RequiresXVerDefinition = true,
-                PartOfElementOutcomeKey = rootEdOutcome?.Key,
+                RequiresXVerDefinition = requiresXVerDefinition,
+                AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
+                ParentElementOutcomeKey = requiresXVerDefinition ? parentOutcome?.Key : null,
+                SourceIsModifier = sourceEd.IsModifier,
+                DefineAsModifier = defineAsModifier,
+                ExtensionContexts = contexts,
+                BasicElementEquivalent = basicBasePath,
 
                 IsRenamed = false,
                 IsUnmapped = true,
@@ -195,9 +280,7 @@ public class ElementOutcomeGenerator
                 FullyMapsToThisTarget = false,
                 FullyMapsAcrossAllTargets = false,
 
-                Comments =
-                    $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
-                    $" since structure FHIR {_packagePair.SourceFhirSequence} is not mapped.",
+                Comments = comments,
 
                 SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
                 SourceCanonicalVersioned = sourceSd.VersionedUrl,
@@ -209,7 +292,7 @@ public class ElementOutcomeGenerator
                 TargetVersion = null,
                 TargetId = null,
                 TargetName = null,
-                PotentialGenLongId = rootEdOutcome is null ? idLong : sourceEd.Name,
+                PotentialGenLongId = parentOutcome is null ? idLong : sourceEd.NameClean(),
                 //PotentialGenShortId = idShort,
                 //PotentialGenUrl = extUrl,
             };
@@ -218,6 +301,8 @@ public class ElementOutcomeGenerator
             {
                 rootEdOutcome = elementOutcome;
             }
+
+            edKeyOutcomeLookup[sourceEd.Key] = elementOutcome;
 
             _edOutcomeCache.CacheAdd(elementOutcome);
         }
@@ -689,7 +774,7 @@ public class ElementOutcomeGenerator
             }
         }
 
-        Dictionary<(int sourceElementKey, int? targetStructureKey), (int outcomeKey, string id)> edKeyOutcomeLookup = [];
+        Dictionary<(int sourceElementKey, int? targetStructureKey), (DbElementOutcome outcome, DbElementOutcome? rootOutcome)> edKeyOutcomeLookup = [];
         Dictionary<int, DbElementOutcome> rootEdOutcomesBySdOutcomeKey = [];
 
         // iterate over our element tracking records to create outcomes
@@ -707,6 +792,11 @@ public class ElementOutcomeGenerator
             // iterate over the structure tracking records to create outcomes
             foreach (StructureOutcomeGenerator.StructureOutcomeTrackingRecord sdTr in structureTrackingRecords.Values)
             {
+                if (isRootElement)
+                {
+                    sdTr.RootElement = sourceEd;
+                }
+
                 sdTr.IsFullyMappedAcrossAllTargets = sdTr.IsFullyMappedAcrossAllTargets &&
                     edTr.IsFullyMappedAcrossAllTargets;
 
@@ -718,10 +808,49 @@ public class ElementOutcomeGenerator
                         continue;
                     }
 
+                    string noMapEdComments =
+                        $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
+                        $" since structure FHIR {_packagePair.SourceFhirSequence} is not mapped.";
+
+                    List<string> noMapContexts = [];
+
+                    int? noMapParentOutcomeKey = null;
+
+                    bool defineNoMapAsModifier = sourceEd.IsModifier;
                     DbElementOutcome? rootEdOutcome = null;
-                    if (!isRootElement)
+                    if (isRootElement)
                     {
+                        // no-map root elements can only go on `Basic`
+                        noMapContexts = ["Basic"];
+                        noMapParentOutcomeKey = null;
+                    }
+                    else
+                    {
+                        // no-map non-root elements are always part of the same full-resource structure
                         rootEdOutcomesBySdOutcomeKey.TryGetValue(sdTr.StructureOutcomeKey, out rootEdOutcome);
+
+                        if ((sourceEd.ParentElementKey is not null) &&
+                            edKeyOutcomeLookup.TryGetValue((sourceEd.ParentElementKey!.Value, sdTr.TargetStructure?.Key), out (DbElementOutcome outcome, DbElementOutcome? rootOutcome) po) &&
+                            po.outcome.RequiresXVerDefinition)
+                        {
+                            noMapParentOutcomeKey = po.outcome.Key;
+                            noMapContexts.Add(po.outcome.PotentialGenLongId ?? po.outcome.SourceName);
+                        }
+                    }
+
+                    bool requiresXVerDefinition = !edTr.IsFullyMappedAcrossAllTargets;
+
+                    // check to see if we are trying to define an extension onto basic that has a matching basic path
+                    string? basicBasePath = null;
+                    if (requiresXVerDefinition &&
+                        _targetBasicElements.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
+                    {
+                        requiresXVerDefinition = false;
+                        noMapEdComments +=
+                            $"\nElement matches Basic element path `{basicBasePath}`," +
+                            $" use that element instead.";
+                        noMapContexts = [];
+                        noMapParentOutcomeKey = null;
                     }
 
                     DbElementComparison? noMapElementComparison = elementComparisons
@@ -748,8 +877,13 @@ public class ElementOutcomeGenerator
 
                         ElementComparisonKey = noMapElementComparison?.Key ?? -1,
 
-                        RequiresXVerDefinition = !edTr.IsFullyMappedAcrossAllTargets,
-                        PartOfElementOutcomeKey = rootEdOutcome?.Key,
+                        RequiresXVerDefinition = requiresXVerDefinition,
+                        AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
+                        ParentElementOutcomeKey = requiresXVerDefinition ? noMapParentOutcomeKey : null,
+                        SourceIsModifier = sourceEd.IsModifier,
+                        DefineAsModifier = defineNoMapAsModifier,
+                        ExtensionContexts = noMapContexts,
+                        BasicElementEquivalent = basicBasePath,
 
                         IsRenamed = false,
                         IsUnmapped = false,
@@ -761,7 +895,7 @@ public class ElementOutcomeGenerator
                         FullyMapsToThisTarget = false,
                         FullyMapsAcrossAllTargets = edTr.IsFullyMappedAcrossAllTargets,
 
-                        Comments = edTr.Messages.Count > 0 ? string.Join('\n', edTr.Messages) : "TODO",
+                        Comments = noMapEdComments,
 
                         SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
                         SourceCanonicalVersioned = sourceSd.VersionedUrl,
@@ -773,7 +907,7 @@ public class ElementOutcomeGenerator
                         TargetVersion = null,
                         TargetId = null,
                         TargetName = null,
-                        PotentialGenLongId = rootEdOutcome is null ? idLong : sourceEd.Name,
+                        PotentialGenLongId = rootEdOutcome is null ? idLong : sourceEd.NameClean(),
                         //PotentialGenShortId = idShort,
                         //PotentialGenUrl = extUrl,
                     };
@@ -791,7 +925,7 @@ public class ElementOutcomeGenerator
                     _edOutcomeCache.CacheAdd(noMapEdOutcome);
                     edTr.ElementOutcomes.Add(noMapEdOutcome);
                     sdTr.ElementOutcomes.Add(noMapEdOutcome);
-                    edKeyOutcomeLookup.Add((sourceEd.Key, null), (noMapEdOutcome.Key, idLong));
+                    edKeyOutcomeLookup.Add((sourceEd.Key, null), (noMapEdOutcome, rootEdOutcome));
                     continue;
                 }
 
@@ -808,8 +942,8 @@ public class ElementOutcomeGenerator
                         ? null
                         : _allTargetElements[elementComparison.TargetElementKey.Value];
 
-                    int? partOfXVerOutcomeKey = null;
-                    string? partOfXVerOutcomeId = null;
+                    DbElementOutcome? ancestorOutcome = null;
+                    DbElementOutcome? parentOutcome = null;
 
                     if (!edTr.IsFullyMappedAcrossAllTargets)
                     {
@@ -820,30 +954,45 @@ public class ElementOutcomeGenerator
                         }
                     }
 
+                    string comments = edTr.Messages.Count > 0
+                        ? string.Join('\n', edTr.Messages)
+                        : elementComparison.TechnicalMessage ?? elementComparison.UserMessage ?? "TODO";
+
                     bool elementRequiresXVer = !edTr.IsFullyMappedAcrossAllTargets;
-                    if (elementRequiresXVer &&
-                        (sourceEd.ParentElementKey is not null) &&
-                        edKeyOutcomeLookup.TryGetValue((sourceEd.ParentElementKey!.Value, sdTr.TargetStructure.Key), out (int outcomeKey, string outcomeGenId) po))
+                    if ((sourceEd.ParentElementKey is not null) &&
+                        edKeyOutcomeLookup.TryGetValue((sourceEd.ParentElementKey!.Value, sdTr.TargetStructure.Key), out (DbElementOutcome outcome, DbElementOutcome? ancestor) po))
                     {
-                        partOfXVerOutcomeKey = po.outcomeKey;
-                        partOfXVerOutcomeId = po.outcomeGenId;
+                        parentOutcome = po.outcome.RequiresXVerDefinition ? po.outcome : null;
+                        ancestorOutcome = po.ancestor;
                     }
 
-                    string comments = edTr.Messages.Count > 0
-                            ? string.Join('\n', edTr.Messages)
-                            : elementComparison.TechnicalMessage ?? elementComparison.UserMessage ?? "TODO";
+                    // check for the current element not thinking it needs a definition, but the parent does
+                    if (!elementRequiresXVer && (parentOutcome is not null))
+                    {
+                        elementRequiresXVer = true;
+                    }
+
+                    if (parentOutcome is not null)
+                    {
+                        comments = $"Element `{sourceEd.Id}` is part of a definition because parent element `{parentOutcome.SourceId}` requires an extension.";
+                    }
 
                     bool fullyMapsToAllTargets = edTr.IsFullyMappedAcrossAllTargets;
                     bool fullyMapsToThisTarget = fullyMapsToAllTargets &&
                         (targetEd is not null) &&
                         edTr.MapsToIndividualTargets.Any(ec => ec.TargetElementKey == targetEd?.Key);
 
+                    List<string> contexts = [];
+                    List<DbElement> contextTargetElements = [];
+
+                    bool defineAsModifier = sourceEd.IsModifier;
+
                     // if this is the root element, force some values
                     if (isRootElement)
                     {
                         elementRequiresXVer = false;
-                        partOfXVerOutcomeKey = null;
-                        partOfXVerOutcomeKey = null;
+                        ancestorOutcome = null;
+                        parentOutcome = null;
                         comments =
                             $"FHIR {_packagePair.SourceFhirSequence} {sourceSd.ArtifactClass} `{sourceSd.Name}`" +
                             $" is representable via" +
@@ -853,6 +1002,195 @@ public class ElementOutcomeGenerator
                             (sdTr.StructureComparison.Relationship == CMR.Equivalent) ||
                             (sdTr.StructureComparison.Relationship == CMR.SourceIsNarrowerThanTarget);
                     }
+                    else if (elementRequiresXVer && (parentOutcome is not null))
+                    {
+                        contexts.Add(parentOutcome.PotentialGenLongId ?? parentOutcome.SourceName);
+                        DbElement? parentTargetElement = parentOutcome.TargetElementKey is null
+                            ? null
+                            : _allTargetElements[parentOutcome.TargetElementKey.Value];
+                        if (parentTargetElement is not null)
+                        {
+                            contextTargetElements.Add(parentTargetElement);
+                        }
+                    }
+                    else if (elementRequiresXVer)
+                    {
+                        // if we have a target element, that is the context we want
+                        if (targetEd is not null)
+                        {
+                            contexts.Add(targetEd.Id);
+                            contextTargetElements.Add(targetEd);
+                        }
+                        // if the source element is in the top level of the resource, we use the target resource as context
+                        else if (sourceEd.ParentElementKey == sdTr.RootElement?.Key)
+                        {
+                            contexts.Add(sdTr.TargetStructure.Name);
+                            if (sdTr.RootElement is not null)
+                            {
+                                contextTargetElements.Add(sdTr.RootElement);
+                            }
+                        }
+                        else
+                        {
+                            DbElement currentSourceEd = sourceEd;
+
+                            // need to walk up parent elements until we find something that can be used
+                            while (contexts.Count == 0)
+                            {
+                                if (currentSourceEd.ParentElementKey is null)
+                                {
+                                    // we reached the top without finding anything
+                                    contexts.Add(sdTr.TargetStructure.Name);
+                                    break;
+                                }
+
+                                currentSourceEd = _allSourceElements[currentSourceEd.ParentElementKey.Value];
+
+                                // check for any comparisons
+                                List<DbElementComparison> contextEdComparisons = _edComparsionsBySourceElementKey[currentSourceEd.Key]
+                                    .Where(ec => ec.TargetStructureKey == sdTr.TargetStructure.Key)
+                                    .ToList();
+
+                                if (contextEdComparisons.Count == 0)
+                                {
+                                    continue;
+                                }
+
+                                foreach (DbElementComparison contextEdComparison in contextEdComparisons)
+                                {
+                                    if (contextEdComparison.TargetElementId is not null)
+                                    {
+                                        contexts.Add(contextEdComparison.TargetElementId);
+                                        DbElement? contextTargetElement = contextEdComparison.TargetElementKey is null
+                                            ? null
+                                            : _allTargetElements[contextEdComparison.TargetElementKey.Value];
+                                        if (contextTargetElement is not null)
+                                        {
+                                            contextTargetElements.Add(contextTargetElement);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // if we need a context and failed to find one, add 'Element'
+                    if ((contexts.Count == 0) &&
+                        elementRequiresXVer &&
+                        (ancestorOutcome is null))
+                    {
+                        contexts.Add("Element");
+                    }
+
+                    // check to see if we are trying to define an extension onto basic that has a matching basic path
+                    string? basicBasePath = null;
+                    if (elementRequiresXVer &&
+                        _targetBasicElements.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
+                    {
+                        comments +=
+                            $"\nElement matches Basic element path `{basicBasePath}`," +
+                            $" use that element instead.";
+                        elementRequiresXVer = false;
+                        contexts = [];
+                        parentOutcome = null;
+                    }
+
+                    // if the source is a modifier, figure out if we can actually do that
+                    if (elementRequiresXVer && defineAsModifier)
+                    {
+                        /*
+                         * Determine if this extension should really be a modifier based on context:
+                         *  * Modifier element -> Modifier element : extension
+                         *  * Modifier element -> Backbone element (not modifier) : modifier extension
+                         *  * Modifier element -> Primitive-type element (not modifier) : modifier extension, context moves up a level
+                         *  * Modifier element -> Primitive-type element (array, not modifier) : currently unresolvable, but also has not happened yet
+                         */
+
+                        if (contextTargetElements.Count == 0)
+                        {
+                            bool promoted = false;
+                            if (parentOutcome is not null)
+                            {
+                                promoted = true;
+                                // need to promote the modifier to the parent context
+                                parentOutcome.DefineAsModifier = true;
+                                parentOutcome.Comments +=
+                                    $"\nNote that the child extension for element `{sourceEd.Name}`" +
+                                    $" is a modifier, so this extension needs to be defined as a modifier.";
+                            }
+
+                            if ((ancestorOutcome is not null) &&
+                                (ancestorOutcome.Key != parentOutcome?.Key))
+                            {
+                                promoted = true;
+                                // need to promote the modifier to the ancestor context
+                                ancestorOutcome.DefineAsModifier = true;
+                                ancestorOutcome.Comments +=
+                                    $"\nNote that the child extension for element `{sourceEd.Id}`" +
+                                    $" is a modifier, so this extension needs to be defined as a modifier.";
+                            }
+
+                            if (!promoted)
+                            {
+                                Console.Write("");
+                            }
+                        }
+                        else
+                        {
+                            // iterate over the context target elements
+                            foreach (DbElement ctxTargetEd in contextTargetElements)
+                            {
+                                // if this is a modifier element, we do not need to define as a modifier
+                                if (ctxTargetEd.IsModifier)
+                                {
+                                    defineAsModifier = false;
+                                    comments +=
+                                        $"\nNote that the target element context `{ctxTargetEd.Id}` is a modifier element," +
+                                        $" so this extension does not need to be defined as a modifier.";
+                                    break;
+                                }
+
+                                if (ctxTargetEd.ChildElementCount > 0)
+                                {
+                                    // this is okay - elements with children can have modifier extensions
+                                    continue;
+                                }
+
+                                // check to see if the element is or only has primitive types
+                                List<DbElementType> ctxTargetEdTypes = _targetElementTypesByElementKey.Contains(ctxTargetEd.Key)
+                                    ? _targetElementTypesByElementKey[ctxTargetEd.Key].ToList()
+                                    : [];
+
+                                if (ctxTargetEdTypes.All(ctxEt => FhirTypeUtils.IsPrimitiveType(ctxEt.TypeName ?? ctxEt.Literal)))
+                                {
+                                    // need to move up to a higher level
+                                    if (ctxTargetEd.ParentElementKey is null)
+                                    {
+                                        throw new Exception(
+                                            $"Cannot determine modifier extension context for source element `{sourceEd.Id}`" +
+                                            $" mapping to target primitive-type element `{ctxTargetEd.Id}`" +
+                                            $" because the target element has no parent to move up to.");
+                                    }
+
+                                    DbElement ctxTargetParentEd = _allTargetElements[ctxTargetEd.ParentElementKey.Value];
+                                    contexts.Remove(ctxTargetEd.Id);
+                                    contexts.Add(ctxTargetParentEd.Id);
+
+                                    comments += 
+                                        $"\nNote that the target element context `{ctxTargetEd.Id}` is a primitive-type element" +
+                                        $" and this extension needs to be defined as a modifier. The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
+                                }
+                            }
+                        }
+
+                    }
+
+                    string? targetCanonicalUnversioned = targetEd is null
+                        ? null
+                        : $"{sdTr.TargetStructure.UnversionedUrl}#{targetEd.Id}";
+                    string? targetCanonicalVersioned = targetCanonicalUnversioned is null
+                        ? null
+                        : $"{targetCanonicalUnversioned}|{sdTr.TargetStructure.Version ?? _packagePair.TargetPackage.PackageVersion}";
 
                     // create the mapped element outcome
                     DbElementOutcome elementOutcome = new()
@@ -874,7 +1212,12 @@ public class ElementOutcomeGenerator
                         TotalTargetCount = edTr.DiscreteTargetCount,
 
                         RequiresXVerDefinition = elementRequiresXVer,
-                        PartOfElementOutcomeKey = partOfXVerOutcomeKey,
+                        AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
+                        ParentElementOutcomeKey = elementRequiresXVer ? parentOutcome?.Key : null,
+                        SourceIsModifier = sourceEd.IsModifier,
+                        DefineAsModifier = defineAsModifier,
+                        ExtensionContexts = contexts,
+                        BasicElementEquivalent = basicBasePath,
 
                         IsRenamed = targetEd is null ? false : (sourceEd.Name != targetEd.Name),
                         IsUnmapped = targetEd is null || elementComparison.NotMapped,
@@ -893,12 +1236,12 @@ public class ElementOutcomeGenerator
                         SourceVersion = sourceSd.Version,
                         SourceId = sourceEd.Id,
                         SourceName = sourceEd.Name,
-                        TargetCanonicalUnversioned = null,
-                        TargetCanonicalVersioned = null,
-                        TargetVersion = null,
-                        TargetId = null,
-                        TargetName = null,
-                        PotentialGenLongId = partOfXVerOutcomeKey is null ? idLong : sourceEd.Name,
+                        TargetCanonicalUnversioned = targetCanonicalUnversioned,
+                        TargetCanonicalVersioned = targetCanonicalVersioned,
+                        TargetVersion = sdTr.TargetStructure.Version ?? _packagePair.TargetPackage.PackageVersion,
+                        TargetId = targetEd?.Id,
+                        TargetName = targetEd?.Name,
+                        PotentialGenLongId = parentOutcome is null ? idLong : sourceEd.NameClean(),
                         //PotentialGenShortId = extIdShort,
                         //PotentialGenUrl = extUrl,
                     };
@@ -910,7 +1253,7 @@ public class ElementOutcomeGenerator
                     {
                         edKeyOutcomeLookup.Add(
                             (sourceEd.Key, sdTr.TargetStructure.Key),
-                            (partOfXVerOutcomeKey ?? elementOutcome.Key, elementOutcome.PotentialGenLongId));
+                            (elementOutcome, ancestorOutcome));
                     }
                 }
             }
