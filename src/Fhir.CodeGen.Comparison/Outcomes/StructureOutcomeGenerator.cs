@@ -269,7 +269,6 @@ public class StructureOutcomeGenerator
                         comments: noMapComments);
 
                     // element outcomes have been created in the element outcome generator
-
                     continue;
                 }
 

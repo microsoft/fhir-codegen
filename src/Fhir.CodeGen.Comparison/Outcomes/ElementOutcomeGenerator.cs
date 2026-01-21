@@ -209,7 +209,7 @@ public class ElementOutcomeGenerator
                 TargetVersion = null,
                 TargetId = null,
                 TargetName = null,
-                PotentialGenLongId = rootEdOutcome?.PotentialGenLongId ?? idLong,
+                PotentialGenLongId = rootEdOutcome is null ? idLong : sourceEd.Name,
                 //PotentialGenShortId = idShort,
                 //PotentialGenUrl = extUrl,
             };
@@ -251,7 +251,7 @@ public class ElementOutcomeGenerator
         Dictionary<int, ElementOutcomeTrackingRecord> elementTrackingRecords = [];
 
         // iterate over the source elements for this structure to determine mapping completeness
-        foreach (DbElement sourceEd in sourceElements.Values)
+        foreach (DbElement sourceEd in sourceElements.Values.OrderBy(ed => ed.ResourceFieldOrder))
         {
             // get the all comparisons for this element to the target FHIR package
             List<DbElementComparison> elementComparisons = _edComparsionsBySourceElementKey[sourceEd.Key]
@@ -690,6 +690,7 @@ public class ElementOutcomeGenerator
         }
 
         Dictionary<(int sourceElementKey, int? targetStructureKey), (int outcomeKey, string id)> edKeyOutcomeLookup = [];
+        Dictionary<int, DbElementOutcome> rootEdOutcomesBySdOutcomeKey = [];
 
         // iterate over our element tracking records to create outcomes
         foreach (ElementOutcomeTrackingRecord edTr in elementTrackingRecords.Values.OrderBy(etr => etr.SourceElement.ResourceFieldOrder))
@@ -717,6 +718,12 @@ public class ElementOutcomeGenerator
                         continue;
                     }
 
+                    DbElementOutcome? rootEdOutcome = null;
+                    if (!isRootElement)
+                    {
+                        rootEdOutcomesBySdOutcomeKey.TryGetValue(sdTr.StructureOutcomeKey, out rootEdOutcome);
+                    }
+
                     DbElementComparison? noMapElementComparison = elementComparisons
                         .FirstOrDefault(ec => ec.TargetStructureKey is null);
                         //?? throw new Exception($"Non-mapped {sdTr.SourceStructure.Name} element {sourceEd.Id} has no non-mapped comparison!");
@@ -742,7 +749,7 @@ public class ElementOutcomeGenerator
                         ElementComparisonKey = noMapElementComparison?.Key ?? -1,
 
                         RequiresXVerDefinition = !edTr.IsFullyMappedAcrossAllTargets,
-                        PartOfElementOutcomeKey = null,
+                        PartOfElementOutcomeKey = rootEdOutcome?.Key,
 
                         IsRenamed = false,
                         IsUnmapped = false,
@@ -766,7 +773,7 @@ public class ElementOutcomeGenerator
                         TargetVersion = null,
                         TargetId = null,
                         TargetName = null,
-                        PotentialGenLongId = idLong,
+                        PotentialGenLongId = rootEdOutcome is null ? idLong : sourceEd.Name,
                         //PotentialGenShortId = idShort,
                         //PotentialGenUrl = extUrl,
                     };
@@ -777,6 +784,8 @@ public class ElementOutcomeGenerator
                         noMapEdOutcome.Comments =
                             $"FHIR {_packagePair.SourceFhirSequence} {sdTr.SourceStructure.ArtifactClass} `{sourceSd.Name}`" +
                             $" has no mapping to FHIR {_packagePair.TargetFhirSequence}.";
+
+                        rootEdOutcomesBySdOutcomeKey[sdTr.StructureOutcomeKey] = noMapEdOutcome;
                     }
 
                     _edOutcomeCache.CacheAdd(noMapEdOutcome);
@@ -889,7 +898,7 @@ public class ElementOutcomeGenerator
                         TargetVersion = null,
                         TargetId = null,
                         TargetName = null,
-                        PotentialGenLongId = partOfXVerOutcomeId ?? idLong,
+                        PotentialGenLongId = partOfXVerOutcomeKey is null ? idLong : sourceEd.Name,
                         //PotentialGenShortId = extIdShort,
                         //PotentialGenUrl = extUrl,
                     };

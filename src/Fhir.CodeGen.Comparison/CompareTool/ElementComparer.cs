@@ -117,22 +117,22 @@ public class ElementComparer
             elementTypeComparisonCache);
     }
 
-    internal List<DbElementComparison> DoTransitiveElementComparisons(StructureComparisonTrackingRecord trackingRecord)
+    internal List<DbElementComparison> DoTransitiveElementComparisons(StructureComparisonTrackingRecord sdTr)
     {
-        if (trackingRecord.ComparisonSteps.Count == 0)
+        if (sdTr.ComparisonSteps.Count == 0)
         {
             throw new Exception("Cannot build transitive comparisons without comparison steps!");
         }
 
         List<DbElementComparison> elementComparisons = [];
 
-        int sourceIndex = trackingRecord.SourcePackage.PackageArrayIndex;
-        int targetIndex = trackingRecord.TargetPackage.PackageArrayIndex;
+        int sourceIndex = sdTr.SourcePackage.PackageArrayIndex;
+        int targetIndex = sdTr.TargetPackage.PackageArrayIndex;
         int increment = sourceIndex < targetIndex ? 1 : -1;
 
         // get element comparisons for each step, keyed by StructureComparisonKey
         Dictionary<int, List<DbElementComparison>> stepElementComparisons = [];
-        foreach (DbStructureComparison sdCompStep in trackingRecord.ComparisonSteps)
+        foreach (DbStructureComparison sdCompStep in sdTr.ComparisonSteps)
         {
             List<DbElementComparison> currentStepComparisons = DbElementComparison.SelectList(
                 _db,
@@ -143,28 +143,53 @@ public class ElementComparer
         // get the initial source elements that are not extension or id elements
         List<DbElement> sourceElements = DbElement.SelectList(
             _db,
-            StructureKey: trackingRecord.SourceStructure.Key)
+            StructureKey: sdTr.SourceStructure.Key)
             .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
             .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
                 (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
             .ToList();
 
         // get the target elements that are not extension or id elements (if we have a target)
-        Dictionary<int, DbElement> targetElements = trackingRecord.TargetStructure is null
+        Dictionary<int, DbElement> targetElements = sdTr.TargetStructure is null
             ? []
-            : DbElement.SelectList(_db, StructureKey: trackingRecord.TargetStructure.Key)
+            : DbElement.SelectList(_db, StructureKey: sdTr.TargetStructure.Key)
                 .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
                 .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
                     (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
                 .ToDictionary(e => e.Key);
 
         // build a lookup from source element key to the first step's element comparisons
-        ILookup<int, DbElementComparison> firstStepBySourceElement = stepElementComparisons[trackingRecord.ComparisonSteps[0].Key]
+        ILookup<int, DbElementComparison> firstStepBySourceElement = stepElementComparisons[sdTr.ComparisonSteps[0].Key]
             .ToLookup(ec => ec.SourceElementKey);
 
         // iterate over each source element and follow it through the transitive steps
-        foreach (DbElement sourceElement in sourceElements)
+        foreach (DbElement sourceElement in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
         {
+            // check for no target structure
+            if (sdTr.TargetStructure is null)
+            {
+                int?[] contentKeys = new int?[6];
+                contentKeys[sourceIndex] = sourceElement.Key;
+
+                DbElementComparison noMapComparison = createElementComparison(
+                    sdTr,
+                    sourceElement,
+                    targetElement: null,
+                    elementComparisonKey: DbElementComparison.GetIndex(),
+                    relationship: null,
+                    cdRelationship: null,
+                    vdRelationship: null,
+                    technicalMessage: null,
+                    userMessage: null,
+                    contentStepKeys: contentKeys,
+                    boundVsComparison: null,
+                    typeComparison: null);
+
+                _elementComparisonCache.CacheAdd(noMapComparison);
+                elementComparisons.Add(noMapComparison);
+                continue;
+            }
+
             // get the initial element comparisons for this source element
             List<DbElementComparison> initialComparisons = firstStepBySourceElement[sourceElement.Key].ToList();
 
@@ -175,7 +200,7 @@ public class ElementComparer
                 contentKeys[sourceIndex] = sourceElement.Key;
 
                 DbElementComparison noMapComparison = createElementComparison(
-                    trackingRecord,
+                    sdTr,
                     sourceElement,
                     targetElement: null,
                     elementComparisonKey: DbElementComparison.GetIndex(),
@@ -208,9 +233,9 @@ public class ElementComparer
                 .ToList();
 
             // process subsequent steps
-            for (int step = 1; step < trackingRecord.ComparisonSteps.Count; step++)
+            for (int step = 1; step < sdTr.ComparisonSteps.Count; step++)
             {
-                DbStructureComparison stepComparison = trackingRecord.ComparisonSteps[step];
+                DbStructureComparison stepComparison = sdTr.ComparisonSteps[step];
                 List<DbElementComparison> stepElements = stepElementComparisons[stepComparison.Key];
                 ILookup<int, DbElementComparison> stepBySourceElement = stepElements.ToLookup(ec => ec.SourceElementKey);
 
@@ -293,14 +318,14 @@ public class ElementComparer
                 int elementComparisonKey = DbElementComparison.GetIndex();
 
                 ElementTypeComparer.ElementTypeComparisonTrackingRecord etr =  _elementTypeComparer.DoTypeComparisons(
-                    trackingRecord.PackagePair,
+                    sdTr.PackagePair,
                     sourceElement,
                     targetElement,
                     elementComparisonKey);
 
                 // build the element comparison db record
                 DbElementComparison elementComparison = createElementComparison(
-                    trackingRecord,
+                    sdTr,
                     sourceElement,
                     targetElement,
                     elementComparisonKey,
