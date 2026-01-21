@@ -689,139 +689,6 @@ public class ElementOutcomeGenerator
             }
         }
 
-        //// iterate over the comparisons for this source structure
-        //foreach ((int targetSdKey, StructureOutcomeGenerator.StructureOutcomeTrackingRecord structureTrackingRecord) in structureTrackingRecords)
-        //{
-        //    // ignore no-maps for this pass
-        //    if (structureTrackingRecord.TargetStructure is null)
-        //    {
-        //        continue;
-        //    }
-
-        //    DbStructureComparison structureComparison = structureTrackingRecord.StructureComparison;
-        //    DbStructureDefinition targetSd = structureTrackingRecord.TargetStructure;
-
-        //    Dictionary<int, DbElement> structureTargetElements = _allTargetElementsBySdKey[targetSd.Key]
-        //        .ToDictionary(c => c.Key);
-
-        //    // iterate over our source elements for this structure
-        //    foreach (ElementOutcomeTrackingRecord edTr in elementTrackingRecords.Values)
-        //    {
-        //        DbElement sourceEd = edTr.SourceElement;
-        //        List<DbElementComparison> elementComparisons = edTr.ElementComparisons;
-
-        //        // easy check for any single comparison that fully maps
-        //        List<DbElementComparison> fullyMappedComparisons = elementComparisons.Where(ec =>
-        //            (ec.IsIdentical == true) ||
-        //            (ec.Relationship == CMR.Equivalent) ||
-        //            (ec.Relationship == CMR.SourceIsNarrowerThanTarget))
-        //            .ToList();
-
-        //        if (fullyMappedComparisons.Count != 0)
-        //        {
-        //            fullyMappedElementsAllTargets.Add(sourceEd.Key);
-        //            foreach (DbElementComparison fmc in fullyMappedComparisons)
-        //            {
-        //                if (fmc.StructureComparisonKey != structureComparison.Key)
-        //                {
-        //                    continue;
-        //                }
-
-        //                structureTrackingRecord.Messages.Add(
-        //                    $"Element `{sourceEd.Id}` is fully mapped to target element `{structureTargetElements[fmc.TargetContentKey!.Value].Id}`");
-
-        //                break;
-        //            }
-
-        //            continue;
-        //        }
-
-        //        Dictionary<int, DbElement> currentTargetElements = [];
-        //        foreach (DbElementComparison ec in elementComparisons)
-        //        {
-        //            if (ec.TargetStructureKey is null)
-        //            {
-        //                continue;
-        //            }
-
-        //            DbElement targetEd = structureTargetElements[ec.TargetContentKey!.Value];
-        //            currentTargetElements[targetEd.Key] = targetEd;
-        //        }
-
-        //        // check the types to see if they map across all targets
-        //        Dictionary<int, DbElementType> sourceChildEts = _sourceElementTypesByElementKey[sourceEd.Key]
-        //            .ToDictionary(et => et.Key);
-
-        //        Dictionary<int, DbElementType> unmappedTypes = sourceChildEts
-        //            .Select(kvp => kvp)
-        //            .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-
-        //        List<DbElementTypeComparison> etComparisons = _etcComparisonsBySourceElementKey[sourceEd.Key]
-        //            .ToList();
-
-        //        foreach (DbElementTypeComparison etc in etComparisons)
-        //        {
-        //            if ((etc.IsIdentical == true) ||
-        //                (etc.Relationship == CMR.Equivalent) ||
-        //                (etc.Relationship == CMR.SourceIsNarrowerThanTarget))
-        //            {
-        //                unmappedTypes.Remove(etc.SourceElementTypeKey);
-        //                if (unmappedTypes.Count == 0)
-        //                {
-        //                    break;
-        //                }
-        //            }
-        //        }
-
-        //        // if we have no unmapped types, then this element is fully mapped across all targets
-        //        if (unmappedTypes.Count != 0)
-        //        {
-        //            string expandedMissingTypes = string.Join(
-        //                ", ",
-        //                unmappedTypes.Values.Select(et => $"`{et.Literal}`"));
-        //            structureTrackingRecord.Messages.Add(
-        //                $"Element `{sourceEd.Id}` mappings do not account for the following types: {expandedMissingTypes}");
-
-        //            // with unmapped types, there is no full mapping
-        //            continue;
-        //        }
-
-        //        // we only care about the bound value set if the strength is required
-        //        if (sourceEd.BindingValueSetKey is null)
-        //        {
-        //            bool isRequired = sourceEd.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required;
-
-        //            if (!isRequired)
-        //            {
-        //                isRequired = currentTargetElements.Values.Any(ted => ted.ValueSetBindingStrength == Hl7.Fhir.Model.BindingStrength.Required);
-        //            }
-
-        //            if (isRequired)
-        //            {
-        //                List<DbElementComparison> completeVsComparisons = elementComparisons.Where(ec =>
-        //                    (ec.BoundValueSetRelationship == CMR.Equivalent) ||
-        //                    (ec.BoundValueSetRelationship == CMR.SourceIsNarrowerThanTarget))
-        //                    .ToList();
-
-        //                if (completeVsComparisons.Count == 0)
-        //                {
-        //                    structureTrackingRecord.Messages.Add(
-        //                        $"Element `{sourceEd.Id}` mappings do not fully map the bound value set: `{sourceEd.BindingValueSet}`");
-
-        //                    // with unmapped types, there is no full mapping
-        //                    continue;
-        //                }
-        //            }
-        //        }
-
-        //        fullyMappedElementsAllTargets.Add(sourceEd.Key);
-        //        structureTrackingRecord.Messages.Add(
-        //            $"Element `{sourceEd.Id}` is fully mapped to across all target elements");
-        //    }
-
-        //    structureTrackingRecord.NumberFullyMappedToAllTargets = fullyMappedElementsAllTargets.Count;
-        //}
-
         Dictionary<(int sourceElementKey, int? targetStructureKey), (int outcomeKey, string id)> edKeyOutcomeLookup = [];
 
         // iterate over our element tracking records to create outcomes
@@ -836,21 +703,20 @@ public class ElementOutcomeGenerator
 
             bool isRootElement = sourceEd.ResourceFieldOrder == 0;
 
-
             // iterate over the structure tracking records to create outcomes
             foreach (StructureOutcomeGenerator.StructureOutcomeTrackingRecord sdTr in structureTrackingRecords.Values)
             {
-                // check for root elements - their behavior is different
-                if (sourceEd.ResourceFieldOrder == 0)
-                {
-
-                }
-
                 sdTr.IsFullyMappedAcrossAllTargets = sdTr.IsFullyMappedAcrossAllTargets &&
                     edTr.IsFullyMappedAcrossAllTargets;
 
                 if (sdTr.TargetStructure is null)
                 {
+                    // don't create element outcomes for unmapped primitive types - they are handled at the structure level
+                    if (sourceSd.ArtifactClass == Common.Models.FhirArtifactClassEnum.PrimitiveType)
+                    {
+                        continue;
+                    }
+
                     DbElementComparison? noMapElementComparison = elementComparisons
                         .FirstOrDefault(ec => ec.TargetStructureKey is null);
                         //?? throw new Exception($"Non-mapped {sdTr.SourceStructure.Name} element {sourceEd.Id} has no non-mapped comparison!");
@@ -905,6 +771,14 @@ public class ElementOutcomeGenerator
                         //PotentialGenUrl = extUrl,
                     };
 
+                    // if this is the root element, being a non-mapped structure includes changes
+                    if (isRootElement)
+                    {
+                        noMapEdOutcome.Comments =
+                            $"FHIR {_packagePair.SourceFhirSequence} {sdTr.SourceStructure.ArtifactClass} `{sourceSd.Name}`" +
+                            $" has no mapping to FHIR {_packagePair.TargetFhirSequence}.";
+                    }
+
                     _edOutcomeCache.CacheAdd(noMapEdOutcome);
                     edTr.ElementOutcomes.Add(noMapEdOutcome);
                     sdTr.ElementOutcomes.Add(noMapEdOutcome);
@@ -946,6 +820,31 @@ public class ElementOutcomeGenerator
                         partOfXVerOutcomeId = po.outcomeGenId;
                     }
 
+                    string comments = edTr.Messages.Count > 0
+                            ? string.Join('\n', edTr.Messages)
+                            : elementComparison.TechnicalMessage ?? elementComparison.UserMessage ?? "TODO";
+
+                    bool fullyMapsToAllTargets = edTr.IsFullyMappedAcrossAllTargets;
+                    bool fullyMapsToThisTarget = fullyMapsToAllTargets &&
+                        (targetEd is not null) &&
+                        edTr.MapsToIndividualTargets.Any(ec => ec.TargetElementKey == targetEd?.Key);
+
+                    // if this is the root element, force some values
+                    if (isRootElement)
+                    {
+                        elementRequiresXVer = false;
+                        partOfXVerOutcomeKey = null;
+                        partOfXVerOutcomeKey = null;
+                        comments =
+                            $"FHIR {_packagePair.SourceFhirSequence} {sourceSd.ArtifactClass} `{sourceSd.Name}`" +
+                            $" is representable via" +
+                            $" FHIR {_packagePair.TargetFhirSequence} {sdTr.TargetStructure.ArtifactClass} `{sdTr.TargetStructure.Name}`.";
+
+                        fullyMapsToThisTarget = (sdTr.StructureComparison.IsIdentical == true) ||
+                            (sdTr.StructureComparison.Relationship == CMR.Equivalent) ||
+                            (sdTr.StructureComparison.Relationship == CMR.SourceIsNarrowerThanTarget);
+                    }
+
                     // create the mapped element outcome
                     DbElementOutcome elementOutcome = new()
                     {
@@ -975,14 +874,10 @@ public class ElementOutcomeGenerator
                         IsBroaderThanTarget = elementComparison.Relationship == CMR.SourceIsBroaderThanTarget,
                         IsNarrowerThanTarget = elementComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
 
-                        FullyMapsToThisTarget = edTr.IsFullyMappedAcrossAllTargets &&
-                            (targetEd is not null) &&
-                            edTr.MapsToIndividualTargets.Any(ec => ec.TargetElementKey == targetEd?.Key),
-                        FullyMapsAcrossAllTargets = edTr.IsFullyMappedAcrossAllTargets,
+                        FullyMapsAcrossAllTargets = fullyMapsToAllTargets,
+                        FullyMapsToThisTarget = fullyMapsToThisTarget,
 
-                        Comments = edTr.Messages.Count > 0
-                            ? string.Join('\n', edTr.Messages)
-                            : elementComparison.TechnicalMessage ?? elementComparison.UserMessage ?? "TODO",
+                        Comments = comments,
 
                         SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
                         SourceCanonicalVersioned = sourceSd.VersionedUrl,
