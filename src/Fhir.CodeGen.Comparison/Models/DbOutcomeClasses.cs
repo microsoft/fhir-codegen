@@ -450,6 +450,150 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
         }
     }
 
+    public string? MappedTypeKeysLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<int> MappedTypeKeys
+    {
+        get => MappedTypeKeysLiteral is null
+            ? []
+            : MappedTypeKeysLiteral.Split(',').Select(x => int.Parse(x)).ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                MappedTypeKeysLiteral = null;
+                return;
+            }
+            MappedTypeKeysLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? MappedTypeNamesLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string> MappedTypeNames
+    {
+        get => MappedTypeNamesLiteral is null
+            ? []
+            : MappedTypeNamesLiteral.Split(',').ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                MappedTypeNamesLiteral = null;
+                return;
+            }
+            MappedTypeNamesLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? UnmappedTypeKeysLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<int> UnmappedTypeKeys
+    {
+        get => UnmappedTypeKeysLiteral is null
+            ? []
+            : UnmappedTypeKeysLiteral.Split(',').Select(x => int.Parse(x)).ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                UnmappedTypeKeysLiteral = null;
+                return;
+            }
+            UnmappedTypeKeysLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? UnmappedTypeNamesLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string> UnmappedTypeNames
+    {
+        get => UnmappedTypeNamesLiteral is null
+            ? []
+            : UnmappedTypeNamesLiteral.Split(',').ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                UnmappedTypeNamesLiteral = null;
+                return;
+            }
+            UnmappedTypeNamesLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? MappedTypeChildElementKeysLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<int> MappedTypeChildElementKeys
+    {
+        get => MappedTypeChildElementKeysLiteral is null
+            ? []
+            : MappedTypeChildElementKeysLiteral.Split(',').Select(x => int.Parse(x)).ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                MappedTypeChildElementKeysLiteral = null;
+                return;
+            }
+            MappedTypeChildElementKeysLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? MappedChildTypeElementNamesLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string> MappedChildTypeElementNames
+    {
+        get => MappedChildTypeElementNamesLiteral is null
+            ? []
+            : MappedChildTypeElementNamesLiteral.Split(',').ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                MappedChildTypeElementNamesLiteral = null;
+                return;
+            }
+            MappedChildTypeElementNamesLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? UnmappedTypeChildKeysLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<int> UnmappedTypeChildKeys
+    {
+        get => UnmappedTypeChildKeysLiteral is null
+            ? []
+            : UnmappedTypeChildKeysLiteral.Split(',').Select(x => int.Parse(x)).ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                UnmappedTypeChildKeysLiteral = null;
+                return;
+            }
+            UnmappedTypeChildKeysLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? UnmappedChildTypeNamesLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string> UnmappedChildTypeNames
+    {
+        get => UnmappedChildTypeNamesLiteral is null
+            ? []
+            : UnmappedChildTypeNamesLiteral.Split(',').ToList();
+        set
+        {
+            if (value.Count == 0)
+            {
+                UnmappedChildTypeNamesLiteral = null;
+                return;
+            }
+            UnmappedChildTypeNamesLiteral = string.Join(',', value);
+        }
+    }
+
     //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ConceptDomainRelationship { get; set; }
     //public required Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship? ValueDomainRelationship { get; set; }
 

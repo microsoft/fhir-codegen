@@ -1361,11 +1361,13 @@ public class FmlLoader
 
                         SourceFhirPackageKey = _sourcePackage.Key,
                         SourceFhirSequence = _sourcePackage.DefinitionFhirSequence,
+                        SourceStructureKey = sourceSd.Key,
                         SourceElementKey = sourceEd?.Key,
                         SourceElementId = sourceEd?.Id ?? sourcePath,
 
                         TargetFhirPackageKey = _targetPackage.Key,
                         TargetFhirSequence = _targetPackage.DefinitionFhirSequence,
+                        TargetStructureKey = targetSd.Key,
                         TargetElementKey = targetEd?.Key,
                         TargetElementId = targetEd?.Id ?? targetPath,
 

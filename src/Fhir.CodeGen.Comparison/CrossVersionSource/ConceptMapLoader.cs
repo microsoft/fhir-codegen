@@ -626,11 +626,13 @@ public class ConceptMapLoader
 
                             SourceFhirPackageKey = sourcePackage.Key,
                             SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
+                            SourceStructureKey = relevantMap.SourceStructureKey,
                             SourceElementKey = sourceElement?.Key,
                             SourceElementId = groupSourceElement.Code,
 
                             TargetFhirPackageKey = targetPackage.Key,
                             TargetFhirSequence = targetPackage.DefinitionFhirSequence,
+                            TargetStructureKey = relevantMap.TargetStructureKey,
                             TargetElementKey = null,
                             TargetElementId = null,
 
@@ -733,11 +735,13 @@ public class ConceptMapLoader
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
+                        SourceStructureKey = relevantMap.SourceStructureKey,
                         SourceElementKey = sourceElement?.Key,
                         SourceElementId = groupSourceElement.Code,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
+                        TargetStructureKey = relevantMap.TargetStructureKey,
                         TargetElementKey = targetElement?.Key,
                         TargetElementId = elementTarget.Code,
 

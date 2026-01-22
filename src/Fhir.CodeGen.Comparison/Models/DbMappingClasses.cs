@@ -160,15 +160,22 @@ public partial class DbStructureMapping : DbMappingArtifactBase
 [CgSQLiteTable(tableName: "ElementMappings")]
 [CgSQLiteIndex(nameof(StructureMappingKey), nameof(SourceElementKey), nameof(TargetElementKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceElementId), nameof(TargetElementId))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceElementId), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
 public partial class DbElementMapping : DbMappingBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureMappings", referenceColumn: nameof(DbStructureMapping.Key))]
     public required int? StructureMappingKey { get; set; }
 
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int SourceStructureKey { get; set; }
+
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int? SourceElementKey { get; set; }
 
     public required string SourceElementId { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
+    public required int? TargetStructureKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
     public required int? TargetElementKey { get; set; }

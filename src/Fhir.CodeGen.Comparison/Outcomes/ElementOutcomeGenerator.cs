@@ -34,7 +34,11 @@ public class ElementOutcomeGenerator
         public int DiscreteTargetCount { get; set; } = 0;
         public CMR? QuantityBasedRelationship { get; set; } = null;
         public CMR? BoundValueSetRelationship { get; set; } = null;
+        public List<DbElementType> MappedTypes { get; set; } = [];
+        public List<DbElementType> UnmappedTypes { get; set; } = [];
+        public List<ChildTypeMappingResult> ChildTypeMappingResults { get; set; } = [];
     }
+
     private class ChildTypeMappingResult
     {
         /// <summary>The parent source type being evaluated.</summary>
@@ -46,8 +50,11 @@ public class ElementOutcomeGenerator
         /// <summary>Mapping information for each child that has mappings.</summary>
         public required Dictionary<int, ChildMappingInfo> ChildMappings { get; set; } = [];
 
-        /// <summary>Child elements that lack valid type mappings.</summary>
-        public required List<DbElement> UnmappedChildren { get; set; } = [];
+        /// <summary>Child elements that have valid type mappings.</summary>
+        public required List<DbElement> MappedTypeChildren { get; set; } = [];
+
+        /// <summary>Child elements that do not have valid type mappings.</summary>
+        public required List<DbElement> UnmappedTypeChildren { get; set; } = [];
     }
 
     private class ChildMappingInfo
@@ -57,6 +64,9 @@ public class ElementOutcomeGenerator
 
         /// <summary>Valid type comparisons for this child.</summary>
         public required List<DbElementTypeComparison> TypeComparisons { get; set; } = [];
+
+        /// <summary>Child element mappings relevant to this mapping.</summary>
+        public required List<DbElementMapping> TypeChildMappings { get; set; } = [];
 
         /// <summary>Target element keys this child maps to.</summary>
         public required HashSet<int> TargetElementKeys { get; set; } = [];
@@ -68,7 +78,8 @@ public class ElementOutcomeGenerator
     private ILogger _logger;
 
     private readonly FhirPackageComparisonPair _packagePair;
-    private readonly Dictionary<string, string?> _targetBasicElements;
+    private readonly Dictionary<string, string?> _targetBasicElementPathLookup;
+    private readonly Dictionary<string, DbElement> _targetBasicElementsById;
 
     private readonly Dictionary<int, DbElement> _allSourceElements;
     private readonly ILookup<int, DbElement> _allSourceElementsBySdKey;
@@ -142,7 +153,8 @@ public class ElementOutcomeGenerator
 
         _etcComparisonsBySourceElementKey = _etcComparisons.ToLookup(c => c.SourceElementKey);
 
-        _targetBasicElements = [];
+        _targetBasicElementPathLookup = [];
+        _targetBasicElementsById = [];
 
         // check for a basic structure
         DbStructureDefinition? targetBasicResource = DbStructureDefinition.SelectSingle(
@@ -170,7 +182,8 @@ public class ElementOutcomeGenerator
                 }
 
                 // add the path to the dictionary, but strip "Basic" from the front
-                _targetBasicElements.Add(element.Path.Substring(5), element.BasePath);
+                _targetBasicElementPathLookup.Add(element.Path.Substring(5), element.BasePath);
+                _targetBasicElementsById.Add(element.Id, element);
             }
         }
     }
@@ -186,6 +199,34 @@ public class ElementOutcomeGenerator
             (skipExtensions && ((ed.Name == "extension") || (ed.FullCollatedTypeLiteral == "Extension"))) ||
             (skipModifierExtenions &&
                 ((ed.Name == "modifierExtension") || (ed.BasePath == "DomainResource.modifierExtension") || (ed.BasePath == "BackboneElement.modifierExtension")));
+
+    private static readonly char[] _literalSplitChars = [',', '(', ')', '[', ']'];
+
+    private bool canSourceMapToBasicElementType(
+        DbElement sourceEd,
+        DbElement targetEd)
+    {
+        string[] sourceBaseTypes = sourceEd.FullCollatedTypeLiteral
+            .Split(_literalSplitChars, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        HashSet<string> targetBaseTypes = targetEd.FullCollatedTypeLiteral
+            .Split(_literalSplitChars, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .ToHashSet();
+
+        foreach (string sbt in sourceBaseTypes)
+        {
+            if (sbt.Contains('/') || sbt.Contains(':'))
+            {
+                continue;
+            }
+
+            if (!targetBaseTypes.Contains(sbt))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public void ProcessNoMapStructure(
         DbStructureDefinition sourceSd,
@@ -215,13 +256,17 @@ public class ElementOutcomeGenerator
         // iterate over the source elements for this structure to create no-map outcomes
         foreach (DbElement sourceEd in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
         {
+            List<DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
+                .OrderBy(et => et.Literal)
+                .ToList();
+
             (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
                 sourceEd.Id);
 
             string comments =
                 $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
-                $" since structure FHIR {_packagePair.SourceFhirSequence} is not mapped.";
+                $" since FHIR {_packagePair.SourceFhirSequence} `{sourceSd.Name}` is not mapped.";
 
             bool requiresXVerDefinition = true;
 
@@ -246,16 +291,30 @@ public class ElementOutcomeGenerator
                 contexts.Add(parentOutcome.PotentialGenLongId ?? parentOutcome.SourceName);
             }
 
-            // check to see if we are trying to define an extension onto basic that has a matching basic path
+            // check to see if we are trying to define an extension onto basic that has a matching basic path and compatible type
             string? basicBasePath = null;
-            if (_targetBasicElements.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
+            if (_targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
+                _targetBasicElementsById.TryGetValue(basicBasePath!, out DbElement? basicEd))
             {
-                requiresXVerDefinition = false;
-                comments +=
-                    $"\nElement matches Basic element path `{basicBasePath}`," +
-                    $" use that element instead.";
-                contexts = [];
-                parentOutcome = null;
+                if (canSourceMapToBasicElementType(sourceEd, basicEd) &&
+                    (sourceEd.MinCardinality >= basicEd.MinCardinality) &&
+                    ((basicEd.MaxCardinality == -1) || (basicEd.MaxCardinality >= sourceEd.MaxCardinality)))
+                {
+                    requiresXVerDefinition = false;
+                    comments +=
+                        $"\nElement matches Basic element path `{basicBasePath}` and is compatible," +
+                        $" use that element instead.";
+                    contexts = [];
+                    parentOutcome = null;
+                }
+                else
+                {
+                    comments +=
+                        $"\nNote that the source element matches Basic element path `{basicBasePath}`," +
+                        $" but the definitions are not compatible" +
+                        $" (source: `{sourceEd.FullCollatedTypeLiteral}`:{sourceEd.FhirCardinalityString}" +
+                        $" -> basic: `{basicEd.FullCollatedTypeLiteral}`:{basicEd.FhirCardinalityString}).";
+                }
             }
 
             // create the non-mapped element outcome
@@ -294,6 +353,8 @@ public class ElementOutcomeGenerator
 
                 FullyMapsToThisTarget = false,
                 FullyMapsAcrossAllTargets = false,
+                UnmappedTypeKeys = sourceEts.Select(et => et.Key).ToList(),
+                UnmappedTypeNames = sourceEts.Select(et => et.Literal).ToList(),
 
                 Comments = comments,
 
@@ -354,6 +415,17 @@ public class ElementOutcomeGenerator
         // iterate over the source elements for this structure to determine mapping completeness
         foreach (DbElement sourceEd in sourceElements.Values.OrderBy(ed => ed.ResourceFieldOrder))
         {
+            // get all the source types for this element
+            Dictionary<int, DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
+                .ToDictionary(et => et.Key);
+
+            if ((sourceEts.Count == 0) &&
+                (sourceEd.BaseElementKey is not null))
+            {
+                sourceEts = _sourceElementTypesByElementKey[sourceEd.BaseElementKey!.Value]
+                    .ToDictionary(et => et.Key);
+            }
+
             // get the all comparisons for this element to the target FHIR package
             List<DbElementComparison> elementComparisons = _edComparsionsBySourceElementKey[sourceEd.Key]
                 .ToList();
@@ -401,6 +473,8 @@ public class ElementOutcomeGenerator
                     $"Element `{sourceEd.Id}` has fully-mapped types to individual targets:" +
                     $" {string.Join(", ", fullyMappedComparisons.Select(fmc => $"`{fmc.TargetElementId}`"))}");
 
+                elementTrackingRec.MappedTypes.AddRange(sourceEts.Values.OrderBy(et => et.Literal));
+
                 continue;
             }
 
@@ -420,10 +494,7 @@ public class ElementOutcomeGenerator
 
             elementTrackingRec.TargetElements = currentTargetElements;
 
-            // check the types to see if they map across all targets
-            Dictionary<int, DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
-                .ToDictionary(et => et.Key);
-
+            Dictionary<int, DbElementType> mappedTypes = [];
             Dictionary<int, DbElementType> unmappedTypes = sourceEts
                 .Select(kvp => kvp)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
@@ -436,6 +507,7 @@ public class ElementOutcomeGenerator
                 if ((etc.IsIdentical == true) ||
                     relationshipMaps(etc.Relationship))
                 {
+                    mappedTypes[etc.SourceElementTypeKey] = sourceEts[etc.SourceElementTypeKey];
                     unmappedTypes.Remove(etc.SourceElementTypeKey);
 
                     elementTrackingRec.Messages.Add(
@@ -447,6 +519,7 @@ public class ElementOutcomeGenerator
                     {
                         fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
+                        elementTrackingRec.MappedTypes.AddRange(mappedTypes.Values.OrderBy(et => et.Literal));
                         elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
                         elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
                         elementTrackingRec.Messages.Add(
@@ -534,11 +607,13 @@ public class ElementOutcomeGenerator
                                 $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
                                 $" with assumed equivalence based on profile and type matching.");
 
+                            mappedTypes[unmappedType.Key] = unmappedType;
                             unmappedTypes.Remove(unmappedType.Key);
                             if (unmappedTypes.Count == 0)
                             {
                                 fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
+                                elementTrackingRec.MappedTypes.Add(unmappedType);
                                 elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
                                 elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
                                 elementTrackingRec.Messages.Add(
@@ -590,11 +665,13 @@ public class ElementOutcomeGenerator
                                 $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
                                 $" with relationship {qComparison.Relationship}.");
 
+                            mappedTypes[unmappedType.Key] = unmappedType;
                             unmappedTypes.Remove(unmappedType.Key);
                             if (unmappedTypes.Count == 0)
                             {
                                 fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
+                                elementTrackingRec.MappedTypes.Add(unmappedType);
                                 elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
                                 elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
                                 elementTrackingRec.Messages.Add(
@@ -635,11 +712,13 @@ public class ElementOutcomeGenerator
                                 $" with relationship {qMapping.Relationship}" +
                                 $" (source ConceptMap: `{(qMapping.ConceptMapFilename ?? "-")}`, source FML: `{(qMapping.FmlFilename ?? "-")}`).");
 
+                            mappedTypes[unmappedType.Key] = unmappedType;
                             unmappedTypes.Remove(unmappedType.Key);
                             if (unmappedTypes.Count == 0)
                             {
                                 fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
+                                elementTrackingRec.MappedTypes.Add(unmappedType);
                                 elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
                                 elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
                                 elementTrackingRec.Messages.Add(
@@ -685,6 +764,8 @@ public class ElementOutcomeGenerator
                     elementTrackingRec,
                     sourceEd);
 
+                elementTrackingRec.ChildTypeMappingResults.AddRange(childMappingResults);
+
                 // if we resolved any types via children, log summary
                 if (resolvedViaChildren.Count > 0)
                 {
@@ -697,9 +778,11 @@ public class ElementOutcomeGenerator
             // if we still have unmapped types, then this element is not fully mapped across all targets
             if (unmappedTypes.Count != 0)
             {
+                elementTrackingRec.UnmappedTypes.AddRange(unmappedTypes.Values);
+
                 elementTrackingRec.Messages.Add(
                     $"Element `{sourceEd.Id}` does not fully map to targets:" +
-                    $" {string.Join(", ", fullyMappedComparisons.Select(fmc => $"`{fmc.TargetElementId}`"))}," +
+                    $" {string.Join(", ", currentTargetElements.Values.Select(te => $"`{te.Id}`"))}," +
                     $" because it does not account for source types:" +
                     $" {string.Join(", ", unmappedTypes.Values.Select(et => $"`{et.Literal}`"))}");
 
@@ -826,7 +909,7 @@ public class ElementOutcomeGenerator
 
                     string noMapEdComments =
                         $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
-                        $" since structure FHIR {_packagePair.SourceFhirSequence} is not mapped.";
+                        $" since FHIR {_packagePair.SourceFhirSequence} `{sourceSd.Name}` is not mapped.";
 
                     List<string> noMapContexts = [];
 
@@ -859,7 +942,7 @@ public class ElementOutcomeGenerator
                     // check to see if we are trying to define an extension onto basic that has a matching basic path
                     string? basicBasePath = null;
                     if (requiresXVerDefinition &&
-                        _targetBasicElements.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
+                        _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
                     {
                         requiresXVerDefinition = false;
                         noMapEdComments +=
@@ -910,6 +993,32 @@ public class ElementOutcomeGenerator
 
                         FullyMapsToThisTarget = false,
                         FullyMapsAcrossAllTargets = edTr.IsFullyMappedAcrossAllTargets,
+
+                        MappedTypeKeys = edTr.MappedTypes.Select(mt => mt.Key).ToList(),
+                        MappedTypeNames = edTr.MappedTypes.Select(mt => mt.Literal).ToList(),
+                        UnmappedTypeKeys = edTr.UnmappedTypes.Select(ut => ut.Key).ToList(),
+                        UnmappedTypeNames = edTr.UnmappedTypes.Select(ut => ut.Literal).ToList(),
+
+                        MappedTypeChildElementKeys = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.MappedTypeChildren)
+                            .Select(med => med.Key)
+                            .Distinct()
+                            .ToList(),
+                        MappedChildTypeElementNames = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.MappedTypeChildren)
+                            .Select(med => med.Name)
+                            .Distinct()
+                            .ToList(),
+                        UnmappedTypeChildKeys = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.UnmappedTypeChildren)
+                            .Select(ued => ued.Key)
+                            .Distinct()
+                            .ToList(),
+                        UnmappedChildTypeNames = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.UnmappedTypeChildren)
+                            .Select(ued => ued.Name)
+                            .Distinct()
+                            .ToList(),
 
                         Comments = noMapEdComments,
 
@@ -1101,7 +1210,7 @@ public class ElementOutcomeGenerator
                     // check to see if we are trying to define an extension onto basic that has a matching basic path
                     string? basicBasePath = null;
                     if (elementRequiresXVer &&
-                        _targetBasicElements.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
+                        _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath))
                     {
                         comments +=
                             $"\nElement matches Basic element path `{basicBasePath}`," +
@@ -1245,6 +1354,32 @@ public class ElementOutcomeGenerator
                         FullyMapsAcrossAllTargets = fullyMapsToAllTargets,
                         FullyMapsToThisTarget = fullyMapsToThisTarget,
 
+                        MappedTypeKeys = edTr.MappedTypes.Select(mt => mt.Key).ToList(),
+                        MappedTypeNames = edTr.MappedTypes.Select(mt => mt.Literal).ToList(),
+                        UnmappedTypeKeys = edTr.UnmappedTypes.Select(ut => ut.Key).ToList(),
+                        UnmappedTypeNames = edTr.UnmappedTypes.Select(ut => ut.Literal).ToList(),
+
+                        MappedTypeChildElementKeys = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.MappedTypeChildren)
+                            .Select(med => med.Key)
+                            .Distinct()
+                            .ToList(),
+                        MappedChildTypeElementNames = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.MappedTypeChildren)
+                            .Select(med => med.Name)
+                            .Distinct()
+                            .ToList(),
+                        UnmappedTypeChildKeys = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.UnmappedTypeChildren)
+                            .Select(ued => ued.Key)
+                            .Distinct()
+                            .ToList(),
+                        UnmappedChildTypeNames = edTr.ChildTypeMappingResults
+                            .SelectMany(ctr => ctr.UnmappedTypeChildren)
+                            .Select(ued => ued.Name)
+                            .Distinct()
+                            .ToList(),
+
                         Comments = comments,
 
                         SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
@@ -1279,30 +1414,31 @@ public class ElementOutcomeGenerator
     /// <summary>
     /// Determines if an unmapped source type can be fully represented through mappings of its child elements to target elements.
     /// </summary>
-    /// <param name="unmappedType">The source type that lacks a direct mapping</param>
-    /// <param name="sourceElement">The source element containing this type</param>
+    /// <param name="sourceEt">The source type that lacks a direct mapping</param>
+    /// <param name="sourceEd">The source element containing this type</param>
     /// <returns>Result indicating if all children are mapped and how</returns>
     private ChildTypeMappingResult checkChildElementMappings(
-        DbElementType unmappedType,
-        DbElement sourceElement,
+        DbElementType sourceEt,
+        DbElement sourceEd,
         Dictionary<int, DbElement> currentTargetElements)
     {
         ChildTypeMappingResult result = new()
         {
-            SourceParentType = unmappedType,
+            SourceParentType = sourceEt,
             AllChildrenMapped = false,
             ChildMappings = [],
-            UnmappedChildren = []
+            MappedTypeChildren = [],
+            UnmappedTypeChildren = []
         };
 
         // type must have a resolved structure to check children
-        if (unmappedType.TypeStructureKey is null)
+        if (sourceEt.TypeStructureKey is null)
         {
             return result;
         }
 
         // get the child elements of this type structure, but filter out elements we should ignore (root, id, extension, modifierExtension)
-        List<DbElement> typeChildren = _allSourceElementsBySdKey[unmappedType.TypeStructureKey.Value]
+        List<DbElement> typeChildren = _allSourceElementsBySdKey[sourceEt.TypeStructureKey.Value]
             .Where(ed => !skipElement(ed))
             .ToList();
 
@@ -1312,10 +1448,15 @@ public class ElementOutcomeGenerator
             return result;
         }
 
+        HashSet<int> targetStructureKeysHash = [];
+        HashSet<string> targetTypeLiterals = [];
+
         // build a list of target types and their elements (elements will be duplicated)
         List<(DbElement, DbElementType)> targetTypes = [];
         foreach (DbElement te in currentTargetElements.Values)
         {
+            targetStructureKeysHash.Add(te.StructureKey);
+
             if (!_targetElementTypesByElementKey.Contains(te.Key))
             {
                 continue;
@@ -1326,36 +1467,68 @@ public class ElementOutcomeGenerator
             foreach (DbElementType tet in currentTargetTypes)
             {
                 targetTypes.Add((te, tet));
+                targetTypeLiterals.Add(tet.Literal);
             }
         }
+
+        List<int> targetStructureKeys = targetStructureKeysHash.ToList();
 
         // iterate over the child elements to try and map the types
         foreach (DbElement childEd in typeChildren)
         {
+            // check to see if there is a source mapping that drilled into this type from the original source element
+            string typeChildId = $"{sourceEd.Id}.{childEd.Name}";
+            List<DbElementMapping> typeChildMappings = DbElementMapping.SelectList(
+                _db,
+                SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                SourceElementId: typeChildId,
+                TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                TargetStructureKeyValues: targetStructureKeys);
+
+            List<DbElementMapping> validTypeChildMappings = typeChildMappings
+                .Where(em => (em.Relationship == CMR.Equivalent) || (em.Relationship == CMR.SourceIsNarrowerThanTarget))
+                .ToList();
+
             // check for existing comparisons
             List<DbElementTypeComparison> childTypeComparisons = _etcComparisonsBySourceElementKey[childEd.Key].ToList();
 
             // find valid mappings (identical, equivalent, or source is narrower)
-            List<DbElementTypeComparison> validMappings = childTypeComparisons
+            List<DbElementTypeComparison> validComparisons = childTypeComparisons
                 .Where(etc =>
                     (etc.IsIdentical == true) ||
                     (etc.Relationship == CMR.Equivalent) ||
                     (etc.Relationship == CMR.SourceIsNarrowerThanTarget))
+                .Where(etc => (etc.TargetTypeLiteral is not null) && targetTypeLiterals.Contains(etc.TargetTypeLiteral))
                 .ToList();
 
-            // if we have valid mappings, use them
-            if (validMappings.Count > 0)
+            // if we have valid mappings or comparisons, use them
+            if ((validTypeChildMappings.Count > 0) ||
+                (validComparisons.Count > 0))
             {
-                // Track the child's mappings
-                HashSet<int> targetElementKeys = validMappings
-                    .Where(vm => vm.TargetElementKey.HasValue)
-                    .Select(vm => vm.TargetElementKey!.Value)
-                    .ToHashSet();
+                HashSet<int> targetElementKeys = [];
 
+                foreach (DbElementMapping tcm in validTypeChildMappings)
+                {
+                    if (tcm.TargetElementKey.HasValue)
+                    {
+                        targetElementKeys.Add(tcm.TargetElementKey.Value);
+                    }
+                }
+
+                foreach (DbElementTypeComparison vm in validComparisons)
+                {
+                    if (vm.TargetElementKey.HasValue)
+                    {
+                        targetElementKeys.Add(vm.TargetElementKey.Value);
+                    }
+                }
+
+                result.MappedTypeChildren.Add(childEd);
                 result.ChildMappings[childEd.Key] = new ChildMappingInfo
                 {
                     ChildElement = childEd,
-                    TypeComparisons = validMappings,
+                    TypeComparisons = validComparisons,
+                    TypeChildMappings = validTypeChildMappings,
                     TargetElementKeys = targetElementKeys
                 };
 
@@ -1365,7 +1538,7 @@ public class ElementOutcomeGenerator
             bool childElementIsMapped = false;
             List<DbElementType> sourceChildEts = _sourceElementTypesByElementKey[childEd.Key].ToList();
 
-            // iterate over the types in this source child element to try and find quantity-based mappings
+            // iterate over the types in this source child element to try and find type-based mappings
             foreach (DbElementType sourceChildElementType in sourceChildEts)
             {
                 if (sourceChildElementType.TypeStructureKey is null)
@@ -1419,10 +1592,12 @@ public class ElementOutcomeGenerator
                         ((cetComparison.Relationship == CMR.Equivalent) || (cetComparison.Relationship == CMR.SourceIsNarrowerThanTarget)))
                     {
                         childElementIsMapped = true;
+                        result.MappedTypeChildren.Add(childEd);
                         result.ChildMappings[childEd.Key] = new ChildMappingInfo
                         {
                             ChildElement = childEd,
-                            TypeComparisons = validMappings,
+                            TypeComparisons = validComparisons,
+                            TypeChildMappings = validTypeChildMappings,
                             TargetElementKeys = [targetEd.Key],
                         };
 
@@ -1450,10 +1625,12 @@ public class ElementOutcomeGenerator
                         ((cetMapping.Relationship == CMR.Equivalent) || (cetMapping.Relationship == CMR.SourceIsNarrowerThanTarget)))
                     {
                         childElementIsMapped = true;
+                        result.MappedTypeChildren.Add(childEd);
                         result.ChildMappings[childEd.Key] = new ChildMappingInfo
                         {
                             ChildElement = childEd,
-                            TypeComparisons = validMappings,
+                            TypeComparisons = validComparisons,
+                            TypeChildMappings = validTypeChildMappings,
                             TargetElementKeys = [targetEd.Key],
                         };
 
@@ -1462,15 +1639,19 @@ public class ElementOutcomeGenerator
                 }
             }
 
-            if (!childElementIsMapped)
+            if (childElementIsMapped)
             {
-                result.UnmappedChildren.Add(childEd);
+                result.MappedTypeChildren.Add(childEd);
+            }
+            else
+            {
+                result.UnmappedTypeChildren.Add(childEd);
                 continue;
             }
         }
 
         // All children must be mapped for distributed mapping to work
-        result.AllChildrenMapped = (result.UnmappedChildren.Count == 0);
+        result.AllChildrenMapped = (result.UnmappedTypeChildren.Count == 0);
 
         return result;
     }
@@ -1495,24 +1676,24 @@ public class ElementOutcomeGenerator
         {
             if (!cmr.AllChildrenMapped)
             {
-                // Not all children mapped - log what's missing if there are unmapped children
-                if (cmr.UnmappedChildren.Count > 0)
+                // still have unmapped
+                if (cmr.UnmappedTypeChildren.Count > 0)
                 {
                     elementTrackingRec.Messages.Add(
                         $"Element `{sourceElement.Id}` has unmapped type `{cmr.SourceParentType.Literal}` -" +
                         $" cannot distribute via children because the following children lack mappings:" +
-                        $" {string.Join(", ", cmr.UnmappedChildren.Select(uc => $"`{uc.Id}`"))}");
+                        $" {string.Join(", ", cmr.UnmappedTypeChildren.Select(uc => $"`{uc.Id}`"))}");
                 }
                 continue;
             }
 
-            // All children are mapped - this is a successful distributed mapping
+            // all children are mapped - this is a successful distributed mapping
 
-            // Build a detailed message about the distribution
+            // build a detailed message about the distribution
             List<string> childMappingDescriptions = cmr.ChildMappings.Values
                 .Select(cmi =>
                 {
-                    // Get target element names
+                    // get target element names
                     List<string> targetNames = cmi.TargetElementKeys
                         .Select(tek => _allTargetElements.TryGetValue(tek, out DbElement? te)
                             ? te.Id
@@ -1528,7 +1709,7 @@ public class ElementOutcomeGenerator
                 $" type is distributed across target elements via child mappings:" +
                 $" {string.Join("; ", childMappingDescriptions)}");
 
-            // Remove from unmapped types using the CORRECT KEY (parent type key, not child type key)
+            // remove from unmapped types using the CORRECT KEY (parent type key, not child type key)
             if (unmappedTypes.Remove(cmr.SourceParentType.Key))
             {
                 resolvedTypeKeys.Add(cmr.SourceParentType.Key);
