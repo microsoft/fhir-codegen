@@ -345,7 +345,7 @@ public partial class DbStructureDefinition : DbMetadataResource, IDbContentWithI
 [CgSQLiteIndex(nameof(StructureKey), nameof(Path))]
 [CgSQLiteIndex(nameof(StructureKey), nameof(ResourceFieldOrder))]
 [CgSQLiteIndex(nameof(ParentElementKey), nameof(ResourceFieldOrder))]
-[CgSQLiteIndex(nameof(BindingValueSetKey))]
+[CgSQLiteIndex(nameof(BindingValueSetKey), nameof(Id))]
 [CgSQLiteIndex(nameof(FhirPackageKey), nameof(Id))]
 public partial class DbElement : DbPackageContent, IDbContentWithId
 {

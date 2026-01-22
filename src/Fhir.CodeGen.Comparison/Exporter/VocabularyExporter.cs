@@ -112,6 +112,12 @@ public class VocabularyExporter
             _db,
             FhirPackageKey: igTr.PackagePair.SourcePackageKey);
 
+        // get the value set comparisons for this package pair
+        Dictionary<int, DbValueSetComparison> vsComparisons = DbValueSetComparison.SelectDict(
+            _db,
+            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey);
+
         // get the value set outcomes for this package pair that need exporting
         List<DbValueSetOutcome> vsOutcomes = DbValueSetOutcome.SelectList(
             _db,
@@ -150,6 +156,84 @@ public class VocabularyExporter
                 continue;
             }
 
+            List<DbValueSetConceptOutcome> nonGeneratedConceptOutcomes = DbValueSetConceptOutcome.SelectList(
+                _db,
+                ValueSetOutcomeKey: vsOutcome.Key,
+                RequiresXVerDefinition: false,
+                orderByProperties: [nameof(DbValueSetConceptOutcome.SourceSystem), nameof(DbValueSetConceptOutcome.SourceCode)]);
+
+            List<DbElement> sourceVsBoundElements = DbElement.SelectList(
+                _db,
+                BindingValueSetKey: sourceVs.Key,
+                orderByProperties: [nameof(DbElement.Id)]);
+
+            string? purpose = null;
+            if (igTr.PackagePair.Distance == 1)
+            {
+                purpose = $$$"""
+                    This value set is part of the cross-version definitions generated to support use of the
+                    value set `{{{sourceVs.VersionedUrl}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
+                    in cross-version extensions usable in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
+
+                    The source value set is bound to the following FHIR {{{igTr.PackagePair.SourceFhirSequence}}} elements:
+                    * {{{string.Join("\n* ", sourceVsBoundElements.Select(ed => $"`{ed.Id}`"))}}}
+
+                    The following concepts are not included in this cross-version definition because they have valid representations
+                    * {{{(nonGeneratedConceptOutcomes.Count == 0
+                        ? "_no concepts_"
+                        : string.Join("\n* ", nonGeneratedConceptOutcomes.Select(nco => $"`{nco.SourceSystem}#{nco.SourceCode}`")))}}}
+                    """;
+            }
+            else
+            {
+                string? mappingTrace = null;
+
+                if (vsComparisons.TryGetValue(vsOutcome.ComparisonKey, out DbValueSetComparison? vsComp))
+                {
+                    DbValueSet? r2Vs = vsComp.ContentKeyR2 is null
+                        ? null
+                        : DbValueSet.SelectSingle(_db, Key: vsComp.ContentKeyR2.Value);
+                    DbValueSet? r3Vs = vsComp.ContentKeyR3 is null
+                        ? null
+                        : DbValueSet.SelectSingle(_db, Key: vsComp.ContentKeyR3.Value);
+                    DbValueSet? r4Vs = vsComp.ContentKeyR4 is null
+                        ? null
+                        : DbValueSet.SelectSingle(_db, Key: vsComp.ContentKeyR4.Value);
+                    DbValueSet? r4bVs = vsComp.ContentKeyR4B is null
+                        ? null
+                        : DbValueSet.SelectSingle(_db, Key: vsComp.ContentKeyR4B.Value);
+                    DbValueSet? r5Vs = vsComp.ContentKeyR5 is null
+                        ? null
+                        : DbValueSet.SelectSingle(_db, Key: vsComp.ContentKeyR5.Value);
+                    DbValueSet? r6Vs = vsComp.ContentKeyR6 is null
+                        ? null
+                        : DbValueSet.SelectSingle(_db, Key: vsComp.ContentKeyR6.Value);
+
+                    List<DbValueSet?> contentPath = (igTr.PackagePair.SourceFhirSequence < igTr.PackagePair.TargetFhirSequence)
+                        ? [r2Vs, r3Vs, r4Vs, r4bVs, r5Vs, r6Vs]
+                        : [r6Vs, r5Vs, r4bVs, r4Vs, r3Vs, r2Vs];
+
+                    mappingTrace = "* " + string.Join("\n* ", contentPath.Where(vs => vs is not null).Select(vs => $"`{vs!.VersionedUrl}`"));
+                }
+
+                purpose = $$$"""
+                    This value set is part of the cross-version definitions generated to support use of the
+                    value set `{{{sourceVs.VersionedUrl}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
+                    in cross-version extensions usable in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
+
+                    The source value set is bound to the following FHIR {{{igTr.PackagePair.SourceFhirSequence}}} elements:
+                    * {{{string.Join("\n* ", sourceVsBoundElements.Select(ed => $"`{ed.Id}` as {ed.ValueSetBindingStrength}"))}}}
+
+                    Across FHIR versions, the value set has been mapped as:
+                    {{{mappingTrace}}}
+
+                    The following concepts are not included in this cross-version definition because they have valid representations
+                    * {{{(nonGeneratedConceptOutcomes.Count == 0
+                        ? "_no concepts_"
+                        : string.Join("\n* ", nonGeneratedConceptOutcomes.Select(nco => $"`{nco.SourceSystem}#{nco.SourceCode}`")))}}}
+                    """;
+            }
+
             // create our vs
             ValueSet fhirVs = new()
             {
@@ -167,6 +251,7 @@ public class VocabularyExporter
                     ? $"This cross-version ValueSet represents content from `{sourceVs.VersionedUrl}` for use in FHIR {igTr.PackagePair.TargetFhirSequence}."
                     : $"This cross-version ValueSet represents content from {sourceVs.VersionedUrl} for use in FHIR {igTr.PackagePair.TargetFhirSequence}" +
                         $" that is appropriate for use but unavailable in `{targetVs.VersionedUrl}`.",
+                Purpose = purpose,
                 Compose = new()
                 {
                     Include = [],
