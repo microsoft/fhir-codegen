@@ -23,7 +23,7 @@ public class OutcomeGenerator
         ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<FhirDbComparer>();
+        _logger = loggerFactory.CreateLogger<OutcomeGenerator>();
 
         _db = db.DbConnection;
     }

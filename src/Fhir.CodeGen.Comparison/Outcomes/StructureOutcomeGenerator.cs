@@ -48,7 +48,7 @@ public class StructureOutcomeGenerator
         ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<FhirDbComparer>();
+        _logger = loggerFactory.CreateLogger<StructureOutcomeGenerator>();
 
         _db = db;
 

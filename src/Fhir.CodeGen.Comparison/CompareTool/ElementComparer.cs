@@ -106,7 +106,7 @@ public class ElementComparer
         List<DbFhirPackage> packages)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<FhirDbComparer>();
+        _logger = loggerFactory.CreateLogger<ElementComparer>();
         _db = db;
         _elementComparisonCache = elementComparisonCache;
         _elementTypeComparisonCache = elementTypeComparisonCache;

@@ -272,6 +272,8 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
 
 
 [CgSQLiteTable(tableName: "ValueSetOutcomes")]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(PotentialGenLongId), nameof(RequiresXVerDefinition))]
 public partial class DbValueSetOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
@@ -300,6 +302,8 @@ public partial class DbValueSetOutcome : DbArtifactOutcomeBase
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptOutcomes")]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(ValueSetOutcomeKey), nameof(RequiresXVerDefinition), nameof(SourceSystem), nameof(SourceCode))]
 public partial class DbValueSetConceptOutcome : DbOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetOutcomes", referenceColumn: nameof(DbValueSetOutcome.Key))]

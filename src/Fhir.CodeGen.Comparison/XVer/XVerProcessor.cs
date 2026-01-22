@@ -23,6 +23,7 @@ using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.CrossVersionSource;
+using Fhir.CodeGen.Comparison.Exporter;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.Outcomes;
 using Fhir.CodeGen.Lib.Configuration;
@@ -270,10 +271,16 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
-                GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
+                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes();
 
-                //WriteFhirFromDbOutcomes();
+                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
+                ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
+                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
+                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
+                //ExportOutcomes(includeIgScripts: false);
+                //ExportOutcomes();
+
                 break;
 
             case "update-vs-maps":
@@ -492,10 +499,60 @@ public partial class XVerProcessor
         //dbComparer.BuildComparisonPairs(artifactFilter, _config.ComparisonPairFilterKeys);
     }
 
-    /// <summary>
-    /// Runs the comparison process in the loaded database, can filter by artifact type.
-    /// </summary>
-    /// <param name="artifactFilter">Optional artifact type filter.</param>
+    public void ExportOutcomes(
+        FhirArtifactClassEnum? artifactFilter = null,
+        int? maxStepSize = null,
+        bool? includeIgScripts = null)
+    {
+        if (_db is null)
+        {
+            LoadDatabase(false, false);
+        }
+
+        if (_db is null)
+        {
+            throw new Exception("Cannot export outcomes without a loaded database!");
+        }
+
+        XVerExporter exporter = new(
+            _db.DbConnection,
+            _config.LogFactory,
+            _config.OutputDirectory,
+            _config.CrossVersionMapSourcePath,
+            _config.XverArtifactVersion);
+        switch (artifactFilter)
+        {
+            case FhirArtifactClassEnum.CodeSystem:
+            case FhirArtifactClassEnum.ValueSet:
+                exporter.Export(
+                    includeIgScripts: includeIgScripts ?? _config.XverIncludeScripts,
+                    processVocabulary: true,
+                    processStructures: false,
+                    maxStepSize: maxStepSize);
+                break;
+
+            case FhirArtifactClassEnum.PrimitiveType:
+            case FhirArtifactClassEnum.ComplexType:
+            case FhirArtifactClassEnum.Resource:
+            case FhirArtifactClassEnum.Profile:
+            case FhirArtifactClassEnum.Extension:
+                exporter.Export(
+                    includeIgScripts: includeIgScripts ?? _config.XverIncludeScripts,
+                    processVocabulary: false,
+                    processStructures: true,
+                    maxStepSize: maxStepSize);
+                break;
+
+            default:
+                exporter.Export(
+                    includeIgScripts: includeIgScripts ?? _config.XverIncludeScripts,
+                    processVocabulary: true,
+                    processStructures: true,
+                    maxStepSize: maxStepSize);
+                break;
+        }
+    }
+
     public void GenerateOutcomes(
         FhirArtifactClassEnum? artifactFilter = null,
         int? maxStepSize = null)
@@ -507,7 +564,7 @@ public partial class XVerProcessor
 
         if (_db is null)
         {
-            throw new Exception("Cannot compare without a loaded database!");
+            throw new Exception("Cannot generate outcomes without a loaded database!");
         }
 
         OutcomeGenerator generator = new(_db, _config.LogFactory);
@@ -617,7 +674,7 @@ public partial class XVerProcessor
         /// </summary>
         public DefinitionCollection? CoreDC { get; set; } = null;
         /// <summary>
-        /// Gets or sets the snapshot generator.
+        /// Gets or sets the snapshot exporter.
         /// </summary>
         public Hl7.Fhir.Specification.Snapshot.SnapshotGenerator? SnapshotGenerator { get; set; } = null;
     }

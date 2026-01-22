@@ -77,7 +77,7 @@ public class ValueSetComparer
         ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<FhirDbComparer>();
+        _logger = loggerFactory.CreateLogger<ValueSetComparer>();
 
         _db = db;
 

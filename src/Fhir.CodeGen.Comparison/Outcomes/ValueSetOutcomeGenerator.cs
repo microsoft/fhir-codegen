@@ -29,7 +29,7 @@ public class ValueSetOutcomeGenerator
         ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<FhirDbComparer>();
+        _logger = loggerFactory.CreateLogger<ValueSetOutcomeGenerator>();
 
         _db = db;
 

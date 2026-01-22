@@ -54,7 +54,7 @@ public class ElementTypeComparer
         DbComparisonCache<DbElementTypeComparison> elementTypeComparisonCache)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<FhirDbComparer>();
+        _logger = loggerFactory.CreateLogger<ElementTypeComparer>();
         _db = db;
 
         _elementTypeComparisonCache = elementTypeComparisonCache;

@@ -72,7 +72,7 @@ public class StructureComparer
         ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<FhirDbComparer>();
+        _logger = loggerFactory.CreateLogger<StructureComparer>();
 
         _db = db;
 
