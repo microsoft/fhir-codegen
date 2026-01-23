@@ -256,6 +256,18 @@ public partial class XVerProcessor
         {
             case "wip":
 
+                HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null;
+                //specificPairs = [
+                //    (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B),
+                //    (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4),
+                //];
+
+                specificPairs = [
+                    (FhirReleases.FhirSequenceCodes.DSTU2, FhirReleases.FhirSequenceCodes.STU3),
+                    (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B),
+                    (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4),
+                ];
+
                 //UpdateValueSetMaps();
 
                 //LoadDatabase(true, true);
@@ -271,13 +283,17 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
+                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
+                //GenerateOutcomes(specificPairs: specificPairs);
                 //GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
-                ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
-                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
-                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
+                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
+                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1, includeIgScripts: false, specificPairs: specificPairs);
+                //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, includeIgScripts: false, specificPairs: specificPairs);
+                ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+                //ExportOutcomes(specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: false);
                 //ExportOutcomes();
 
@@ -502,6 +518,7 @@ public partial class XVerProcessor
     public void ExportOutcomes(
         FhirArtifactClassEnum? artifactFilter = null,
         int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null,
         bool? includeIgScripts = null)
     {
         if (_db is null)
@@ -528,7 +545,8 @@ public partial class XVerProcessor
                     includeIgScripts: includeIgScripts ?? _config.XverIncludeScripts,
                     processVocabulary: true,
                     processStructures: false,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
 
             case FhirArtifactClassEnum.PrimitiveType:
@@ -540,7 +558,8 @@ public partial class XVerProcessor
                     includeIgScripts: includeIgScripts ?? _config.XverIncludeScripts,
                     processVocabulary: false,
                     processStructures: true,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
 
             default:
@@ -548,14 +567,16 @@ public partial class XVerProcessor
                     includeIgScripts: includeIgScripts ?? _config.XverIncludeScripts,
                     processVocabulary: true,
                     processStructures: true,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
         }
     }
 
     public void GenerateOutcomes(
         FhirArtifactClassEnum? artifactFilter = null,
-        int? maxStepSize = null)
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         if (_db is null)
         {
@@ -575,7 +596,8 @@ public partial class XVerProcessor
                 generator.GenerateOutcomes(
                     processValueSets: true,
                     processStructures: false,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
 
             case FhirArtifactClassEnum.PrimitiveType:
@@ -586,14 +608,16 @@ public partial class XVerProcessor
                 generator.GenerateOutcomes(
                     processValueSets: false,
                     processStructures: true,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
 
             default:
                 generator.GenerateOutcomes(
                     processValueSets: true,
                     processStructures: true,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
         }
     }

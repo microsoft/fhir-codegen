@@ -27,9 +27,9 @@ public class VocabularyExporter
     private ILogger _logger;
 
     public VocabularyExporter(
+        XVerExporter exporter,
         IDbConnection db,
-        ILoggerFactory loggerFactory,
-        XVerExporter exporter)
+        ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger<VocabularyExporter>();
@@ -124,7 +124,7 @@ public class VocabularyExporter
             SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
             RequiresXVerDefinition: true,
-            orderByProperties: [nameof(DbValueSetOutcome.PotentialGenLongId)]);
+            orderByProperties: [nameof(DbValueSetOutcome.GenLongId)]);
 
         // iterate over the value set outcomes we need to export
         foreach (DbValueSetOutcome vsOutcome in vsOutcomes)
@@ -171,9 +171,9 @@ public class VocabularyExporter
             if (igTr.PackagePair.Distance == 1)
             {
                 purpose = $$$"""
-                    This value set is part of the cross-version definitions generated to support use of the
+                    This value set is part of the cross-version definitions generated to enable use of the
                     value set `{{{sourceVs.VersionedUrl}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
-                    in cross-version extensions usable in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
+                    in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
 
                     The source value set is bound to the following FHIR {{{igTr.PackagePair.SourceFhirSequence}}} elements:
                     * {{{string.Join("\n* ", sourceVsBoundElements.Select(ed => $"`{ed.Id}`"))}}}
@@ -182,6 +182,9 @@ public class VocabularyExporter
                     * {{{(nonGeneratedConceptOutcomes.Count == 0
                         ? "_no concepts_"
                         : string.Join("\n* ", nonGeneratedConceptOutcomes.Select(nco => $"`{nco.SourceSystem}#{nco.SourceCode}`")))}}}
+
+                    Following are the generation technical comments:
+                    {{{vsOutcome.Comments}}}
                     """;
             }
             else
@@ -217,9 +220,9 @@ public class VocabularyExporter
                 }
 
                 purpose = $$$"""
-                    This value set is part of the cross-version definitions generated to support use of the
+                    This value set is part of the cross-version definitions generated to enable use of the
                     value set `{{{sourceVs.VersionedUrl}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
-                    in cross-version extensions usable in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
+                    in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
 
                     The source value set is bound to the following FHIR {{{igTr.PackagePair.SourceFhirSequence}}} elements:
                     * {{{string.Join("\n* ", sourceVsBoundElements.Select(ed => $"`{ed.Id}` as {ed.ValueSetBindingStrength}"))}}}
@@ -231,16 +234,19 @@ public class VocabularyExporter
                     * {{{(nonGeneratedConceptOutcomes.Count == 0
                         ? "_no concepts_"
                         : string.Join("\n* ", nonGeneratedConceptOutcomes.Select(nco => $"`{nco.SourceSystem}#{nco.SourceCode}`")))}}}
+
+                    Following are the generation technical comments:
+                    {{{vsOutcome.Comments}}}
                     """;
             }
 
             // create our vs
             ValueSet fhirVs = new()
             {
-                Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourcePackageShortName}/ValueSet/{vsOutcome.PotentialGenLongId}",
-                Id = vsOutcome.PotentialGenLongId,
+                Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourcePackageShortName}/ValueSet/{vsOutcome.GenLongId}",
+                Id = vsOutcome.GenLongId,
                 Version = _exporter._crossDefinitionVersion,
-                Name = FhirSanitizationUtils.ReformatIdForName(vsOutcome.PotentialGenLongId!),
+                Name = FhirSanitizationUtils.ReformatIdForName(vsOutcome.GenLongId!),
                 Title = $"Cross-version ValueSet {igTr.PackagePair.SourceFhirSequence}.{sourceVs.Name} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
                 Status = PublicationStatus.Active,
                 Experimental = false,
@@ -360,7 +366,7 @@ public class VocabularyExporter
                 }
             }
 
-            fhirVs.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, null);
+            fhirVs.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, igTr.PackageUrl);
 
             // write the code system to a file
             string filename = $"ValueSet-{fhirVs.Id}.json";
@@ -530,7 +536,7 @@ public class VocabularyExporter
                             break;
 
                         case CommonDefinitions.ExtUrlPackageSource:
-                            fhirCs.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, null);
+                            fhirCs.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, igTr.PackageUrl);
                             break;
 
                         default:

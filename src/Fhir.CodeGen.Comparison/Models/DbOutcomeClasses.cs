@@ -250,12 +250,10 @@ public abstract class DbOutcomeBase : DbRecordBase
 [CgSQLiteBaseClass]
 public abstract class DbArtifactOutcomeBase : DbOutcomeBase
 {
-    // TODO: Remove all of these - just here for sanity during development
-
     //public required string? PotentialGenResourceType { get; set; }
-    public required string? PotentialGenLongId { get; set; }
-    //public required string? PotentialGenShortId { get; set; }
-    //public required string? PotentialGenUrl { get; set; }
+    public required string? GenLongId { get; set; }
+    public required string? GenShortId { get; set; }
+    public required string? GenUrl { get; set; }
 
     public required string SourceCanonicalVersioned { get; set; }
     public required string SourceCanonicalUnversioned { get; set; }
@@ -273,7 +271,7 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
 
 [CgSQLiteTable(tableName: "ValueSetOutcomes")]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(PotentialGenLongId), nameof(RequiresXVerDefinition))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(GenLongId), nameof(RequiresXVerDefinition))]
 public partial class DbValueSetOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
@@ -383,8 +381,15 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
 [CgSQLiteTable(tableName: "ElementOutcomes")]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
-//[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceResourceOrder))]
-//[CgSQLiteIndex(nameof(StructureOutcomeKey), nameof(OutcomeAction), nameof(AncestorElementOutcomeKey), nameof(SourceResourceOrder))]
+[CgSQLiteIndex(
+    nameof(SourceFhirPackageKey),
+    nameof(TargetFhirPackageKey),
+    nameof(RequiresXVerDefinition),
+    nameof(ExtensionSubstitutionKey),
+    nameof(ParentElementOutcomeKey),
+    nameof(SourceStructureKey),
+    nameof(SourceResourceOrder))]
+[CgSQLiteIndex(nameof(ParentElementOutcomeKey), nameof(SourceResourceOrder))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
@@ -405,8 +410,9 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public override int SourceContentKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
 
 
-    //public required int SourceResourceOrder { get; set; }
-    //public required int SourceComponentOrder { get; set; }
+    public required int SourceResourceOrder { get; set; }
+    public required int SourceComponentOrder { get; set; }
+    public required int SourceMinCardinality { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key), modelTypeName: nameof(DbStructureDefinition))]
@@ -418,8 +424,8 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public override int? TargetContentKey { get => this.TargetElementKey; set => this.TargetElementKey = value; }
 
 
-    //public required int? TargetResourceOrder { get; set; }
-    //public required int? TargetComponentOrder { get; set; }
+    public required int? TargetResourceOrder { get; set; }
+    public required int? TargetComponentOrder { get; set; }
 
 
     //[CgSQLiteForeignKey(referenceTable: "ExtensionSubstituions", referenceColumn: nameof(DbExtensionSubstitution.Key), modelTypeName: nameof(DbExtensionSubstitution))]
@@ -430,6 +436,10 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
 
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
     public required int? ParentElementOutcomeKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ExtensionSubstitutions", referenceColumn: nameof(Key), modelTypeName: nameof(DbExtensionSubstitution))]
+    public required int? ExtensionSubstitutionKey { get; set; }
+    public required string? ExtensionSubstitutionUrl { get; set; }
 
     public required string? BasicElementEquivalent { get; set; }
     public required bool SourceIsModifier { get; set; }

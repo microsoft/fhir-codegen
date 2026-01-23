@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Microsoft.Extensions.Logging;
@@ -31,7 +32,8 @@ public class OutcomeGenerator
     public void GenerateOutcomes(
         bool processValueSets = true,
         bool processStructures = true,
-        int? maxStepSize = null)
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         // ensure out tables exist and are empty
         DbOutcomeClasses.DropTables(_db, forValueSets: processValueSets, forStructures: processStructures);
@@ -40,13 +42,13 @@ public class OutcomeGenerator
         if (processValueSets)
         {
             ValueSetOutcomeGenerator vsGenerator = new(_db, _loggerFactory);
-            vsGenerator.CreateOutcomesForValueSets(maxStepSize: maxStepSize);
+            vsGenerator.CreateOutcomesForValueSets(maxStepSize: maxStepSize, specificPairs: specificPairs);
         }
 
         if (processStructures)
         {
             StructureOutcomeGenerator sdGenerator = new(_db, _loggerFactory);
-            sdGenerator.CreateOutcomesForStructures(maxStepSize: maxStepSize);
+            sdGenerator.CreateOutcomesForStructures(maxStepSize: maxStepSize, specificPairs: specificPairs);
         }
     }
 }

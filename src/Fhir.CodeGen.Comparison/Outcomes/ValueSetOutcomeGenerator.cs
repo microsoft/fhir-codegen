@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
@@ -37,7 +38,9 @@ public class ValueSetOutcomeGenerator
         _conceptOutcomeCache = new();
     }
 
-    public void CreateOutcomesForValueSets(int? maxStepSize = null)
+    public void CreateOutcomesForValueSets(
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
@@ -61,6 +64,12 @@ public class ValueSetOutcomeGenerator
         // iterate over our pairs in the order we built them
         foreach (FhirPackageComparisonPair packagePair in packagePairs)
         {
+            if ((specificPairs is not null) &&
+                !specificPairs.Contains((packagePair.SourceFhirSequence, packagePair.TargetFhirSequence)))
+            {
+                continue;
+            }
+
             buildOutcomes(packagePair);
             applyCachedChanges(packagePair);
         }
@@ -255,7 +264,9 @@ public class ValueSetOutcomeGenerator
                         TotalTargetCount = vsTargetCount,
 
                         RequiresXVerDefinition = noMapVsRequiresXVer,
-
+                        GenLongId = idLong,
+                        GenShortId = idShort,
+                        GenUrl = url,
 
                         IsRenamed = false,
                         IsUnmapped = false,
@@ -282,11 +293,6 @@ public class ValueSetOutcomeGenerator
                         TargetVersion = null,
                         TargetId = null,
                         TargetName = null,
-                        PotentialGenLongId = idLong,
-                        //PotentialGenResourceType = "ValueSet",
-                        //PotentialGenShortId = idShort,
-                        //PotentialGenUrl = url,
-
                     };
 
                     _vsOutcomeCache.CacheAdd(noMapOutcome);
@@ -421,6 +427,9 @@ public class ValueSetOutcomeGenerator
                     TotalTargetCount = vsTargetCount,
 
                     RequiresXVerDefinition = vsRequiresXVer,
+                    GenLongId = idLong,
+                    GenShortId = idShort,
+                    GenUrl = url,
 
                     IsRenamed = isRenamed,
                     IsUnmapped = isUnmapped,
@@ -447,10 +456,6 @@ public class ValueSetOutcomeGenerator
                     TargetVersion = targetVs.Version,
                     TargetId = targetVs.Id,
                     TargetName = targetVs.Name,
-                    PotentialGenLongId = idLong,
-                    //PotentialGenResourceType = "ValueSet",
-                    //PotentialGenShortId = idShort,
-                    //PotentialGenUrl = url,
                 };
 
                 _vsOutcomeCache.CacheAdd(vsOutcome);

@@ -27,6 +27,8 @@ public class IgExporter
     {
         public required FhirPackageComparisonPair PackagePair { get; set; }
         public required string PackageId { get; set; }
+        public string PackageUrl =>
+            $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{PackageId}";
 
         public string? IgRootDir { get; set; } = null;
         public string? InputDir { get; set; } = null;
@@ -235,7 +237,8 @@ public class IgExporter
 
     public XVerExportTrackingRecord CreateInitialXVerIgs(
         bool includeScripts = true,
-        int? maxStepSize = null)
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         XVerExportTrackingRecord tr = new();
 
@@ -261,12 +264,34 @@ public class IgExporter
         // iterate over our pairs in the order we built them
         foreach (FhirPackageComparisonPair packagePair in packagePairs)
         {
+            if ((specificPairs is not null) &&
+                !specificPairs.Contains((packagePair.SourceFhirSequence, packagePair.TargetFhirSequence)))
+            {
+                continue;
+            }
+
             tr.XVerIgs.Add(createInitialXVerIg(packagePair, includeScripts));
+        }
+
+        HashSet<FhirReleases.FhirSequenceCodes>? targetFhirVersions = null;
+        if (specificPairs is not null)
+        {
+            targetFhirVersions = [];
+            foreach ((FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t) in specificPairs)
+            {
+                targetFhirVersions.Add(t);
+            }
         }
 
         // iterate over our packages for validation Igs
         foreach (DbFhirPackage package in _packages)
         {
+            if ((targetFhirVersions is not null) &&
+                !targetFhirVersions.Contains(package.DefinitionFhirSequence))
+            {
+                continue;
+            }
+
             tr.ValidationIgs.Add(createInitialValidationIg(package, includeScripts));
         }
 

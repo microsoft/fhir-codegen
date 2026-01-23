@@ -4447,17 +4447,6 @@ public class ComparisonDatabase : IDisposable
 
             string fullTypeLiteral = string.Join(", ", completeLiteralComponents.Order());
 
-            //List<string> completeTargetLiterals = [];
-            //foreach (DbElementType currentElementType in currentElementTypes)
-            //{
-            //    if (currentElementType.TargetProfile is null)
-            //    {
-            //        continue;
-            //    }
-
-            //    completeLiteralComponents.Add(currentElementType.TargetProfile);
-            //}
-
             int resourceFieldOrder = ed.cgFieldOrder();
             int? parentElementDbKey = null;
 
@@ -4484,6 +4473,8 @@ public class ComparisonDatabase : IDisposable
                 Name = ed.cgName(),
                 Short = ed.Short.ProcessCoreTextForLinks(fhirVersionLiteral),
                 Definition = ed.Definition.ProcessCoreTextForLinks(fhirVersionLiteral),
+                Comments = ed.Comment.ProcessCoreTextForLinks(fhirVersionLiteral),
+                Requirements = ed.Requirements.ProcessCoreTextForLinks(fhirVersionLiteral),
                 MinCardinality = ed.cgCardinalityMin(),
                 MaxCardinality = ed.cgCardinalityMax(),
                 MaxCardinalityString = ed.Max ?? "*",
@@ -4494,9 +4485,6 @@ public class ComparisonDatabase : IDisposable
                 BindingDescription = ed.Binding?.Description,
                 AdditionalBindingCount = additionalBindingCount,
                 FullCollatedTypeLiteral = fullTypeLiteral,
-                //FullCollatedReferenceTypesLiteral = completeTargetLiterals.Count == 0
-                //    ? null
-                //    : string.Join(", ", completeTargetLiterals.Order()),
                 IsInherited = isInherited,
                 BasePath = basePath,
                 BaseElementKey = null,

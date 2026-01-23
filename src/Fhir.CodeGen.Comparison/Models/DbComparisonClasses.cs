@@ -455,6 +455,7 @@ public partial class DbStructureComparison : DbArtifactComparisonBase
 
 [CgSQLiteTable(tableName: "ElementComparisons")]
 [CgSQLiteIndex(nameof(StructureComparisonKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey))]
 public partial class DbElementComparison : DbComparisonBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]

@@ -13,12 +13,14 @@ public class FhirPackageComparisonPair
 
     public int SourcePackageKey => SourcePackage.Key;
     public string SourcePackageShortName => SourcePackage.ShortName;
+    public string SourceFhirVersionShort => SourcePackage.FhirVersionShort;
     public Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes SourceFhirSequence => SourcePackage.DefinitionFhirSequence;
 
     public DbFhirPackage TargetPackage { get; init; }
 
     public int TargetPackageKey => TargetPackage.Key;
     public string TargetPackageShortName => TargetPackage.ShortName;
+    public string TargetFhirVersionShort => TargetPackage.FhirVersionShort;
     public Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes TargetFhirSequence => TargetPackage.DefinitionFhirSequence;
 
     public DateTime ProcessedAt { get; set; } = DateTime.UtcNow;

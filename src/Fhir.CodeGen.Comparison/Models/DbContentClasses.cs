@@ -366,6 +366,8 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
     public required string Name { get; set; }
     public required string? Short { get; set; }
     public required string? Definition { get; set; }
+    public required string? Comments { get; set; }
+    public required string? Requirements { get; set; }
     public required int MinCardinality { get; set; }
     public required int MaxCardinality { get; set; }
     public required string MaxCardinalityString { get; set; }
@@ -472,6 +474,8 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
         Name = string.Empty,
         Short = null,
         Definition = null,
+        Comments = null,
+        Requirements = null,
         MinCardinality = 0,
         MaxCardinality = 0,
         MaxCardinalityString = string.Empty,

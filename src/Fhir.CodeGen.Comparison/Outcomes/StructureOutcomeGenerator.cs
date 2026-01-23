@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
@@ -57,7 +58,9 @@ public class StructureOutcomeGenerator
     }
 
 
-    public void CreateOutcomesForStructures(int? maxStepSize = null)
+    public void CreateOutcomesForStructures(
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
@@ -81,6 +84,12 @@ public class StructureOutcomeGenerator
         // iterate over our pairs in the order we built them
         foreach (FhirPackageComparisonPair packagePair in packagePairs)
         {
+            if ((specificPairs is not null) &&
+                !specificPairs.Contains((packagePair.SourceFhirSequence, packagePair.TargetFhirSequence)))
+            {
+                continue;
+            }
+
             buildOutcomes(packagePair);
             applyCachedChanges(packagePair);
         }
@@ -367,9 +376,10 @@ public class StructureOutcomeGenerator
                     TargetVersion = targetSd.Version,
                     TargetId = targetSd.Id,
                     TargetName = targetSd.Name,
-                    PotentialGenLongId = idLong,
-                    //PotentialGenShortId = idShort,
-                    //PotentialGenUrl = url,
+
+                    GenLongId = idLong,
+                    GenShortId = idShort,
+                    GenUrl = url,
                 };
 
                 _sdOutcomeCache.CacheAdd(sdOutcome);
@@ -443,9 +453,9 @@ public class StructureOutcomeGenerator
             //            TargetVersion = null,
             //            TargetId = null,
             //            TargetName = null,
-            //            PotentialGenLongId = idLong,
-            //            //PotentialGenShortId = idShort,
-            //            //PotentialGenUrl = url,
+            //            GenLongId = idLong,
+            //            //GenShortId = idShort,
+            //            //GenUrl = url,
             //        };
 
             //        _sdOutcomeCache.CacheAdd(noMapOutcome);
@@ -502,9 +512,9 @@ public class StructureOutcomeGenerator
             //                TargetVersion = null,
             //                TargetId = null,
             //                TargetName = null,
-            //                PotentialGenLongId = extIdLong,
-            //                //PotentialGenShortId = extIdShort,
-            //                //PotentialGenUrl = extUrl,
+            //                GenLongId = extIdLong,
+            //                //GenShortId = extIdShort,
+            //                //GenUrl = extUrl,
             //            };
 
             //            _edOutcomeCache.CacheAdd(noMapElementOutcome);
@@ -589,9 +599,9 @@ public class StructureOutcomeGenerator
             //        TargetVersion = targetSd.Version,
             //        TargetId = targetSd.Id,
             //        TargetName = targetSd.Name,
-            //        PotentialGenLongId = idLong,
-            //        //PotentialGenShortId = idShort,
-            //        //PotentialGenUrl = url,
+            //        GenLongId = idLong,
+            //        //GenShortId = idShort,
+            //        //GenUrl = url,
             //    };
 
             //    _sdOutcomeCache.CacheAdd(sdOutcome);
@@ -671,9 +681,9 @@ public class StructureOutcomeGenerator
             //    //        TargetVersion = null,
             //    //        TargetId = null,
             //    //        TargetName = null,
-            //    //        PotentialGenLongId = partOfXVerOutcomeId ?? extIdLong,
-            //    //        //PotentialGenShortId = extIdShort,
-            //    //        //PotentialGenUrl = extUrl,
+            //    //        GenLongId = partOfXVerOutcomeId ?? extIdLong,
+            //    //        //GenShortId = extIdShort,
+            //    //        //GenUrl = extUrl,
             //    //    };
 
             //    //    _edOutcomeCache.CacheAdd(elementOutcome);
@@ -682,7 +692,7 @@ public class StructureOutcomeGenerator
             //    //    {
             //    //        edKeyToDefinitionOutcomeKeyMap.Add(
             //    //            elementOutcome.Key,
-            //    //            (partOfXVerOutcomeKey ?? elementOutcome.Key, elementOutcome.PotentialGenLongId));
+            //    //            (partOfXVerOutcomeKey ?? elementOutcome.Key, elementOutcome.GenLongId));
             //    //    }
             //    //}
 
@@ -729,6 +739,9 @@ public class StructureOutcomeGenerator
             TotalTargetCount = 0,
 
             RequiresXVerDefinition = true,
+            GenLongId = idLong,
+            GenShortId = idShort,
+            GenUrl = url,
 
             IsRenamed = false,
             IsUnmapped = false,
@@ -752,9 +765,6 @@ public class StructureOutcomeGenerator
             TargetVersion = null,
             TargetId = null,
             TargetName = null,
-            PotentialGenLongId = idLong,
-            //PotentialGenShortId = idShort,
-            //PotentialGenUrl = url,
         };
 
         _sdOutcomeCache.CacheAdd(noMapOutcome);

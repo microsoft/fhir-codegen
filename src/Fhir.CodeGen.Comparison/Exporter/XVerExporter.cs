@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.Outcomes;
@@ -45,7 +46,8 @@ public class XVerExporter
         bool includeIgScripts = true,
         bool processVocabulary = true,
         bool processStructures = true,
-        int? maxStepSize = null)
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         // build the main package structure and supporting files
         IgExporter igExporter = new IgExporter(
@@ -57,21 +59,27 @@ public class XVerExporter
 
         IgExporter.XVerExportTrackingRecord tr = igExporter.CreateInitialXVerIgs(
             includeIgScripts,
-            maxStepSize);
+            maxStepSize: maxStepSize,
+            specificPairs: specificPairs);
 
         // export vocabulary (if requested)
         if (processVocabulary)
         {
             VocabularyExporter vocabularyExporter = new VocabularyExporter(
+                this,
                 _db,
-                _loggerFactory,
-                this);
+                _loggerFactory);
             vocabularyExporter.Export(tr);
         }
 
         // export structures (if requested)
         if (processStructures)
         {
+            StructureExporter structureExporter = new StructureExporter(
+                this,
+                _db,
+                _loggerFactory);
+            structureExporter.Export(tr);
         }
     }
 }
