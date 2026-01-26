@@ -187,12 +187,6 @@ public class StructureExporter
                         profileSd);
                 }
 
-                //// if the differential is empty, skip this profile
-                //if (profileSd.Differential.Element.Count == 0)
-                //{
-                //    continue;
-                //}
-
                 // write the profile to a file
                 string filename = $"StructureDefinition-{profileSd.Id}.json";
                 string path = Path.Combine(dir, filename);
@@ -905,8 +899,8 @@ public class StructureExporter
                 ElementId = extElementId + ".extension:_datatype",
                 Path = extElementPath + ".extension",
                 SliceName = "_datatype",
-                Short = $"Data type name for unrepresentable types in {igTr.PackagePair.SourceFhirSequence} `{sourceEd.Id}`",
-                Definition = $"Data type name for unrepresentable types in {igTr.PackagePair.SourceFhirSequence} `{sourceEd.Id}`",
+                Short = $"Data type name for data types in {igTr.PackagePair.SourceFhirSequence} `{sourceEd.Id}`",
+                Definition = $"Data type name for data types in {igTr.PackagePair.SourceFhirSequence} `{sourceEd.Id}`",
                 Min = 0,
                 Max = "1",
                 Base = new()

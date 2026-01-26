@@ -8,6 +8,8 @@ public static class DbContentClasses
 {
     public static void LoadIndices(IDbConnection db)
     {
+        DbFhirPackage.LoadMaxKey(db);
+
         DbCodeSystem.LoadMaxKey(db);
         DbCodeSystemConcept.LoadMaxKey(db);
         DbCodeSystemConceptProperty.LoadMaxKey(db);
@@ -28,9 +30,15 @@ public static class DbContentClasses
 
     public static void DropTables(
         IDbConnection db,
+        bool forPackages = true,
         bool forTerminologies = true,
         bool forStructures = true)
     {
+        if (forPackages)
+        {
+            DbFhirPackage.DropTable(db);
+        }
+
         if (forTerminologies)
         {
             DbCodeSystem.DropTable(db);
@@ -57,9 +65,15 @@ public static class DbContentClasses
 
     public static void CreateTables(
         IDbConnection db,
+        bool forPackages = true,
         bool forTerminologies = true,
         bool forStructures = true)
     {
+        if (forPackages)
+        {
+            DbFhirPackage.CreateTable(db);
+        }
+
         if (forTerminologies)
         {
             DbCodeSystem.CreateTable(db);
