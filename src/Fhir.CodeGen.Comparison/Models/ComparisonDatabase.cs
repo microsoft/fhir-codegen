@@ -154,6 +154,8 @@ public class ComparisonDatabase : IDisposable
         _db = new SqliteConnection(connectionString);
         _db.Open();
 
+        _logger.LogInformation($"Opened database: `{connectionString}`");
+
         initNewDb(true);
 
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
@@ -181,6 +183,8 @@ public class ComparisonDatabase : IDisposable
             DataSource = Path.Combine(_dbPath, _dbName),
             Mode = SqliteOpenMode.ReadWriteCreate,
         }.ToString();
+
+        _logger.LogInformation($"Opened database: `{connectionString}`");
 
         _db = new SqliteConnection(connectionString);
         _db.Open();

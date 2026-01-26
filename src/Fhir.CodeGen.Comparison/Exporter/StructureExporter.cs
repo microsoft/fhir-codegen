@@ -204,8 +204,6 @@ public class StructureExporter
                     Description = profileSd.Description ?? profileSd.Title ?? $"Profile: {profileSd.Url}",
                 });
             }
-
-
         }
 
         _logger.LogInformation($"Wrote {exported.Count} Profiles for `{igTr.PackageId}`");

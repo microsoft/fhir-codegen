@@ -1,12 +1,13 @@
 ﻿using System.Data;
 using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
-using Hl7.Fhir.Utility;
-using Microsoft.Extensions.Logging;
 using Fhir.CodeGen.Common.Models;
+using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
+using Hl7.Fhir.Utility;
+using Microsoft.Extensions.Logging;
 using static Fhir.CodeGen.Comparison.CompareTool.FhirTypeMappings;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
@@ -110,7 +111,8 @@ public partial class FhirDbComparer
     public void Compare(
         bool processValueSets = true,
         bool processStructures = true,
-        int? maxStepSize = null)
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         // ensure out tables exist and are empty
         DbComparisonClasses.DropTables(_db, forValueSets: processValueSets, forStructures: processStructures);
@@ -122,7 +124,9 @@ public partial class FhirDbComparer
             ValueSetComparer vsComparer = new(_db, _loggerFactory);
 
             // run our value set comparisons
-            vsComparer.CompareValueSets(maxStepSize: maxStepSize);
+            vsComparer.CompareValueSets(
+                maxStepSize: maxStepSize,
+                specificPairs: specificPairs);
         }
 
         if (processStructures)
@@ -131,7 +135,9 @@ public partial class FhirDbComparer
             StructureComparer sdComparer = new(_db, _loggerFactory);
 
             // run our structure comparisons
-            sdComparer.CompareStructures(maxStepSize: maxStepSize);
+            sdComparer.CompareStructures(
+                maxStepSize: maxStepSize,
+                specificPairs: specificPairs);
         }
     }
 

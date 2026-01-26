@@ -270,7 +270,7 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
 
 
 [CgSQLiteTable(tableName: "ValueSetOutcomes")]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(RequiresXVerDefinition))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(GenLongId), nameof(RequiresXVerDefinition))]
 public partial class DbValueSetOutcome : DbArtifactOutcomeBase
 {
@@ -302,6 +302,7 @@ public partial class DbValueSetOutcome : DbArtifactOutcomeBase
 [CgSQLiteTable(tableName: "ValueSetConceptOutcomes")]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(ValueSetOutcomeKey), nameof(RequiresXVerDefinition), nameof(SourceSystem), nameof(SourceCode))]
+[CgSQLiteIndex(nameof(ValueSetOutcomeKey), nameof(SourceSystem), nameof(SourceCode), nameof(TargetSystem), nameof(TargetCode))]
 public partial class DbValueSetConceptOutcome : DbOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetOutcomes", referenceColumn: nameof(DbValueSetOutcome.Key))]
@@ -329,13 +330,13 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
     [CgSQLiteIgnore]
     public override int? TargetContentKey { get => this.TargetValueSetConceptKey; set => this.TargetValueSetConceptKey = value; }
 
-    // TODO: Remove these - just here for development
-
     public required string SourceSystem { get; set; }
     public required string SourceCode { get; set; }
+    public required string? SourceDisplay { get; set; }
 
     public required string? TargetSystem { get; set; }
     public required string? TargetCode { get; set; }
+    public required string? TargetDisplay { get; set; }
 
     //public required bool CodeLiteralsMatch { get; set; }
     //public required bool SourceCodeTreatedAsEscapeValve { get; set; }

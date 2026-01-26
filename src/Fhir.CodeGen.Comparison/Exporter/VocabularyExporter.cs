@@ -15,6 +15,7 @@ using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
 using Octokit;
 using static Fhir.CodeGen.Comparison.Exporter.IgExporter;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Exporter;
 
@@ -49,8 +50,266 @@ public class VocabularyExporter
             exportValueSets(igTr);
 
             // export concept maps
+            exportConceptMaps(igTr);
         }
     }
+
+    private void exportConceptMaps(XVerIgExportTrackingRecord igTr)
+    {
+        if (igTr.VocabMapDir is null)
+        {
+            throw new Exception("VocabMapDir is null");
+        }
+
+        string dir = igTr.VocabMapDir;
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        _logger.LogInformation($"Writing Value Set Concept Maps for `{igTr.PackageId}`...");
+
+        List<XVerIgFileRecord> exported = [];
+
+        // get the souce value sets for the source package
+        List<DbValueSet> sourceValueSets = DbValueSet.SelectList(
+            _db,
+            FhirPackageKey: igTr.PackagePair.SourcePackageKey);
+
+        // list over the value sets to build concept maps
+        foreach (DbValueSet sourceVs in sourceValueSets)
+        {
+            // get the value set outcomes for this value set that need exporting
+            List<DbValueSetOutcome> vsOutcomes = DbValueSetOutcome.SelectList(
+                _db,
+                SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                SourceValueSetKey: sourceVs.Key,
+                RequiresXVerDefinition: true);
+
+            if (vsOutcomes.Count == 0)
+            {
+                // nothing to export
+                continue;
+            }
+
+            // iterate over the outcomes
+            foreach (DbValueSetOutcome vsOutcome in vsOutcomes)
+            {
+                // check for no target (no concept map possible)
+                if (vsOutcome.TargetValueSetKey is null)
+                {
+                    continue;
+                }
+
+                // resolve the target value set
+                DbValueSet? targetVs = DbValueSet.SelectSingle(
+                    _db,
+                    Key: vsOutcome.TargetValueSetKey.Value);
+
+                if (targetVs is null)
+                {
+                    _logger.LogError($"Could not resolve target ValueSet `{vsOutcome.TargetCanonicalVersioned}`");
+                    continue;
+                }
+
+                ConceptMap vsCm = createVsConceptMap(
+                    igTr,
+                    sourceVs,
+                    targetVs,
+                    vsOutcome);
+
+                // add contents
+                addConceptMapContents(
+                    igTr,
+                    sourceVs,
+                    targetVs,
+                    vsOutcome,
+                    vsCm);
+
+                // write the concept map to a file
+                string filename = $"ConceptMap-{vsCm.Id}.json";
+                string path = Path.Combine(dir, filename);
+                File.WriteAllText(path, vsCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+                exported.Add(new()
+                {
+                    FileName = filename,
+                    FileNameWithoutExtension = filename[..^5],
+                    IsPageContentFile = false,
+                    Name = vsCm.Name,
+                    Id = vsCm.Id,
+                    Url = vsCm.Url,
+                    ResourceType = Hl7.Fhir.Model.FHIRAllTypes.ConceptMap.GetLiteral(),
+                    Version = vsCm.Version,
+                    Description = vsCm.Description ?? vsCm.Title ?? $"Value Set Concept Map: {vsCm.Url}",
+                });
+            }
+        }
+
+        // save our changes
+        _logger.LogInformation($"Wrote {exported.Count} Value Set Concept Maps for `{igTr.PackageId}`");
+        igTr.VsConceptMapFiles = exported;
+    }
+
+    private void addConceptMapContents(
+        XVerIgExportTrackingRecord igTr,
+        DbValueSet sourceVs,
+        DbValueSet targetVs,
+        DbValueSetOutcome vsOutcome,
+        ConceptMap vsCm)
+    {
+        // get all concept map outcomes for this value set outcome
+        List<DbValueSetConceptOutcome> vscOutcomes = DbValueSetConceptOutcome.SelectList(
+            _db,
+            ValueSetOutcomeKey: vsOutcome.Key,
+            orderByProperties: [
+                nameof(DbValueSetConceptOutcome.SourceSystem),
+                nameof(DbValueSetConceptOutcome.TargetSystem),
+                nameof(DbValueSetConceptOutcome.SourceCode),
+                nameof(DbValueSetConceptOutcome.TargetCode)]);
+
+        string? lastSourceSystem = null;
+        string? lastTargetSystem = null;
+
+        string? lastSourceCode = null;
+
+        ConceptMap.GroupComponent? currentGroup = null;
+        ConceptMap.SourceElementComponent? currentSourceElement = null;
+
+        // iterate over the concept map outcomes
+        foreach (DbValueSetConceptOutcome vscOutcome in vscOutcomes)
+        {
+            // check if we need a new group
+            if ((currentGroup is null) ||
+                (lastSourceSystem != vscOutcome.SourceSystem) ||
+                (lastTargetSystem != vscOutcome.TargetSystem))
+            {
+                // create a new group
+                currentGroup = new()
+                {
+                    Source = vscOutcome.SourceSystem,
+                    Target = vscOutcome.TargetSystem,
+                    Element = [],
+                };
+                vsCm.Group.Add(currentGroup);
+                lastSourceSystem = vscOutcome.SourceSystem;
+                lastTargetSystem = vscOutcome.TargetSystem;
+
+                lastSourceCode = null;
+                currentSourceElement = null;
+            }
+
+            // check if we need a new source element
+            if ((currentSourceElement is null) ||
+                (lastSourceCode != vscOutcome.SourceCode))
+            {
+                // create a new source element
+                currentSourceElement = new()
+                {
+                    Code = vscOutcome.SourceCode,
+                    Display = vscOutcome.SourceDisplay,
+                    Target = [],
+                };
+                currentGroup.Element.Add(currentSourceElement);
+                lastSourceCode = vscOutcome.SourceCode;
+            }
+
+            // check for no-map
+            if ((vscOutcome.TargetContentKey is null) ||
+                (vscOutcome.TargetCode is null))
+            {
+                // flag as no-map
+                currentSourceElement.NoMap = true;
+
+                // no mapping
+                continue;
+            }
+
+            CMR relationship;
+            if (vscOutcome.IsIdentical || vscOutcome.IsEquivalent)
+            {
+                relationship = CMR.Equivalent;
+            }
+            else if (vscOutcome.IsBroaderThanTarget)
+            {
+                relationship = CMR.SourceIsBroaderThanTarget;
+            }
+            else if (vscOutcome.IsNarrowerThanTarget)
+            {
+                relationship = CMR.SourceIsNarrowerThanTarget;
+            }
+            else
+            {
+                relationship = CMR.RelatedTo;
+            }
+
+            // create our target element
+            ConceptMap.TargetElementComponent targetElement = new()
+            {
+                Code = vscOutcome.TargetCode!,
+                Display = vscOutcome.TargetDisplay,
+                Relationship = relationship,
+                Comment = vscOutcome.Comments,
+            };
+
+            currentSourceElement.Target.Add(targetElement);
+        }
+
+        // if there is only one group of proper maps, move any no-maps into it
+        if (vsCm.Group.Count == 2)
+        {
+            ConceptMap.GroupComponent? mappedGroup = null;
+            ConceptMap.GroupComponent? unmappedGroup = null;
+            foreach (ConceptMap.GroupComponent group in vsCm.Group)
+            {
+                if (string.IsNullOrEmpty(group.Target))
+                {
+                    unmappedGroup = group;
+                    continue;
+                }
+
+                mappedGroup = group;
+            }
+
+            if ((unmappedGroup is not null) &&
+                (mappedGroup is not null))
+            {
+                // move the no-maps
+                foreach (ConceptMap.SourceElementComponent sourceElement in unmappedGroup.Element)
+                {
+                    mappedGroup.Element.Add(sourceElement);
+                }
+
+                // remove the no-map group
+                vsCm.Group.Remove(unmappedGroup);
+            }
+        }
+    }
+
+    private ConceptMap createVsConceptMap(
+        XVerIgExportTrackingRecord igTr,
+        DbValueSet sourceVs,
+        DbValueSet targetVs,
+        DbValueSetOutcome vsOutcome)
+    {
+        ConceptMap vsCm = new()
+        {
+            Id = vsOutcome.GenShortId!,
+            Url = vsOutcome.GenUrl!,
+            Name = FhirSanitizationUtils.ReformatIdForName(vsOutcome.GenLongId!),
+            Version = _exporter._crossDefinitionVersion,
+            DateElement = new FhirDateTime(DateTimeOffset.Now),
+            Title = $"Cross-version ConceptMap for ValueSet {vsOutcome.GenLongId} from FHIR {igTr.PackagePair.SourceFhirSequence} to FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Description = $"This ConceptMap represents the cross-version mapping of concepts from ValueSet `{sourceVs.VersionedUrl}` for use in FHIR {igTr.PackagePair.TargetFhirSequence}.",
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            SourceScope = new FhirUri(sourceVs.VersionedUrl),
+            TargetScope = new FhirUri(targetVs.VersionedUrl),
+        };
+
+        return vsCm;
+    }
+
 
     private void exportValueSets(XVerIgExportTrackingRecord igTr)
     {

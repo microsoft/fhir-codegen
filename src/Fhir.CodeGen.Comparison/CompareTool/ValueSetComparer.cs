@@ -85,7 +85,9 @@ public class ValueSetComparer
         _conceptComparisonCache = new();
     }
 
-    public void CompareValueSets(int? maxStepSize = null)
+    public void CompareValueSets(
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
@@ -101,21 +103,30 @@ public class ValueSetComparer
                 DbFhirPackage targetPackage = _packages[i + stepSize];
 
                 // ascending
-                _logger.LogInformation($"Processing {sourcePackage.ShortName} -> {targetPackage.ShortName}");
-                doComparison(sourcePackage, targetPackage);
-                applyCachedChanges(sourcePackage, targetPackage);
+                if ((specificPairs is null) ||
+                    specificPairs.Contains((sourcePackage.DefinitionFhirSequence, targetPackage.DefinitionFhirSequence)))
+                {
+                    _logger.LogInformation($"Processing {sourcePackage.ShortName} -> {targetPackage.ShortName}");
+                    doComparison(sourcePackage, targetPackage);
+                    applyCachedChanges(sourcePackage, targetPackage);
+
+                    // update concept comparisons that have multiple sources or targets (easier to do after the rest of comparison processing)
+                    doConceptPostProcessing(sourcePackage, targetPackage);
+                }
 
                 // descending
-                _logger.LogInformation($"Processing {targetPackage.ShortName} -> {sourcePackage.ShortName}");
-                doComparison(targetPackage, sourcePackage);
-                applyCachedChanges(targetPackage, sourcePackage);
+                if ((specificPairs is null) ||
+                    specificPairs.Contains((targetPackage.DefinitionFhirSequence, sourcePackage.DefinitionFhirSequence)))
+                {
+                    _logger.LogInformation($"Processing {targetPackage.ShortName} -> {sourcePackage.ShortName}");
+                    doComparison(targetPackage, sourcePackage);
+                    applyCachedChanges(targetPackage, sourcePackage);
 
-                // update concept comparisons that have multiple sources or targets (easier to do after the rest of comparison processing)
-                doConceptPostProcessing(sourcePackage, targetPackage);
-                doConceptPostProcessing(targetPackage, sourcePackage);
+                    // update concept comparisons that have multiple sources or targets (easier to do after the rest of comparison processing)
+                    doConceptPostProcessing(targetPackage, sourcePackage);
+                }
             }
         }
-
     }
 
     private void doConceptPostProcessing(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
@@ -481,7 +492,9 @@ public class ValueSetComparer
                             $"Applying explicit mapping" +
                             $" from `{trackingRecord.SourceValueSet.VersionedUrl}#{sourceConcept.Code}`" +
                             $" to `{trackingRecord.TargetValueSet?.VersionedUrl}#{targetConcept?.Code}`" +
-                            $" in `{explicitConceptMapping.ConceptMapFilename ?? explicitConceptMapping.FmlFilename}`.");
+                            $" as {explicitConceptMapping.Relationship}" +
+                            $" in `{explicitConceptMapping.ConceptMapFilename ?? explicitConceptMapping.FmlFilename}`," +
+                            $" which results in {path.Relationship}.");
                     }
                 }
 
@@ -609,6 +622,7 @@ public class ValueSetComparer
                     technicalMessage = $"Using explicit mapping" +
                         $" from `{sourceVs.VersionedUrl}`" +
                         $" to `{targetVs.VersionedUrl}`" +
+                        $" as {mapping.Relationship}" +
                         $" in `{trackingRecord.ExplicitMappingSource?.Url}` (`{trackingRecord.ExplicitMappingSource?.Filename}`)";
 
                     bool? targetConceptIsEscape = targetConcept is null

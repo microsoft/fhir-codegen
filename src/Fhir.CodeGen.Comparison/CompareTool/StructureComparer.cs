@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Common.Models;
+using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
 using Hl7.Fhir.Model;
@@ -81,7 +82,9 @@ public class StructureComparer
         _elementTypeComparisonCache = new();
     }
 
-    public void CompareStructures(int? maxStepSize = null)
+    public void CompareStructures(
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
@@ -97,8 +100,17 @@ public class StructureComparer
                 DbFhirPackage sourcePackage = _packages[i];
                 DbFhirPackage targetPackage = _packages[i + stepSize];
 
-                packagePairs.Add(new(sourcePackage, targetPackage));
-                packagePairs.Add(new(targetPackage, sourcePackage));
+                if ((specificPairs is null) ||
+                    specificPairs.Contains((sourcePackage.DefinitionFhirSequence, targetPackage.DefinitionFhirSequence)))
+                {
+                    packagePairs.Add(new(sourcePackage, targetPackage));
+                }
+
+                if ((specificPairs is null) ||
+                    specificPairs.Contains((targetPackage.DefinitionFhirSequence, sourcePackage.DefinitionFhirSequence)))
+                {
+                    packagePairs.Add(new(targetPackage, sourcePackage));
+                }
             }
         }
 

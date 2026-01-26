@@ -321,12 +321,14 @@ public class ValueSetOutcomeGenerator
                             SourceFhirSequence = packagePair.SourceFhirSequence,
                             SourceValueSetKey = sourceVs.Key,
                             SourceValueSetConceptKey = sourceConcept.Key,
+                            SourceDisplay = sourceConcept.Display,
                             TotalSourceCount = -1,
 
                             TargetFhirPackageKey = packagePair.TargetPackageKey,
                             TargetFhirSequence = packagePair.TargetFhirSequence,
                             TargetValueSetKey = null,
                             TargetValueSetConceptKey = null,
+                            TargetDisplay = null,
                             TotalTargetCount = -1,
 
                             RequiresXVerDefinition = noMapVsRequiresXVer,
@@ -488,6 +490,8 @@ public class ValueSetOutcomeGenerator
 
                     string conceptComments = conceptComparison.TechnicalMessage ?? conceptComparison.UserMessage ?? "TODO";
 
+                    CMR? relationship = conceptComparison.Relationship;
+
                     if (conceptComparison.SourceCodeTreatedAsEscapeValve ||
                         (conceptComparison.TargetCodeTreatedAsEscapeValve == true))
                     {
@@ -505,6 +509,8 @@ public class ValueSetOutcomeGenerator
                             default:
                                 break;
                         }
+
+                        relationship = FhirDbComparer.ApplyRelationship(relationship, vsComparison.Relationship);
                     }
 
                     DbValueSetConceptOutcome conceptOutcome = new()
@@ -517,12 +523,14 @@ public class ValueSetOutcomeGenerator
                         SourceFhirSequence = packagePair.SourceFhirSequence,
                         SourceValueSetKey = sourceVs.Key,
                         SourceValueSetConceptKey = sourceConcept.Key,
+                        SourceDisplay = sourceConcept.Display,
                         TotalSourceCount = conceptSourceCount,
 
                         TargetFhirPackageKey = packagePair.TargetPackageKey,
                         TargetFhirSequence = packagePair.TargetFhirSequence,
                         TargetValueSetKey = targetVs.Key,
                         TargetValueSetConceptKey = targetConcept?.Key,
+                        TargetDisplay = targetConcept?.Display,
                         TotalTargetCount = conceptTargetCount,
 
                         RequiresXVerDefinition = conceptRequiresXVer,
@@ -530,9 +538,9 @@ public class ValueSetOutcomeGenerator
                         IsRenamed = targetConcept is null ? false : (sourceConcept.Code != targetConcept.Code),
                         IsUnmapped = targetConcept is null || conceptComparison.NotMapped,
                         IsIdentical = conceptComparison.IsIdentical == true,
-                        IsEquivalent = conceptComparison.Relationship == CMR.Equivalent,
-                        IsBroaderThanTarget = conceptComparison.Relationship == CMR.SourceIsBroaderThanTarget,
-                        IsNarrowerThanTarget = conceptComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
+                        IsEquivalent = relationship == CMR.Equivalent,
+                        IsBroaderThanTarget = relationship == CMR.SourceIsBroaderThanTarget,
+                        IsNarrowerThanTarget = relationship == CMR.SourceIsNarrowerThanTarget,
 
                         FullyMapsToThisTarget = conceptFullyMapsToThisTarget,
                         FullyMapsAcrossAllTargets = conceptFullyMapsAcrossAllTargets,

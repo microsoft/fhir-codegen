@@ -263,19 +263,22 @@ public partial class XVerProcessor
                 //];
 
                 specificPairs = [
-                    (FhirReleases.FhirSequenceCodes.DSTU2, FhirReleases.FhirSequenceCodes.STU3),
+                    //(FhirReleases.FhirSequenceCodes.DSTU2, FhirReleases.FhirSequenceCodes.STU3),
+                    (FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.R4B),
+                    (FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R4),
                     (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B),
                     (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4),
                 ];
 
                 //UpdateValueSetMaps();
 
-                LoadDatabase(true, true);
+                //LoadDatabase(true, true);
 
-                LoadFhirCrossVersionMaps();
+                //LoadFhirCrossVersionMaps();
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
+                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, specificPairs: specificPairs);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
                 CompareInDatabase();
@@ -292,10 +295,10 @@ public partial class XVerProcessor
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1, includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, includeIgScripts: false, specificPairs: specificPairs);
-                ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+                //ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: false);
-                //ExportOutcomes();
+                ExportOutcomes();
 
                 break;
 
@@ -479,15 +482,20 @@ public partial class XVerProcessor
             }
         }
 
+        // creating the database with defintions loads all the content
+        _db = new(_definitions, _dbPath, _dbName, _config.LogFactory);
+        _dbName = _db.DbFileName;
+
+
         // load definitions if we have not done so
         if (_definitions.Length == 0)
         {
             loadDefinitionCollections();
         }
 
-        // creating the database with defintions loads all the content
-        _db = new(_definitions, _dbPath, _dbName, _config.LogFactory);
-        _dbName = _db.DbFileName;
+        //// creating the database with defintions loads all the content
+        //_db = new(_definitions, _dbPath, _dbName, _config.LogFactory);
+        //_dbName = _db.DbFileName;
 
         // save the definition content in the database
         if (!_db.TryLoadFromDefinitionCollections(_exclusionSet, _escapeValveCodes))
@@ -629,7 +637,8 @@ public partial class XVerProcessor
     /// <param name="artifactFilter">Optional artifact type filter.</param>
     public void CompareInDatabase(
         FhirArtifactClassEnum? artifactFilter = null,
-        int? maxStepSize = null)
+        int? maxStepSize = null,
+        HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         if (_db is null)
         {
@@ -652,7 +661,8 @@ public partial class XVerProcessor
                 comparer.Compare(
                     processValueSets: true,
                     processStructures: false,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
 
             case FhirArtifactClassEnum.PrimitiveType:
@@ -663,11 +673,14 @@ public partial class XVerProcessor
                 comparer.Compare(
                     processValueSets: false,
                     processStructures: true,
-                    maxStepSize: maxStepSize);
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
 
             default:
-                comparer.Compare(maxStepSize: maxStepSize);
+                comparer.Compare(
+                    maxStepSize: maxStepSize,
+                    specificPairs: specificPairs);
                 break;
         }
     }
