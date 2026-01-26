@@ -256,20 +256,24 @@ public class IgExporter
                 DbFhirPackage sourcePackage = _packages[i];
                 DbFhirPackage targetPackage = _packages[i + stepSize];
 
-                packagePairs.Add(new(sourcePackage, targetPackage));
-                packagePairs.Add(new(targetPackage, sourcePackage));
+                if ((specificPairs is null) ||
+                    specificPairs.Contains((sourcePackage.DefinitionFhirSequence, targetPackage.DefinitionFhirSequence)))
+                {
+                    packagePairs.Add(new(sourcePackage, targetPackage));
+                }
+
+
+                if ((specificPairs is null) ||
+                    specificPairs.Contains((targetPackage.DefinitionFhirSequence, sourcePackage.DefinitionFhirSequence)))
+                {
+                    packagePairs.Add(new(targetPackage, sourcePackage));
+                }
             }
         }
 
         // iterate over our pairs in the order we built them
         foreach (FhirPackageComparisonPair packagePair in packagePairs)
         {
-            if ((specificPairs is not null) &&
-                !specificPairs.Contains((packagePair.SourceFhirSequence, packagePair.TargetFhirSequence)))
-            {
-                continue;
-            }
-
             tr.XVerIgs.Add(createInitialXVerIg(packagePair, includeScripts));
         }
 

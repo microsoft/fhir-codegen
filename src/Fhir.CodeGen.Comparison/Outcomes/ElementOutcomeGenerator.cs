@@ -365,6 +365,7 @@ public class ElementOutcomeGenerator
                 SourceResourceOrder = sourceEd.ResourceFieldOrder,
                 SourceComponentOrder = sourceEd.ComponentFieldOrder,
                 SourceMinCardinality = sourceEd.MinCardinality,
+                SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -1056,6 +1057,7 @@ public class ElementOutcomeGenerator
                         SourceResourceOrder = sourceEd.ResourceFieldOrder,
                         SourceComponentOrder = sourceEd.ComponentFieldOrder,
                         SourceMinCardinality = sourceEd.MinCardinality,
+                        SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
                         TotalSourceCount = 1,
 
                         TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -1450,6 +1452,7 @@ public class ElementOutcomeGenerator
                         SourceResourceOrder = sourceEd.ResourceFieldOrder,
                         SourceComponentOrder = sourceEd.ComponentFieldOrder,
                         SourceMinCardinality = sourceEd.MinCardinality,
+                        SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
                         TotalSourceCount = -1,
 
                         TargetFhirPackageKey = _packagePair.TargetPackageKey,

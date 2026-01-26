@@ -243,7 +243,7 @@ public class VocabularyExporter
             // create our vs
             ValueSet fhirVs = new()
             {
-                Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourcePackageShortName}/ValueSet/{vsOutcome.GenLongId}",
+                Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ValueSet/{vsOutcome.GenLongId}",
                 Id = vsOutcome.GenLongId,
                 Version = _exporter._crossDefinitionVersion,
                 Name = FhirSanitizationUtils.ReformatIdForName(vsOutcome.GenLongId!),

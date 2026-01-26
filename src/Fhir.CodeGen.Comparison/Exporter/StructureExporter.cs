@@ -119,9 +119,353 @@ public class StructureExporter
 
         List<XVerIgFileRecord> exported = [];
 
+        // get the structures defined in the source package
+        List<DbStructureDefinition> sourceStructures = DbStructureDefinition.SelectList(
+            _db,
+            FhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            ArtifactClass: FhirArtifactClassEnum.Resource);
+
+        // iterate over all structures - each will get a profile
+        foreach (DbStructureDefinition sourceSd in sourceStructures)
+        {
+            // get the structure outcomes for this source structure
+            List<DbStructureOutcome> sdOutcomes = DbStructureOutcome.SelectList(
+                _db,
+                SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                SourceStructureKey: sourceSd.Key);
+
+            // iterate over the outcomes and create profiles for each target
+            foreach (DbStructureOutcome sdOutcome in sdOutcomes)
+            {
+                // resolve the target structure (if any)
+                DbStructureDefinition? targetSd = sdOutcome.TargetStructureKey is null
+                    ? null
+                    : DbStructureDefinition.SelectSingle(
+                        _db,
+                        FhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                        Key: sdOutcome.TargetStructureKey.Value);
+
+                // build the initial structure definition for the extension
+                StructureDefinition profileSd = createProfileSd(
+                    igTr,
+                    sourceSd,
+                    targetSd,
+                    sdOutcome);
+
+                if ((targetSd is null) ||
+                    (targetSd.Name == "Basic"))
+                {
+                    DbElementOutcome? rootElementOutcome = DbElementOutcome.SelectSingle(
+                            _db,
+                            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                            StructureOutcomeKey: sdOutcome.Key,
+                            SourceResourceOrder: 0);
+
+                    if (rootElementOutcome is null)
+                    {
+                        throw new Exception($"First element outcome for source structure `{sourceSd.Name}` in package pair `{igTr.PackageId}` is not the root element");
+                    }
+
+                    // if this is a basic resource profile, it only needs the root extension
+                    addContentForBasicProfile(
+                        igTr,
+                        sourceSd,
+                        sdOutcome,
+                        rootElementOutcome,
+                        profileSd);
+                }
+                else
+                {
+                    // add the content for a mapped resource
+                    addContentForMappedProfile(
+                        igTr,
+                        sourceSd,
+                        targetSd,
+                        sdOutcome,
+                        profileSd);
+                }
+
+                //// if the differential is empty, skip this profile
+                //if (profileSd.Differential.Element.Count == 0)
+                //{
+                //    continue;
+                //}
+
+                // write the profile to a file
+                string filename = $"StructureDefinition-{profileSd.Id}.json";
+                string path = Path.Combine(dir, filename);
+                File.WriteAllText(path, profileSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+                exported.Add(new()
+                {
+                    FileName = filename,
+                    FileNameWithoutExtension = filename[..^5],
+                    IsPageContentFile = false,
+                    Name = profileSd.Name,
+                    Id = profileSd.Id,
+                    Url = profileSd.Url,
+                    ResourceType = Hl7.Fhir.Model.FHIRAllTypes.StructureDefinition.GetLiteral(),
+                    Version = profileSd.Version,
+                    Description = profileSd.Description ?? profileSd.Title ?? $"Profile: {profileSd.Url}",
+                });
+            }
+
+
+        }
 
         _logger.LogInformation($"Wrote {exported.Count} Profiles for `{igTr.PackageId}`");
         igTr.ProfileFiles = exported;
+    }
+
+    private void addContentForMappedProfile(
+        XVerIgExportTrackingRecord igTr,
+        DbStructureDefinition sourceSd,
+        DbStructureDefinition targetSd,
+        DbStructureOutcome sdOutcome,
+        StructureDefinition profileSd)
+    {
+        // get the element outcomes
+        List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
+            _db,
+            StructureOutcomeKey: sdOutcome.Key,
+            RequiresXVerDefinition: true,
+            ParentElementOutcomeKeyIsNull: true);
+
+        // build a lookup based on context paths
+        ILookup<string, DbElementOutcome> edOutcomeContextLookup = edOutcomes
+            .SelectMany(edo => edo.ExtensionContexts, (edo, context) => new { Context = context, Outcome = edo })
+            .ToLookup(x => x.Context, x => x.Outcome);
+
+        // we need to traverse the elements in the order of the target structure
+        List<DbElement> targetElements = DbElement.SelectList(
+            _db,
+            StructureKey: targetSd.Key,
+            orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+
+        if (targetElements.Count == 0)
+        {
+            throw new Exception($"Resource with no elements!");
+        }
+
+        DbElement targetRootEd = targetElements[0];
+        ILookup<string, DbElement> targetIdLookup = targetElements.ToLookup(ed => ed.Id);
+
+        // iterate over the elements and add to the differential as necessary
+        foreach (DbElement targetEd in targetElements)
+        {
+            List<DbElementOutcome> targetEdOutcomes = [];
+            if (edOutcomeContextLookup.Contains(targetEd.Id))
+            {
+                targetEdOutcomes.AddRange(edOutcomeContextLookup[targetEd.Id]);
+            }
+
+            // if there are none, move on
+            if (targetEdOutcomes.Count == 0)
+            {
+                continue;
+            }
+
+            string targetId = targetEd.Id + ".extension";
+            string targetPath = targetEd.Path + ".extension";
+            DbElement actualTargetEd = targetEd;
+
+            // check to see if we need to swap targets
+            if (targetIdLookup.Contains(targetId))
+            {
+                actualTargetEd = targetIdLookup[targetId].First();
+            }
+
+            // add the base for this element we need for slicing
+            ElementDefinition targetSlicingEd = new()
+            {
+                ElementId = targetId,
+                Path = targetPath,
+                Slicing = new()
+                {
+                    Discriminator = [
+                    new ElementDefinition.DiscriminatorComponent()
+                {
+                    Type = ElementDefinition.DiscriminatorType.Value,
+                    Path = "url",
+                }
+                ],
+                    Ordered = false,
+                    Rules = ElementDefinition.SlicingRules.Open,
+                },
+                Base = new ElementDefinition.BaseComponent()
+                {
+                    Path = actualTargetEd.BasePath ?? "DomainResource.extension",
+                    Min = 0,
+                    Max = "*",
+                },
+                Min = 1,
+                Max = "*",
+            };
+
+            profileSd.Differential.Element.Add(targetSlicingEd);
+
+            // add each outcome that we should have here
+            foreach (DbElementOutcome targetEdOutcome in targetEdOutcomes)
+            {
+                ElementDefinition extEd = new()
+                {
+                    ElementId = $"{targetId}:{targetEdOutcome.SourceName}",
+                    Path = targetPath,
+                    Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
+                    Min = targetEdOutcome.SourceMinCardinality,
+                    Max = targetEdOutcome.SourceMaxCardinalityString,
+                    Base = new ElementDefinition.BaseComponent()
+                    {
+                        Path = "DomainResource.extension",
+                        Min = 0,
+                        Max = "*",
+                    },
+                    Type = [
+                        new ElementDefinition.TypeRefComponent()
+                        {
+                            Code = "Extension",
+                            Profile = [ targetEdOutcome.GenUrl ],
+                        },
+                    ],
+                };
+
+                profileSd.Differential.Element.Add(extEd);
+            }
+        }
+
+    }
+
+    private void addContentForBasicProfile(
+        XVerIgExportTrackingRecord igTr,
+        DbStructureDefinition sourceSd,
+        DbStructureOutcome sdOutcome,
+        DbElementOutcome rootElementOutcome,
+        StructureDefinition profileSd)
+    {
+        profileSd.Differential.Element = [
+            new ElementDefinition()
+            {
+                ElementId = "Basic.extension",
+                Path = "Basic.extension",
+                Slicing = new()
+                {
+                    Discriminator = [
+                        new ElementDefinition.DiscriminatorComponent()
+                        {
+                            Type = ElementDefinition.DiscriminatorType.Value,
+                            Path = "url",
+                        }
+                    ],
+                    Ordered = false,
+                    Rules = ElementDefinition.SlicingRules.Open,
+                },
+                Base = new ElementDefinition.BaseComponent()
+                {
+                    Path = "DomainResource.extension",
+                    Min = 0,
+                    Max = "*",
+                },
+                Min = 1,
+                Max = "*",
+            },
+            new ElementDefinition()
+            {
+                ElementId = $"Basic.extension:{sourceSd.Id}",
+                Path = "Basic.extension",
+                SliceName = sourceSd.Id,
+                Short = $"Cross-version extension for {sourceSd.Name} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
+                Min = 1,
+                Max = "1",
+                Base = new ElementDefinition.BaseComponent()
+                {
+                    Path = "DomainResource.extension",
+                    Min = 0,
+                    Max = "*",
+                },
+                Type = [
+                    new ElementDefinition.TypeRefComponent()
+                    {
+                        Code = "Extension",
+                        Profile = [ rootElementOutcome.GenUrl ],
+                    },
+                ],
+            },
+            new ElementDefinition()
+            {
+                ElementId = "Basic.code",
+                Path = "Basic.code",
+                Pattern = new CodeableConcept("http://hl7.org/fhir/fhir-types", sourceSd.Id),
+                Base = new ElementDefinition.BaseComponent()
+                {
+                    Path = "Basic.code",
+                    Min = 1,
+                    Max = "*",
+                }
+            },
+        ];
+    }
+
+    private StructureDefinition createProfileSd(
+        XVerIgExportTrackingRecord igTr,
+        DbStructureDefinition sourceSd,
+        DbStructureDefinition? targetSd,
+        DbStructureOutcome sdOutcome)
+    {
+        string targetStructureName = targetSd?.Name ?? "Basic";
+        string profileId = sdOutcome.GenShortId!;
+
+        StructureDefinition profileSd = new()
+        {
+            Id = profileId,
+            Url = sdOutcome.GenUrl,
+            Name = FhirSanitizationUtils.ReformatIdForName(sdOutcome.GenLongId!),
+            Version = _exporter._crossDefinitionVersion,
+            FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion) ?? FHIRVersion.N5_0_0,
+            DateElement = new FhirDateTime(DateTimeOffset.Now),
+            Title = $"Cross-version Profile for {igTr.PackagePair.SourceFhirSequence}.{sourceSd.Name} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Description = $"This cross-version profile allows " +
+                $" {igTr.PackagePair.SourceFhirSequence} {sourceSd.Name} content to be represented" +
+                $" via FHIR {igTr.PackagePair.TargetFhirSequence} {targetStructureName} resources.",
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Kind = StructureDefinition.StructureDefinitionKind.Resource,
+            Abstract = false,
+            Type = targetStructureName,
+            BaseDefinition = $"http://hl7.org/fhir/StructureDefinition/{targetStructureName}",
+            Derivation = StructureDefinition.TypeDerivationRule.Constraint,
+            Differential = [],
+        };
+
+        string wg = CommonDefinitions.ResolveWorkgroup("fhir");
+
+        // add the work group extension
+        profileSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+        // ensure there is a publisher, use the WG if there is none
+        profileSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
+
+        // ensure there is a contact point - use the default WG unless there are multiple entries
+        if ((profileSd.Contact == null) || (profileSd.Contact.Count < 2))
+        {
+            profileSd.Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames[wg],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls[wg],
+                        },
+                    ],
+                }
+            ];
+        }
+
+        profileSd.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, null);
+
+        return profileSd;
     }
 
 

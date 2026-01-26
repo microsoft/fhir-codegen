@@ -224,7 +224,7 @@ public class ValueSetOutcomeGenerator
                     packagePair.TargetPackageShortName,
                     targetVs?.Id);
 
-                string url = $"http://hl7.org/fhir/{packagePair.SourcePackageShortName}/ValueSet/{idLong}";
+                string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ValueSet/{idLong}";
 
                 if ((targetVs is null) ||
                     vsComparison.NotMapped)

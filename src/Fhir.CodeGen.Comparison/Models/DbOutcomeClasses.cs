@@ -413,6 +413,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required int SourceResourceOrder { get; set; }
     public required int SourceComponentOrder { get; set; }
     public required int SourceMinCardinality { get; set; }
+    public required string SourceMaxCardinalityString { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key), modelTypeName: nameof(DbStructureDefinition))]

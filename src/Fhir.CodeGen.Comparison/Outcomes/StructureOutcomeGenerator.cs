@@ -242,7 +242,7 @@ public class StructureOutcomeGenerator
                     packagePair.TargetPackageShortName,
                     targetSd?.Id);
 
-                string url = $"http://hl7.org/fhir/{packagePair.SourcePackageShortName}/StructureDefinition/{idLong}";
+                string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
 
                 if (sdTr.StructureComparison.NotMapped || (targetSd is null))
                 {
@@ -275,7 +275,7 @@ public class StructureOutcomeGenerator
                     DbStructureOutcome noMapSdOutcome = createNoMapStructureOutcome(
                         packagePair,
                         sourceSd,
-                        structureOutcomeKey: null,
+                        structureOutcomeKey: sdTr.StructureOutcomeKey,
                         structureComparisonKey: null,
                         comments: noMapComments);
 
@@ -403,7 +403,7 @@ public class StructureOutcomeGenerator
             //        packagePair.TargetPackageShortName,
             //        targetSd?.Id);
 
-            //    string url = $"http://hl7.org/fhir/{packagePair.SourcePackageShortName}/StructureDefinition/{idLong}";
+            //    string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
 
             //    if ((targetSd is null) ||
             //        sourceComparison.NotMapped)
@@ -712,7 +712,7 @@ public class StructureOutcomeGenerator
             sourceSd.Id,
             packagePair.TargetPackageShortName);
 
-        string url = $"http://hl7.org/fhir/{packagePair.SourcePackageShortName}/StructureDefinition/{idLong}";
+        string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
 
         structureOutcomeKey ??= DbStructureOutcome.GetIndex();
         comments ??=
