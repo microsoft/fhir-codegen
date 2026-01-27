@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Common.FhirExtensions;
@@ -18,6 +19,7 @@ using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
 using Octokit;
 using static Fhir.CodeGen.Comparison.Exporter.IgExporter;
+using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Exporter;
 
@@ -94,13 +96,324 @@ public class StructureExporter
             // export profiles
             exportProfiles(igTr);
 
-            // export type maps (maybe?)
+            // TODO: decide if we are exporting type maps 
 
             // export resource maps
+            exportResourceMaps(igTr);
 
             // export element maps
+            exportElementMaps(igTr);
         }
     }
+
+    private void exportElementMaps(XVerIgExportTrackingRecord igTr)
+    {
+        if (igTr.ElementMapDir is null)
+        {
+            throw new Exception("ElementMapDir is null");
+        }
+
+        string dir = igTr.ElementMapDir;
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        _logger.LogInformation($"Writing element maps for `{igTr.PackageId}`...");
+
+        List<XVerIgFileRecord> exported = [];
+
+        // get the structure outcomes for this pair
+        List<DbStructureOutcome> sdOutcomes = DbStructureOutcome.SelectList(
+            _db,
+            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey);
+
+        // iterate over the outcomes to create element maps for each resource
+        foreach (DbStructureOutcome sdOutcome in sdOutcomes)
+        {
+            // create a concept map for this resource
+            ConceptMap edCm = createElementConceptMap(igTr, sdOutcome);
+
+            // get the element outcomes for this structure outcome
+            List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
+                _db,
+                StructureOutcomeKey: sdOutcome.Key,
+                orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
+
+            string? lastSourceId = null;
+            ConceptMap.SourceElementComponent? currentSourceElement = null;
+
+            Dictionary<int, string> outcomeUrlComposition = [];
+
+            // iterate over the element outcomes
+            foreach (DbElementOutcome edOutcome in edOutcomes)
+            {
+                // check if we need a new source element
+                if ((currentSourceElement is null) ||
+                    (lastSourceId != edOutcome.SourceId))
+                {
+                    // create a new source element
+                    currentSourceElement = new()
+                    {
+                        Code = edOutcome.SourceId,
+                        Display = edOutcome.SourceName,
+                        Target = [],
+                    };
+                    edCm.Group[0].Element.Add(currentSourceElement);
+                    lastSourceId = sdOutcome.SourceId;
+                }
+
+                CMR relationship;
+                if (sdOutcome.IsIdentical || sdOutcome.IsEquivalent)
+                {
+                    relationship = CMR.Equivalent;
+                }
+                else if (sdOutcome.IsBroaderThanTarget)
+                {
+                    relationship = CMR.SourceIsBroaderThanTarget;
+                }
+                else if (sdOutcome.IsNarrowerThanTarget)
+                {
+                    relationship = CMR.SourceIsNarrowerThanTarget;
+                }
+                else
+                {
+                    relationship = CMR.RelatedTo;
+                }
+
+                if (edOutcome.TargetElementKey is null)
+                {
+                    string code;
+                    if (edOutcome.BasicElementEquivalent is not null)
+                    {
+                        string[] components = edOutcome.BasicElementEquivalent.Split('.');
+                        code = string.Join('.', ["Basic", .. components[1..]]);
+                    }
+                    else if (edOutcome.ParentElementOutcomeKey is null)
+                    {
+                        code = edOutcome.ExtensionSubstitutionUrl ?? edOutcome.GenUrl!;
+                    }
+                    else if (outcomeUrlComposition.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out string? parentUrl))
+                    {
+                        code = parentUrl + ":" + edOutcome.GenUrl!;
+                    }
+                    else
+                    {
+                        code = edOutcome.GenUrl!;
+                    }
+
+                    outcomeUrlComposition[edOutcome.Key] = code;
+
+                    // create our target element
+                    ConceptMap.TargetElementComponent targetElement = new()
+                    {
+                        Code = code,
+                        Display = edOutcome.TargetName,
+                        Relationship = relationship,
+                        Comment = edOutcome.Comments,
+                    };
+                    currentSourceElement.Target.Add(targetElement);
+                }
+                else
+                {
+                    // create our target element
+                    ConceptMap.TargetElementComponent targetElement = new()
+                    {
+                        Code = sdOutcome.TargetCanonicalUnversioned + "#" + edOutcome.TargetId,
+                        Display = edOutcome.TargetName,
+                        Relationship = relationship,
+                        Comment = edOutcome.Comments,
+                    };
+                    currentSourceElement.Target.Add(targetElement);
+                }
+            }
+
+            // write the profile to a file
+            string filename = $"ConceptMap-{edCm.Id}.json";
+            string path = Path.Combine(dir, filename);
+            File.WriteAllText(path, edCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            exported.Add(new()
+            {
+                FileName = filename,
+                FileNameWithoutExtension = filename[..^5],
+                IsPageContentFile = false,
+                Name = edCm.Name,
+                Id = edCm.Id,
+                Url = edCm.Url,
+                ResourceType = Hl7.Fhir.Model.FHIRAllTypes.ConceptMap.GetLiteral(),
+                Version = edCm.Version,
+                Description = edCm.Description ?? edCm.Title ?? $"ConceptMap: {edCm.Url}",
+            });
+
+        }
+
+        _logger.LogInformation($"Wrote {exported.Count} element maps for `{igTr.PackageId}`");
+        igTr.ProfileFiles = exported;
+    }
+
+    private ConceptMap createElementConceptMap(
+        XVerIgExportTrackingRecord igTr,
+        DbStructureOutcome sdOutcome)
+    {
+        string targetId = sdOutcome.TargetId ?? "Basic";
+        string id = $"{igTr.PackagePair.SourcePackageShortName}-{sdOutcome.SourceId}-elements-for-{igTr.PackagePair.TargetPackageShortName}-{targetId}";
+
+        ConceptMap vsCm = new()
+        {
+            Id = id,
+            Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ConceptMap/{id}",
+            Name = FhirSanitizationUtils.ReformatIdForName(id),
+            Version = _exporter._crossDefinitionVersion,
+            DateElement = new FhirDateTime(DateTimeOffset.Now),
+            Title = $"Cross-version ConceptMap for FHIR {igTr.PackagePair.SourceFhirSequence} resources in FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Description = $"This ConceptMap represents the cross-version mapping of resource FHIR {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}.",
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            SourceScope = new FhirUri($"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ValueSet/resource-types"),
+            TargetScope = new FhirUri($"http://hl7.org/fhir/{igTr.PackagePair.TargetFhirVersionShort}/ValueSet/resource-types"),
+            Group = [
+                new()
+                {
+                    Source = sdOutcome.SourceCanonicalVersioned,
+                    Element = [],
+                }
+            ],
+        };
+
+        return vsCm;
+    }
+
+    private void exportResourceMaps(XVerIgExportTrackingRecord igTr)
+    {
+        if (igTr.ResourceMapDir is null)
+        {
+            throw new Exception("ResourceMapDir is null");
+        }
+
+        string dir = igTr.ResourceMapDir;
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        _logger.LogInformation($"Writing resource maps for `{igTr.PackageId}`...");
+
+        List<XVerIgFileRecord> exported = [];
+
+        ConceptMap cm = createResourceConceptMap(igTr);
+
+        // get the structure outcomes for this pair
+        List<DbStructureOutcome> sdOutcomes = DbStructureOutcome.SelectList(
+            _db,
+            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+            orderByProperties: [nameof(DbStructureOutcome.SourceName), nameof(DbStructureOutcome.TargetName)]);
+
+        string? lastSourceId = null;
+
+        ConceptMap.SourceElementComponent? currentSourceElement = null;
+
+        // iterate over the outcomes
+        foreach (DbStructureOutcome sdOutcome in sdOutcomes)
+        {
+            // check if we need a new source element
+            if ((currentSourceElement is null) ||
+                (lastSourceId != sdOutcome.SourceId))
+            {
+                // create a new source element
+                currentSourceElement = new()
+                {
+                    Code = sdOutcome.SourceId,
+                    Display = sdOutcome.SourceName,
+                    Target = [],
+                };
+                cm.Group[0].Element.Add(currentSourceElement);
+                lastSourceId = sdOutcome.SourceId;
+            }
+
+            CMR relationship;
+            if (sdOutcome.IsIdentical || sdOutcome.IsEquivalent)
+            {
+                relationship = CMR.Equivalent;
+            }
+            else if (sdOutcome.IsBroaderThanTarget)
+            {
+                relationship = CMR.SourceIsBroaderThanTarget;
+            }
+            else if (sdOutcome.IsNarrowerThanTarget)
+            {
+                relationship = CMR.SourceIsNarrowerThanTarget;
+            }
+            else
+            {
+                relationship = CMR.RelatedTo;
+            }
+
+            // create our target element
+            ConceptMap.TargetElementComponent targetElement = new()
+            {
+                Code = sdOutcome.TargetId ?? "Basic",
+                Display = sdOutcome.TargetName ?? "Basic",
+                Relationship = relationship,
+                Comment = sdOutcome.Comments,
+            };
+
+            currentSourceElement.Target.Add(targetElement);
+        }
+
+        // write the profile to a file
+        string filename = $"ConceptMap-{cm.Id}.json";
+        string path = Path.Combine(dir, filename);
+        File.WriteAllText(path, cm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+        exported.Add(new()
+        {
+            FileName = filename,
+            FileNameWithoutExtension = filename[..^5],
+            IsPageContentFile = false,
+            Name = cm.Name,
+            Id = cm.Id,
+            Url = cm.Url,
+            ResourceType = Hl7.Fhir.Model.FHIRAllTypes.ConceptMap.GetLiteral(),
+            Version = cm.Version,
+            Description = cm.Description ?? cm.Title ?? $"ConceptMap: {cm.Url}",
+        });
+
+        _logger.LogInformation($"Wrote {exported.Count} resource maps for `{igTr.PackageId}`");
+        igTr.ProfileFiles = exported;
+    }
+
+    private ConceptMap createResourceConceptMap(
+        XVerIgExportTrackingRecord igTr)
+    {
+        string id = $"{igTr.PackagePair.SourcePackageShortName}-resources-for-{igTr.PackagePair.TargetPackageShortName}";
+
+        ConceptMap vsCm = new()
+        {
+            Id = id,
+            Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ConceptMap/{id}",
+            Name = FhirSanitizationUtils.ReformatIdForName(id),
+            Version = _exporter._crossDefinitionVersion,
+            DateElement = new FhirDateTime(DateTimeOffset.Now),
+            Title = $"Cross-version ConceptMap for FHIR {igTr.PackagePair.SourceFhirSequence} resources in FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Description = $"This ConceptMap represents the cross-version mapping of resource FHIR {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}.",
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            SourceScope = new FhirUri($"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ValueSet/resource-types"),
+            TargetScope = new FhirUri($"http://hl7.org/fhir/{igTr.PackagePair.TargetFhirVersionShort}/ValueSet/resource-types"),
+            Group = [
+                new()
+                {
+                    Source = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/resource-types",
+                    Target = $"http://hl7.org/fhir/{igTr.PackagePair.TargetFhirVersionShort}/resource-types",
+                    Element = [],
+                }
+            ],
+        };
+
+        return vsCm;
+    }
+
 
     private void exportProfiles(XVerIgExportTrackingRecord igTr)
     {
@@ -325,7 +638,6 @@ public class StructureExporter
                 profileSd.Differential.Element.Add(extEd);
             }
         }
-
     }
 
     private void addContentForBasicProfile(
@@ -474,7 +786,7 @@ public class StructureExporter
             Directory.CreateDirectory(dir);
         }
 
-        _logger.LogInformation($"Writing Extensions for `{igTr.PackageId}`...");
+        _logger.LogInformation($"Writing extensions for `{igTr.PackageId}`...");
 
         List<XVerIgFileRecord> exported = [];
 
@@ -968,6 +1280,20 @@ public class StructureExporter
                 dtValueEd.Comment += $"|{typeName}";
                 dtValueEd.Fixed = null;
             }
+
+            addDataTypeElementsRecursive(
+                extSd,
+                igTr,
+                et,
+                extElementPath + ".extension",
+                extElementId + ".extension");
+
+            //// add the elements from this data type
+            //List<DbElement> typeElements = DbElement.SelectList(
+            //    _db,
+            //    StructureKey: et.TypeStructureKey,
+            //    orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+
         }
 
         // add the URL element (always required)
@@ -1001,6 +1327,7 @@ public class StructureExporter
                 },
                 Min = 0,
                 Max = "0",
+                Type = [],
             };
 
             extSd.Differential.Element.Add(etValueEd);
@@ -1084,6 +1411,102 @@ public class StructureExporter
 
             // add our element
             extSd.Differential.Element.Add(etValueEd);
+        }
+    }
+
+    private bool skipElement(
+        DbElement ed,
+        bool skipFirstElement = true,
+        bool skipIds = true,
+        bool skipExtensions = true,
+        bool skipModifierExtenions = true) =>
+            (skipFirstElement && (ed.ResourceFieldOrder == 0)) ||
+            (skipIds && ((ed.BasePath == "id") || (ed.BasePath == "Element.id") || (ed.BasePath == "Resource.id"))) ||
+            (skipExtensions && ((ed.Name == "extension") || (ed.FullCollatedTypeLiteral == "Extension"))) ||
+            (skipModifierExtenions &&
+                ((ed.Name == "modifierExtension") || (ed.BasePath == "DomainResource.modifierExtension") || (ed.BasePath == "BackboneElement.modifierExtension")));
+
+
+    private void addDataTypeElementsRecursive(
+        StructureDefinition extSd,
+        XVerIgExportTrackingRecord igTr,
+        DbElementType et,
+        string parentPath,
+        string parentElementId)
+    {
+        // get the elements for this data type
+        List<DbElement> typeElements = DbElement.SelectList(
+            _db,
+            StructureKey: et.TypeStructureKey,
+            orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+        foreach (DbElement typeEd in typeElements)
+        {
+            if (skipElement(typeEd))
+            {
+                continue;
+            }
+
+            string elementId = parentElementId + ":" + typeEd.NameClean();
+            string elementPath = parentPath + "." + typeEd.Name;
+
+            // add the extension slice element
+            ElementDefinition dtExtSliceEd = new()
+            {
+                ElementId = elementId,
+                Path = elementPath,
+                SliceName = typeEd.NameClean(),
+                Base = new()
+                {
+                    Path = "Extension.extension",
+                    Min = 0,
+                    Max = "*",
+                },
+                Min = typeEd.MinCardinality,
+                Max = typeEd.MaxCardinalityString,
+            };
+            extSd.Differential.Element.Add(dtExtSliceEd);
+
+            // add the url element
+            ElementDefinition dtUrlEd = new()
+            {
+                ElementId = elementId + ".url",
+                Path = elementPath + ".url",
+                Fixed = new FhirUri(typeEd.NameClean()),
+                Min = 1,
+                Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.url",
+                    Min = 1,
+                    Max = "1",
+                },
+            };
+            extSd.Differential.Element.Add(dtUrlEd);
+
+            // get the types for this sub-element
+            List<DbElementType> dtElementTypes = DbElementType.SelectList(
+                _db,
+                ElementKey: typeEd.Key);
+
+            // add the value[x] element
+            ElementDefinition dtValueEd = new()
+            {
+                ElementId = elementId + ".value[x]",
+                Path = elementPath + ".value[x]",
+                Min = 0,
+                Max = "1",
+                Base = new()
+                {
+                    Path = "Extension.value[x]",
+                    Min = 0,
+                    Max = "1",
+                },
+                Type = dtElementTypes.Select(et => new ElementDefinition.TypeRefComponent()
+                {
+                    Code = et.TypeName ?? et.Literal,
+                }).ToList(),
+            };
+            extSd.Differential.Element.Add(dtValueEd);
         }
     }
 }

@@ -49,6 +49,11 @@ public class IgExporter
         public string? ProfileDir { get; set; } = null;
         public List<XVerIgFileRecord> ProfileFiles { get; set; } = [];
 
+        public string? ResourceMapDir { get; set; } = null;
+        public List<XVerIgFileRecord> ResourceMapFiles { get; set; } = [];
+        public string? ElementMapDir { get; set; } = null;
+        public List<XVerIgFileRecord> ElementMapFiles { get; set; } = [];
+
         public PackageContents AsPackageContents()
         {
             if (IgIndexFile is null)
@@ -65,6 +70,8 @@ public class IgExporter
             files.AddRange(VsConceptMapFiles.Select(f => f.AsPackageFile()));
             files.AddRange(ExtensionFiles.Select(f => f.AsPackageFile()));
             files.AddRange(ProfileFiles.Select(f => f.AsPackageFile()));
+            files.AddRange(ResourceMapFiles.Select(f => f.AsPackageFile()));
+            files.AddRange(ElementMapFiles.Select(f => f.AsPackageFile()));
 
             return new PackageContents()
             {
@@ -697,6 +704,18 @@ public class IgExporter
         if (!Directory.Exists(igTr.ProfileDir))
         {
             Directory.CreateDirectory(igTr.ProfileDir);
+        }
+
+        igTr.ResourceMapDir = Path.Combine(igTr.InputDir, "resourcemaps");
+        if (!Directory.Exists(igTr.ResourceMapDir))
+        {
+            Directory.CreateDirectory(igTr.ResourceMapDir);
+        }
+
+        igTr.ElementMapDir = Path.Combine(igTr.InputDir, "elementmaps");
+        if (!Directory.Exists(igTr.ElementMapDir))
+        {
+            Directory.CreateDirectory(igTr.ElementMapDir);
         }
     }
 }

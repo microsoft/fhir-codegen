@@ -1341,10 +1341,10 @@ public class ElementOutcomeGenerator
 
                         if (contextTargetElements.Count == 0)
                         {
-                            bool promoted = false;
+                            //bool promoted = false;
                             if (parentOutcome is not null)
                             {
-                                promoted = true;
+                                //promoted = true;
                                 // need to promote the modifier to the parent context
                                 parentOutcome.DefineAsModifier = true;
                                 parentOutcome.Comments +=
@@ -1355,7 +1355,7 @@ public class ElementOutcomeGenerator
                             if ((ancestorOutcome is not null) &&
                                 (ancestorOutcome.Key != parentOutcome?.Key))
                             {
-                                promoted = true;
+                                //promoted = true;
                                 // need to promote the modifier to the ancestor context
                                 ancestorOutcome.DefineAsModifier = true;
                                 ancestorOutcome.Comments +=
@@ -1363,10 +1363,10 @@ public class ElementOutcomeGenerator
                                     $" is a modifier, so this extension needs to be defined as a modifier.";
                             }
 
-                            if (!promoted)
-                            {
-                                Console.Write("");
-                            }
+                            //if (!promoted)
+                            //{
+                            //    Console.Write("");
+                            //}
                         }
                         else
                         {
