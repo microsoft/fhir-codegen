@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Lib.Language;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
+using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
 using Octokit;
 using static Fhir.CodeGen.Packages.Models.PackageIndex;
@@ -38,7 +41,9 @@ public class IgExporter
         public XVerIgFileRecord? IgIndexFile { get; set; } = null;
 
         public string? PageContentDir { get; set; } = null;
-        public List<XVerIgFileRecord> PageContentFiles { get; set; } = [];
+        public List<XVerIgFileRecord> SdPageContentFiles { get; set; } = [];
+        public List<XVerIgFileRecord> VsPageContentFiles { get; set; } = [];
+        public List<XVerIgFileRecord> XVerSourcePageContentFiles { get; set; } = [];
 
         public string? VocabularyDir { get; set; } = null;
         public List<XVerIgFileRecord> CodeSystemFiles { get; set; } = [];
@@ -68,7 +73,7 @@ public class IgExporter
                 IgIndexFile.AsPackageFile(),
                 ];
 
-            files.AddRange(PageContentFiles.Select(f => f.AsPackageFile()));
+            files.AddRange(VsPageContentFiles.Select(f => f.AsPackageFile()));
 
             files.AddRange(CodeSystemFiles.Select(f => f.AsPackageFile()));
             files.AddRange(ValueSetFiles.Select(f => f.AsPackageFile()));
@@ -97,6 +102,7 @@ public class IgExporter
         public string? PageContentDir { get; set; } = null;
 
         public XVerIgFileRecord? IgIndexFile { get; set; } = null;
+        public List<XVerIgFileRecord> XVerSourcePageContentFiles { get; set; } = [];
 
 
         public PackageContents AsPackageContents()
@@ -106,10 +112,14 @@ public class IgExporter
                 throw new Exception("IG Index file is required to create PackageContents.");
             }
 
+
+
             return new PackageContents()
             {
                 IndexVersion = 2,
-                Files = [ IgIndexFile.AsPackageFile() ],
+                Files = [
+                    IgIndexFile.AsPackageFile(),
+                    ..XVerSourcePageContentFiles.Select(f => f.AsPackageFile()) ],
             };
         }
     }
@@ -207,6 +217,267 @@ public class IgExporter
             Derivation = DerivationValue,
         };
     }
+
+    private readonly record struct XverIgDependencyRec
+    {
+        public required string PackageId { get; init; }
+        public required string PackageVersion { get; init; }
+        public required string CanonicalUrl { get; init; }
+        public required bool VersionSpecificPackages { get; init; }
+        public required bool HasR4B { get; init; }
+        public required bool NeededForPublisher { get; init; }
+
+        public string AsYamlProp(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            if (!VersionSpecificPackages)
+            {
+                return $"{PackageId} : {PackageVersion}";
+            }
+
+            string suffix = (fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B)
+                ? "r4"
+                : fhirSequence.ToString().ToLowerInvariant();
+
+            return $"{PackageId}.{suffix} : {PackageVersion}";
+        }
+
+        public string AsSushiYaml(FhirReleases.FhirSequenceCodes fhirSequence, string levelIndent = "    ")
+        {
+            if (!VersionSpecificPackages)
+            {
+                if (!string.IsNullOrEmpty(CanonicalUrl))
+                {
+                    return $"""
+                        {levelIndent}{PackageId}:
+                        {levelIndent}{levelIndent}id: {PackageId.Replace('.', '_')}
+                        {levelIndent}{levelIndent}uri: {CanonicalUrl}
+                        {levelIndent}{levelIndent}version: {PackageVersion}
+                        """;
+                }
+
+                return $"{levelIndent}{PackageId} : {PackageVersion}";
+            }
+
+            string suffix = (fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B)
+                ? "r4"
+                : fhirSequence.ToString().ToLowerInvariant();
+
+            if (!string.IsNullOrEmpty(CanonicalUrl))
+            {
+                return $"""
+                    {levelIndent}{PackageId}.{suffix}:
+                    {levelIndent}{levelIndent}id: {(PackageId.Replace('.', '_') + "_" + suffix)}
+                    {levelIndent}{levelIndent}uri: {CanonicalUrl}
+                    {levelIndent}{levelIndent}version: {PackageVersion}
+                    """;
+            }
+
+            return $"{levelIndent}{PackageId}.{suffix} : {PackageVersion}";
+        }
+
+        public string AsJsonProp(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            if (!VersionSpecificPackages)
+            {
+                return $"\"{PackageId}\" : \"{PackageVersion}\"";
+            }
+
+            string suffix = (fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B)
+                ? "r4"
+                : fhirSequence.ToString().ToLowerInvariant();
+
+            return $"\"{PackageId}.{suffix}\" : \"{PackageVersion}\"";
+        }
+
+        public string AsJsonIgDependency(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            string dotSuffix;
+            if (!VersionSpecificPackages)
+            {
+                dotSuffix = string.Empty;
+            }
+            else if ((fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B))
+            {
+                dotSuffix = ".r4";
+            }
+            else
+            {
+                dotSuffix = "." + fhirSequence.ToString().ToLowerInvariant();
+            }
+
+            string packageId = PackageId + dotSuffix;
+            string id = packageId.Replace('.', '_');
+
+            return $$$"""{ "packageId":"{{{packageId}}}", "version":"{{{PackageVersion}}}", "uri":"{{{CanonicalUrl}}}", "id":"{{{id}}}" }""";
+        }
+
+        public ImplementationGuide.DependsOnComponent AsIgDependsOn(FhirReleases.FhirSequenceCodes fhirSequence)
+        {
+            string dotSuffix;
+            if (!VersionSpecificPackages)
+            {
+                dotSuffix = string.Empty;
+            }
+            else if ((fhirSequence == FhirReleases.FhirSequenceCodes.R4B) && (!HasR4B))
+            {
+                dotSuffix = ".r4";
+            }
+            else
+            {
+                dotSuffix = "." + fhirSequence.ToString().ToLowerInvariant();
+            }
+
+            string packageId = PackageId + dotSuffix;
+            string id = packageId.Replace('.', '_');
+
+            return new ImplementationGuide.DependsOnComponent
+            {
+                ElementId = id,
+                PackageId = packageId,
+                Version = PackageVersion,
+                Uri = CanonicalUrl,
+            };
+        }
+    }
+
+    private static readonly List<XverIgDependencyRec> _xverDependencies = [
+        new()
+        {
+            PackageId = "hl7.terminology",
+            PackageVersion = "7.0.1",
+            CanonicalUrl = "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",                // "http://terminology.hl7.org"
+            VersionSpecificPackages = true,
+            HasR4B = false,
+            NeededForPublisher = false,
+        },
+        new()
+        {
+            PackageId = "hl7.fhir.uv.extensions",
+            PackageVersion = "5.3.0-ballot-tc1",
+            CanonicalUrl = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",     // "http://hl7.org/fhir/extensions"
+            VersionSpecificPackages = true,
+            HasR4B = true,
+            NeededForPublisher = false,
+        },
+        new()
+        {
+            PackageId = "hl7.fhir.uv.tools",
+            PackageVersion = "0.9.0",
+            CanonicalUrl = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",                // "http://hl7.org/fhir/tools"
+            VersionSpecificPackages = true,
+            HasR4B = false,
+            NeededForPublisher = false,
+        }
+    ];
+
+    // codes described at: https://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
+    private static readonly List<(string code, string value)> _xverIgParameters = [
+        // apply-contact: if true, overwrite all canonical resource contact details with that found in the IG.
+        ("apply-contact", "false"),
+
+        // apply-context: if true, overwrite all canonical resource context details with that found in the IG.
+        ("apply-context", "false"),
+
+        // apply-copyright: if true, overwrite all canonical resource copyright details with that found in the IG.
+        ("apply-copyright", "true"),
+
+        // apply-jurisdiction: if true, overwrite all canonical resource jurisdiction details with that found in the IG.
+        ("apply-jurisdiction", "false"),
+
+        // apply-publisher: if true, overwrite all canonical resource publisher details with that found in the IG.
+        ("apply-publisher", "false"),
+
+        // apply-version: if true, overwrite all canonical resource version details with that found in the IG.
+        ("apply-version", "false"),
+
+        // apply-wg: if true, overwrite all canonical resource WG details with that found in the IG.
+        ("apply-wg", "false"),
+
+        // copyrightyear: The copyright year text to include in the implementation guide footer
+        ("copyrightyear", "2025+"),
+
+        // default-contact: if true, populate all canonical resources that don't specify their own contact details with that found in the IG. Ignored if apply-contact is true.
+        ("default-contact", "true"),
+
+        // default-context: if true, populate all canonical resources that don't specify their own context details with that found in the IG. Ignored if apply-context is true.
+        ("default-context", "false"),
+
+        // default-copyright: if true, populate all canonical resources that don't specify their own copyright details with that found in the IG. Ignored if apply-copyright is true.
+        //("default-copyright", "true"),
+
+        // default-jurisdiction: f true, populate all canonical resources that don't specify their own jurisdiction details with that found in the IG. Ignored if apply-jurisdiction is true.
+        ("default-jurisdiction", "true"),
+
+        // default-publisher: if true, populate all canonical resources that don't specify their own publisher details with that found in the IG. Ignored if apply-publisher is true.
+        ("default-publisher", "false"),
+
+        // default-version: if true, populate all canonical resources that don't specify their own version details with that found in the IG. Ignored if apply-version is true.
+        ("default-version", "true"),
+
+        // default-wg: if true, populate all canonical resources that don't specify their own WG details with that found in the IG. Ignored if apply-contact is true.
+        ("default-wg", "true"),
+
+        // excludemap: If true, causes the mapping tab to be excluded from all StructureDefinition artifact pages
+        ("excludemap", "true"),
+
+        // i18n-default-lang: The default language (e.g. Resource.language) to assume in the IG when the resource and/or the element context doesn't specify a language
+        ("i18n-default-lang", "US-en"),
+
+        // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
+        //("jira-code", ""),
+
+        // no-expansions-files: Do not create the 'expansions.*' files
+        ("no-expansions-files", "true"),
+
+        // no-ig-database: Do not create the package.db file
+        ("no-ig-database", "true"),
+
+        // no-usage-check: No Warning in QA if there are extensions/profiles that are not used in this IG
+        ("no-usage-check", "true"),
+
+        // path-resource: Additional directories for source content
+        ("path-resource", "input/elementmaps"),
+        ("path-resource", "input/resourcemaps"),
+        ("path-resource", "input/vocabularymaps"),
+
+        /* pin-canonicals: Defines how the IG publisher treats unversioned canonical references. Possible values:
+         *   pin-none: no action is taken (default)
+         *   pin-all: any unversioned canonical references that can be resolved through the package dependencies will have |(version) appended to the canonical, where (version) is the latest available within the package dependencies
+         *   pin-multiples: pinning the canonical reference will only happen if there is multiple versions found in the package dependencies
+         */
+        ("pin-canonicals", "pin-all"),
+
+        // releaselabel: The release label at the top of the page. This is a text label with no fixed set of values that describes the status of the publication to users. Typical values might be 'STU X' or 'Normative Standard' or '2024 Edition'
+        ("releaselabel", "STU"),
+
+        // show-inherited-invariants: if true, render inherited constraints in the full details and invariants view
+        ("show-inherited-invariants", "false"),
+
+        // shownav: Determines whether the next/previous navigation tabs are shown in the header and footer
+        ("shownav", "true"),
+
+        // special-url: If a canonical resource in the IG should actually have a URL that isn't the one implied by the canonical URL for the IG itself, it must be listed here explicitly (as well as defined in the resource itself). It must be listed here to stop it accidentally being different. Each canonical url must be listed in full as present on the resource; it is not possible to specify a pattern.
+        //("special-url", "http://terminology.hl7.org/CodeSystem/designation-usage"),
+        //("special-url", "http://terminology.hl7.org/ValueSet/designation-usage"),
+
+        // special-url-base: A common alternative base URL for multiple canonical resources in the IG. The entire Canonical URL must exactly match {special-url-base}/{type}/{id}
+        ("special-url-base", "http://terminology.hl7.org"),
+
+        // suppress-mappings: By default, snapshots inherit mappings, and the mappings are carried through. But many of them aren't useful, or desired, and can be suppressed by adding this parameter. The value is the URI found in StructureDefinition.mapping.uri. The special value '*' suppresses most of the mappings in the main specification
+        ("suppress-mappings", "true"),
+
+        // usage-stats-opt-out: If true, usage stats (information about extensions, value sets, and invariants being used) is not sent to fhir.org (see e.g. http://clinfhir.com/igAnalysis.html).
+        ("usage-stats-opt-out", "true"),
+
+        /* version-comparison:
+         * Control how the IG publisher does a comparison with a previously published version (see qa.html). Possible values:
+         *   {last} - compare with the last published version (whatever it's status) - this is the default if the parameter doesn't appear
+         *   {current} - compare with the last full published version
+         *   n/a - don't do any comparison
+         *   [v] - a previous version where [v] is the version
+         */
+        ("version-comparison", "n/a"),
+    ];
 
     private readonly XVerExporter _exporter;
 
@@ -319,7 +590,608 @@ public class IgExporter
         // iterate over the IGs
         foreach (XVerIgExportTrackingRecord igTr in tr.XVerIgs)
         {
+            writeIgIni(igTr.IgRootDir!, igTr.PackageId);
+            writeIgJson(igTr);
+            writeMenuXml(igTr);
         }
+    }
+
+    private void writeMenuXml(XVerIgExportTrackingRecord igTr)
+    {
+        string contents = $$$"""
+            <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+              <li>
+                <a href="toc.html">Contents</a>
+              </li>
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="lookup-sd.html">Structure Lookup</a>
+              </li>
+              <li>
+                <a href="lookup-vs.html">ValueSet Lookup</a>
+              </li>
+              <li>
+                <a href="artifacts.html">Artifacts</a>
+              </li>
+              <li class="dropdown">
+                <a data-toggle="dropdown" href="#" class="dropdown-toggle">Support
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="downloads.html">Downloads</a>
+                  </li>
+                  <li>
+                    <a href="changelog.html">Change Log</a>
+                  </li>
+              </ul>
+              </li>
+            </ul>
+            """;
+
+        string filename = Path.Combine(igTr.IncludesDir!, "menu.xml");
+        File.WriteAllText(filename, contents);
+
+    }
+
+    private void writeIgJson(XVerIgExportTrackingRecord igTr)
+    {
+        switch (igTr.PackagePair.TargetFhirSequence)
+        {
+            case FhirReleases.FhirSequenceCodes.DSTU2:
+            case FhirReleases.FhirSequenceCodes.STU3:
+            case FhirReleases.FhirSequenceCodes.R4:
+            case FhirReleases.FhirSequenceCodes.R4B:
+                writeIgJsonR4(igTr);
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R5:
+            case FhirReleases.FhirSequenceCodes.R6:
+                writeIgJsonR5(igTr);
+                break;
+        }
+    }
+
+    private void writeIgJsonR4(XVerIgExportTrackingRecord igTr)
+    {
+        List<string> resourceDefinitions = [];
+
+        // process extensions
+        foreach (XVerIgFileRecord fileRec in igTr.ExtensionFiles)
+        {
+            resourceDefinitions.Add($$$"""
+                    {
+                        "extension" : [{
+                            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                            "valueString" : "StructureDefinition:extension"
+                        }],
+                        "reference" : {
+                            "reference" : "StructureDefinition/{{{fileRec.Id}}}"
+                        },
+                        "name" : "{{{fileRec.Name}}}",
+                        "description" : "{{{FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description)}}}"
+                    }
+                """);
+        }
+
+        // process profiles
+        foreach (XVerIgFileRecord fileRec in igTr.ProfileFiles)
+        {
+            resourceDefinitions.Add($$$"""
+                    {
+                        "extension" : [{
+                            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                            "valueString" : "StructureDefinition:profile"
+                        }],
+                        "reference" : {
+                            "reference" : "StructureDefinition/{{{fileRec.Id}}}"
+                        },
+                        "name" : "{{{fileRec.Name}}}",
+                        "description" : "{{{FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description)}}}"
+                    }
+                """);
+        }
+
+        // process code systems
+        foreach (XVerIgFileRecord fileRec in igTr.CodeSystemFiles)
+        {
+            resourceDefinitions.Add($$$"""
+                    {
+                        "extension" : [{
+                            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                            "valueString" : "CodeSystem"
+                        }],
+                        "reference" : {
+                            "reference" : "CodeSystem/{{{fileRec.Id}}}"
+                        },
+                        "name" : "{{{fileRec.Name}}}",
+                        "description" : "{{{FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description)}}}"
+                    }
+                """);
+        }
+
+        // process value sets
+        foreach (XVerIgFileRecord fileRec in igTr.ValueSetFiles)
+        {
+            resourceDefinitions.Add($$$"""
+                    {
+                        "extension" : [{
+                            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                            "valueString" : "ValueSet"
+                        }],
+                        "reference" : {
+                            "reference" : "ValueSet/{{{fileRec.Id}}}"
+                        },
+                        "name" : "{{{fileRec.Name}}}",
+                        "description" : "{{{FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description)}}}"
+                    }
+                """);
+        }
+
+        // process value set concept maps
+        foreach (XVerIgFileRecord fileRec in igTr.VsConceptMapFiles)
+        {
+            resourceDefinitions.Add($$$"""
+                    {
+                        "extension" : [{
+                            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                            "valueString" : "ConceptMap"
+                        }],
+                        "reference" : {
+                            "reference" : "ConceptMap/{{{fileRec.Id}}}"
+                        },
+                        "name" : "{{{fileRec.Name}}}",
+                        "description" : "{{{FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description)}}}"
+                    }
+                """);
+        }
+
+        // process resource concept maps
+        foreach (XVerIgFileRecord fileRec in igTr.ResourceMapFiles)
+        {
+            resourceDefinitions.Add($$$"""
+                    {
+                        "extension" : [{
+                            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                            "valueString" : "ConceptMap"
+                        }],
+                        "reference" : {
+                            "reference" : "ConceptMap/{{{fileRec.Id}}}"
+                        },
+                        "name" : "{{{fileRec.Name}}}",
+                        "description" : "{{{FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description)}}}"
+                    }
+                """);
+        }
+
+        // process element concept maps
+        foreach (XVerIgFileRecord fileRec in igTr.ElementMapFiles)
+        {
+            resourceDefinitions.Add($$$"""
+                    {
+                        "extension" : [{
+                            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                            "valueString" : "ConceptMap"
+                        }],
+                        "reference" : {
+                            "reference" : "ConceptMap/{{{fileRec.Id}}}"
+                        },
+                        "name" : "{{{fileRec.Name}}}",
+                        "description" : "{{{FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description)}}}"
+                    }
+                """);
+        }
+
+        StringBuilder pageBuilder = new();
+        pageBuilder.AppendLine(""" "page" : """);
+        pageBuilder.AppendLine("""  { "nameUrl" : "index.html", "title" : "Home", "generation" : "markdown" , "page" : [ """);
+
+        pageBuilder.AppendLine("""  { "nameUrl" : "lookup-sd.html", "title" : "Structure Lookup", "generation" : "markdown" , "page" : [ """);
+        List<string> sdLookupPages = [];
+        foreach (XVerIgFileRecord fileRec in igTr.SdPageContentFiles)
+        {
+            sdLookupPages.Add($$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" }""");
+        }
+        pageBuilder.AppendLine(string.Join(",\n", sdLookupPages));
+        pageBuilder.AppendLine("""]},""");  // close lookup
+
+        pageBuilder.AppendLine("""  { "nameUrl" : "lookup-vs.html", "title" : "ValueSet Lookup", "generation" : "markdown" , "page" : [ """);
+        List<string> vsLookupPages = [];
+        foreach (XVerIgFileRecord fileRec in igTr.VsPageContentFiles)
+        {
+            vsLookupPages.Add($$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" }""");
+        }
+        pageBuilder.AppendLine(string.Join(",\n", vsLookupPages));
+        pageBuilder.AppendLine("""]},""");  // close lookup
+
+        pageBuilder.AppendLine("""  { "nameUrl" : "downloads.html", "title" : "Downloads", "generation" : "markdown" },""");
+        pageBuilder.AppendLine("""  { "nameUrl" : "changelog.html", "title" : "Change Log", "generation" : "markdown" }""");
+
+        pageBuilder.AppendLine("""]},""");  // close index
+
+        string igParams = string.Join(",\n", _xverIgParameters.Select(cv =>
+            $$$"""    { "code" : "{{{cv.code}}}", "value" : "{{{cv.value}}}" }"""));
+
+        List<string> deps = _xverDependencies
+            .Where(d => d.NeededForPublisher)
+            .Select(d => d.AsJsonIgDependency(igTr.PackagePair.TargetFhirSequence))
+            .ToList();
+
+        string dependencies = deps.Count == 0
+            ? string.Empty
+            : $$$"""
+                "dependsOn" : [
+                {{{string.Join(",\n", deps)}}}
+                ],
+                """;
+
+        string igJson = $$$"""
+            {
+              "resourceType" : "ImplementationGuide",
+              "id" : "{{{igTr.PackageId}}}",
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                "valueCode" : "trial-use"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                "valueCode" : "fhir"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+                "valueInteger" : 0
+              }],
+              "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/{{{igTr.PackageId}}}",
+              "version" : "{{{_exporter._crossDefinitionVersion}}}",
+              "name" : "{{{FhirSanitizationUtils.ReformatIdForName(igTr.PackageId)}}}",
+              "title" : "FHIR Cross-Version Extensions package to use FHIR {{{igTr.PackagePair.SourceFhirSequence}}} in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}",
+              "status" : "active",
+              "date" : "{{{_exporter._runTime.ToString("O")}}}",
+              "publisher" : "{{{CommonDefinitions.WorkgroupNames["fhir"]}}}",
+              "contact" : [{
+                "name" : "{{{CommonDefinitions.WorkgroupNames["fhir"]}}}",
+                "telecom" : [{
+                  "system" : "url",
+                  "value" : "{{{CommonDefinitions.WorkgroupUrls["fhir"]}}}"
+                }]
+              }],
+              "description" : "FHIR Cross-Version for using FHIR {{{igTr.PackagePair.SourceFhirSequence}}} in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}",
+              "jurisdiction" : [{
+                "coding" : [{
+                  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                  "code" : "001",
+                  "display" : "World"
+                }]
+              }],
+              "packageId" : "{{{igTr.PackageId}}}",
+              "license" : "{{{EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0)}}}",
+              "fhirVersion" : ["{{{igTr.PackagePair.TargetPackage.PackageVersion}}}"],
+              {{{dependencies}}}
+              "definition" : {
+                {{{pageBuilder.ToString()}}}
+                "resource" : [
+                {{{string.Join("\n,  ", resourceDefinitions)}}}
+                ],
+                "parameter" : [
+                {{{igParams}}}
+                ]
+              }
+            }
+            """;
+
+        string filename = Path.Combine(igTr.InputDir!, $"ig-{igTr.PackageId}.json");
+        File.WriteAllText(filename, igJson);
+    }
+
+    private void writeIgJsonR5(XVerIgExportTrackingRecord igTr)
+    {
+        List<ImplementationGuide.DependsOnComponent> deps = _xverDependencies
+            .Where(d => d.NeededForPublisher)
+            .Select(d => d.AsIgDependsOn(igTr.PackagePair.TargetFhirSequence))
+            .ToList();
+
+        if (igTr.SdPageContentFiles.Count < 1)
+        {
+            throw new Exception($"No StructureDefinition page content files found for IG '{igTr.PackageId}'");
+        }
+
+        XVerIgFileRecord sdLookupFileRec = igTr.SdPageContentFiles[0];
+
+        ImplementationGuide.PageComponent sdLookupPage = new()
+        {
+            Source = new FhirUrl(sdLookupFileRec.FileName),
+            Name = sdLookupFileRec.FileNameWithoutExtension + ".html",
+            Title = sdLookupFileRec.Description,
+            Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+            Page = [],
+        };
+
+        foreach (XVerIgFileRecord fileRec in igTr.SdPageContentFiles.Skip(1))
+        {
+            sdLookupPage.Page.Add(new()
+            {
+                Source = new FhirUrl(fileRec.FileName),
+                Name = $"{fileRec.FileNameWithoutExtension}.html",
+                Title = $"Lookup for {fileRec.Name}",
+                Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+            });
+        }
+
+        if (igTr.VsPageContentFiles.Count < 1)
+        {
+            throw new Exception($"No ValueSet page content files found for IG '{igTr.PackageId}'");
+        }
+
+        XVerIgFileRecord vsLookupFileRec = igTr.VsPageContentFiles[0];
+
+        ImplementationGuide.PageComponent vsLookupPage = new()
+        {
+            Source = new FhirUrl(vsLookupFileRec.FileName),
+            Name = vsLookupFileRec.FileNameWithoutExtension + ".html",
+            Title = vsLookupFileRec.Description,
+            Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+            Page = [],
+        };
+
+        foreach (XVerIgFileRecord fileRec in igTr.VsPageContentFiles.Skip(1))
+        {
+            vsLookupPage.Page.Add(new()
+            {
+                Source = new FhirUrl(fileRec.FileName),
+                Name = $"{fileRec.FileNameWithoutExtension}.html",
+                Title = $"Lookup for {fileRec.Name}",
+                Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+            });
+        }
+
+        ImplementationGuide.PageComponent igPage = new()
+        {
+            Source = new FhirUrl("index.md"),
+            Name = "index.html",
+            Title = "Home",
+            Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+            Page = [
+                sdLookupPage,
+                vsLookupPage,
+                new()
+                {
+                    Source = new FhirUrl("downloads.md"),
+                    Name = "downloads.html",
+                    Title = "Downloads",
+                    Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+
+                },
+                new()
+                {
+                    Source = new FhirUrl("changelog.md"),
+                    Name = "changelog.html",
+                    Title = "Change Log",
+                    Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+                }
+            ],
+        };
+
+        List<ImplementationGuide.ParameterComponent> igParams = _xverIgParameters
+            .Select(cv => new ImplementationGuide.ParameterComponent
+            {
+                Code = new Coding()
+                {
+                    System = "http://hl7.org/fhir/tools/CodeSystem/ig-parameters",
+                    Code = cv.code,
+                },
+                Value = cv.value,
+            })
+            .ToList();
+
+
+        ImplementationGuide ig = new()
+        {
+            Id = igTr.PackageId,
+            Extension = [
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                    Value = new Code("trial-use"),
+                },
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                    Value = new Code("fhir"),
+                },
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+                    Value = new Integer(0),
+                }
+            ],
+            Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{igTr.PackageId}",
+            Version = _exporter._crossDefinitionVersion,
+            Name = FhirSanitizationUtils.ReformatIdForName(igTr.PackageId),
+            Title = $"FHIR Cross-Version Extensions package to use FHIR {igTr.PackagePair.SourceFhirSequence} in FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Status = PublicationStatus.Active,
+            Date = _exporter._runTime.ToString("O"),
+            Publisher = CommonDefinitions.WorkgroupNames["fhir"],
+            Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames["fhir"],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls["fhir"],
+                        },
+                    ],
+                }
+            ],
+            Description = $"Cross Version Extensions to use FHIR {igTr.PackagePair.SourceFhirSequence} in FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Jurisdiction = [
+                new()
+                {
+                    Coding = [
+                        new()
+                        {
+                            System = "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                            Code = "001",
+                            Display = "World",
+                        }
+                    ],
+                }
+            ],
+            PackageId = igTr.PackageId,
+            License = ImplementationGuide.SPDXLicense.CC01_0,
+            FhirVersion = [EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion) ?? FHIRVersion.N5_0_0],
+            DependsOn = deps,
+            Definition = new()
+            {
+                Resource = [],
+                Page = igPage,
+                Parameter = igParams,
+            }
+        };
+
+
+        // add our extensions
+        foreach (XVerIgFileRecord fileRec in igTr.ExtensionFiles)
+        {
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"StructureDefinition/{fileRec.Id}"),
+                Name = fileRec.Name,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description),
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("StructureDefinition:extension"),
+                    },
+                ],
+            });
+        }
+
+        // add our profiles
+        foreach (XVerIgFileRecord fileRec in igTr.ProfileFiles)
+        {
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"StructureDefinition/{fileRec.Id}"),
+                Name = fileRec.Name,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description),
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("StructureDefinition:profile"),
+                    },
+                ],
+            });
+        }
+
+        // add our code systems
+        foreach (XVerIgFileRecord fileRec in igTr.CodeSystemFiles)
+        {
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"CodeSystem/{fileRec.Id}"),
+                Name = fileRec.Name,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description),
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("CodeSystem"),
+                    },
+                ],
+            });
+        }
+
+        // add our value sets
+        foreach (XVerIgFileRecord fileRec in igTr.ValueSetFiles)
+        {
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"ValueSet/{fileRec.Id}"),
+                Name = fileRec.Name,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description),
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("ValueSet"),
+                    },
+                ],
+            });
+        }
+
+        // add our vs concept maps
+        foreach (XVerIgFileRecord fileRec in igTr.VsConceptMapFiles)
+        {
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"ConceptMap/{fileRec.Id}"),
+                Name = fileRec.Name,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description),
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("ConceptMap"),
+                    },
+                ],
+            });
+        }
+
+        // add our resource concept maps
+        foreach (XVerIgFileRecord fileRec in igTr.ResourceMapFiles)
+        {
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"ConceptMap/{fileRec.Id}"),
+                Name = fileRec.Name,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description),
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("ConceptMap"),
+                    },
+                ],
+            });
+        }
+
+        // add our element concept maps
+        foreach (XVerIgFileRecord fileRec in igTr.ElementMapFiles)
+        {
+            ig.Definition.Resource.Add(new()
+            {
+                Reference = new ResourceReference($"ConceptMap/{fileRec.Id}"),
+                Name = fileRec.Name,
+                Description = FhirSanitizationUtils.SanitizeForJsonValue(fileRec.Description),
+                Extension = [
+                    new()
+                    {
+                        Url = "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+                        Value = new FhirString("ConceptMap"),
+                    },
+                ],
+            });
+        }
+
+        string filename = Path.Combine(igTr.InputDir!, $"ig-{igTr.PackageId}.json");
+        File.WriteAllText(filename, ig.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+    }
+
+    private void writeIgIni(string dir, string packageId)
+    {
+        string filename = Path.Combine(dir, "ig.ini");
+        string contents = $$$"""
+                    [IG]
+                    ig = input/ig-{{{packageId}}}.json
+                    template = hl7.fhir.template
+                    """;
+        File.WriteAllText(filename, contents);
     }
 
     private static string getXVerPackageId(FhirPackageComparisonPair pair) =>
@@ -360,7 +1232,7 @@ public class IgExporter
         };
 
         createXVerIgDirectories(igTr);
-        copyIgSourceContent(igTr.InputDir!);
+        igTr.XVerSourcePageContentFiles = copyIgSourceContent(igTr.InputDir!, igTr.PageContentDir!);
 
         if (includeScripts &&
             (igTr.IgRootDir is not null))
@@ -400,7 +1272,7 @@ public class IgExporter
         };
 
         createValidationIgDirectories(vTr);
-        copyIgSourceContent(vTr.InputDir!);
+        vTr.XVerSourcePageContentFiles = copyIgSourceContent(vTr.InputDir!, vTr.PageContentDir!);
 
         if (includeScripts &&
             (vTr.IgRootDir is not null))
@@ -627,29 +1499,75 @@ public class IgExporter
         throw new IOException("Failed to create file after 3 attempts.");
     }
 
-    private void copyIgSourceContent(string igInputDir)
+    private List<XVerIgFileRecord> copyIgSourceContent(string inputDir, string? pageContentDir)
     {
         // check for a source path we can copy from
         if (string.IsNullOrEmpty(_crossVersionSourcePath))
         {
-            return;
+            return [];
         }
 
         if (!Directory.Exists(_crossVersionSourcePath))
         {
             _logger.LogWarning($"Cross-version IG source path '{_crossVersionSourcePath}' does not exist; skipping copy of IG source content");
-            return;
+            return [];
         }
 
         string igSourceDir = Path.Combine(_crossVersionSourcePath, "input", "ig-source");
         if (!Directory.Exists(igSourceDir))
         {
             _logger.LogWarning($"Cross-version IG source content path '{igSourceDir}' does not exist; skipping copy of IG source content");
-            return;
+            return [];
+        }
+
+        if (string.IsNullOrEmpty(inputDir))
+        {
+            _logger.LogWarning($"IG input directory is not set; skipping copy of IG source content");
+            return [];
         }
 
         // copy the contents of this directory into the target input directory
-        recursiveCopyContents(igSourceDir, igInputDir);
+        recursiveCopyContents(igSourceDir, inputDir);
+
+        if (string.IsNullOrEmpty(pageContentDir) ||
+            !Directory.Exists(pageContentDir))
+        {
+            return [];
+        }
+
+        List<XVerIgFileRecord> exported = [];
+
+        // discover files in the page content dir
+        string[] files = Directory.GetFiles(pageContentDir, "*.*", SearchOption.TopDirectoryOnly);
+        foreach (string filePath in files)
+        {
+            string fileName = Path.GetFileName(filePath);
+
+            string fnNoExt = Path.GetFileNameWithoutExtension(fileName);
+
+            string description = fnNoExt switch
+            {
+                "index" => "Home",
+                "toc" => "Contents",
+                "downloads" => "Downlaods",
+                "changelog" => "Change Log",
+                _ => fnNoExt,
+            };
+
+            exported.Add(new()
+            {
+                FileName = fileName,
+                FileNameWithoutExtension = fnNoExt,
+                IsPageContentFile = true,
+                Id = null,
+                Name = FhirSanitizationUtils.ReformatIdForName(Path.GetFileNameWithoutExtension(fileName)),
+                Url = null,
+                ResourceType = null,
+                Description = description,
+            });
+        }
+
+        return exported;
     }
 
     private void recursiveCopyContents(string sourceDir, string targetDir)

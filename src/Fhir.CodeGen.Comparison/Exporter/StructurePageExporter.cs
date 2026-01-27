@@ -188,10 +188,12 @@ public class StructurePageExporter
 
             // finish writing the file
             mdWriter.Close();
+
+            string fn = Path.GetFileName(filename);
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^3],
+                FileName = fn,
+                FileNameWithoutExtension = fn[..^3],
                 IsPageContentFile = true,
                 Name = sdOutcome.GenLongId!.ForName(),
                 Id = null,
@@ -203,7 +205,7 @@ public class StructurePageExporter
         }
 
         _logger.LogInformation($"Wrote {exported.Count} structure lookup pages for `{igTr.PackageId}`");
-        igTr.PageContentFiles.AddRange(exported);
+        igTr.SdPageContentFiles.AddRange(exported);
     }
 
     private void exportStructureIndexPage(XVerIgExportTrackingRecord igTr)
@@ -270,10 +272,12 @@ public class StructurePageExporter
         }
 
         mdWriter.Close();
+
+        string fn = Path.GetFileName(filename);
         exported.Add(new()
         {
-            FileName = filename,
-            FileNameWithoutExtension = filename[..^3],
+            FileName = fn,
+            FileNameWithoutExtension = fn[..^3],
             IsPageContentFile = true,
             Name = "Structure Lookup",
             Id = null,
@@ -284,6 +288,6 @@ public class StructurePageExporter
         });
 
         _logger.LogInformation($"Wrote {exported.Count} structure index pages for `{igTr.PackageId}`");
-        igTr.PageContentFiles.AddRange(exported);
+        igTr.SdPageContentFiles.AddRange(exported);
     }
 }

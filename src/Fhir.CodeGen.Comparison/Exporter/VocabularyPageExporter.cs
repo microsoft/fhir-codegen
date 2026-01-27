@@ -149,10 +149,12 @@ public class VocabularyPageExporter
 
             // finish writing the file
             mdWriter.Close();
+
+            string fn = Path.GetFileName(filename);
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^3],
+                FileName = fn,
+                FileNameWithoutExtension = fn[..^3],
                 IsPageContentFile = true,
                 Name = vsOutcome.GenLongId!.ForName(),
                 Id = null,
@@ -164,7 +166,7 @@ public class VocabularyPageExporter
         }
 
         _logger.LogInformation($"Wrote {exported.Count} value set lookup pages for `{igTr.PackageId}`");
-        igTr.PageContentFiles.AddRange(exported);
+        igTr.VsPageContentFiles.AddRange(exported);
     }
 
     private void exportVsIndexPage(XVerIgExportTrackingRecord igTr)
@@ -231,10 +233,12 @@ public class VocabularyPageExporter
         }
 
         mdWriter.Close();
+
+        string fn = Path.GetFileName(filename);
         exported.Add(new()
         {
-            FileName = filename,
-            FileNameWithoutExtension = filename[..^3],
+            FileName = fn,
+            FileNameWithoutExtension = fn[..^3],
             IsPageContentFile = true,
             Name = "ValueSet Lookup",
             Id = null,
@@ -245,6 +249,6 @@ public class VocabularyPageExporter
         });
 
         _logger.LogInformation($"Wrote {exported.Count} value set index pages for `{igTr.PackageId}`");
-        igTr.PageContentFiles.AddRange(exported);
+        igTr.VsPageContentFiles.AddRange(exported);
     }
 }

@@ -78,6 +78,7 @@ public static class FhirReleases
         { "6.0.0-ballot1",     new (FhirSequenceCodes.R6,    new DateTime(2023, 12, 19), false, "6.0.0-ballot1",     "R6 Ballot 1st Draft") },
         { "6.0.0-ballot2",     new (FhirSequenceCodes.R6,    new DateTime(2024, 08, 13), false, "6.0.0-ballot2",     "R6 Ballot 2nd Draft") },
         { "6.0.0-ballot3",     new (FhirSequenceCodes.R6,    new DateTime(2025, 04, 03), false, "6.0.0-ballot3",     "R6 Ballot 3rd Draft") },
+        { "6.0.0-ballot4",     new (FhirSequenceCodes.R6,    new DateTime(2025, 12, 18), false, "6.0.0-ballot4",     "R6 Ballot 1st Full Ballot") },
     }.ToFrozenDictionary();
 
     /// <summary>(Immutable) The FHIR sequence map.</summary>
@@ -181,6 +182,7 @@ public static class FhirReleases
         { "6.0.0-ballot1", FhirSequenceCodes.R6 },
         { "6.0.0-ballot2", FhirSequenceCodes.R6 },
         { "6.0.0-ballot3", FhirSequenceCodes.R6 },
+        { "6.0.0-ballot4", FhirSequenceCodes.R6 },
         { "6.0.0-cibuild", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6", FhirSequenceCodes.R6 },
         { "hl7.fhir.r6.core", FhirSequenceCodes.R6 },
