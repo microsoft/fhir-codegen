@@ -23,7 +23,7 @@ using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Exporter;
 
-public class StructureExporter
+public class StructureFhirExporter
 {
     private readonly XVerExporter _exporter;
     private readonly IDbConnection _db;
@@ -41,7 +41,7 @@ public class StructureExporter
         "Element",
         ];
 
-    public StructureExporter(
+    public StructureFhirExporter(
         XVerExporter exporter,
         IDbConnection db,
         ILoggerFactory loggerFactory)
@@ -49,7 +49,7 @@ public class StructureExporter
         _exporter = exporter;
         _db = db;
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<StructureExporter>();
+        _logger = loggerFactory.CreateLogger<StructureFhirExporter>();
     }
 
     public void Export(XVerExportTrackingRecord tr)

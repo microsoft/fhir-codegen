@@ -65,21 +65,36 @@ public class XVerExporter
         // export vocabulary (if requested)
         if (processVocabulary)
         {
-            VocabularyExporter vocabularyExporter = new VocabularyExporter(
+            VocabularyFhirExporter vocabularyExporter = new VocabularyFhirExporter(
                 this,
                 _db,
                 _loggerFactory);
             vocabularyExporter.Export(tr);
+
+            VocabularyPageExporter vocabularyPageExporter = new VocabularyPageExporter(
+                this,
+                _db,
+                _loggerFactory);
+            vocabularyPageExporter.Export(tr);
         }
 
         // export structures (if requested)
         if (processStructures)
         {
-            StructureExporter structureExporter = new StructureExporter(
+            StructureFhirExporter structureExporter = new StructureFhirExporter(
                 this,
                 _db,
                 _loggerFactory);
             structureExporter.Export(tr);
+
+            StructurePageExporter structurePageExporter = new StructurePageExporter(
+                this,
+                _db,
+                _loggerFactory);
+            structurePageExporter.Export(tr);
         }
+
+        // finalize the IG package
+        igExporter.FinalizeXVerIgs(tr);
     }
 }

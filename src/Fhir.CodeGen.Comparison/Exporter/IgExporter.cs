@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Lib.Language;
 using Hl7.Fhir.Model;
 using Microsoft.Extensions.Logging;
 using Octokit;
@@ -33,9 +34,11 @@ public class IgExporter
         public string? IgRootDir { get; set; } = null;
         public string? InputDir { get; set; } = null;
         public string? IncludesDir { get; set; } = null;
-        public string? PageContentDir { get; set; } = null;
 
         public XVerIgFileRecord? IgIndexFile { get; set; } = null;
+
+        public string? PageContentDir { get; set; } = null;
+        public List<XVerIgFileRecord> PageContentFiles { get; set; } = [];
 
         public string? VocabularyDir { get; set; } = null;
         public List<XVerIgFileRecord> CodeSystemFiles { get; set; } = [];
@@ -64,6 +67,8 @@ public class IgExporter
             List<PackageContents.PackageFile> files = [
                 IgIndexFile.AsPackageFile(),
                 ];
+
+            files.AddRange(PageContentFiles.Select(f => f.AsPackageFile()));
 
             files.AddRange(CodeSystemFiles.Select(f => f.AsPackageFile()));
             files.AddRange(ValueSetFiles.Select(f => f.AsPackageFile()));
@@ -307,6 +312,14 @@ public class IgExporter
         }
 
         return tr;
+    }
+
+    public void FinalizeXVerIgs(XVerExportTrackingRecord tr)
+    {
+        // iterate over the IGs
+        foreach (XVerIgExportTrackingRecord igTr in tr.XVerIgs)
+        {
+        }
     }
 
     private static string getXVerPackageId(FhirPackageComparisonPair pair) =>
@@ -579,6 +592,40 @@ public class IgExporter
         return _publisherScripts;
     }
 
+    internal static ExportStreamWriter createMarkdownWriter(
+        string filename,
+        string? headerText = null,
+        bool includeGenerationTime = false)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            try
+            {
+                ExportStreamWriter writer = new(filename);
+
+                if (headerText is not null)
+                {
+                    writer.WriteLine(headerText);
+
+                    if (includeGenerationTime)
+                    {
+                        writer.WriteLine($"Generated at {DateTime.Now.ToString("F")}");
+                    }
+
+                    writer.WriteLine();
+                }
+
+                return writer;
+            }
+            catch (IOException)
+            {
+                // wait a bit and try again
+                Thread.Sleep(1000);
+            }
+        }
+
+        throw new IOException("Failed to create file after 3 attempts.");
+    }
 
     private void copyIgSourceContent(string igInputDir)
     {

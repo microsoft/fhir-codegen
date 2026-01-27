@@ -24,7 +24,7 @@ internal static class ComparisonUtils
 {
     internal static string ForName(this string value) => FhirSanitizationUtils.SanitizeForProperty(value);
     internal static string ForVersion(this string value) => value.Replace('.', '_').Replace('-', '_');
-    internal static string ForMdTable(this string value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
+    internal static string ForMdTable(this string? value) => string.IsNullOrEmpty(value) ? string.Empty : value.Replace("|", "\\|").Replace("\n", "<br/>").Replace("\r", "<br/>");
 }
 
 /// <summary>

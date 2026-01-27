@@ -19,7 +19,7 @@ using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Exporter;
 
-public class VocabularyExporter
+public class VocabularyFhirExporter
 {
     private readonly XVerExporter _exporter;
     private readonly IDbConnection _db;
@@ -27,13 +27,13 @@ public class VocabularyExporter
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
 
-    public VocabularyExporter(
+    public VocabularyFhirExporter(
         XVerExporter exporter,
         IDbConnection db,
         ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<VocabularyExporter>();
+        _logger = loggerFactory.CreateLogger<VocabularyFhirExporter>();
         _db = db;
         _exporter = exporter;
     }
