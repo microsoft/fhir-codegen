@@ -16,6 +16,7 @@ using Fhir.CodeGen.Comparison.XVer;
 using Hl7.Fhir.Model;
 using Microsoft.Extensions.Logging;
 using Octokit;
+using static Hl7.Fhir.Model.PaymentReconciliation;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
 namespace Fhir.CodeGen.Comparison.Outcomes;
@@ -187,6 +188,10 @@ public class ElementOutcomeGenerator
                 // add the path to the dictionary, but strip "Basic" from the front
                 _targetBasicElementPathLookup.Add(element.Path.Substring(5), element.BasePath);
                 _targetBasicElementsById.Add(element.Id, element);
+                if (element.BasePath is not null)
+                {
+                    _targetBasicElementsById[element.BasePath] = element;
+                }
             }
         }
 
@@ -262,6 +267,7 @@ public class ElementOutcomeGenerator
         DbElementOutcome? rootEdOutcome = null;
 
         Dictionary<int, DbElementOutcome> edKeyOutcomeLookup = [];
+        HashSet<int> outcomesRequiringXver = [];
 
         // iterate over the source elements for this structure to create no-map outcomes
         foreach (DbElement sourceEd in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
@@ -275,6 +281,17 @@ public class ElementOutcomeGenerator
                 sourceEd.Id);
 
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+
+            string? componentIdLong = null;
+            string? componentIdShort = null;
+            string? componentExtUrl = null;
+
+            if (sourceEd.UsedAsContentReference == true)
+            {
+                componentIdLong = idLong;
+                componentIdShort = idShort;
+                componentExtUrl = extUrl;
+            }
 
             string comments =
                 $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
@@ -323,6 +340,7 @@ public class ElementOutcomeGenerator
                 }
                 else
                 {
+                    basicBasePath = null;
                     comments +=
                         $"\nNote that the source element matches Basic element path `{basicBasePath}`," +
                         $" but the definitions are not compatible" +
@@ -339,7 +357,8 @@ public class ElementOutcomeGenerator
                     $" `{extSubstitute.ReplacementUrl}`.";
             }
 
-            if (parentOutcome is null)
+            if (((parentOutcome is not null) && outcomesRequiringXver.Contains(parentOutcome.Key)) ||
+                (basicBasePath is not null))
             {
                 idLong = sourceEd.NameClean();
                 idShort = idLong;
@@ -385,6 +404,10 @@ public class ElementOutcomeGenerator
                 GenLongId = idLong,
                 GenShortId = idShort,
                 GenUrl = extUrl,
+                RequiresComponentDefinition = sourceEd.UsedAsContentReference == true,
+                ComponentGenLongId = componentIdLong,
+                ComponentGenShortId = componentIdShort,
+                ComponentGenUrl = componentExtUrl,
 
                 AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
                 ParentElementOutcomeKey = requiresXVerDefinition ? parentOutcome?.Key : null,
@@ -409,6 +432,11 @@ public class ElementOutcomeGenerator
 
                 Comments = comments,
             };
+
+            if (requiresXVerDefinition)
+            {
+                outcomesRequiringXver.Add(elementOutcome.Key);
+            }
 
             if (sourceEd.ResourceFieldOrder == 0)
             {
@@ -933,23 +961,36 @@ public class ElementOutcomeGenerator
         Dictionary<(int sourceElementKey, int? targetStructureKey), (DbElementOutcome outcome, DbElementOutcome? rootOutcome)> edKeyOutcomeLookup = [];
         Dictionary<int, DbElementOutcome> rootEdOutcomesBySdOutcomeKey = [];
 
+        HashSet<int> outcomesRequiringXver = [];
+
         // iterate over our element tracking records to create outcomes
         foreach (ElementOutcomeTrackingRecord edTr in elementTrackingRecords.Values.OrderBy(etr => etr.SourceElement.ResourceFieldOrder))
         {
             DbElement sourceEd = edTr.SourceElement;
             List<DbElementComparison> elementComparisons = edTr.ElementComparisons;
 
-            (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
-                _packagePair.SourcePackageShortName,
-                sourceEd.Id);
-
-            string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
-
             bool isRootElement = sourceEd.ResourceFieldOrder == 0;
 
             // iterate over the structure tracking records to create outcomes
             foreach (StructureOutcomeGenerator.StructureOutcomeTrackingRecord sdTr in structureTrackingRecords.Values)
             {
+                (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
+                    _packagePair.SourcePackageShortName,
+                    sourceEd.Id);
+
+                string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+
+                string? componentIdLong = null;
+                string? componentIdShort = null;
+                string? componentExtUrl = null;
+
+                if (sourceEd.UsedAsContentReference == true)
+                {
+                    componentIdLong = idLong;
+                    componentIdShort = idShort;
+                    componentExtUrl = extUrl;
+                }
+
                 if (isRootElement)
                 {
                     sdTr.RootElement = sourceEd;
@@ -1019,6 +1060,7 @@ public class ElementOutcomeGenerator
                         }
                         else
                         {
+                            basicBasePath = null;
                             noMapEdComments +=
                                 $"\nNote that the source element matches Basic element path `{basicBasePath}`," +
                                 $" but the definitions are not compatible" +
@@ -1037,7 +1079,15 @@ public class ElementOutcomeGenerator
 
                     DbElementComparison? noMapElementComparison = elementComparisons
                         .FirstOrDefault(ec => ec.TargetStructureKey is null);
-                        //?? throw new Exception($"Non-mapped {sdTr.SourceStructure.Name} element {sourceEd.Id} has no non-mapped comparison!");
+                    //?? throw new Exception($"Non-mapped {sdTr.SourceStructure.Name} element {sourceEd.Id} has no non-mapped comparison!");
+
+                    if (((rootEdOutcome is not null) && outcomesRequiringXver.Contains(rootEdOutcome.Key)) ||
+                        (basicBasePath is not null))
+                    {
+                        idLong = sourceEd.NameClean();
+                        idShort = idLong;
+                        extUrl = idLong;
+                    }
 
                     // create the no-map element outcome
                     DbElementOutcome noMapEdOutcome = new()
@@ -1079,6 +1129,11 @@ public class ElementOutcomeGenerator
                         GenLongId = rootEdOutcome is null ? idLong : sourceEd.NameClean(),
                         GenShortId = rootEdOutcome is null ? idShort : sourceEd.NameClean(),
                         GenUrl = rootEdOutcome is null ? extUrl : sourceEd.NameClean(),
+
+                        RequiresComponentDefinition = sourceEd.UsedAsContentReference == true,
+                        ComponentGenLongId = componentIdLong,
+                        ComponentGenShortId = componentIdShort,
+                        ComponentGenUrl = componentExtUrl,
 
                         AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
                         ParentElementOutcomeKey = requiresXVerDefinition ? noMapParentOutcomeKey : null,
@@ -1127,6 +1182,11 @@ public class ElementOutcomeGenerator
 
                         Comments = noMapEdComments,
                     };
+
+                    if (requiresXVerDefinition)
+                    {
+                        outcomesRequiringXver.Add(noMapEdOutcome.Key);
+                    }
 
                     // if this is the root element, being a non-mapped structure includes changes
                     if (isRootElement)
@@ -1320,6 +1380,7 @@ public class ElementOutcomeGenerator
                         }
                         else
                         {
+                            basicBasePath = null;
                             comments +=
                                 $"\nNote that the source element matches Basic element path `{basicBasePath}`," +
                                 $" but the definitions are not compatible" +
@@ -1415,7 +1476,6 @@ public class ElementOutcomeGenerator
                                 }
                             }
                         }
-
                     }
 
                     string? targetCanonicalUnversioned = targetEd is null
@@ -1432,6 +1492,21 @@ public class ElementOutcomeGenerator
                             $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`:" +
                             $" `{extSubstitute.ReplacementUrl}`.";
                     }
+
+                    if (((parentOutcome is not null) && outcomesRequiringXver.Contains(parentOutcome.Key)) ||
+                        (basicBasePath is not null))
+                    {
+                        idLong = sourceEd.NameClean();
+                        idShort = idLong;
+                        extUrl = idLong;
+                    }
+
+                    //if ((parentOutcome is not null) && (basicBasePath is not null))
+                    //{
+                    //    idLong = sourceEd.NameClean();
+                    //    idShort = idLong;
+                    //    extUrl = idLong;
+                    //}
 
                     // create the mapped element outcome
                     DbElementOutcome elementOutcome = new()
@@ -1469,9 +1544,14 @@ public class ElementOutcomeGenerator
                         TotalTargetCount = edTr.DiscreteTargetCount,
 
                         RequiresXVerDefinition = elementRequiresXVer,
-                        GenLongId = parentOutcome is null ? idLong : sourceEd.NameClean(),
-                        GenShortId = parentOutcome is null ? idShort : sourceEd.NameClean(),
-                        GenUrl = parentOutcome is null ? extUrl : sourceEd.NameClean(),
+                        GenLongId = idLong,
+                        GenShortId = idShort,
+                        GenUrl = extUrl,
+
+                        RequiresComponentDefinition = sourceEd.UsedAsContentReference == true,
+                        ComponentGenLongId = componentIdLong,
+                        ComponentGenShortId = componentIdShort,
+                        ComponentGenUrl = componentExtUrl,
 
                         AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
                         ParentElementOutcomeKey = elementRequiresXVer ? parentOutcome?.Key : null,
@@ -1520,6 +1600,11 @@ public class ElementOutcomeGenerator
 
                         Comments = comments,
                     };
+
+                    if (elementRequiresXVer)
+                    {
+                        outcomesRequiringXver.Add(elementOutcome.Key);
+                    }
 
                     _edOutcomeCache.CacheAdd(elementOutcome);
                     edTr.ElementOutcomes.Add(elementOutcome);

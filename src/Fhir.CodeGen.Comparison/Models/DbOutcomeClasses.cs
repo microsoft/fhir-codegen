@@ -392,7 +392,7 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
     nameof(ParentElementOutcomeKey),
     nameof(SourceStructureKey),
     nameof(SourceResourceOrder))]
-[CgSQLiteIndex(nameof(ParentElementOutcomeKey), nameof(SourceResourceOrder))]
+[CgSQLiteIndex(nameof(ParentElementOutcomeKey), nameof(RequiresXVerDefinition), nameof(SourceResourceOrder))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
@@ -444,8 +444,14 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     [CgSQLiteForeignKey(referenceTable: "ExtensionSubstitutions", referenceColumn: nameof(Key), modelTypeName: nameof(DbExtensionSubstitution))]
     public required int? ExtensionSubstitutionKey { get; set; }
     public required string? ExtensionSubstitutionUrl { get; set; }
-
     public required string? BasicElementEquivalent { get; set; }
+
+    public required string? ComponentGenLongId { get; set; }
+    public required string? ComponentGenShortId { get; set; }
+    public required string? ComponentGenUrl { get; set; }
+    public required bool RequiresComponentDefinition { get; set; }
+
+
     public required bool SourceIsModifier { get; set; }
     public required bool DefineAsModifier { get; set; }
     public string? ExtensionContextsLiteral { get; set; } = null;

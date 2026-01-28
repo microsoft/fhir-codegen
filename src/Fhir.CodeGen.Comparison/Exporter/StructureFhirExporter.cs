@@ -9,6 +9,7 @@ using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
+using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Hl7.Fhir.Language.Debugging;
@@ -791,33 +792,126 @@ public class StructureFhirExporter
         List<XVerIgFileRecord> exported = [];
 
         // get the structures defined in the source package
-        Dictionary<int, DbStructureDefinition> sourceStructures = DbStructureDefinition.SelectDict(
+        Dictionary<int, DbStructureDefinition> sourceSds = DbStructureDefinition.SelectDict(
             _db,
             FhirPackageKey: igTr.PackagePair.SourcePackageKey);
 
         // get the elements defined in the source package
-        Dictionary<int, DbElement> sourceElements = DbElement.SelectDict(
+        Dictionary<int, DbElement> sourceEds = DbElement.SelectDict(
             _db,
             FhirPackageKey: igTr.PackagePair.SourcePackageKey);
 
         // get the structures defined in the target package
-        Dictionary<int, DbStructureDefinition> targetStructures = DbStructureDefinition.SelectDict(
+        Dictionary<int, DbStructureDefinition> targetSds = DbStructureDefinition.SelectDict(
             _db,
             FhirPackageKey: igTr.PackagePair.TargetPackageKey);
 
         // get the elements defined in the target package
-        Dictionary<int, DbElement> targetElements = DbElement.SelectDict(
+        Dictionary<int, DbElement> targetEds = DbElement.SelectDict(
             _db,
             FhirPackageKey: igTr.PackagePair.TargetPackageKey);
 
         // get the element comparisons for the package pair
-        Dictionary<int, DbElementComparison> elementComparisons = DbElementComparison.SelectDict(
+        Dictionary<int, DbElementComparison> edComparisons = DbElementComparison.SelectDict(
             _db,
             SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey);
 
+        Dictionary<int, string> contentReferenceExtUrlsByEdKey = [];
+
+        // get the element outcomes that need component-style exporting
+        List<DbElementOutcome> componentEdOutcomes = DbElementOutcome.SelectList(
+            _db,
+            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+            RequiresComponentDefinition: true,
+            ExtensionSubstitutionKeyIsNull: true,
+            orderByProperties: [nameof(DbElementOutcome.SourceStructureKey), nameof(DbElementOutcome.SourceResourceOrder)]);
+
+        // iterate over the outcomes that need exporting
+        foreach (DbElementOutcome edOutcome in componentEdOutcomes)
+        {
+            // skip elements that will match their normal definition
+            if (edOutcome.ComponentGenLongId == edOutcome.GenLongId)
+            {
+                continue;
+            }
+
+            // get the source structure
+            if (!sourceSds.TryGetValue(edOutcome.SourceStructureKey, out DbStructureDefinition? sourceSd))
+            {
+                _logger.LogError($"Source structure with key `{edOutcome.SourceStructureKey}` not found for element outcome with key `{edOutcome.Key}`");
+                continue;
+            }
+
+            if (_exportExclusions.Contains(edOutcome.SourceId) ||
+                _exportExclusions.Contains(sourceSd.Name))
+            {
+                continue;
+            }
+
+            // get the source element
+            if (!sourceEds.TryGetValue(edOutcome.SourceElementKey, out DbElement? sourceEd))
+            {
+                _logger.LogError($"Source element with key `{edOutcome.SourceElementKey}` not found for element outcome with key `{edOutcome.Key}`");
+                continue;
+            }
+
+            if (skipElement(sourceEd, skipFirstElement: true))
+            {
+                continue;
+            }
+
+            // components can only be on Extension.extension
+            List<StructureDefinition.ContextComponent> contexts = [
+                new StructureDefinition.ContextComponent()
+                {
+                    Type = StructureDefinition.ExtensionContextType.Element,
+                    Expression = "Extension.extension",
+                }];
+
+            string purpose = buildPurpose(
+                igTr,
+                edComparisons,
+                sourceEd,
+                edOutcome);
+
+            StructureDefinition extSd = buildExtSd(
+                igTr,
+                sourceEds,
+                targetEds,
+                edComparisons,
+                contentReferenceExtUrlsByEdKey,
+                edOutcome,
+                sourceSd,
+                sourceEd,
+                purpose,
+                contexts,
+                useComponentDefinition: true);
+
+            contentReferenceExtUrlsByEdKey[sourceEd.Key] = extSd.Url;
+
+            // write the extension to a file
+            string filename = $"StructureDefinition-{extSd.Id}.json";
+            string path = Path.Combine(dir, filename);
+            File.WriteAllText(path, extSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+
+            exported.Add(new()
+            {
+                FileName = filename,
+                FileNameWithoutExtension = filename[..^5],
+                IsPageContentFile = false,
+                Name = extSd.Name,
+                Id = extSd.Id,
+                Url = extSd.Url,
+                ResourceType = Hl7.Fhir.Model.FHIRAllTypes.StructureDefinition.GetLiteral(),
+                Version = extSd.Version,
+                Description = extSd.Description ?? extSd.Title ?? $"Extension: {extSd.Url}",
+            });
+        }
+
         // get the element outcomes for this package pair that need exporting
-        List<DbElementOutcome> elementOutcomes = DbElementOutcome.SelectList(
+        List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
             _db,
             SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
@@ -827,41 +921,46 @@ public class StructureFhirExporter
             orderByProperties: [nameof(DbElementOutcome.SourceStructureKey), nameof(DbElementOutcome.SourceResourceOrder)]);
 
         // iterate over the outcomes that need exporting
-        foreach (DbElementOutcome elementOutcome in elementOutcomes)
+        foreach (DbElementOutcome edOutcome in edOutcomes)
         {
             // get the source structure
-            if (!sourceStructures.TryGetValue(elementOutcome.SourceStructureKey, out DbStructureDefinition? sourceSd))
+            if (!sourceSds.TryGetValue(edOutcome.SourceStructureKey, out DbStructureDefinition? sourceSd))
             {
-                _logger.LogError($"Source structure with key `{elementOutcome.SourceStructureKey}` not found for element outcome with key `{elementOutcome.Key}`");
+                _logger.LogError($"Source structure with key `{edOutcome.SourceStructureKey}` not found for element outcome with key `{edOutcome.Key}`");
                 continue;
             }
 
-            if (_exportExclusions.Contains(elementOutcome.SourceId) ||
+            if (_exportExclusions.Contains(edOutcome.SourceId) ||
                 _exportExclusions.Contains(sourceSd.Name))
             {
                 continue;
             }
 
             DbStructureOutcome? sdOutcome = null;
-            if (elementOutcome.SourceResourceOrder == 0)
+            if (edOutcome.SourceResourceOrder == 0)
             {
                 sdOutcome = DbStructureOutcome.SelectSingle(
                     _db,
                     SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
                     TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
                     SourceStructureKey: sourceSd.Key,
-                    TargetStructureKey: elementOutcome.TargetStructureKey);
+                    TargetStructureKey: edOutcome.TargetStructureKey);
             }
 
             // get the source element
-            if (!sourceElements.TryGetValue(elementOutcome.SourceElementKey, out DbElement? sourceEd))
+            if (!sourceEds.TryGetValue(edOutcome.SourceElementKey, out DbElement? sourceEd))
             {
-                _logger.LogError($"Source element with key `{elementOutcome.SourceElementKey}` not found for element outcome with key `{elementOutcome.Key}`");
+                _logger.LogError($"Source element with key `{edOutcome.SourceElementKey}` not found for element outcome with key `{edOutcome.Key}`");
                 continue;
 
             }
 
-            List<StructureDefinition.ContextComponent> contexts = elementOutcome.ExtensionContexts
+            if (skipElement(sourceEd, skipFirstElement: false))
+            {
+                continue;
+            }
+
+            List<StructureDefinition.ContextComponent> contexts = edOutcome.ExtensionContexts
                 .Select(c => new StructureDefinition.ContextComponent()
                 {
                     Type = StructureDefinition.ExtensionContextType.Element,
@@ -869,138 +968,24 @@ public class StructureFhirExporter
                 })
                 .ToList();
 
-
-            string? purpose = null;
-            if (igTr.PackagePair.Distance == 1)
-            {
-                purpose = $$$"""
-                    This extension is part of the cross-version definitions generated to enable use of the
-                    element `{{{sourceEd.Id}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
-                    in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
-
-                    The source element is defined as:
-                    `{{{sourceEd.Id}}}` {{{sourceEd.FhirCardinalityString}}} `{{{sourceEd.FullCollatedTypeLiteral}}}`
-
-                    Following are the generation technical comments:
-                    {{{elementOutcome.Comments}}}
-                    """;
-            }
-            else
-            {
-                string? mappingTrace = null;
-
-                if (elementComparisons.TryGetValue(elementOutcome.ComparisonKey, out DbElementComparison? edComp))
-                {
-                    DbElement? r2Ed = edComp.ContentKeyR2 is null
-                        ? null
-                        : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR2.Value);
-                    DbElement? r3Ed = edComp.ContentKeyR3 is null
-                        ? null
-                        : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR3.Value);
-                    DbElement? r4Ed = edComp.ContentKeyR4 is null
-                        ? null
-                        : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR4.Value);
-                    DbElement? r4bEd = edComp.ContentKeyR4B is null
-                        ? null
-                        : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR4B.Value);
-                    DbElement? r5Ed = edComp.ContentKeyR5 is null
-                        ? null
-                        : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR5.Value);
-                    DbElement? r6Ed = edComp.ContentKeyR6 is null
-                        ? null
-                        : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR6.Value);
-
-                    List<DbElement?> contentPath = (igTr.PackagePair.SourceFhirSequence < igTr.PackagePair.TargetFhirSequence)
-                        ? [r2Ed, r3Ed, r4Ed, r4bEd, r5Ed, r6Ed]
-                        : [r6Ed, r5Ed, r4bEd, r4Ed, r3Ed, r2Ed];
-
-                    mappingTrace = "* " +
-                        string.Join("\n* ", contentPath
-                            .Where(ed => ed is not null)
-                            .Select(ed => $"`{ed!.Id}` {ed!.FhirCardinalityString} `{ed!.FullCollatedTypeLiteral}`"));
-                }
-
-                purpose = $$$"""
-                    This extension is part of the cross-version definitions generated to enable use of the
-                    element `{{{sourceEd.Id}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
-                    in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
-
-                    The source element is defined as:
-                    `{{{sourceEd.Id}}}` {{{sourceEd.FhirCardinalityString}}} `{{{sourceEd.FullCollatedTypeLiteral}}}`
-
-                    Across FHIR versions, the value set has been mapped as:
-                    {{{mappingTrace}}}
-
-                    Following are the generation technical comments:
-                    {{{elementOutcome.Comments}}}
-                    """;
-            }
-
-            // build the initial structure definition for the extension
-            StructureDefinition extSd = new()
-            {
-                Id = sdOutcome?.GenShortId ?? elementOutcome.GenShortId,
-                Url = sdOutcome?.GenUrl ?? elementOutcome.GenUrl,
-                Name = FhirSanitizationUtils.ReformatIdForName(sdOutcome?.GenLongId ?? elementOutcome.GenLongId!),
-                Version = _exporter._crossDefinitionVersion,
-                FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion),
-                Date = _exporter._runTime.ToString("O"),
-                Title = $"Cross-version Extension `{igTr.PackagePair.SourceFhirSequence}.{sourceEd.Id}` for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-                Description = $"This cross-version extension represents the FHIR {igTr.PackagePair.SourceFhirSequence} element `{sourceEd.Id}` for use in FHIR {igTr.PackagePair.TargetFhirSequence}.",
-                Purpose = purpose ?? elementOutcome.Comments,
-                Status = PublicationStatus.Active,
-                Experimental = false,
-                Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
-                Abstract = false,
-                Context = contexts,
-                Type = "Extension",
-                BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
-                Derivation = StructureDefinition.TypeDerivationRule.Constraint,
-                Differential = new()
-                {
-                    Element = [],
-                },
-            };
-
-            // TODO: right now I am setting FHIR-I as the WG responsible since we are creating the extension - should we use the WG from the source resource?
-            string wg = "fhir";
-
-            // add the work group extension
-            extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
-
-            // ensure there is a publisher, use the WG if there is none
-            extSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
-
-            // ensure there is a contact point - use the default WG unless there are multiple entries
-            if ((extSd.Contact == null) || (extSd.Contact.Count < 2))
-            {
-                extSd.Contact = [
-                    new()
-                {
-                    Name = CommonDefinitions.WorkgroupNames[wg],
-                    Telecom = [
-                        new()
-                        {
-                            System = ContactPoint.ContactPointSystem.Url,
-                            Value = CommonDefinitions.WorkgroupUrls[wg],
-                        },
-                    ],
-                }
-                ];
-            }
-
-            extSd.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, igTr.PackageUrl);
-
-            // add this element and its children to the differential
-            addToDifferentialRecursive(
-                extSd,
+            string purpose = buildPurpose(
                 igTr,
-                elementOutcome,
+                edComparisons,
+                sourceEd,
+                edOutcome);
+
+            StructureDefinition extSd = buildExtSd(
+                igTr,
+                sourceEds,
+                targetEds,
+                edComparisons,
+                contentReferenceExtUrlsByEdKey,
+                edOutcome,
                 sourceSd,
                 sourceEd,
-                sourceElements,
-                targetElements,
-                elementComparisons);
+                purpose,
+                contexts,
+                useComponentDefinition: false);
 
             // write the extension to a file
             string filename = $"StructureDefinition-{extSd.Id}.json";
@@ -1025,22 +1010,179 @@ public class StructureFhirExporter
         igTr.ExtensionFiles = exported;
     }
 
-    private void addToDifferentialRecursive(
-        StructureDefinition extSd,
+    private string buildPurpose(
         XVerIgExportTrackingRecord igTr,
-        DbElementOutcome edOutcome,
-        DbStructureDefinition sourceSd,
+        Dictionary<int, DbElementComparison> elementComparisons,
         DbElement sourceEd,
+        DbElementOutcome elementOutcome)
+    {
+        if (igTr.PackagePair.Distance == 1)
+        {
+            return $$$"""
+                    This extension is part of the cross-version definitions generated to enable use of the
+                    element `{{{sourceEd.Id}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
+                    in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
+
+                    The source element is defined as:
+                    `{{{sourceEd.Id}}}` {{{sourceEd.FhirCardinalityString}}} `{{{sourceEd.FullCollatedTypeLiteral}}}`
+
+                    Following are the generation technical comments:
+                    {{{elementOutcome.Comments}}}
+                    """;
+        }
+        string? mappingTrace = null;
+
+        if (elementComparisons.TryGetValue(elementOutcome.ComparisonKey, out DbElementComparison? edComp))
+        {
+            DbElement? r2Ed = edComp.ContentKeyR2 is null
+                ? null
+                : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR2.Value);
+            DbElement? r3Ed = edComp.ContentKeyR3 is null
+                ? null
+                : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR3.Value);
+            DbElement? r4Ed = edComp.ContentKeyR4 is null
+                ? null
+                : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR4.Value);
+            DbElement? r4bEd = edComp.ContentKeyR4B is null
+                ? null
+                : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR4B.Value);
+            DbElement? r5Ed = edComp.ContentKeyR5 is null
+                ? null
+                : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR5.Value);
+            DbElement? r6Ed = edComp.ContentKeyR6 is null
+                ? null
+                : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR6.Value);
+
+            List<DbElement?> contentPath = (igTr.PackagePair.SourceFhirSequence < igTr.PackagePair.TargetFhirSequence)
+                ? [r2Ed, r3Ed, r4Ed, r4bEd, r5Ed, r6Ed]
+                : [r6Ed, r5Ed, r4bEd, r4Ed, r3Ed, r2Ed];
+
+            mappingTrace = "* " +
+                string.Join("\n* ", contentPath
+                    .Where(ed => ed is not null)
+                    .Select(ed => $"`{ed!.Id}` {ed!.FhirCardinalityString} `{ed!.FullCollatedTypeLiteral}`"));
+        }
+
+        return $$$"""
+                This extension is part of the cross-version definitions generated to enable use of the
+                element `{{{sourceEd.Id}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
+                in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
+
+                The source element is defined as:
+                `{{{sourceEd.Id}}}` {{{sourceEd.FhirCardinalityString}}} `{{{sourceEd.FullCollatedTypeLiteral}}}`
+
+                Across FHIR versions, the value set has been mapped as:
+                {{{mappingTrace}}}
+
+                Following are the generation technical comments:
+                {{{elementOutcome.Comments}}}
+                """;
+    }
+
+    private StructureDefinition buildExtSd(
+        XVerIgExportTrackingRecord igTr,
         Dictionary<int, DbElement> sourceElements,
         Dictionary<int, DbElement> targetElements,
         Dictionary<int, DbElementComparison> elementComparisons,
+        Dictionary<int, string> contentReferenceExtUrlsByEdKey,
+        DbElementOutcome elementOutcome,
+        DbStructureDefinition sourceSd,
+        DbElement sourceEd,
+        string purpose,
+        List<StructureDefinition.ContextComponent> contexts,
+        bool useComponentDefinition)
+    {
+        // build the initial structure definition for the extension
+        StructureDefinition extSd = new()
+        {
+            //Id = sdOutcome?.GenShortId ?? edOutcome.GenShortId,
+            Id =  useComponentDefinition ? elementOutcome.ComponentGenShortId : elementOutcome.GenShortId,
+            //Url = sdOutcome?.GenUrl ?? edOutcome.GenUrl,
+            Url = useComponentDefinition ? elementOutcome.ComponentGenUrl : elementOutcome.GenUrl,
+            //Name = FhirSanitizationUtils.ReformatIdForName(sdOutcome?.GenLongId ?? edOutcome.GenLongId!),
+            Name = FhirSanitizationUtils.ReformatIdForName(elementOutcome.GenLongId!),
+            Version = _exporter._crossDefinitionVersion,
+            FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion),
+            Date = _exporter._runTime.ToString("O"),
+            Title = $"Cross-version Extension `{igTr.PackagePair.SourceFhirSequence}.{sourceEd.Id}` for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Description = $"This cross-version extension represents the FHIR {igTr.PackagePair.SourceFhirSequence} element `{sourceEd.Id}` for use in FHIR {igTr.PackagePair.TargetFhirSequence}.",
+            Purpose = purpose ?? elementOutcome.Comments,
+            Status = PublicationStatus.Active,
+            Experimental = false,
+            Kind = StructureDefinition.StructureDefinitionKind.ComplexType,
+            Abstract = false,
+            Context = contexts,
+            Type = "Extension",
+            BaseDefinition = "http://hl7.org/fhir/StructureDefinition/Extension",
+            Derivation = StructureDefinition.TypeDerivationRule.Constraint,
+            Differential = new()
+            {
+                Element = [],
+            },
+        };
+
+        // TODO: right now I am setting FHIR-I as the WG responsible since we are creating the extension - should we use the WG from the source resource?
+        string wg = "fhir";
+
+        // add the work group extension
+        extSd.AddExtension(CommonDefinitions.ExtUrlWorkGroup, new Hl7.Fhir.Model.Code(wg));
+
+        // ensure there is a publisher, use the WG if there is none
+        extSd.Publisher = CommonDefinitions.WorkgroupNames[wg];
+
+        // ensure there is a contact point - use the default WG unless there are multiple entries
+        if ((extSd.Contact == null) || (extSd.Contact.Count < 2))
+        {
+            extSd.Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames[wg],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls[wg],
+                        },
+                    ],
+                }
+            ];
+        }
+
+        extSd.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, igTr.PackageUrl);
+
+        // add this element and its children to the differential
+        addToDifferentialRecursive(
+            extSd,
+            igTr,
+            sourceElements,
+            targetElements,
+            elementComparisons,
+            contentReferenceExtUrlsByEdKey,
+            elementOutcome,
+            sourceSd,
+            sourceEd);
+
+        return extSd;
+    }
+
+    private void addToDifferentialRecursive(
+        StructureDefinition extSd,
+        XVerIgExportTrackingRecord igTr,
+        Dictionary<int, DbElement> sourceElements,
+        Dictionary<int, DbElement> targetElements,
+        Dictionary<int, DbElementComparison> elementComparisons,
+        Dictionary<int, string> contentReferenceExtUrlsByEdKey,
+        DbElementOutcome edOutcome,
+        DbStructureDefinition sourceSd,
+        DbElement sourceEd,
         string? extElementId = null,
         string? extElementPath = null)
     {
         extElementId ??= "Extension";
         extElementPath ??= "Extension";
 
-        bool isRoot = edOutcome.ParentElementOutcomeKey is null;
+        //bool isRoot = edOutcome.ParentElementOutcomeKey is null;
+        bool isRoot = extSd.Differential.Element.Count == 0;
 
         // add the starting element for where we are
         if (isRoot)
@@ -1102,10 +1244,59 @@ public class StructureFhirExporter
             extSd.Differential.Element.Add(sliceElement);
         }
 
+        // check to see if this is an outcome that has a component definition
+        if (contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.Key, out string? crExtUrl) ||
+            ((sourceEd.ContentReferenceSourceKey is not null) &&
+                contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.ContentReferenceSourceKey.Value, out crExtUrl)))
+        {
+            // add the URL element (always required)
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".url",
+                Path = extElementPath + ".url",
+                Base = new()
+                {
+                    Path = "Extension.url",
+                    Min = 1,
+                    Max = "1",
+                },
+                Min = 1,
+                Max = "1",
+                Fixed = new FhirUri(crExtUrl),
+            });
+
+            // add a contrained out value element
+            extSd.Differential.Element.Add(new()
+            {
+                ElementId = extElementId + ".value[x]",
+                Path = extElementPath + ".value[x]",
+                Base = new()
+                {
+                    Path = "Extension.value[x]",
+                    Min = 0,
+                    Max = "1",
+                },
+                Min = 0,
+                Max = "0",
+                Type = [],
+            });
+
+            // done with this path
+            return;
+        }
+
+        // if this is the root, we need to index it now so that recursive calls can find it
+        if (isRoot)
+        {
+            // need to add immediately if root so that recusive types resolve correctly
+            contentReferenceExtUrlsByEdKey[sourceEd.Key] = extSd.Url;
+        }
+
         // get the child outcomes so we know if there are child elements to process
         List<DbElementOutcome> childOutcomes = DbElementOutcome.SelectList(
             _db,
             ParentElementOutcomeKey: edOutcome.Key,
+            RequiresXVerDefinition: true,
             orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
 
         bool hasChildren = childOutcomes.Count > 0;
@@ -1117,8 +1308,8 @@ public class StructureFhirExporter
                 _db,
                 KeyValues: edOutcome.UnmappedTypeKeys);
 
-        Dictionary<int, DbElementType> validSourceTypes = [];
-        Dictionary<int, DbElementType> invalidSourceTypes = [];
+        Dictionary<int, DbElementType> validValueTypes = [];
+        Dictionary<int, DbElementType> invalidValueTypes = [];
         foreach (DbElementType et in unmappedSourceTypes)
         {
             string typeName = et.TypeName ?? et.Literal;
@@ -1126,19 +1317,19 @@ public class StructureFhirExporter
             if (_extensionValueTypeNames[igTr.PackagePair.TargetFhirSequence].Contains(typeName))
             {
                 // TODO: need to also check type and target profiles
-                validSourceTypes[et.Key] = et;
+                validValueTypes[et.Key] = et;
             }
             else
             {
-                invalidSourceTypes[et.Key] = et;
+                invalidValueTypes[et.Key] = et;
             }
         }
 
-        bool needsValueElement = validSourceTypes.Count > 0;
-        bool needsExtensionElement = hasChildren || (invalidSourceTypes.Count > 0);
+        bool needsValueElement = validValueTypes.Count > 0;
+        bool needsExtensionElement = hasChildren || (invalidValueTypes.Count > 0);
 
         int extensionMinCardinality = childOutcomes.Sum(eo => eo.SourceMinCardinality);
-        if (invalidSourceTypes.Count > 0)
+        if (invalidValueTypes.Count > 0)
         {
             extensionMinCardinality += sourceEd.MinCardinality;
         }
@@ -1183,24 +1374,59 @@ public class StructureFhirExporter
                 continue;
             }
 
+            if (skipElement(childSourceEd))
+            {
+                continue;
+            }
+
             addToDifferentialRecursive(
                 extSd,
                 igTr,
-                childOutcome,
-                sourceSd,
-                childSourceEd,
                 sourceElements,
                 targetElements,
                 elementComparisons,
+                contentReferenceExtUrlsByEdKey,
+                childOutcome,
+                sourceSd,
+                childSourceEd,
                 extElementId + ".extension:" + childOutcome.GenShortId,
-                extElementPath + ".extension:" + childOutcome.GenShortId);
+                extElementPath + ".extension");
         }
 
         ElementDefinition? dtValueEd = null;
 
-        // add any invalid source types as extension slices with the _datatype extension
-        foreach ((int invalidTypeKey, DbElementType et) in invalidSourceTypes)
+        // add any invalid value types as extension slices with the _datatype extension
+        foreach ((int invalidTypeKey, DbElementType et) in invalidValueTypes)
         {
+            // first, check to see if this is a content reference type
+            if (contentReferenceExtUrlsByEdKey.TryGetValue(et.ElementKey, out string? crUrl))
+            {
+                // resolve the element
+                DbElement? crEd = DbElement.SelectSingle(_db, Key: et.ElementKey);
+                if (crEd is null)
+                {
+                    throw new Exception($"Failed to resolve data type content reference element: {crUrl}, {et.ElementKey}");
+                }
+
+                // resolve an outcome for this element
+
+                // add this as a slice
+                addToDifferentialRecursive(
+                    extSd,
+                    igTr,
+                    sourceElements,
+                    targetElements,
+                    elementComparisons,
+                    contentReferenceExtUrlsByEdKey,
+                    edOutcome,
+                    sourceSd,
+                    crEd,
+                    extElementId + ".extension:" + crEd.NameClean(),
+                    extElementPath + ".extension");
+
+                continue;
+            }
+
             string typeName = et.TypeName ?? et.Literal;
 
             // add the _datatype extension slice
@@ -1284,6 +1510,10 @@ public class StructureFhirExporter
             addDataTypeElementsRecursive(
                 extSd,
                 igTr,
+                sourceElements,
+                targetElements,
+                elementComparisons,
+                contentReferenceExtUrlsByEdKey,
                 et,
                 extElementPath + ".extension",
                 extElementId + ".extension");
@@ -1313,7 +1543,7 @@ public class StructureFhirExporter
         });
 
         // add the value element - either with proper types or constrained to zero repetitions
-        if (validSourceTypes.Count == 0)
+        if (validValueTypes.Count == 0)
         {
             ElementDefinition etValueEd = new()
             {
@@ -1381,7 +1611,7 @@ public class StructureFhirExporter
 
             // add the types
             Dictionary<string, ElementDefinition.TypeRefComponent> typeRefs = [];
-            foreach ((int validTypeKey, DbElementType et) in validSourceTypes)
+            foreach ((int validTypeKey, DbElementType et) in validValueTypes)
             {
                 string typeName = et.TypeName ?? et.Literal;
 
@@ -1430,6 +1660,10 @@ public class StructureFhirExporter
     private void addDataTypeElementsRecursive(
         StructureDefinition extSd,
         XVerIgExportTrackingRecord igTr,
+        Dictionary<int, DbElement> sourceElements,
+        Dictionary<int, DbElement> targetElements,
+        Dictionary<int, DbElementComparison> elementComparisons,
+        Dictionary<int, string> contentReferenceExtUrlsByEdKey,
         DbElementType et,
         string parentPath,
         string parentElementId)
@@ -1466,6 +1700,86 @@ public class StructureFhirExporter
             };
             extSd.Differential.Element.Add(dtExtSliceEd);
 
+            // get the types for this sub-element
+            List<DbElementType> dtElementTypes = DbElementType.SelectList(
+                _db,
+                ElementKey: typeEd.Key);
+
+            List<(string tn, bool isValid, DbElementType et)> typeValidity = dtElementTypes
+                .Select(et => getValidValueType(igTr.PackagePair.TargetFhirSequence, et))
+                .ToList();
+
+            List<(string tn, DbElementType et)> validValueTypes = typeValidity
+                .Where(tv => tv.isValid)
+                .Select(tv => (tv.tn, tv.et))
+                .ToList();
+            List<(string tn, DbElementType et)> invalidValueTypes = typeValidity
+                .Where(tv => !tv.isValid)
+                .Select(tv => (tv.tn, tv.et))
+                .ToList();
+
+            // invalid types need to promote to extensions
+            if (invalidValueTypes.Count > 0)
+            {
+                // check to see if we can resolve as an extension
+                foreach ((string tn, DbElementType subEt) in invalidValueTypes)
+                {
+                    DbElementOutcome? tnEdOutcome = null;
+                    if (subEt.TypeStructureKey is not null)
+                    {
+                        tnEdOutcome = DbElementOutcome.SelectSingle(
+                            _db,
+                            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                            SourceStructureKey: subEt.TypeStructureKey,
+                            SourceResourceOrder: 0);
+                    }
+
+                    if (tnEdOutcome is null)
+                    {
+                        // check to see if we have a structure outcome that can satisfy this
+                        tnEdOutcome = DbElementOutcome.SelectSingle(
+                            _db,
+                            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                            SourceId: tn,
+                            SourceResourceOrder: 0);
+                    }
+
+                    if (tnEdOutcome is null)
+                    {
+                        continue;
+                    }
+
+                    DbStructureDefinition? tnEdSd = DbStructureDefinition.SelectSingle(
+                        _db,
+                        Key: tnEdOutcome.SourceStructureKey);
+
+                    if (tnEdSd is null)
+                    {
+                        throw new Exception($"Failed to resolve data type structure definition for type `{tn}` with structure key `{tnEdOutcome.SourceStructureKey}`");
+                    }
+
+                    DbElement tnEd = DbElement.SelectSingle(
+                        _db,
+                        Key: tnEdOutcome.SourceElementKey)!;
+
+                    // add the slice
+                    addToDifferentialRecursive(
+                        extSd,
+                        igTr,
+                        sourceElements,
+                        targetElements,
+                        elementComparisons,
+                        contentReferenceExtUrlsByEdKey,
+                        tnEdOutcome,
+                        tnEdSd,
+                        tnEd,
+                        elementId,
+                        elementPath);
+                }
+            }
+
             // add the url element
             ElementDefinition dtUrlEd = new()
             {
@@ -1483,30 +1797,65 @@ public class StructureFhirExporter
             };
             extSd.Differential.Element.Add(dtUrlEd);
 
-            // get the types for this sub-element
-            List<DbElementType> dtElementTypes = DbElementType.SelectList(
-                _db,
-                ElementKey: typeEd.Key);
-
-            // add the value[x] element
-            ElementDefinition dtValueEd = new()
+            // add the value[x] element (if necessary)
+            if (validValueTypes.Count == 0)
             {
-                ElementId = elementId + ".value[x]",
-                Path = elementPath + ".value[x]",
-                Min = 0,
-                Max = "1",
-                Base = new()
+                ElementDefinition dtValueEd = new()
                 {
-                    Path = "Extension.value[x]",
+                    ElementId = elementId + ".value[x]",
+                    Path = elementPath + ".value[x]",
+                    Min = 0,
+                    Max = "0",
+                    Base = new()
+                    {
+                        Path = "Extension.value[x]",
+                        Min = 0,
+                        Max = "1",
+                    },
+                };
+                extSd.Differential.Element.Add(dtValueEd);
+            }
+            else
+            {
+                ElementDefinition dtValueEd = new()
+                {
+                    ElementId = elementId + ".value[x]",
+                    Path = elementPath + ".value[x]",
                     Min = 0,
                     Max = "1",
-                },
-                Type = dtElementTypes.Select(et => new ElementDefinition.TypeRefComponent()
-                {
-                    Code = et.TypeName ?? et.Literal,
-                }).ToList(),
-            };
-            extSd.Differential.Element.Add(dtValueEd);
+                    Base = new()
+                    {
+                        Path = "Extension.value[x]",
+                        Min = 0,
+                        Max = "1",
+                    },
+                    Type = validValueTypes.Select(tn => new ElementDefinition.TypeRefComponent()
+                    {
+                        Code = tn.tn,
+                    }).ToList(),
+                };
+                extSd.Differential.Element.Add(dtValueEd);
+            }
         }
+    }
+
+    private (string tn, bool isValid, DbElementType et) getValidValueType(FhirReleases.FhirSequenceCodes targetFhirSequence, DbElementType et)
+    {
+        string desiredType = et.TypeName ?? et.Literal;
+
+        if (_extensionValueTypeNames[targetFhirSequence].Contains(desiredType))
+        {
+            return (desiredType, true, et);
+        }
+
+        if (FhirTypeMappings.PrimitiveTypeFallbacks.TryGetValue(desiredType, out string? fallbackType) &&
+            _extensionValueTypeNames[targetFhirSequence].Contains(fallbackType))
+        {
+            return (fallbackType, true, et);
+        }
+
+        return (desiredType, false, et);
+
+        //throw new Exception($"Type `{desiredType}` is not a valid extension value type in FHIR {targetFhirSequence} and has no valid fallback.");
     }
 }

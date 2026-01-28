@@ -410,6 +410,10 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
     public required int? BaseStructureKey { get; set; }
 
     public required bool DefinedAsContentReference { get; set; }
+    public required int? ContentReferenceSourceKey { get; set; }
+    public required string? ContentReferenceSourceId { get; set; }
+    public required bool? UsedAsContentReference { get; set; }
+
     public required bool IsSimpleType { get; set; }
     public required bool IsModifier { get; set; }
     public required string? IsModifierReason { get; set; }
@@ -506,6 +510,9 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
         BaseElementKey = null,
         BaseStructureKey = null,
         DefinedAsContentReference = false,
+        ContentReferenceSourceKey = null,
+        ContentReferenceSourceId = null,
+        UsedAsContentReference = null,
         IsSimpleType = false,
         IsModifier = false,
         IsModifierReason = null,

@@ -334,7 +334,8 @@ public sealed class CgSQLiteGenerator : IIncrementalGenerator
                 (
                     (namedTypeSymbol.TypeKind == TypeKind.Enum) ||
                     ((namedTypeSymbol.TypeArguments.Length != 0) && (namedTypeSymbol.TypeArguments[0].TypeKind == TypeKind.Enum)) ||
-                    ((namedTypeSymbol.TypeKind == TypeKind.Struct) && (namedTypeSymbol.TypeArguments.Length != 0))
+                    //((namedTypeSymbol.TypeKind == TypeKind.Struct) && (namedTypeSymbol.TypeArguments.Length != 0))
+                    (namedTypeSymbol.TypeKind == TypeKind.Struct) && (namedTypeSymbol.TypeArguments.Length != 0) && !namedTypeSymbol.TypeArguments[0].ContainingNamespace.Name.StartsWith("System")
                     //(namedTypeSymbol.TypeKind == TypeKind.Struct) && (namedTypeSymbol.TypeArguments.Length != 0) && namedTypeSymbol.TypeArguments[0].ContainingNamespace.Name.StartsWith("HL7")
                 ))
             {

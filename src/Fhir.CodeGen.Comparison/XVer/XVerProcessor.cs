@@ -257,26 +257,26 @@ public partial class XVerProcessor
             case "wip":
 
                 HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null;
-                //specificPairs = [
-                //    //(FhirReleases.FhirSequenceCodes.DSTU2, FhirReleases.FhirSequenceCodes.STU3),
-                //    //(FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.R4B),
-                //    //(FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R4),
-                //    //(FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B),
-                //    (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4),
-                //];
+                specificPairs = [
+                    //(FhirReleases.FhirSequenceCodes.DSTU2, FhirReleases.FhirSequenceCodes.STU3),
+                    //(FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.R4B),
+                    //(FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R4),
+                    //(FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B),
+                    (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4),
+                ];
 
                 //UpdateValueSetMaps();
 
-                //LoadDatabase(true, true);
+                LoadDatabase(true, true);
 
-                //LoadFhirCrossVersionMaps();
+                LoadFhirCrossVersionMaps();
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, specificPairs: specificPairs);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
-                //CompareInDatabase();
+                CompareInDatabase();
 
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
@@ -284,15 +284,16 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes(specificPairs: specificPairs);
-                //GenerateOutcomes();
+                GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1, includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, includeIgScripts: false, specificPairs: specificPairs);
-                //ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+                ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+                //ExportOutcomes(includeIgScripts: true, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: false);
-                ExportOutcomes();
+                //ExportOutcomes();
 
                 break;
 
@@ -476,20 +477,15 @@ public partial class XVerProcessor
             }
         }
 
-        // creating the database with defintions loads all the content
-        _db = new(_definitions, _dbPath, _dbName, _config.LogFactory);
-        _dbName = _db.DbFileName;
-
-
         // load definitions if we have not done so
         if (_definitions.Length == 0)
         {
             loadDefinitionCollections();
         }
 
-        //// creating the database with defintions loads all the content
-        //_db = new(_definitions, _dbPath, _dbName, _config.LogFactory);
-        //_dbName = _db.DbFileName;
+        // creating the database with defintions loads all the content
+        _db = new(_definitions, _dbPath, _dbName, _config.LogFactory);
+        _dbName = _db.DbFileName;
 
         // save the definition content in the database
         if (!_db.TryLoadFromDefinitionCollections(_exclusionSet, _escapeValveCodes))

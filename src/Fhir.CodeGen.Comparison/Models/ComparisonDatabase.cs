@@ -3204,6 +3204,29 @@ public class ComparisonDatabase : IDisposable
                     continue;
                 }
 
+                // get the root cr element
+                DbElement? crElement = DbElement.SelectSingle(
+                    _db,
+                    FhirPackageKey: dbEd.FhirPackageKey,
+                    Id: dbEd.FullCollatedTypeLiteral);
+                if (crElement is not null)
+                {
+                    dbEd.ContentReferenceSourceKey = crElement.Key;
+                    dbEd.ContentReferenceSourceId = crElement.Id;
+                    edCache.CacheUpdate(dbEd);
+
+                    if (crElement.UsedAsContentReference != true)
+                    {
+                        crElement.UsedAsContentReference = true;
+                        edCache.CacheUpdate(crElement);
+                    }
+                }
+
+                if (crElement is null)
+                {
+                    throw new Exception($"Could not find content reference base element for {dbEd.Id} in structure {dbSd.Name} ({dbSd.VersionedUrl})!");
+                }
+
                 // do NOT nest into recursive content references
                 if (dbEd.Id.StartsWith(dbEd.FullCollatedTypeLiteral))
                 {
@@ -3211,20 +3234,18 @@ public class ComparisonDatabase : IDisposable
                 }
 
                 // get all the elements that start at the content reference location
-                List<DbElement> crElements = DbElement.SelectList(
+                List<DbElement> crChildElements = DbElement.SelectList(
                     _db,
                     FhirPackageKey: dbEd.FhirPackageKey,
                     StructureKey: dbEd.StructureKey,
-                    Id: dbEd.FullCollatedTypeLiteral + "%",
+                    Id: dbEd.FullCollatedTypeLiteral + ".%",
                     compareStringsWithLike: true,
                     orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
 
-                if (crElements.Count == 0)
+                if (crChildElements.Count == 0)
                 {
                     throw new Exception($"Could not find content reference elements for {dbEd.Id} in structure {dbSd.Name} ({dbSd.VersionedUrl})!");
                 }
-
-                DbElement crElement = crElements[0];
 
                 // update properties on the original element to match the content reference base element
                 dbEd.ChildElementCount = crElement.ChildElementCount;
@@ -3238,7 +3259,7 @@ public class ComparisonDatabase : IDisposable
                 int prefixLen = crElement.Id.Length;
 
                 // iterate over the elements to create copies with the correct paths (skip the actual content reference element)
-                foreach (DbElement crEd in crElements.Skip(1))
+                foreach (DbElement crEd in crChildElements)
                 {
                     resourceFieldOrderAdjustment++;
                     dbSd.SnapshotCount++;
@@ -4494,6 +4515,9 @@ public class ComparisonDatabase : IDisposable
                 BaseElementKey = null,
                 BaseStructureKey = null,
                 DefinedAsContentReference = !string.IsNullOrEmpty(ed.ContentReference),
+                ContentReferenceSourceKey = null,
+                ContentReferenceSourceId = null,
+                UsedAsContentReference = null,
                 IsSimpleType = ed.cgIsSimple(),
                 IsModifier = ed.IsModifier == true,
                 IsModifierReason = ed.IsModifierReason,

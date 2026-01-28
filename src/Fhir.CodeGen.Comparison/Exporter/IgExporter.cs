@@ -421,7 +421,8 @@ public class IgExporter
         ("excludemap", "true"),
 
         // i18n-default-lang: The default language (e.g. Resource.language) to assume in the IG when the resource and/or the element context doesn't specify a language
-        ("i18n-default-lang", "US-en"),
+        //("i18n-default-lang", "US-en"),
+        ("i18n-default-lang", "en-US"),
 
         // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
         //("jira-code", ""),
