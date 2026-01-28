@@ -454,6 +454,17 @@ public class ElementOutcomeGenerator
         (relationship == CMR.Equivalent) ||
         (relationship == CMR.SourceIsNarrowerThanTarget);
 
+    private bool skipType(string typeName) => typeName switch
+    {
+        "BackboneElement" => true,
+        "Base" => true,
+        "DataType" => true,
+        "Element" => true,
+        "Resource" => true,
+        "DomainResource" => true,
+        _ => false,
+    };
+
     public void ProcessStructure(
         DbStructureDefinition sourceSd,
         Dictionary<int, StructureOutcomeGenerator.StructureOutcomeTrackingRecord> structureTrackingRecords)
@@ -489,6 +500,24 @@ public class ElementOutcomeGenerator
             {
                 sourceEts = _sourceElementTypesByElementKey[sourceEd.BaseElementKey!.Value]
                     .ToDictionary(et => et.Key);
+            }
+
+            // filter out base element types that make no sense to deal with (any target, even an extension, will cover)
+            if (sourceEts.Count != 0)
+            {
+                List<int> typesToFilter = [];
+                foreach ((int key, DbElementType et) in sourceEts)
+                {
+                    if (skipType(et.TypeName ?? et.Literal))
+                    {
+                        typesToFilter.Add(key);
+                    }
+                }
+
+                foreach (int ttf in typesToFilter)
+                {
+                    sourceEts.Remove(ttf);
+                }
             }
 
             // get the all comparisons for this element to the target FHIR package

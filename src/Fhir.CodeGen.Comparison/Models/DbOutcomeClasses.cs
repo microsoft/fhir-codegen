@@ -259,12 +259,20 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
     public required string SourceCanonicalUnversioned { get; set; }
     public required string SourceId { get; set; }
     public required string SourceName { get; set; }
+    public string SourceNameClean() => SourceName.EndsWith("[x]", StringComparison.Ordinal)
+        ? SourceName[..^3]
+        : SourceName;
     public required string SourceVersion { get; set; }
 
     public required string? TargetCanonicalVersioned { get; set; }
     public required string? TargetCanonicalUnversioned { get; set; }
     public required string? TargetId { get; set; }
     public required string? TargetName { get; set; }
+    public string? TargetNameClean() => TargetName is null
+        ? null
+        : TargetName.EndsWith("[x]", StringComparison.Ordinal)
+        ? TargetName[..^3]
+        : TargetName;
     public required string? TargetVersion { get; set; }
 }
 

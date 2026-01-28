@@ -936,32 +936,6 @@ public class DbComparisonCache<T>
         _toDelete[item.Key] = item;
     }
 
-    public void Changed(T item)
-    {
-        if (!_byKey.ContainsKey(item.Key))
-        {
-            _byKey[item.Key] = item;
-        }
-
-        if (!_byPair.ContainsKey((item.SourceContentKey, item.TargetContentKey)))
-        {
-            _byPair[(item.SourceContentKey, item.TargetContentKey)] = item;
-        }
-
-        if (_toDelete.ContainsKey(item.Key))
-        {
-            _toDelete.Remove(item.Key);
-        }
-
-        if (_toAdd.ContainsKey(item.Key))
-        {
-            _toAdd[item.Key] = item;
-            return;
-        }
-
-        _toUpdate[item.Key] = item;
-    }
-
     public int Count => _byKey.Count;
 }
 

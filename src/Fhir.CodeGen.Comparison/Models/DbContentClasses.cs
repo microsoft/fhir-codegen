@@ -773,31 +773,5 @@ public class DbContentWithIdCache<T>
         _toDelete[item.Key] = item;
     }
 
-    public void Changed(T item)
-    {
-        if (!_byKey.ContainsKey(item.Key))
-        {
-            _byKey[item.Key] = item;
-        }
-
-        if (!_byId.ContainsKey(item.Id))
-        {
-            _byId[item.Id] = item;
-        }
-
-        if (_toDelete.ContainsKey(item.Key))
-        {
-            _toDelete.Remove(item.Key);
-        }
-
-        if (_toUpdate.ContainsKey(item.Key))
-        {
-            _toUpdate[item.Key] = item;
-            return;
-        }
-
-        _toAdd[item.Key] = item;
-    }
-
     public int Count => _byKey.Count;
 }

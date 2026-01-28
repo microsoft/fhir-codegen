@@ -616,7 +616,7 @@ public class StructureFhirExporter
             {
                 ElementDefinition extEd = new()
                 {
-                    ElementId = $"{targetId}:{targetEdOutcome.SourceName}",
+                    ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}",
                     Path = targetPath,
                     Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
                     Min = targetEdOutcome.SourceMinCardinality,
@@ -832,7 +832,8 @@ public class StructureFhirExporter
         foreach (DbElementOutcome edOutcome in componentEdOutcomes)
         {
             // skip elements that will match their normal definition
-            if (edOutcome.ComponentGenLongId == edOutcome.GenLongId)
+            if ((edOutcome.RequiresXVerDefinition == true) &&
+                (edOutcome.ComponentGenLongId == edOutcome.GenLongId))
             {
                 continue;
             }
@@ -1379,6 +1380,9 @@ public class StructureFhirExporter
                 continue;
             }
 
+            string nextId = extElementId + ".extension:" + childOutcome.GenShortId;
+            string nextPath = extElementPath + ".extension";
+
             addToDifferentialRecursive(
                 extSd,
                 igTr,
@@ -1389,8 +1393,8 @@ public class StructureFhirExporter
                 childOutcome,
                 sourceSd,
                 childSourceEd,
-                extElementId + ".extension:" + childOutcome.GenShortId,
-                extElementPath + ".extension");
+                nextId,
+                nextPath);
         }
 
         ElementDefinition? dtValueEd = null;

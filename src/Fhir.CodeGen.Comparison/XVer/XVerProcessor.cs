@@ -267,16 +267,16 @@ public partial class XVerProcessor
 
                 //UpdateValueSetMaps();
 
-                LoadDatabase(true, true);
+                //LoadDatabase(true, true);
 
-                LoadFhirCrossVersionMaps();
+                //LoadFhirCrossVersionMaps();
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, specificPairs: specificPairs);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
-                CompareInDatabase();
+                //CompareInDatabase();
 
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
@@ -284,13 +284,13 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes(specificPairs: specificPairs);
-                GenerateOutcomes();
+                //GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1, includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, includeIgScripts: false, specificPairs: specificPairs);
-                ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+            ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: true, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: false);
                 //ExportOutcomes();
@@ -1232,6 +1232,7 @@ public partial class XVerProcessor
                             components[0] = new string(components[0].Where(char.IsUpper).ToArray());
                         }
 
+                        // abbreviate middle components
                         for (int i = 1; i < components.Length - 1; i++)
                         {
                             if (components[i].Length > 3)
@@ -1240,9 +1241,11 @@ public partial class XVerProcessor
                             }
                         }
 
+                        // abbreviate last component if needed
                         if (components.Last().Length > 20)
                         {
-                            components[components.Length - 1] = $"{components[components.Length - 1][0]}" + new string(components[0].Where(char.IsUpper).ToArray());
+                            components[components.Length - 1] =
+                                $"{components[components.Length - 1][0]}{new string(components[components.Length - 1].Where(char.IsUpper).ToArray())}";
                         }
 
                         return string.Join('.', components);
