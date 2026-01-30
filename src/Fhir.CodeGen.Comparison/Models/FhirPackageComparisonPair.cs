@@ -30,6 +30,9 @@ public class FhirPackageComparisonPair
 
     public int SortKey => (SourcePackageKey * 100) + TargetPackageKey;
 
+    public (Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes source,
+        Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes target) SequencePair => (SourceFhirSequence, TargetFhirSequence);
+
     [SetsRequiredMembers]
     public FhirPackageComparisonPair(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
     {

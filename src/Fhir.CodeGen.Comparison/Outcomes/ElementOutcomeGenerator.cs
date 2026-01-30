@@ -524,6 +524,21 @@ public class ElementOutcomeGenerator
             List<DbElementComparison> elementComparisons = _edComparsionsBySourceElementKey[sourceEd.Key]
                 .ToList();
 
+            
+            HashSet<int> unrelatedEdComparisons = elementComparisons
+                .Where(ec => ec.NotMapped || (ec.Relationship == CMR.NotRelatedTo))
+                .Select(ec => ec.Key)
+                .ToHashSet();
+
+            // if we have at least one good comparsion, remove anything unmapped or not related
+            if ((unrelatedEdComparisons.Count > 0) &&
+                (unrelatedEdComparisons.Count < elementComparisons.Count))
+            {
+                elementComparisons = elementComparisons
+                    .Where(ec => !unrelatedEdComparisons.Contains(ec.Key))
+                    .ToList();
+            }
+
             if (!elementTrackingRecords.TryGetValue(sourceEd.Key, out ElementOutcomeTrackingRecord? elementTrackingRec))
             {
                 elementTrackingRec = new()

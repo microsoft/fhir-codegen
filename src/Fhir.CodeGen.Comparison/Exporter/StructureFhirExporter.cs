@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.ConstrainedExecution;
@@ -36,6 +37,10 @@ public class StructureFhirExporter
 
     private Dictionary<FhirReleases.FhirSequenceCodes, List<DbElementType>> _extensionValueTypes = [];
     private Dictionary<FhirReleases.FhirSequenceCodes, HashSet<string>> _extensionValueTypeNames = [];
+
+    private Dictionary<
+        (FhirReleases.FhirSequenceCodes source, FhirReleases.FhirSequenceCodes target),
+        Dictionary<string, (string targetResourceUrl, string targetProfileUrl)>> _resourceReferenceLookup = [];
 
     private static readonly HashSet<string> _exportExclusions = [
         "Base",
@@ -91,6 +96,40 @@ public class StructureFhirExporter
                 _extensionValueTypeNames[igTr.PackagePair.TargetFhirSequence] = _extensionValueTypes[igTr.PackagePair.TargetFhirSequence]
                     .Select(et => et.TypeName ?? et.Literal)
                     .ToHashSet();
+            }
+
+            if (!_resourceReferenceLookup.ContainsKey(igTr.PackagePair.SequencePair))
+            {
+                // create our lookups
+                Dictionary<string, (string targetResourceUrl, string targetProfileUrl)> rl = [];
+
+                List<DbStructureOutcome> structureOutcomes = DbStructureOutcome.SelectList(
+                    _db,
+                    SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                    TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey);
+
+                // TODO: this needs to allow multiples and add them later, change the content to a distinct list and use that later
+                Debug.Fail("WIP");
+
+                HashSet<string> used = [];
+
+                foreach (DbStructureOutcome sdOutcome in structureOutcomes)
+                {
+                    if (used.Contains(sdOutcome.SourceId))
+                    {
+                        if (rl.ContainsKey(sdOutcome.SourceId))
+                        {
+                            rl.Remove(sdOutcome.SourceId);
+                        }
+
+                        continue;
+                    }
+
+                    used.Add(sdOutcome.SourceId);
+                    rl.Add(sdOutcome.SourceId,
+                        (sdOutcome.TargetId ?? "http://hl7.org/fhir/StructureDefinition/Basic",
+                        sdOutcome.GenLongId ?? "http://hl7.org/fhir/StructureDefinition/Basic"));
+                }
             }
 
             // export extensions
@@ -1950,7 +1989,7 @@ public class StructureFhirExporter
                 if (et.TypeProfile is not null)
                 {
                     tr.ProfileElement ??= [];
-                    tr.ProfileElement.Add(et.TypeProfile);
+                    tr.ProfileElement.AddRange(getValidResourceUrls(igTr.PackagePair.SequencePair, [et.TypeProfile]));
                 }
 
                 if (!addedDtTypeProfiles &&
@@ -1959,7 +1998,8 @@ public class StructureFhirExporter
                 {
                     addedDtTypeProfiles = true;
                     tr.ProfileElement ??= [];
-                    tr.ProfileElement.AddRange(dtTypeProfiles.Select(v => new Canonical(v)));
+                    tr.ProfileElement.AddRange(getValidResourceUrls(igTr.PackagePair.SequencePair, dtTypeProfiles));
+                    //tr.ProfileElement.AddRange(dtTypeProfiles.Select(v => new Canonical(v)));
                 }
 
                 if (et.TargetProfile is not null)
@@ -1974,7 +2014,8 @@ public class StructureFhirExporter
                 {
                     addedDtTargetProfiles = true;
                     tr.ProfileElement ??= [];
-                    tr.ProfileElement.AddRange(dtTargetProfiles.Select(v => new Canonical(v)));
+                    tr.ProfileElement.AddRange(getValidResourceUrls(igTr.PackagePair.SequencePair, dtTargetProfiles));
+                    //tr.ProfileElement.AddRange(dtTargetProfiles.Select(v => new Canonical(v)));
                 }
             }
 
@@ -1983,6 +2024,32 @@ public class StructureFhirExporter
             // add our element
             extSd.Differential.Element.Add(etValueEd);
         }
+    }
+
+    private List<Canonical> getValidResourceUrls(
+        (FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t) ps,
+        List<string> urls)
+    {
+        if (_resourceReferenceLookup.TryGetValue(ps, out Dictionary<string, (string targetResourceUrl, string targetProfileUrl)>? rl) ||
+            (rl is null))
+        {
+            return urls.Select(v => new Canonical(v)).ToList();
+        }
+
+        HashSet<string> valids = [];
+        foreach (string v in urls)
+        {
+            if (!rl.TryGetValue(v, out (string targetResourceUrl, string targetProfileUrl) targets))
+            {
+                valids.Add(v);
+                continue;
+            }
+
+            valids.Add(targets.targetResourceUrl);
+            valids.Add(targets.targetProfileUrl);
+        }
+
+        return valids.Select(v => new Canonical(v)).ToList();
     }
 
     private bool skipElement(
