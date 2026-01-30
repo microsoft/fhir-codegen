@@ -437,9 +437,9 @@ public class IgExporter
         ("no-usage-check", "true"),
 
         // path-resource: Additional directories for source content
-        ("path-resource", "input/elementmaps"),
-        ("path-resource", "input/resourcemaps"),
-        ("path-resource", "input/vocabularymaps"),
+        //("path-resource", "input/elementmaps"),
+        //("path-resource", "input/resourcemaps"),
+        //("path-resource", "input/vocabularymaps"),
 
         /* pin-canonicals: Defines how the IG publisher treats unversioned canonical references. Possible values:
          *   pin-none: no action is taken (default)
@@ -1649,39 +1649,20 @@ public class IgExporter
         }
 
         igTr.VocabularyDir = Path.Combine(igTr.InputDir, "vocabulary");
+        igTr.VocabMapDir = igTr.VocabularyDir;
         if (!Directory.Exists(igTr.VocabularyDir))
         {
             Directory.CreateDirectory(igTr.VocabularyDir);
         }
 
-        igTr.VocabMapDir = Path.Combine(igTr.InputDir, "vocabularymaps");
-        if (!Directory.Exists(igTr.VocabMapDir))
-        {
-            Directory.CreateDirectory(igTr.VocabMapDir);
-        }
-
-        igTr.ExtensionDir = Path.Combine(igTr.InputDir, "extensions");
+        igTr.ExtensionDir = Path.Combine(igTr.InputDir, "resources");
+        igTr.ProfileDir = igTr.ExtensionDir;
+        igTr.ResourceMapDir = igTr.ExtensionDir;
+        igTr.ElementMapDir = igTr.ExtensionDir;
         if (!Directory.Exists(igTr.ExtensionDir))
         {
             Directory.CreateDirectory(igTr.ExtensionDir);
         }
 
-        igTr.ProfileDir = Path.Combine(igTr.InputDir, "profiles");
-        if (!Directory.Exists(igTr.ProfileDir))
-        {
-            Directory.CreateDirectory(igTr.ProfileDir);
-        }
-
-        igTr.ResourceMapDir = Path.Combine(igTr.InputDir, "resourcemaps");
-        if (!Directory.Exists(igTr.ResourceMapDir))
-        {
-            Directory.CreateDirectory(igTr.ResourceMapDir);
-        }
-
-        igTr.ElementMapDir = Path.Combine(igTr.InputDir, "elementmaps");
-        if (!Directory.Exists(igTr.ElementMapDir))
-        {
-            Directory.CreateDirectory(igTr.ElementMapDir);
-        }
     }
 }

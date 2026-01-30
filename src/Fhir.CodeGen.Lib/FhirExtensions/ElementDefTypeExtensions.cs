@@ -48,6 +48,28 @@ public static class ElementDefTypeExtensions
         }
     }
 
+    public static string cgLiteral(this ElementDefinition.TypeRefComponent tr)
+    {
+        string literal = tr.Code;
+
+        if (tr.ProfileElement.Count > 0)
+        {
+            literal += "[" + string.Join(',', tr.ProfileElement) + "]";
+        }
+
+        if (tr.TargetProfileElement.Count > 0)
+        {
+            literal += "(" + string.Join(',', tr.TargetProfileElement) + ")";
+        }
+
+        return literal;
+    }
+
+    public static string cgLiteral(this List<ElementDefinition.TypeRefComponent> trs)
+    {
+        return string.Join(" | ", trs.Select(tr => tr.cgLiteral()));
+    }
+
     public static ElementDefinition.TypeRefComponent cgAsR5(this ElementDefinition.TypeRefComponent tr, string? elementPath = null)
     {
         // check for already having a primitive type

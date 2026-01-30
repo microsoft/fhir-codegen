@@ -199,6 +199,37 @@ public class FhirTypeMappings
         new("xhtml", "xhtml", CMR.Equivalent, CMR.Equivalent, CMR.Equivalent),
     ];
 
+    internal static bool CanApplyBindings(string typeName) => typeName switch
+    {
+        "canonical" => true,
+        "code" => true,
+        "Coding" => true,
+        "CodeableConcept" => true,
+        "CodeableReference" => true,
+        "id" => true,
+        "string" => true,
+        "uri" => true,
+        "url" => true,
+        _ => false,
+    };
+
+    internal static bool CanApplyTypeProfiles(string typeName) => typeName switch
+    {
+        "Resource" => true,
+        "DomainResource" => true,
+        "CanonicalResource" => true,
+        "Quantity" => true,
+        _ => false,
+    };
+
+    internal static bool CanApplyTargetProfiles(string typeName) => typeName switch
+    {
+        "Reference" => true,
+        "CodeableReference" => true,
+        "canonical" => true,
+        _ => false,
+    };
+
     internal static Dictionary<string, string> PrimitiveTypeFallbacks = new()
     {
         { "canonical", "uri" },

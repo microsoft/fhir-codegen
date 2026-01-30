@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
@@ -1177,10 +1179,18 @@ public class StructureFhirExporter
         DbStructureDefinition sourceSd,
         DbElement sourceEd,
         string? extElementId = null,
-        string? extElementPath = null)
+        string? extElementPath = null,
+        Dictionary<string, ElementDefinition>? dtValueElements = null,
+        string? dataTypeNameLiteral = null,
+        int? dtBindingVsKey = null,
+        List<string>? dtTypeProfiles = null,
+        List<string>? dtTargetProfiles = null,
+        bool excludeExtensionElement = false,
+        string? elementUrlOverride = null)
     {
         extElementId ??= "Extension";
         extElementPath ??= "Extension";
+        dtValueElements ??= [];
 
         //bool isRoot = edOutcome.ParentElementOutcomeKey is null;
         bool isRoot = extSd.Differential.Element.Count == 0;
@@ -1218,14 +1228,14 @@ public class StructureFhirExporter
 
             extSd.Differential.Element.Add(rootElement);
         }
-        else
+        else if (!excludeExtensionElement)
         {
             // add the primary slice
             ElementDefinition sliceElement = new()
             {
                 ElementId = extElementId,
                 Path = extElementPath,
-                SliceName = edOutcome.GenShortId,
+                SliceName = elementUrlOverride ?? edOutcome.GenShortId,
                 Short = sourceEd.Short,
                 Definition = sourceEd.Definition,
                 Comment = sourceEd.Comments,
@@ -1246,7 +1256,8 @@ public class StructureFhirExporter
         }
 
         // check to see if this is an outcome that has a component definition
-        if (contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.Key, out string? crExtUrl) ||
+        if (!isRoot &&
+            contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.Key, out string? crExtUrl) ||
             ((sourceEd.ContentReferenceSourceKey is not null) &&
                 contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.ContentReferenceSourceKey.Value, out crExtUrl)))
         {
@@ -1293,6 +1304,21 @@ public class StructureFhirExporter
             contentReferenceExtUrlsByEdKey[sourceEd.Key] = extSd.Url;
         }
 
+        // if this is a datatype element, add the necessary meta elements
+        if (dataTypeNameLiteral is not null)
+        {
+            addDataTypeMetaElements(
+                igTr.PackagePair.SourceFhirSequence,
+                igTr.PackagePair.TargetFhirSequence,
+                extSd,
+                extElementId,
+                extElementPath,
+                dataTypeNameLiteral,
+                addSliceEd: true,
+                addUrlEd: true,
+                addValueEd: true);
+        }
+
         // get the child outcomes so we know if there are child elements to process
         List<DbElementOutcome> childOutcomes = DbElementOutcome.SelectList(
             _db,
@@ -1309,22 +1335,35 @@ public class StructureFhirExporter
                 _db,
                 KeyValues: edOutcome.UnmappedTypeKeys);
 
-        Dictionary<int, DbElementType> validValueTypes = [];
-        Dictionary<int, DbElementType> invalidValueTypes = [];
-        foreach (DbElementType et in unmappedSourceTypes)
-        {
-            string typeName = et.TypeName ?? et.Literal;
+        List<(string tn, bool isValid, DbElementType et)> typeValidity = unmappedSourceTypes
+            .Select(et => getValidValueType(igTr.PackagePair.TargetFhirSequence, et))
+            .ToList();
 
-            if (_extensionValueTypeNames[igTr.PackagePair.TargetFhirSequence].Contains(typeName))
-            {
-                // TODO: need to also check type and target profiles
-                validValueTypes[et.Key] = et;
-            }
-            else
-            {
-                invalidValueTypes[et.Key] = et;
-            }
-        }
+        List<(string tn, DbElementType et)> validValueTypes = typeValidity
+            .Where(tv => tv.isValid)
+            .Select(tv => (tv.tn, tv.et))
+            .ToList();
+        List<(string tn, DbElementType et)> invalidValueTypes = typeValidity
+            .Where(tv => !tv.isValid)
+            .Select(tv => (tv.tn, tv.et))
+            .ToList();
+
+        //Dictionary<int, DbElementType> validValueTypes = [];
+        //Dictionary<int, DbElementType> invalidValueTypes = [];
+        //foreach (DbElementType et in unmappedSourceTypes)
+        //{
+        //    string typeName = et.TypeName ?? et.Literal;
+
+        //    if (_extensionValueTypeNames[igTr.PackagePair.TargetFhirSequence].Contains(typeName))
+        //    {
+        //        // TODO: need to also check type and target profiles
+        //        validValueTypes[et.Key] = et;
+        //    }
+        //    else
+        //    {
+        //        invalidValueTypes[et.Key] = et;
+        //    }
+        //}
 
         bool needsValueElement = validValueTypes.Count > 0;
         bool needsExtensionElement = hasChildren || (invalidValueTypes.Count > 0);
@@ -1394,141 +1433,400 @@ public class StructureFhirExporter
                 sourceSd,
                 childSourceEd,
                 nextId,
-                nextPath);
+                nextPath,
+                dtValueElements);
         }
 
-        ElementDefinition? dtValueEd = null;
+        List<string> distinctInvalidTypeNames = invalidValueTypes
+            .Select(kvp => kvp.et.TypeName ?? kvp.et.Literal)
+            .Distinct()
+            .ToList();
 
-        // add any invalid value types as extension slices with the _datatype extension
-        foreach ((int invalidTypeKey, DbElementType et) in invalidValueTypes)
+        if (invalidValueTypes.Count > 0)
         {
-            // first, check to see if this is a content reference type
-            if (contentReferenceExtUrlsByEdKey.TryGetValue(et.ElementKey, out string? crUrl))
+            // create a lookup so we can consolidate types
+            ILookup<string, (int invalidTypeKey, DbElementType et)> ietsByCode = invalidValueTypes
+                .ToLookup(kvp => kvp.et.TypeName ?? kvp.et.Literal, kvp => (kvp.et.Key, kvp.et));
+
+            foreach (string distinctTypeName in distinctInvalidTypeNames)
             {
-                // resolve the element
-                DbElement? crEd = DbElement.SelectSingle(_db, Key: et.ElementKey);
-                if (crEd is null)
+                List<(int invalidTypeKey, DbElementType et)> iets = ietsByCode[distinctTypeName].ToList();
+
+                // if there is only one type, it might be a content reference
+                if ((iets.Count == 1) &&
+                    !isRoot &&
+                    contentReferenceExtUrlsByEdKey.TryGetValue(iets[0].et.ElementKey, out string? crUrl))
                 {
-                    throw new Exception($"Failed to resolve data type content reference element: {crUrl}, {et.ElementKey}");
+                    // resolve the element
+                    DbElement? crEd = DbElement.SelectSingle(_db, Key: iets[0].et.ElementKey);
+                    if (crEd is null)
+                    {
+                        throw new Exception($"Failed to resolve data type content reference element: {crUrl}, {iets[0].et.ElementKey}, {distinctTypeName}");
+                    }
+
+                    // add this as a slice
+                    addToDifferentialRecursive(
+                        extSd,
+                        igTr,
+                        sourceElements,
+                        targetElements,
+                        elementComparisons,
+                        contentReferenceExtUrlsByEdKey,
+                        edOutcome,
+                        sourceSd,
+                        crEd,
+                        extElementId + ".extension:" + crEd.NameClean(),
+                        extElementPath + ".extension",
+                        dtValueElements);
+
+                    continue;
                 }
 
-                // resolve an outcome for this element
+                // consolidate profile information
+                List<string> ietTypeProfiles = iets
+                    .Where(kvp => kvp.et.TypeProfile is not null)
+                    .Select(kvp => kvp.et.TypeProfile!)
+                    .ToList();
 
-                // add this as a slice
-                addToDifferentialRecursive(
-                    extSd,
-                    igTr,
-                    sourceElements,
-                    targetElements,
-                    elementComparisons,
-                    contentReferenceExtUrlsByEdKey,
-                    edOutcome,
-                    sourceSd,
-                    crEd,
-                    extElementId + ".extension:" + crEd.NameClean(),
-                    extElementPath + ".extension");
+                List<string> ietTargetProfiles = iets
+                    .Where(kvp => kvp.et.TargetProfile is not null)
+                    .Select(kvp => kvp.et.TargetProfile!)
+                    .ToList();
 
-                continue;
-            }
+                // resolve a type element for this type
+                DbElement? ietEd = DbElement.SelectSingle(
+                    _db,
+                    FhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                    Id: distinctTypeName);
 
-            string typeName = et.TypeName ?? et.Literal;
-
-            // add the _datatype extension slice
-            ElementDefinition dtExtensionEd = new()
-            {
-                ElementId = extElementId + ".extension:_datatype",
-                Path = extElementPath + ".extension",
-                SliceName = "_datatype",
-                Short = $"Data type name for data types in {igTr.PackagePair.SourceFhirSequence} `{sourceEd.Id}`",
-                Definition = $"Data type name for data types in {igTr.PackagePair.SourceFhirSequence} `{sourceEd.Id}`",
-                Min = 0,
-                Max = "1",
-                Base = new()
+                if (ietEd is null)
                 {
-                    Path = "Extension.extension",
-                    Min = 0,
-                    Max = "*",
-                },
-                Type = [
-                    new()
+                    throw new Exception($"Failed to resolve element: {distinctTypeName} in FHIR {igTr.PackagePair.SourceFhirSequence}");
+                }
+
+                if (distinctInvalidTypeNames.Count == 1)
+                {
+                    List<DbElement> dtElements = DbElement.SelectList(
+                        _db,
+                        ParentElementKey: ietEd.Key);
+
+                    // if there is a single type, nest into it directly
+                    addDataTypeMetaElements(
+                        igTr.PackagePair.SourceFhirSequence,
+                        igTr.PackagePair.TargetFhirSequence,
+                        extSd,
+                        extElementId,
+                        extElementPath,
+                        distinctTypeName,
+                        addSliceEd: true,
+                        addUrlEd: true,
+                        addValueEd: true);
+
+                    foreach (DbElement dtEtEd in dtElements)
                     {
-                        Code = "Extension",
-                        Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
-                    }
-                ],
-            };
-
-            extSd.Differential.Element.Add(dtExtensionEd);
-
-            // add the url element
-            ElementDefinition dtUrlEd = new()
-            {
-                ElementId = extElementId + ".extension:_datatype.url",
-                Path = extElementPath + ".extension.url",
-                Fixed = new FhirUri("http://hl7.org/fhir/StructureDefinition/_datatype"),
-                Min = 1,
-                Max = "1",
-                Base = new()
-                {
-                    Path = "Extension.url",
-                    Min = 1,
-                    Max = "1",
-                },
-            };
-
-            extSd.Differential.Element.Add(dtUrlEd);
-
-            // add or update the value element
-            if (dtValueEd is null)
-            {
-                dtValueEd = new()
-                {
-                    ElementId = extElementId + ".extension:_datatype.value[x]",
-                    Path = extElementPath + ".extension.value[x]",
-                    Comment = $"Must be: {typeName}",
-                    Min = 1,
-                    Max = "1",
-                    Base = new()
-                    {
-                        Path = "Extension.value[x]",
-                        Min = 0,
-                        Max = "1",
-                    },
-                    Type = [
-                        new()
+                        if (skipElement(dtEtEd, skipFirstElement: true, skipIds: true, skipExtensions: true, skipModifierExtenions: true))
                         {
-                            Code = "string",
+                            continue;
                         }
-                        ],
-                    Fixed = new FhirString(typeName),
-                };
 
-                extSd.Differential.Element.Add(dtValueEd);
+                        // resolve an element outcome for this source
+                        DbElementOutcome? etEdOutcome = DbElementOutcome.SelectSingle(
+                            _db,
+                            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                            SourceElementKey: dtEtEd.Key);
+
+                        if (etEdOutcome is null)
+                        {
+                            throw new Exception("What do I do here?");
+                        }
+
+                        addToDifferentialRecursive(
+                            extSd,
+                            igTr,
+                            sourceElements,
+                            targetElements,
+                            elementComparisons,
+                            contentReferenceExtUrlsByEdKey,
+                            etEdOutcome,
+                            sourceSd,
+                            dtEtEd,
+                            extElementId + ".extension:" + dtEtEd.NameClean(),
+                            extElementPath + ".extension",
+                            dtValueElements,
+                            null,
+                            sourceEd.BindingValueSetKey,
+                            ietTypeProfiles,
+                            ietTargetProfiles,
+                            excludeExtensionElement: false,
+                            elementUrlOverride: dtEtEd.NameClean());
+                    }
+                }
+                else
+                {
+                    // resolve an element outcome for this source
+                    DbElementOutcome? etEdOutcome = DbElementOutcome.SelectSingle(
+                        _db,
+                        SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                        TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                        SourceElementKey: ietEd.Key);
+
+                    if (etEdOutcome is null)
+                    {
+                        throw new Exception("What do I do here?");
+                    }
+
+
+                    // if there are more types, nest into them as 'valueX' slices
+                    addToDifferentialRecursive(
+                        extSd,
+                        igTr,
+                        sourceElements,
+                        targetElements,
+                        elementComparisons,
+                        contentReferenceExtUrlsByEdKey,
+                        etEdOutcome,
+                        sourceSd,
+                        ietEd,
+                        extElementId + ":extension:value" + distinctTypeName,
+                        extElementPath + ".extension",
+                        dtValueElements,
+                        distinctTypeName,
+                        sourceEd.BindingValueSetKey,
+                        ietTypeProfiles,
+                        ietTargetProfiles,
+                        excludeExtensionElement: false,
+                        elementUrlOverride: $"value{distinctTypeName}");
+                }
+
+                //string dtRootSliceName = "value" + distinctTypeName.ToPascalCase();
+                //string dtRootId = extElementId + ".extension:" + dtRootSliceName;
+                //string dtRootPath = extElementPath + ".extension";
+                ////string dtRootId = extElementId + ".extension:_datatype";
+
+                //ElementDefinition dtRootEd = new()
+                //{
+                //    ElementId = dtRootId,
+                //    Path = dtRootPath,
+                //    SliceName = dtRootSliceName,
+                //    Short = $"Extension slice for a FHIR {igTr.PackagePair.SourceFhirSequence} `{distinctTypeName}` value",
+                //    Definition = $"Extension slice for contents to represent a {igTr.PackagePair.SourceFhirSequence} `{distinctTypeName}` in FHIR {igTr.PackagePair.TargetFhirSequence}",
+                //    Min = 0,
+                //    Max = sourceEd.MaxCardinalityString ?? "1",
+                //    Base = new()
+                //    {
+                //        Path = "Extension.extension",
+                //        Min = 0,
+                //        Max = "*",
+                //    },
+                //};
+                //extSd.Differential.Element.Add(dtRootEd);
+
+                //// extension element
+                //ElementDefinition dtRootExtEd = new()
+                //{
+                //    ElementId = dtRootId + ".extension",
+                //    Path = dtRootPath + ".extension",
+                //    Base = new()
+                //    {
+                //        Path = "Extension.extension",
+                //        Min = 0,
+                //        Max = "*",
+                //    },
+                //    Slicing = new()
+                //    {
+                //        Discriminator = [
+                //        new() {
+                //            Type = ElementDefinition.DiscriminatorType.Value,
+                //            Path = "url",
+                //        }
+                //    ],
+                //        Ordered = false,
+                //        Rules = ElementDefinition.SlicingRules.Open,
+                //    },
+                //    Min = extensionMinCardinality,
+                //    Max = "*",
+                //};
+                //extSd.Differential.Element.Add(dtRootExtEd);
+
+                //// add _datatype and element slices
+
+                //// url element
+                //ElementDefinition dtRootUrlEd = new()
+                //{
+                //    ElementId = dtRootId + ".url",
+                //    Path = dtRootPath + ".url",
+                //    //Fixed = new FhirUri("http://hl7.org/fhir/StructureDefinition/_datatype"),
+                //    Fixed = new FhirUri(dtRootSliceName),
+                //    Min = 1,
+                //    Max = "1",
+                //    Base = new()
+                //    {
+                //        Path = "Extension.url",
+                //        Min = 1,
+                //        Max = "1",
+                //    },
+                //};
+                //extSd.Differential.Element.Add(dtRootUrlEd);
+
+                //// constrained-out value element
+                //extSd.Differential.Element.Add(new()
+                //{
+                //    ElementId = dtRootId + ".value[x]",
+                //    Path = dtRootPath + ".value[x]",
+                //    Base = new()
+                //    {
+                //        Path = "Extension.value[x]",
+                //        Min = 0,
+                //        Max = "1",
+                //    },
+                //    Min = 0,
+                //    Max = "0",
+                //    Type = [],
+                //});
+
+
+                //// add the url element
+
+
+
+                //extSd.Differential.Element.Add(dtValueLiteralEd);
+                //dtValueElements[dtRootId] = dtValueLiteralEd;
+
+                //addDataTypeElementsRecursive(
+                //    extSd,
+                //    igTr,
+                //    sourceElements,
+                //    targetElements,
+                //    elementComparisons,
+                //    contentReferenceExtUrlsByEdKey,
+                //    iets.Select(kv => kv.et).ToList(),
+                //    extElementPath + ".extension",
+                //    extElementId + ".extension");
             }
-            else
-            {
-                dtValueEd.Comment += $"|{typeName}";
-                dtValueEd.Fixed = null;
-            }
-
-            addDataTypeElementsRecursive(
-                extSd,
-                igTr,
-                sourceElements,
-                targetElements,
-                elementComparisons,
-                contentReferenceExtUrlsByEdKey,
-                et,
-                extElementPath + ".extension",
-                extElementId + ".extension");
-
-            //// add the elements from this data type
-            //List<DbElement> typeElements = DbElement.SelectList(
-            //    _db,
-            //    StructureKey: et.TypeStructureKey,
-            //    orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
-
         }
+
+            //// add any invalid value types as extension slices with the _datatype extension
+            //foreach ((int invalidTypeKey, DbElementType et) in invalidValueTypes)
+            //{
+            //    // first, check to see if this is a content reference type
+            //    if (contentReferenceExtUrlsByEdKey.TryGetValue(et.ElementKey, out string? crUrl))
+            //    {
+            //        // resolve the element
+            //        DbElement? crEd = DbElement.SelectSingle(_db, Key: et.ElementKey);
+            //        if (crEd is null)
+            //        {
+            //            throw new Exception($"Failed to resolve data type content reference element: {crUrl}, {et.ElementKey}");
+            //        }
+
+            //        // resolve an outcome for this element
+
+            //        // add this as a slice
+            //        addToDifferentialRecursive(
+            //            extSd,
+            //            igTr,
+            //            sourceElements,
+            //            targetElements,
+            //            elementComparisons,
+            //            contentReferenceExtUrlsByEdKey,
+            //            edOutcome,
+            //            sourceSd,
+            //            crEd,
+            //            extElementId + ".extension:" + crEd.NameClean(),
+            //            extElementPath + ".extension",
+            //            dtValueElements);
+
+            //        continue;
+            //    }
+
+            //    string typeName = et.TypeName ?? et.Literal;
+            //    string dtRootId = extElementId + ".extension:_datatype";
+
+            //    if (dtValueElements.TryGetValue(dtRootId, out ElementDefinition? dtValueLiteralEd))
+            //    {
+            //        if ((!dtValueLiteralEd.TryGetAnnotation(out List<ElementDefinition.TypeRefComponent>? dtTypes)) ||
+            //            (dtTypes is null))
+            //        {
+            //            dtTypes = [];
+            //            dtValueLiteralEd.SetAnnotation(dtTypes);
+            //        }
+
+            //        ElementDefinition.TypeRefComponent? tr = dtTypes
+            //                    .Where(t => t.Code == typeName)
+            //                    .FirstOrDefault();
+
+            //        if (tr is null)
+            //        {
+            //            tr = new()
+            //            {
+            //                Code = et.TypeName,
+            //                Profile = et.TypeProfile is null ? [] : [et.TypeProfile],
+            //                TargetProfile = et.TargetProfile is null ? [] : [et.TargetProfile],
+            //            };
+            //            dtTypes.Add(tr);
+
+            //            if (dtTypes.Count > 1)
+            //            {
+            //                // not sure if this is legal, see if it happens
+            //                Console.Write("");
+            //            }
+
+            //            // add the value extension slice
+            //            addDataTypeElementsRecursive(
+            //                extSd,
+            //                igTr,
+            //                sourceElements,
+            //                targetElements,
+            //                elementComparisons,
+            //                contentReferenceExtUrlsByEdKey,
+            //                et,
+            //                extElementPath + ".extension",
+            //                extElementId + ".extension");
+            //        }
+            //        else
+            //        {
+            //            // check for needing to add a type or target profile
+            //            if (et.TypeProfile is not null)
+            //            {
+            //                tr.ProfileElement.Add(et.TypeProfile);
+            //            }
+
+            //            if (et.TargetProfile is not null)
+            //            {
+            //                tr.TargetProfileElement.Add(et.TargetProfile);
+            //            }
+            //        }
+
+            //        dtValueLiteralEd.Comment = dtTypes.cgLiteral();
+
+            //        if (dtTypes.Count == 1)
+            //        {
+            //            dtValueLiteralEd.Fixed = new FhirString(dtTypes[0].Code);
+            //        }
+            //        else
+            //        {
+            //            dtValueLiteralEd.Fixed = null;
+            //            dtValueLiteralEd.Example = dtTypes
+            //                .Select(tr => new ElementDefinition.ExampleComponent()
+            //                {
+            //                    Label = "Allowed value for type: " + tr.Code,
+            //                    Value = new FhirString(tr.Code),
+            //                }
+            //                ).ToList();
+            //        }
+            //    }
+            //    else
+            //    {
+            //    }
+
+
+            //    //// add the elements from this data type
+            //    //List<DbElement> typeElements = DbElement.SelectList(
+            //    //    _db,
+            //    //    StructureKey: et.TypeStructureKey,
+            //    //    orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+
+            //}
 
         // add the URL element (always required)
         extSd.Differential.Element.Add(new()
@@ -1543,7 +1841,7 @@ public class StructureFhirExporter
             },
             Min = 1,
             Max = "1",
-            Fixed = new FhirUri(edOutcome.GenUrl),
+            Fixed = new FhirUri(elementUrlOverride ?? edOutcome.GenUrl),
         });
 
         // add the value element - either with proper types or constrained to zero repetitions
@@ -1613,12 +1911,13 @@ public class StructureFhirExporter
                 }
             }
 
+            bool addedDtTypeProfiles = false;
+            bool addedDtTargetProfiles = false;
+
             // add the types
             Dictionary<string, ElementDefinition.TypeRefComponent> typeRefs = [];
-            foreach ((int validTypeKey, DbElementType et) in validValueTypes)
+            foreach ((string typeName, DbElementType et) in validValueTypes)
             {
-                string typeName = et.TypeName ?? et.Literal;
-
                 if (!typeRefs.TryGetValue(typeName, out ElementDefinition.TypeRefComponent? tr))
                 {
                     tr = new()
@@ -1628,16 +1927,54 @@ public class StructureFhirExporter
                     typeRefs[typeName] = tr;
                 }
 
+                if ((dtBindingVsKey is not null) &&
+                    FhirTypeMappings.CanApplyBindings(typeName))
+                {
+                    DbValueSetOutcome? vsOutcome = DbValueSetOutcome.SelectSingle(
+                        _db,
+                        SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                        TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                        SourceValueSetKey: dtBindingVsKey.Value);
+
+                    if (vsOutcome is not null)
+                    {
+                        etValueEd.Binding = new()
+                        {
+                            Strength = sourceEd.ValueSetBindingStrength ?? BindingStrength.Preferred,
+                            Description = sourceEd.BindingDescription,
+                            ValueSet = vsOutcome.GenUrl,
+                        };
+                    }
+                }
+
                 if (et.TypeProfile is not null)
                 {
                     tr.ProfileElement ??= [];
                     tr.ProfileElement.Add(et.TypeProfile);
                 }
 
+                if (!addedDtTypeProfiles &&
+                    (dtTypeProfiles is not null) &&
+                    FhirTypeMappings.CanApplyTypeProfiles(typeName))
+                {
+                    addedDtTypeProfiles = true;
+                    tr.ProfileElement ??= [];
+                    tr.ProfileElement.AddRange(dtTypeProfiles.Select(v => new Canonical(v)));
+                }
+
                 if (et.TargetProfile is not null)
                 {
                     tr.TargetProfileElement ??= [];
                     tr.TargetProfileElement.Add(et.TargetProfile);
+                }
+
+                if (!addedDtTargetProfiles &&
+                    (dtTargetProfiles is not null) &&
+                    FhirTypeMappings.CanApplyTargetProfiles(typeName))
+                {
+                    addedDtTargetProfiles = true;
+                    tr.ProfileElement ??= [];
+                    tr.ProfileElement.AddRange(dtTargetProfiles.Select(v => new Canonical(v)));
                 }
             }
 
@@ -1660,136 +1997,49 @@ public class StructureFhirExporter
             (skipModifierExtenions &&
                 ((ed.Name == "modifierExtension") || (ed.BasePath == "DomainResource.modifierExtension") || (ed.BasePath == "BackboneElement.modifierExtension")));
 
-
-    private void addDataTypeElementsRecursive(
+    private void addDataTypeMetaElements(
+        FhirReleases.FhirSequenceCodes sourceFhirSequence,
+        FhirReleases.FhirSequenceCodes targetFhirSequence,
         StructureDefinition extSd,
-        XVerIgExportTrackingRecord igTr,
-        Dictionary<int, DbElement> sourceElements,
-        Dictionary<int, DbElement> targetElements,
-        Dictionary<int, DbElementComparison> elementComparisons,
-        Dictionary<int, string> contentReferenceExtUrlsByEdKey,
-        DbElementType et,
-        string parentPath,
-        string parentElementId)
+        string currentId,
+        string currentPath,
+        string dataTypeName,
+        bool addSliceEd,
+        bool addUrlEd,
+        bool addValueEd)
     {
-        // get the elements for this data type
-        List<DbElement> typeElements = DbElement.SelectList(
-            _db,
-            StructureKey: et.TypeStructureKey,
-            orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
-        foreach (DbElement typeEd in typeElements)
+        string id = currentId + ".extension:_datatype";
+        string path = currentPath + ".extension";
+
+        if (addSliceEd)
         {
-            if (skipElement(typeEd))
+            ElementDefinition sliceEd = new()
             {
-                continue;
-            }
-
-            string elementId = parentElementId + ":" + typeEd.NameClean();
-            string elementPath = parentPath + "." + typeEd.Name;
-
-            // add the extension slice element
-            ElementDefinition dtExtSliceEd = new()
-            {
-                ElementId = elementId,
-                Path = elementPath,
-                SliceName = typeEd.NameClean(),
+                ElementId = id,
+                Path = path,
+                SliceName = "_datatype",
+                //SliceName = dataTypeName,
+                Short = $"DataType slice for a FHIR {sourceFhirSequence} `{dataTypeName}` value",
+                Definition = $"Slice to indicate the presence of a {sourceFhirSequence} `{dataTypeName}` in FHIR {targetFhirSequence}",
+                Min = 1,
+                Max = "1",
                 Base = new()
                 {
                     Path = "Extension.extension",
                     Min = 0,
                     Max = "*",
                 },
-                Min = typeEd.MinCardinality,
-                Max = typeEd.MaxCardinalityString,
             };
-            extSd.Differential.Element.Add(dtExtSliceEd);
+            extSd.Differential.Element.Add(sliceEd);
+        }
 
-            // get the types for this sub-element
-            List<DbElementType> dtElementTypes = DbElementType.SelectList(
-                _db,
-                ElementKey: typeEd.Key);
-
-            List<(string tn, bool isValid, DbElementType et)> typeValidity = dtElementTypes
-                .Select(et => getValidValueType(igTr.PackagePair.TargetFhirSequence, et))
-                .ToList();
-
-            List<(string tn, DbElementType et)> validValueTypes = typeValidity
-                .Where(tv => tv.isValid)
-                .Select(tv => (tv.tn, tv.et))
-                .ToList();
-            List<(string tn, DbElementType et)> invalidValueTypes = typeValidity
-                .Where(tv => !tv.isValid)
-                .Select(tv => (tv.tn, tv.et))
-                .ToList();
-
-            // invalid types need to promote to extensions
-            if (invalidValueTypes.Count > 0)
+        if (addUrlEd)
+        {
+            ElementDefinition urlEd = new()
             {
-                // check to see if we can resolve as an extension
-                foreach ((string tn, DbElementType subEt) in invalidValueTypes)
-                {
-                    DbElementOutcome? tnEdOutcome = null;
-                    if (subEt.TypeStructureKey is not null)
-                    {
-                        tnEdOutcome = DbElementOutcome.SelectSingle(
-                            _db,
-                            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
-                            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-                            SourceStructureKey: subEt.TypeStructureKey,
-                            SourceResourceOrder: 0);
-                    }
-
-                    if (tnEdOutcome is null)
-                    {
-                        // check to see if we have a structure outcome that can satisfy this
-                        tnEdOutcome = DbElementOutcome.SelectSingle(
-                            _db,
-                            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
-                            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-                            SourceId: tn,
-                            SourceResourceOrder: 0);
-                    }
-
-                    if (tnEdOutcome is null)
-                    {
-                        continue;
-                    }
-
-                    DbStructureDefinition? tnEdSd = DbStructureDefinition.SelectSingle(
-                        _db,
-                        Key: tnEdOutcome.SourceStructureKey);
-
-                    if (tnEdSd is null)
-                    {
-                        throw new Exception($"Failed to resolve data type structure definition for type `{tn}` with structure key `{tnEdOutcome.SourceStructureKey}`");
-                    }
-
-                    DbElement tnEd = DbElement.SelectSingle(
-                        _db,
-                        Key: tnEdOutcome.SourceElementKey)!;
-
-                    // add the slice
-                    addToDifferentialRecursive(
-                        extSd,
-                        igTr,
-                        sourceElements,
-                        targetElements,
-                        elementComparisons,
-                        contentReferenceExtUrlsByEdKey,
-                        tnEdOutcome,
-                        tnEdSd,
-                        tnEd,
-                        elementId,
-                        elementPath);
-                }
-            }
-
-            // add the url element
-            ElementDefinition dtUrlEd = new()
-            {
-                ElementId = elementId + ".url",
-                Path = elementPath + ".url",
-                Fixed = new FhirUri(typeEd.NameClean()),
+                ElementId = id + ".url",
+                Path = path + ".url",
+                Fixed = new FhirUri("http://hl7.org/fhir/StructureDefinition/_datatype"),
                 Min = 1,
                 Max = "1",
                 Base = new()
@@ -1799,49 +2049,365 @@ public class StructureFhirExporter
                     Max = "1",
                 },
             };
-            extSd.Differential.Element.Add(dtUrlEd);
+            extSd.Differential.Element.Add(urlEd);
+        }
 
-            // add the value[x] element (if necessary)
-            if (validValueTypes.Count == 0)
+        if (addValueEd)
+        {
+            ElementDefinition valueEd = new()
             {
-                ElementDefinition dtValueEd = new()
+                ElementId = id + ".value[x]",
+                Path = path + ".value[x]",
+                Comment = $"Must be: {dataTypeName}",
+                Min = 1,
+                Max = "1",
+                Base = new()
                 {
-                    ElementId = elementId + ".value[x]",
-                    Path = elementPath + ".value[x]",
-                    Min = 0,
-                    Max = "0",
-                    Base = new()
-                    {
-                        Path = "Extension.value[x]",
-                        Min = 0,
-                        Max = "1",
-                    },
-                };
-                extSd.Differential.Element.Add(dtValueEd);
-            }
-            else
-            {
-                ElementDefinition dtValueEd = new()
-                {
-                    ElementId = elementId + ".value[x]",
-                    Path = elementPath + ".value[x]",
+                    Path = "Extension.value[x]",
                     Min = 0,
                     Max = "1",
-                    Base = new()
-                    {
-                        Path = "Extension.value[x]",
-                        Min = 0,
-                        Max = "1",
-                    },
-                    Type = validValueTypes.Select(tn => new ElementDefinition.TypeRefComponent()
-                    {
-                        Code = tn.tn,
-                    }).ToList(),
-                };
-                extSd.Differential.Element.Add(dtValueEd);
-            }
+                },
+                Type = [
+                    new()
+                {
+                    Code = "string",
+                }
+                ],
+                Fixed = new FhirString(dataTypeName),
+            };
+            extSd.Differential.Element.Add(valueEd);
         }
     }
+
+    //private void addDataTypeElementsRecursive(
+    //    StructureDefinition extSd,
+    //    XVerIgExportTrackingRecord igTr,
+    //    Dictionary<int, DbElement> sourceElements,
+    //    Dictionary<int, DbElement> targetElements,
+    //    Dictionary<int, DbElementComparison> elementComparisons,
+    //    Dictionary<int, string> contentReferenceExtUrlsByEdKey,
+    //    List<DbElementType> ets,
+    //    string typeName,
+    //    string parentPath,
+    //    string parentElementId)
+    //{
+    //    // add the _datatype extension slice
+    //    ElementDefinition dtSliceEd = new()
+    //    {
+    //        ElementId = parentElementId + ":_datatype",
+    //        Path = parentPath,
+    //        SliceName = "_datatype",
+    //        Short = $"Data type name for `{typeName}`",
+    //        Definition = $"Data type name for representing a {igTr.PackagePair.SourceFhirSequence} `{typeName}` in {igTr.PackagePair.TargetFhirSequence}",
+    //        Min = 1,
+    //        Max = "1",
+    //        Base = new()
+    //        {
+    //            Path = "Extension.extension",
+    //            Min = 0,
+    //            Max = "*",
+    //        },
+    //        Type = [
+    //            new()
+    //            {
+    //                Code = "Extension",
+    //                Profile = ["http://hl7.org/fhir/StructureDefinition/_datatype"],
+    //            }
+    //        ],
+    //    };
+    //    extSd.Differential.Element.Add(dtSliceEd);
+
+    //    // get the elements for this data type
+    //    List<DbElement> typeElements = DbElement.SelectList(
+    //        _db,
+    //        StructureKey: ets[0].TypeStructureKey,
+    //        orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+    //    foreach (DbElement typeEd in typeElements)
+    //    {
+    //        if (skipElement(typeEd))
+    //        {
+    //            continue;
+    //        }
+
+    //        DbElementOutcome? EdOutcome = null;
+    //        if (subEt.TypeStructureKey is not null)
+    //        {
+    //            tnEdOutcome = DbElementOutcome.SelectSingle(
+    //                _db,
+    //                SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+    //                TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+    //                SourceStructureKey: subEt.TypeStructureKey,
+    //                SourceResourceOrder: 0);
+    //        }
+
+    //        if (tnEdOutcome is null)
+    //        {
+    //            // check to see if we have a structure outcome that can satisfy this
+    //            tnEdOutcome = DbElementOutcome.SelectSingle(
+    //                _db,
+    //                SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+    //                TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+    //                SourceId: tn,
+    //                SourceResourceOrder: 0);
+    //        }
+
+    //        if (tnEdOutcome is null)
+    //        {
+    //            continue;
+    //        }
+
+    //        DbStructureDefinition? tnEdSd = DbStructureDefinition.SelectSingle(
+    //            _db,
+    //            Key: tnEdOutcome.SourceStructureKey);
+
+    //        if (tnEdSd is null)
+    //        {
+    //            throw new Exception($"Failed to resolve data type structure definition for type `{tn}` with structure key `{tnEdOutcome.SourceStructureKey}`");
+    //        }
+
+    //        DbElement tnEd = DbElement.SelectSingle(
+    //            _db,
+    //            Key: tnEdOutcome.SourceElementKey)!;
+
+    //        // add the slice
+    //        addToDifferentialRecursive(
+    //            extSd,
+    //            igTr,
+    //            sourceElements,
+    //            targetElements,
+    //            elementComparisons,
+    //            contentReferenceExtUrlsByEdKey,
+    //            tnEdOutcome,
+    //            tnEdSd,
+    //            tnEd,
+    //            elementId,
+    //            elementPath);
+    //    }
+
+    //    // add this element as a slice
+    //    addToDifferentialRecursive(
+    //            extSd,
+    //            igTr,
+    //            sourceElements,
+    //            targetElements,
+    //            elementComparisons,
+    //            contentReferenceExtUrlsByEdKey,
+    //            tnEdOutcome,
+    //            tnEdSd,
+    //            tnEd,
+    //            elementId,
+    //            elementPath);
+
+
+    //        //string elementId = parentElementId + ":" + typeEd.NameClean();
+    //        //string elementPath = parentPath + "." + typeEd.Name;
+
+    //        //string elementId = parentElementId + ":" + typeEd.NameClean();
+    //        //string elementPath = parentPath + "." + typeEd.Name;
+
+    //        //// add the extension slice element
+    //        //ElementDefinition dtExtSliceEd = new()
+    //        //{
+    //        //    ElementId = elementId,
+    //        //    Path = elementPath,
+    //        //    SliceName = typeEd.NameClean(),
+    //        //    Base = new()
+    //        //    {
+    //        //        Path = "Extension.extension",
+    //        //        Min = 0,
+    //        //        Max = "*",
+    //        //    },
+    //        //    Min = typeEd.MinCardinality,
+    //        //    Max = typeEd.MaxCardinalityString,
+    //        //};
+    //        //extSd.Differential.Element.Add(dtExtSliceEd);
+
+    //        // get the types for this sub-element
+    //        List<DbElementType> dtElementTypes = DbElementType.SelectList(
+    //            _db,
+    //            ElementKey: typeEd.Key);
+
+    //        List<(string tn, bool isValid, DbElementType et)> typeValidity = dtElementTypes
+    //            .Select(et => getValidValueType(igTr.PackagePair.TargetFhirSequence, et))
+    //            .ToList();
+
+    //        List<(string tn, DbElementType et)> validValueTypes = typeValidity
+    //            .Where(tv => tv.isValid)
+    //            .Select(tv => (tv.tn, tv.et))
+    //            .ToList();
+    //        List<(string tn, DbElementType et)> invalidValueTypes = typeValidity
+    //            .Where(tv => !tv.isValid)
+    //            .Select(tv => (tv.tn, tv.et))
+    //            .ToList();
+
+    //        // invalid types need to promote to extensions
+    //        if (invalidValueTypes.Count > 0)
+    //        {
+    //            // check to see if we can resolve as an extension
+    //            foreach ((string tn, DbElementType subEt) in invalidValueTypes)
+    //            {
+    //                DbElementOutcome? tnEdOutcome = null;
+    //                if (subEt.TypeStructureKey is not null)
+    //                {
+    //                    tnEdOutcome = DbElementOutcome.SelectSingle(
+    //                        _db,
+    //                        SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+    //                        TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+    //                        SourceStructureKey: subEt.TypeStructureKey,
+    //                        SourceResourceOrder: 0);
+    //                }
+
+    //                if (tnEdOutcome is null)
+    //                {
+    //                    // check to see if we have a structure outcome that can satisfy this
+    //                    tnEdOutcome = DbElementOutcome.SelectSingle(
+    //                        _db,
+    //                        SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+    //                        TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+    //                        SourceId: tn,
+    //                        SourceResourceOrder: 0);
+    //                }
+
+    //                if (tnEdOutcome is null)
+    //                {
+    //                    continue;
+    //                }
+
+    //                DbStructureDefinition? tnEdSd = DbStructureDefinition.SelectSingle(
+    //                    _db,
+    //                    Key: tnEdOutcome.SourceStructureKey);
+
+    //                if (tnEdSd is null)
+    //                {
+    //                    throw new Exception($"Failed to resolve data type structure definition for type `{tn}` with structure key `{tnEdOutcome.SourceStructureKey}`");
+    //                }
+
+    //                DbElement tnEd = DbElement.SelectSingle(
+    //                    _db,
+    //                    Key: tnEdOutcome.SourceElementKey)!;
+
+    //                // add the slice
+    //                addToDifferentialRecursive(
+    //                    extSd,
+    //                    igTr,
+    //                    sourceElements,
+    //                    targetElements,
+    //                    elementComparisons,
+    //                    contentReferenceExtUrlsByEdKey,
+    //                    tnEdOutcome,
+    //                    tnEdSd,
+    //                    tnEd,
+    //                    elementId,
+    //                    elementPath);
+    //            }
+    //        }
+
+    //        // add the url element
+    //        ElementDefinition dtUrlEd = new()
+    //        {
+    //            ElementId = parentElementId + ".url",
+    //            Path = parentPath + ".url",
+    //            Fixed = new FhirUri(typeEd.NameClean()),
+    //            Min = 1,
+    //            Max = "1",
+    //            Base = new()
+    //            {
+    //                Path = "Extension.url",
+    //                Min = 1,
+    //                Max = "1",
+    //            },
+    //        };
+    //        extSd.Differential.Element.Add(dtUrlEd);
+
+    //        // add the value[x] element (if necessary)
+    //        if (validValueTypes.Count == 0)
+    //        {
+    //            ElementDefinition dtValueEd = new()
+    //            {
+    //                ElementId = elementId + ".value[x]",
+    //                Path = elementPath + ".value[x]",
+    //                Min = 0,
+    //                Max = "0",
+    //                Base = new()
+    //                {
+    //                    Path = "Extension.value[x]",
+    //                    Min = 0,
+    //                    Max = "1",
+    //                },
+    //            };
+    //            extSd.Differential.Element.Add(dtValueEd);
+    //        }
+    //        else
+    //        {
+    //            ElementDefinition dtValueEd = new()
+    //            {
+    //                ElementId = elementId + ".value[x]",
+    //                Path = elementPath + ".value[x]",
+    //                Min = 0,
+    //                Max = "1",
+    //                Base = new()
+    //                {
+    //                    Path = "Extension.value[x]",
+    //                    Min = 0,
+    //                    Max = "1",
+    //                },
+    //                Type = validValueTypes.Select(tn => new ElementDefinition.TypeRefComponent()
+    //                {
+    //                    Code = tn.tn,
+    //                    TargetProfile = tn.et.TargetProfile is not null
+    //                        ? [tn.et.TargetProfile]
+    //                        : null,
+    //                    Profile = tn.et.TypeProfile is not null
+    //                        ? [tn.et.TypeProfile]
+    //                        : null,
+    //                }).ToList(),
+    //            };
+    //            extSd.Differential.Element.Add(dtValueEd);
+    //        }
+    //    }
+
+
+    //    ElementDefinition dtRootUrlEd = new()
+    //    {
+    //        ElementId = parentElementId + ".url",
+    //        Path = parentPath + ".url",
+    //        Fixed = new FhirUri("http://hl7.org/fhir/StructureDefinition/_datatype"),
+    //        Min = 1,
+    //        Max = "1",
+    //        Base = new()
+    //        {
+    //            Path = "Extension.url",
+    //            Min = 1,
+    //            Max = "1",
+    //        },
+    //    };
+    //    extSd.Differential.Element.Add(dtRootUrlEd);
+
+    //    ElementDefinition dtValueLiteralEd = new()
+    //    {
+    //        ElementId = parentElementId + ".value[x]",
+    //        Path = parentPath + ".extension.value[x]",
+    //        Comment = $"Must be: {typeName}",
+    //        Min = 1,
+    //        Max = "1",
+    //        Base = new()
+    //        {
+    //            Path = "Extension.value[x]",
+    //            Min = 0,
+    //            Max = "1",
+    //        },
+    //        Type = [
+    //            new()
+    //            {
+    //                Code = "string",
+    //            }
+    //        ],
+    //        Fixed = new FhirString(typeName),
+    //    };
+    //    extSd.Differential.Element.Add(dtValueLiteralEd);
+
+
+    //}
 
     private (string tn, bool isValid, DbElementType et) getValidValueType(FhirReleases.FhirSequenceCodes targetFhirSequence, DbElementType et)
     {

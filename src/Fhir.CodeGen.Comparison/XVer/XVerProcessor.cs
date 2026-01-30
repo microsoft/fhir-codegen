@@ -262,7 +262,7 @@ public partial class XVerProcessor
                     //(FhirReleases.FhirSequenceCodes.R4, FhirReleases.FhirSequenceCodes.R4B),
                     //(FhirReleases.FhirSequenceCodes.R4B, FhirReleases.FhirSequenceCodes.R4),
                     //(FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4B),
-                    (FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4),
+                    //(FhirReleases.FhirSequenceCodes.R5, FhirReleases.FhirSequenceCodes.R4),
                 ];
 
                 //UpdateValueSetMaps();
@@ -275,8 +275,9 @@ public partial class XVerProcessor
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, specificPairs: specificPairs);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
+                //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
-                //CompareInDatabase();
+                CompareInDatabase();
 
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
@@ -290,7 +291,7 @@ public partial class XVerProcessor
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1, includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, includeIgScripts: false, specificPairs: specificPairs);
-            ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+            //ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: true, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: false);
                 //ExportOutcomes();
@@ -1047,7 +1048,6 @@ public partial class XVerProcessor
     }
 
 
-
     internal static (string idLong, string idShort) GenerateArtifactId(
         string sourcePackageShortName,
         string sourceArtifactId,
@@ -1184,6 +1184,53 @@ public partial class XVerProcessor
 
         return (idLong, idShort);
     }
+
+
+    internal static (string idLong, string idShort) GenerateProfileId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName)
+    {
+        string idLong = $"profile-{sourceArtifactId}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong);
+        }
+
+        string idShort = $"prfl-{sourceArtifactId}";
+
+        return (idLong, idShort);
+    }
+
+    internal static (string idLong, string idShort) GenerateProfileId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName,
+        string? targetArtifactId)
+    {
+        if ((targetArtifactId is null) ||
+            (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase)))
+        {
+            return GenerateArtifactId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
+        }
+
+        string idLong = $"profile-{sourceArtifactId}-for-{targetArtifactId}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong);
+        }
+
+        string idShort = $"prfl-{sourceArtifactId}-for-{targetArtifactId}";
+        if (idShort.Length > 64)
+        {
+            throw new Exception("Cannot generate a short profile ID within length constraints.");
+        }
+
+        return (idLong, idShort);
+    }
+
 
     internal static (string idLong, string idShort) GenerateExtensionId(
         string sourcePackageShortName,

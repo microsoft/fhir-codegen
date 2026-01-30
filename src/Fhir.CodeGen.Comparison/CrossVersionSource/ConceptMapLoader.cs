@@ -709,7 +709,8 @@ public class ConceptMapLoader
 
                     if (relevantMap is null)
                     {
-                        throw new Exception($"No relevant structure map found for source element: {groupSourceElement.Code} to target: {elementTarget.Code} in map: {cm.Url} ({cm.Id})!");
+                        _logger.LogWarning($"No relevant structure map found for source element: {groupSourceElement.Code} to target: {elementTarget.Code} in map: {cm.Url} ({cm.Id})!");
+                        //throw new Exception($"No relevant structure map found for source element: {groupSourceElement.Code} to target: {elementTarget.Code} in map: {cm.Url} ({cm.Id})!");
                     }
 
                     // get extended relationship properties if they exist
@@ -723,6 +724,18 @@ public class ConceptMapLoader
                         ? EnumUtility.ParseLiteral<CMR>(vdCodeValue.Value)
                         : null;
 
+                    int? sourceStructureKey = relevantMap?.SourceStructureKey ?? sourceElement?.StructureKey;
+                    if (sourceStructureKey is null)
+                    {
+                        continue;
+                    }
+
+                    int? targetStructureKey = relevantMap?.TargetStructureKey ?? targetElement?.StructureKey;
+                    if (targetStructureKey is null)
+                    {
+                        continue;
+                    }
+
                     // create a record for the database
                     DbElementMapping mapRec = new()
                     {
@@ -731,17 +744,17 @@ public class ConceptMapLoader
                         ConceptMapFilename = conceptMapFilename,
                         FmlSourceKey = null,
                         FmlFilename = null,
-                        StructureMappingKey = relevantMap.Key,
+                        StructureMappingKey = relevantMap?.Key,
 
                         SourceFhirPackageKey = sourcePackage.Key,
                         SourceFhirSequence = sourcePackage.DefinitionFhirSequence,
-                        SourceStructureKey = relevantMap.SourceStructureKey,
+                        SourceStructureKey = sourceStructureKey.Value,
                         SourceElementKey = sourceElement?.Key,
                         SourceElementId = groupSourceElement.Code,
 
                         TargetFhirPackageKey = targetPackage.Key,
                         TargetFhirSequence = targetPackage.DefinitionFhirSequence,
-                        TargetStructureKey = relevantMap.TargetStructureKey,
+                        TargetStructureKey = targetStructureKey.Value,
                         TargetElementKey = targetElement?.Key,
                         TargetElementId = elementTarget.Code,
 

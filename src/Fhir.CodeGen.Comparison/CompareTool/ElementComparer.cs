@@ -1471,17 +1471,32 @@ public class ElementComparer
 
             if (applyRelatedRelationships && (sourceAllowsMoreValues == true))
             {
-                relationship = FhirDbComparer.ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
-                technicalMessage += $"\n" +
-                    $"Source element ({sourceElement.MaxCardinalityString}) allows more values than the target ({targetElement.MaxCardinalityString}).";
-
+                if (sourceElement.ResourceFieldOrder == 0)
+                {
+                    technicalMessage += $"\n" +
+                        $"Source element ({sourceElement.MaxCardinalityString}) allows more values than the target ({targetElement.MaxCardinalityString}), the is based on a type so remains {relationship}.";
+                }
+                else
+                {
+                    relationship = FhirDbComparer.ApplyRelationship(relationship, CMR.SourceIsBroaderThanTarget);
+                    technicalMessage += $"\n" +
+                        $"Source element ({sourceElement.MaxCardinalityString}) allows more values than the target ({targetElement.MaxCardinalityString}).";
+                }
             }
 
             if (applyRelatedRelationships && (targetAllowsMoreValues == true))
             {
-                relationship = FhirDbComparer.ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
-                technicalMessage += $"\n" +
-                    $"Source element ({sourceElement.MaxCardinalityString}) allows fewer values than the target ({targetElement.MaxCardinalityString}).";
+                if (targetElement.ResourceFieldOrder == 0)
+                {
+                    technicalMessage += $"\n" +
+                        $"Source element ({sourceElement.MaxCardinalityString}) allows fewer values than the target ({targetElement.MaxCardinalityString}), but is targeting a type so remains {relationship}.";
+                }
+                else
+                {
+                    relationship = FhirDbComparer.ApplyRelationship(relationship, CMR.SourceIsNarrowerThanTarget);
+                    technicalMessage += $"\n" +
+                        $"Source element ({sourceElement.MaxCardinalityString}) allows fewer values than the target ({targetElement.MaxCardinalityString}).";
+                }
             }
 
             // apply bound vs relationship to overall relationship - only if the binding is required on either side
@@ -1517,13 +1532,13 @@ public class ElementComparer
             SourceFhirSequence = sdTrackingRecord.SourcePackage.DefinitionFhirSequence,
             SourceStructureKey = sdTrackingRecord.SourceStructure.Key,
             SourceElementKey = sourceElement.Key,
-            SourceElementId = sourceElement.Path,
+            SourceElementId = sourceElement.Id,
 
             TargetFhirPackageKey = sdTrackingRecord.TargetPackage.Key,
             TargetFhirSequence = sdTrackingRecord.TargetPackage.DefinitionFhirSequence,
             TargetStructureKey = sdTrackingRecord.TargetStructure?.Key,
             TargetElementKey = targetElement?.Key,
-            TargetElementId = targetElement?.Path,
+            TargetElementId = targetElement?.Id,
 
             ContentKeys = contentStepKeys,
 
