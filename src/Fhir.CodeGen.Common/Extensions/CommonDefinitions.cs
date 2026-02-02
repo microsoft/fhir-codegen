@@ -66,6 +66,10 @@ public static class CommonDefinitions
     public const string ExtUrlSearchParameterBaseType = "http://hl7.org/fhir/tools/StructureDefinition/searchparameter-base-type";
     public const string ExtUrlOperationDefinitionAllowedType = "http://hl7.org/fhir/StructureDefinition/operationdefinition-allowed-type";
 
+    public const string ExtUrlVersionSpecificUse = "http://hl7.org/fhir/StructureDefinition/version-specific-use";
+    public const string ExtUrlVersionSpecificUseStart = "startFhirVersion";
+    public const string ExtUrlVersionSpecificUseEnd = "endFhirVersion";
+
     public const string ConceptMapPropertiesSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-properties";
     public const string ConceptMapPropertyGenerated = "cg-generated";
     public const string ConceptMapPropertyNeedsReview = "cg-needs-review";

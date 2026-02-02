@@ -524,9 +524,9 @@ public class ElementOutcomeGenerator
             List<DbElementComparison> elementComparisons = _edComparsionsBySourceElementKey[sourceEd.Key]
                 .ToList();
 
-            
             HashSet<int> unrelatedEdComparisons = elementComparisons
-                .Where(ec => ec.NotMapped || (ec.Relationship == CMR.NotRelatedTo))
+                //.Where(ec => ec.NotMapped || (ec.Relationship == CMR.NotRelatedTo))
+                .Where(ec => ec.TargetStructureKey is null)
                 .Select(ec => ec.Key)
                 .ToHashSet();
 

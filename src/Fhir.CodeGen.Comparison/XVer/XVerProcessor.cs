@@ -1212,7 +1212,7 @@ public partial class XVerProcessor
         if ((targetArtifactId is null) ||
             (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase)))
         {
-            return GenerateArtifactId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
+            return GenerateProfileId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
         }
 
         string idLong = $"profile-{sourceArtifactId}-for-{targetArtifactId}";
