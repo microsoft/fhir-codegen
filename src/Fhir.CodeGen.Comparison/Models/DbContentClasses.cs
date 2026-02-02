@@ -415,6 +415,7 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
     public required bool? UsedAsContentReference { get; set; }
 
     public required bool IsSimpleType { get; set; }
+    public required bool IsChoiceType { get; set; }
     public required bool IsModifier { get; set; }
     public required string? IsModifierReason { get; set; }
 
@@ -514,6 +515,7 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
         ContentReferenceSourceId = null,
         UsedAsContentReference = null,
         IsSimpleType = false,
+        IsChoiceType = false,
         IsModifier = false,
         IsModifierReason = null,
     };

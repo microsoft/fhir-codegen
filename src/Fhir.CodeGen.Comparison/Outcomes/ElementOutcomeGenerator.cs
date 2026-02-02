@@ -340,12 +340,12 @@ public class ElementOutcomeGenerator
                 }
                 else
                 {
-                    basicBasePath = null;
                     comments +=
                         $"\nNote that the source element matches Basic element path `{basicBasePath}`," +
                         $" but the definitions are not compatible" +
                         $" (source: `{sourceEd.FullCollatedTypeLiteral}`:{sourceEd.FhirCardinalityString}" +
                         $" -> basic: `{basicEd.FullCollatedTypeLiteral}`:{basicEd.FhirCardinalityString}).";
+                    basicBasePath = null;
                 }
             }
 
@@ -1433,6 +1433,9 @@ public class ElementOutcomeGenerator
                         }
                     }
 
+                    List<DbElement> ctxToRemove = [];
+                    List<DbElement> ctxToAdd = [];
+
                     // if the source is a modifier, figure out if we can actually do that
                     if (elementRequiresXVer && defineAsModifier)
                     {
@@ -1475,7 +1478,7 @@ public class ElementOutcomeGenerator
                         }
                         else
                         {
-                            // iterate over the context target elements
+                            // iterate over the context target elements for initial checks
                             foreach (DbElement ctxTargetEd in contextTargetElements)
                             {
                                 // if this is a modifier element, we do not need to define as a modifier
@@ -1511,17 +1514,76 @@ public class ElementOutcomeGenerator
                                     }
 
                                     DbElement ctxTargetParentEd = _allTargetElements[ctxTargetEd.ParentElementKey.Value];
-                                    contexts.Remove(ctxTargetEd.Id);
-                                    contexts.Add(ctxTargetParentEd.Id);
 
-                                    comments += 
+                                    contexts.Remove(ctxTargetEd.Id);
+                                    ctxToRemove.Add(ctxTargetEd);
+
+                                    contexts.Add(ctxTargetParentEd.Id);
+                                    ctxToAdd.Add(ctxTargetParentEd);
+
+                                    comments +=
                                         $"\nNote that the target element context `{ctxTargetEd.Id}` is a primitive-type element" +
                                         $" and this extension needs to be defined as a modifier. The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
                                 }
                             }
+
+                            foreach (DbElement e in ctxToRemove)
+                            {
+                                contextTargetElements.Remove(e);
+                            }
+                            ctxToRemove.Clear();
+
+                            foreach (DbElement e in ctxToAdd)
+                            {
+                                contextTargetElements.Add(e);
+                            }
+                            ctxToAdd.Clear();
                         }
                     }
 
+                    // iterate over the context target elements to see if we have targets that are choice types
+                    foreach (DbElement ctxTargetEd in contextTargetElements)
+                    {
+                        if (!ctxTargetEd.IsChoiceType)
+                        {
+                            continue;
+                        }
+
+                        // need to move up to a higher level
+                        if (ctxTargetEd.ParentElementKey is null)
+                        {
+                            throw new Exception(
+                                $"Cannot determine modifier extension context for source element `{sourceEd.Id}`" +
+                                $" mapping to target choice-type element `{ctxTargetEd.Id}`" +
+                                $" because the target element has no parent to move up to.");
+                        }
+
+                        DbElement ctxTargetParentEd = _allTargetElements[ctxTargetEd.ParentElementKey.Value];
+
+                        contexts.Remove(ctxTargetEd.Id);
+                        ctxToRemove.Add(ctxTargetEd);
+
+                        contexts.Add(ctxTargetParentEd.Id);
+                        ctxToAdd.Add(ctxTargetParentEd);
+
+                        comments +=
+                            $"\nNote that the target element context `{ctxTargetEd.Id}` is a choice-type element" +
+                            $" and cannot directly hold extensions. The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
+                    }
+
+                    foreach (DbElement e in ctxToRemove)
+                    {
+                        contextTargetElements.Remove(e);
+                    }
+                    ctxToRemove.Clear();
+
+                    foreach (DbElement e in ctxToAdd)
+                    {
+                        contextTargetElements.Add(e);
+                    }
+                    ctxToAdd.Clear();
+
+                    // build target canonical urls
                     string? targetCanonicalUnversioned = targetEd is null
                         ? null
                         : $"{sdTr.TargetStructure.UnversionedUrl}#{targetEd.Id}";

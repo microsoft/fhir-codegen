@@ -4449,12 +4449,14 @@ public class ComparisonDatabase : IDisposable
                 }
             }
 
+            HashSet<string> typeNames = [];
             bool isInherited = ed.cgIsInherited(sd);
             string basePath = ed.Base?.Path ?? ed.Path;
 
             List<string> completeLiteralComponents = [];
             foreach ((string typeName, (List<string> targetProfiles, List<string> typeProfiles)) in literalAccumulator)
             {
+                typeNames.Add(typeName);
                 string current = typeName;
 
                 if (typeProfiles.Count != 0)
@@ -4519,6 +4521,7 @@ public class ComparisonDatabase : IDisposable
                 ContentReferenceSourceId = null,
                 UsedAsContentReference = null,
                 IsSimpleType = ed.cgIsSimple(),
+                IsChoiceType = typeNames.Count > 1,
                 IsModifier = ed.IsModifier == true,
                 IsModifierReason = ed.IsModifierReason,
             };

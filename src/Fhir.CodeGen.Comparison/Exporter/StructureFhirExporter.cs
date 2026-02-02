@@ -584,7 +584,7 @@ public class StructureFhirExporter
                     sdOutcome);
 
                 if ((targetSd is null) ||
-                    (targetSd.Name == "Basic"))
+                    ((targetSd.Name == "Basic") && (sourceSd.Name != "Basic")))
                 {
                     DbElementOutcome? rootElementOutcome = DbElementOutcome.SelectSingle(
                             _db,
@@ -688,6 +688,7 @@ public class StructureFhirExporter
                 continue;
             }
 
+            // build our target information
             string targetId = targetEd.Id + ".extension";
             string targetPath = targetEd.Path + ".extension";
             DbElement actualTargetEd = targetEd;
@@ -707,10 +708,10 @@ public class StructureFhirExporter
                 {
                     Discriminator = [
                     new ElementDefinition.DiscriminatorComponent()
-                {
-                    Type = ElementDefinition.DiscriminatorType.Value,
-                    Path = "url",
-                }
+                    {
+                        Type = ElementDefinition.DiscriminatorType.Value,
+                        Path = "url",
+                    }
                 ],
                     Ordered = false,
                     Rules = ElementDefinition.SlicingRules.Open,
@@ -745,11 +746,11 @@ public class StructureFhirExporter
                     },
                     Type = [
                         new ElementDefinition.TypeRefComponent()
-                        {
-                            Code = "Extension",
-                            Profile = [ targetEdOutcome.GenUrl ],
-                        },
-                    ],
+                    {
+                        Code = "Extension",
+                        Profile = [ targetEdOutcome.GenUrl ],
+                    },
+                ],
                 };
 
                 profileSd.Differential.Element.Add(extEd);
@@ -845,7 +846,7 @@ public class StructureFhirExporter
             FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion) ?? FHIRVersion.N5_0_0,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version Profile for {igTr.PackagePair.SourceFhirSequence}.{sourceSd.Name} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-            Description = $"This cross-version profile allows " +
+            Description = $"This cross-version profile allows" +
                 $" {igTr.PackagePair.SourceFhirSequence} {sourceSd.Name} content to be represented" +
                 $" via FHIR {igTr.PackagePair.TargetFhirSequence} {targetStructureName} resources.",
             Status = PublicationStatus.Active,
