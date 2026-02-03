@@ -117,6 +117,19 @@ public class ElementComparer
             elementTypeComparisonCache);
     }
 
+    private bool skipElement(
+        DbElement ed,
+        bool skipFirstElement = true,
+        bool skipIds = true,
+        bool skipExtensions = true,
+        bool skipModifierExtenions = true) =>
+        (skipFirstElement && (ed.ResourceFieldOrder == 0)) ||
+        (skipIds && ((ed.BasePath == "id") || (ed.BasePath == "Element.id") || (ed.BasePath == "Resource.id"))) ||
+        (skipExtensions && ((ed.Name == "extension") || (ed.FullCollatedTypeLiteral == "Extension"))) ||
+        (skipModifierExtenions &&
+            ((ed.Name == "modifierExtension") || (ed.BasePath == "DomainResource.modifierExtension") || (ed.BasePath == "BackboneElement.modifierExtension")));
+
+
     internal List<DbElementComparison> DoTransitiveElementComparisons(StructureComparisonTrackingRecord sdTr)
     {
         if (sdTr.ComparisonSteps.Count == 0)
@@ -144,18 +157,20 @@ public class ElementComparer
         List<DbElement> sourceElements = DbElement.SelectList(
             _db,
             StructureKey: sdTr.SourceStructure.Key)
-            .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
-            .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
-                (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+            .Where(ed => !skipElement(ed, skipFirstElement: false))
+            //.Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+            //.Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+            //    (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
             .ToList();
 
         // get the target elements that are not extension or id elements (if we have a target)
         Dictionary<int, DbElement> targetElements = sdTr.TargetStructure is null
             ? []
             : DbElement.SelectList(_db, StructureKey: sdTr.TargetStructure.Key)
-                .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
-                .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
-                    (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+                .Where(ed => !skipElement(ed, skipFirstElement: false))
+                //.Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+                //.Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+                //    (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
                 .ToDictionary(e => e.Key);
 
         // build a lookup from source element key to the first step's element comparisons
@@ -358,9 +373,10 @@ public class ElementComparer
         List<DbElement> sourceElements = DbElement.SelectList(
             _db,
             StructureKey: trackingRecord.SourceStructure.Key)
-            .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
-            .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
-                (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+            .Where(ed => !skipElement(ed, skipFirstElement: false))
+            //.Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+            //.Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+            //    (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
             .ToList();
 
         // if there is no target structure, every element is a no map
@@ -395,9 +411,10 @@ public class ElementComparer
         Dictionary<int, DbElement> targetElements = DbElement.SelectList(
             _db,
             StructureKey: targetSd.Key)
-            .Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
-            .Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
-                (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
+            .Where(ed => !skipElement(ed, skipFirstElement: false))
+            //.Where(e => e.FullCollatedTypeLiteral?.Equals("Extension", StringComparison.Ordinal) == false)
+            //.Where(e => (e.Name.Equals("id", StringComparison.Ordinal) == false) &&
+            //    (e.FullCollatedTypeLiteral?.Equals("id", StringComparison.Ordinal) == false))
             .ToDictionary(e => e.Key);
 
         // get any explicit element mappings

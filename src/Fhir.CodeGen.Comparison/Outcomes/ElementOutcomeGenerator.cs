@@ -144,14 +144,12 @@ public class ElementOutcomeGenerator
             $" {_allSourceElementTypes.Count} Element Types" +
             $" to {_allTargetElementTypes.Count} Element Types");
 
-
         _allSourceElementsBySdKey = _allSourceElements.Values.ToLookup(c => c.StructureKey);
         _allTargetElementsBySdKey = _allTargetElements.Values.ToLookup(c => c.StructureKey);
 
         _sourceElementTypesByElementKey = _allSourceElementTypes.Values.ToLookup(c => c.ElementKey);
         _targetElementTypesByElementKey = _allTargetElementTypes.Values.ToLookup(c => c.ElementKey);
 
-        //ILookup<int, DbElementComparison> edComparsionsBySdComparisonKey = edComparisons.ToLookup(c => c.StructureComparisonKey);
         _edComparsionsBySourceElementKey = _edComparisons.ToLookup(c => c.SourceContentKey);
         _edComparsionsBySourceStructureKey = _edComparisons.ToLookup(c => c.SourceStructureKey);
 
@@ -267,7 +265,7 @@ public class ElementOutcomeGenerator
         DbElementOutcome? rootEdOutcome = null;
 
         Dictionary<int, DbElementOutcome> edKeyOutcomeLookup = [];
-        HashSet<int> outcomesRequiringXver = [];
+        //HashSet<int> outcomesRequiringXver = [];
 
         // iterate over the source elements for this structure to create no-map outcomes
         foreach (DbElement sourceEd in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
@@ -357,7 +355,8 @@ public class ElementOutcomeGenerator
                     $" `{extSubstitute.ReplacementUrl}`.";
             }
 
-            if (((parentOutcome is not null) && outcomesRequiringXver.Contains(parentOutcome.Key)) ||
+            //if (((parentOutcome is not null) && outcomesRequiringXver.Contains(parentOutcome.Key)) ||
+            if ((parentOutcome?.RequiresXVerDefinition == true) ||
                 (basicBasePath is not null))
             {
                 idLong = sourceEd.NameClean();
@@ -385,6 +384,8 @@ public class ElementOutcomeGenerator
                 SourceComponentOrder = sourceEd.ComponentFieldOrder,
                 SourceMinCardinality = sourceEd.MinCardinality,
                 SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
+                SourceChildElementCount = sourceEd.ChildElementCount,
+                SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -410,7 +411,9 @@ public class ElementOutcomeGenerator
                 ComponentGenUrl = componentExtUrl,
 
                 AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
-                ParentElementOutcomeKey = requiresXVerDefinition ? parentOutcome?.Key : null,
+                ParentElementOutcomeKey = parentOutcome?.Key,
+                ParentRequiresXverDefinition = parentOutcome?.RequiresXVerDefinition ?? false,
+                ParentRequiresComponentDefinition = parentOutcome?.RequiresComponentDefinition ?? false,
                 SourceIsModifier = sourceEd.IsModifier,
                 DefineAsModifier = defineAsModifier,
                 ExtensionContexts = contexts,
@@ -433,10 +436,10 @@ public class ElementOutcomeGenerator
                 Comments = comments,
             };
 
-            if (requiresXVerDefinition)
-            {
-                outcomesRequiringXver.Add(elementOutcome.Key);
-            }
+            //if (requiresXVerDefinition)
+            //{
+            //    outcomesRequiringXver.Add(elementOutcome.Key);
+            //}
 
             if (sourceEd.ResourceFieldOrder == 0)
             {
@@ -446,6 +449,147 @@ public class ElementOutcomeGenerator
             edKeyOutcomeLookup[sourceEd.Key] = elementOutcome;
 
             _edOutcomeCache.CacheAdd(elementOutcome);
+        }
+
+        if (rootEdOutcome is not null)
+        {
+            edOutcomePostProcessing(
+                edKeyOutcomeLookup.Values,
+                rootEdOutcome);
+        }
+    }
+
+    private void edOutcomePostProcessing(
+        IEnumerable<DbElementOutcome> edOutcomes,
+        DbElementOutcome edOutcome)
+    {
+        // create a lookup based on parent element key
+        ILookup<int?, DbElementOutcome>? outcomesByParentKey = edOutcomes
+            .ToLookup(eo => eo.ParentElementOutcomeKey);
+
+        updateOutcomesWithChildInfoRecurse(
+            edOutcome,
+            outcomesByParentKey);
+    }
+
+    private (bool requiresXver, bool requiresComponent) updateOutcomesWithChildInfoRecurse(
+        DbElementOutcome edOutcome,
+        ILookup<int?, DbElementOutcome> outcomesByParentKey)
+    {
+        // get the child outcomes for this outcome
+        List<DbElementOutcome> childOutcomes = outcomesByParentKey[edOutcome.Key]
+            .OrderBy(eo => eo.SourceResourceOrder)
+            .ToList();
+
+        if (childOutcomes.Count == 0)
+        {
+            return (edOutcome.RequiresXVerDefinition, edOutcome.RequiresComponentDefinition);
+        }
+
+        bool childrenRequireXver = true;
+        bool childrenRequireComponent = true;
+
+        // iterate over each child outcome to bubble up requirements
+        foreach (DbElementOutcome childOutcome in childOutcomes)
+        {
+            (bool childRequiresXver, bool childRequiresComponent) = updateOutcomesWithChildInfoRecurse(
+                childOutcome,
+                outcomesByParentKey);
+
+            childrenRequireXver = childrenRequireXver && childRequiresXver;
+            childrenRequireComponent = childrenRequireComponent && childRequiresComponent;
+        }
+
+        bool originalParentRequiresXver = edOutcome.ParentRequiresXverDefinition;
+        bool originalParentRequiresComponent = edOutcome.ParentRequiresComponentDefinition;
+
+        // update children if necessary
+        if ((childrenRequireXver && !edOutcome.RequiresXVerDefinition) ||
+            (childrenRequireComponent && !edOutcome.RequiresComponentDefinition))
+        {
+            setOutcomeRequiresRecursive(
+                edOutcome,
+                childrenRequireXver,
+                childrenRequireComponent,
+                outcomesByParentKey);
+        }
+
+        // reset to the value at this level - processing a parent will reset if necessary
+        edOutcome.ParentRequiresXverDefinition = originalParentRequiresXver;
+        edOutcome.ParentRequiresComponentDefinition = originalParentRequiresComponent;
+
+        // update the generation info on the way out
+        if (childrenRequireXver)
+        {
+            (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
+                _packagePair.SourcePackageShortName,
+                edOutcome.SourceId);
+
+            edOutcome.GenLongId = idLong;
+            edOutcome.GenShortId = idShort;
+            edOutcome.GenUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+            edOutcome.RequiresXVerDefinition = true;
+        }
+
+        // update the component generation info on the way out
+        if (childrenRequireComponent)
+        {
+            (string componentIdLong, string componentIdShort) = XVerProcessor.GenerateExtensionId(
+                _packagePair.SourcePackageShortName,
+                edOutcome.SourceId);
+
+            edOutcome.ComponentGenLongId = componentIdLong;
+            edOutcome.ComponentGenShortId = componentIdShort;
+            edOutcome.ComponentGenUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{componentIdLong}";
+            edOutcome.RequiresComponentDefinition = true;
+        }
+
+        // return for parent
+        return (childrenRequireXver, childrenRequireComponent);
+    }
+
+    private void setOutcomeRequiresRecursive(
+        DbElementOutcome edOutcome,
+        bool requiresXver,
+        bool requiresComponent,
+        ILookup<int?, DbElementOutcome> outcomesByParentKey)
+    {
+        // get the child outcomes for this outcome
+        List<DbElementOutcome> childOutcomes = outcomesByParentKey[edOutcome.Key]
+            .OrderBy(eo => eo.SourceResourceOrder)
+            .ToList();
+
+        foreach (DbElementOutcome childOutcome in childOutcomes)
+        {
+            setOutcomeRequiresRecursive(
+                childOutcome,
+                requiresXver,
+                requiresComponent,
+                outcomesByParentKey);
+        }
+
+        if (requiresXver)
+        {
+            edOutcome.RequiresXVerDefinition = true;
+
+            string nameClean = edOutcome.SourceNameClean();
+            edOutcome.GenLongId = nameClean;
+            edOutcome.GenShortId = nameClean;
+            edOutcome.GenUrl = nameClean;
+
+            edOutcome.ParentRequiresXverDefinition = true;
+        }
+
+        if (requiresComponent)
+        {
+            // clear the component gen info, since we are bubbling up
+            edOutcome.ComponentGenLongId = null;
+            edOutcome.ComponentGenShortId = null;
+            edOutcome.ComponentGenUrl = null;
+
+            edOutcome.RequiresComponentDefinition = true;
+
+            edOutcome.ParentRequiresComponentDefinition = true;
         }
     }
 
@@ -478,14 +622,7 @@ public class ElementOutcomeGenerator
             .Where(ed => !skipElement(ed, skipFirstElement: false))
             .ToDictionary(c => c.Key);
 
-        //Dictionary<int, Dictionary<int, DbElement>> targetElementsBySdKey = [];
-
         HashSet<int> fullyMappedElementsAllTargets = [];
-
-        //Dictionary<int, HashSet<int>> fullyMappedElementKeysByComparisonKey = [];
-        //HashSet<int> currentlyMappedComparisonKeys = [];
-        //fullyMappedElementKeysByComparisonKey[sourceStructureComparison.Key] = currentlyMappedComparisonKeys;
-
         Dictionary<int, ElementOutcomeTrackingRecord> elementTrackingRecords = [];
 
         // iterate over the source elements for this structure to determine mapping completeness
@@ -1005,7 +1142,7 @@ public class ElementOutcomeGenerator
         Dictionary<(int sourceElementKey, int? targetStructureKey), (DbElementOutcome outcome, DbElementOutcome? rootOutcome)> edKeyOutcomeLookup = [];
         Dictionary<int, DbElementOutcome> rootEdOutcomesBySdOutcomeKey = [];
 
-        HashSet<int> outcomesRequiringXver = [];
+        //HashSet<int> outcomesRequiringXver = [];
 
         // iterate over our element tracking records to create outcomes
         foreach (ElementOutcomeTrackingRecord edTr in elementTrackingRecords.Values.OrderBy(etr => etr.SourceElement.ResourceFieldOrder))
@@ -1037,7 +1174,7 @@ public class ElementOutcomeGenerator
 
                 if (isRootElement)
                 {
-                    sdTr.RootElement = sourceEd;
+                    sdTr.SourceRootElement = sourceEd;
                 }
 
                 sdTr.IsFullyMappedAcrossAllTargets = sdTr.IsFullyMappedAcrossAllTargets &&
@@ -1125,7 +1262,8 @@ public class ElementOutcomeGenerator
                         .FirstOrDefault(ec => ec.TargetStructureKey is null);
                     //?? throw new Exception($"Non-mapped {sdTr.SourceStructure.Name} element {sourceEd.Id} has no non-mapped comparison!");
 
-                    if (((rootEdOutcome is not null) && outcomesRequiringXver.Contains(rootEdOutcome.Key)) ||
+                    //if (((rootEdOutcome is not null) && outcomesRequiringXver.Contains(rootEdOutcome.Key)) ||
+                    if ((rootEdOutcome?.RequiresXVerDefinition == true) ||
                         (basicBasePath is not null))
                     {
                         idLong = sourceEd.NameClean();
@@ -1152,6 +1290,8 @@ public class ElementOutcomeGenerator
                         SourceComponentOrder = sourceEd.ComponentFieldOrder,
                         SourceMinCardinality = sourceEd.MinCardinality,
                         SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
+                        SourceChildElementCount = sourceEd.ChildElementCount,
+                        SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
                         TotalSourceCount = 1,
 
                         TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -1180,7 +1320,9 @@ public class ElementOutcomeGenerator
                         ComponentGenUrl = componentExtUrl,
 
                         AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
-                        ParentElementOutcomeKey = requiresXVerDefinition ? noMapParentOutcomeKey : null,
+                        ParentElementOutcomeKey = noMapParentOutcomeKey,
+                        ParentRequiresXverDefinition = noMapParentOutcomeKey is not null,
+                        ParentRequiresComponentDefinition = false,
                         SourceIsModifier = sourceEd.IsModifier,
                         DefineAsModifier = defineNoMapAsModifier,
                         ExtensionContexts = noMapContexts,
@@ -1227,10 +1369,10 @@ public class ElementOutcomeGenerator
                         Comments = noMapEdComments,
                     };
 
-                    if (requiresXVerDefinition)
-                    {
-                        outcomesRequiringXver.Add(noMapEdOutcome.Key);
-                    }
+                    //if (requiresXVerDefinition)
+                    //{
+                    //    outcomesRequiringXver.Add(noMapEdOutcome.Key);
+                    //}
 
                     // if this is the root element, being a non-mapped structure includes changes
                     if (isRootElement)
@@ -1282,17 +1424,18 @@ public class ElementOutcomeGenerator
                     if ((sourceEd.ParentElementKey is not null) &&
                         edKeyOutcomeLookup.TryGetValue((sourceEd.ParentElementKey!.Value, sdTr.TargetStructure.Key), out (DbElementOutcome outcome, DbElementOutcome? ancestor) po))
                     {
-                        parentOutcome = po.outcome.RequiresXVerDefinition ? po.outcome : null;
+                        //parentOutcome = po.outcome.RequiresXVerDefinition ? po.outcome : null;
+                        parentOutcome = po.outcome;
                         ancestorOutcome = po.ancestor;
                     }
 
                     // check for the current element not thinking it needs a definition, but the parent does
-                    if (!elementRequiresXVer && (parentOutcome is not null))
+                    if (!elementRequiresXVer && (parentOutcome?.RequiresXVerDefinition == true))
                     {
                         elementRequiresXVer = true;
                     }
 
-                    if (parentOutcome is not null)
+                    if (parentOutcome?.RequiresXVerDefinition == true)
                     {
                         comments = $"Element `{sourceEd.Id}` is part of a definition because parent element `{parentOutcome.SourceId}` requires an extension.";
                     }
@@ -1322,7 +1465,7 @@ public class ElementOutcomeGenerator
                             (sdTr.StructureComparison.Relationship == CMR.Equivalent) ||
                             (sdTr.StructureComparison.Relationship == CMR.SourceIsNarrowerThanTarget);
                     }
-                    else if (elementRequiresXVer && (parentOutcome is not null))
+                    else if (elementRequiresXVer && (parentOutcome?.RequiresXVerDefinition == true))
                     {
                         contexts.Add(parentOutcome.GenLongId ?? parentOutcome.SourceName);
                         DbElement? parentTargetElement = parentOutcome.TargetElementKey is null
@@ -1333,7 +1476,7 @@ public class ElementOutcomeGenerator
                             contextTargetElements.Add(parentTargetElement);
                         }
                     }
-                    else if (elementRequiresXVer)
+                    else
                     {
                         // if we have a target element, that is the context we want
                         if (targetEd is not null)
@@ -1342,12 +1485,12 @@ public class ElementOutcomeGenerator
                             contextTargetElements.Add(targetEd);
                         }
                         // if the source element is in the top level of the resource, we use the target resource as context
-                        else if (sourceEd.ParentElementKey == sdTr.RootElement?.Key)
+                        else if (sourceEd.ParentElementKey == sdTr.SourceRootElement?.Key)
                         {
                             contexts.Add(sdTr.TargetStructure.Name);
-                            if (sdTr.RootElement is not null)
+                            if (sdTr.SourceRootElement is not null)
                             {
-                                contextTargetElements.Add(sdTr.RootElement);
+                                contextTargetElements.Add(sdTr.SourceRootElement);
                             }
                         }
                         else
@@ -1450,7 +1593,7 @@ public class ElementOutcomeGenerator
                         if (contextTargetElements.Count == 0)
                         {
                             //bool promoted = false;
-                            if (parentOutcome is not null)
+                            if (parentOutcome?.RequiresXVerDefinition == true)
                             {
                                 //promoted = true;
                                 // need to promote the modifier to the parent context
@@ -1599,7 +1742,8 @@ public class ElementOutcomeGenerator
                             $" `{extSubstitute.ReplacementUrl}`.";
                     }
 
-                    if (((parentOutcome is not null) && outcomesRequiringXver.Contains(parentOutcome.Key)) ||
+                    //if (((parentOutcome is not null) && outcomesRequiringXver.Contains(parentOutcome.Key)) ||
+                    if ((parentOutcome?.RequiresXVerDefinition == true) ||
                         (basicBasePath is not null))
                     {
                         idLong = sourceEd.NameClean();
@@ -1634,6 +1778,8 @@ public class ElementOutcomeGenerator
                         SourceComponentOrder = sourceEd.ComponentFieldOrder,
                         SourceMinCardinality = sourceEd.MinCardinality,
                         SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
+                        SourceChildElementCount = sourceEd.ChildElementCount,
+                        SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
                         TotalSourceCount = -1,
 
                         TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -1660,7 +1806,9 @@ public class ElementOutcomeGenerator
                         ComponentGenUrl = componentExtUrl,
 
                         AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
-                        ParentElementOutcomeKey = elementRequiresXVer ? parentOutcome?.Key : null,
+                        ParentElementOutcomeKey = parentOutcome?.Key,
+                        ParentRequiresXverDefinition = parentOutcome?.RequiresXVerDefinition ?? false,
+                        ParentRequiresComponentDefinition = parentOutcome?.RequiresComponentDefinition ?? false,
                         SourceIsModifier = sourceEd.IsModifier,
                         DefineAsModifier = defineAsModifier,
                         ExtensionContexts = contexts,
@@ -1707,15 +1855,15 @@ public class ElementOutcomeGenerator
                         Comments = comments,
                     };
 
-                    if (elementRequiresXVer)
+                    if (isRootElement)
                     {
-                        outcomesRequiringXver.Add(elementOutcome.Key);
+                        rootEdOutcomesBySdOutcomeKey[sdTr.StructureOutcomeKey] = elementOutcome;
                     }
 
                     _edOutcomeCache.CacheAdd(elementOutcome);
                     edTr.ElementOutcomes.Add(elementOutcome);
                     sdTr.ElementOutcomes.Add(elementOutcome);
-                    if (elementRequiresXVer && !edKeyOutcomeLookup.ContainsKey((sourceEd.Key, sdTr.TargetStructure.Key)))
+                    if (!edKeyOutcomeLookup.ContainsKey((sourceEd.Key, sdTr.TargetStructure.Key)))
                     {
                         edKeyOutcomeLookup.Add(
                             (sourceEd.Key, sdTr.TargetStructure.Key),
@@ -1723,6 +1871,15 @@ public class ElementOutcomeGenerator
                     }
                 }
             }
+        }
+
+        foreach (DbElementOutcome edRootOutcome in rootEdOutcomesBySdOutcomeKey.Values)
+        {
+            edOutcomePostProcessing(
+                edKeyOutcomeLookup
+                    .Where(kvp => kvp.Key.targetStructureKey == edRootOutcome.TargetStructureKey)
+                    .Select(kvp => kvp.Value.outcome),
+                edRootOutcome);
         }
     }
 
@@ -2002,9 +2159,7 @@ public class ElementOutcomeGenerator
                 continue;
             }
 
-            // all children are mapped - this is a successful distributed mapping
-
-            // build a detailed message about the distribution
+            // all children are mapped - this is a successful distributed mapping for this type build a nice message
             List<string> childMappingDescriptions = cmr.ChildMappings.Values
                 .Select(cmi =>
                 {
@@ -2020,8 +2175,8 @@ public class ElementOutcomeGenerator
                 .ToList();
 
             elementTrackingRec.Messages.Add(
-                $"Element `{sourceElement.Id}` has unmapped type `{cmr.SourceParentType.Literal}` -" +
-                $" type is distributed across target elements via child mappings:" +
+                $"Element `{sourceElement.Id}` has unmapped source type `{cmr.SourceParentType.Literal}`" +
+                $" that fully maps when distributed across target elements via child mappings:" +
                 $" {string.Join("; ", childMappingDescriptions)}");
 
             // remove from unmapped types using the CORRECT KEY (parent type key, not child type key)

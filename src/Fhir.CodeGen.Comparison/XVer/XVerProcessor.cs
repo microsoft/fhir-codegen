@@ -282,7 +282,7 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
-                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
+                GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes(specificPairs: specificPairs);
                 //GenerateOutcomes();
@@ -291,7 +291,7 @@ public partial class XVerProcessor
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1, includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, includeIgScripts: false, specificPairs: specificPairs);
-            ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+            //ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: true, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: false);
                 //ExportOutcomes();
@@ -1231,6 +1231,7 @@ public partial class XVerProcessor
         return (idLong, idShort);
     }
 
+    private static HashSet<string> _tempIds = [];
 
     internal static (string idLong, string idShort) GenerateExtensionId(
         string sourcePackageShortName,
@@ -1238,6 +1239,11 @@ public partial class XVerProcessor
     {
         string idLong = $"extension-{sourceElementPath.Replace("[x]", string.Empty)}";
         string idShort = $"ext-{sourcePackageShortName}-{collapsePathForId(sourceElementPath)}";
+
+        if (!_tempIds.Add(idShort))
+        {
+            Console.Write("");
+        }
 
         return (idLong, idShort);
 
@@ -1284,7 +1290,7 @@ public partial class XVerProcessor
                         {
                             if (components[i].Length > 3)
                             {
-                                components[i] = $"{components[i][0]}{components[i][1]}";
+                                components[i] = components[i][0..3];
                             }
                         }
 

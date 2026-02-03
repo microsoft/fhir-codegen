@@ -22,7 +22,8 @@ public class StructureOutcomeGenerator
         public required DbStructureComparison StructureComparison { get; set; }
         public required DbStructureDefinition? TargetStructure { get; set; }
 
-        public DbElement? RootElement { get; set; } = null;
+        public DbElement? SourceRootElement { get; set; } = null;
+        public DbElement? TargetRootElement { get; set; } = null;
 
         public required int StructureOutcomeKey { get; set; }
 
@@ -137,7 +138,18 @@ public class StructureOutcomeGenerator
         Dictionary<int, DbStructureDefinition> allSourceStructures = DbStructureDefinition.SelectDict(_db, FhirPackageKey: packagePair.SourcePackageKey);
         Dictionary<int, DbStructureDefinition> allTargetStructures = DbStructureDefinition.SelectDict(_db, FhirPackageKey: packagePair.TargetPackageKey);
 
-        List<DbStructureComparison> sdComparisons = DbStructureComparison.SelectList(
+        Dictionary<string, DbElement> sourceStructureRootElements = DbElement.SelectList(
+            _db,
+            FhirPackageKey: packagePair.SourcePackageKey,
+            ResourceFieldOrder: 0)
+            .ToDictionary(ed => ed.Id);
+        Dictionary<string, DbElement> targetStructureRootElements = DbElement.SelectList(
+            _db,
+            FhirPackageKey: packagePair.TargetPackageKey,
+            ResourceFieldOrder: 0)
+            .ToDictionary(ed => ed.Id);
+
+        List <DbStructureComparison> sdComparisons = DbStructureComparison.SelectList(
             _db,
             SourceFhirPackageKey: packagePair.SourcePackageKey,
             TargetFhirPackageKey: packagePair.TargetPackageKey);
@@ -193,13 +205,16 @@ public class StructureOutcomeGenerator
             // build our tracking records, be optimistic that all elements will be fully mapped
             foreach (DbStructureComparison structureComparison in structureComparisons)
             {
-                if (structureComparison.NotMapped || (structureComparison.TargetContentKey is null))
+                if (structureComparison.NotMapped ||
+                    (structureComparison.TargetContentKey is null) ||
+                    !allTargetStructures.TryGetValue(structureComparison.TargetContentKey.Value, out DbStructureDefinition? targetSd))
                 {
                     trackingRecords.Add(
                         0,
                         new()
                         {
                             SourceStructure = sourceSd,
+                            SourceRootElement = sourceStructureRootElements.GetValueOrDefault(sourceSd.Id),
                             StructureComparison = structureComparison,
                             TargetStructure = null,
                             StructureOutcomeKey = DbStructureOutcome.GetIndex(),
@@ -214,8 +229,10 @@ public class StructureOutcomeGenerator
                     new()
                     {
                         SourceStructure = sourceSd,
+                        SourceRootElement = sourceStructureRootElements.GetValueOrDefault(sourceSd.Id),
                         StructureComparison = structureComparison,
-                        TargetStructure = allTargetStructures[structureComparison.TargetContentKey.Value],
+                        TargetStructure = targetSd,
+                        TargetRootElement = targetStructureRootElements.GetValueOrDefault(targetSd.Id),
                         StructureOutcomeKey = DbStructureOutcome.GetIndex(),
                         IsFullyMappedAcrossAllTargets = true,
                         IsFullyMappedToThisTarget = true,
