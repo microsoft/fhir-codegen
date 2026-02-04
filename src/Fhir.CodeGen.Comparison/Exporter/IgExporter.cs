@@ -788,15 +788,30 @@ public class IgExporter
                 """);
         }
 
+        HashSet<string> skipPages = [
+            "index",
+            "faqs",
+            "lookup-sd",
+            "lookup-vs",
+            "downloads",
+            "changelog",
+        ];
+
         StringBuilder pageBuilder = new();
         pageBuilder.AppendLine(""" "page" : """);
         pageBuilder.AppendLine("""  { "nameUrl" : "index.html", "title" : "Home", "generation" : "markdown" , "page" : [ """);
         pageBuilder.AppendLine("""  { "nameUrl" : "faqs.html", "title" : "FAQs", "generation" : "markdown" },""");
 
         pageBuilder.AppendLine("""  { "nameUrl" : "lookup-sd.html", "title" : "Structure Lookup", "generation" : "markdown" , "page" : [ """);
+
         List<string> sdLookupPages = [];
         foreach (XVerIgFileRecord fileRec in igTr.SdPageContentFiles)
         {
+            if (skipPages.Contains(fileRec.FileNameWithoutExtension))
+            {
+                continue;
+            }
+
             sdLookupPages.Add($$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" }""");
         }
         pageBuilder.AppendLine(string.Join(",\n", sdLookupPages));
@@ -806,6 +821,11 @@ public class IgExporter
         List<string> vsLookupPages = [];
         foreach (XVerIgFileRecord fileRec in igTr.VsPageContentFiles)
         {
+            if (skipPages.Contains(fileRec.FileNameWithoutExtension))
+            {
+                continue;
+            }
+
             vsLookupPages.Add($$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" }""");
         }
         pageBuilder.AppendLine(string.Join(",\n", vsLookupPages));
@@ -902,6 +922,15 @@ public class IgExporter
             throw new Exception($"No StructureDefinition page content files found for IG '{igTr.PackageId}'");
         }
 
+        HashSet<string> skipPages = [
+            "index",
+            "faqs",
+            "lookup-sd",
+            "lookup-vs",
+            "downloads",
+            "changelog",
+        ];
+
         XVerIgFileRecord sdLookupFileRec = igTr.SdPageContentFiles[0];
 
         ImplementationGuide.PageComponent sdLookupPage = new()
@@ -913,8 +942,13 @@ public class IgExporter
             Page = [],
         };
 
-        foreach (XVerIgFileRecord fileRec in igTr.SdPageContentFiles.Skip(1))
+        foreach (XVerIgFileRecord fileRec in igTr.SdPageContentFiles)
         {
+            if (skipPages.Contains(fileRec.FileNameWithoutExtension))
+            {
+                continue;
+            }
+
             sdLookupPage.Page.Add(new()
             {
                 Source = new FhirUrl(fileRec.FileName),
@@ -940,8 +974,13 @@ public class IgExporter
             Page = [],
         };
 
-        foreach (XVerIgFileRecord fileRec in igTr.VsPageContentFiles.Skip(1))
+        foreach (XVerIgFileRecord fileRec in igTr.VsPageContentFiles)
         {
+            if (skipPages.Contains(fileRec.FileNameWithoutExtension))
+            {
+                continue;
+            }
+
             vsLookupPage.Page.Add(new()
             {
                 Source = new FhirUrl(fileRec.FileName),
