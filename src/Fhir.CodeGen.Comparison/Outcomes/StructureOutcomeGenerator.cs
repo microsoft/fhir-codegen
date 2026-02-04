@@ -240,7 +240,7 @@ public class StructureOutcomeGenerator
             }
 
             // process elements to determine how elements map across our target structures, if neither side is a primitive type
-            elementOutcomeGenerator.ProcessStructure(sourceSd, trackingRecords);
+            elementOutcomeGenerator.ProcessSourceStructure(sourceSd, trackingRecords);
 
             int discreteTargetCount = trackingRecords.Values
                 .Where(tr => tr.TargetStructure is not null)

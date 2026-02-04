@@ -609,7 +609,7 @@ public class ElementOutcomeGenerator
         _ => false,
     };
 
-    public void ProcessStructure(
+    public void ProcessSourceStructure(
         DbStructureDefinition sourceSd,
         Dictionary<int, StructureOutcomeGenerator.StructureOutcomeTrackingRecord> structureTrackingRecords)
     {
@@ -639,7 +639,7 @@ public class ElementOutcomeGenerator
                     .ToDictionary(et => et.Key);
             }
 
-            // filter out base element types that make no sense to deal with (any target, even an extension, will cover)
+            // filter out base element types that make no sense to deal with (e.g., any target will cover)
             if (sourceEts.Count != 0)
             {
                 List<int> typesToFilter = [];
@@ -1164,6 +1164,9 @@ public class ElementOutcomeGenerator
                 string? componentIdLong = null;
                 string? componentIdShort = null;
                 string? componentExtUrl = null;
+                string? basicBasePath = null;
+                DbElement? basicEd = null;
+                DbExtensionSubstitution? extSubstitute = null;
 
                 if (sourceEd.UsedAsContentReference == true)
                 {
@@ -1210,21 +1213,20 @@ public class ElementOutcomeGenerator
                         rootEdOutcomesBySdOutcomeKey.TryGetValue(sdTr.StructureOutcomeKey, out rootEdOutcome);
 
                         if ((sourceEd.ParentElementKey is not null) &&
-                            edKeyOutcomeLookup.TryGetValue((sourceEd.ParentElementKey!.Value, sdTr.TargetStructure?.Key), out (DbElementOutcome outcome, DbElementOutcome? rootOutcome) po) &&
-                            po.outcome.RequiresXVerDefinition)
+                            edKeyOutcomeLookup.TryGetValue((sourceEd.ParentElementKey!.Value, sdTr.TargetStructure?.Key), out (DbElementOutcome outcome, DbElementOutcome? rootOutcome) noMapPO) &&
+                            noMapPO.outcome.RequiresXVerDefinition)
                         {
-                            noMapParentOutcomeKey = po.outcome.Key;
-                            noMapContexts.Add(po.outcome.GenLongId ?? po.outcome.SourceName);
+                            noMapParentOutcomeKey = noMapPO.outcome.Key;
+                            noMapContexts.Add(noMapPO.outcome.GenLongId ?? noMapPO.outcome.SourceName);
                         }
                     }
 
                     bool requiresXVerDefinition = !edTr.IsFullyMappedAcrossAllTargets;
 
                     // check to see if we are trying to define an extension onto basic that has a matching basic path
-                    string? basicBasePath = null;
                     if (requiresXVerDefinition &&
                         _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
-                        _targetBasicElementsById.TryGetValue(basicBasePath!, out DbElement? basicEd))
+                        _targetBasicElementsById.TryGetValue(basicBasePath!, out basicEd))
                     {
                         if (canSourceMapToBasicElementType(sourceEd, basicEd) &&
                             (sourceEd.MinCardinality >= basicEd.MinCardinality) &&
@@ -1250,7 +1252,7 @@ public class ElementOutcomeGenerator
                         }
                     }
 
-                    if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out DbExtensionSubstitution? extSubstitute))
+                    if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out extSubstitute))
                     {
                         noMapEdComments +=
                             $"\nNote that there is an externally-defined extension that has been flagged as the" +
@@ -1397,12 +1399,38 @@ public class ElementOutcomeGenerator
                     continue;
                 }
 
-                // traverse the comparisons for this element (can map to multiple elments in target structure)
-                foreach (DbElementComparison elementComparison in elementComparisons.Where(ec => ec.TargetStructureKey == sdTr.TargetStructure.Key))
+                // if we target multiple elements, we need to consolidate to a single outcome that can target a common parent element (if one is necessary)
+                List<DbElementComparison> targetSdEdComparisons = elementComparisons
+                    .Where(ec => ec.TargetStructureKey == sdTr.TargetStructure.Key)
+                    .ToList();
+
+                // if this structure does not have any comparisons for this element, skip it
+                if (targetSdEdComparisons.Count == 0)
                 {
-                    DbElement? targetEd = elementComparison.TargetElementKey is null
-                        ? null
-                        : _allTargetElements[elementComparison.TargetElementKey.Value];
+                    // this should never be possible - non-mapping elements have already been handled
+                    continue;
+                }
+
+                DbElementComparison? singleEC = targetSdEdComparisons.Count == 1
+                    ? targetSdEdComparisons[0]
+                    : null;
+
+                List<DbElement> targetEds = targetSdEdComparisons
+                    .Where(ec => ec.TargetElementKey is not null)
+                    .Distinct()
+                    .Select(ec => _allTargetElements[ec.TargetElementKey!.Value])
+                    .ToList();
+
+                DbElement? targetEd = targetEds.Count == 1
+                    ? targetEds[0]
+                    : findCommonAncestor(sdTr.TargetStructure.FhirPackageKey, targetEds);
+
+                //// traverse the comparisons for this element (can map to multiple elments in target structure)
+                //foreach (DbElementComparison elementComparison in elementComparisons.Where(ec => ec.TargetStructureKey == sdTr.TargetStructure.Key))
+                //{
+                //    DbElement? targetEd = elementComparison.TargetElementKey is null
+                //        ? null
+                //        : _allTargetElements[elementComparison.TargetElementKey.Value];
 
                     DbElementOutcome? ancestorOutcome = null;
                     DbElementOutcome? parentOutcome = null;
@@ -1410,7 +1438,8 @@ public class ElementOutcomeGenerator
                     if (!edTr.IsFullyMappedAcrossAllTargets)
                     {
                         sdTr.IsFullyMappedAcrossAllTargets = false;
-                        if (!edTr.MapsToIndividualTargets.Any(ec => ec.TargetElementKey == elementComparison.TargetElementKey))
+                        if ((singleEC is not null) &&
+                            !edTr.MapsToIndividualTargets.Any(ec => ec.TargetElementKey == singleEC.TargetElementKey))
                         {
                             sdTr.IsFullyMappedToThisTarget = false;
                         }
@@ -1418,7 +1447,7 @@ public class ElementOutcomeGenerator
 
                     string comments = edTr.Messages.Count > 0
                         ? string.Join('\n', edTr.Messages)
-                        : elementComparison.TechnicalMessage ?? elementComparison.UserMessage ?? "TODO";
+                        : string.Join('\n', targetSdEdComparisons.Select(ec => ec.TechnicalMessage ?? ec.UserMessage));
 
                     bool elementRequiresXVer = !edTr.IsFullyMappedAcrossAllTargets;
                     if ((sourceEd.ParentElementKey is not null) &&
@@ -1546,10 +1575,9 @@ public class ElementOutcomeGenerator
                     }
 
                     // check to see if we are trying to define an extension onto basic that has a matching basic path
-                    string? basicBasePath = null;
                     if (elementRequiresXVer &&
                         _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
-                        _targetBasicElementsById.TryGetValue(basicBasePath!, out DbElement? basicEd))
+                        _targetBasicElementsById.TryGetValue(basicBasePath!, out basicEd))
                     {
                         if (canSourceMapToBasicElementType(sourceEd, basicEd) &&
                             (sourceEd.MinCardinality >= basicEd.MinCardinality) &&
@@ -1734,7 +1762,7 @@ public class ElementOutcomeGenerator
                         ? null
                         : $"{targetCanonicalUnversioned}|{sdTr.TargetStructure.Version ?? _packagePair.TargetPackage.PackageVersion}";
 
-                    if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out DbExtensionSubstitution? extSubstitute))
+                    if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out extSubstitute))
                     {
                         comments +=
                             $"\nNote that there is an externally-defined extension that has been flagged as the" +
@@ -1763,7 +1791,7 @@ public class ElementOutcomeGenerator
                     {
                         Key = DbElementOutcome.GetIndex(),
                         StructureOutcomeKey = sdTr.StructureOutcomeKey,
-                        ElementComparisonKey = elementComparison.Key,
+                        ElementComparisonKey = singleEC?.Key,
 
                         SourceFhirPackageKey = _packagePair.SourcePackageKey,
                         SourceFhirSequence = _packagePair.SourceFhirSequence,
@@ -1785,7 +1813,7 @@ public class ElementOutcomeGenerator
                         TargetFhirPackageKey = _packagePair.TargetPackageKey,
                         TargetFhirSequence = _packagePair.TargetFhirSequence,
                         TargetStructureKey = sdTr.TargetStructure.Key,
-                        TargetElementKey = elementComparison.TargetElementKey,
+                        TargetElementKey = targetEd?.Key,
                         TargetCanonicalUnversioned = targetCanonicalUnversioned,
                         TargetCanonicalVersioned = targetCanonicalVersioned,
                         TargetVersion = sdTr.TargetStructure.Version ?? _packagePair.TargetPackage.PackageVersion,
@@ -1817,11 +1845,11 @@ public class ElementOutcomeGenerator
                         ExtensionSubstitutionUrl = extSubstitute?.ReplacementUrl,
 
                         IsRenamed = targetEd is null ? false : (sourceEd.Name != targetEd.Name),
-                        IsUnmapped = targetEd is null || elementComparison.NotMapped,
-                        IsIdentical = elementComparison.IsIdentical == true,
-                        IsEquivalent = elementComparison.Relationship == CMR.Equivalent,
-                        IsBroaderThanTarget = elementComparison.Relationship == CMR.SourceIsBroaderThanTarget,
-                        IsNarrowerThanTarget = elementComparison.Relationship == CMR.SourceIsNarrowerThanTarget,
+                        IsUnmapped = targetEd is null || (singleEC?.NotMapped == true),
+                        IsIdentical = singleEC?.IsIdentical == true,
+                        IsEquivalent = singleEC?.Relationship == CMR.Equivalent,
+                        IsBroaderThanTarget = singleEC?.Relationship == CMR.SourceIsBroaderThanTarget,
+                        IsNarrowerThanTarget = singleEC?.Relationship == CMR.SourceIsNarrowerThanTarget,
 
                         FullyMapsAcrossAllTargets = fullyMapsToAllTargets,
                         FullyMapsToThisTarget = fullyMapsToThisTarget,
@@ -1869,7 +1897,7 @@ public class ElementOutcomeGenerator
                             (sourceEd.Key, sdTr.TargetStructure.Key),
                             (elementOutcome, ancestorOutcome));
                     }
-                }
+                //}
             }
         }
 
@@ -1881,6 +1909,52 @@ public class ElementOutcomeGenerator
                     .Select(kvp => kvp.Value.outcome),
                 edRootOutcome);
         }
+    }
+
+    private DbElement? findCommonAncestor(int targetFhirPackageKey, List<DbElement> eds)
+    {
+        if (eds.Count == 0)
+        {
+            return null;
+        }
+
+        if (eds.Count == 1)
+        {
+            return eds[0];
+        }
+
+        List<HashSet<string>> components = [];
+
+        // build the list of path components that appear in each element
+        foreach (DbElement ed in eds)
+        {
+            string[] idComponents = ed.Id.Split('.');
+            for (int i = 0; i < idComponents.Length; i++)
+            {
+                if (components.Count <= i)
+                {
+                    components.Add([]);
+                }
+                components[i].Add(idComponents[i]);
+            }
+        }
+
+        // work backwards to find the last common component
+        for (int i = components.Count - 1; i >= 0; i--)
+        {
+            if (components[i].Count > 1)
+            {
+                // still multiple element paths
+                continue;
+            }
+
+            string commonId = string.Join('.', components[0..(i + 1)].Select(c => c.First()));
+
+            DbElement? commonEd = DbElement.SelectSingle(_db, FhirPackageKey: targetFhirPackageKey, Id: commonId);
+            return commonEd;
+        }
+
+        return null;
     }
 
     /// <summary>
