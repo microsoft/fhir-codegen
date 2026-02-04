@@ -8,6 +8,7 @@ using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Comparison.XVer;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
@@ -79,6 +80,12 @@ public class VocabularyFhirExporter
         // list over the value sets to build concept maps
         foreach (DbValueSet sourceVs in sourceValueSets)
         {
+            if (XVerProcessor._exclusionSet.Contains(sourceVs.VersionedUrl) ||
+                XVerProcessor._exclusionSet.Contains(sourceVs.UnversionedUrl))
+            {
+                continue;
+            }
+
             // get the value set outcomes for this value set that need exporting
             List<DbValueSetOutcome> vsOutcomes = DbValueSetOutcome.SelectList(
                 _db,
@@ -96,6 +103,12 @@ public class VocabularyFhirExporter
             // iterate over the outcomes
             foreach (DbValueSetOutcome vsOutcome in vsOutcomes)
             {
+                if (XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalVersioned) ||
+                    XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalUnversioned))
+                {
+                    continue;
+                }
+
                 // check for no target (no concept map possible)
                 if (vsOutcome.TargetValueSetKey is null)
                 {
@@ -215,7 +228,7 @@ public class VocabularyFhirExporter
             }
 
             // check for no-map
-            if ((vscOutcome.TargetContentKey is null) ||
+            if ((vscOutcome.TargetValueSetKey is null) ||
                 (vscOutcome.TargetCode is null))
             {
                 // flag as no-map
@@ -385,9 +398,17 @@ public class VocabularyFhirExporter
             RequiresXVerDefinition: true,
             orderByProperties: [nameof(DbValueSetOutcome.GenLongId)]);
 
+        HashSet<string> vsIds = [];
+
         // iterate over the value set outcomes we need to export
         foreach (DbValueSetOutcome vsOutcome in vsOutcomes)
         {
+            if (XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalVersioned) ||
+                XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalUnversioned))
+            {
+                continue;
+            }
+
             if (!sourceValueSets.TryGetValue(vsOutcome.SourceValueSetKey, out DbValueSet? sourceVs))
             {
                 _logger.LogError($"Could not resolve source ValueSet `{vsOutcome.SourceCanonicalVersioned}`");
@@ -450,7 +471,7 @@ public class VocabularyFhirExporter
             {
                 string? mappingTrace = null;
 
-                if (vsComparisons.TryGetValue(vsOutcome.ComparisonKey, out DbValueSetComparison? vsComp))
+                if (vsComparisons.TryGetValue(vsOutcome.ValueSetComparisonKey, out DbValueSetComparison? vsComp))
                 {
                     DbValueSet? r2Vs = vsComp.ContentKeyR2 is null
                         ? null
@@ -867,6 +888,15 @@ public class VocabularyFhirExporter
 
             // recursively add concepts
             addDbCodeSystemConcepts(fhirCs.Concept, dbCs.Key);
+
+            // special case - need to reassign the ids for some code systems
+            switch (dbCs.VersionedUrl)
+            {
+                case "http://terminology.hl7.org/CodeSystem/operation-outcome|2.0.0":
+                    fhirCs.Id = "operation-outcome-tho";
+                    fhirCs.Name = "OperationOutcomeTHO";
+                    break;
+            }
 
             // write the code system to a file
             string filename = $"CodeSystem-{fhirCs.Id}.json";

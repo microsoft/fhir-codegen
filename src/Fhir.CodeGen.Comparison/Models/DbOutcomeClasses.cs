@@ -152,6 +152,7 @@ public static class DbOutcomeClasses
 
         DbStructureOutcome.LoadMaxKey(db);
         DbElementOutcome.LoadMaxKey(db);
+        DbElementOutcomeTarget.LoadMaxKey(db);
     }
 
     public static void DropTables(
@@ -169,6 +170,7 @@ public static class DbOutcomeClasses
         {
             DbStructureOutcome.DropTable(db);
             DbElementOutcome.DropTable(db);
+            DbElementOutcomeTarget.DropTable(db);
         }
     }
 
@@ -187,6 +189,7 @@ public static class DbOutcomeClasses
         {
             DbStructureOutcome.CreateTable(db);
             DbElementOutcome.CreateTable(db);
+            DbElementOutcomeTarget.CreateTable(db);
         }
     }
 }
@@ -237,14 +240,14 @@ public abstract class DbOutcomeBase : DbRecordBase
     public required string Comments { get; set; }
 
 
-    [CgSQLiteIgnore]
-    public virtual int ComparisonKey { get; set; }
+    //[CgSQLiteIgnore]
+    //public virtual int ComparisonKey { get; set; }
 
-    [CgSQLiteIgnore]
-    public virtual int SourceContentKey { get; set; }
+    //[CgSQLiteIgnore]
+    //public virtual int SourceContentKey { get; set; }
 
-    [CgSQLiteIgnore]
-    public virtual int? TargetContentKey { get; set; }
+    //[CgSQLiteIgnore]
+    //public virtual int? TargetContentKey { get; set; }
 }
 
 [CgSQLiteBaseClass]
@@ -284,20 +287,20 @@ public partial class DbValueSetOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
     public required int ValueSetComparisonKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int ComparisonKey { get => this.ValueSetComparisonKey; set => this.ValueSetComparisonKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int ComparisonKey { get => this.ValueSetComparisonKey; set => this.ValueSetComparisonKey = value; }
 
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int SourceValueSetKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int SourceContentKey { get => this.SourceValueSetKey; set => this.SourceValueSetKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int SourceContentKey { get => this.SourceValueSetKey; set => this.SourceValueSetKey = value; }
 
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int? TargetValueSetKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int? TargetContentKey { get => this.TargetValueSetKey; set => this.TargetValueSetKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int? TargetContentKey { get => this.TargetValueSetKey; set => this.TargetValueSetKey = value; }
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptOutcomes")]
@@ -311,8 +314,8 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetConceptComparisons", referenceColumn: nameof(DbValueSetConceptComparison.Key))]
     public required int ValueSetConceptComparisonKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int ComparisonKey { get => this.ValueSetConceptComparisonKey; set => this.ValueSetConceptComparisonKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int ComparisonKey { get => this.ValueSetConceptComparisonKey; set => this.ValueSetConceptComparisonKey = value; }
 
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
@@ -320,16 +323,16 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int SourceValueSetConceptKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int SourceContentKey { get => this.SourceValueSetConceptKey; set => this.SourceValueSetConceptKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int SourceContentKey { get => this.SourceValueSetConceptKey; set => this.SourceValueSetConceptKey = value; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSets", referenceColumn: nameof(DbValueSet.Key))]
     public required int? TargetValueSetKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetConcepts", referenceColumn: nameof(DbValueSetConcept.Key))]
     public required int? TargetValueSetConceptKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int? TargetContentKey { get => this.TargetValueSetConceptKey; set => this.TargetValueSetConceptKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int? TargetContentKey { get => this.TargetValueSetConceptKey; set => this.TargetValueSetConceptKey = value; }
 
     public required string SourceSystem { get; set; }
     public required string SourceCode { get; set; }
@@ -349,14 +352,14 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
     public required int? StructureComparisonKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int ComparisonKey { get => this.StructureComparisonKey ?? -1; set => this.StructureComparisonKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int ComparisonKey { get => this.StructureComparisonKey ?? -1; set => this.StructureComparisonKey = value; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key))]
     public required int SourceStructureKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int SourceContentKey { get => this.SourceStructureKey; set => this.SourceStructureKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int SourceContentKey { get => this.SourceStructureKey; set => this.SourceStructureKey = value; }
 
     public required Fhir.CodeGen.Common.Models.FhirArtifactClassEnum SourceArtifactClass { get; set; } = Fhir.CodeGen.Common.Models.FhirArtifactClassEnum.Unknown;
 
@@ -369,10 +372,13 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
 [CgSQLiteTable(tableName: "ElementOutcomes")]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
 [CgSQLiteIndex(nameof(SourceElementKey), nameof(TargetFhirPackageKey))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(SourceResourceOrder))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(SourceStructureKey), nameof(SourceResourceOrder))]
 [CgSQLiteIndex(
     nameof(SourceFhirPackageKey),
     nameof(TargetFhirPackageKey),
     nameof(RequiresXVerDefinition),
+    nameof(ParentRequiresXverDefinition),
     nameof(ExtensionSubstitutionKey),
     nameof(ParentElementOutcomeKey),
     nameof(SourceStructureKey),
@@ -380,22 +386,16 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
 [CgSQLiteIndex(nameof(ParentElementOutcomeKey), nameof(RequiresXVerDefinition), nameof(SourceResourceOrder))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
-    [CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
-    public required int StructureOutcomeKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
-    public required int? ElementComparisonKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int ComparisonKey { get => this.ElementComparisonKey ?? -1; set => this.ElementComparisonKey = value; }
-
+    //[CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
+    //public required int StructureOutcomeKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key), modelTypeName: nameof(DbStructureDefinition))]
     public required int SourceStructureKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key), modelTypeName: nameof(DbElement))]
     public required int SourceElementKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int SourceContentKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
+    //[CgSQLiteIgnore]
+    //public override int SourceContentKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
 
 
     public required int SourceResourceOrder { get; set; }
@@ -404,19 +404,6 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required string SourceMaxCardinalityString { get; set; }
     public required int SourceChildElementCount { get; set; }
     public required bool SourceUsedAsContentReference { get; set; }
-
-
-    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key), modelTypeName: nameof(DbStructureDefinition))]
-    public required int? TargetStructureKey { get; set; }
-
-    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key), modelTypeName: nameof(DbElement))]
-    public required int? TargetElementKey { get; set; }
-    [CgSQLiteIgnore]
-    public override int? TargetContentKey { get => this.TargetElementKey; set => this.TargetElementKey = value; }
-
-
-    public required int? TargetResourceOrder { get; set; }
-    public required int? TargetComponentOrder { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
@@ -437,6 +424,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required bool RequiresComponentDefinition { get; set; }
     public required bool ParentRequiresComponentDefinition { get; set; }
 
+    public required int? OutcomeTargetCount { get; set; }
 
     public required bool SourceIsModifier { get; set; }
     public required bool DefineAsModifier { get; set; }
@@ -603,5 +591,49 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
             UnmappedChildTypeNamesLiteral = string.Join(',', value);
         }
     }
+}
+
+[CgSQLiteTable(tableName: "ElementOutcomeTargets")]
+[CgSQLiteIndex(nameof(ElementOutcomeKey), nameof(StructureOutcomeKey))]
+[CgSQLiteIndex(nameof(ElementOutcomeKey), nameof(TargetElementId))]
+public partial class DbElementOutcomeTarget : DbRecordBase
+{
+    [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(DbElementOutcome.Key), modelTypeName: nameof(DbElementOutcome))]
+    public required int ElementOutcomeKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
+    public required int StructureOutcomeKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementComparisons", referenceColumn: nameof(DbElementComparison.Key))]
+    public required int? ElementComparisonKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int SourceFhirPackageKey { get; set; }
+    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes SourceFhirSequence { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "FhirPackages", referenceColumn: nameof(DbFhirPackage.Key))]
+    public required int TargetFhirPackageKey { get; set; }
+    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes TargetFhirSequence { get; set; }
+
+    public required bool FullyMapsToThisTarget { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Structures", referenceColumn: nameof(DbStructureDefinition.Key), modelTypeName: nameof(DbStructureDefinition))]
+    public required int? TargetStructureKey { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key), modelTypeName: nameof(DbElement))]
+    public required int? TargetElementKey { get; set; }
+    public required string? TargetElementId { get; set; }
+
+    public required int? TargetResourceOrder { get; set; }
+    public required int? TargetComponentOrder { get; set; }
+
+
+    [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]
+    public required int? ContextElementKey { get; set; }
+    public required string? ContextElementId { get; set; }
+    public required string? ContextRootExtensionUrl { get; set; }
+    public required string? ContextParentExtensionUrl { get; set; }
+
+    public required string? Comments { get; set; }
 }
 

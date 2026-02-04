@@ -120,6 +120,8 @@ public partial class XVerProcessor
         "http://hl7.org/fhir/ValueSet/mimetypes",
         "http://www.rfc-editor.org/bcp/bcp13.txt",      // BCP 13 version of mimetypes
         "http://hl7.org/fhir/ValueSet/timezones",
+        //"http://terminology.hl7.org/CodeSystem/operation-outcome|2.0.0",    // R5 duplication between core and THO
+        //"http://hl7.org/fhir/ValueSet/audit-event-outcome-detail|5.0.0",    // R5 duplication between core and THO
         //"http://hl7.org/fhir/ValueSet/use-context",
         //"http://hl7.org/fhir/ValueSet/jurisdiction",
     ];
@@ -285,7 +287,7 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes(specificPairs: specificPairs);
-                //GenerateOutcomes();
+                GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);

@@ -83,10 +83,15 @@ public class VocabularyPageExporter
         string sourceBaseUrl = igTr.PackagePair.SourceFhirSequence.ToWebUrlRoot();
         string targetBaseUrl = igTr.PackagePair.TargetFhirSequence.ToWebUrlRoot();
 
-
         // iterate over the outcomes to create lookup pages
         foreach (DbValueSetOutcome vsOutcome in vsOutcomes)
         {
+            if (XVer.XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalVersioned) ||
+                XVer.XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalUnversioned))
+            {
+                continue;
+            }
+
             // create the lookup file
             string filename = Path.Combine(dir, $"lookup-vs-{vsOutcome.GenLongId}.md");
             using ExportStreamWriter mdWriter = createMarkdownWriter(filename);
@@ -217,6 +222,12 @@ public class VocabularyPageExporter
         // iterate over the outcomes
         foreach (DbValueSetOutcome vsOutcome in vsOutcomes)
         {
+            if (XVer.XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalVersioned) ||
+                XVer.XVerProcessor._exclusionSet.Contains(vsOutcome.SourceCanonicalUnversioned))
+            {
+                continue;
+            }
+
             string target = vsOutcome.TargetId is null
                 ? "n/a"
                 : $"[{vsOutcome.TargetId}]({targetBaseUrl}valueset-{vsOutcome.TargetId}.html)";

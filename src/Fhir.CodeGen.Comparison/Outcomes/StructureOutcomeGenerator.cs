@@ -44,6 +44,7 @@ public class StructureOutcomeGenerator
 
     private DbRecordCache<DbStructureOutcome> _sdOutcomeCache;
     private DbRecordCache<DbElementOutcome> _edOutcomeCache;
+    private DbRecordCache<DbElementOutcomeTarget> _edOutcomeTargetCache;
 
     public StructureOutcomeGenerator(
         IDbConnection db,
@@ -56,6 +57,7 @@ public class StructureOutcomeGenerator
 
         _sdOutcomeCache = new();
         _edOutcomeCache = new();
+        _edOutcomeTargetCache = new();
     }
 
 
@@ -126,8 +128,21 @@ public class StructureOutcomeGenerator
             _edOutcomeCache.ToUpdate.Update(_db);
         }
 
+        if (_edOutcomeTargetCache.ToAddCount > 0)
+        {
+            _logger.LogInformation($"Adding {_edOutcomeTargetCache.ToAddCount} element outcome targets from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            _edOutcomeTargetCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+        }
+
+        if (_edOutcomeTargetCache.ToUpdateCount > 0)
+        {
+            _logger.LogInformation($"Updating {_edOutcomeTargetCache.ToUpdateCount} element outcome targets from {sourcePackage.ShortName} to {targetPackage.ShortName}");
+            _edOutcomeTargetCache.ToUpdate.Update(_db);
+        }
+
         _sdOutcomeCache.Clear();
         _edOutcomeCache.Clear();
+        _edOutcomeTargetCache.Clear();
     }
 
     private void buildOutcomes(FhirPackageComparisonPair packagePair)
@@ -170,7 +185,8 @@ public class StructureOutcomeGenerator
             _db,
             _loggerFactory,
             packagePair,
-            _edOutcomeCache);
+            _edOutcomeCache,
+            _edOutcomeTargetCache);
 
         // iterate over our source structures
         foreach (DbStructureDefinition sourceSd in allSourceStructures.Values)

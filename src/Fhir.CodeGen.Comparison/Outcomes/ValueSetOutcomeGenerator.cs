@@ -158,6 +158,19 @@ public class ValueSetOutcomeGenerator
                 continue;
             }
 
+            if (sourceComparisons.Count > 1)
+            {
+                // check to see if we have one with a target and one without
+                if (sourceComparisons.Any(c => c.TargetContentKey is not null) &&
+                    sourceComparisons.Any(c => c.TargetContentKey is null))
+                {
+                    // remove the no-map comparison for now
+                    sourceComparisons = sourceComparisons
+                        .Where(c => c.TargetContentKey is not null)
+                        .ToList();
+                }
+            }
+
             Dictionary<int, DbValueSetConcept> sourceConcepts = allSourceConceptsByVsKey[sourceVs.Key]
                 .ToDictionary(c => c.Key);
 

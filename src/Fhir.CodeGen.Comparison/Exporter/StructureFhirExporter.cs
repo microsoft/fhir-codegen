@@ -280,7 +280,8 @@ public class StructureFhirExporter
             // get the element outcomes for this structure outcome
             List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
                 _db,
-                StructureOutcomeKey: sdOutcome.Key,
+                SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                SourceStructureKey: sdOutcome.SourceStructureKey,
                 orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
 
             string? lastSourceId = null;
@@ -324,7 +325,17 @@ public class StructureFhirExporter
                     relationship = CMR.RelatedTo;
                 }
 
-                if (edOutcome.TargetElementKey is null)
+                // get the list of targets for this element outcome
+                List<DbElementOutcomeTarget> outcomeTargets = DbElementOutcomeTarget.SelectList(
+                    _db,
+                    ElementOutcomeKey: edOutcome.Key,
+                    orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId)]);
+
+                List<DbElementOutcomeTarget> outcomeTargetsWithKeys = outcomeTargets
+                    .Where(ot => ot.TargetElementKey is not null)
+                    .ToList();
+
+                if (outcomeTargetsWithKeys.Count == 0)
                 {
                     string code;
                     if (edOutcome.BasicElementEquivalent is not null)
@@ -357,15 +368,19 @@ public class StructureFhirExporter
                 }
                 else
                 {
-                    // create our target element
-                    ConceptMap.TargetElementComponent targetElement = new()
+                    // create a target for each target element
+                    foreach (DbElementOutcomeTarget eot in outcomeTargetsWithKeys)
                     {
-                        Code = sdOutcome.TargetCanonicalUnversioned + "#" + edOutcome.TargetId,
-                        Display = edOutcome.TargetName,
-                        Relationship = relationship,
-                        Comment = edOutcome.Comments,
-                    };
-                    currentSourceElement.Target.Add(targetElement);
+                        // create our target element
+                        ConceptMap.TargetElementComponent targetElement = new()
+                        {
+                            Code = sdOutcome.TargetCanonicalUnversioned + "#" + eot.TargetElementId,
+                            Display = edOutcome.TargetName,
+                            Relationship = relationship,
+                            Comment = edOutcome.Comments,
+                        };
+                        currentSourceElement.Target.Add(targetElement);
+                    }
                 }
             }
 
@@ -389,7 +404,7 @@ public class StructureFhirExporter
         }
 
         _logger.LogInformation($"Wrote {exported.Count} element maps for `{igTr.PackageId}`");
-        igTr.ProfileFiles = exported;
+        igTr.ElementMapFiles = exported;
     }
 
     private ConceptMap createElementConceptMap(
@@ -520,7 +535,7 @@ public class StructureFhirExporter
         });
 
         _logger.LogInformation($"Wrote {exported.Count} resource maps for `{igTr.PackageId}`");
-        igTr.ProfileFiles = exported;
+        igTr.ResourceMapFiles = exported;
     }
 
     private ConceptMap createResourceConceptMap(
@@ -613,7 +628,7 @@ public class StructureFhirExporter
                             _db,
                             SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
                             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-                            StructureOutcomeKey: sdOutcome.Key,
+                            SourceStructureKey: sdOutcome.SourceStructureKey,
                             SourceResourceOrder: 0);
 
                     if (rootElementOutcome is null)
@@ -673,7 +688,9 @@ public class StructureFhirExporter
         // get the element outcomes that require a definition and are not part of one already
         List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
             _db,
-            StructureOutcomeKey: sdOutcome.Key,
+            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+            SourceStructureKey: sdOutcome.SourceStructureKey,
             RequiresXVerDefinition: true,
             ParentRequiresXverDefinition: false);
             //ParentElementOutcomeKeyIsNull: true);
@@ -1150,16 +1167,16 @@ public class StructureFhirExporter
                 continue;
             }
 
-            DbStructureOutcome? sdOutcome = null;
-            if (edOutcome.SourceResourceOrder == 0)
-            {
-                sdOutcome = DbStructureOutcome.SelectSingle(
-                    _db,
-                    SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
-                    TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-                    SourceStructureKey: sourceSd.Key,
-                    TargetStructureKey: edOutcome.TargetStructureKey);
-            }
+            //DbStructureOutcome? sdOutcome = null;
+            //if (edOutcome.SourceResourceOrder == 0)
+            //{
+            //    sdOutcome = DbStructureOutcome.SelectSingle(
+            //        _db,
+            //        SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            //        TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+            //        SourceStructureKey: sourceSd.Key,
+            //        TargetStructureKey: edOutcome.TargetStructureKey);
+            //}
 
             // get the source element
             if (!sourceEds.TryGetValue(edOutcome.SourceElementKey, out DbElement? sourceEd))
@@ -1288,9 +1305,26 @@ public class StructureFhirExporter
                     {{{elementOutcome.Comments}}}
                     """;
         }
-        string? mappingTrace = null;
 
-        if (elementComparisons.TryGetValue(elementOutcome.ComparisonKey, out DbElementComparison? edComp))
+        string? mappingTrace = null;
+        List<string> mappingTraceLines = [];
+
+        List<DbElementOutcomeTarget> eots = DbElementOutcomeTarget.SelectList(
+            _db,
+            ElementOutcomeKey: elementOutcome.Key);
+
+        List<int> elementComparisonKeys = eots
+            .Where(eot => eot.ElementComparisonKey is not null)
+            .Select(eot => eot.ElementComparisonKey!.Value)
+            .ToList();
+
+        List<DbElementComparison> possibleComparisons = elementComparisonKeys.Count == 0
+            ? []
+            : DbElementComparison.SelectList(
+                _db,
+                KeyValues: elementComparisonKeys);
+
+        foreach (DbElementComparison edComp in possibleComparisons)
         {
             DbElement? r2Ed = edComp.ContentKeyR2 is null
                 ? null
@@ -1311,30 +1345,61 @@ public class StructureFhirExporter
                 ? null
                 : DbElement.SelectSingle(_db, Key: edComp.ContentKeyR6.Value);
 
-            List<DbElement?> contentPath = (igTr.PackagePair.SourceFhirSequence < igTr.PackagePair.TargetFhirSequence)
-                ? [r2Ed, r3Ed, r4Ed, r4bEd, r5Ed, r6Ed]
-                : [r6Ed, r5Ed, r4bEd, r4Ed, r3Ed, r2Ed];
+            List<(FhirReleases.FhirSequenceCodes fv, DbElement? ed)> contentPath = (igTr.PackagePair.SourceFhirSequence < igTr.PackagePair.TargetFhirSequence)
+                ? [
+                    (FhirReleases.FhirSequenceCodes.DSTU2, r2Ed),
+                    (FhirReleases.FhirSequenceCodes.STU3, r3Ed),
+                    (FhirReleases.FhirSequenceCodes.R4, r4Ed),
+                    (FhirReleases.FhirSequenceCodes.R4B, r4bEd),
+                    (FhirReleases.FhirSequenceCodes.R5, r5Ed),
+                    (FhirReleases.FhirSequenceCodes.R6, r6Ed)]
+                : [
+                    (FhirReleases.FhirSequenceCodes.R6, r6Ed),
+                    (FhirReleases.FhirSequenceCodes.R5, r5Ed),
+                    (FhirReleases.FhirSequenceCodes.R4B, r4bEd),
+                    (FhirReleases.FhirSequenceCodes.R4, r4Ed),
+                    (FhirReleases.FhirSequenceCodes.STU3, r3Ed),
+                    (FhirReleases.FhirSequenceCodes.DSTU2, r2Ed)];
 
-            mappingTrace = "* " +
-                string.Join("\n* ", contentPath
-                    .Where(ed => ed is not null)
-                    .Select(ed => $"`{ed!.Id}` {ed!.FhirCardinalityString} `{ed!.FullCollatedTypeLiteral}`"));
+            mappingTraceLines.AddRange(contentPath
+                    .Where(cp => cp.ed is not null)
+                    .Select(cp => $" {cp.fv}: `{cp.ed!.Id}` {cp.ed!.FhirCardinalityString} `{cp.ed!.FullCollatedTypeLiteral}`"));
+        }
+
+        if (mappingTraceLines.Count > 0)
+        {
+            mappingTrace = "* " + string.Join("\n* ", mappingTraceLines);
+        }
+        else
+        {
+            mappingTrace = $"* {igTr.PackagePair.SourceFhirSequence} `{sourceEd.Id}` {sourceEd.FhirCardinalityString} `{sourceEd.FullCollatedTypeLiteral}`";
+            if (eots.Count != 0)
+            {
+                foreach (DbElementOutcomeTarget eot in eots)
+                {
+                    if (eot.TargetElementId is null)
+                    {
+                        continue;
+                    }
+                    mappingTrace += $"\n* {igTr.PackagePair.SourceFhirSequence} `{eot.TargetElementId}`";
+                }
+            }
         }
 
         return $$$"""
-                This extension is part of the cross-version definitions generated to enable use of the
-                element `{{{sourceEd.Id}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
-                in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
+            This extension is part of the cross-version definitions generated to enable use of the
+            element `{{{sourceEd.Id}}}` as defined in FHIR {{{igTr.PackagePair.SourceFhirSequence}}}
+            in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}.
 
-                The source element is defined as:
-                `{{{sourceEd.Id}}}` {{{sourceEd.FhirCardinalityString}}} `{{{sourceEd.FullCollatedTypeLiteral}}}`
+            The source element is defined as:
+            `{{{sourceEd.Id}}}` {{{sourceEd.FhirCardinalityString}}} `{{{sourceEd.FullCollatedTypeLiteral}}}`
 
-                Across FHIR versions, the value set has been mapped as:
-                {{{mappingTrace}}}
+            Across FHIR versions, the value set has been mapped as:
+            {{{mappingTrace}}}
 
-                Following are the generation technical comments:
-                {{{elementOutcome.Comments}}}
-                """;
+            Following are the generation technical comments:
+            {{{elementOutcome.Comments}}}
+            """;
     }
 
     private StructureDefinition? buildExtSd(

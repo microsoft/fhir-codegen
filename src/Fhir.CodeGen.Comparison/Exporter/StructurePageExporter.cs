@@ -127,7 +127,9 @@ public class StructurePageExporter
             // get the element outcomes for this structure outcome
             List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
                 _db,
-                StructureOutcomeKey: sdOutcome.Key,
+                SourceFhirPackageKey: sdOutcome.SourceFhirPackageKey,
+                TargetFhirPackageKey: sdOutcome.TargetFhirPackageKey,
+                SourceStructureKey: sdOutcome.SourceStructureKey,
                 orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
 
             Dictionary<int, (string label, string link)> outcomeAccumulator = [];
