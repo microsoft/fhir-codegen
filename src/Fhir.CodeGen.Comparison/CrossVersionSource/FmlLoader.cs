@@ -1239,11 +1239,11 @@ public class FmlLoader
                 // if there are no records, we need to create one
                 if (sdMappingRecords.Count == 0)
                 {
-                    (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(
+                    (string idLong, _, _) = XVerProcessor.GenerateArtifactId(
                         _sourcePackage.ShortName,
                         sourceSd.Id,
                         _targetPackage.ShortName,
-                        targetSd.Id);
+                        targetArtifactId: targetSd.Id);
 
                     // check for maps to other targets and no-maps
                     int otherStructureMapCount = DbStructureMapping.SelectCount(

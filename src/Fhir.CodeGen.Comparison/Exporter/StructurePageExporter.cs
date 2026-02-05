@@ -100,12 +100,24 @@ public class StructurePageExporter
                 continue;
             }
 
+            string id = sdOutcome.GenShortId!;
+            id = id.StartsWith("profile-", StringComparison.OrdinalIgnoreCase)
+                ? id["profile-".Length..]
+                : id.StartsWith("profile", StringComparison.OrdinalIgnoreCase)
+                ? id["profile".Length..]
+                : id.StartsWith("prfl-", StringComparison.OrdinalIgnoreCase)
+                ? id["prfl-".Length..]
+                : id.StartsWith("prfl", StringComparison.OrdinalIgnoreCase)
+                ? id["prfl".Length..]
+                : id;
+
             // create the lookup file
-            string filename = Path.Combine(dir, $"lookup-sd-{sdOutcome.GenLongId}.md");
+            string filename = Path.Combine(dir, $"lookup-sd-{id}.md");
             using ExportStreamWriter mdWriter = createMarkdownWriter(filename);
 
             string targetId = sdOutcome.TargetId ?? "Basic";
-            string elementCmId = $"ConceptMap-{igTr.PackagePair.SourcePackageShortName}-{sdOutcome.SourceId}-elements-for-{igTr.PackagePair.TargetPackageShortName}-{targetId}";
+            //string elementCmId = $"ConceptMap-{igTr.PackagePair.SourcePackageShortName}-{sdOutcome.SourceId}-elements-for-{igTr.PackagePair.TargetPackageShortName}-{targetId}";
+            //string elementCmId = $"conceptmap-{igTr.PackagePair.SourcePackageShortName}-{sdOutcome.SourceId}-elements-for-{igTr.PackagePair.TargetPackageShortName}-{targetId}";
 
             // write a header
             mdWriter.WriteLine(
@@ -119,7 +131,7 @@ public class StructurePageExporter
             mdWriter.WriteLine();
             mdWriter.WriteLine(
                 $"A computable version of the following element information is available in:" +
-                $" [{elementCmId.Replace('-', ' ')}](ConceptMap-{elementCmId}.html)");
+                $" [{sdOutcome.ElementConceptMapName}]({(sdOutcome.ElementConceptMapFileName![..^4] + "html")})");
             mdWriter.WriteLine();
             mdWriter.WriteLine($"| Source Element (FHIR {igTr.PackagePair.SourceFhirSequence}) | Target(s) |");
             mdWriter.WriteLine("| -------------- | ---- |");
@@ -134,14 +146,54 @@ public class StructurePageExporter
 
             Dictionary<int, (string label, string link)> outcomeAccumulator = [];
 
+            HashSet<int> targetedStructureKeys = [];
+
             // iterate over the element outcomes
             foreach (DbElementOutcome edOutcome in edOutcomes)
             {
                 List<string> targetLines = [];
 
-                if (edOutcome.TargetId is not null)
+                // get the targets for this outcome
+                List<DbElementOutcomeTarget> edTargets = DbElementOutcomeTarget.SelectList(
+                    _db,
+                    ElementOutcomeKey: edOutcome.Key,
+                    orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId)]);
+
+                foreach (DbElementOutcomeTarget edTarget in edTargets)
                 {
-                    targetLines.Add($"[{edOutcome.TargetId}]({targetBaseUrl}{edOutcome.TargetId.Split('.')[0]}.html#resource)");
+                    if (edTarget.TargetStructureKey is not null)
+                    {
+                        targetedStructureKeys.Add(edTarget.TargetStructureKey.Value);
+                    }
+
+                    if (edTarget.TargetElementId is not null)
+                    {
+                        targetLines.Add($"[{edTarget.TargetElementId}]({targetBaseUrl}{edTarget.TargetElementId.Split('.')[0]}.html#resource)");
+                    }
+                }
+
+                if (edOutcome.BasicElementEquivalent is not null)
+                {
+                    string targetLabel;
+                    string targetLink;
+
+                    string[] components = edOutcome.BasicElementEquivalent.Split('.');
+                    targetLabel = string.Join('.', ["Basic", .. components[1..]]);
+                    targetLink = $"{targetBaseUrl}Basic.html#resource";
+
+                    outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                    targetLines.Add($"[{targetLabel}]({targetLink})");
+                }
+
+                if (edOutcome.RequiresComponentDefinition)
+                {
+                    string targetLabel;
+                    string targetLink;
+
+                    targetLabel = edOutcome.ComponentGenUrl!;
+                    targetLink = edOutcome.ComponentGenFileName![..^4] + "html";
+
+                    targetLines.Add($"[{targetLabel}]({targetLink})");
                 }
 
                 if (edOutcome.RequiresXVerDefinition)
@@ -149,13 +201,7 @@ public class StructurePageExporter
                     string targetLabel;
                     string targetLink;
 
-                    if (edOutcome.BasicElementEquivalent is not null)
-                    {
-                        string[] components = edOutcome.BasicElementEquivalent.Split('.');
-                        targetLabel = string.Join('.', ["Basic", .. components[1..]]);
-                        targetLink = $"{targetBaseUrl}Basic.html#resource";
-                    }
-                    else if (edOutcome.ParentElementOutcomeKey is null)
+                    if (edOutcome.ParentElementOutcomeKey is null)
                     {
                         if (edOutcome.ExtensionSubstitutionUrl is not null)
                         {
@@ -165,7 +211,7 @@ public class StructurePageExporter
                         else
                         {
                             targetLabel = edOutcome.GenUrl!;
-                            targetLink = $"StructureDefinition-{edOutcome.GenShortId!}.html";
+                            targetLink = edOutcome.GenFileName![..^4] + "html";
                         }
                     }
                     else if (outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
@@ -176,7 +222,7 @@ public class StructurePageExporter
                     else
                     {
                         targetLabel = edOutcome.GenUrl!;
-                        targetLink = $"StructureDefinition-{edOutcome.GenShortId!}.html";
+                        targetLink = edOutcome.GenFileName![..^4] + "html";
                     }
 
                     outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
@@ -188,6 +234,108 @@ public class StructurePageExporter
                     $" | {string.Join("<br/>", targetLines)}");
             }
 
+
+            // if we have multiple target structures, generate tables for each
+            if (targetedStructureKeys.Count > 1)
+            {
+                foreach (int targetSdKey in targetedStructureKeys)
+                {
+                    // resolve the target strcutre
+                    DbStructureDefinition targetSd = DbStructureDefinition.SelectSingle(
+                        _db,
+                        Key: targetSdKey)
+                        ?? throw new Exception($"Failed to resolve target structure key: {targetSdKey}");
+
+                    bool targetsBasic = targetSd.Name == "Basic";
+
+                    mdWriter.WriteLine();
+                    mdWriter.WriteLine($"The following table contains the lookup information specific to when using a FHIR {igTr.PackagePair.TargetFhirSequence} {targetSd.Name}.");
+                    mdWriter.WriteLine($"| Source Element (FHIR {igTr.PackagePair.SourceFhirSequence}) | Target(s) |");
+                    mdWriter.WriteLine("| -------------- | ---- |");
+
+                    // iterate over the element outcomes
+                    foreach (DbElementOutcome edOutcome in edOutcomes)
+                    {
+                        List<string> targetLines = [];
+
+                        // get the targets for this outcome
+                        List<DbElementOutcomeTarget> edTargets = DbElementOutcomeTarget.SelectList(
+                            _db,
+                            ElementOutcomeKey: edOutcome.Key,
+                            TargetStructureKey: targetSdKey,
+                            orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId)]);
+
+                        foreach (DbElementOutcomeTarget edTarget in edTargets)
+                        {
+                            if (edTarget.TargetElementId is not null)
+                            {
+                                targetLines.Add($"[{edTarget.TargetElementId}]({targetBaseUrl}{edTarget.TargetElementId.Split('.')[0]}.html#resource)");
+                            }
+                        }
+
+                        if (targetsBasic &&
+                            (edOutcome.BasicElementEquivalent is not null))
+                        {
+                            string targetLabel;
+                            string targetLink;
+
+                            string[] components = edOutcome.BasicElementEquivalent.Split('.');
+                            targetLabel = string.Join('.', ["Basic", .. components[1..]]);
+                            targetLink = $"{targetBaseUrl}Basic.html#resource";
+
+                            outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                            targetLines.Add($"[{targetLabel}]({targetLink})");
+                        }
+
+                        // only list extensions that can target this
+                        if (edOutcome.RequiresXVerDefinition &&
+                            edOutcome.ExtensionContexts.Any(ec => ec.StartsWith(targetSd.Name, StringComparison.Ordinal) || (ec == "Element")))
+                        {
+                            string targetLabel;
+                            string targetLink;
+
+                            if (edOutcome.ParentElementOutcomeKey is null)
+                            {
+                                if (edOutcome.ExtensionSubstitutionUrl is not null)
+                                {
+                                    targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                                    targetLink = edOutcome.ExtensionSubstitutionUrl;
+                                }
+                                else
+                                {
+                                    targetLabel = edOutcome.GenUrl!;
+                                    targetLink = edOutcome.GenFileName![..^4] + "html";
+                                }
+                            }
+                            else if (outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
+                            {
+                                targetLabel = "Extension slice: " + edOutcome.GenUrl!;
+                                targetLink = parent.link;
+                            }
+                            else
+                            {
+                                targetLabel = edOutcome.GenUrl!;
+                                targetLink = edOutcome.GenFileName![..^4] + "html";
+                            }
+
+                            outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                            targetLines.Add($"[{targetLabel}]({targetLink})");
+                        }
+
+                        if (targetLines.Count == 0)
+                        {
+                            targetLines.Add("<i>Not Available</i>");
+                        }
+
+                        mdWriter.WriteLine(
+                            $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
+                            $" | {string.Join("<br/>", targetLines)}");
+                    }
+                }
+            }
+
+
+
             // finish writing the file
             mdWriter.Close();
 
@@ -197,12 +345,12 @@ public class StructurePageExporter
                 FileName = fn,
                 FileNameWithoutExtension = fn[..^3],
                 IsPageContentFile = true,
-                Name = sdOutcome.GenLongId!.ForName(),
+                Name = sdOutcome.GenName!,
                 Id = null,
                 Url = null,
                 ResourceType = null,
                 Version = null,
-                Description = sdOutcome.GenLongId!.ForName(),
+                Description = sdOutcome.GenName!,
             });
         }
 
@@ -266,11 +414,22 @@ public class StructurePageExporter
 
             string targetId = sdOutcome.TargetId ?? "Basic";
 
+            string id = sdOutcome.GenShortId!;
+            id = id.StartsWith("profile-", StringComparison.OrdinalIgnoreCase)
+                ? id["profile-".Length..]
+                : id.StartsWith("profile", StringComparison.OrdinalIgnoreCase)
+                ? id["profile".Length..]
+                : id.StartsWith("prfl-", StringComparison.OrdinalIgnoreCase)
+                ? id["prfl-".Length..]
+                : id.StartsWith("prfl", StringComparison.OrdinalIgnoreCase)
+                ? id["prfl".Length..]
+                : id;
+
             mdWriter.WriteLine(
                 $"| [{sdOutcome.SourceName}]({sourceBaseUrl}{sdOutcome.SourceId}.html)" +
                 $"| [{targetId}]({targetBaseUrl}{targetId}.html)" +
-                $" | [Lookup: {sdOutcome.GenLongId!.Replace('-', ' ')}](lookup-sd-{sdOutcome.GenLongId}.html)" +
-                $" | [Profile: {sdOutcome.GenShortId!.Replace('-', ' ')}](StructureDefinition-{sdOutcome.GenShortId}.html)");
+                $" | [Lookup: {id}](lookup-sd-{id}.html)" +
+                $" | [Profile: {id}](StructureDefinition-{sdOutcome.GenShortId}.html)");
         }
 
         mdWriter.Close();

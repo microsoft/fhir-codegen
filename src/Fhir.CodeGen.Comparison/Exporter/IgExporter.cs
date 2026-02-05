@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
@@ -62,6 +64,33 @@ public class IgExporter
         public string? ElementMapDir { get; set; } = null;
         public List<XVerIgFileRecord> ElementMapFiles { get; set; } = [];
 
+        private HashSet<string> _usedNames = [];
+
+        public (bool changed, string name) GetName(string nameRequest, string id)
+        {
+            if (_usedNames.Add(nameRequest))
+            {
+                return (false, nameRequest);
+            }
+
+            string attempt = id.ToPascalCase();
+            if (_usedNames.Add(attempt))
+            {
+                return (true, attempt);
+            }
+
+            for (int i = 2; i < 100; i++)
+            {
+                attempt = $"{nameRequest}_{i:000}";
+                if (_usedNames.Add(attempt))
+                {
+                    return (true, attempt);
+                }
+            }
+
+            throw new Exception($"Name: {nameRequest} has more than 100 uses!");
+        }
+
         public PackageContents AsPackageContents()
         {
             if (IgIndexFile is null)
@@ -103,7 +132,6 @@ public class IgExporter
 
         public XVerIgFileRecord? IgIndexFile { get; set; } = null;
         public List<XVerIgFileRecord> XVerSourcePageContentFiles { get; set; } = [];
-
 
         public PackageContents AsPackageContents()
         {
@@ -427,14 +455,14 @@ public class IgExporter
         // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
         //("jira-code", ""),
 
+        // no-check-usage: No Warning in QA if there are extensions/profiles that are not used in this IG
+        ("no-check-usage", "true"),
+
         // no-expansions-files: Do not create the 'expansions.*' files
         ("no-expansions-files", "true"),
 
         // no-ig-database: Do not create the package.db file
         ("no-ig-database", "true"),
-
-        // no-usage-check: No Warning in QA if there are extensions/profiles that are not used in this IG
-        ("no-usage-check", "true"),
 
         // path-resource: Additional directories for source content
         //("path-resource", "input/elementmaps"),
@@ -802,34 +830,55 @@ public class IgExporter
         pageBuilder.AppendLine("""  { "nameUrl" : "index.html", "title" : "Home", "generation" : "markdown" , "page" : [ """);
         pageBuilder.AppendLine("""  { "nameUrl" : "faqs.html", "title" : "FAQs", "generation" : "markdown" },""");
 
-        pageBuilder.AppendLine("""  { "nameUrl" : "lookup-sd.html", "title" : "Structure Lookup", "generation" : "markdown" , "page" : [ """);
-
-        List<string> sdLookupPages = [];
-        foreach (XVerIgFileRecord fileRec in igTr.SdPageContentFiles)
+        if (igTr.SdPageContentFiles.Count == 1)
         {
-            if (skipPages.Contains(fileRec.FileNameWithoutExtension))
+            XVerIgFileRecord sdp = igTr.SdPageContentFiles[0];
+            pageBuilder.AppendLine(
+                $$$"""  { "nameUrl" : "{{{sdp.FileNameWithoutExtension}}}.html", "title" : "{{{sdp.Description}}}", "generation" : "markdown" }, """);
+        }
+        else if (igTr.SdPageContentFiles.Count > 1)
+        {
+            XVerIgFileRecord sdp = igTr.SdPageContentFiles[0];
+            pageBuilder.AppendLine(
+                $$$"""  { "nameUrl" : "{{{sdp.FileNameWithoutExtension}}}.html", "title" : "{{{sdp.Description}}}", "generation" : "markdown" , "page" : [ """);
+
+            foreach (XVerIgFileRecord fileRec in igTr.SdPageContentFiles[1..^1])
             {
-                continue;
+                pageBuilder.AppendLine(
+                    $$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" },""");
             }
 
-            sdLookupPages.Add($$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" }""");
-        }
-        pageBuilder.AppendLine(string.Join(",\n", sdLookupPages));
-        pageBuilder.AppendLine("""]},""");  // close lookup
+            XVerIgFileRecord last = igTr.SdPageContentFiles[^1];
+            pageBuilder.AppendLine(
+                $$$"""    { "nameUrl" : "{{{last.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{last.Name}}}", "generation" : "markdown" }""");
 
-        pageBuilder.AppendLine("""  { "nameUrl" : "lookup-vs.html", "title" : "ValueSet Lookup", "generation" : "markdown" , "page" : [ """);
-        List<string> vsLookupPages = [];
-        foreach (XVerIgFileRecord fileRec in igTr.VsPageContentFiles)
+            pageBuilder.AppendLine("""]},""");  // close lookup
+        }
+
+        if (igTr.VsPageContentFiles.Count == 1)
         {
-            if (skipPages.Contains(fileRec.FileNameWithoutExtension))
+            XVerIgFileRecord sdp = igTr.VsPageContentFiles[0];
+            pageBuilder.AppendLine(
+                $$$"""  { "nameUrl" : "{{{sdp.FileNameWithoutExtension}}}.html", "title" : "{{{sdp.Description}}}", "generation" : "markdown" }, """);
+        }
+        else if (igTr.VsPageContentFiles.Count > 1)
+        {
+            XVerIgFileRecord vdp = igTr.VsPageContentFiles[0];
+            pageBuilder.AppendLine(
+                $$$"""  { "nameUrl" : "{{{vdp.FileNameWithoutExtension}}}.html", "title" : "{{{vdp.Description}}}", "generation" : "markdown" , "page" : [ """);
+
+            foreach (XVerIgFileRecord fileRec in igTr.VsPageContentFiles[1..^1])
             {
-                continue;
+                pageBuilder.AppendLine(
+                    $$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" },""");
             }
 
-            vsLookupPages.Add($$$"""    { "nameUrl" : "{{{fileRec.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{fileRec.Name}}}", "generation" : "markdown" }""");
+            XVerIgFileRecord last = igTr.VsPageContentFiles[^1];
+            pageBuilder.AppendLine(
+                $$$"""    { "nameUrl" : "{{{last.FileNameWithoutExtension}}}.html", "title" : "Lookup for {{{last.Name}}}", "generation" : "markdown" }""");
+
+            pageBuilder.AppendLine("""]},""");  // close lookup
         }
-        pageBuilder.AppendLine(string.Join(",\n", vsLookupPages));
-        pageBuilder.AppendLine("""]},""");  // close lookup
 
         pageBuilder.AppendLine("""  { "nameUrl" : "downloads.html", "title" : "Downloads", "generation" : "markdown" },""");
         pageBuilder.AppendLine("""  { "nameUrl" : "changelog.html", "title" : "Change Log", "generation" : "markdown" }""");

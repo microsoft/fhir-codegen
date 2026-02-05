@@ -385,7 +385,7 @@ public class StructureFhirExporter
             }
 
             // write the profile to a file
-            string filename = $"ConceptMap-{edCm.Id}.json";
+            string filename = sdOutcome.ElementConceptMapFileName ?? throw new ArgumentNullException(nameof(sdOutcome.ElementConceptMapFileName));
             string path = Path.Combine(dir, filename);
             File.WriteAllText(path, edCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
             exported.Add(new()
@@ -400,7 +400,6 @@ public class StructureFhirExporter
                 Version = edCm.Version,
                 Description = edCm.Description ?? edCm.Title ?? $"ConceptMap: {edCm.Url}",
             });
-
         }
 
         _logger.LogInformation($"Wrote {exported.Count} element maps for `{igTr.PackageId}`");
@@ -412,13 +411,14 @@ public class StructureFhirExporter
         DbStructureOutcome sdOutcome)
     {
         string targetId = sdOutcome.TargetId ?? "Basic";
-        string id = $"{igTr.PackagePair.SourcePackageShortName}-{sdOutcome.SourceId}-elements-for-{igTr.PackagePair.TargetPackageShortName}-{targetId}";
+
+        (_, string name) = igTr.GetName(sdOutcome.ElementConceptMapName!, sdOutcome.ElementConceptMapLongId!);
 
         ConceptMap vsCm = new()
         {
-            Id = id,
-            Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ConceptMap/{id}",
-            Name = FhirSanitizationUtils.ReformatIdForName(id),
+            Id = sdOutcome.ElementConceptMapLongId,
+            Url = sdOutcome.ElementConceptMapUrl,
+            Name = name,
             Version = _exporter._crossDefinitionVersion,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version ConceptMap for FHIR {igTr.PackagePair.SourceFhirSequence} resources in FHIR {igTr.PackagePair.TargetFhirSequence}",
@@ -517,8 +517,10 @@ public class StructureFhirExporter
             currentSourceElement.Target.Add(targetElement);
         }
 
-        // write the profile to a file
-        string filename = $"ConceptMap-{cm.Id}.json";
+        // write the resource to a file
+        string filename = cm.Id.StartsWith("conceptmap", StringComparison.OrdinalIgnoreCase)
+            ? $"{cm.Id}.json"
+            : $"ConceptMap-{cm.Id}.json";
         string path = Path.Combine(dir, filename);
         File.WriteAllText(path, cm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
         exported.Add(new()
@@ -541,13 +543,20 @@ public class StructureFhirExporter
     private ConceptMap createResourceConceptMap(
         XVerIgExportTrackingRecord igTr)
     {
-        string id = $"{igTr.PackagePair.SourcePackageShortName}-resources-for-{igTr.PackagePair.TargetPackageShortName}";
+        string id = $"ConceptMap-{igTr.PackagePair.SourcePackageShortName}-resources-for-{igTr.PackagePair.TargetPackageShortName}";
+        string name =
+            $"ConceptMap" +
+            $"{igTr.PackagePair.SourcePackageShortName.ToPascalCase()}" +
+            $"ResourcesFor" +
+            $"{igTr.PackagePair.TargetPackageShortName.ToPascalCase()}";
+
+        (_, name) = igTr.GetName(name, id);
 
         ConceptMap vsCm = new()
         {
             Id = id,
             Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ConceptMap/{id}",
-            Name = FhirSanitizationUtils.ReformatIdForName(id),
+            Name = name,
             Version = _exporter._crossDefinitionVersion,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version ConceptMap for FHIR {igTr.PackagePair.SourceFhirSequence} resources in FHIR {igTr.PackagePair.TargetFhirSequence}",
@@ -656,7 +665,7 @@ public class StructureFhirExporter
                 }
 
                 // write the profile to a file
-                string filename = $"StructureDefinition-{profileSd.Id}.json";
+                string filename = sdOutcome.GenFileName ?? throw new ArgumentNullException(nameof(sdOutcome.GenFileName));
                 string path = Path.Combine(dir, filename);
                 File.WriteAllText(path, profileSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
                 exported.Add(new()
@@ -919,11 +928,13 @@ public class StructureFhirExporter
         string targetStructureName = targetSd?.Name ?? "Basic";
         string profileId = sdOutcome.GenShortId!;
 
+        (_, string name) = igTr.GetName(sdOutcome.GenName!, profileId);
+
         StructureDefinition profileSd = new()
         {
             Id = profileId,
             Url = sdOutcome.GenUrl,
-            Name = FhirSanitizationUtils.ReformatIdForName(sdOutcome.GenLongId!),
+            Name = name,
             Version = _exporter._crossDefinitionVersion,
             FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion) ?? FHIRVersion.N5_0_0,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
@@ -1122,7 +1133,7 @@ public class StructureFhirExporter
             //contentReferenceExtUrlsByEdKey[sourceEd.Key] = extSd.Url;
 
             // write the extension to a file
-            string filename = $"StructureDefinition-{extSd.Id}.json";
+            string filename = edOutcome.ComponentGenFileName ?? throw new ArgumentNullException(nameof(edOutcome.ComponentGenFileName));
             string path = Path.Combine(dir, filename);
             File.WriteAllText(path, extSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
 
@@ -1225,7 +1236,7 @@ public class StructureFhirExporter
             }
 
             // write the extension to a file
-            string filename = $"StructureDefinition-{extSd.Id}.json";
+            string filename = edOutcome.GenFileName ?? throw new ArgumentNullException(nameof(edOutcome.GenFileName));
             string path = Path.Combine(dir, filename);
             File.WriteAllText(path, extSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
 
@@ -1394,7 +1405,7 @@ public class StructureFhirExporter
             The source element is defined as:
             `{{{sourceEd.Id}}}` {{{sourceEd.FhirCardinalityString}}} `{{{sourceEd.FullCollatedTypeLiteral}}}`
 
-            Across FHIR versions, the value set has been mapped as:
+            Across FHIR versions, the element set has been mapped as:
             {{{mappingTrace}}}
 
             Following are the generation technical comments:
@@ -1425,13 +1436,16 @@ public class StructureFhirExporter
             return null;
         }
 
+        (_, string name) = igTr.GetName(
+            useComponentDefinition ? elementOutcome.ComponentGenName! : elementOutcome.GenName!,
+            id);
+
         // build the initial structure definition for the extension
         StructureDefinition extSd = new()
         {
             Id = id,
             Url = useComponentDefinition ? elementOutcome.ComponentGenUrl : elementOutcome.GenUrl,
-            //Name = FhirSanitizationUtils.ReformatIdForName(sdOutcome?.GenLongId ?? edOutcome.GenLongId!),
-            Name = FhirSanitizationUtils.ReformatIdForName(elementOutcome.GenLongId!),
+            Name = name,
             Version = _exporter._crossDefinitionVersion,
             FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion),
             Date = _exporter._runTime.ToString("O"),

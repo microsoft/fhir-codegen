@@ -281,21 +281,26 @@ public class ElementOutcomeGenerator
                 .OrderBy(et => et.Literal)
                 .ToList();
 
-            (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
+            (string idLong, string idShort, string name) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
                 sourceEd.Id);
 
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+            string? extFilename = $"StructureDefinition-{idShort}.json";
 
             string? componentIdLong = null;
             string? componentIdShort = null;
             string? componentExtUrl = null;
+            string? componentName = null;
+            string? componentFilename = null;
 
             if (sourceEd.UsedAsContentReference == true)
             {
                 componentIdLong = idLong;
                 componentIdShort = idShort;
                 componentExtUrl = extUrl;
+                componentName = name;
+                componentFilename = extFilename;
             }
 
             string comments =
@@ -327,7 +332,8 @@ public class ElementOutcomeGenerator
 
             // check to see if we are trying to define an extension onto basic that has a matching basic path and compatible type
             string? basicBasePath = null;
-            if (_targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
+            if (requiresXVerDefinition &&
+                _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
                 _targetBasicElementsById.TryGetValue(basicBasePath!, out DbElement? basicEd))
             {
                 if (canSourceMapToBasicElementType(sourceEd, basicEd) &&
@@ -369,6 +375,7 @@ public class ElementOutcomeGenerator
                 idLong = sourceEd.NameClean();
                 idShort = idLong;
                 extUrl = idLong;
+                extFilename = null;
             }
 
             // create the non-mapped element outcome
@@ -407,10 +414,15 @@ public class ElementOutcomeGenerator
                 GenLongId = idLong,
                 GenShortId = idShort,
                 GenUrl = extUrl,
+                GenName = name,
+                GenFileName = extFilename,
+
                 RequiresComponentDefinition = sourceEd.UsedAsContentReference == true,
                 ComponentGenLongId = componentIdLong,
                 ComponentGenShortId = componentIdShort,
                 ComponentGenUrl = componentExtUrl,
+                ComponentGenName = componentName,
+                ComponentGenFileName = componentFilename,
 
                 AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,
@@ -549,26 +561,28 @@ public class ElementOutcomeGenerator
         // update the generation info on the way out
         if (childrenRequireXver)
         {
-            (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
+            (string idLong, string idShort, string name) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
                 edOutcome.SourceId);
 
             edOutcome.GenLongId = idLong;
             edOutcome.GenShortId = idShort;
             edOutcome.GenUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+            edOutcome.GenName = name;
             edOutcome.RequiresXVerDefinition = true;
         }
 
         // update the component generation info on the way out
         if (childrenRequireComponent)
         {
-            (string componentIdLong, string componentIdShort) = XVerProcessor.GenerateExtensionId(
+            (string componentIdLong, string componentIdShort, string cName) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
                 edOutcome.SourceId);
 
             edOutcome.ComponentGenLongId = componentIdLong;
             edOutcome.ComponentGenShortId = componentIdShort;
             edOutcome.ComponentGenUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{componentIdLong}";
+            edOutcome.ComponentGenName = cName;
             edOutcome.RequiresComponentDefinition = true;
         }
 
@@ -701,15 +715,18 @@ public class ElementOutcomeGenerator
 
             bool isRootElement = sourceEd.ResourceFieldOrder == 0;
 
-            (string idLong, string idShort) = XVerProcessor.GenerateExtensionId(
+            (string idLong, string idShort, string name) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
                 sourceEd.Id);
 
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+            string? extFilename = $"StructureDefinition-{idShort}.json";
 
             string? componentIdLong = null;
             string? componentIdShort = null;
             string? componentExtUrl = null;
+            string? componentName = null;
+            string? componentFilename = null;
             string? basicBasePath = null;
             DbElement? basicEd = null;
             DbExtensionSubstitution? extSubstitute = null;
@@ -723,6 +740,8 @@ public class ElementOutcomeGenerator
                 componentIdLong = idLong;
                 componentIdShort = idShort;
                 componentExtUrl = extUrl;
+                componentName = name;
+                componentFilename = extFilename;
             }
 
             DbElementOutcome? ancestorOutcome = null;
@@ -734,6 +753,8 @@ public class ElementOutcomeGenerator
                 parentOutcome = po.outcome;
                 ancestorOutcome = po.ancestor;
             }
+
+            List<DbElementOutcomeTarget> currentElementOutcomeTargets = [];
 
             // process across each target structure this element has a link to
             foreach (StructureOutcomeGenerator.StructureOutcomeTrackingRecord sdTr in structureTrackingRecords.Values)
@@ -836,6 +857,7 @@ public class ElementOutcomeGenerator
 
                     edTr.OutcomeTargets.Add(nmEOT);
                     _edOutcomeTargetCache.CacheAdd(nmEOT);
+                    currentElementOutcomeTargets.Add(nmEOT);
 
                     continue;
                 }
@@ -924,6 +946,7 @@ public class ElementOutcomeGenerator
 
                     edTr.OutcomeTargets.Add(eot);
                     _edOutcomeTargetCache.CacheAdd(eot);
+                    currentElementOutcomeTargets.Add(eot);
                 }
             }
 
@@ -1178,6 +1201,7 @@ public class ElementOutcomeGenerator
                 idLong = sourceEd.NameClean();
                 idShort = idLong;
                 extUrl = idLong;
+                extFilename = null;
             }
 
             DbElement? targetEd = allContextTargets.Count == 1
@@ -1187,6 +1211,8 @@ public class ElementOutcomeGenerator
             DbElementComparison? singleEC = elementComparisons.Count == 1
                 ? elementComparisons[0]
                 : null;
+
+            outcomeComments.AddRange(currentElementOutcomeTargets.Where(eot => eot.Comments is not null).Select(eot => eot.Comments!));
 
             // create the mapped element outcome
             DbElementOutcome elementOutcome = new()
@@ -1224,11 +1250,15 @@ public class ElementOutcomeGenerator
                 GenLongId = idLong,
                 GenShortId = idShort,
                 GenUrl = extUrl,
+                GenName = name,
+                GenFileName = extFilename,
 
                 RequiresComponentDefinition = sourceEd.UsedAsContentReference == true,
                 ComponentGenLongId = componentIdLong,
                 ComponentGenShortId = componentIdShort,
                 ComponentGenUrl = componentExtUrl,
+                ComponentGenName = componentName,
+                ComponentGenFileName = componentFilename,
 
                 AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,

@@ -287,7 +287,7 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes(specificPairs: specificPairs);
-                GenerateOutcomes();
+                //GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
@@ -1050,17 +1050,30 @@ public partial class XVerProcessor
     }
 
 
-    internal static (string idLong, string idShort) GenerateArtifactId(
+    internal static (string idLong, string idShort, string name) GenerateArtifactId(
         string sourcePackageShortName,
         string sourceArtifactId,
-        string targetPackageShortName)
+        string targetPackageShortName,
+        string? prefixLong = null,
+        string? prefixShort = null)
     {
-        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}";
+        string saName = sourceArtifactId.ToPascalCase();
+        string name = prefixLong is null
+            ? $"{sourcePackageShortName.ToPascalCase()}{saName}For{targetPackageShortName.ToPascalCase()}"
+            : $"{prefixLong.ToPascalCase()}{sourcePackageShortName.ToPascalCase()}{saName}For{targetPackageShortName.ToPascalCase()}";
+
+        string idLong = prefixLong is null
+            ? $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}"
+            : $"{prefixLong}-{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}";
 
         if (idLong.Length <= 64)
         {
-            return (idLong, idLong);
+            return (idLong, idLong, name);
         }
+
+        string sp = prefixShort is null
+            ? string.Empty
+            : (prefixShort + "-");
 
         string idShort;
 
@@ -1073,9 +1086,10 @@ public partial class XVerProcessor
                 .Select(m => m.Value)
                 .ToArray();
 
-            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
+            // use the prefixLong (v2 or v3) plus the first word, capitals in the middle, and the last word
             // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
-            idShort = $"{sourcePackageShortName}" +
+            idShort =
+                $"{sp}{sourcePackageShortName}" +
                 $"-{sourceIdComponents[0]}" +
                 $"{pascalComponents[0]}" +
                 $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
@@ -1086,7 +1100,8 @@ public partial class XVerProcessor
         else if (sourceIdComponents.Length > 2)
         {
             // use the first and last components completely, but abbreviate the middle components
-            idShort = $"{sourcePackageShortName}" +
+            idShort =
+                $"{sp}{sourcePackageShortName}" +
                 $"-{sourceIdComponents[0]}" +
                 $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
                 $"-{sourceIdComponents[^1]}" +
@@ -1095,117 +1110,261 @@ public partial class XVerProcessor
         else
         {
             // truncate the source ID so it all fits
-            idShort = $"{sourcePackageShortName}-{sourceArtifactId.Substring(0, 50)}-for-{targetPackageShortName}";
+            idShort = $"{sp}{sourcePackageShortName}-{sourceArtifactId.Substring(0, 50)}-for-{targetPackageShortName}";
         }
 
-        return (idLong, idShort);
+        return (idLong, idShort, name);
     }
 
-    internal static (string idLong, string idShort) GenerateArtifactId(
+    internal static (string idLong, string idShort, string name) GenerateArtifactId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName,
+        string? targetArtifactId,
+        string? prefixLong = null,
+        string? prefixShort = null)
+    {
+        if ((targetArtifactId is null) ||
+            sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase))
+        {
+            return GenerateArtifactId(
+                sourcePackageShortName,
+                sourceArtifactId,
+                targetPackageShortName,
+                prefixLong: prefixLong,
+                prefixShort: prefixShort);
+        }
+
+        string saName = sourceArtifactId.ToPascalCase();
+        string taName = targetArtifactId.ToPascalCase();
+        string name = prefixLong is null
+            ? $"{sourcePackageShortName.ToPascalCase()}{saName}For{targetPackageShortName.ToPascalCase()}{taName}"
+            : $"{prefixLong.ToPascalCase()}{sourcePackageShortName.ToPascalCase()}{saName}For{targetPackageShortName.ToPascalCase()}{taName}";
+
+        string idLong = prefixLong is null
+            ? $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}-{targetArtifactId}"
+            : $"{prefixLong}-{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}-{targetArtifactId}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong, name);
+        }
+
+        string sp = prefixShort is null
+            ? string.Empty
+            : (prefixShort + "-");
+
+        string shortSource;
+
+        if (sourceArtifactId.Length <= 25)
+        {
+            shortSource = sourceArtifactId;
+        }
+        else
+        {
+            string[] sourceIdComponents = sourceArtifactId.Split('-');
+            if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+                sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+            {
+                // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+                string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
+                    .Select(m => m.Value)
+                    .ToArray();
+
+                if (pascalComponents.Length == 1)
+                {
+                    if (pascalComponents[0].Length <= 20)
+                    {
+                        // just use the full name
+                        shortSource =
+                            $"{sourceIdComponents[0]}" +
+                            $"{pascalComponents[0]}";
+                    }
+                    else
+                    {
+                        // just truncate the name
+                        shortSource =
+                            $"{sourceIdComponents[0]}" +
+                            $"{pascalComponents[0][0..20]}";
+                    }
+                }
+                else
+                {
+                    // use the prefixLong (v2 or v3) plus the first word, capitals in the middle, and the last word
+                    // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+                    shortSource =
+                        $"{sourceIdComponents[0]}" +
+                        $"{pascalComponents[0]}" +
+                        $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                        $"{pascalComponents[^1]}";
+                }
+            }
+            else if (sourceIdComponents.Length > 2)
+            {
+                // use the first and last components completely, but abbreviate the middle components
+                shortSource =
+                    $"{sourceIdComponents[0]}" +
+                    $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                    $"-{sourceIdComponents[^1]}";
+            }
+            else
+            {
+                // truncate the source ID so it all fits
+                shortSource = sourceArtifactId[0..25];
+            }
+        }
+
+        string shortTarget;
+
+        if (targetArtifactId.Length <= 25)
+        {
+            shortTarget = targetArtifactId;
+        }
+        else
+        {
+            string[] targetIdComponents = targetArtifactId.Split('-');
+            if (targetArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
+                targetArtifactId.StartsWith("v2-", StringComparison.Ordinal))
+            {
+                // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
+                string[] pascalComponents = Regex.Matches(targetIdComponents[1], @"([A-Z][a-z0-9]+)")
+                    .Select(m => m.Value)
+                    .ToArray();
+
+                if (pascalComponents.Length == 1)
+                {
+                    if (pascalComponents[0].Length <= 20)
+                    {
+                        // just use the full name
+                        shortTarget =
+                            $"{targetIdComponents[0]}" +
+                            $"{pascalComponents[0]}";
+                    }
+                    else
+                    {
+                        // just truncate the name
+                        shortTarget =
+                            $"{targetIdComponents[0]}" +
+                            $"{pascalComponents[0][0..20]}";
+                    }
+                }
+                else
+                {
+                    // use the prefixLong (v2 or v3) plus the first word, capitals in the middle, and the last word
+                    // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
+                    shortTarget =
+                        $"{targetIdComponents[0]}" +
+                        $"{pascalComponents[0]}" +
+                        $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
+                        $"{pascalComponents[^1]}";
+                }
+            }
+            else if (targetIdComponents.Length > 2)
+            {
+                // use the first and last components completely, but abbreviate the middle components
+                shortTarget =
+                    $"{targetIdComponents[0]}" +
+                    $"-{string.Join('-', targetIdComponents.Skip(1).Take(targetIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
+                    $"-{targetIdComponents[^1]}";
+            }
+            else
+            {
+                // truncate the target ID so it all fits
+                shortTarget = targetArtifactId[0..25];
+            }
+        }
+
+        string idShort = $"{sp}{sourcePackageShortName}-{shortSource}-for-{targetPackageShortName}-{shortTarget}";
+
+        return (idLong, idShort, name);
+    }
+
+    internal static (string idLong, string idShort, string name) GenerateSdElementMapId(
+        string sourcePackageShortName,
+        string sourceArtifactId,
+        string targetPackageShortName)
+    {
+        string name =
+            $"ConceptMap" +
+            $"{sourcePackageShortName.ToPascalCase()}" +
+            $"{sourceArtifactId.ToPascalCase()}" +
+            $"ElementsFor" +
+            $"{targetPackageShortName.ToPascalCase()}";
+
+        string idLong = $"Conceptmap-{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
+
+        if (idLong.Length <= 64)
+        {
+            return (idLong, idLong, name);
+        }
+
+        string idShort = $"Cm-{sourcePackageShortName}-{sourceArtifactId}-ef-{targetPackageShortName}";
+
+        return (idLong, idShort, name);
+    }
+
+    internal static (string idLong, string idShort, string name) GenerateSdElementMapId(
         string sourcePackageShortName,
         string sourceArtifactId,
         string targetPackageShortName,
         string? targetArtifactId)
     {
-        if ((targetArtifactId is null) ||
-            (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase)))
+        if (targetArtifactId is null)
         {
-            return GenerateArtifactId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
+            return GenerateSdElementMapId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
         }
 
-        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-for-{targetPackageShortName}-{targetArtifactId}";
+        string name =
+            $"ConceptMap" +
+            $"{sourcePackageShortName.ToPascalCase()}" +
+            $"{sourceArtifactId.ToPascalCase()}" +
+            $"ElementsFor" +
+            $"{targetPackageShortName.ToPascalCase()}" +
+            $"{targetArtifactId.ToPascalCase()}";
+
+        string idLong =
+            $"Conceptmap" +
+            $"-{sourcePackageShortName}" +
+            $"-{sourceArtifactId}" +
+            $"-elements-for" +
+            $"-{targetPackageShortName}" +
+            $"-{targetArtifactId}";
 
         if (idLong.Length <= 64)
         {
-            return (idLong, idLong);
+            return (idLong, idLong, name);
         }
 
-        string shortSource;
+        string idShort =
+            $"Cm" +
+            $"-{sourcePackageShortName}" +
+            $"-{sourceArtifactId}" +
+            $"-ef" +
+            $"-{targetPackageShortName}" +
+            $"-{targetArtifactId}";
 
-        string[] sourceIdComponents = sourceArtifactId.Split('-');
-        if (sourceArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
-            sourceArtifactId.StartsWith("v2-", StringComparison.Ordinal))
-        {
-            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
-            string[] pascalComponents = Regex.Matches(sourceIdComponents[1], @"([A-Z][a-z0-9]+)")
-                .Select(m => m.Value)
-                .ToArray();
-
-            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
-            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
-            shortSource = $"{sourceIdComponents[0]}" +
-                $"{pascalComponents[0]}" +
-                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
-                $"{pascalComponents[^1]}";
-        }
-        else if (sourceIdComponents.Length > 2)
-        {
-            // use the first and last components completely, but abbreviate the middle components
-            shortSource = $"{sourceIdComponents[0]}" +
-                $"-{string.Join('-', sourceIdComponents.Skip(1).Take(sourceIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
-                $"-{sourceIdComponents[^1]}";
-        }
-        else
-        {
-            // truncate the source ID so it all fits
-            shortSource = sourceArtifactId.Substring(0, 25);
-        }
-
-        string shortTarget;
-
-        string[] targetIdComponents = targetArtifactId.Split('-');
-        if (targetArtifactId.StartsWith("v3-", StringComparison.Ordinal) ||
-            targetArtifactId.StartsWith("v2-", StringComparison.Ordinal))
-        {
-            // the second component is a PascalCase name, extract it into components - e.g. ActInvoiceElementModifier -> [Act, Invoice, Element, Modifier]
-            string[] pascalComponents = Regex.Matches(targetIdComponents[1], @"([A-Z][a-z0-9]+)")
-                .Select(m => m.Value)
-                .ToArray();
-
-            // use the prefix (v2 or v3) plus the first word, capitals in the middle, and the last word
-            // e.g. v3-ActInvoiceElementModifier -> v3ActIEModifier
-            shortTarget = $"{targetIdComponents[0]}" +
-                $"{pascalComponents[0]}" +
-                $"{string.Join(string.Empty, pascalComponents[1..^1].Select(c => c[0]))}" +
-                $"{pascalComponents[^1]}";
-        }
-        else if (targetIdComponents.Length > 2)
-        {
-            // use the first and last components completely, but abbreviate the middle components
-            shortTarget = $"{targetIdComponents[0]}" +
-                $"-{string.Join('-', targetIdComponents.Skip(1).Take(targetIdComponents.Length - 2).Select(c => c.Substring(0, int.Min(c.Length, 3))))}" +
-                $"-{targetIdComponents[^1]}";
-        }
-        else
-        {
-            // truncate the target ID so it all fits
-            shortTarget = targetArtifactId.Substring(0, 25);
-        }
-
-        string idShort = $"{sourcePackageShortName}-{shortSource}-for-{targetPackageShortName}-{shortTarget}";
-
-        return (idLong, idShort);
+        return (idLong, idShort, name);
     }
 
-
-    internal static (string idLong, string idShort) GenerateProfileId(
+    internal static (string idLong, string idShort, string name) GenerateProfileId(
         string sourcePackageShortName,
         string sourceArtifactId,
         string targetPackageShortName)
     {
+        string name = $"Profile{sourceArtifactId.ToPascalCase()}";
         string idLong = $"profile-{sourceArtifactId}";
 
         if (idLong.Length <= 64)
         {
-            return (idLong, idLong);
+            return (idLong, idLong, name);
         }
 
         string idShort = $"prfl-{sourceArtifactId}";
 
-        return (idLong, idShort);
+        return (idLong, idShort, name);
     }
 
-    internal static (string idLong, string idShort) GenerateProfileId(
+    internal static (string idLong, string idShort, string name) GenerateProfileId(
         string sourcePackageShortName,
         string sourceArtifactId,
         string targetPackageShortName,
@@ -1217,11 +1376,12 @@ public partial class XVerProcessor
             return GenerateProfileId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
         }
 
+        string name = $"Profile{sourceArtifactId.ToPascalCase()}For{targetArtifactId.ToPascalCase()}";
         string idLong = $"profile-{sourceArtifactId}-for-{targetArtifactId}";
 
         if (idLong.Length <= 64)
         {
-            return (idLong, idLong);
+            return (idLong, idLong, name);
         }
 
         string idShort = $"prfl-{sourceArtifactId}-for-{targetArtifactId}";
@@ -1230,17 +1390,20 @@ public partial class XVerProcessor
             throw new Exception("Cannot generate a short profile ID within length constraints.");
         }
 
-        return (idLong, idShort);
+        return (idLong, idShort, name);
     }
 
-    internal static (string idLong, string idShort) GenerateExtensionId(
+    internal static (string idLong, string idShort, string name) GenerateExtensionId(
         string sourcePackageShortName,
         string sourceElementPath)
     {
+        string name =
+            $"Extension" +
+            $"{sourceElementPath.Split('.').ToPascalCaseWord(joinDelimiter: "_").Replace("[x]", string.Empty)}";
         string idLong = $"extension-{sourceElementPath.Replace("[x]", string.Empty)}";
         string idShort = $"ext-{sourcePackageShortName}-{collapsePathForId(sourceElementPath)}";
 
-        return (idLong, idShort);
+        return (idLong, idShort, name);
 
         string collapsePathForId(string path)
         {

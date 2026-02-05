@@ -257,6 +257,8 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
     public required string? GenLongId { get; set; }
     public required string? GenShortId { get; set; }
     public required string? GenUrl { get; set; }
+    public required string? GenName { get; set; }
+    public required string? GenFileName { get; set; }
 
     public required string SourceCanonicalVersioned { get; set; }
     public required string SourceCanonicalUnversioned { get; set; }
@@ -301,6 +303,13 @@ public partial class DbValueSetOutcome : DbArtifactOutcomeBase
     public required int? TargetValueSetKey { get; set; }
     //[CgSQLiteIgnore]
     //public override int? TargetContentKey { get => this.TargetValueSetKey; set => this.TargetValueSetKey = value; }
+
+
+    public required string? ConceptMapLongId { get; set; }
+    public required string? ConceptMapShortId { get; set; }
+    public required string? ConceptMapUrl { get; set; }
+    public required string? ConceptMapName { get; set; }
+    public required string? ConceptMapFileName { get; set; }
 }
 
 [CgSQLiteTable(tableName: "ValueSetConceptOutcomes")]
@@ -367,6 +376,13 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
     public required int? TargetStructureKey { get; set; }
 
     public required Fhir.CodeGen.Common.Models.FhirArtifactClassEnum? TargetArtifactClass { get; set; } = null;
+
+
+    public required string? ElementConceptMapLongId { get; set; }
+    public required string? ElementConceptMapShortId { get; set; }
+    public required string? ElementConceptMapUrl { get; set; }
+    public required string? ElementConceptMapName { get; set; }
+    public required string? ElementConceptMapFileName { get; set; }
 }
 
 [CgSQLiteTable(tableName: "ElementOutcomes")]
@@ -418,11 +434,14 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required string? ExtensionSubstitutionUrl { get; set; }
     public required string? BasicElementEquivalent { get; set; }
 
+    public required bool RequiresComponentDefinition { get; set; }
+    public required bool ParentRequiresComponentDefinition { get; set; }
+
     public required string? ComponentGenLongId { get; set; }
     public required string? ComponentGenShortId { get; set; }
     public required string? ComponentGenUrl { get; set; }
-    public required bool RequiresComponentDefinition { get; set; }
-    public required bool ParentRequiresComponentDefinition { get; set; }
+    public required string? ComponentGenName { get; set; }
+    public required string? ComponentGenFileName { get; set; }
 
     public required int? OutcomeTargetCount { get; set; }
 

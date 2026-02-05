@@ -231,13 +231,25 @@ public class ValueSetOutcomeGenerator
                     ? null
                     : targetValueSets[vsComparison.TargetContentKey.Value];
 
-                (string idLong, string idShort) = XVerProcessor.GenerateArtifactId(
+                (string idLong, string idShort, string name) = XVerProcessor.GenerateArtifactId(
                     packagePair.SourcePackageShortName,
                     sourceVs.Id,
                     packagePair.TargetPackageShortName,
-                    targetVs?.Id);
+                    targetArtifactId: targetVs?.Id,
+                    prefixLong: "ValueSet",
+                    prefixShort: "Vs");
 
                 string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ValueSet/{idLong}";
+
+                (string cmIdLong, string cmIdShort, string cmName) = XVerProcessor.GenerateArtifactId(
+                    packagePair.SourcePackageShortName,
+                    sourceVs.Id,
+                    packagePair.TargetPackageShortName,
+                    targetArtifactId: targetVs?.Id,
+                    prefixLong: "ConceptMap",
+                    prefixShort: "Cm");
+
+                string cmUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{idLong}";
 
                 if ((targetVs is null) ||
                     vsComparison.NotMapped)
@@ -280,6 +292,14 @@ public class ValueSetOutcomeGenerator
                         GenLongId = idLong,
                         GenShortId = idShort,
                         GenUrl = url,
+                        GenName = name,
+                        GenFileName = $"{idLong}.json",
+
+                        ConceptMapLongId = cmIdLong,
+                        ConceptMapShortId = cmIdShort,
+                        ConceptMapUrl = cmUrl,
+                        ConceptMapName = cmName,
+                        ConceptMapFileName = $"{cmIdLong}.json",
 
                         IsRenamed = false,
                         IsUnmapped = false,
@@ -445,6 +465,14 @@ public class ValueSetOutcomeGenerator
                     GenLongId = idLong,
                     GenShortId = idShort,
                     GenUrl = url,
+                    GenName = name,
+                    GenFileName = $"{idLong}.json",
+
+                    ConceptMapLongId = cmIdLong,
+                    ConceptMapShortId = cmIdShort,
+                    ConceptMapUrl = cmUrl,
+                    ConceptMapName = cmName,
+                    ConceptMapFileName = $"{cmIdLong}.json",
 
                     IsRenamed = isRenamed,
                     IsUnmapped = isUnmapped,

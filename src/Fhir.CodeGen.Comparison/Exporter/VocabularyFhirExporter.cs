@@ -141,7 +141,7 @@ public class VocabularyFhirExporter
                     vsCm);
 
                 // write the concept map to a file
-                string filename = $"ConceptMap-{vsCm.Id}.json";
+                string filename = vsOutcome.ConceptMapFileName ?? throw new ArgumentNullException(nameof(vsOutcome.ConceptMapFileName));
                 string path = Path.Combine(dir, filename);
                 File.WriteAllText(path, vsCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
                 exported.Add(new()
@@ -305,11 +305,20 @@ public class VocabularyFhirExporter
         DbValueSet targetVs,
         DbValueSetOutcome vsOutcome)
     {
+        if ((vsOutcome.ConceptMapLongId is null) ||
+            (vsOutcome.ConceptMapUrl is null) ||
+            (vsOutcome.ConceptMapName is null))
+        {
+            throw new ArgumentNullException($"Missing required ValueSet Outcome content!");
+        }
+
+        (_, string name) = igTr.GetName(vsOutcome.ConceptMapName!, vsOutcome.ConceptMapLongId);
+
         ConceptMap vsCm = new()
         {
-            Id = vsOutcome.GenShortId!,
-            Url = vsOutcome.GenUrl!,
-            Name = FhirSanitizationUtils.ReformatIdForName(vsOutcome.GenLongId!),
+            Id = vsOutcome.ConceptMapLongId,
+            Url = vsOutcome.ConceptMapUrl,
+            Name = name,
             Version = _exporter._crossDefinitionVersion,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
             Title = $"Cross-version ConceptMap for ValueSet {vsOutcome.GenLongId} from FHIR {igTr.PackagePair.SourceFhirSequence} to FHIR {igTr.PackagePair.TargetFhirSequence}",
@@ -322,7 +331,6 @@ public class VocabularyFhirExporter
 
         return vsCm;
     }
-
 
     private void exportValueSets(XVerIgExportTrackingRecord igTr)
     {
@@ -520,13 +528,15 @@ public class VocabularyFhirExporter
                     """;
             }
 
+            (_, string name) = igTr.GetName(vsOutcome.GenName!, vsOutcome.GenLongId!);
+
             // create our vs
             ValueSet fhirVs = new()
             {
-                Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ValueSet/{vsOutcome.GenLongId}",
+                Url = vsOutcome.GenUrl,
                 Id = vsOutcome.GenLongId,
                 Version = _exporter._crossDefinitionVersion,
-                Name = FhirSanitizationUtils.ReformatIdForName(vsOutcome.GenLongId!),
+                Name = name,
                 Title = $"Cross-version ValueSet {igTr.PackagePair.SourceFhirSequence}.{sourceVs.Name} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
                 Status = PublicationStatus.Active,
                 Experimental = false,
@@ -649,7 +659,7 @@ public class VocabularyFhirExporter
             fhirVs.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, igTr.PackageUrl);
 
             // write the code system to a file
-            string filename = $"ValueSet-{fhirVs.Id}.json";
+            string filename = vsOutcome.GenFileName ?? throw new ArgumentNullException(nameof(vsOutcome.GenFileName));
             string path = Path.Combine(dir, filename);
             File.WriteAllText(path, fhirVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
 
@@ -658,7 +668,7 @@ public class VocabularyFhirExporter
                 FileName = filename,
                 FileNameWithoutExtension = filename[..^5],
                 IsPageContentFile = false,
-                Name = fhirVs.Name,
+                Name = fhirVs.Name ?? $"{vsOutcome.SourceName}_{vsOutcome.TargetName}",
                 Id = fhirVs.Id,
                 Url = fhirVs.Url,
                 ResourceType = Hl7.Fhir.Model.FHIRAllTypes.ValueSet.GetLiteral(),
@@ -724,12 +734,33 @@ public class VocabularyFhirExporter
         // iterate over the code systems to them
         foreach (DbCodeSystem dbCs in codeSystems)
         {
+            // skip code systems that are experimental and have 'example' in their id
+            if ((dbCs.IsExperimental == true) &&
+                dbCs.Id.Contains("example", StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+
+            string? overrideId = null;
+            string? overrideName = null;
+
+            // special case - need to reassign the ids for some code systems
+            switch (dbCs.VersionedUrl)
+            {
+                case "http://terminology.hl7.org/CodeSystem/operation-outcome|2.0.0":
+                    overrideId = "operation-outcome-tho";
+                    overrideName = "OperationOutcomeTHO";
+                    break;
+            }
+
+            (_, string name) = igTr.GetName(overrideName ?? dbCs.Name, overrideId ?? dbCs.Id);
+
             // create the FHIR CodeSystem
             CodeSystem fhirCs = new()
             {
                 Id = dbCs.Id,
                 Url = dbCs.UnversionedUrl,
-                Name = dbCs.Name,
+                Name = name,
                 Version = dbCs.Version,
                 VersionAlgorithm =
                     (dbCs.VersionAlgorithmString != null)
@@ -888,15 +919,6 @@ public class VocabularyFhirExporter
 
             // recursively add concepts
             addDbCodeSystemConcepts(fhirCs.Concept, dbCs.Key);
-
-            // special case - need to reassign the ids for some code systems
-            switch (dbCs.VersionedUrl)
-            {
-                case "http://terminology.hl7.org/CodeSystem/operation-outcome|2.0.0":
-                    fhirCs.Id = "operation-outcome-tho";
-                    fhirCs.Name = "OperationOutcomeTHO";
-                    break;
-            }
 
             // write the code system to a file
             string filename = $"CodeSystem-{fhirCs.Id}.json";

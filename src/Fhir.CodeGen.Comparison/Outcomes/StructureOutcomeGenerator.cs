@@ -8,6 +8,7 @@ using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
+using Hl7.Fhir.Model;
 using Microsoft.Extensions.Logging;
 using CMR = Hl7.Fhir.Model.ConceptMap.ConceptMapRelationship;
 
@@ -269,13 +270,21 @@ public class StructureOutcomeGenerator
             {
                 DbStructureDefinition? targetSd = sdTr.TargetStructure;
 
-                (string idLong, string idShort) = XVerProcessor.GenerateProfileId(
+                (string idLong, string idShort, string name) = XVerProcessor.GenerateProfileId(
                     packagePair.SourcePackageShortName,
                     sourceSd.Id,
                     packagePair.TargetPackageShortName,
                     targetSd?.Id);
 
                 string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+
+                (string emIdLong, string emIdShort, string emName) = XVerProcessor.GenerateSdElementMapId(
+                    packagePair.SourcePackageShortName,
+                    sourceSd.Id,
+                    packagePair.TargetPackageShortName,
+                    targetSd?.Id);
+
+                string emUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{emIdLong}";
 
                 if (sdTr.StructureComparison.NotMapped || (targetSd is null))
                 {
@@ -413,6 +422,14 @@ public class StructureOutcomeGenerator
                     GenLongId = idLong,
                     GenShortId = idShort,
                     GenUrl = url,
+                    GenName = name,
+                    GenFileName = $"StructureDefinition-{idShort}.json",
+
+                    ElementConceptMapLongId = emIdLong,
+                    ElementConceptMapShortId = emIdShort,
+                    ElementConceptMapUrl = emUrl,
+                    ElementConceptMapName = emName,
+                    ElementConceptMapFileName = $"{emIdLong}.json",
                 };
 
                 _sdOutcomeCache.CacheAdd(sdOutcome);
@@ -427,12 +444,19 @@ public class StructureOutcomeGenerator
         int? structureComparisonKey,
         string? comments)
     {
-        (string idLong, string idShort) = XVerProcessor.GenerateProfileId(
+        (string idLong, string idShort, string name) = XVerProcessor.GenerateProfileId(
             packagePair.SourcePackageShortName,
             sourceSd.Id,
             packagePair.TargetPackageShortName);
 
         string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+
+        (string emIdLong, string emIdShort, string emName) = XVerProcessor.GenerateSdElementMapId(
+            packagePair.SourcePackageShortName,
+            sourceSd.Id,
+            packagePair.TargetPackageShortName);
+
+        string emUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{emIdLong}";
 
         structureOutcomeKey ??= DbStructureOutcome.GetIndex();
         comments ??=
@@ -462,6 +486,14 @@ public class StructureOutcomeGenerator
             GenLongId = idLong,
             GenShortId = idShort,
             GenUrl = url,
+            GenName = name,
+            GenFileName = $"StructureDefinition-{idShort}.json",
+
+            ElementConceptMapLongId = emIdLong,
+            ElementConceptMapShortId = emIdShort,
+            ElementConceptMapUrl = emUrl,
+            ElementConceptMapName = emName,
+            ElementConceptMapFileName = $"{emIdLong}.json",
 
             IsRenamed = false,
             IsUnmapped = false,

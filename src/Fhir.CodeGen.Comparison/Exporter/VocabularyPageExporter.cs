@@ -92,8 +92,19 @@ public class VocabularyPageExporter
                 continue;
             }
 
+            string id = vsOutcome.GenLongId ?? vsOutcome.SourceId;
+            id = id.StartsWith("valueset-", StringComparison.OrdinalIgnoreCase)
+                ? id["valueset-".Length..]
+                : id.StartsWith("valueset", StringComparison.OrdinalIgnoreCase)
+                ? id["valueset".Length..]
+                : id.StartsWith("vs-", StringComparison.OrdinalIgnoreCase)
+                ? id["vs-".Length..]
+                : id.StartsWith("vs", StringComparison.OrdinalIgnoreCase)
+                ? id["vs".Length..]
+                : id;
+
             // create the lookup file
-            string filename = Path.Combine(dir, $"lookup-vs-{vsOutcome.GenLongId}.md");
+            string filename = Path.Combine(dir, $"lookup-vs-{id}.md");
             using ExportStreamWriter mdWriter = createMarkdownWriter(filename);
 
             // write a header
@@ -122,7 +133,7 @@ public class VocabularyPageExporter
                 mdWriter.WriteLine();
                 mdWriter.WriteLine(
                     $"A computable version of the following mapping information is available in:" +
-                    $" [{vsOutcome.GenLongId!.Replace('-', ' ')}](ConceptMap-{vsOutcome.GenShortId}.html)");
+                    $" [{vsOutcome.GenName}](ConceptMap-{id}.html)");
             }
 
             mdWriter.WriteLine();
@@ -161,12 +172,12 @@ public class VocabularyPageExporter
                 FileName = fn,
                 FileNameWithoutExtension = fn[..^3],
                 IsPageContentFile = true,
-                Name = vsOutcome.GenLongId!.ForName(),
+                Name = vsOutcome.GenName!,
                 Id = null,
                 Url = null,
                 ResourceType = null,
                 Version = null,
-                Description = vsOutcome.GenLongId!.ForName(),
+                Description = vsOutcome.GenName!,
             });
         }
 
@@ -232,14 +243,25 @@ public class VocabularyPageExporter
                 ? "n/a"
                 : $"[{vsOutcome.TargetId}]({targetBaseUrl}valueset-{vsOutcome.TargetId}.html)";
 
+            string id = vsOutcome.GenLongId ?? vsOutcome.SourceId;
+            id = id.StartsWith("valueset-", StringComparison.OrdinalIgnoreCase)
+                ? id["valueset-".Length..]
+                : id.StartsWith("valueset", StringComparison.OrdinalIgnoreCase)
+                ? id["valueset".Length..]
+                : id.StartsWith("vs-", StringComparison.OrdinalIgnoreCase)
+                ? id["vs-".Length..]
+                : id.StartsWith("vs", StringComparison.OrdinalIgnoreCase)
+                ? id["vs".Length..]
+                : id;
+
             string cm = vsOutcome.RequiresXVerDefinition
-                ? $"[ConceptMap: {vsOutcome.GenShortId!.Replace('-', ' ')}](ConceptMap-{vsOutcome.GenShortId}.html)"
+                ? $"[ConceptMap: {vsOutcome.ConceptMapName}]({(vsOutcome.ConceptMapFileName![..^4] + "html")})"
                 : "n/a";
 
             mdWriter.WriteLine(
                 $"| [{vsOutcome.SourceId}]({sourceBaseUrl}valueset-{vsOutcome.SourceId}.html)" +
                 $"| {target}" +
-                $" | [Lookup: {vsOutcome.GenLongId!.Replace('-', ' ')}](lookup-vs-{vsOutcome.GenLongId}.html)" +
+                $" | [Lookup: {vsOutcome.GenName}](lookup-vs-{id}.html)" +
                 $" | {cm}");
         }
 
