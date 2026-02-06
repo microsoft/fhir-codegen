@@ -284,27 +284,28 @@ public class StructureFhirExporter
                 SourceStructureKey: sdOutcome.SourceStructureKey,
                 orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
 
-            string? lastSourceId = null;
-            ConceptMap.SourceElementComponent? currentSourceElement = null;
+            //string? lastSourceId = null;
+            //ConceptMap.SourceElementComponent? cmSourceElement = null;
+
+            Dictionary<string, (ConceptMap.SourceElementComponent se, HashSet<string> usedTargets)> sourceElementLookup = [];
 
             Dictionary<int, string> outcomeUrlComposition = [];
 
             // iterate over the element outcomes
             foreach (DbElementOutcome edOutcome in edOutcomes)
             {
-                // check if we need a new source element
-                if ((currentSourceElement is null) ||
-                    (lastSourceId != edOutcome.SourceId))
+                if (!sourceElementLookup.TryGetValue(edOutcome.SourceId, out (ConceptMap.SourceElementComponent se, HashSet<string> usedTargets) cmSourceInfo))
                 {
                     // create a new source element
-                    currentSourceElement = new()
+                    cmSourceInfo.se = new()
                     {
                         Code = edOutcome.SourceId,
                         Display = edOutcome.SourceName,
                         Target = [],
                     };
-                    edCm.Group[0].Element.Add(currentSourceElement);
-                    lastSourceId = sdOutcome.SourceId;
+                    cmSourceInfo.usedTargets = [];
+                    edCm.Group[0].Element.Add(cmSourceInfo.se);
+                    sourceElementLookup[edOutcome.SourceId] = cmSourceInfo;
                 }
 
                 CMR relationship;
@@ -356,6 +357,11 @@ public class StructureFhirExporter
 
                     outcomeUrlComposition[edOutcome.Key] = code;
 
+                    if (!cmSourceInfo.usedTargets.Add(code))
+                    {
+                        continue;
+                    }
+
                     // create our target element
                     ConceptMap.TargetElementComponent targetElement = new()
                     {
@@ -364,13 +370,19 @@ public class StructureFhirExporter
                         Relationship = relationship,
                         Comment = edOutcome.Comments,
                     };
-                    currentSourceElement.Target.Add(targetElement);
+                    cmSourceInfo.se.Target.Add(targetElement);
                 }
                 else
                 {
                     // create a target for each target element
                     foreach (DbElementOutcomeTarget eot in outcomeTargetsWithKeys)
                     {
+                        if ((eot.TargetElementId is null) ||
+                            !cmSourceInfo.usedTargets.Add(eot.TargetElementId))
+                        {
+                            continue;
+                        }
+
                         // create our target element
                         ConceptMap.TargetElementComponent targetElement = new()
                         {
@@ -379,7 +391,7 @@ public class StructureFhirExporter
                             Relationship = relationship,
                             Comment = edOutcome.Comments,
                         };
-                        currentSourceElement.Target.Add(targetElement);
+                        cmSourceInfo.se.Target.Add(targetElement);
                     }
                 }
             }
@@ -518,7 +530,7 @@ public class StructureFhirExporter
         }
 
         // write the resource to a file
-        string filename = cm.Id.StartsWith("conceptmap", StringComparison.OrdinalIgnoreCase)
+        string filename = cm.Id.StartsWith("ConceptMap", StringComparison.OrdinalIgnoreCase)
             ? $"{cm.Id}.json"
             : $"ConceptMap-{cm.Id}.json";
         string path = Path.Combine(dir, filename);

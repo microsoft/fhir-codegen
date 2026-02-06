@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
@@ -129,9 +130,15 @@ public class StructurePageExporter
                 $"The FHIR {igTr.PackagePair.SourceFhirSequence} resource is represented in" +
                 $" FHIR {igTr.PackagePair.TargetFhirSequence} via the {targetId} resource.");
             mdWriter.WriteLine();
+
+            mdWriter.WriteLine(
+                $"Note that there is a profile defined to simplify use of this cross-version resource representation:" +
+                $"[Profile: {id}](StructureDefinition-{sdOutcome.GenShortId}.html)");
+            mdWriter.WriteLine();
+
             mdWriter.WriteLine(
                 $"A computable version of the following element information is available in:" +
-                $" [{sdOutcome.ElementConceptMapName}]({(sdOutcome.ElementConceptMapFileName![..^4] + "html")})");
+                $" [{sdOutcome.ElementConceptMapName}](ConceptMap-{(sdOutcome.ElementConceptMapFileName![..^4] + "html")})");
             mdWriter.WriteLine();
             mdWriter.WriteLine($"| Source Element (FHIR {igTr.PackagePair.SourceFhirSequence}) | Target(s) |");
             mdWriter.WriteLine("| -------------- | ---- |");
@@ -231,8 +238,11 @@ public class StructurePageExporter
 
                 mdWriter.WriteLine(
                     $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
-                    $" | {string.Join("<br/>", targetLines)}");
+                    $" | {string.Join("<br/>", targetLines)}" +
+                    $" |");
             }
+            mdWriter.WriteLine("{: .grid }");
+            mdWriter.WriteLine();
 
 
             // if we have multiple target structures, generate tables for each
@@ -250,6 +260,7 @@ public class StructurePageExporter
 
                     mdWriter.WriteLine();
                     mdWriter.WriteLine($"The following table contains the lookup information specific to when using a FHIR {igTr.PackagePair.TargetFhirSequence} {targetSd.Name}.");
+                    mdWriter.WriteLine();
                     mdWriter.WriteLine($"| Source Element (FHIR {igTr.PackagePair.SourceFhirSequence}) | Target(s) |");
                     mdWriter.WriteLine("| -------------- | ---- |");
 
@@ -329,9 +340,12 @@ public class StructurePageExporter
 
                         mdWriter.WriteLine(
                             $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
-                            $" | {string.Join("<br/>", targetLines)}");
+                            $" | {string.Join("<br/>", targetLines)}" +
+                            $" |");
                     }
                 }
+                mdWriter.WriteLine("{: .grid }");
+                mdWriter.WriteLine();
             }
 
 
@@ -387,6 +401,18 @@ public class StructurePageExporter
         mdWriter.WriteLine("The following table links to documentation for the source version of FHIR, for implementers to understand if there is an extension for the element they are trying to use.");
         mdWriter.WriteLine($"These are structures defined in FHIR {igTr.PackagePair.SourceFhirSequence} (the source package), with applicable usage as mapped into FHIR {igTr.PackagePair.TargetFhirSequence} (the target package).");
         mdWriter.WriteLine();
+
+        string cmId = $"ConceptMap-{igTr.PackagePair.SourcePackageShortName}-resources-for-{igTr.PackagePair.TargetPackageShortName}";
+        string cmName =
+            $"ConceptMap" +
+            $"{igTr.PackagePair.SourcePackageShortName.ToPascalCase()}" +
+            $"ResourcesFor" +
+            $"{igTr.PackagePair.TargetPackageShortName.ToPascalCase()}";
+
+        mdWriter.WriteLine(
+            $"A computable version of the following element information is available in:" +
+            $" [{cmName}](ConceptMap-{cmId}.html)");
+        mdWriter.WriteLine();
         mdWriter.WriteLine(
             $"| {igTr.PackagePair.SourceFhirSequence} Structure" +
             $" | {igTr.PackagePair.TargetFhirSequence} Structure" +
@@ -426,11 +452,15 @@ public class StructurePageExporter
                 : id;
 
             mdWriter.WriteLine(
-                $"| [{sdOutcome.SourceName}]({sourceBaseUrl}{sdOutcome.SourceId}.html)" +
-                $"| [{targetId}]({targetBaseUrl}{targetId}.html)" +
-                $" | [Lookup: {id}](lookup-sd-{id}.html)" +
-                $" | [Profile: {id}](StructureDefinition-{sdOutcome.GenShortId}.html)");
+                $"| [{igTr.PackagePair.SourceFhirSequence} {sdOutcome.SourceName}]({sourceBaseUrl}{sdOutcome.SourceId}.html)" +
+                $" | [{igTr.PackagePair.TargetFhirSequence} {targetId}]({targetBaseUrl}{targetId}.html)" +
+                $" | [XVer Lookup: {id}](lookup-sd-{id}.html)" +
+                $" | [XVer Profile: {id}](StructureDefinition-{sdOutcome.GenShortId}.html)" +
+                $" |");
         }
+
+        mdWriter.WriteLine("{: .grid }");
+        mdWriter.WriteLine();
 
         mdWriter.Close();
 

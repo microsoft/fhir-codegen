@@ -381,7 +381,7 @@ public class IgExporter
         new()
         {
             PackageId = "hl7.fhir.uv.extensions",
-            PackageVersion = "5.3.0-ballot-tc1",
+            PackageVersion = "5.3.0-ballot-tc",
             CanonicalUrl = "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",     // "http://hl7.org/fhir/extensions"
             VersionSpecificPackages = true,
             HasR4B = true,
@@ -390,7 +390,7 @@ public class IgExporter
         new()
         {
             PackageId = "hl7.fhir.uv.tools",
-            PackageVersion = "0.9.0",
+            PackageVersion = "1.0.0",
             CanonicalUrl = "http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools",                // "http://hl7.org/fhir/tools"
             VersionSpecificPackages = true,
             HasR4B = false,
@@ -450,7 +450,8 @@ public class IgExporter
 
         // i18n-default-lang: The default language (e.g. Resource.language) to assume in the IG when the resource and/or the element context doesn't specify a language
         //("i18n-default-lang", "US-en"),
-        ("i18n-default-lang", "en-US"),
+        //("i18n-default-lang", "en-US"),
+        //("i18n-default-lang", "en"),
 
         // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
         //("jira-code", ""),

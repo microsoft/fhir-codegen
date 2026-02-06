@@ -160,8 +160,11 @@ public class VocabularyPageExporter
                     $" | {(conceptOutcome.RequiresXVerDefinition ? "Yes" : "No")}" +
                     $" | {(conceptOutcome.TargetSystem is null ? string.Empty : $"`{conceptOutcome.TargetSystem}`")}" +
                     $" | {(conceptOutcome.TargetCode is null ? string.Empty : $"`{conceptOutcome.TargetCode.ForMdTable()}`")}" +
-                    $" | {conceptOutcome.TargetDisplay.ForMdTable()}");
+                    $" | {conceptOutcome.TargetDisplay.ForMdTable()}" +
+                    $" |");
             }
+            mdWriter.WriteLine("{: .grid }");
+            mdWriter.WriteLine();
 
             // finish writing the file
             mdWriter.Close();
@@ -255,15 +258,19 @@ public class VocabularyPageExporter
                 : id;
 
             string cm = vsOutcome.RequiresXVerDefinition
-                ? $"[ConceptMap: {vsOutcome.ConceptMapName}]({(vsOutcome.ConceptMapFileName![..^4] + "html")})"
+                ? $"[ConceptMap: {vsOutcome.ConceptMapName}](ConceptMap-{(vsOutcome.ConceptMapFileName![..^4] + "html")})"
                 : "n/a";
 
             mdWriter.WriteLine(
                 $"| [{vsOutcome.SourceId}]({sourceBaseUrl}valueset-{vsOutcome.SourceId}.html)" +
-                $"| {target}" +
+                $" | {target}" +
                 $" | [Lookup: {vsOutcome.GenName}](lookup-vs-{id}.html)" +
-                $" | {cm}");
+                $" | {cm}" +
+                $" |");
         }
+
+        mdWriter.WriteLine("{: .grid }");
+        mdWriter.WriteLine();
 
         mdWriter.Close();
 

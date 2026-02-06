@@ -758,7 +758,7 @@ public class VocabularyFhirExporter
             // create the FHIR CodeSystem
             CodeSystem fhirCs = new()
             {
-                Id = dbCs.Id,
+                Id = overrideId ?? dbCs.Id,
                 Url = dbCs.UnversionedUrl,
                 Name = name,
                 Version = dbCs.Version,

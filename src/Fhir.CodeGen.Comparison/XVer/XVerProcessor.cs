@@ -1291,7 +1291,7 @@ public partial class XVerProcessor
             $"ElementsFor" +
             $"{targetPackageShortName.ToPascalCase()}";
 
-        string idLong = $"Conceptmap-{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
+        string idLong = $"ConceptMap-{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
 
         if (idLong.Length <= 64)
         {
@@ -1323,7 +1323,7 @@ public partial class XVerProcessor
             $"{targetArtifactId.ToPascalCase()}";
 
         string idLong =
-            $"Conceptmap" +
+            $"ConceptMap" +
             $"-{sourcePackageShortName}" +
             $"-{sourceArtifactId}" +
             $"-elements-for" +
