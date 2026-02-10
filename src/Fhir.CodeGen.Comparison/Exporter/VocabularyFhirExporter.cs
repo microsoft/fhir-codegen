@@ -606,6 +606,8 @@ public class VocabularyFhirExporter
             {
                 Dictionary<string, ValueSet.ConceptSetComponent> composeIncludes = [];
 
+                HashSet<string> usedFhirKeys = [];
+
                 // traverse concepts
                 foreach (DbValueSetConceptOutcome conceptOutcome in conceptOutcomes)
                 {
@@ -628,6 +630,11 @@ public class VocabularyFhirExporter
                         };
                         composeIncludes.Add(composeKey, composeInclude);
                         fhirVs.Compose.Include.Add(composeInclude);
+                    }
+
+                    if (!usedFhirKeys.Add(concept.FhirKey))
+                    {
+                        continue;
                     }
 
                     composeInclude.Concept.Add(new()

@@ -359,7 +359,7 @@ public class ComparisonDatabase : IDisposable
                 SourceElementId = "ElementDefinition.binding.additional",
                 SourceVersion = FhirReleases.FhirSequenceCodes.R5,
                 Context = "ElementDefinition.binding",
-            }
+            },
             //new()
             //{
             //    Key = GetExtensionSubstitutionKey(),
@@ -367,6 +367,23 @@ public class ComparisonDatabase : IDisposable
             //    SourceElementId = "ImplementationGuide.definition.parameter",
             //    Context = "ImplementationGuide.definition.parameter",
             //},
+            new()
+            {
+                Key = DbExtensionSubstitution.GetIndex(),
+                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/alternate-canonical",
+                SourceElementId = null,
+                SourceVersion = null,
+                Context = "canonical",
+            },
+            new()
+            {
+                Key = DbExtensionSubstitution.GetIndex(),
+                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/alternate-reference",
+                SourceElementId = null,
+                SourceVersion = null,
+                Context = "Reference",
+            },
+
         ];
 
         substitutions.Insert(_db, insertPrimaryKey: true);
@@ -4512,6 +4529,8 @@ public class ComparisonDatabase : IDisposable
                 BindingDescription = ed.Binding?.Description,
                 AdditionalBindingCount = additionalBindingCount,
                 FullCollatedTypeLiteral = fullTypeLiteral,
+                DistinctTypeCount = typeNames.Count,
+                DistinctTypeLiterals = string.Join(',', typeNames.Order()),
                 IsInherited = isInherited,
                 BasePath = basePath,
                 BaseElementKey = null,

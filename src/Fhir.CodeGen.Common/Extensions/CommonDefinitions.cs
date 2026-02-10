@@ -71,6 +71,7 @@ public static class CommonDefinitions
     public const string ExtUrlVersionSpecificUseEnd = "endFhirVersion";
 
     public const string ExtUrlAlternateCanonical = "http://hl7.org/fhir/StructureDefinition/alternate-canonical";
+    public const string ExtUrlAlternateReference = "http://hl7.org/fhir/StructureDefinition/alternate-reference";
 
     public const string ConceptMapPropertiesSystem = "http://ginoc.io/fhir/CodeSystem/conceptmap-properties";
     public const string ConceptMapPropertyGenerated = "cg-generated";

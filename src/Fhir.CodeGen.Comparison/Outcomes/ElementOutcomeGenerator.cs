@@ -6,6 +6,7 @@ using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
@@ -107,6 +108,7 @@ public class ElementOutcomeGenerator
     private readonly ILookup<int, DbElementTypeComparison> _etcComparisonsBySourceElementKey;
 
     private readonly Dictionary<string, DbExtensionSubstitution> _extensionSubstitutionsByElementId;
+    private readonly Dictionary<string, DbExtensionSubstitution> _genericExtensionSubstitutionsByUrl;
 
     private DbRecordCache<DbElementOutcome> _edOutcomeCache;
     private DbRecordCache<DbElementOutcomeTarget> _edOutcomeTargetCache;
@@ -204,8 +206,16 @@ public class ElementOutcomeGenerator
         List<DbExtensionSubstitution> extensionSubstitutions = DbExtensionSubstitution.SelectList(
             _db,
             SourceVersion: _packagePair.SourceFhirSequence);
+
+        extensionSubstitutions.AddRange(DbExtensionSubstitution.SelectList(_db, SourceVersionIsNull: true));
+
         _extensionSubstitutionsByElementId = extensionSubstitutions
-            .ToDictionary(es => es.SourceElementId);
+            .Where(es => !string.IsNullOrEmpty(es.SourceElementId))
+            .ToDictionary(es => es.SourceElementId!);
+
+        _genericExtensionSubstitutionsByUrl = extensionSubstitutions
+            .Where(es => string.IsNullOrEmpty(es.SourceElementId))
+            .ToDictionary(es => es.ReplacementUrl);
     }
 
     private bool skipElement(
@@ -907,6 +917,59 @@ public class ElementOutcomeGenerator
                             $"Element `{sourceEd.Id}` is mapped to FHIR {_packagePair.TargetFhirSequence}" +
                             $" structure `{sdTr.TargetStructure.Name}`," +
                             $" but has no target element specified.";
+
+                        DbElement currentSourceEd = sourceEd;
+                        while (ecTargetEd is null)
+                        {
+                            if (currentSourceEd.ParentElementKey is null)
+                            {
+                                targetComments =
+                                    $"Element `{sourceEd.Id}` failed to resolve a context based on" +
+                                    $" the parent source element upwards and mapping to" +
+                                    $" `{sdTr.TargetStructure.Name}`.";
+
+                                break;
+                            }
+
+                            // check to see if we can move the source element id upward and see if we can resolve something
+                            currentSourceEd = _allSourceElements[currentSourceEd.ParentElementKey.Value];
+
+                            // get the element comparisons that target this structure
+                            List<DbElementComparison> parentEdComparisons = DbElementComparison.SelectList(
+                                _db,
+                                SourceFhirPackageKey: _packagePair.SourcePackageKey,
+                                TargetFhirPackageKey: _packagePair.TargetPackageKey,
+                                SourceElementKey: currentSourceEd.Key,
+                                TargetStructureKey: sdTr.TargetStructure.Key);
+
+                            // if there are no comparisons, this does not help
+                            if (parentEdComparisons.Count == 0)
+                            {
+                                continue;
+                            }
+
+                            // build the list of target elements for this structure
+                            List<DbElement> parentTargetEds = parentEdComparisons
+                                .Where(ec => ec.TargetElementKey is not null)
+                                .Distinct()
+                                .Select(ec => _allTargetElements[ec.TargetElementKey!.Value])
+                                .ToList();
+
+                            // figure out our context element, if possible
+                            contextTargetEd = findCommonAncestor(sdTr.TargetStructure.FhirPackageKey, parentTargetEds);
+                            if (contextTargetEd is not null)
+                            {
+                                ecTargetEd = contextTargetEd;
+                                allContextTargets[contextTargetEd.Key] = contextTargetEd;
+
+                                targetComments =
+                                    $"Element `{sourceEd.Id}` is will have a context of {ecTargetEd.Id}" +
+                                    $" based on following the parent source element upwards and mapping to" +
+                                    $" `{sdTr.TargetStructure.Name}`.";
+
+                                break;
+                            }
+                        }
                     }
                     else
                     {
@@ -1195,6 +1258,84 @@ public class ElementOutcomeGenerator
                     $" `{extSubstitute.ReplacementUrl}`.");
             }
 
+            //UnmappedTypeKeys = edTr.UnmappedTypes.Select(ut => ut.Key).ToList(),
+            //    UnmappedTypeNames = edTr.UnmappedTypes.Select(ut => ut.Literal).ToList(),
+
+            List<string> alternateCanonicalTargets = [];
+            List<string> alternateReferenceTargets = [];
+
+            List<string> unmappedTypeNames = edTr.UnmappedTypes.Select(ut => ut.TypeName!).Distinct().ToList();
+            List<string> mappedTypeNames = edTr.MappedTypes.Select(ut => ut.TypeName!).Distinct().ToList();
+
+            // check to see if we are replacing using a generic extension definition (e.g., alternate-canonical)
+            if ((unmappedTypeNames.Count == 1) &&
+                (sourceEd.DistinctTypeCount == 1) &&
+                (sourceEd.ChildElementCount == 0))
+            {
+                switch (unmappedTypeNames[0])
+                {
+                    case "Reference":
+                        {
+                            // only allow reference if there are no mapped types or only 'Reference'
+                            if ((sourceEd.DistinctTypeLiterals == "Reference") &&
+                                _genericExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateReference, out DbExtensionSubstitution? arExt))
+                            {
+                                extSubstitute = arExt;
+                                alternateReferenceTargets = edTr.UnmappedTypes
+                                    .Where(ut => ut.TargetProfile is not null)
+                                    .Select(ut => ut.TargetProfile!)
+                                    .Distinct()
+                                    .Order()
+                                    .ToList();
+                                outcomeComments.Add(
+                                    $"Note that there is an externally-defined extension that has been flagged as the" +
+                                    $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped Reference type:" +
+                                    $" `{extSubstitute.ReplacementUrl}`.");
+                            }
+                        }
+                        break;
+
+                    case "canonical":
+                        {
+                            // only allow reference if there are no mapped types or only 'canonical'
+                            if ((sourceEd.DistinctTypeLiterals == "canonical") &&
+                                _genericExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateCanonical, out DbExtensionSubstitution? acExt))
+                            {
+                                extSubstitute = acExt;
+                                alternateCanonicalTargets = edTr.UnmappedTypes
+                                    .Where(ut => ut.TargetProfile is not null)
+                                    .Select(ut => ut.TargetProfile!)
+                                    .Distinct()
+                                    .Order()
+                                    .ToList();
+                                outcomeComments.Add(
+                                    $"Note that there is an externally-defined extension that has been flagged as the" +
+                                    $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped Canonical type:" +
+                                    $" `{extSubstitute.ReplacementUrl}`.");
+                            }
+                        }
+                        break;
+                }
+            }
+            else if (sourceEd.ChildElementCount == 0)
+            {
+                // check for allowed reference targets
+                alternateReferenceTargets = edTr.UnmappedTypes
+                    .Where(ut => ut.TargetProfile is not null)
+                    .Select(ut => ut.TargetProfile!)
+                    .Distinct()
+                    .Order()
+                    .ToList();
+
+                // check for allowed canonical targets
+                alternateCanonicalTargets = edTr.UnmappedTypes
+                    .Where(ut => ut.TargetProfile is not null)
+                    .Select(ut => ut.TargetProfile!)
+                    .Distinct()
+                    .Order()
+                    .ToList();
+            }
+
             if ((parentOutcome?.RequiresXVerDefinition == true) ||
                 (basicBasePath is not null))
             {
@@ -1259,6 +1400,9 @@ public class ElementOutcomeGenerator
                 ComponentGenUrl = componentExtUrl,
                 ComponentGenName = componentName,
                 ComponentGenFileName = componentFilename,
+
+                AlternateCanonicalTargets = alternateCanonicalTargets,
+                AlternateReferenceTargets = alternateReferenceTargets,
 
                 AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,

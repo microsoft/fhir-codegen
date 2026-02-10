@@ -105,8 +105,8 @@ public static class DbContentClasses
 public partial class DbExtensionSubstitution : DbRecordBase
 {
     public required string ReplacementUrl { get; set; }
-    public required string SourceElementId { get; set; }
-    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes SourceVersion { get; set; }
+    public required string? SourceElementId { get; set; }
+    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes? SourceVersion { get; set; }
     public required string Context { get; set; }
 }
 
@@ -394,6 +394,9 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
     public required string FullCollatedTypeLiteral { get; set; }
     //public required string? FullCollatedReferenceTypesLiteral { get; set; }
 
+    public required int DistinctTypeCount { get; set; }
+    public required string DistinctTypeLiterals { get; set; }
+
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }
     public required int? BindingValueSetKey { get; set; }
@@ -500,6 +503,8 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
         MaxCardinalityString = string.Empty,
         SliceName = null,
         FullCollatedTypeLiteral = string.Empty,
+        DistinctTypeCount = 0,
+        DistinctTypeLiterals = string.Empty,
         //FullCollatedReferenceTypesLiteral = null,
         ValueSetBindingStrength = null,
         BindingValueSet = null,

@@ -421,6 +421,45 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required int SourceChildElementCount { get; set; }
     public required bool SourceUsedAsContentReference { get; set; }
 
+    public string? AlternateCanonicalTargetsLiteral { get; set; }
+    [CgSQLiteIgnore]
+    public List<string> AlternateCanonicalTargets
+    {
+        get => AlternateCanonicalTargetsLiteral is null
+            ? []
+            : AlternateCanonicalTargetsLiteral.Split(',').ToList();
+
+        set
+        {
+            if (value.Count == 0)
+            {
+                AlternateCanonicalTargetsLiteral = null;
+                return;
+            }
+
+            AlternateCanonicalTargetsLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? AlternateReferenceTargetsLiteral { get; set; }
+    [CgSQLiteIgnore]
+    public List<string> AlternateReferenceTargets
+    {
+        get => AlternateReferenceTargetsLiteral is null
+            ? []
+            : AlternateReferenceTargetsLiteral.Split(',').ToList();
+
+        set
+        {
+            if (value.Count == 0)
+            {
+                AlternateReferenceTargetsLiteral = null;
+                return;
+            }
+
+            AlternateReferenceTargetsLiteral = string.Join(',', value);
+        }
+    }
 
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
     public required int? AncestorElementOutcomeKey { get; set; }
