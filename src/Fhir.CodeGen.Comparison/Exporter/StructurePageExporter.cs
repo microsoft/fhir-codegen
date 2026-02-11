@@ -203,25 +203,28 @@ public class StructurePageExporter
                     targetLines.Add($"[{targetLabel}]({targetLink})");
                 }
 
+                bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
+                bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
+
+                bool additionalAlternateCanonical = !isAlternateCanonical &&
+                    (edOutcome.AlternateCanonicalTargetsLiteral is not null);
+
+                bool additionalAlternateReference = !isAlternateReference &&
+                    (edOutcome.AlternateReferenceTargetsLiteral is not null);
+
                 if (edOutcome.RequiresXVerDefinition)
                 {
                     string targetLabel;
                     string targetLink;
 
-                    if (edOutcome.ParentElementOutcomeKey is null)
+                    if (edOutcome.ExtensionSubstitutionUrl is not null)
                     {
-                        if (edOutcome.ExtensionSubstitutionUrl is not null)
-                        {
-                            targetLabel = edOutcome.ExtensionSubstitutionUrl;
-                            targetLink = edOutcome.ExtensionSubstitutionUrl;
-                        }
-                        else
-                        {
-                            targetLabel = edOutcome.GenUrl!;
-                            targetLink = edOutcome.GenFileName![..^4] + "html";
-                        }
+                        targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                        targetLink = edOutcome.ExtensionSubstitutionUrl;
                     }
-                    else if (outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
+                    else if (edOutcome.ParentRequiresXverDefinition &&
+                        (edOutcome.ParentElementOutcomeKey is not null) &&
+                        outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
                     {
                         targetLabel = "Extension slice: " + edOutcome.GenUrl!;
                         targetLink = parent.link;
@@ -234,6 +237,16 @@ public class StructurePageExporter
 
                     outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
                     targetLines.Add($"[{targetLabel}]({targetLink})");
+                }
+
+                if (additionalAlternateCanonical)
+                {
+                    targetLines.Add($"[alternate-canonical]({CommonDefinitions.ExtUrlAlternateCanonical})");
+                }
+
+                if (additionalAlternateReference)
+                {
+                    targetLines.Add($"[alternate-reference]({CommonDefinitions.ExtUrlAlternateReference})");
                 }
 
                 mdWriter.WriteLine(
@@ -305,20 +318,23 @@ public class StructurePageExporter
                             string targetLabel;
                             string targetLink;
 
-                            if (edOutcome.ParentElementOutcomeKey is null)
+                            bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
+                            bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
+
+                            bool additionalAlternateCanonical = !isAlternateCanonical &&
+                                (edOutcome.AlternateCanonicalTargetsLiteral is not null);
+
+                            bool additionalAlternateReference = !isAlternateReference &&
+                                (edOutcome.AlternateReferenceTargetsLiteral is not null);
+
+                            if (edOutcome.ExtensionSubstitutionUrl is not null)
                             {
-                                if (edOutcome.ExtensionSubstitutionUrl is not null)
-                                {
-                                    targetLabel = edOutcome.ExtensionSubstitutionUrl;
-                                    targetLink = edOutcome.ExtensionSubstitutionUrl;
-                                }
-                                else
-                                {
-                                    targetLabel = edOutcome.GenUrl!;
-                                    targetLink = edOutcome.GenFileName![..^4] + "html";
-                                }
+                                targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                                targetLink = edOutcome.ExtensionSubstitutionUrl;
                             }
-                            else if (outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
+                            else if (edOutcome.ParentRequiresXverDefinition &&
+                                (edOutcome.ParentElementOutcomeKey is not null) &&
+                                outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
                             {
                                 targetLabel = "Extension slice: " + edOutcome.GenUrl!;
                                 targetLink = parent.link;
@@ -331,6 +347,16 @@ public class StructurePageExporter
 
                             outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
                             targetLines.Add($"[{targetLabel}]({targetLink})");
+
+                            if (additionalAlternateCanonical)
+                            {
+                                targetLines.Add($"[alternate-canonical]({CommonDefinitions.ExtUrlAlternateCanonical})");
+                            }
+
+                            if (additionalAlternateReference)
+                            {
+                                targetLines.Add($"[alternate-reference]({CommonDefinitions.ExtUrlAlternateReference})");
+                            }
                         }
 
                         if (targetLines.Count == 0)
