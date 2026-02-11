@@ -314,69 +314,87 @@ public partial class XVerProcessor
                 break;
 
             case "load-maps":
-                LoadDatabase(_config.ReloadDatabase, true);
+                //LoadDatabase(_config.ReloadDatabase, true);
                 LoadFhirCrossVersionMaps();
                 break;
 
-            //case "create-db":
-            //    LoadDatabase(true, true);
-            //    LoadFhirCrossVersionMaps(preferV1Maps: true);
-            //    break;
-
-            case "discover":
-                LoadDatabase(_config.ReloadDatabase, true);
-                BuildComparisonPairs();
-                break;
-
             case "compare":
-                LoadDatabase(_config.ReloadDatabase, true);
+                if (_config.ReloadDatabase)
+                {
+                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadFhirCrossVersionMaps();
+                }
+
                 CompareInDatabase();
                 break;
 
             case "compare-vs":
-                LoadDatabase(_config.ReloadDatabase, true, FhirArtifactClassEnum.ValueSet);
+                if (_config.ReloadDatabase)
+                {
+                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadFhirCrossVersionMaps();
+                }
+
                 CompareInDatabase(FhirArtifactClassEnum.ValueSet);
                 break;
 
             case "compare-sd":
-                LoadDatabase(_config.ReloadDatabase, false, FhirArtifactClassEnum.Resource);
+                if (_config.ReloadDatabase)
+                {
+                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadFhirCrossVersionMaps();
+                }
+
                 CompareInDatabase(FhirArtifactClassEnum.Resource);
                 break;
 
             case "outcomes":
-                LoadDatabase(false, false);
-                GenerateOutcomesFromComparisons();
+                if (_config.ReloadDatabase)
+                {
+                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadFhirCrossVersionMaps();
+                }
+
+                GenerateOutcomes();
                 break;
 
-            //case "docs":
-            //    LoadDatabase(false, false);
-            //    WriteDocsFromDatabase();
-            //    break;
+            case "outcomes-vs":
+                if (_config.ReloadDatabase)
+                {
+                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadFhirCrossVersionMaps();
+                }
 
-            //case "docs-vs":
-            //    LoadDatabase(false, false);
-            //    WriteDocsFromDatabase(FhirArtifactClassEnum.ValueSet);
-            //    break;
+                GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
+                break;
 
-            //case "docs-sd":
-            //    LoadDatabase(false, false);
-            //    WriteDocsFromDatabase(FhirArtifactClassEnum.Resource);
-            //    break;
+            case "outcomes-sd":
+                if (_config.ReloadDatabase)
+                {
+                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadFhirCrossVersionMaps();
+                }
 
-            case "fhir":
-                LoadDatabase(false, false);
-                WriteFhirFromDbOutcomes();
-                //WriteFhirFromDatabase();
+                GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
+                break;
+
+
+            case "export":
+                if (_config.ReloadDatabase)
+                {
+                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadFhirCrossVersionMaps();
+                }
+
+                ExportOutcomes();
                 break;
 
             default:
-                LoadDatabase(true, true);
+                LoadDatabase(_config.ReloadDatabase, false);
                 LoadFhirCrossVersionMaps();
-                BuildComparisonPairs();
                 CompareInDatabase();
-                GenerateOutcomesFromComparisons();
-                //WriteDocsFromDatabase();
-                WriteFhirFromDatabase();
+                GenerateOutcomes();
+                ExportOutcomes();
                 break;
         }
     }
