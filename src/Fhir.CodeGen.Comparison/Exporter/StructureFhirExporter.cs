@@ -345,6 +345,10 @@ public class StructureFhirExporter
                         string[] components = edOutcome.BasicElementEquivalent.Split('.');
                         code = string.Join('.', ["Basic", .. components[1..]]);
                     }
+                    else if (edOutcome.ExtensionSubstitutionKey is not null)
+                    {
+                        code = edOutcome.ExtensionSubstitutionUrl!;
+                    }
                     else if ((edOutcome.ParentRequiresXverDefinition == true) &&
                         (edOutcome.ParentElementOutcomeKey is not null) &&
                         outcomeUrlComposition.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out string? parentUrl))
@@ -353,7 +357,7 @@ public class StructureFhirExporter
                     }
                     else
                     {
-                        code = edOutcome.ExtensionSubstitutionUrl ?? edOutcome.GenUrl!;
+                        code = edOutcome.GenUrl!;
                     }
 
                     outcomeUrlComposition[edOutcome.Key] = code;
@@ -372,6 +376,50 @@ public class StructureFhirExporter
                         Comment = edOutcome.Comments,
                     };
                     cmSourceInfo.se.Target.Add(targetElement);
+
+                    // check for additional alternate targets
+                    bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
+                    bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
+
+                    bool additionalAlternateCanonical = !isAlternateCanonical &&
+                        (edOutcome.AlternateCanonicalTargetsLiteral is not null);
+
+                    bool additionalAlternateReference = !isAlternateReference &&
+                        (edOutcome.AlternateReferenceTargetsLiteral is not null);
+
+                    if (additionalAlternateCanonical)
+                    {
+                        string additionalCode = CommonDefinitions.ExtUrlAlternateCanonical;
+
+                        if (cmSourceInfo.usedTargets.Add(additionalCode))
+                        {
+                            ConceptMap.TargetElementComponent additionalTargetElement = new()
+                            {
+                                Code = additionalCode,
+                                Display = edOutcome.TargetName,
+                                Relationship = relationship,
+                                Comment = edOutcome.Comments,
+                            };
+                            cmSourceInfo.se.Target.Add(additionalTargetElement);
+                        }
+                    }
+
+                    if (additionalAlternateReference)
+                    {
+                        string additionalCode = CommonDefinitions.ExtUrlAlternateReference;
+
+                        if (cmSourceInfo.usedTargets.Add(additionalCode))
+                        {
+                            ConceptMap.TargetElementComponent additionalTargetElement = new()
+                            {
+                                Code = additionalCode,
+                                Display = edOutcome.TargetName,
+                                Relationship = relationship,
+                                Comment = edOutcome.Comments,
+                            };
+                            cmSourceInfo.se.Target.Add(additionalTargetElement);
+                        }
+                    }
                 }
                 else
                 {
