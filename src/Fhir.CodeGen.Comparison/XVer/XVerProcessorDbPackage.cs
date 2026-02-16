@@ -2191,7 +2191,6 @@ public partial class XVerProcessor
         return fileRecords;
     }
 
-
     /// <summary>
     /// Generates the .index.json content for a cross-version package, listing all FHIR package contents
     /// defined for a specific source-target package combination.
@@ -2202,6 +2201,7 @@ public partial class XVerProcessor
     /// <param name="xverExtensions">A dictionary of cross-version <see cref="StructureDefinition"/>s (extensions), keyed by (source element key, target package id).</param>
     /// <param name="indexInfo">The <see cref="XverPackageIndexInfo"/> object to populate with index entries.</param>
     /// <returns>A JSON string representing the .index.json file for the cross-version package.</returns>
+    [Obsolete("Switched to IgExporter")]
     private PackageContents getPackageContentIndex(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
@@ -2282,6 +2282,7 @@ public partial class XVerProcessor
         };
     }
 
+    [Obsolete("Switched to IgExporter")]
     private string getIgJsonR5(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,
@@ -2597,6 +2598,7 @@ public partial class XVerProcessor
         { "sourceUrl" : "{{{filenameWithoutExtension}}}.md", "name" : "{{{filenameWithoutExtension}}}.html", "title" : "{{{title}}}", "generation" : "markdown" }
         """;
 
+    [Obsolete("Switched to IgExporter")]
     private string getIgJsonR4(
         DbFhirPackage sourcePackage,
         DbFhirPackage targetPackage,

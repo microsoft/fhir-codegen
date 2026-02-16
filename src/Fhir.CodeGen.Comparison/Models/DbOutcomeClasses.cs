@@ -400,6 +400,7 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
     nameof(SourceStructureKey),
     nameof(SourceResourceOrder))]
 [CgSQLiteIndex(nameof(ParentElementOutcomeKey), nameof(RequiresXVerDefinition), nameof(SourceResourceOrder))]
+[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(ContentReferenceExtensionUrl))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     //[CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
@@ -472,6 +473,11 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required int? ExtensionSubstitutionKey { get; set; }
     public required string? ExtensionSubstitutionUrl { get; set; }
     public required string? BasicElementEquivalent { get; set; }
+
+    [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
+    public required int? ContentReferenceOutcomeKey { get; set; }
+    public required string? ContentReferenceExtensionUrl { get; set; }
+    public required bool? ContentReferenceRequiresXVerDefinition { get; set; }
 
     public required bool RequiresComponentDefinition { get; set; }
     public required bool ParentRequiresComponentDefinition { get; set; }

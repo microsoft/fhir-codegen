@@ -261,7 +261,7 @@ public static class StructureDefinitionExtensions
         }
 
         // traverse our filtered elements
-        foreach (ElementDefinition e in source)
+        foreach (ElementDefinition e in source.OrderBy(ed => ed.cgFieldOrder()))
         {
             // skip slices and their children
             if (skipSlices && e.ElementId.Contains(':'))

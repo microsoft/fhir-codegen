@@ -212,7 +212,7 @@ public class StructurePageExporter
                 bool additionalAlternateReference = !isAlternateReference &&
                     (edOutcome.AlternateReferenceTargetsLiteral is not null);
 
-                if (edOutcome.RequiresXVerDefinition)
+                if (edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true))
                 {
                     string targetLabel;
                     string targetLink;
@@ -221,6 +221,11 @@ public class StructurePageExporter
                     {
                         targetLabel = edOutcome.ExtensionSubstitutionUrl;
                         targetLink = edOutcome.ExtensionSubstitutionUrl;
+                    }
+                    else if (edOutcome.ContentReferenceExtensionUrl is not null)
+                    {
+                        targetLabel = edOutcome.ContentReferenceExtensionUrl;
+                        targetLink = edOutcome.ContentReferenceExtensionUrl;
                     }
                     else if (edOutcome.ParentRequiresXverDefinition &&
                         (edOutcome.ParentElementOutcomeKey is not null) &&
@@ -312,7 +317,7 @@ public class StructurePageExporter
                         }
 
                         // only list extensions that can target this
-                        if (edOutcome.RequiresXVerDefinition &&
+                        if ((edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true)) &&
                             edOutcome.ExtensionContexts.Any(ec => ec.StartsWith(targetSd.Name, StringComparison.Ordinal) || (ec == "Element")))
                         {
                             string targetLabel;
@@ -331,6 +336,11 @@ public class StructurePageExporter
                             {
                                 targetLabel = edOutcome.ExtensionSubstitutionUrl;
                                 targetLink = edOutcome.ExtensionSubstitutionUrl;
+                            }
+                            else if (edOutcome.ContentReferenceExtensionUrl is not null)
+                            {
+                                targetLabel = edOutcome.ContentReferenceExtensionUrl;
+                                targetLink = edOutcome.ContentReferenceExtensionUrl;
                             }
                             else if (edOutcome.ParentRequiresXverDefinition &&
                                 (edOutcome.ParentElementOutcomeKey is not null) &&

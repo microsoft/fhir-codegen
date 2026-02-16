@@ -921,7 +921,7 @@ public class IgExporter
               "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/{{{igTr.PackageId}}}",
               "version" : "{{{_exporter._crossDefinitionVersion}}}",
               "name" : "{{{FhirSanitizationUtils.ReformatIdForName(igTr.PackageId)}}}",
-              "title" : "FHIR Cross-Version Extensions package to use FHIR {{{igTr.PackagePair.SourceFhirSequence}}} in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}",
+              "title" : "Extensions for Using Data Elements from FHIR {{{igTr.PackagePair.SourceFhirSequence}}} in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}",
               "status" : "active",
               "date" : "{{{_exporter._runTime.ToString("O")}}}",
               "publisher" : "{{{CommonDefinitions.WorkgroupNames["fhir"]}}}",
@@ -932,7 +932,7 @@ public class IgExporter
                   "value" : "{{{CommonDefinitions.WorkgroupUrls["fhir"]}}}"
                 }]
               }],
-              "description" : "FHIR Cross-Version for using FHIR {{{igTr.PackagePair.SourceFhirSequence}}} in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}",
+              "description" : "Extensions for Using Data Elements from FHIR {{{igTr.PackagePair.SourceFhirSequence}}} in FHIR {{{igTr.PackagePair.TargetFhirSequence}}}",
               "jurisdiction" : [{
                 "coding" : [{
                   "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
@@ -1111,7 +1111,7 @@ public class IgExporter
             Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{igTr.PackageId}",
             Version = _exporter._crossDefinitionVersion,
             Name = FhirSanitizationUtils.ReformatIdForName(igTr.PackageId),
-            Title = $"FHIR Cross-Version Extensions package to use FHIR {igTr.PackagePair.SourceFhirSequence} in FHIR {igTr.PackagePair.TargetFhirSequence}",
+            Title = $"Extensions for Using Data Elements from FHIR {igTr.PackagePair.SourceFhirSequence} in FHIR {igTr.PackagePair.TargetFhirSequence}",
             Status = PublicationStatus.Active,
             Date = _exporter._runTime.ToString("O"),
             Publisher = CommonDefinitions.WorkgroupNames["fhir"],
@@ -1327,10 +1327,7 @@ public class IgExporter
             Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{packageId}",
             ResourceType = "ImplementationGuide",
             Version = _exporter._crossDefinitionVersion,
-            Description =
-                $"FHIR Cross-Version Extensions package to access" +
-                $" FHIR {targetPackage.DefinitionFhirSequence} artifacts while using" +
-                $" FHIR {sourcePackage.DefinitionFhirSequence}",
+            Description = $"Extensions for Using Data Elements from FHIR {igTr.PackagePair.SourceFhirSequence} in FHIR {igTr.PackagePair.TargetFhirSequence}",
         };
 
         createXVerIgDirectories(igTr);
@@ -1367,10 +1364,7 @@ public class IgExporter
             Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{packageId}",
             ResourceType = "ImplementationGuide",
             Version = _exporter._crossDefinitionVersion,
-            Description =
-                $"FHIR Cross-Version Extensions validation package that contains the contents" +
-                $" from all other FHIR versions to use in" +
-                $" FHIR {package.DefinitionFhirSequence}",
+            Description = $"Extensions for Using Data Elements from any FHIR version in FHIR {package.DefinitionFhirSequence}",
         };
 
         createValidationIgDirectories(vTr);

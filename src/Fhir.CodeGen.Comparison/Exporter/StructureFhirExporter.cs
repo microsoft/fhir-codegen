@@ -349,6 +349,10 @@ public class StructureFhirExporter
                     {
                         code = edOutcome.ExtensionSubstitutionUrl!;
                     }
+                    else if (edOutcome.ContentReferenceOutcomeKey is not null)
+                    {
+                        code = edOutcome.ContentReferenceExtensionUrl!;
+                    }
                     else if ((edOutcome.ParentRequiresXverDefinition == true) &&
                         (edOutcome.ParentElementOutcomeKey is not null) &&
                         outcomeUrlComposition.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out string? parentUrl))
@@ -866,6 +870,10 @@ public class StructureFhirExporter
                 {
                     url = targetEdOutcome.ExtensionSubstitutionUrl;
                 }
+                else if (targetEdOutcome.ContentReferenceExtensionUrl is not null)
+                {
+                    url = targetEdOutcome.ContentReferenceExtensionUrl;
+                }
                 else if (targetEdOutcome.RequiresXVerDefinition &&
                     (targetEdOutcome.GenUrl is not null) &&
                     targetEdOutcome.GenUrl.StartsWith("http:", StringComparison.Ordinal))
@@ -1224,6 +1232,7 @@ public class StructureFhirExporter
             ParentRequiresComponentDefinition: false,
             RequiresXVerDefinition: false,
             ExtensionSubstitutionKeyIsNull: true,
+            ContentReferenceExtensionUrlIsNull: true,
             orderByProperties: [nameof(DbElementOutcome.SourceStructureKey), nameof(DbElementOutcome.SourceResourceOrder)]);
 
         HashSet<string> generatedExtensionIds = [];
@@ -1324,6 +1333,7 @@ public class StructureFhirExporter
             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
             RequiresXVerDefinition: true,
             ExtensionSubstitutionKeyIsNull: true,
+            ContentReferenceExtensionUrlIsNull: true,
             ParentRequiresXverDefinition: false,
             //ParentElementOutcomeKeyIsNull: true,
             orderByProperties: [nameof(DbElementOutcome.SourceStructureKey), nameof(DbElementOutcome.SourceResourceOrder)]);
