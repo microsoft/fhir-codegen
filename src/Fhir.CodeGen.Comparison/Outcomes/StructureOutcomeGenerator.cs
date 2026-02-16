@@ -105,6 +105,119 @@ public class StructureOutcomeGenerator
         DbFhirPackage sourcePackage = packagePair.SourcePackage;
         DbFhirPackage targetPackage = packagePair.TargetPackage;
 
+        // get all the elements that are content references and export extensions
+        List<DbElementOutcome> edOutcomesWithCRs = DbElementOutcome.SelectList(
+            _db,
+            SourceFhirPackageKey: sourcePackage.Key,
+            TargetFhirPackageKey: targetPackage.Key,
+            SourceUsedAsContentReference: true,
+            SourceAncestorUsedAsContentReferenceIdIsNull: true,
+            RequiresXVerDefinition: true,
+            ParentRequiresXverDefinition: false);
+
+        // iterate over these elements to add contexts of elements that use them as content references
+        foreach (DbElementOutcome edOutcomeWithCR in edOutcomesWithCRs)
+        {
+            // find the elements that use this element as a content reference
+            List<DbElement> referencingEds = DbElement.SelectList(
+                _db,
+                FhirPackageKey: sourcePackage.Key,
+                ContentReferenceSourceKey: edOutcomeWithCR.SourceElementKey);
+
+            int sourceIdLen = edOutcomeWithCR.SourceId.Length;
+
+            List<string> ctxToAdd = [];
+            // iterate over the contexts and create replacements as necessary
+            foreach (string ctx in edOutcomeWithCR.ExtensionContexts)
+            {
+                if (!ctx.StartsWith(edOutcomeWithCR.SourceId, StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                foreach (DbElement referencingEd in referencingEds)
+                {
+                    string newCtx = referencingEd.Id + ctx[sourceIdLen..];
+                    ctxToAdd.Add(newCtx);
+                }
+            }
+
+            if (ctxToAdd.Count == 0)
+            {
+                continue;
+            }
+
+            List<string> allCtx = [];
+            allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
+            allCtx.AddRange(ctxToAdd);
+
+            edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
+            _edOutcomeCache.CacheUpdate(edOutcomeWithCR);
+        }
+
+        // do the same for every extension that has an ancestor that is a content reference
+        edOutcomesWithCRs = DbElementOutcome.SelectList(
+            _db,
+            SourceFhirPackageKey: sourcePackage.Key,
+            TargetFhirPackageKey: targetPackage.Key,
+            SourceUsedAsContentReference: false,
+            SourceAncestorUsedAsContentReferenceIdIsNull: false,
+            RequiresXVerDefinition: true,
+            ParentRequiresXverDefinition: false);
+
+        // iterate over these elements to add contexts of elements that use them as content references
+        foreach (DbElementOutcome edOutcomeWithCR in edOutcomesWithCRs)
+        {
+            string sourceId = edOutcomeWithCR.SourceAncestorUsedAsContentReferenceId!;
+
+            // resolve the element
+            DbElement? crEd = DbElement.SelectSingle(
+                _db,
+                FhirPackageKey: sourcePackage.Key,
+                Id: sourceId);
+
+            if (crEd is null)
+            {
+                throw new Exception($"Could not find content reference ancestor element with id {sourceId} for ElementOutcome with key {edOutcomeWithCR.Key}");
+            }
+
+            // find the elements that use this element as a content reference
+            List<DbElement> referencingEds = DbElement.SelectList(
+                _db,
+                FhirPackageKey: sourcePackage.Key,
+                ContentReferenceSourceKey: crEd.Key);
+
+            int sourceIdLen = sourceId.Length;
+
+            List<string> ctxToAdd = [];
+            // iterate over the contexts and create replacements as necessary
+            foreach (string ctx in edOutcomeWithCR.ExtensionContexts)
+            {
+                if (!ctx.StartsWith(sourceId, StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                foreach (DbElement referencingEd in referencingEds)
+                {
+                    string newCtx = referencingEd.Id + ctx[sourceIdLen..];
+                    ctxToAdd.Add(newCtx);
+                }
+            }
+
+            if (ctxToAdd.Count == 0)
+            {
+                continue;
+            }
+
+            List<string> allCtx = [];
+            allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
+            allCtx.AddRange(ctxToAdd);
+
+            edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
+            _edOutcomeCache.CacheUpdate(edOutcomeWithCR);
+        }
+#if false
         // get the outcomes that have content reference extension URLs
         List<DbElementOutcome> relatedEdOutcomes = DbElementOutcome.SelectList(
             _db,
@@ -147,7 +260,7 @@ public class StructureOutcomeGenerator
                 _edOutcomeCache.CacheUpdate(crEdOutcome);
             }
         }
-
+#endif
         // apply our changes
         applyCachedChanges(packagePair);
     }

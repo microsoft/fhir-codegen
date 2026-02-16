@@ -299,6 +299,10 @@ public class ElementOutcomeGenerator
                 }
             }
 
+            DbElement? parentEd = sourceEd.ParentElementKey is null
+                ? null
+                : _allSourceElements[sourceEd.ParentElementKey.Value];
+
             List<DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
                 .OrderBy(et => et.Literal)
                 .ToList();
@@ -309,21 +313,6 @@ public class ElementOutcomeGenerator
 
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
             string? extFilename = $"StructureDefinition-{idShort}.json";
-
-            string? componentIdLong = null;
-            string? componentIdShort = null;
-            string? componentExtUrl = null;
-            string? componentName = null;
-            string? componentFilename = null;
-
-            if (sourceEd.UsedAsContentReference == true)
-            {
-                componentIdLong = idLong;
-                componentIdShort = idShort;
-                componentExtUrl = extUrl;
-                componentName = name;
-                componentFilename = extFilename;
-            }
 
             string comments =
                 $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
@@ -400,6 +389,10 @@ public class ElementOutcomeGenerator
                 extFilename = null;
             }
 
+            string? ancestorCR = parentEd?.UsedAsContentReference == true
+                ? parentEd.Id
+                : parentOutcome?.SourceAncestorUsedAsContentReferenceId;
+
             // create the non-mapped element outcome
             DbElementOutcome elementOutcome = new()
             {
@@ -420,6 +413,7 @@ public class ElementOutcomeGenerator
                 SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
                 SourceChildElementCount = sourceEd.ChildElementCount,
                 SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
+                SourceAncestorUsedAsContentReferenceId = ancestorCR,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -439,21 +433,14 @@ public class ElementOutcomeGenerator
                 GenName = name,
                 GenFileName = extFilename,
 
-                RequiresComponentDefinition = sourceEd.UsedAsContentReference == true,
-                ComponentGenLongId = componentIdLong,
-                ComponentGenShortId = componentIdShort,
-                ComponentGenUrl = componentExtUrl,
-                ComponentGenName = componentName,
-                ComponentGenFileName = componentFilename,
-
                 ContentReferenceOutcomeKey = contentRefEdOutcome?.Key,
-                ContentReferenceExtensionUrl = contentRefEdOutcome?.ComponentGenUrl ?? contentRefEdOutcome?.GenUrl,
+                ContentReferenceExtensionUrl = contentRefEdOutcome?.GenUrl,
                 ContentReferenceRequiresXVerDefinition = contentRefEdOutcome?.RequiresXVerDefinition,
+                ContentReferenceAncestorId = contentRefEdOutcome?.SourceId ?? parentOutcome?.ContentReferenceAncestorId,
 
                 AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,
                 ParentRequiresXverDefinition = parentOutcome?.RequiresXVerDefinition ?? false,
-                ParentRequiresComponentDefinition = parentOutcome?.RequiresComponentDefinition ?? false,
                 SourceIsModifier = sourceEd.IsModifier,
                 DefineAsModifier = defineAsModifier,
                 ExtensionContexts = contexts,
@@ -538,7 +525,7 @@ public class ElementOutcomeGenerator
             outcomesByParentKey);
     }
 
-    private (bool requiresXver, bool requiresComponent) updateOutcomesWithChildInfoRecurse(
+    private bool updateOutcomesWithChildInfoRecurse(
         DbElementOutcome edOutcome,
         ILookup<int?, DbElementOutcome> outcomesByParentKey)
     {
@@ -549,40 +536,34 @@ public class ElementOutcomeGenerator
 
         if (childOutcomes.Count == 0)
         {
-            return (edOutcome.RequiresXVerDefinition, edOutcome.RequiresComponentDefinition);
+            return edOutcome.RequiresXVerDefinition;
         }
 
         bool childrenRequireXver = true;
-        bool childrenRequireComponent = true;
 
         // iterate over each child outcome to bubble up requirements
         foreach (DbElementOutcome childOutcome in childOutcomes)
         {
-            (bool childRequiresXver, bool childRequiresComponent) = updateOutcomesWithChildInfoRecurse(
+            bool childRequiresXver = updateOutcomesWithChildInfoRecurse(
                 childOutcome,
                 outcomesByParentKey);
 
             childrenRequireXver = childrenRequireXver && childRequiresXver;
-            childrenRequireComponent = childrenRequireComponent && childRequiresComponent;
         }
 
         bool originalParentRequiresXver = edOutcome.ParentRequiresXverDefinition;
-        bool originalParentRequiresComponent = edOutcome.ParentRequiresComponentDefinition;
 
         // update children if necessary
-        if ((childrenRequireXver && !edOutcome.RequiresXVerDefinition) ||
-            (childrenRequireComponent && !edOutcome.RequiresComponentDefinition))
+        if (childrenRequireXver && !edOutcome.RequiresXVerDefinition)
         {
             setOutcomeRequiresRecursive(
                 edOutcome,
                 childrenRequireXver,
-                childrenRequireComponent,
                 outcomesByParentKey);
         }
 
         // reset to the value at this level - processing a parent will reset if necessary
         edOutcome.ParentRequiresXverDefinition = originalParentRequiresXver;
-        edOutcome.ParentRequiresComponentDefinition = originalParentRequiresComponent;
 
         // update the generation info on the way out
         if (childrenRequireXver)
@@ -598,28 +579,13 @@ public class ElementOutcomeGenerator
             edOutcome.RequiresXVerDefinition = true;
         }
 
-        // update the component generation info on the way out
-        if (childrenRequireComponent)
-        {
-            (string componentIdLong, string componentIdShort, string cName) = XVerProcessor.GenerateExtensionId(
-                _packagePair.SourcePackageShortName,
-                edOutcome.SourceId);
-
-            edOutcome.ComponentGenLongId = componentIdLong;
-            edOutcome.ComponentGenShortId = componentIdShort;
-            edOutcome.ComponentGenUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{componentIdLong}";
-            edOutcome.ComponentGenName = cName;
-            edOutcome.RequiresComponentDefinition = true;
-        }
-
         // return for parent
-        return (childrenRequireXver, childrenRequireComponent);
+        return childrenRequireXver;
     }
 
     private void setOutcomeRequiresRecursive(
         DbElementOutcome edOutcome,
         bool requiresXver,
-        bool requiresComponent,
         ILookup<int?, DbElementOutcome> outcomesByParentKey)
     {
         // get the child outcomes for this outcome
@@ -632,7 +598,6 @@ public class ElementOutcomeGenerator
             setOutcomeRequiresRecursive(
                 childOutcome,
                 requiresXver,
-                requiresComponent,
                 outcomesByParentKey);
         }
 
@@ -646,18 +611,6 @@ public class ElementOutcomeGenerator
             edOutcome.GenUrl = nameClean;
 
             edOutcome.ParentRequiresXverDefinition = true;
-        }
-
-        if (requiresComponent)
-        {
-            // clear the component gen info, since we are bubbling up
-            edOutcome.ComponentGenLongId = null;
-            edOutcome.ComponentGenShortId = null;
-            edOutcome.ComponentGenUrl = null;
-
-            edOutcome.RequiresComponentDefinition = true;
-
-            edOutcome.ParentRequiresComponentDefinition = true;
         }
     }
 
@@ -769,11 +722,6 @@ public class ElementOutcomeGenerator
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
             string? extFilename = $"StructureDefinition-{idShort}.json";
 
-            string? componentIdLong = null;
-            string? componentIdShort = null;
-            string? componentExtUrl = null;
-            string? componentName = null;
-            string? componentFilename = null;
             string? basicBasePath = null;
             DbElement? basicEd = null;
             DbExtensionSubstitution? extSubstitute = null;
@@ -781,15 +729,6 @@ public class ElementOutcomeGenerator
             List<string> outcomeComments = [];
 
             Dictionary<int, DbElement> allContextTargets = [];
-
-            if (sourceEd.UsedAsContentReference == true)
-            {
-                componentIdLong = idLong;
-                componentIdShort = idShort;
-                componentExtUrl = extUrl;
-                componentName = name;
-                componentFilename = extFilename;
-            }
 
             DbElementOutcome? ancestorOutcome = null;
             DbElementOutcome? parentOutcome = null;
@@ -1061,14 +1000,6 @@ public class ElementOutcomeGenerator
                 outcomeComments.Add(
                     $"Element `{sourceEd.Id}` is part of an existing definition because" +
                     $" parent element `{parentOutcome.SourceId}` requires a cross-version extension.");
-            }
-
-            if (parentOutcome?.RequiresComponentDefinition == true)
-            {
-                outcomeComments.Add(
-                    $"Element `{sourceEd.Id}` is part of an existing definition because" +
-                    $" parent element `{parentOutcome.SourceId}` requires a component extension" +
-                    $" (e.g., if this element is used as a content reference).");
             }
 
             bool defineAsModifier = sourceEd.IsModifier;
@@ -1392,6 +1323,10 @@ public class ElementOutcomeGenerator
 
             outcomeComments.AddRange(currentElementOutcomeTargets.Where(eot => eot.Comments is not null).Select(eot => eot.Comments!));
 
+            string? ancestorCR = parentEd?.UsedAsContentReference == true
+                ? parentEd.Id
+                : parentOutcome?.SourceAncestorUsedAsContentReferenceId;
+
             // create the mapped element outcome
             DbElementOutcome elementOutcome = new()
             {
@@ -1412,6 +1347,7 @@ public class ElementOutcomeGenerator
                 SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
                 SourceChildElementCount = sourceEd.ChildElementCount,
                 SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
+                SourceAncestorUsedAsContentReferenceId = ancestorCR,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -1431,16 +1367,10 @@ public class ElementOutcomeGenerator
                 GenName = name,
                 GenFileName = extFilename,
 
-                RequiresComponentDefinition = sourceEd.UsedAsContentReference == true,
-                ComponentGenLongId = componentIdLong,
-                ComponentGenShortId = componentIdShort,
-                ComponentGenUrl = componentExtUrl,
-                ComponentGenName = componentName,
-                ComponentGenFileName = componentFilename,
-
                 ContentReferenceOutcomeKey = contentRefEdOutcome?.Key,
-                ContentReferenceExtensionUrl = contentRefEdOutcome?.ComponentGenUrl ?? contentRefEdOutcome?.GenUrl,
+                ContentReferenceExtensionUrl = contentRefEdOutcome?.GenUrl,
                 ContentReferenceRequiresXVerDefinition = contentRefEdOutcome?.RequiresXVerDefinition,
+                ContentReferenceAncestorId = contentRefEdOutcome?.SourceId ?? parentOutcome?.ContentReferenceAncestorId,
 
                 AlternateCanonicalTargets = alternateCanonicalTargets,
                 AlternateReferenceTargets = alternateReferenceTargets,
@@ -1448,7 +1378,6 @@ public class ElementOutcomeGenerator
                 AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,
                 ParentRequiresXverDefinition = parentOutcome?.RequiresXVerDefinition ?? false,
-                ParentRequiresComponentDefinition = parentOutcome?.RequiresComponentDefinition ?? false,
                 SourceIsModifier = sourceEd.IsModifier,
                 DefineAsModifier = defineAsModifier,
                 ExtensionContexts = allContextTargets.Values.Select(ed => ed.Id).Distinct().Order().ToList(),

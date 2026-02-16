@@ -400,7 +400,13 @@ public partial class DbStructureOutcome : DbArtifactOutcomeBase
     nameof(SourceStructureKey),
     nameof(SourceResourceOrder))]
 [CgSQLiteIndex(nameof(ParentElementOutcomeKey), nameof(RequiresXVerDefinition), nameof(SourceResourceOrder))]
-[CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(ContentReferenceExtensionUrl))]
+[CgSQLiteIndex(
+    nameof(SourceFhirPackageKey),
+    nameof(TargetFhirPackageKey),
+    nameof(SourceUsedAsContentReference),
+    nameof(SourceAncestorUsedAsContentReferenceId),
+    nameof(RequiresXVerDefinition),
+    nameof(ParentRequiresXverDefinition))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     //[CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
@@ -421,6 +427,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required string SourceMaxCardinalityString { get; set; }
     public required int SourceChildElementCount { get; set; }
     public required bool SourceUsedAsContentReference { get; set; }
+    public required string? SourceAncestorUsedAsContentReferenceId { get; set; }
 
     public string? AlternateCanonicalTargetsLiteral { get; set; }
     [CgSQLiteIgnore]
@@ -478,15 +485,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required int? ContentReferenceOutcomeKey { get; set; }
     public required string? ContentReferenceExtensionUrl { get; set; }
     public required bool? ContentReferenceRequiresXVerDefinition { get; set; }
-
-    public required bool RequiresComponentDefinition { get; set; }
-    public required bool ParentRequiresComponentDefinition { get; set; }
-
-    public required string? ComponentGenLongId { get; set; }
-    public required string? ComponentGenShortId { get; set; }
-    public required string? ComponentGenUrl { get; set; }
-    public required string? ComponentGenName { get; set; }
-    public required string? ComponentGenFileName { get; set; }
+    public required string? ContentReferenceAncestorId { get; set; }
 
     public required int? OutcomeTargetCount { get; set; }
 

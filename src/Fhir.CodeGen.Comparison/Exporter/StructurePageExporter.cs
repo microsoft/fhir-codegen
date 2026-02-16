@@ -192,17 +192,6 @@ public class StructurePageExporter
                     targetLines.Add($"[{targetLabel}]({targetLink})");
                 }
 
-                if (edOutcome.RequiresComponentDefinition)
-                {
-                    string targetLabel;
-                    string targetLink;
-
-                    targetLabel = edOutcome.ComponentGenUrl!;
-                    targetLink = edOutcome.ComponentGenFileName![..^4] + "html";
-
-                    targetLines.Add($"[{targetLabel}]({targetLink})");
-                }
-
                 bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
                 bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
 
@@ -242,6 +231,15 @@ public class StructurePageExporter
 
                     outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
                     targetLines.Add($"[{targetLabel}]({targetLink})");
+                }
+
+                if (edOutcome.ContentReferenceExtensionUrl is not null)
+                {
+                    targetLines.Add($"[{edOutcome.ContentReferenceExtensionUrl}]({edOutcome.ContentReferenceExtensionUrl})");
+                }
+                else if (edOutcome.ContentReferenceAncestorId is not null)
+                {
+                    targetLines.Add($"See: `{edOutcome.ContentReferenceAncestorId}`");
                 }
 
                 if (additionalAlternateCanonical)
@@ -357,6 +355,15 @@ public class StructurePageExporter
 
                             outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
                             targetLines.Add($"[{targetLabel}]({targetLink})");
+
+                            if (edOutcome.ContentReferenceExtensionUrl is not null)
+                            {
+                                targetLines.Add($"[{edOutcome.ContentReferenceExtensionUrl}]({edOutcome.ContentReferenceExtensionUrl})");
+                            }
+                            else if (edOutcome.ContentReferenceAncestorId is not null)
+                            {
+                                targetLines.Add($"See: `{edOutcome.ContentReferenceAncestorId}`");
+                            }
 
                             if (additionalAlternateCanonical)
                             {

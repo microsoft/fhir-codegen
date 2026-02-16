@@ -806,13 +806,6 @@ public class StructureFhirExporter
                     targetEdOutcomes.Add(existingOutcome);
                     continue;
                 }
-
-                if ((existingOutcome.RequiresComponentDefinition == true) &&
-                    (existingOutcome.ParentRequiresComponentDefinition != true))
-                {
-                    targetEdOutcomes.Add(existingOutcome);
-                    continue;
-                }
             }
 
             // if there are none, move on
@@ -879,12 +872,6 @@ public class StructureFhirExporter
                     targetEdOutcome.GenUrl.StartsWith("http:", StringComparison.Ordinal))
                 {
                     url = targetEdOutcome.GenUrl;
-                }
-                else if (targetEdOutcome.RequiresComponentDefinition &&
-                    (targetEdOutcome.ComponentGenUrl is not null) &&
-                    targetEdOutcome.ComponentGenUrl.StartsWith("http:", StringComparison.Ordinal))
-                {
-                    url = targetEdOutcome.ComponentGenUrl;
                 }
                 else
                 {
@@ -1223,108 +1210,7 @@ public class StructureFhirExporter
             igTr.PackagePair.SourcePackageKey,
             igTr.PackagePair.TargetPackageKey);
 
-        // get the element outcomes that need component-style exporting
-        List<DbElementOutcome> componentEdOutcomes = DbElementOutcome.SelectList(
-            _db,
-            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
-            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-            RequiresComponentDefinition: true,
-            ParentRequiresComponentDefinition: false,
-            RequiresXVerDefinition: false,
-            ExtensionSubstitutionKeyIsNull: true,
-            ContentReferenceExtensionUrlIsNull: true,
-            orderByProperties: [nameof(DbElementOutcome.SourceStructureKey), nameof(DbElementOutcome.SourceResourceOrder)]);
-
         HashSet<string> generatedExtensionIds = [];
-
-        // iterate over the outcomes that need exporting
-        foreach (DbElementOutcome edOutcome in componentEdOutcomes)
-        {
-            // skip elements that will match their normal definition
-            if ((edOutcome.RequiresXVerDefinition == true) &&
-                (edOutcome.ComponentGenLongId == edOutcome.GenLongId))
-            {
-                continue;
-            }
-
-            // get the source structure
-            if (!sourceSds.TryGetValue(edOutcome.SourceStructureKey, out DbStructureDefinition? sourceSd))
-            {
-                _logger.LogError($"Source structure with key `{edOutcome.SourceStructureKey}` not found for element outcome with key `{edOutcome.Key}`");
-                continue;
-            }
-
-            if (_exportExclusions.Contains(edOutcome.SourceId) ||
-                _exportExclusions.Contains(sourceSd.Name))
-            {
-                continue;
-            }
-
-            // get the source element
-            if (!sourceEds.TryGetValue(edOutcome.SourceElementKey, out DbElement? sourceEd))
-            {
-                _logger.LogError($"Source element with key `{edOutcome.SourceElementKey}` not found for element outcome with key `{edOutcome.Key}`");
-                continue;
-            }
-
-            if (skipElement(sourceEd, skipFirstElement: true))
-            {
-                continue;
-            }
-
-            // components can only be on Extension.extension
-            List<StructureDefinition.ContextComponent> contexts = [
-                new StructureDefinition.ContextComponent()
-                {
-                    Type = StructureDefinition.ExtensionContextType.Element,
-                    Expression = "Extension.extension",
-                }];
-
-            string purpose = buildPurpose(
-                igTr,
-                edComparisons,
-                sourceEd,
-                edOutcome);
-
-            StructureDefinition? extSd = buildExtSd(
-                generatedExtensionIds,
-                igTr,
-                sourceEds,
-                targetEds,
-                edComparisons,
-                contentReferenceExtUrlsByEdKey,
-                edOutcome,
-                sourceSd,
-                sourceEd,
-                purpose,
-                contexts,
-                useComponentDefinition: true);
-
-            if (extSd is null)
-            {
-                continue;
-            }
-
-            //contentReferenceExtUrlsByEdKey[sourceEd.Key] = extSd.Url;
-
-            // write the extension to a file
-            string filename = edOutcome.ComponentGenFileName ?? throw new ArgumentNullException(nameof(edOutcome.ComponentGenFileName));
-            string path = Path.Combine(dir, filename);
-            File.WriteAllText(path, extSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
-
-            exported.Add(new()
-            {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^5],
-                IsPageContentFile = false,
-                Name = extSd.Name,
-                Id = extSd.Id,
-                Url = extSd.Url,
-                ResourceType = Hl7.Fhir.Model.FHIRAllTypes.StructureDefinition.GetLiteral(),
-                Version = extSd.Version,
-                Description = extSd.Description ?? extSd.Title ?? $"Extension: {extSd.Url}",
-            });
-        }
 
         // get the element outcomes for this package pair that need exporting
         List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
@@ -1353,17 +1239,6 @@ public class StructureFhirExporter
             {
                 continue;
             }
-
-            //DbStructureOutcome? sdOutcome = null;
-            //if (edOutcome.SourceResourceOrder == 0)
-            //{
-            //    sdOutcome = DbStructureOutcome.SelectSingle(
-            //        _db,
-            //        SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
-            //        TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-            //        SourceStructureKey: sourceSd.Key,
-            //        TargetStructureKey: edOutcome.TargetStructureKey);
-            //}
 
             // get the source element
             if (!sourceEds.TryGetValue(edOutcome.SourceElementKey, out DbElement? sourceEd))
@@ -1454,20 +1329,20 @@ public class StructureFhirExporter
             }
         }
 
-        List<DbElementOutcome> componentCrEdOutcomes = DbElementOutcome.SelectList(
-            _db,
-            SourceFhirPackageKey: sourceFhirPackageKey,
-            TargetFhirPackageKey: targetFhirPackageKey,
-            RequiresComponentDefinition: true,
-            RequiresXVerDefinition: false,
-            SourceUsedAsContentReference: true);
-        foreach (DbElementOutcome ceo in componentCrEdOutcomes)
-        {
-            if (ceo.ComponentGenUrl is not null)
-            {
-                dict[ceo.SourceElementKey] = ceo.ComponentGenUrl;
-            }
-        }
+        //List<DbElementOutcome> componentCrEdOutcomes = DbElementOutcome.SelectList(
+        //    _db,
+        //    SourceFhirPackageKey: sourceFhirPackageKey,
+        //    TargetFhirPackageKey: targetFhirPackageKey,
+        //    RequiresComponentDefinition: true,
+        //    RequiresXVerDefinition: false,
+        //    SourceUsedAsContentReference: true);
+        //foreach (DbElementOutcome ceo in componentCrEdOutcomes)
+        //{
+        //    if (ceo.ComponentGenUrl is not null)
+        //    {
+        //        dict[ceo.SourceElementKey] = ceo.ComponentGenUrl;
+        //    }
+        //}
 
         return dict;
     }
@@ -1603,9 +1478,7 @@ public class StructureFhirExporter
         List<StructureDefinition.ContextComponent> contexts,
         bool useComponentDefinition)
     {
-        string id = useComponentDefinition
-            ? elementOutcome.ComponentGenShortId!
-            : elementOutcome.GenShortId!;
+        string id = elementOutcome.GenShortId!;
 
         if (!generatedExtensionIds.Add(id))
         {
@@ -1613,14 +1486,14 @@ public class StructureFhirExporter
         }
 
         (_, string name) = igTr.GetName(
-            useComponentDefinition ? elementOutcome.ComponentGenName! : elementOutcome.GenName!,
+            elementOutcome.GenName!,
             id);
 
         // build the initial structure definition for the extension
         StructureDefinition extSd = new()
         {
             Id = id,
-            Url = useComponentDefinition ? elementOutcome.ComponentGenUrl : elementOutcome.GenUrl,
+            Url = elementOutcome.GenUrl,
             Name = name,
             Version = _exporter._crossDefinitionVersion,
             FhirVersion = EnumUtility.ParseLiteral<FHIRVersion>(igTr.PackagePair.TargetPackage.PackageVersion),
@@ -1791,11 +1664,14 @@ public class StructureFhirExporter
             extSd.Differential.Element.Add(sliceElement);
         }
 
-        // check to see if this is an outcome that has a component definition
+        // check to see if this is an outcome that is a content reference
+        //if (!isRoot &&
+        //    contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.Key, out string? crExtUrl) ||
+        //    ((sourceEd.ContentReferenceSourceKey is not null) &&
+        //        contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.ContentReferenceSourceKey.Value, out crExtUrl)))
         if (!isRoot &&
-            contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.Key, out string? crExtUrl) ||
-            ((sourceEd.ContentReferenceSourceKey is not null) &&
-                contentReferenceExtUrlsByEdKey.TryGetValue(sourceEd.ContentReferenceSourceKey.Value, out crExtUrl)))
+            (edOutcome.ContentReferenceExtensionUrl is not null))
+
         {
             // add the URL element (always required)
             extSd.Differential.Element.Add(new()
@@ -1810,7 +1686,7 @@ public class StructureFhirExporter
                 },
                 Min = 1,
                 Max = "1",
-                Fixed = new FhirUri(crExtUrl),
+                Fixed = new FhirUri(edOutcome.ContentReferenceExtensionUrl),
             });
 
             // add a contrained out value element
