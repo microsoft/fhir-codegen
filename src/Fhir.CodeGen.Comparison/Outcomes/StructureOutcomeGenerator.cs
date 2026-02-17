@@ -138,6 +138,9 @@ public class StructureOutcomeGenerator
                 foreach (DbElement referencingEd in referencingEds)
                 {
                     string newCtx = referencingEd.Id + ctx[sourceIdLen..];
+                    edOutcomeWithCR.Comments +=
+                        $"\nNote available implied context: `{newCtx}` because" +
+                        $" `{referencingEd.Id}` is defined as a content reference to `{edOutcomeWithCR.SourceId}`.";
                     ctxToAdd.Add(newCtx);
                 }
             }
@@ -147,12 +150,14 @@ public class StructureOutcomeGenerator
                 continue;
             }
 
-            List<string> allCtx = [];
-            allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
-            allCtx.AddRange(ctxToAdd);
-
-            edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
             _edOutcomeCache.CacheUpdate(edOutcomeWithCR);
+
+            //List<string> allCtx = [];
+            //allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
+            //allCtx.AddRange(ctxToAdd);
+
+            //edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
+            //_edOutcomeCache.CacheUpdate(edOutcomeWithCR);
         }
 
         // do the same for every extension that has an ancestor that is a content reference
@@ -201,6 +206,9 @@ public class StructureOutcomeGenerator
                 foreach (DbElement referencingEd in referencingEds)
                 {
                     string newCtx = referencingEd.Id + ctx[sourceIdLen..];
+                    edOutcomeWithCR.Comments +=
+                        $"\nNote available implied context: `{newCtx}` because" +
+                        $" `{referencingEd.Id}` is defined via a content reference to `{sourceId}`.";
                     ctxToAdd.Add(newCtx);
                 }
             }
@@ -210,57 +218,16 @@ public class StructureOutcomeGenerator
                 continue;
             }
 
-            List<string> allCtx = [];
-            allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
-            allCtx.AddRange(ctxToAdd);
-
-            edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
             _edOutcomeCache.CacheUpdate(edOutcomeWithCR);
+
+            //List<string> allCtx = [];
+            //allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
+            //allCtx.AddRange(ctxToAdd);
+
+            //edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
+            //_edOutcomeCache.CacheUpdate(edOutcomeWithCR);
         }
-#if false
-        // get the outcomes that have content reference extension URLs
-        List<DbElementOutcome> relatedEdOutcomes = DbElementOutcome.SelectList(
-            _db,
-            SourceFhirPackageKey: sourcePackage.Key,
-            TargetFhirPackageKey: targetPackage.Key,
-            ContentReferenceExtensionUrlIsNull: false);
 
-        // iterate over the outcomes and update the contents of the primary definition
-        foreach (DbElementOutcome relatedEdOutcome in relatedEdOutcomes)
-        {
-            if (relatedEdOutcome.ContentReferenceOutcomeKey is null)
-            {
-                throw new Exception($"ElementOutcome with key {relatedEdOutcome.Key} has a content reference extension URL but no ContentReferenceOutcomeKey");
-            }
-
-            // resolve the primary content reference outcome
-            DbElementOutcome? crEdOutcome = DbElementOutcome.SelectSingle(
-                _db,
-                Key: relatedEdOutcome.ContentReferenceOutcomeKey);
-            if (crEdOutcome is null)
-            {
-                throw new Exception($"Could not find primary ElementOutcome with key {relatedEdOutcome.ContentReferenceOutcomeKey} for ElementOutcome with key {relatedEdOutcome.Key}");
-            }
-
-            // merge the related outcome's extension contexts into the primary outcome's contexts
-            HashSet<string> mergedContexts = new(crEdOutcome.ExtensionContexts);
-            if (relatedEdOutcome.ExtensionContexts is not null)
-            {
-                foreach (string context in relatedEdOutcome.ExtensionContexts)
-                {
-                    mergedContexts.Add(context);
-                }
-            }
-
-            // flag the primary outcome for update if necessary
-            if (mergedContexts.Count != crEdOutcome.ExtensionContexts.Count)
-            {
-                crEdOutcome.ExtensionContexts = mergedContexts.Order().ToList();
-
-                _edOutcomeCache.CacheUpdate(crEdOutcome);
-            }
-        }
-#endif
         // apply our changes
         applyCachedChanges(packagePair);
     }

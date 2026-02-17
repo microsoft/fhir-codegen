@@ -380,8 +380,8 @@ public class ElementOutcomeGenerator
             }
 
             //if (((parentOutcome is not null) && outcomesRequiringXver.Contains(parentOutcome.Key)) ||
-            if ((parentOutcome?.RequiresXVerDefinition == true) ||
-                (basicBasePath is not null))
+            if ((basicBasePath is not null) ||
+                !extUrl.StartsWith("http:", StringComparison.Ordinal))
             {
                 idLong = sourceEd.NameClean();
                 idShort = idLong;
@@ -713,7 +713,7 @@ public class ElementOutcomeGenerator
 
             List<DbElementComparison> elementComparisons = edTr.ElementComparisons;
 
-            bool isRootElement = sourceEd.ResourceFieldOrder == 0;
+            bool sourceIsRootEd = sourceEd.ResourceFieldOrder == 0;
 
             (string idLong, string idShort, string name) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
@@ -745,7 +745,7 @@ public class ElementOutcomeGenerator
             // process across each target structure this element has a link to
             foreach (StructureOutcomeGenerator.StructureOutcomeTrackingRecord sdTr in structureTrackingRecords.Values)
             {
-                if (isRootElement)
+                if (sourceIsRootEd)
                 {
                     sdTr.SourceRootElement = sourceEd;
 
@@ -786,7 +786,7 @@ public class ElementOutcomeGenerator
                         .ToList();
 
                     // determine the context, if possible
-                    if (isRootElement)
+                    if (sourceIsRootEd)
                     {
                         contextTargetEd = DbElement.SelectSingle(
                             _db,
@@ -939,7 +939,7 @@ public class ElementOutcomeGenerator
                                 allContextTargets[contextTargetEd.Key] = contextTargetEd;
 
                                 targetComments =
-                                    $"Element `{sourceEd.Id}` is will have a context of {ecTargetEd.Id}" +
+                                    $"Element `{sourceEd.Id}` has a context of {ecTargetEd.Id}" +
                                     $" based on following the parent source element upwards and mapping to" +
                                     $" `{sdTr.TargetStructure.Name}`.";
 
@@ -950,8 +950,8 @@ public class ElementOutcomeGenerator
                     else
                     {
                         targetComments =
-                            $"Element `{sourceEd.Id}` is mapped to FHIR {_packagePair.TargetFhirSequence}" +
-                            $" element `{ecTargetEd.Id}`.";
+                            $"Element `{sourceEd.Id}` has is mapped to FHIR {_packagePair.TargetFhirSequence}" +
+                            $" element `{ecTargetEd.Id}`, but has no comparisons.";
                     }
 
                     // create our target
@@ -1005,7 +1005,7 @@ public class ElementOutcomeGenerator
             bool defineAsModifier = sourceEd.IsModifier;
 
             // if this is the root element, force some values
-            if (isRootElement)
+            if (sourceIsRootEd)
             {
                 elementRequiresXVer = false;
                 ancestorOutcome = null;
@@ -1304,8 +1304,8 @@ public class ElementOutcomeGenerator
                     .ToList();
             }
 
-            if ((parentOutcome?.RequiresXVerDefinition == true) ||
-                (basicBasePath is not null))
+            if ((basicBasePath is not null) ||
+                !extUrl.StartsWith("http:", StringComparison.Ordinal))
             {
                 idLong = sourceEd.NameClean();
                 idShort = idLong;
@@ -1424,7 +1424,7 @@ public class ElementOutcomeGenerator
                 Comments = string.Join('\n', outcomeComments),
             };
 
-            if (isRootElement)
+            if (sourceIsRootEd)
             {
                 rootElementOutcomes.Add(elementOutcome);
             }
@@ -1515,13 +1515,13 @@ public class ElementOutcomeGenerator
     }
 
     private void determineMappingCompleteness(
-        Dictionary<int, DbElement> sourceElements,
-        Dictionary<int, ElementOutcomeTrackingRecord> elementTrackingRecords)
+        Dictionary<int, DbElement> sourceEds,
+        Dictionary<int, ElementOutcomeTrackingRecord> edTrs)
     {
         HashSet<int> fullyMappedElementsAllTargets = [];
 
         // iterate over the source elements for this structure to determine mapping completeness
-        foreach (DbElement sourceEd in sourceElements.Values.OrderBy(ed => ed.ResourceFieldOrder))
+        foreach (DbElement sourceEd in sourceEds.Values.OrderBy(ed => ed.ResourceFieldOrder))
         {
             // get all the source types for this element
             Dictionary<int, DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
@@ -1571,9 +1571,9 @@ public class ElementOutcomeGenerator
                     .ToList();
             }
 
-            if (!elementTrackingRecords.TryGetValue(sourceEd.Key, out ElementOutcomeTrackingRecord? elementTrackingRec))
+            if (!edTrs.TryGetValue(sourceEd.Key, out ElementOutcomeTrackingRecord? edTr))
             {
-                elementTrackingRec = new()
+                edTr = new()
                 {
                     SourceElement = sourceEd,
                     ElementOutcomeKey = DbElementOutcome.GetIndex(),
@@ -1590,7 +1590,15 @@ public class ElementOutcomeGenerator
                         .Select(key => _allTargetElements[key])
                         .ToDictionary(te => te.Key),
                 };
-                elementTrackingRecords[sourceEd.Key] = elementTrackingRec;
+                edTrs[sourceEd.Key] = edTr;
+            }
+
+            // check for elements with children and no types (e.g., backbone elements) - need to resolve children first
+            if ((sourceEts.Count == 0) &&
+                (sourceEd.ChildElementCount > 0))
+            {
+                edTr.Messages.Add($"Element `{sourceEd.Id}` has child elements and mapping relationships will be determined by them.");
+                continue;
             }
 
             // easy check for any single comparison that fully maps
@@ -1609,13 +1617,13 @@ public class ElementOutcomeGenerator
             {
                 fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
-                elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
-                elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
-                elementTrackingRec.Messages.Add(
+                edTr.IsFullyMappedAcrossAllTargets = true;
+                edTr.MapsToIndividualTargets = fullyMappedComparisons;
+                edTr.Messages.Add(
                     $"Element `{sourceEd.Id}` has fully-mapped types to individual targets:" +
                     $" {string.Join(", ", fullyMappedComparisons.Select(fmc => $"`{fmc.TargetElementId}`"))}");
 
-                elementTrackingRec.MappedTypes.AddRange(sourceEts.Values.OrderBy(et => et.Literal));
+                edTr.MappedTypes.AddRange(sourceEts.Values.OrderBy(et => et.Literal));
 
                 continue;
             }
@@ -1634,7 +1642,7 @@ public class ElementOutcomeGenerator
                 currentTargetElements[targetEd.Key] = targetEd;
             }
 
-            elementTrackingRec.TargetElements = currentTargetElements;
+            edTr.TargetElements = currentTargetElements;
 
             Dictionary<int, DbElementType> mappedTypes = [];
             Dictionary<int, DbElementType> unmappedTypes = sourceEts
@@ -1644,9 +1652,9 @@ public class ElementOutcomeGenerator
             // check for no targets
             if (currentTargetElements.Count == 0)
             {
-                elementTrackingRec.UnmappedTypes.AddRange(unmappedTypes.Values);
+                edTr.UnmappedTypes.AddRange(unmappedTypes.Values);
 
-                elementTrackingRec.Messages.Add(
+                edTr.Messages.Add(
                     $"Element `{sourceEd.Id}` does not have any mapping targets." +
                     $" All source types are unmapped: `{sourceEd.FullCollatedTypeLiteral}`");
 
@@ -1670,7 +1678,7 @@ public class ElementOutcomeGenerator
                     mappedTypes[etc.SourceElementTypeKey] = sourceEts[etc.SourceElementTypeKey];
                     unmappedTypes.Remove(etc.SourceElementTypeKey);
 
-                    elementTrackingRec.Messages.Add(
+                    edTr.Messages.Add(
                         $"Element `{sourceEd.Id}` type `{etc.SourceTypeLiteral}`" +
                         $" maps to target element `{etc.TargetElementId}` type `{etc.TargetTypeLiteral}`" +
                         $" with relationship {etc.Relationship}.");
@@ -1679,10 +1687,10 @@ public class ElementOutcomeGenerator
                     {
                         fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
-                        elementTrackingRec.MappedTypes.AddRange(mappedTypes.Values.OrderBy(et => et.Literal));
-                        elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
-                        elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
-                        elementTrackingRec.Messages.Add(
+                        edTr.MappedTypes.AddRange(mappedTypes.Values.OrderBy(et => et.Literal));
+                        edTr.IsFullyMappedAcrossAllTargets = true;
+                        edTr.MapsToIndividualTargets = fullyMappedComparisons;
+                        edTr.Messages.Add(
                             $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
                             $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
 
@@ -1763,7 +1771,7 @@ public class ElementOutcomeGenerator
                         // if the source and target normalized names are the same, we can assume equivalence anyway
                         if (sourceNormalizedTypeName == targetNormalizedTypeName)
                         {
-                            elementTrackingRec.Messages.Add(
+                            edTr.Messages.Add(
                                 $"Element `{sourceEd.Id}` normalized quantity type `{sourceNormalizedTypeName}`" +
                                 $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
                                 $" with assumed equivalence based on profile and type matching.");
@@ -1774,14 +1782,14 @@ public class ElementOutcomeGenerator
                             {
                                 fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
-                                elementTrackingRec.MappedTypes.Add(unmappedType);
-                                elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
-                                elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
-                                elementTrackingRec.Messages.Add(
+                                edTr.MappedTypes.Add(unmappedType);
+                                edTr.IsFullyMappedAcrossAllTargets = true;
+                                edTr.MapsToIndividualTargets = fullyMappedComparisons;
+                                edTr.Messages.Add(
                                     $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
                                     $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
 
-                                elementTrackingRec.QuantityBasedRelationship = qRelationship;
+                                edTr.QuantityBasedRelationship = qRelationship;
 
                                 break;
                             }
@@ -1821,7 +1829,7 @@ public class ElementOutcomeGenerator
                         if ((qComparison is not null) &&
                             relationshipMaps(qComparison.Relationship))
                         {
-                            elementTrackingRec.Messages.Add(
+                            edTr.Messages.Add(
                                 $"Element `{sourceEd.Id}` normalized quantity type `{sourceNormalizedTypeName}`" +
                                 $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
                                 $" with relationship {qComparison.Relationship}.");
@@ -1832,14 +1840,14 @@ public class ElementOutcomeGenerator
                             {
                                 fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
-                                elementTrackingRec.MappedTypes.Add(unmappedType);
-                                elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
-                                elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
-                                elementTrackingRec.Messages.Add(
+                                edTr.MappedTypes.Add(unmappedType);
+                                edTr.IsFullyMappedAcrossAllTargets = true;
+                                edTr.MapsToIndividualTargets = fullyMappedComparisons;
+                                edTr.Messages.Add(
                                     $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
                                     $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
 
-                                elementTrackingRec.QuantityBasedRelationship = qComparison.Relationship ?? qRelationship;
+                                edTr.QuantityBasedRelationship = qComparison.Relationship ?? qRelationship;
 
                                 break;
                             }
@@ -1867,7 +1875,7 @@ public class ElementOutcomeGenerator
                         if ((qMapping is not null) &&
                             relationshipMaps(qMapping.Relationship))
                         {
-                            elementTrackingRec.Messages.Add(
+                            edTr.Messages.Add(
                                 $"Element `{sourceEd.Id}` normalized quantity type `{sourceNormalizedTypeName}`" +
                                 $" maps to target element `{targetEd.Id}` normalized quantity type `{targetNormalizedTypeName}`" +
                                 $" with relationship {qMapping.Relationship}" +
@@ -1879,14 +1887,14 @@ public class ElementOutcomeGenerator
                             {
                                 fullyMappedElementsAllTargets.Add(sourceEd.Key);
 
-                                elementTrackingRec.MappedTypes.Add(unmappedType);
-                                elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
-                                elementTrackingRec.MapsToIndividualTargets = fullyMappedComparisons;
-                                elementTrackingRec.Messages.Add(
+                                edTr.MappedTypes.Add(unmappedType);
+                                edTr.IsFullyMappedAcrossAllTargets = true;
+                                edTr.MapsToIndividualTargets = fullyMappedComparisons;
+                                edTr.Messages.Add(
                                     $"Element `{sourceEd.Id}` has mapped all types across all target elements:" +
                                     $" {string.Join(", ", currentTargetElements.Values.Select(targetEd => $"`{targetEd.Id}`"))}");
 
-                                elementTrackingRec.QuantityBasedRelationship = qMapping.Relationship ?? qRelationship;
+                                edTr.QuantityBasedRelationship = qMapping.Relationship ?? qRelationship;
 
                                 break;
                             }
@@ -1923,15 +1931,15 @@ public class ElementOutcomeGenerator
                 HashSet<int> resolvedViaChildren = processChildMappingResults(
                     unmappedTypes,
                     childMappingResults,
-                    elementTrackingRec,
+                    edTr,
                     sourceEd);
 
-                elementTrackingRec.ChildTypeMappingResults.AddRange(childMappingResults);
+                edTr.ChildTypeMappingResults.AddRange(childMappingResults);
 
                 // if we resolved any types via children, log summary
                 if (resolvedViaChildren.Count > 0)
                 {
-                    elementTrackingRec.Messages.Add(
+                    edTr.Messages.Add(
                         $"Element `{sourceEd.Id}` resolved {resolvedViaChildren.Count} unmapped type(s)" +
                         $" via distributed child element mappings");
                 }
@@ -1940,9 +1948,9 @@ public class ElementOutcomeGenerator
             // if we still have unmapped types, then this element is not fully mapped across all targets
             if (unmappedTypes.Count != 0)
             {
-                elementTrackingRec.UnmappedTypes.AddRange(unmappedTypes.Values);
+                edTr.UnmappedTypes.AddRange(unmappedTypes.Values);
 
-                elementTrackingRec.Messages.Add(
+                edTr.Messages.Add(
                     $"Element `{sourceEd.Id}` does not fully map to targets:" +
                     $" {string.Join(", ", currentTargetElements.Values.Select(te => $"`{te.Id}`"))}," +
                     $" because it does not account for source types:" +
@@ -1952,18 +1960,18 @@ public class ElementOutcomeGenerator
                 continue;
             }
 
-            elementTrackingRec.Messages.Add(
+            edTr.Messages.Add(
                 $"Element `{sourceEd.Id}` has fully-mapped types across: " +
                 $" {string.Join(", ", currentTargetElements.Values.Select(te => $"`{te.Id}`"))}");
 
-            elementTrackingRec.IsFullyMappedAcrossAllTargets = true;
+            edTr.IsFullyMappedAcrossAllTargets = true;
             if (elementComparisons.Count == 1)
             {
-                elementTrackingRec.MapsToIndividualTargets = elementComparisons;
+                edTr.MapsToIndividualTargets = elementComparisons;
             }
             else
             {
-                elementTrackingRec.MapsToCombinationOfTargets.AddRange(elementComparisons);
+                edTr.MapsToCombinationOfTargets.AddRange(elementComparisons);
             }
         }
     }
