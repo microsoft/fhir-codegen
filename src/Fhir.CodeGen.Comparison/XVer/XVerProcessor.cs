@@ -101,6 +101,7 @@ internal static class XVerExtensions
 /// </summary>
 public partial class XVerProcessor
 {
+    internal const string _canonicalRootCrossVersion = "http://hl7.org/fhir/uv/xver/";
     private string _crossDefinitionVersion = "0.0.1-snapshot-2";
     private static readonly DateTimeOffset _runTime = DateTimeOffset.UtcNow;
 
@@ -1305,20 +1306,22 @@ public partial class XVerProcessor
         string targetPackageShortName)
     {
         string name =
-            $"ConceptMap" +
+            //$"ConceptMap" +
             $"{sourcePackageShortName.ToPascalCase()}" +
             $"{sourceArtifactId.ToPascalCase()}" +
             $"ElementsFor" +
             $"{targetPackageShortName.ToPascalCase()}";
 
-        string idLong = $"ConceptMap-{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
+        //string idLong = $"ConceptMap-{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
+        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
 
         if (idLong.Length <= 64)
         {
             return (idLong, idLong, name);
         }
 
-        string idShort = $"Cm-{sourcePackageShortName}-{sourceArtifactId}-ef-{targetPackageShortName}";
+        //string idShort = $"Cm-{sourcePackageShortName}-{sourceArtifactId}-ef-{targetPackageShortName}";
+        string idShort = $"{sourcePackageShortName}-{sourceArtifactId}-elements-{targetPackageShortName}";
 
         return (idLong, idShort, name);
     }
@@ -1335,7 +1338,7 @@ public partial class XVerProcessor
         }
 
         string name =
-            $"ConceptMap" +
+            //$"ConceptMap" +
             $"{sourcePackageShortName.ToPascalCase()}" +
             $"{sourceArtifactId.ToPascalCase()}" +
             $"ElementsFor" +
@@ -1343,8 +1346,8 @@ public partial class XVerProcessor
             $"{targetArtifactId.ToPascalCase()}";
 
         string idLong =
-            $"ConceptMap" +
-            $"-{sourcePackageShortName}" +
+            //$"ConceptMap-{sourcePackageShortName}" +
+            $"{sourcePackageShortName}" +
             $"-{sourceArtifactId}" +
             $"-elements-for" +
             $"-{targetPackageShortName}" +
@@ -1356,8 +1359,8 @@ public partial class XVerProcessor
         }
 
         string idShort =
-            $"Cm" +
-            $"-{sourcePackageShortName}" +
+            //$"Cm-{sourcePackageShortName}" +
+            $"{sourcePackageShortName}" +
             $"-{sourceArtifactId}" +
             $"-ef" +
             $"-{targetPackageShortName}" +

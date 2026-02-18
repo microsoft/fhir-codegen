@@ -14,6 +14,7 @@ using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Comparison.XVer;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Hl7.Fhir.Language.Debugging;
 using Hl7.Fhir.Model;
@@ -250,6 +251,10 @@ public class StructureFhirExporter
 
     private void exportElementMaps(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+            ? new()
+            : null;
+
         if (igTr.ElementMapDir is null)
         {
             throw new Exception("ElementMapDir is null");
@@ -265,194 +270,49 @@ public class StructureFhirExporter
 
         List<XVerIgFileRecord> exported = [];
 
-        // get the structure outcomes for this pair
-        List<DbStructureOutcome> sdOutcomes = DbStructureOutcome.SelectList(
+        // get the source resources
+        List<DbStructureDefinition> sourceSds = DbStructureDefinition.SelectList(
             _db,
-            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
-            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey);
+            FhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            ArtifactClass: FhirArtifactClassEnum.Resource);
 
-        // iterate over the outcomes to create element maps for each resource
-        foreach (DbStructureOutcome sdOutcome in sdOutcomes)
+        // iterate over our source structures
+        foreach (DbStructureDefinition sourceSd in sourceSds)
         {
-            // create a concept map for this resource
-            ConceptMap edCm = createElementConceptMap(igTr, sdOutcome);
-
-            // get the element outcomes for this structure outcome
-            List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
+            // get the structure outcomes for this structure
+            List<DbStructureOutcome> sdOutcomes = DbStructureOutcome.SelectList(
                 _db,
                 SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
                 TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-                SourceStructureKey: sdOutcome.SourceStructureKey,
-                orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
+                SourceStructureKey: sourceSd.Key);
 
-            //string? lastSourceId = null;
-            //ConceptMap.SourceElementComponent? cmSourceElement = null;
-
-            Dictionary<string, (ConceptMap.SourceElementComponent se, HashSet<string> usedTargets)> sourceElementLookup = [];
-
-            Dictionary<int, string> outcomeUrlComposition = [];
-
-            // iterate over the element outcomes
-            foreach (DbElementOutcome edOutcome in edOutcomes)
+            if (sdOutcomes.Count == 0)
             {
-                if (!sourceElementLookup.TryGetValue(edOutcome.SourceId, out (ConceptMap.SourceElementComponent se, HashSet<string> usedTargets) cmSourceInfo))
-                {
-                    // create a new source element
-                    cmSourceInfo.se = new()
-                    {
-                        Code = edOutcome.SourceId,
-                        Display = edOutcome.SourceName,
-                        Target = [],
-                    };
-                    cmSourceInfo.usedTargets = [];
-                    edCm.Group[0].Element.Add(cmSourceInfo.se);
-                    sourceElementLookup[edOutcome.SourceId] = cmSourceInfo;
-                }
-
-                CMR relationship;
-                if (sdOutcome.IsIdentical || sdOutcome.IsEquivalent)
-                {
-                    relationship = CMR.Equivalent;
-                }
-                else if (sdOutcome.IsBroaderThanTarget)
-                {
-                    relationship = CMR.SourceIsBroaderThanTarget;
-                }
-                else if (sdOutcome.IsNarrowerThanTarget)
-                {
-                    relationship = CMR.SourceIsNarrowerThanTarget;
-                }
-                else
-                {
-                    relationship = CMR.RelatedTo;
-                }
-
-                // get the list of targets for this element outcome
-                List<DbElementOutcomeTarget> outcomeTargets = DbElementOutcomeTarget.SelectList(
-                    _db,
-                    ElementOutcomeKey: edOutcome.Key,
-                    orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId)]);
-
-                List<DbElementOutcomeTarget> outcomeTargetsWithKeys = outcomeTargets
-                    .Where(ot => ot.TargetElementKey is not null)
-                    .ToList();
-
-                if (outcomeTargetsWithKeys.Count == 0)
-                {
-                    string code;
-                    if (edOutcome.BasicElementEquivalent is not null)
-                    {
-                        string[] components = edOutcome.BasicElementEquivalent.Split('.');
-                        code = string.Join('.', ["Basic", .. components[1..]]);
-                    }
-                    else if (edOutcome.ExtensionSubstitutionKey is not null)
-                    {
-                        code = edOutcome.ExtensionSubstitutionUrl!;
-                    }
-                    else if (edOutcome.ContentReferenceOutcomeKey is not null)
-                    {
-                        code = edOutcome.ContentReferenceExtensionUrl!;
-                    }
-                    else if ((edOutcome.ParentRequiresXverDefinition == true) &&
-                        (edOutcome.ParentElementOutcomeKey is not null) &&
-                        outcomeUrlComposition.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out string? parentUrl))
-                    {
-                        code = parentUrl + ":" + edOutcome.GenUrl!;
-                    }
-                    else
-                    {
-                        code = edOutcome.GenUrl!;
-                    }
-
-                    outcomeUrlComposition[edOutcome.Key] = code;
-
-                    if (!cmSourceInfo.usedTargets.Add(code))
-                    {
-                        continue;
-                    }
-
-                    // create our target element
-                    ConceptMap.TargetElementComponent targetElement = new()
-                    {
-                        Code = code,
-                        Display = edOutcome.TargetName,
-                        Relationship = relationship,
-                        Comment = edOutcome.Comments,
-                    };
-                    cmSourceInfo.se.Target.Add(targetElement);
-
-                    // check for additional alternate targets
-                    bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
-                    bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
-
-                    bool additionalAlternateCanonical = !isAlternateCanonical &&
-                        (edOutcome.AlternateCanonicalTargetsLiteral is not null);
-
-                    bool additionalAlternateReference = !isAlternateReference &&
-                        (edOutcome.AlternateReferenceTargetsLiteral is not null);
-
-                    if (additionalAlternateCanonical)
-                    {
-                        string additionalCode = CommonDefinitions.ExtUrlAlternateCanonical;
-
-                        if (cmSourceInfo.usedTargets.Add(additionalCode))
-                        {
-                            ConceptMap.TargetElementComponent additionalTargetElement = new()
-                            {
-                                Code = additionalCode,
-                                Display = edOutcome.TargetName,
-                                Relationship = relationship,
-                                Comment = edOutcome.Comments,
-                            };
-                            cmSourceInfo.se.Target.Add(additionalTargetElement);
-                        }
-                    }
-
-                    if (additionalAlternateReference)
-                    {
-                        string additionalCode = CommonDefinitions.ExtUrlAlternateReference;
-
-                        if (cmSourceInfo.usedTargets.Add(additionalCode))
-                        {
-                            ConceptMap.TargetElementComponent additionalTargetElement = new()
-                            {
-                                Code = additionalCode,
-                                Display = edOutcome.TargetName,
-                                Relationship = relationship,
-                                Comment = edOutcome.Comments,
-                            };
-                            cmSourceInfo.se.Target.Add(additionalTargetElement);
-                        }
-                    }
-                }
-                else
-                {
-                    // create a target for each target element
-                    foreach (DbElementOutcomeTarget eot in outcomeTargetsWithKeys)
-                    {
-                        if ((eot.TargetElementId is null) ||
-                            !cmSourceInfo.usedTargets.Add(eot.TargetElementId))
-                        {
-                            continue;
-                        }
-
-                        // create our target element
-                        ConceptMap.TargetElementComponent targetElement = new()
-                        {
-                            Code = sdOutcome.TargetCanonicalUnversioned + "#" + eot.TargetElementId,
-                            Display = edOutcome.TargetName,
-                            Relationship = relationship,
-                            Comment = edOutcome.Comments,
-                        };
-                        cmSourceInfo.se.Target.Add(targetElement);
-                    }
-                }
+                continue;
             }
 
+            // create a concept map for this resource
+            ConceptMap edCm = createElementConceptMap(igTr, sdOutcomes.First());
+
+            // add the outcomes
+            addMappedElementsToElementCm(
+                igTr,
+                edCm,
+                sourceSd,
+                sdOutcomes);
+
             // write the profile to a file
-            string filename = sdOutcome.ElementConceptMapFileName ?? throw new ArgumentNullException(nameof(sdOutcome.ElementConceptMapFileName));
+            string filename = sdOutcomes.First().ElementConceptMapFileName
+                ?? throw new Exception($"Failed to write concept map for {sourceSd.VersionedUrl} to {igTr.PackagePair.TargetPackageShortName}");
             string path = Path.Combine(dir, filename);
-            File.WriteAllText(path, edCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            if (exporterR4 is not null)
+            {
+                File.WriteAllText(path, exporterR4.ToJson(edCm, new SerializerSettings() { Pretty = true }));
+            }
+            else
+            {
+                File.WriteAllText(path, edCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            }
             exported.Add(new()
             {
                 FileName = filename,
@@ -471,11 +331,492 @@ public class StructureFhirExporter
         igTr.ElementMapFiles = exported;
     }
 
+    private void addMappedElementsToElementCm(
+        XVerIgExportTrackingRecord igTr,
+        ConceptMap edCm,
+        DbStructureDefinition sourceSd,
+        List<DbStructureOutcome> sdOutcomes)
+    {
+        List<int> targetSdKeys = sdOutcomes
+            .Where(sdo => sdo.TargetStructureKey is not null)
+            .Select(sdo => sdo.TargetStructureKey!.Value)
+            .Distinct()
+            .ToList();
+        
+        Dictionary<int, DbStructureDefinition> targetSds = DbStructureDefinition.SelectDict(
+            _db,
+            KeyValues: targetSdKeys);
+
+        // get the element outcomes for this structure to the target version
+        List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
+            _db,
+            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+            SourceStructureKey: sourceSd.Key,
+            orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
+
+        Dictionary<string, ConceptMap.GroupComponent> groupsByTarget = [];
+        Dictionary<string, ConceptMap.SourceElementComponent> cmSources = [];
+        Dictionary<int, string> genUrlLookup = [];
+
+        foreach (DbElementOutcome edOutcome in edOutcomes)
+        {
+            // skip the root element
+            if (edOutcome.SourceResourceOrder == 0)
+            {
+                continue;
+            }
+
+            // get the list of targets for this element outcome
+            List<DbElementOutcomeTarget> outcomeTargets = DbElementOutcomeTarget.SelectList(
+                    _db,
+                    ElementOutcomeKey: edOutcome.Key,
+                    orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId), nameof(DbElementOutcomeTarget.ContextElementId)]);
+
+            if (outcomeTargets.Count == 0)
+            {
+                continue;
+            }
+
+            CMR relationship;
+            if (edOutcome.IsIdentical || edOutcome.IsEquivalent)
+            {
+                relationship = CMR.Equivalent;
+            }
+            else if (edOutcome.IsBroaderThanTarget)
+            {
+                relationship = CMR.SourceIsBroaderThanTarget;
+            }
+            else if (edOutcome.IsNarrowerThanTarget)
+            {
+                relationship = CMR.SourceIsNarrowerThanTarget;
+            }
+            else
+            {
+                relationship = CMR.RelatedTo;
+            }
+
+            bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
+            bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
+
+            bool additionalAlternateCanonical = !isAlternateCanonical &&
+                (edOutcome.AlternateCanonicalTargetsLiteral is not null);
+
+            bool additionalAlternateReference = !isAlternateReference &&
+                (edOutcome.AlternateReferenceTargetsLiteral is not null);
+
+            // check for basic override
+            if (edOutcome.BasicElementEquivalent is not null)
+            {
+                string basicCanonical = $"http://hl7.org/fhir/StructureDefinition/Basic|{igTr.PackagePair.TargetPackage.PackageVersion}";
+                if (!groupsByTarget.TryGetValue(basicCanonical, out ConceptMap.GroupComponent? currentGroup))
+                {
+                    currentGroup = new()
+                    {
+                        Source = sourceSd.VersionedUrl,
+                        Target = basicCanonical,
+                        Element = [],
+                    };
+                    edCm.Group.Add(currentGroup);
+                    groupsByTarget[basicCanonical] = currentGroup;
+                }
+
+                string cmSourceKey = basicCanonical + "|" + edOutcome.SourceId;
+                if (!cmSources.TryGetValue(cmSourceKey, out ConceptMap.SourceElementComponent? cmSourceElement))
+                {
+                    cmSourceElement = new()
+                    {
+                        Code = edOutcome.SourceId,
+                        Display = edOutcome.SourceName,
+                        Target = [],
+                    };
+                    currentGroup.Element.Add(cmSourceElement);
+                    cmSources[cmSourceKey] = cmSourceElement;
+                }
+
+                // add the target for this basic element equivalent
+                ConceptMap.TargetElementComponent cmTargetElement = new()
+                {
+                    Code = edOutcome.BasicElementEquivalent,
+                    Display = edOutcome.BasicElementEquivalent,
+                    Relationship = CMR.Equivalent,
+                    Comment = edOutcome.Comments,
+                };
+                cmSourceElement.Target.Add(cmTargetElement);
+            }
+
+            // iterate over the targets
+            foreach (DbElementOutcomeTarget eot in outcomeTargets)
+            {
+                if ((eot.TargetStructureKey is null) ||
+                    (eot.TargetElementId is null))
+                {
+                    continue;
+                }
+
+                DbStructureDefinition? targetSd = null;
+                ConceptMap.GroupComponent? currentGroup;
+
+                targetSd = targetSds[eot.TargetStructureKey.Value];
+                if (!groupsByTarget.TryGetValue(targetSd.VersionedUrl, out currentGroup))
+                {
+                    currentGroup = new()
+                    {
+                        Source = sourceSd.VersionedUrl,
+                        Target = targetSd.VersionedUrl,
+                        Element = [],
+                    };
+                    edCm.Group.Add(currentGroup);
+                    groupsByTarget[targetSd.VersionedUrl] = currentGroup;
+                }
+
+                string cmSourceKey = targetSd.VersionedUrl + "|" + edOutcome.SourceId;
+                if (!cmSources.TryGetValue(cmSourceKey, out ConceptMap.SourceElementComponent? cmSourceElement))
+                {
+                    cmSourceElement = new()
+                    {
+                        Code = edOutcome.SourceId,
+                        Display = edOutcome.SourceName,
+                        Target = [],
+                    };
+                    currentGroup.Element.Add(cmSourceElement);
+                    cmSources[cmSourceKey] = cmSourceElement;
+                }
+
+                CMR targetRelationship = relationship;
+
+                if (eot.FullyMapsToThisTarget)
+                {
+                    targetRelationship = relationship switch
+                    {
+                        CMR.Equivalent => relationship,
+                        CMR.SourceIsNarrowerThanTarget => relationship,
+                        _ => CMR.Equivalent,
+                    };
+                }
+                else
+                {
+                    targetRelationship = relationship switch
+                    {
+                        CMR.Equivalent => CMR.SourceIsBroaderThanTarget,
+                        CMR.SourceIsNarrowerThanTarget => CMR.RelatedTo,
+                        _ => relationship,
+                    };
+                }
+
+                // add the target for this basic element equivalent
+                ConceptMap.TargetElementComponent cmTargetElement = new()
+                {
+                    Code = edOutcome.BasicElementEquivalent,
+                    Display = edOutcome.BasicElementEquivalent,
+                    Relationship = targetRelationship,
+                    Comment = edOutcome.Comments,
+                };
+                cmSourceElement.Target.Add(cmTargetElement);
+            }
+
+            if (edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true))
+            {
+                ConceptMap.GroupComponent? currentGroup;
+                string extUrl;
+
+                if (edOutcome.ExtensionSubstitutionUrl is not null)
+                {
+                    extUrl = edOutcome.ExtensionSubstitutionUrl;
+                }
+                else if (edOutcome.ParentRequiresXverDefinition &&
+                    (edOutcome.ParentElementOutcomeKey is not null) &&
+                    genUrlLookup.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out string? existingUrl))
+                {
+                    extUrl = existingUrl;
+                }
+                else if (edOutcome.ContentReferenceExtensionUrl is not null)
+                {
+                    if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
+                        genUrlLookup.TryGetValue(edOutcome.ContentReferenceOutcomeKey.Value, out string? crUrl))
+                    {
+                        extUrl = crUrl;
+                    }
+                    else
+                    {
+                        extUrl = edOutcome.ContentReferenceExtensionUrl;
+                    }
+                }
+                else
+                {
+                    extUrl = edOutcome.GenUrl!;
+                }
+
+                string? extTarget = getExtensionTarget(igTr, extUrl);
+                string subTarget = extTarget ?? "Extensions";
+
+                if (!groupsByTarget.TryGetValue(subTarget, out currentGroup))
+                {
+                    currentGroup = new()
+                    {
+                        Source = sourceSd.VersionedUrl,
+                        Target = extTarget,
+                        Element = [],
+                    };
+                    edCm.Group.Add(currentGroup);
+                    groupsByTarget[subTarget] = currentGroup;
+                }
+
+                string cmSourceKey = subTarget + "|" + edOutcome.SourceId;
+                if (!cmSources.TryGetValue(cmSourceKey, out ConceptMap.SourceElementComponent? cmSourceElement))
+                {
+                    cmSourceElement = new()
+                    {
+                        Code = edOutcome.SourceId,
+                        Display = edOutcome.SourceName,
+                        Target = [],
+                    };
+                    currentGroup.Element.Add(cmSourceElement);
+                    cmSources[cmSourceKey] = cmSourceElement;
+                }
+
+                // add the target
+                ConceptMap.TargetElementComponent cmTargetElement = new()
+                {
+                    Code = extUrl,
+                    Relationship = relationship == CMR.Equivalent ? CMR.Equivalent : CMR.SourceIsBroaderThanTarget,
+                    Comment = edOutcome.Comments,
+                };
+                cmSourceElement.Target.Add(cmTargetElement);
+
+                if (additionalAlternateCanonical)
+                {
+                    if (!groupsByTarget.TryGetValue(CommonDefinitions.CanonicalExtensionsPack, out currentGroup))
+                    {
+                        currentGroup = new()
+                        {
+                            Source = sourceSd.VersionedUrl,
+                            Target = extTarget,
+                            Element = [],
+                        };
+                        edCm.Group.Add(currentGroup);
+                        groupsByTarget[subTarget] = currentGroup;
+                    }
+
+                    cmSourceKey = CommonDefinitions.CanonicalExtensionsPack + "|" + edOutcome.SourceId;
+                    if (!cmSources.TryGetValue(cmSourceKey, out cmSourceElement))
+                    {
+                        cmSourceElement = new()
+                        {
+                            Code = edOutcome.SourceId,
+                            Display = edOutcome.SourceName,
+                            Target = [],
+                        };
+                        currentGroup.Element.Add(cmSourceElement);
+                        cmSources[cmSourceKey] = cmSourceElement;
+                    }
+
+                    // add the target
+                    cmTargetElement = new()
+                    {
+                        Code = CommonDefinitions.ExtUrlAlternateCanonical,
+                        Relationship = relationship == CMR.Equivalent ? CMR.Equivalent : CMR.SourceIsBroaderThanTarget,
+                        Comment = edOutcome.Comments,
+                    };
+                    cmSourceElement.Target.Add(cmTargetElement);
+                }
+
+                if (additionalAlternateReference)
+                {
+                    if (!groupsByTarget.TryGetValue(CommonDefinitions.CanonicalExtensionsPack, out currentGroup))
+                    {
+                        currentGroup = new()
+                        {
+                            Source = sourceSd.VersionedUrl,
+                            Target = extTarget,
+                            Element = [],
+                        };
+                        edCm.Group.Add(currentGroup);
+                        groupsByTarget[subTarget] = currentGroup;
+                    }
+
+                    cmSourceKey = CommonDefinitions.CanonicalExtensionsPack + "|" + edOutcome.SourceId;
+                    if (!cmSources.TryGetValue(cmSourceKey, out cmSourceElement))
+                    {
+                        cmSourceElement = new()
+                        {
+                            Code = edOutcome.SourceId,
+                            Display = edOutcome.SourceName,
+                            Target = [],
+                        };
+                        currentGroup.Element.Add(cmSourceElement);
+                        cmSources[cmSourceKey] = cmSourceElement;
+                    }
+
+                    // add the target
+                    cmTargetElement = new()
+                    {
+                        Code = CommonDefinitions.ExtUrlAlternateReference,
+                        Relationship = relationship == CMR.Equivalent ? CMR.Equivalent : CMR.SourceIsBroaderThanTarget,
+                        Comment = edOutcome.Comments,
+                    };
+                    cmSourceElement.Target.Add(cmTargetElement);
+                }
+            }
+
+            //if (!sourceElementLookup.TryGetValue(edOutcome.SourceId, out (ConceptMap.SourceElementComponent se, HashSet<string> usedTargets) cmSourceInfo))
+            //{
+            //    // create a new source element
+            //    cmSourceInfo.se = new()
+            //    {
+            //        Code = edOutcome.SourceId,
+            //        Display = edOutcome.SourceName,
+            //        Target = [],
+            //    };
+            //    cmSourceInfo.usedTargets = [];
+            //    cmGroup.Element.Add(cmSourceInfo.se);
+            //    sourceElementLookup[edOutcome.SourceId] = cmSourceInfo;
+            //}
+
+
+            //List<DbElementOutcomeTarget> outcomeTargetsWithKeys = outcomeTargets
+            //    .Where(ot => ot.TargetElementKey is not null)
+            //    .ToList();
+
+            //if (outcomeTargetsWithKeys.Count == 0)
+            //{
+            //    string code;
+            //    if (edOutcome.BasicElementEquivalent is not null)
+            //    {
+            //        string[] components = edOutcome.BasicElementEquivalent.Split('.');
+            //        code = string.Join('.', ["Basic", .. components[1..]]);
+            //    }
+            //    else if (edOutcome.ExtensionSubstitutionKey is not null)
+            //    {
+            //        code = edOutcome.ExtensionSubstitutionUrl!;
+            //    }
+            //    else if (edOutcome.ContentReferenceOutcomeKey is not null)
+            //    {
+            //        code = edOutcome.ContentReferenceExtensionUrl!;
+            //    }
+            //    else if ((edOutcome.ParentRequiresXverDefinition == true) &&
+            //        (edOutcome.ParentElementOutcomeKey is not null) &&
+            //        outcomeUrlComposition.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out string? parentUrl))
+            //    {
+            //        code = parentUrl + ":" + edOutcome.GenUrl!;
+            //    }
+            //    else
+            //    {
+            //        code = edOutcome.GenUrl!;
+            //    }
+
+            //    outcomeUrlComposition[edOutcome.Key] = code;
+
+            //    if (!cmSourceInfo.usedTargets.Add(code))
+            //    {
+            //        continue;
+            //    }
+
+            //    // create our target element
+            //    ConceptMap.TargetElementComponent targetElement = new()
+            //    {
+            //        Code = code,
+            //        Display = edOutcome.TargetName,
+            //        Relationship = relationship,
+            //        Comment = edOutcome.Comments,
+            //    };
+            //    cmSourceInfo.se.Target.Add(targetElement);
+
+            //    // check for additional alternate targets
+            //    bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
+            //    bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
+
+            //    bool additionalAlternateCanonical = !isAlternateCanonical &&
+            //        (edOutcome.AlternateCanonicalTargetsLiteral is not null);
+
+            //    bool additionalAlternateReference = !isAlternateReference &&
+            //        (edOutcome.AlternateReferenceTargetsLiteral is not null);
+
+            //    if (additionalAlternateCanonical)
+            //    {
+            //        string additionalCode = CommonDefinitions.ExtUrlAlternateCanonical;
+
+            //        if (cmSourceInfo.usedTargets.Add(additionalCode))
+            //        {
+            //            ConceptMap.TargetElementComponent additionalTargetElement = new()
+            //            {
+            //                Code = additionalCode,
+            //                Display = edOutcome.TargetName,
+            //                Relationship = relationship,
+            //                Comment = edOutcome.Comments,
+            //            };
+            //            cmSourceInfo.se.Target.Add(additionalTargetElement);
+            //        }
+            //    }
+
+            //    if (additionalAlternateReference)
+            //    {
+            //        string additionalCode = CommonDefinitions.ExtUrlAlternateReference;
+
+            //        if (cmSourceInfo.usedTargets.Add(additionalCode))
+            //        {
+            //            ConceptMap.TargetElementComponent additionalTargetElement = new()
+            //            {
+            //                Code = additionalCode,
+            //                Display = edOutcome.TargetName,
+            //                Relationship = relationship,
+            //                Comment = edOutcome.Comments,
+            //            };
+            //            cmSourceInfo.se.Target.Add(additionalTargetElement);
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    // create a target for each target element
+            //    foreach (DbElementOutcomeTarget eot in outcomeTargetsWithKeys)
+            //    {
+            //        if ((eot.TargetElementId is null) ||
+            //            !cmSourceInfo.usedTargets.Add(eot.TargetElementId))
+            //        {
+            //            continue;
+            //        }
+
+            //        // create our target element
+            //        ConceptMap.TargetElementComponent targetElement = new()
+            //        {
+            //            Code = sdOutcome.TargetCanonicalUnversioned + "#" + eot.TargetElementId,
+            //            Display = edOutcome.TargetName,
+            //            Relationship = relationship,
+            //            Comment = edOutcome.Comments,
+            //        };
+            //        cmSourceInfo.se.Target.Add(targetElement);
+            //    }
+            //}
+        }
+    }
+
+    private string? getExtensionTarget(XVerIgExportTrackingRecord igTr, string extUrl)
+    {
+        if (extUrl.StartsWith("http://hl7.org/fhir/tools/", StringComparison.Ordinal))
+        {
+            return CommonDefinitions.CanonicalTooling;
+        }
+
+        if (extUrl.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.Ordinal))
+        {
+            return CommonDefinitions.CanonicalExtensionsPack;
+        }
+
+        if (extUrl.StartsWith($"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/StructureDefinition", StringComparison.Ordinal))
+        {
+            return igTr.PackageUrl;
+        }
+
+        return null;
+    }
+
     private ConceptMap createElementConceptMap(
         XVerIgExportTrackingRecord igTr,
         DbStructureOutcome sdOutcome)
     {
         string targetId = sdOutcome.TargetId ?? "Basic";
+        string targetVersion = sdOutcome.TargetVersion ?? igTr.PackagePair.TargetPackage.PackageVersion;
 
         (_, string name) = igTr.GetName(sdOutcome.ElementConceptMapName!, sdOutcome.ElementConceptMapLongId!);
 
@@ -486,19 +827,14 @@ public class StructureFhirExporter
             Name = name,
             Version = _exporter._crossDefinitionVersion,
             DateElement = new FhirDateTime(DateTimeOffset.Now),
-            Title = $"Cross-version ConceptMap for FHIR {igTr.PackagePair.SourceFhirSequence} resources in FHIR {igTr.PackagePair.TargetFhirSequence}",
-            Description = $"This ConceptMap represents the cross-version mapping of resource FHIR {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}.",
+            Title = $"Cross-version mapping for FHIR {igTr.PackagePair.SourceFhirSequence} {sdOutcome.SourceId} to FHIR {igTr.PackagePair.TargetFhirSequence} {targetId}",
+            Description = $"This ConceptMap represents cross-version mappings for elements" +
+                $" from a FHIR {igTr.PackagePair.SourceFhirSequence} {sdOutcome.SourceId}" +
+                $" to FHIR {igTr.PackagePair.TargetFhirSequence}.",
             Status = PublicationStatus.Active,
             Experimental = false,
-            SourceScope = new FhirUri($"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ValueSet/resource-types"),
-            TargetScope = new FhirUri($"http://hl7.org/fhir/{igTr.PackagePair.TargetFhirVersionShort}/ValueSet/resource-types"),
-            Group = [
-                new()
-                {
-                    Source = sdOutcome.SourceCanonicalVersioned,
-                    Element = [],
-                }
-            ],
+            SourceScope = new Canonical($"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}"),
+            TargetScope = new FhirUri($"http://hl7.org/fhir/{igTr.PackagePair.TargetFhirVersionShort}"),
         };
 
         return vsCm;
@@ -506,6 +842,10 @@ public class StructureFhirExporter
 
     private void exportResourceMaps(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+            ? new()
+            : null;
+
         if (igTr.ResourceMapDir is null)
         {
             throw new Exception("ResourceMapDir is null");
@@ -587,7 +927,14 @@ public class StructureFhirExporter
             ? $"{cm.Id}.json"
             : $"ConceptMap-{cm.Id}.json";
         string path = Path.Combine(dir, filename);
-        File.WriteAllText(path, cm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+        if (exporterR4 is not null)
+        {
+            File.WriteAllText(path, exporterR4.ToJson(cm, new SerializerSettings() { Pretty = true }));
+        }
+        else
+        {
+            File.WriteAllText(path, cm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+        }
         exported.Add(new()
         {
             FileName = filename,
@@ -608,9 +955,8 @@ public class StructureFhirExporter
     private ConceptMap createResourceConceptMap(
         XVerIgExportTrackingRecord igTr)
     {
-        string id = $"ConceptMap-{igTr.PackagePair.SourcePackageShortName}-resources-for-{igTr.PackagePair.TargetPackageShortName}";
+        string id = $"{igTr.PackagePair.SourcePackageShortName}-resources-for-{igTr.PackagePair.TargetPackageShortName}";
         string name =
-            $"ConceptMap" +
             $"{igTr.PackagePair.SourcePackageShortName.ToPascalCase()}" +
             $"ResourcesFor" +
             $"{igTr.PackagePair.TargetPackageShortName.ToPascalCase()}";
@@ -620,7 +966,7 @@ public class StructureFhirExporter
         ConceptMap vsCm = new()
         {
             Id = id,
-            Url = $"http://hl7.org/fhir/{igTr.PackagePair.SourceFhirVersionShort}/ConceptMap/{id}",
+            Url = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{id}",
             Name = name,
             Version = _exporter._crossDefinitionVersion,
             DateElement = new FhirDateTime(DateTimeOffset.Now),

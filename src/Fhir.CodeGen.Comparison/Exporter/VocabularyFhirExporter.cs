@@ -57,6 +57,10 @@ public class VocabularyFhirExporter
 
     private void exportConceptMaps(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+            ? new()
+            : null;
+
         if (igTr.VocabMapDir is null)
         {
             throw new Exception("VocabMapDir is null");
@@ -143,7 +147,14 @@ public class VocabularyFhirExporter
                 // write the concept map to a file
                 string filename = vsOutcome.ConceptMapFileName ?? throw new ArgumentNullException(nameof(vsOutcome.ConceptMapFileName));
                 string path = Path.Combine(dir, filename);
-                File.WriteAllText(path, vsCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+                if (exporterR4 is not null)
+                {
+                    File.WriteAllText(path, exporterR4.ToJson(vsCm, new SerializerSettings() { Pretty = true }));
+                }
+                else
+                {
+                    File.WriteAllText(path, vsCm.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+                }
                 exported.Add(new()
                 {
                     FileName = filename,

@@ -231,45 +231,39 @@ public class ValueSetOutcomeGenerator
                     ? null
                     : targetValueSets[vsComparison.TargetContentKey.Value];
 
+                //(string idLong, string idShort, string name) = XVerProcessor.GenerateArtifactId(
+                //    packagePair.SourcePackageShortName,
+                //    sourceVs.Id,
+                //    packagePair.TargetPackageShortName,
+                //    targetArtifactId: targetVs?.Id,
+                //    prefixLong: "ValueSet",
+                //    prefixShort: "Vs");
+
                 (string idLong, string idShort, string name) = XVerProcessor.GenerateArtifactId(
                     packagePair.SourcePackageShortName,
                     sourceVs.Id,
                     packagePair.TargetPackageShortName,
-                    targetArtifactId: targetVs?.Id,
-                    prefixLong: "ValueSet",
-                    prefixShort: "Vs");
+                    targetArtifactId: targetVs?.Id);
 
-                string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ValueSet/{idLong}";
+
+                //string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ValueSet/{idLong}";
+                string url = $"{XVerProcessor._canonicalRootCrossVersion}ValueSet/{idLong}";
 
                 (string cmIdLong, string cmIdShort, string cmName) = XVerProcessor.GenerateArtifactId(
                     packagePair.SourcePackageShortName,
                     sourceVs.Id,
                     packagePair.TargetPackageShortName,
                     targetArtifactId: targetVs?.Id,
-                    prefixLong: "ConceptMap",
-                    prefixShort: "Cm");
+                    prefixLong: "Map",
+                    prefixShort: "Map");
 
-                string cmUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{idLong}";
+                //string cmUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{idLong}";
+                string cmUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{idLong}";
 
                 if ((targetVs is null) ||
                     vsComparison.NotMapped)
                 {
                     bool noMapVsRequiresXVer = fullyMapsAcrossAllTargets != true;
-
-                    //OutcomeValueSetActionCodes noMapAction;
-
-                    //if (fullyMapsAcrossAllTargets)
-                    //{
-                    //    noMapAction = OutcomeValueSetActionCodes.UseOtherValueSets;
-                    //}
-                    //else if (sourceComparisons.Count > 1)
-                    //{
-                    //    noMapAction = OutcomeValueSetActionCodes.UseOtherAndCrossVersion;
-                    //}
-                    //else
-                    //{
-                    //    noMapAction = OutcomeValueSetActionCodes.UseCrossVersionDefinition;
-                    //}
 
                     // build our no-map outcome
                     DbValueSetOutcome noMapOutcome = new()

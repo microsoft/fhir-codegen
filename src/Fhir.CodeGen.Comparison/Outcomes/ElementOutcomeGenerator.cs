@@ -418,11 +418,6 @@ public class ElementOutcomeGenerator
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
                 TargetFhirSequence = _packagePair.TargetFhirSequence,
-                TargetCanonicalUnversioned = null,
-                TargetCanonicalVersioned = null,
-                TargetVersion = null,
-                TargetId = null,
-                TargetName = null,
                 TotalTargetCount = 0,
                 OutcomeTargetCount = 1,
 
@@ -722,6 +717,7 @@ public class ElementOutcomeGenerator
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
             string? extFilename = $"StructureDefinition-{idShort}.json";
 
+            HashSet<string> targetStructures = [];
             string? basicBasePath = null;
             DbElement? basicEd = null;
             DbExtensionSubstitution? extSubstitute = null;
@@ -781,6 +777,8 @@ public class ElementOutcomeGenerator
                 // if the structure target is unmapped, add a non-mapping outcome target
                 if (sdTr.TargetStructure is null)
                 {
+                    targetStructures.Add("Basic");
+
                     targetSdEdComparisons = elementComparisons
                         .Where(ec => ec.TargetStructureKey is null)
                         .ToList();
@@ -866,6 +864,8 @@ public class ElementOutcomeGenerator
                     continue;
                 }
 
+                targetStructures.Add(sdTr.TargetStructure.Name);
+
                 // build the list of target elements for this structure
                 List<DbElement> targetEds = targetSdEdComparisons
                     .Where(ec => ec.TargetElementKey is not null)
@@ -880,9 +880,17 @@ public class ElementOutcomeGenerator
                     allContextTargets[contextTargetEd.Key] = contextTargetEd;
                 }
 
+                // check to see if there are any mapped comparisons (need to know later)
+                bool hasMappedComparisons = elementComparisons.Any(ec => ec.NotMapped == false);
+
                 // traverse the comparisons for this element (can map to multiple elments in target structure)
                 foreach (DbElementComparison elementComparison in elementComparisons.Where(ec => ec.TargetStructureKey == sdTr.TargetStructure.Key))
                 {
+                    if (hasMappedComparisons && elementComparison.NotMapped)
+                    {
+                        continue;
+                    }
+
                     DbElement? ecTargetEd = elementComparison.TargetElementKey is null
                         ? null
                         : _allTargetElements[elementComparison.TargetElementKey.Value];
@@ -894,8 +902,9 @@ public class ElementOutcomeGenerator
                             $" structure `{sdTr.TargetStructure.Name}`," +
                             $" but has no target element specified.";
 
+                        DbElement? testTargetEd = null;
                         DbElement currentSourceEd = sourceEd;
-                        while (ecTargetEd is null)
+                        while (testTargetEd is null)
                         {
                             if (currentSourceEd.ParentElementKey is null)
                             {
@@ -935,11 +944,11 @@ public class ElementOutcomeGenerator
                             contextTargetEd = findCommonAncestor(sdTr.TargetStructure.FhirPackageKey, parentTargetEds);
                             if (contextTargetEd is not null)
                             {
-                                ecTargetEd = contextTargetEd;
+                                testTargetEd = contextTargetEd;
                                 allContextTargets[contextTargetEd.Key] = contextTargetEd;
 
                                 targetComments =
-                                    $"Element `{sourceEd.Id}` has a context of {ecTargetEd.Id}" +
+                                    $"Element `{sourceEd.Id}` has a context of {contextTargetEd.Id}" +
                                     $" based on following the parent source element upwards and mapping to" +
                                     $" `{sdTr.TargetStructure.Name}`.";
 
@@ -968,10 +977,10 @@ public class ElementOutcomeGenerator
                         TargetFhirSequence = _packagePair.TargetFhirSequence,
 
                         TargetStructureKey = sdTr.TargetStructure.Key,
-                        TargetElementKey = ecTargetEd?.Key,
-                        TargetElementId = ecTargetEd?.Id,
-                        TargetResourceOrder = ecTargetEd?.ResourceFieldOrder,
-                        TargetComponentOrder = ecTargetEd?.ComponentFieldOrder,
+                        TargetElementKey = elementComparison.NotMapped ? null : ecTargetEd?.Key,
+                        TargetElementId = elementComparison.NotMapped ? null : ecTargetEd?.Id,
+                        TargetResourceOrder = elementComparison.NotMapped ? 0 : ecTargetEd?.ResourceFieldOrder,
+                        TargetComponentOrder = elementComparison.NotMapped ? 0 : ecTargetEd?.ComponentFieldOrder,
 
                         ContextElementKey = contextTargetEd?.Key,
                         ContextElementId = contextTargetEd?.Id,
@@ -1012,8 +1021,17 @@ public class ElementOutcomeGenerator
                 parentOutcome = null;
             }
 
+            bool allowsBasicReplacement = false;
+            // check if we are only targeting basic
+            if ((targetStructures.Count == 0) ||
+                ((targetStructures.Count == 1) && targetStructures.Contains("Basic")))
+            {
+                allowsBasicReplacement = true;
+            }
+
             // check to see if we are trying to define an extension onto basic that has a matching basic path
             if (elementRequiresXVer &&
+                allowsBasicReplacement &&
                 _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
                 _targetBasicElementsById.TryGetValue(basicBasePath!, out basicEd))
             {
@@ -1352,11 +1370,6 @@ public class ElementOutcomeGenerator
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
                 TargetFhirSequence = _packagePair.TargetFhirSequence,
-                TargetCanonicalUnversioned = null,
-                TargetCanonicalVersioned = null,
-                TargetVersion = _packagePair.TargetPackage.PackageVersion,
-                TargetId = null,
-                TargetName = null,
                 TotalTargetCount = edTr.DiscreteTargetCount,
                 OutcomeTargetCount = edTr.OutcomeTargets.Count,
 

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.13.1" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="5.13.1" />
+    <!--<PackageReference Include="Hl7.Fhir.R4B" Version="5.13.1" />-->
+    <!--<PackageReference Include="Hl7.Fhir.STU3" Version="5.13.1" />-->
+  </ItemGroup>
+
+  <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4'">
+        <Aliases>coreR4</Aliases>
+      </ReferencePath>
+      <!--<ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4B.Core'">
+        <Aliases>coreR4B</Aliases>
+      </ReferencePath>-->
+      <!--<ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R5'">
+        <Aliases>coreR5</Aliases>
+      </ReferencePath>-->
+    </ItemGroup>
+  </Target>
+</Project>

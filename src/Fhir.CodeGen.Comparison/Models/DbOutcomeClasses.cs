@@ -268,7 +268,11 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
         ? SourceName[..^3]
         : SourceName;
     public required string SourceVersion { get; set; }
+}
 
+[CgSQLiteBaseClass]
+public abstract class DbArtifactOutcomeWithTargetBase : DbArtifactOutcomeBase
+{
     public required string? TargetCanonicalVersioned { get; set; }
     public required string? TargetCanonicalUnversioned { get; set; }
     public required string? TargetId { get; set; }
@@ -281,11 +285,10 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
     public required string? TargetVersion { get; set; }
 }
 
-
 [CgSQLiteTable(tableName: "ValueSetOutcomes")]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceValueSetKey), nameof(TargetFhirPackageKey), nameof(RequiresXVerDefinition))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(TargetFhirPackageKey), nameof(GenLongId), nameof(RequiresXVerDefinition))]
-public partial class DbValueSetOutcome : DbArtifactOutcomeBase
+public partial class DbValueSetOutcome : DbArtifactOutcomeWithTargetBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
     public required int ValueSetComparisonKey { get; set; }
@@ -357,7 +360,7 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(TargetStructureKey))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceStructureKey), nameof(TargetFhirPackageKey), nameof(RequiresXVerDefinition))]
 [CgSQLiteIndex(nameof(SourceFhirPackageKey), nameof(SourceName), nameof(TargetFhirPackageKey), nameof(TargetName))]
-public partial class DbStructureOutcome : DbArtifactOutcomeBase
+public partial class DbStructureOutcome : DbArtifactOutcomeWithTargetBase
 {
     [CgSQLiteForeignKey(referenceTable: "StructureComparisons", referenceColumn: nameof(DbStructureComparison.Key))]
     public required int? StructureComparisonKey { get; set; }
@@ -658,7 +661,8 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
 
 [CgSQLiteTable(tableName: "ElementOutcomeTargets")]
 [CgSQLiteIndex(nameof(ElementOutcomeKey), nameof(StructureOutcomeKey))]
-[CgSQLiteIndex(nameof(ElementOutcomeKey), nameof(TargetElementId))]
+[CgSQLiteIndex(nameof(ElementOutcomeKey), nameof(TargetStructureKey), nameof(TargetElementId))]
+[CgSQLiteIndex(nameof(ElementOutcomeKey), nameof(TargetElementId), nameof(ContextElementId))]
 public partial class DbElementOutcomeTarget : DbRecordBase
 {
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(DbElementOutcome.Key), modelTypeName: nameof(DbElementOutcome))]

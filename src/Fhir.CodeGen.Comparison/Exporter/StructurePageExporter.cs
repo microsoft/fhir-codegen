@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Models;
@@ -16,6 +17,7 @@ using Fhir.CodeGen.Lib.Language;
 using Hl7.Fhir.Language.Debugging;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Model.CdsHooks;
+using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Utility;
 using Microsoft.Extensions.Logging;
@@ -152,328 +154,37 @@ public class StructurePageExporter
                 orderByProperties: [nameof(DbElementOutcome.SourceResourceOrder)]);
             ILookup<int, DbElementOutcome> edOutcomesByKey = edOutcomes.ToLookup(edo => edo.Key);
 
-            Dictionary<int, (string label, string link)> outcomeAccumulator = [];
+            writeElementTable(
+                mdWriter,
+                sdOutcome,
+                edOutcomes,
+                edOutcomesByKey,
+                filterToTargetSd: true,
+                sourceBaseUrl,
+                targetBaseUrl,
+                out int targetStructureCount);
 
-            HashSet<int> targetedStructureKeys = [];
-
-            // iterate over the element outcomes
-            foreach (DbElementOutcome edOutcome in edOutcomes)
+            if (targetStructureCount > 1)
             {
-                List<string> targetLines = [];
-
-                // get the targets for this outcome
-                List<DbElementOutcomeTarget> edTargets = DbElementOutcomeTarget.SelectList(
-                    _db,
-                    ElementOutcomeKey: edOutcome.Key,
-                    orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId)]);
-
-                foreach (DbElementOutcomeTarget edTarget in edTargets)
-                {
-                    if (edTarget.TargetStructureKey is not null)
-                    {
-                        targetedStructureKeys.Add(edTarget.TargetStructureKey.Value);
-                    }
-
-                    if (edTarget.TargetElementId is not null)
-                    {
-                        // check to see if there is a root target and an extension, in which case the element should not be listed
-                        if ((!edOutcome.RequiresXVerDefinition) ||
-                            (edOutcome.RequiresXVerDefinition && (edTarget.TargetResourceOrder != 0)))
-                        {
-                            targetLines.Add($"[{edTarget.TargetElementId}]({targetBaseUrl}{edTarget.TargetElementId.Split('.')[0]}.html#resource)");
-                        }
-                    }
-                }
-
-                if (edOutcome.BasicElementEquivalent is not null)
-                {
-                    string targetLabel;
-                    string targetLink;
-
-                    string[] components = edOutcome.BasicElementEquivalent.Split('.');
-                    targetLabel = string.Join('.', ["Basic", .. components[1..]]);
-                    targetLink = $"{targetBaseUrl}Basic.html#resource";
-
-                    outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
-                    targetLines.Add($"[{targetLabel}]({targetLink})");
-                }
-
-                bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
-                bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
-
-                bool additionalAlternateCanonical = !isAlternateCanonical &&
-                    (edOutcome.AlternateCanonicalTargetsLiteral is not null);
-
-                bool additionalAlternateReference = !isAlternateReference &&
-                    (edOutcome.AlternateReferenceTargetsLiteral is not null);
-
-                if (edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true))
-                {
-                    string targetLabel;
-                    string targetLink;
-
-                    if (edOutcome.ExtensionSubstitutionUrl is not null)
-                    {
-                        targetLabel = edOutcome.ExtensionSubstitutionUrl;
-                        targetLink = edOutcome.ExtensionSubstitutionUrl;
-                    }
-                    else if (edOutcome.ParentRequiresXverDefinition &&
-                        (edOutcome.ParentElementOutcomeKey is not null) &&
-                        outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
-                    {
-                        if (edOutcomesByKey.Contains(edOutcome.ParentElementOutcomeKey.Value))
-                        {
-                            if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
-                            {
-                                targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.SourceNameClean()}";
-                            }
-                            else
-                            {
-                                targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.GenUrl!}";
-                            }
-                            targetLink = parent.link;
-                        }
-                        else
-                        {
-                            targetLabel = $"Slice: {edOutcome.GenUrl!}";
-                            targetLink = parent.link;
-                        }
-                    }
-                    else if (edOutcome.ContentReferenceExtensionUrl is not null)
-                    {
-                        if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
-                            edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
-                        {
-                            DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
-                            targetLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
-                            targetLink = crOutcome.GenFileName![..^4] + "html";
-                        }
-                        else
-                        {
-                            targetLabel = edOutcome.ContentReferenceExtensionUrl;
-                            targetLink = edOutcome.ContentReferenceExtensionUrl;
-                        }
-
-                        //targetLabel = edOutcome.ContentReferenceExtensionUrl;
-                        //targetLink = edOutcome.ContentReferenceExtensionUrl;
-                    }
-                    else
-                    {
-                        //targetLabel = edOutcome.GenUrl!;
-                        targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
-                        targetLink = edOutcome.GenFileName![..^4] + "html";
-                    }
-
-                    outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
-                    targetLines.Add($"[{targetLabel}]({targetLink})");
-                }
-
-                //if (edOutcome.ContentReferenceExtensionUrl is not null)
-                //{
-                //    string crLabel;
-                //    string crLink;
-
-                //    if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
-                //        edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
-                //    {
-                //        DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
-                //        crLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
-                //        crLink = crOutcome.GenFileName![..^4] + "html";
-                //    }
-                //    else
-                //    {
-                //        crLabel = edOutcome.ContentReferenceExtensionUrl;
-                //        crLink = edOutcome.ContentReferenceExtensionUrl;
-                //    }
-
-                //    targetLines.Add($"[{crLabel}]({crLink})");
-                //}
-                //else if (edOutcome.ContentReferenceAncestorId is not null)
-                //{
-                //    targetLines.Add($"Content Reference: `{edOutcome.ContentReferenceAncestorId}`");
-                //}
-
-                if (additionalAlternateCanonical)
-                {
-                    targetLines.Add($"[alternate-canonical]({CommonDefinitions.ExtUrlAlternateCanonical})");
-                }
-
-                if (additionalAlternateReference)
-                {
-                    targetLines.Add($"[alternate-reference]({CommonDefinitions.ExtUrlAlternateReference})");
-                }
-
-                mdWriter.WriteLine(
-                    $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
-                    $" | {string.Join("<br/>", targetLines)}" +
-                    $" |");
-            }
-            mdWriter.WriteLine("{: .grid }");
-            mdWriter.WriteLine();
-
-
-            // if we have multiple target structures, generate tables for each
-            if (targetedStructureKeys.Count > 1)
-            {
-                foreach (int targetSdKey in targetedStructureKeys)
-                {
-                    // resolve the target strcutre
-                    DbStructureDefinition targetSd = DbStructureDefinition.SelectSingle(
-                        _db,
-                        Key: targetSdKey)
-                        ?? throw new Exception($"Failed to resolve target structure key: {targetSdKey}");
-
-                    bool targetsBasic = targetSd.Name == "Basic";
-
-                    mdWriter.WriteLine();
-                    mdWriter.WriteLine($"The following table contains the lookup information specific to when using a FHIR {igTr.PackagePair.TargetFhirSequence} {targetSd.Name}.");
-                    mdWriter.WriteLine();
-                    mdWriter.WriteLine($"| Source Element (FHIR {igTr.PackagePair.SourceFhirSequence}) | Target(s) |");
-                    mdWriter.WriteLine("| -------------- | ---- |");
-
-                    // iterate over the element outcomes
-                    foreach (DbElementOutcome edOutcome in edOutcomes)
-                    {
-                        List<string> targetLines = [];
-
-                        // get the targets for this outcome
-                        List<DbElementOutcomeTarget> edTargets = DbElementOutcomeTarget.SelectList(
-                            _db,
-                            ElementOutcomeKey: edOutcome.Key,
-                            TargetStructureKey: targetSdKey,
-                            orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId)]);
-
-                        foreach (DbElementOutcomeTarget edTarget in edTargets)
-                        {
-                            if (edTarget.TargetElementId is not null)
-                            {
-                                // check to see if there is a root target and an extension, in which case the element should not be listed
-                                if ((!edOutcome.RequiresXVerDefinition) ||
-                                    (edOutcome.RequiresXVerDefinition && (edTarget.TargetResourceOrder != 0)))
-                                {
-                                    targetLines.Add($"[{edTarget.TargetElementId}]({targetBaseUrl}{edTarget.TargetElementId.Split('.')[0]}.html#resource)");
-                                }
-                            }
-                        }
-
-                        if (targetsBasic &&
-                            (edOutcome.BasicElementEquivalent is not null))
-                        {
-                            string targetLabel;
-                            string targetLink;
-
-                            string[] components = edOutcome.BasicElementEquivalent.Split('.');
-                            targetLabel = string.Join('.', ["Basic", .. components[1..]]);
-                            targetLink = $"{targetBaseUrl}Basic.html#resource";
-
-                            outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
-                            targetLines.Add($"[{targetLabel}]({targetLink})");
-                        }
-
-                        // only list extensions that can target this
-                        if ((edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true)) &&
-                            edOutcome.ExtensionContexts.Any(ec => ec.StartsWith(targetSd.Name, StringComparison.Ordinal) || (ec == "Element")))
-                        {
-                            string targetLabel;
-                            string targetLink;
-
-                            bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
-                            bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
-
-                            bool additionalAlternateCanonical = !isAlternateCanonical &&
-                                (edOutcome.AlternateCanonicalTargetsLiteral is not null);
-
-                            bool additionalAlternateReference = !isAlternateReference &&
-                                (edOutcome.AlternateReferenceTargetsLiteral is not null);
-
-                            if (edOutcome.ExtensionSubstitutionUrl is not null)
-                            {
-                                targetLabel = edOutcome.ExtensionSubstitutionUrl;
-                                targetLink = edOutcome.ExtensionSubstitutionUrl;
-                            }
-                            else if (edOutcome.ParentRequiresXverDefinition &&
-                                (edOutcome.ParentElementOutcomeKey is not null) &&
-                                outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
-                            {
-                                if (edOutcomesByKey.Contains(edOutcome.ParentElementOutcomeKey.Value))
-                                {
-                                    if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
-                                    {
-                                        targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.SourceNameClean()}";
-                                    }
-                                    else
-                                    {
-                                        targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.GenUrl!}";
-                                    }
-                                    targetLink = parent.link;
-                                }
-                                else
-                                {
-                                    targetLabel = $"Slice: {edOutcome.GenUrl!}";
-                                    targetLink = parent.link;
-                                }
-                            }
-                            else if (edOutcome.ContentReferenceExtensionUrl is not null)
-                            {
-                                if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
-                                    edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
-                                {
-                                    DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
-                                    targetLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
-                                    targetLink = crOutcome.GenFileName![..^4] + "html";
-                                }
-                                else
-                                {
-                                    targetLabel = edOutcome.ContentReferenceExtensionUrl;
-                                    targetLink = edOutcome.ContentReferenceExtensionUrl;
-                                }
-                            }
-                            else
-                            {
-                                //targetLabel = edOutcome.GenUrl!;
-                                targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
-                                targetLink = edOutcome.GenFileName![..^4] + "html";
-                            }
-
-                            outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
-                            targetLines.Add($"[{targetLabel}]({targetLink})");
-
-                            //if (edOutcome.ContentReferenceExtensionUrl is not null)
-                            //{
-                            //    targetLines.Add($"[{edOutcome.ContentReferenceExtensionUrl}]({edOutcome.ContentReferenceExtensionUrl})");
-                            //}
-                            //else if (edOutcome.ContentReferenceAncestorId is not null)
-                            //{
-                            //    targetLines.Add($"See: `{edOutcome.ContentReferenceAncestorId}`");
-                            //}
-
-                            if (additionalAlternateCanonical)
-                            {
-                                targetLines.Add($"[alternate-canonical]({CommonDefinitions.ExtUrlAlternateCanonical})");
-                            }
-
-                            if (additionalAlternateReference)
-                            {
-                                targetLines.Add($"[alternate-reference]({CommonDefinitions.ExtUrlAlternateReference})");
-                            }
-                        }
-
-                        if (targetLines.Count == 0)
-                        {
-                            targetLines.Add("<i>Not Available</i>");
-                        }
-
-                        mdWriter.WriteLine(
-                            $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
-                            $" | {string.Join("<br/>", targetLines)}" +
-                            $" |");
-                    }
-                }
-                mdWriter.WriteLine("{: .grid }");
                 mdWriter.WriteLine();
+                mdWriter.WriteLine(
+                    $"Note that the FHIR {igTr.PackagePair.SourceFhirSequence} {sdOutcome.SourceId}" +
+                    $" maps to multiple resources in FHIR {igTr.PackagePair.TargetFhirSequence}." +
+                    $" The following table contains the the combined lookup information for reference.");
+                mdWriter.WriteLine();
+                mdWriter.WriteLine($"| Source Element (FHIR {igTr.PackagePair.SourceFhirSequence}) | Target(s) |");
+                mdWriter.WriteLine("| -------------- | ---- |");
+
+                writeElementTable(
+                    mdWriter,
+                    sdOutcome,
+                    edOutcomes,
+                    edOutcomesByKey,
+                    filterToTargetSd: false,
+                    sourceBaseUrl,
+                    targetBaseUrl,
+                    out _);
             }
-
-
 
             // finish writing the file
             mdWriter.Close();
@@ -495,6 +206,194 @@ public class StructurePageExporter
 
         _logger.LogInformation($"Wrote {exported.Count} structure lookup pages for `{igTr.PackageId}`");
         igTr.SdPageContentFiles.AddRange(exported);
+    }
+
+    private void writeElementTable(
+        ExportStreamWriter mdWriter,
+        DbStructureOutcome sdOutcome,
+        List<DbElementOutcome> edOutcomes,
+        ILookup<int, DbElementOutcome> edOutcomesByKey,
+        bool filterToTargetSd,
+        string sourceBaseUrl,
+        string targetBaseUrl,
+        out int targetStructureCount)
+    {
+        HashSet<int> targetStructureKeys = sdOutcome.TargetStructureKey is not null
+            ? [sdOutcome.TargetStructureKey!.Value]
+            : [];
+        Dictionary<int, (string label, string link)> outcomeAccumulator = [];
+
+        // iterate over the element outcomes that target this structure
+        foreach (DbElementOutcome edOutcome in edOutcomes)
+        {
+            List<string> targetLines = [];
+
+            // get the targets for this outcome
+            List<DbElementOutcomeTarget> edTargets = DbElementOutcomeTarget.SelectList(
+                _db,
+                ElementOutcomeKey: edOutcome.Key,
+                orderByProperties: [nameof(DbElementOutcomeTarget.TargetElementId)]);
+
+            int allowedTargets = 0;
+            foreach (DbElementOutcomeTarget edTarget in edTargets)
+            {
+                if (edTarget.TargetStructureKey is not null)
+                {
+                    targetStructureKeys.Add(edTarget.TargetStructureKey.Value);
+
+                    if (filterToTargetSd &&
+                        (edTarget.TargetStructureKey != sdOutcome.TargetStructureKey))
+                    {
+                        continue;
+                    }
+                }
+
+                allowedTargets++;
+
+                if (edTarget.TargetElementId is not null)
+                {
+                    // check to see if there is a root target and an extension, in which case the element should not be listed
+                    if ((!edOutcome.RequiresXVerDefinition) ||
+                        (edOutcome.RequiresXVerDefinition && (edTarget.TargetResourceOrder != 0)))
+                    {
+                        targetLines.Add($"[{edTarget.TargetElementId}]({targetBaseUrl}{edTarget.TargetElementId.Split('.')[0]}.html#resource)");
+                    }
+                }
+            }
+
+            if (allowedTargets == 0)
+            {
+                mdWriter.WriteLine(
+                    $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
+                    $" | <i>Not Available</i>" +
+                    $" |");
+
+                continue;
+            }
+
+            if (edOutcome.BasicElementEquivalent is not null)
+            {
+                string targetLabel;
+                string targetLink;
+
+                string[] components = edOutcome.BasicElementEquivalent.Split('.');
+                targetLabel = string.Join('.', ["Basic", .. components[1..]]);
+                targetLink = $"{targetBaseUrl}Basic.html#resource";
+
+                outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                targetLines.Add($"[{targetLabel}]({targetLink})");
+            }
+
+            bool isAlternateCanonical = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
+            bool isAlternateReference = edOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
+
+            bool additionalAlternateCanonical = !isAlternateCanonical &&
+                (edOutcome.AlternateCanonicalTargetsLiteral is not null);
+
+            bool additionalAlternateReference = !isAlternateReference &&
+                (edOutcome.AlternateReferenceTargetsLiteral is not null);
+
+            if (edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true))
+            {
+                string targetLabel;
+                string targetLink;
+
+                if (edOutcome.ParentRequiresXverDefinition &&
+                    (edOutcome.ParentElementOutcomeKey is not null) &&
+                    outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
+                {
+                    if (edOutcomesByKey.Contains(edOutcome.ParentElementOutcomeKey.Value))
+                    {
+                        if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
+                        {
+                            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.SourceNameClean()}";
+                        }
+                        else
+                        {
+                            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.GenUrl!}";
+                        }
+                        targetLink = parent.link;
+                    }
+                    else
+                    {
+                        targetLabel = $"Slice: {edOutcome.GenUrl!}";
+                        targetLink = parent.link;
+                    }
+                }
+                else if (edOutcome.ExtensionSubstitutionUrl is not null)
+                {
+                    if (isAlternateCanonical)
+                    {
+                        targetLabel = "Standard Extension: alternate-canonical";
+                        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                    }
+                    else if (isAlternateReference)
+                    {
+                        targetLabel = "Standard Extension: alternate-reference";
+                        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                    }
+                    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/tools/", StringComparison.Ordinal))
+                    {
+                        targetLabel = $"Tooling Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                    }
+                    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.Ordinal))
+                    {
+                        targetLabel = $"Standard Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                    }
+                    else
+                    {
+                        targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                    }
+                }
+                else if (edOutcome.ContentReferenceExtensionUrl is not null)
+                {
+                    if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
+                        edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
+                    {
+                        DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
+                        targetLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
+                        targetLink = crOutcome.GenFileName![..^4] + "html";
+                    }
+                    else
+                    {
+                        targetLabel = edOutcome.ContentReferenceExtensionUrl;
+                        targetLink = edOutcome.ContentReferenceExtensionUrl;
+                    }
+                }
+                else
+                {
+                    //targetLabel = edOutcome.GenUrl!;
+                    targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
+                    targetLink = edOutcome.GenFileName![..^4] + "html";
+                }
+
+                outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                targetLines.Add($"[{targetLabel}]({targetLink})");
+            }
+
+            if (additionalAlternateCanonical)
+            {
+                targetLines.Add($"[Standard Extension: alternate-canonical]({CommonDefinitions.ExtUrlAlternateCanonical})");
+            }
+
+            if (additionalAlternateReference)
+            {
+                targetLines.Add($"[Standard Extension: alternate-reference]({CommonDefinitions.ExtUrlAlternateReference})");
+            }
+
+            mdWriter.WriteLine(
+                $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
+                $" | {string.Join("<br/>", targetLines)}" +
+                $" |");
+        }
+        mdWriter.WriteLine("{: .grid }");
+        mdWriter.WriteLine();
+
+        // set our final structure target count
+        targetStructureCount = targetStructureKeys.Count;
     }
 
     private void exportStructureIndexPage(XVerIgExportTrackingRecord igTr)

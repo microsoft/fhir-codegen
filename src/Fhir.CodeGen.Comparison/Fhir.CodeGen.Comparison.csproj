@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fhir.CodeGen.CrossVersionExporter\Fhir.CodeGen.CrossVersionExporter.csproj" />
     <ProjectReference Include="..\Fhir.CodeGen.SQLiteGenerator\Fhir.CodeGen.SQLiteGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <!--Exclude the output of source generators from the compilation-->
     <!--<Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />-->
@@ -46,5 +47,18 @@
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
 
+  <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4'">
+        <Aliases>coreR4</Aliases>
+      </ReferencePath>
+      <!--<ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4B.Core'">
+        <Aliases>coreR4B</Aliases>
+      </ReferencePath>-->
+      <!--<ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R5'">
+        <Aliases>coreR5</Aliases>
+      </ReferencePath>-->
+    </ItemGroup>
+  </Target>
 
 </Project>

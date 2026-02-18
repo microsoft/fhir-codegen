@@ -410,13 +410,14 @@ public class StructureOutcomeGenerator
 
                 string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
 
+                // the element concept maps are combined now, so ignore the target ID for conventtions
                 (string emIdLong, string emIdShort, string emName) = XVerProcessor.GenerateSdElementMapId(
                     packagePair.SourcePackageShortName,
                     sourceSd.Id,
-                    packagePair.TargetPackageShortName,
-                    targetSd?.Id);
+                    packagePair.TargetPackageShortName);
 
-                string emUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{emIdLong}";
+                //string emUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{emIdLong}";
+                string emUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{emIdLong}";
 
                 if (sdTr.StructureComparison.NotMapped || (targetSd is null))
                 {
@@ -561,7 +562,7 @@ public class StructureOutcomeGenerator
                     ElementConceptMapShortId = emIdShort,
                     ElementConceptMapUrl = emUrl,
                     ElementConceptMapName = emName,
-                    ElementConceptMapFileName = $"{emIdLong}.json",
+                    ElementConceptMapFileName = $"ConceptMap-{emIdLong}.json",
                 };
 
                 _sdOutcomeCache.CacheAdd(sdOutcome);
@@ -588,7 +589,8 @@ public class StructureOutcomeGenerator
             sourceSd.Id,
             packagePair.TargetPackageShortName);
 
-        string emUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{emIdLong}";
+        //string emUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{emIdLong}";
+        string emUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{emIdLong}";
 
         structureOutcomeKey ??= DbStructureOutcome.GetIndex();
         comments ??=
@@ -625,7 +627,7 @@ public class StructureOutcomeGenerator
             ElementConceptMapShortId = emIdShort,
             ElementConceptMapUrl = emUrl,
             ElementConceptMapName = emName,
-            ElementConceptMapFileName = $"{emIdLong}.json",
+            ElementConceptMapFileName = $"ConceptMap-{emIdLong}.json",
 
             IsRenamed = false,
             IsUnmapped = false,
