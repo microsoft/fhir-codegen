@@ -108,7 +108,7 @@ public class ElementOutcomeGenerator
     private readonly ILookup<int, DbElementTypeComparison> _etcComparisonsBySourceElementKey;
 
     private readonly Dictionary<string, DbExtensionSubstitution> _extensionSubstitutionsByElementId;
-    private readonly Dictionary<string, DbExtensionSubstitution> _genericExtensionSubstitutionsByUrl;
+    private readonly Dictionary<string, DbExtensionSubstitution> _typeExtensionSubstitutionsByUrl;
 
     private DbRecordCache<DbElementOutcome> _edOutcomeCache;
     private DbRecordCache<DbElementOutcomeTarget> _edOutcomeTargetCache;
@@ -205,17 +205,43 @@ public class ElementOutcomeGenerator
         // build our extension substitution lookup
         List<DbExtensionSubstitution> extensionSubstitutions = DbExtensionSubstitution.SelectList(
             _db,
-            SourceVersion: _packagePair.SourceFhirSequence);
+            SourceFhirSequence: _packagePair.SourceFhirSequence);
 
-        extensionSubstitutions.AddRange(DbExtensionSubstitution.SelectList(_db, SourceVersionIsNull: true));
+        extensionSubstitutions.AddRange(DbExtensionSubstitution.SelectList(_db, SourceFhirSequenceIsNull: true));
 
-        _extensionSubstitutionsByElementId = extensionSubstitutions
-            .Where(es => !string.IsNullOrEmpty(es.SourceElementId))
-            .ToDictionary(es => es.SourceElementId!);
+        _extensionSubstitutionsByElementId = [];
+        _typeExtensionSubstitutionsByUrl = [];
+        foreach (DbExtensionSubstitution extSub in extensionSubstitutions)
+        {
+            if (extSub.SourceTypeReplacement is not null)
+            {
+                _typeExtensionSubstitutionsByUrl[extSub.ReplacementUrl] = extSub;
+            }
 
-        _genericExtensionSubstitutionsByUrl = extensionSubstitutions
-            .Where(es => string.IsNullOrEmpty(es.SourceElementId))
-            .ToDictionary(es => es.ReplacementUrl);
+            if (extSub.SourceElementId is not null)
+            {
+                _extensionSubstitutionsByElementId[extSub.SourceElementId] = extSub;
+
+                string sourceElementClean = extSub.SourceElementId.Replace("[x]", string.Empty, StringComparison.Ordinal);
+                if (sourceElementClean != extSub.SourceElementId)
+                {
+                    _extensionSubstitutionsByElementId[sourceElementClean] = extSub;
+                }
+            }
+
+            if (extSub.SourceFromContextExpandedLiteral is not null)
+            {
+                foreach (string ctxElementId in extSub.SourceFromContextExpanded)
+                {
+                    _extensionSubstitutionsByElementId[ctxElementId] = extSub;
+                    string ctxElementClean = ctxElementId.Replace("[x]", string.Empty, StringComparison.Ordinal);
+                    if (ctxElementClean != ctxElementId)
+                    {
+                        _extensionSubstitutionsByElementId[ctxElementClean] = extSub;
+                    }
+                }
+            }
+        }
     }
 
     private bool skipElement(
@@ -312,7 +338,7 @@ public class ElementOutcomeGenerator
                 sourceEd.Id);
 
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
-            string? extFilename = $"StructureDefinition-{idShort}.json";
+            string? extFilename = $"StructureDefinition-{idShort}";
 
             string comments =
                 $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
@@ -715,7 +741,7 @@ public class ElementOutcomeGenerator
                 sourceEd.Id);
 
             string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
-            string? extFilename = $"StructureDefinition-{idShort}.json";
+            string? extFilename = $"StructureDefinition-{idShort}";
 
             HashSet<string> targetStructures = [];
             string? basicBasePath = null;
@@ -1264,7 +1290,7 @@ public class ElementOutcomeGenerator
                         {
                             // only allow reference if there are no mapped types or only 'Reference'
                             if ((sourceEd.DistinctTypeLiterals == "Reference") &&
-                                _genericExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateReference, out DbExtensionSubstitution? arExt))
+                                _typeExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateReference, out DbExtensionSubstitution? arExt))
                             {
                                 extSubstitute = arExt;
                                 alternateReferenceTargets = edTr.UnmappedTypes
@@ -1285,7 +1311,7 @@ public class ElementOutcomeGenerator
                         {
                             // only allow reference if there are no mapped types or only 'canonical'
                             if ((sourceEd.DistinctTypeLiterals == "canonical") &&
-                                _genericExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateCanonical, out DbExtensionSubstitution? acExt))
+                                _typeExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateCanonical, out DbExtensionSubstitution? acExt))
                             {
                                 extSubstitute = acExt;
                                 alternateCanonicalTargets = edTr.UnmappedTypes
@@ -1452,7 +1478,6 @@ public class ElementOutcomeGenerator
 
             edKeyOutcomeLookup[sourceEd.Key] = (elementOutcome, ancestorOutcome);
         }
-
     }
 
     private void checkValueSetMappings(

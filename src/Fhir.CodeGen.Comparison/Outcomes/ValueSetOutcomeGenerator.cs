@@ -245,9 +245,9 @@ public class ValueSetOutcomeGenerator
                     packagePair.TargetPackageShortName,
                     targetArtifactId: targetVs?.Id);
 
-
                 //string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ValueSet/{idLong}";
                 string url = $"{XVerProcessor._canonicalRootCrossVersion}ValueSet/{idLong}";
+                string vsFilename = "ValueSet-" + idShort;
 
                 (string cmIdLong, string cmIdShort, string cmName) = XVerProcessor.GenerateArtifactId(
                     packagePair.SourcePackageShortName,
@@ -259,6 +259,7 @@ public class ValueSetOutcomeGenerator
 
                 //string cmUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{idLong}";
                 string cmUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{idLong}";
+                string cmFilename = "Concept" + cmIdShort;
 
                 if ((targetVs is null) ||
                     vsComparison.NotMapped)
@@ -287,13 +288,13 @@ public class ValueSetOutcomeGenerator
                         GenShortId = idShort,
                         GenUrl = url,
                         GenName = name,
-                        GenFileName = $"{idLong}.json",
+                        GenFileName = vsFilename,
 
                         ConceptMapLongId = cmIdLong,
                         ConceptMapShortId = cmIdShort,
                         ConceptMapUrl = cmUrl,
                         ConceptMapName = cmName,
-                        ConceptMapFileName = $"{cmIdLong}.json",
+                        ConceptMapFileName = cmFilename,
 
                         IsRenamed = false,
                         IsUnmapped = false,
@@ -460,13 +461,13 @@ public class ValueSetOutcomeGenerator
                     GenShortId = idShort,
                     GenUrl = url,
                     GenName = name,
-                    GenFileName = $"{idLong}.json",
+                    GenFileName = vsFilename,
 
                     ConceptMapLongId = cmIdLong,
                     ConceptMapShortId = cmIdShort,
                     ConceptMapUrl = cmUrl,
                     ConceptMapName = cmName,
-                    ConceptMapFileName = $"{cmIdLong}.json",
+                    ConceptMapFileName = cmFilename,
 
                     IsRenamed = isRenamed,
                     IsUnmapped = isUnmapped,

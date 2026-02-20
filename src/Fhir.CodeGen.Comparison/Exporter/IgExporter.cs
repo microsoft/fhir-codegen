@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Common.Extensions;
@@ -399,7 +400,7 @@ public class IgExporter
     ];
 
     // codes described at: https://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
-    private static readonly List<(string code, string value)> _xverIgParameters = [
+    private static List<(string code, string value)> _xverIgParameters = [
         // apply-contact: if true, overwrite all canonical resource contact details with that found in the IG.
         ("apply-contact", "false"),
 
@@ -546,6 +547,40 @@ public class IgExporter
         }
 
         _exporter = exporter;
+
+        // load any support files
+        loadIgParams();
+    }
+
+    private void loadIgParams()
+    {
+        if (_crossVersionSourcePath is null)
+        {
+            return;
+        }
+
+        string filename = Path.Combine(_crossVersionSourcePath, "input", "ig-support", "igParameters.json");
+        if (!File.Exists(filename))
+        {
+            return;
+        }
+
+        try
+        {
+            using FileStream jsonFs = new(filename, System.IO.FileMode.Open, FileAccess.Read);
+            {
+                List<(string code, string value)>? igParams = JsonSerializer.Deserialize<List<(string code, string value)>>(jsonFs);
+                if ((igParams is not null) &&
+                    (igParams.Count > 0))
+                {
+                    _xverIgParameters = igParams;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Attempt to load content from {filename} failed! {ex.Message}");
+        }
     }
 
     public XVerExportTrackingRecord CreateInitialXVerIgs(

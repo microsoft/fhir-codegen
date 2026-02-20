@@ -24,6 +24,7 @@ using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Extensions;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
+using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Loader;
 using Fhir.CodeGen.Lib.Models;
@@ -75,8 +76,6 @@ public class ComparisonDatabase : IDisposable
     private string _dbName;
 
     private IDbConnection _db;
-    private PackageLoader? _loader = null;
-    private List<DbFhirPackage> _packages = [];
 
     public ComparisonDatabase(
         DefinitionCollection[] definitions,
@@ -156,9 +155,7 @@ public class ComparisonDatabase : IDisposable
 
         _logger.LogInformation($"Opened database: `{connectionString}`");
 
-        initNewDb(true);
-
-        _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
+        initNewDb(ensureDeleted: true);
     }
 
     public ComparisonDatabase(
@@ -190,8 +187,6 @@ public class ComparisonDatabase : IDisposable
         _db.Open();
 
         DbContentClasses.LoadIndices(_db);
-
-        _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
     }
 
     public bool IsCoreComparison => _isCoreComparison;
@@ -201,100 +196,210 @@ public class ComparisonDatabase : IDisposable
 
     public IDbConnection DbConnection => _db;
 
-    public bool LoadFromSourceDb(
-        string sourceDbPath,
-        FhirArtifactClassEnum? artifactFilter = null)
+    public bool TryLoadExtensionSubstitutions(
+        string crossVersionMapSourcePath,
+        ConfigRoot? config = null)
     {
-        if (string.IsNullOrEmpty(sourceDbPath))
+        string filename = Path.Combine(crossVersionMapSourcePath, "input", "ig-support", "extensionSubstitutions.json");
+        if (!File.Exists(filename))
         {
+            throw new Exception($"Could not find extension substitution source file at {filename}!");
+        }
+
+        List<DbExtensionSubstitution>? substitutionSource;
+
+        try
+        {
+            _logger.LogInformation($"Loading extension substitutions from `{filename}`");
+            using FileStream jsonFs = new(filename, System.IO.FileMode.Open, FileAccess.Read);
+            {
+                substitutionSource = JsonSerializer.Deserialize<List<DbExtensionSubstitution>>(jsonFs);
+                if ((substitutionSource is null) ||
+                    (substitutionSource.Count == 0))
+                {
+                    _logger.LogWarning($"No substitutions found in {filename}!");
+                    return true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Attempt to load content from {filename} failed! {ex.Message}");
             return false;
         }
 
-        if (!File.Exists(sourceDbPath))
+        _logger.LogInformation($"Found {substitutionSource.Count} substitution requests");
+
+        // recreate our substitution table
+        DbExtensionSubstitution.DropTable(_db);
+        DbExtensionSubstitution.CreateTable(_db);
+        DbExtensionSubstitution.LoadMaxKey(_db);
+
+        DbRecordCache<DbExtensionSubstitution> extCache = new();
+
+        Dictionary<string, DefinitionCollection> sources = [];
+
+        List<DbFhirPackage> packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
+
+        // load necessary definitions to expand content
+        foreach (DbExtensionSubstitution jsonRec in substitutionSource)
         {
-            return false;
+            if ((jsonRec.SourceFhirSequence is null) && (jsonRec.SourceVersion is not null))
+            {
+                jsonRec.SourceFhirSequence = FhirReleases.FhirVersionToSequence(jsonRec.SourceVersion);
+            }
+
+            // if there is no source package, nothing else for this record
+            if (jsonRec.ReplacementSourcePackage is null)
+            {
+                jsonRec.Key = DbExtensionSubstitution.GetIndex();
+                extCache.CacheAdd(jsonRec);
+                continue;
+            }
+
+            if (!sources.TryGetValue(jsonRec.ReplacementSourcePackage, out DefinitionCollection? sourceDc))
+            {
+                string directive;
+                if (jsonRec.ReplacementSourcePackage.Contains('#') || jsonRec.ReplacementSourcePackage.Contains('@'))
+                {
+                    directive = jsonRec.ReplacementSourcePackage;
+                }
+                else
+                {
+                    directive = jsonRec.ReplacementSourcePackage + "@latest";
+                }
+
+                _logger.LogInformation($"Resolving package `{directive}`...");
+
+                // create a loader because these are all different FHIR core versions
+                using PackageLoader loader = new(config, new()
+                {
+                    JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+                });
+
+                sourceDc = loader
+                    .LoadPackages([directive], autoLoadExpansionsValue: false, resolveDependenciesValue: false)
+                    .Result
+                    ?? throw new Exception($"Could not load package: {directive}");
+
+                sources.Add(jsonRec.ReplacementSourcePackage, sourceDc);
+            }
+
+            // resolve the extension canonical in the source package
+            if (!sourceDc.TryResolveByCanonicalUri(jsonRec.ReplacementUrl, out Resource? resolved))
+            {
+                throw new Exception($"Could not resolve canonical {jsonRec.ReplacementUrl} in source package {jsonRec.ReplacementSourcePackage} for substitution!");
+            }
+
+            if (resolved is not StructureDefinition extSd)
+            {
+                throw new Exception($"Resolved resource for canonical {jsonRec.ReplacementUrl} in source package {jsonRec.ReplacementSourcePackage} is not a StructureDefinition!");
+            }
+
+            List<StructureDefinition.ContextComponent> sourceContexts = extSd.Context;
+
+            List<DbFhirPackage> applicablePackages = jsonRec.SourceFhirSequence is null
+                ? packages
+                : packages.Where(p => p.DefinitionFhirSequence == jsonRec.SourceFhirSequence).ToList();
+
+            // iterate over the FHIR packages to resolve contexts and necessary sources
+            foreach (DbFhirPackage package in applicablePackages)
+            {
+                // build the list of contexts that apply to this FHIR version
+                List<StructureDefinition.ContextComponent> applicableContexts = [];
+                foreach (StructureDefinition.ContextComponent ctx in sourceContexts)
+                {
+                    // check for version specific uses
+                    Extension? versionExt = ctx.GetExtension(CommonDefinitions.ExtUrlVersionSpecificUse);
+                    if (versionExt is not null)
+                    {
+                        string? startVersion = versionExt.GetExtensionValue<Code>(CommonDefinitions.ExtUrlVersionSpecificUseStart)?.Value;
+                        string? endVersion = versionExt.GetExtensionValue<Code>(CommonDefinitions.ExtUrlVersionSpecificUseEnd)?.Value;
+
+                        FhirReleases.FhirSequenceCodes minFhirVersion = startVersion is null
+                            ? FhirReleases.FhirSequenceCodes.DSTU2
+                            : FhirReleases.FhirVersionToSequence(startVersion);
+
+                        FhirReleases.FhirSequenceCodes maxFhirVersion = endVersion is null
+                            ? FhirReleases.FhirSequenceCodes.R6
+                            : FhirReleases.FhirVersionToSequence(endVersion);
+
+                        if ((package.DefinitionFhirSequence < minFhirVersion) ||
+                            (package.DefinitionFhirSequence > maxFhirVersion))
+                        {
+                            continue;
+                        }
+                    }
+
+                    applicableContexts.Add(ctx);
+                }
+
+                if (applicableContexts.Count == 0)
+                {
+                    // nothing to add for this version
+                    continue;
+                }
+
+                // if we have an element or type, we can add the record now
+                if ((jsonRec.SourceElementId is not null) ||
+                    (jsonRec.SourceTypeReplacement is not null))
+                {
+                    DbExtensionSubstitution rec = new()
+                    {
+                        Key = DbExtensionSubstitution.GetIndex(),
+                        ReplacementUrl = jsonRec.ReplacementUrl,
+                        ReplacementName = jsonRec.ReplacementName ?? extSd.Name,
+                        ReplacementSourcePackage = jsonRec.ReplacementSourcePackage,
+                        SourceVersion = jsonRec.SourceVersion,
+                        SourceFhirSequence = package.DefinitionFhirSequence,
+                        SourceElementId = jsonRec.SourceElementId,
+                        SourceTypeReplacement = jsonRec.SourceTypeReplacement,
+                        SourceFromContextElement = jsonRec.SourceFromContextElement,
+                        IsModifier = jsonRec.IsModifier,
+                        Contexts = applicableContexts.Select(c => c.Expression).ToList(),
+                    };
+
+                    extCache.CacheAdd(rec);
+                    continue;
+                }
+
+                // if we do not have a context replacement, this is an invalid request
+                if (jsonRec.SourceFromContextElement is null)
+                {
+                    throw new Exception($"Substitution record with key {jsonRec.Key} is missing both a context replacement and an element/type replacement!");
+                }
+
+                // build the context replacement records for each context
+                List<string> contextExpanded = applicableContexts
+                    .Select(c => c.Expression + jsonRec.SourceFromContextElement)
+                    .ToList();
+
+                // add this record
+                DbExtensionSubstitution expandedRec = new()
+                {
+                    Key = DbExtensionSubstitution.GetIndex(),
+                    ReplacementUrl = jsonRec.ReplacementUrl,
+                    ReplacementName = jsonRec.ReplacementName ?? extSd.Name,
+                    ReplacementSourcePackage = jsonRec.ReplacementSourcePackage,
+                    SourceVersion = jsonRec.SourceVersion,
+                    SourceFhirSequence = package.DefinitionFhirSequence,
+                    SourceElementId = jsonRec.SourceElementId,
+                    SourceTypeReplacement = jsonRec.SourceTypeReplacement,
+                    SourceFromContextElement = jsonRec.SourceFromContextElement,
+                    SourceFromContextExpanded = contextExpanded,
+                    IsModifier = jsonRec.IsModifier,
+                    Contexts = applicableContexts.Select(c => c.Expression).ToList(),
+                };
+
+                extCache.CacheAdd(expandedRec);
+            }
         }
 
-        string sourceConnectionString = new SqliteConnectionStringBuilder()
-        {
-            DataSource = sourceDbPath,
-            Mode = SqliteOpenMode.ReadOnly,
-        }.ToString();
-
-        using IDbConnection sourceConnection = new SqliteConnection(sourceConnectionString);
-        sourceConnection.Open();
-
-        // recreate all local tables
-        DbContentClasses.DropTables(
-            _db,
-            forTerminologies: artifactFilter is null || artifactFilter == FhirArtifactClassEnum.ValueSet,
-            forStructures: artifactFilter is null | artifactFilter == FhirArtifactClassEnum.Resource);
-
-        DbContentClasses.CreateTables(
-            _db,
-            forTerminologies: artifactFilter is null || artifactFilter == FhirArtifactClassEnum.ValueSet,
-            forStructures: artifactFilter is null | artifactFilter == FhirArtifactClassEnum.Resource);
-
-        // update our current index values
-        DbContentClasses.LoadIndices(_db);
+        // insert our records
+        _logger.LogInformation($"Adding {extCache.ToAddCount} extension substitutions");
+        extCache.ToAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
 
         return true;
-    }
-
-    private void loadDefaultSubstitutions()
-    {
-        List<DbExtensionSubstitution> substitutions = [
-            new()
-            {
-                Key = DbExtensionSubstitution.GetIndex(),
-                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/patient-animal",
-                SourceElementId = "Patient.animal",
-                SourceVersion = FhirReleases.FhirSequenceCodes.DSTU2,
-                Context = "Patient",
-            },
-            new()
-            {
-                Key = DbExtensionSubstitution.GetIndex(),
-                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/conceptmap-notarget-comment",
-                SourceElementId = "ConceptMap.group.element.target.comment",
-                SourceVersion = FhirReleases.FhirSequenceCodes.R5,
-                Context = "ConceptMap.group.element",
-            },
-            new()
-            {
-                Key = DbExtensionSubstitution.GetIndex(),
-                ReplacementUrl = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding",
-                SourceElementId = "ElementDefinition.binding.additional",
-                SourceVersion = FhirReleases.FhirSequenceCodes.R5,
-                Context = "ElementDefinition.binding",
-            },
-            //new()
-            //{
-            //    Key = GetExtensionSubstitutionKey(),
-            //    ReplacementUrl = "http://hl7.org/fhir/guide-parameter-code",
-            //    SourceElementId = "ImplementationGuide.definition.parameter",
-            //    Context = "ImplementationGuide.definition.parameter",
-            //},
-            new()
-            {
-                Key = DbExtensionSubstitution.GetIndex(),
-                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/alternate-canonical",
-                SourceElementId = null,
-                SourceVersion = null,
-                Context = "canonical",
-            },
-            new()
-            {
-                Key = DbExtensionSubstitution.GetIndex(),
-                ReplacementUrl = "http://hl7.org/fhir/StructureDefinition/alternate-reference",
-                SourceElementId = null,
-                SourceVersion = null,
-                Context = "Reference",
-            },
-
-        ];
-
-        substitutions.Insert(_db, insertPrimaryKey: true);
     }
 
     private void loadDefaultExternalInclusions()
@@ -494,10 +599,8 @@ public class ComparisonDatabase : IDisposable
             }
         }
 
-        loadDefaultSubstitutions();
         loadDefaultExternalInclusions();
     }
-
 
     public bool TryLoadFromDefinitionCollections(
         HashSet<string> _exclusionSet,

@@ -556,13 +556,13 @@ public class StructureOutcomeGenerator
                     GenShortId = idShort,
                     GenUrl = url,
                     GenName = name,
-                    GenFileName = $"StructureDefinition-{idShort}.json",
+                    GenFileName = $"StructureDefinition-{idShort}",
 
                     ElementConceptMapLongId = emIdLong,
                     ElementConceptMapShortId = emIdShort,
                     ElementConceptMapUrl = emUrl,
                     ElementConceptMapName = emName,
-                    ElementConceptMapFileName = $"ConceptMap-{emIdLong}.json",
+                    ElementConceptMapFileName = $"ConceptMap-{emIdShort}",
                 };
 
                 _sdOutcomeCache.CacheAdd(sdOutcome);
@@ -621,13 +621,13 @@ public class StructureOutcomeGenerator
             GenShortId = idShort,
             GenUrl = url,
             GenName = name,
-            GenFileName = $"StructureDefinition-{idShort}.json",
+            GenFileName = $"StructureDefinition-{idShort}",
 
             ElementConceptMapLongId = emIdLong,
             ElementConceptMapShortId = emIdShort,
             ElementConceptMapUrl = emUrl,
             ElementConceptMapName = emName,
-            ElementConceptMapFileName = $"ConceptMap-{emIdLong}.json",
+            ElementConceptMapFileName = $"ConceptMap-{emIdLong}",
 
             IsRenamed = false,
             IsUnmapped = false,

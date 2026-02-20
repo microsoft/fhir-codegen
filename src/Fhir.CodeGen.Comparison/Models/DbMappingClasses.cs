@@ -9,11 +9,11 @@ public static class DbMappingClasses
 {
     public static void LoadIndices(IDbConnection db)
     {
-        DbMappingSourceFile.LoadMaxKey(db);
-        DbValueSetMapping.LoadMaxKey(db);
-        DbValueSetConceptMapping.LoadMaxKey(db);
-        DbStructureMapping.LoadMaxKey(db);
-        DbElementMapping.LoadMaxKey(db);
+        try { DbMappingSourceFile.LoadMaxKey(db); } catch { }
+        try { DbValueSetMapping.LoadMaxKey(db); } catch { }
+        try { DbValueSetConceptMapping.LoadMaxKey(db); } catch { }
+        try { DbStructureMapping.LoadMaxKey(db); } catch { }
+        try { DbElementMapping.LoadMaxKey(db); } catch { }
     }
 
     public static void DropTables(IDbConnection db)

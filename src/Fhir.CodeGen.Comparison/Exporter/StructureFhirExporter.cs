@@ -304,7 +304,7 @@ public class StructureFhirExporter
             // write the profile to a file
             string filename = sdOutcomes.First().ElementConceptMapFileName
                 ?? throw new Exception($"Failed to write concept map for {sourceSd.VersionedUrl} to {igTr.PackagePair.TargetPackageShortName}");
-            string path = Path.Combine(dir, filename);
+            string path = Path.Combine(dir, filename + ".json");
             if (exporterR4 is not null)
             {
                 File.WriteAllText(path, exporterR4.ToJson(edCm, new SerializerSettings() { Pretty = true }));
@@ -315,8 +315,8 @@ public class StructureFhirExporter
             }
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^5],
+                FileName = filename + ".json",
+                FileNameWithoutExtension = filename,
                 IsPageContentFile = false,
                 Name = edCm.Name,
                 Id = edCm.Id,
@@ -922,11 +922,21 @@ public class StructureFhirExporter
             currentSourceElement.Target.Add(targetElement);
         }
 
-        // write the resource to a file
-        string filename = cm.Id.StartsWith("ConceptMap", StringComparison.OrdinalIgnoreCase)
-            ? $"{cm.Id}.json"
-            : $"ConceptMap-{cm.Id}.json";
-        string path = Path.Combine(dir, filename);
+        // write the resource map to a file
+        string filename;
+        if (cm.Id.StartsWith("ConceptMap", StringComparison.OrdinalIgnoreCase))
+        {
+            filename = cm.Id;
+        }
+        else if (cm.Id.StartsWith("Map", StringComparison.OrdinalIgnoreCase))
+        {
+            filename = "Concept" + cm.Id;
+        }
+        else
+        {
+            filename = cm.Id;
+        }
+        string path = Path.Combine(dir, filename + ".json");
         if (exporterR4 is not null)
         {
             File.WriteAllText(path, exporterR4.ToJson(cm, new SerializerSettings() { Pretty = true }));
@@ -937,8 +947,8 @@ public class StructureFhirExporter
         }
         exported.Add(new()
         {
-            FileName = filename,
-            FileNameWithoutExtension = filename[..^5],
+            FileName = filename + ".json",
+            FileNameWithoutExtension = filename,
             IsPageContentFile = false,
             Name = cm.Name,
             Id = cm.Id,
@@ -955,10 +965,10 @@ public class StructureFhirExporter
     private ConceptMap createResourceConceptMap(
         XVerIgExportTrackingRecord igTr)
     {
-        string id = $"{igTr.PackagePair.SourcePackageShortName}-resources-for-{igTr.PackagePair.TargetPackageShortName}";
+        string id = $"{igTr.PackagePair.SourcePackageShortName}-resource-map-to-{igTr.PackagePair.TargetPackageShortName}";
         string name =
             $"{igTr.PackagePair.SourcePackageShortName.ToPascalCase()}" +
-            $"ResourcesFor" +
+            $"ResourceMapTo" +
             $"{igTr.PackagePair.TargetPackageShortName.ToPascalCase()}";
 
         (_, name) = igTr.GetName(name, id);
@@ -1077,12 +1087,12 @@ public class StructureFhirExporter
 
                 // write the profile to a file
                 string filename = sdOutcome.GenFileName ?? throw new ArgumentNullException(nameof(sdOutcome.GenFileName));
-                string path = Path.Combine(dir, filename);
+                string path = Path.Combine(dir, filename + ".json");
                 File.WriteAllText(path, profileSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
                 exported.Add(new()
                 {
-                    FileName = filename,
-                    FileNameWithoutExtension = filename[..^5],
+                    FileName = filename + ".json",
+                    FileNameWithoutExtension = filename,
                     IsPageContentFile = false,
                     Name = profileSd.Name,
                     Id = profileSd.Id,
@@ -1488,22 +1498,29 @@ public class StructureFhirExporter
         profileSd.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, null);
 
         // add the version-specific fhir version information
-        profileSd.Extension.Add(new Extension()
+        string targetVersion = igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R5
+            ? igTr.PackagePair.TargetFhirVersionShort
+            : igTr.PackagePair.TargetPackage.PackageVersion;
+
+        if (igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R4)
         {
-            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
-            Extension = [
-                new()
+            profileSd.Extension.Add(new Extension()
+            {
+                Url = CommonDefinitions.ExtUrlVersionSpecificUse,
+                Extension = [
+                    new()
                 {
                     Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
-                    Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
+                    Value = new Code(targetVersion),
                 },
                 new()
                 {
                     Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
-                    Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
+                    Value = new Code(targetVersion),
                 },
             ],
-        });
+            });
+        }
 
         return profileSd;
     }
@@ -1634,13 +1651,13 @@ public class StructureFhirExporter
 
             // write the extension to a file
             string filename = edOutcome.GenFileName ?? throw new ArgumentNullException(nameof(edOutcome.GenFileName));
-            string path = Path.Combine(dir, filename);
+            string path = Path.Combine(dir, filename + ".json");
             File.WriteAllText(path, extSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
 
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^5],
+                FileName = filename + ".json",
+                FileNameWithoutExtension = filename,
                 IsPageContentFile = false,
                 Name = extSd.Name,
                 Id = extSd.Id,
@@ -2433,12 +2450,24 @@ public class StructureFhirExporter
 
                 if (vsOutcome is not null)
                 {
-                    etValueEd.Binding = new()
+                    if (vsOutcome.RequiresXVerDefinition == true)
                     {
-                        Strength = sourceEd.ValueSetBindingStrength ?? BindingStrength.Preferred,
-                        Description = sourceEd.BindingDescription,
-                        ValueSet = vsOutcome.GenUrl,
-                    };
+                        etValueEd.Binding = new()
+                        {
+                            Strength = sourceEd.ValueSetBindingStrength ?? BindingStrength.Preferred,
+                            Description = sourceEd.BindingDescription,
+                            ValueSet = vsOutcome.GenUrl,
+                        };
+                    }
+                    else if (vsOutcome.TargetValueSetKey is not null)
+                    {
+                        etValueEd.Binding = new()
+                        {
+                            Strength = sourceEd.ValueSetBindingStrength ?? BindingStrength.Preferred,
+                            Description = sourceEd.BindingDescription,
+                            ValueSet = vsOutcome.TargetCanonicalVersioned ?? vsOutcome.TargetCanonicalUnversioned,
+                        };
+                    }
                 }
             }
 
@@ -2469,12 +2498,24 @@ public class StructureFhirExporter
 
                     if (vsOutcome is not null)
                     {
-                        etValueEd.Binding = new()
+                        if (vsOutcome.RequiresXVerDefinition == true)
                         {
-                            Strength = sourceEd.ValueSetBindingStrength ?? BindingStrength.Preferred,
-                            Description = sourceEd.BindingDescription,
-                            ValueSet = vsOutcome.GenUrl,
-                        };
+                            etValueEd.Binding = new()
+                            {
+                                Strength = sourceEd.ValueSetBindingStrength ?? BindingStrength.Preferred,
+                                Description = sourceEd.BindingDescription,
+                                ValueSet = vsOutcome.GenUrl,
+                            };
+                        }
+                        else if (vsOutcome.TargetValueSetKey is not null)
+                        {
+                            etValueEd.Binding = new()
+                            {
+                                Strength = sourceEd.ValueSetBindingStrength ?? BindingStrength.Preferred,
+                                Description = sourceEd.BindingDescription,
+                                ValueSet = vsOutcome.TargetCanonicalVersioned ?? vsOutcome.TargetCanonicalUnversioned,
+                            };
+                        }
                     }
                 }
 

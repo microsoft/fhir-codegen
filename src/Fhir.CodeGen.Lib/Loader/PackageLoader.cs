@@ -536,9 +536,14 @@ public partial class PackageLoader : IDisposable
         IEnumerable<string> packages,
         DefinitionCollection? definitions = null,
         string? fhirVersion = null,
-        HashSet<FhirArtifactClassEnum>? loadFilterOverride = null)
+        HashSet<FhirArtifactClassEnum>? loadFilterOverride = null,
+        bool? autoLoadExpansionsValue = null,
+        bool? resolveDependenciesValue = null)
     {
         await Tasks.Task.Delay(0);
+
+        bool autoLoadExpansions = autoLoadExpansionsValue ?? _rootConfiguration.AutoLoadExpansions;
+        bool resolveDependencies = resolveDependenciesValue ?? _rootConfiguration.ResolvePackageDependencies;
 
         string? requestedFhirVersion = fhirVersion;
 
@@ -643,7 +648,7 @@ public partial class PackageLoader : IDisposable
                 }
 
                 // check if we are flagged to load expansions and this is a core package
-                if (_rootConfiguration.AutoLoadExpansions &&
+                if (autoLoadExpansions &&
                     (
                         FhirPackageUtils.PackageIsFhirCore(packageDirective.PackageId) ||
                         FhirPackageUtils.PackageIsFhirCorePartial(packageDirective.PackageId)
@@ -785,7 +790,7 @@ public partial class PackageLoader : IDisposable
             CreateConverterIfRequired(definitions.FhirSequence);
 
             // if we are resolving dependencies, check them now
-            if (_rootConfiguration.ResolvePackageDependencies && (manifest.Dependencies?.Any() ?? false))
+            if (resolveDependencies && (manifest.Dependencies?.Any() ?? false))
             {
                 await LoadPackages(manifest.Dependencies.Select(kvp => $"{kvp.Key}@{kvp.Value}"), definitions, requestedFhirVersion);
                 _logger.LogPackageDependenciesResolved(packageDirective.NpmDirective);

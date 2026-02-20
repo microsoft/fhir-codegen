@@ -146,7 +146,7 @@ public class VocabularyFhirExporter
 
                 // write the concept map to a file
                 string filename = vsOutcome.ConceptMapFileName ?? throw new ArgumentNullException(nameof(vsOutcome.ConceptMapFileName));
-                string path = Path.Combine(dir, filename);
+                string path = Path.Combine(dir, filename + ".json");
                 if (exporterR4 is not null)
                 {
                     File.WriteAllText(path, exporterR4.ToJson(vsCm, new SerializerSettings() { Pretty = true }));
@@ -157,8 +157,8 @@ public class VocabularyFhirExporter
                 }
                 exported.Add(new()
                 {
-                    FileName = filename,
-                    FileNameWithoutExtension = filename[..^5],
+                    FileName = filename + ".json",
+                    FileNameWithoutExtension = filename,
                     IsPageContentFile = false,
                     Name = vsCm.Name,
                     Id = vsCm.Id,
@@ -370,14 +370,14 @@ public class VocabularyFhirExporter
             }
 
             // write the code system to a file
-            string filename = $"ValueSet-{inclusion.Id}.json";
-            string path = Path.Combine(dir, filename);
+            string filename = $"ValueSet-{inclusion.Id}";
+            string path = Path.Combine(dir, filename + ".json");
             File.WriteAllText(path, inclusion.Json);
 
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^5],
+                FileName = filename + ".json",
+                FileNameWithoutExtension = filename,
                 IsPageContentFile = false,
                 Name = inclusion.Name,
                 Id = inclusion.Id,
@@ -678,13 +678,13 @@ public class VocabularyFhirExporter
 
             // write the code system to a file
             string filename = vsOutcome.GenFileName ?? throw new ArgumentNullException(nameof(vsOutcome.GenFileName));
-            string path = Path.Combine(dir, filename);
+            string path = Path.Combine(dir, filename + ".json");
             File.WriteAllText(path, fhirVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
 
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^5],
+                FileName = filename + ".json",
+                FileNameWithoutExtension = filename,
                 IsPageContentFile = false,
                 Name = fhirVs.Name ?? $"{vsOutcome.SourceName}_{vsOutcome.TargetName}",
                 Id = fhirVs.Id,
@@ -726,14 +726,14 @@ public class VocabularyFhirExporter
             }
 
             // write the code system to a file
-            string filename = $"CodeSystem-{inclusion.Id}.json";
-            string path = Path.Combine(dir, filename);
+            string filename = $"CodeSystem-{inclusion.Id}";
+            string path = Path.Combine(dir, filename + ".json");
             File.WriteAllText(path, inclusion.Json);
 
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^5],
+                FileName = filename + ".json",
+                FileNameWithoutExtension = filename,
                 IsPageContentFile = false,
                 Name = inclusion.Name,
                 Id = inclusion.Id,
@@ -939,14 +939,14 @@ public class VocabularyFhirExporter
             addDbCodeSystemConcepts(fhirCs.Concept, dbCs.Key);
 
             // write the code system to a file
-            string filename = $"CodeSystem-{fhirCs.Id}.json";
-            string path = Path.Combine(dir, filename);
+            string filename = $"CodeSystem-{fhirCs.Id}";
+            string path = Path.Combine(dir, filename + ".json");
             File.WriteAllText(path, fhirCs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
 
             exported.Add(new()
             {
-                FileName = filename,
-                FileNameWithoutExtension = filename[..^5],
+                FileName = filename + ".json",
+                FileNameWithoutExtension = filename,
                 IsPageContentFile = false,
                 Name = fhirCs.Name,
                 Id = fhirCs.Id,

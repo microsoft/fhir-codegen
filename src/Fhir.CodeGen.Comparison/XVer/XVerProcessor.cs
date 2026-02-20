@@ -270,9 +270,11 @@ public partial class XVerProcessor
 
                 //UpdateValueSetMaps();
 
-                //LoadDatabase(true, true);
+                //LoadDatabase(true);
 
                 //LoadFhirCrossVersionMaps();
+
+                //LoadExtensionSubstitutions();
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
@@ -294,10 +296,10 @@ public partial class XVerProcessor
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1, includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, includeIgScripts: false, specificPairs: specificPairs);
-            ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
+            //ExportOutcomes(includeIgScripts: false, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: true, specificPairs: specificPairs);
                 //ExportOutcomes(includeIgScripts: false);
-                //ExportOutcomes();
+                ExportOutcomes();
 
                 break;
 
@@ -306,12 +308,14 @@ public partial class XVerProcessor
                 break;
 
             case "load":
-                LoadDatabase(true, true);
+                LoadDatabase(true);
                 LoadFhirCrossVersionMaps();
+                LoadExtensionSubstitutions();
                 break;
 
             case "load-base":
-                LoadDatabase(true, true);
+                LoadDatabase(true);
+                LoadExtensionSubstitutions();
                 break;
 
             case "load-maps":
@@ -319,11 +323,16 @@ public partial class XVerProcessor
                 LoadFhirCrossVersionMaps();
                 break;
 
+            case "load-substitutions":
+                LoadExtensionSubstitutions();
+                break;
+
             case "compare":
                 if (_config.ReloadDatabase)
                 {
-                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
+                    LoadExtensionSubstitutions();
                 }
 
                 CompareInDatabase();
@@ -332,8 +341,9 @@ public partial class XVerProcessor
             case "compare-vs":
                 if (_config.ReloadDatabase)
                 {
-                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
+                    LoadExtensionSubstitutions();
                 }
 
                 CompareInDatabase(FhirArtifactClassEnum.ValueSet);
@@ -342,8 +352,9 @@ public partial class XVerProcessor
             case "compare-sd":
                 if (_config.ReloadDatabase)
                 {
-                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
+                    LoadExtensionSubstitutions();
                 }
 
                 CompareInDatabase(FhirArtifactClassEnum.Resource);
@@ -352,8 +363,9 @@ public partial class XVerProcessor
             case "outcomes":
                 if (_config.ReloadDatabase)
                 {
-                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
+                    LoadExtensionSubstitutions();
                 }
 
                 GenerateOutcomes();
@@ -362,8 +374,9 @@ public partial class XVerProcessor
             case "outcomes-vs":
                 if (_config.ReloadDatabase)
                 {
-                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
+                    LoadExtensionSubstitutions();
                 }
 
                 GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
@@ -372,8 +385,9 @@ public partial class XVerProcessor
             case "outcomes-sd":
                 if (_config.ReloadDatabase)
                 {
-                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
+                    LoadExtensionSubstitutions();
                 }
 
                 GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
@@ -383,16 +397,18 @@ public partial class XVerProcessor
             case "export":
                 if (_config.ReloadDatabase)
                 {
-                    LoadDatabase(_config.ReloadDatabase, false);
+                    LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
+                    LoadExtensionSubstitutions();
                 }
 
                 ExportOutcomes();
                 break;
 
             default:
-                LoadDatabase(_config.ReloadDatabase, false);
+                LoadDatabase(_config.ReloadDatabase);
                 LoadFhirCrossVersionMaps();
+                LoadExtensionSubstitutions();
                 CompareInDatabase();
                 GenerateOutcomes();
                 ExportOutcomes();
@@ -474,27 +490,16 @@ public partial class XVerProcessor
     /// <param name="artifactFilter">Optional artifact type filter.</param>
     public void LoadDatabase(
         bool forceCreate,
-        bool allowSourceCopy,
         FhirArtifactClassEnum? artifactFilter = null)
     {
         // check if we have a database filename
         if (!forceCreate &&
             !string.IsNullOrEmpty(_dbName))
         {
-            // try loading the database
+            // try loading an existing database
             _db = new(_dbPath, _dbName);
             if (_db != null)
             {
-                // check for copying from source
-                if (!allowSourceCopy ||
-                    string.IsNullOrEmpty(_config.CrossVersionSourceDb) &&
-                    (_config.CrossVersionSourceDb.ToLowerInvariant() != _config.CrossVersionDbPath.ToLowerInvariant()))
-                {
-                    return;
-                }
-
-                _db.LoadFromSourceDb(_config.CrossVersionSourceDb, artifactFilter);
-
                 return;
             }
         }
@@ -543,7 +548,7 @@ public partial class XVerProcessor
     {
         if (_db is null)
         {
-            LoadDatabase(false, false);
+            LoadDatabase(false);
         }
 
         if (_db is null)
@@ -602,7 +607,7 @@ public partial class XVerProcessor
     {
         if (_db is null)
         {
-            LoadDatabase(false, false);
+            LoadDatabase(false);
         }
 
         if (_db is null)
@@ -656,7 +661,7 @@ public partial class XVerProcessor
     {
         if (_db is null)
         {
-            LoadDatabase(false, false);
+            LoadDatabase(false);
         }
 
         if (_db is null)
@@ -730,6 +735,24 @@ public partial class XVerProcessor
         public Hl7.Fhir.Specification.Snapshot.SnapshotGenerator? SnapshotGenerator { get; set; } = null;
     }
 
+    public void LoadExtensionSubstitutions()
+    {
+        if (_db == null)
+        {
+            LoadDatabase(false);
+            if (_db == null)
+            {
+                throw new Exception($"Failed to create or load a comparison database!");
+            }
+        }
+
+        if (!_db.TryLoadExtensionSubstitutions(_config.CrossVersionMapSourcePath))
+        {
+            throw new Exception($"Failed to load extension substitution maps from source path: {_config.CrossVersionMapSourcePath}");
+        }
+
+    }
+
     /// <summary>
     /// Loads the definitions and initializes the comparison cache.
     /// </summary>
@@ -739,20 +762,9 @@ public partial class XVerProcessor
     /// <exception cref="InvalidOperationException">Thrown when there are less than two definitions available for comparison.</exception>
     public void LoadFhirCrossVersionMaps()
     {
-        //// need definitions loaded in order for existing cross-version maps to be usable
-        //if (_definitions.Length == 0)
-        //{
-        //    loadDefinitionCollections();
-        //}
-
-        //if (_definitions.Length < 2)
-        //{
-        //    throw new InvalidOperationException("At least two definitions are required to compare.");
-        //}
-
         if (_db == null)
         {
-            LoadDatabase(false, true);
+            LoadDatabase(false);
             if (_db == null)
             {
                 throw new Exception($"Failed to create or load a comparison database!");
@@ -1309,11 +1321,11 @@ public partial class XVerProcessor
             //$"ConceptMap" +
             $"{sourcePackageShortName.ToPascalCase()}" +
             $"{sourceArtifactId.ToPascalCase()}" +
-            $"ElementsFor" +
+            $"ElementMapTo" +
             $"{targetPackageShortName.ToPascalCase()}";
 
         //string idLong = $"ConceptMap-{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
-        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-elements-for-{targetPackageShortName}";
+        string idLong = $"{sourcePackageShortName}-{sourceArtifactId}-element-map-to-{targetPackageShortName}";
 
         if (idLong.Length <= 64)
         {
@@ -1321,7 +1333,7 @@ public partial class XVerProcessor
         }
 
         //string idShort = $"Cm-{sourcePackageShortName}-{sourceArtifactId}-ef-{targetPackageShortName}";
-        string idShort = $"{sourcePackageShortName}-{sourceArtifactId}-elements-{targetPackageShortName}";
+        string idShort = $"{sourcePackageShortName}-{sourceArtifactId}-ed-map-{targetPackageShortName}";
 
         return (idLong, idShort, name);
     }
@@ -1341,7 +1353,7 @@ public partial class XVerProcessor
             //$"ConceptMap" +
             $"{sourcePackageShortName.ToPascalCase()}" +
             $"{sourceArtifactId.ToPascalCase()}" +
-            $"ElementsFor" +
+            $"ElementMapTo" +
             $"{targetPackageShortName.ToPascalCase()}" +
             $"{targetArtifactId.ToPascalCase()}";
 
@@ -1349,7 +1361,7 @@ public partial class XVerProcessor
             //$"ConceptMap-{sourcePackageShortName}" +
             $"{sourcePackageShortName}" +
             $"-{sourceArtifactId}" +
-            $"-elements-for" +
+            $"-element-map-to" +
             $"-{targetPackageShortName}" +
             $"-{targetArtifactId}";
 
@@ -1362,7 +1374,7 @@ public partial class XVerProcessor
             //$"Cm-{sourcePackageShortName}" +
             $"{sourcePackageShortName}" +
             $"-{sourceArtifactId}" +
-            $"-ef" +
+            $"-ed-map" +
             $"-{targetPackageShortName}" +
             $"-{targetArtifactId}";
 

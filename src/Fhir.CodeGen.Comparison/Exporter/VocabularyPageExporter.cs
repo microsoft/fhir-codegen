@@ -128,12 +128,13 @@ public class VocabularyPageExporter
                     $" {vsOutcome.TargetName}:[`{vsOutcome.TargetCanonicalUnversioned}`]({targetBaseUrl}valueset-{vsOutcome.TargetId}.html)");
             }
 
-            if (vsOutcome.RequiresXVerDefinition)
+            if (vsOutcome.RequiresXVerDefinition &&
+                (vsOutcome.TargetValueSetKey is not null)) 
             {
                 mdWriter.WriteLine();
                 mdWriter.WriteLine(
                     $"A computable version of the following mapping information is available in:" +
-                    $" [{vsOutcome.GenName}](ConceptMap-{id}.html)");
+                    $" [{vsOutcome.GenName}]({vsOutcome.ConceptMapFileName}.html)");
             }
 
             mdWriter.WriteLine();
@@ -257,8 +258,8 @@ public class VocabularyPageExporter
                 ? id["vs".Length..]
                 : id;
 
-            string cm = vsOutcome.RequiresXVerDefinition
-                ? $"[ConceptMap: {vsOutcome.ConceptMapName}](ConceptMap-{(vsOutcome.ConceptMapFileName![..^4] + "html")})"
+            string cm = (vsOutcome.RequiresXVerDefinition && (vsOutcome.TargetValueSetKey is not null))
+                ? $"[ConceptMap: {vsOutcome.ConceptMapName}]({vsOutcome.ConceptMapFileName}.html)"
                 : "n/a";
 
             mdWriter.WriteLine(

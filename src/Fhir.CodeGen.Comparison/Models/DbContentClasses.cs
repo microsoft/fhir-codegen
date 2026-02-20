@@ -8,31 +8,31 @@ public static class DbContentClasses
 {
     public static void LoadIndices(IDbConnection db)
     {
-        DbFhirPackage.LoadMaxKey(db);
+        try { DbFhirPackage.LoadMaxKey(db); } catch { }
 
-        DbCodeSystem.LoadMaxKey(db);
-        DbCodeSystemConcept.LoadMaxKey(db);
-        DbCodeSystemConceptProperty.LoadMaxKey(db);
-        DbCodeSystemPropertyDefinition.LoadMaxKey(db);
-        DbCodeSystemFilter.LoadMaxKey(db);
+        try { DbCodeSystem.LoadMaxKey(db); } catch { }
+        try { DbCodeSystemConcept.LoadMaxKey(db); } catch { }
+        try { DbCodeSystemConceptProperty.LoadMaxKey(db); } catch { }
+        try { DbCodeSystemPropertyDefinition.LoadMaxKey(db); } catch { }
+        try { DbCodeSystemFilter.LoadMaxKey(db); } catch { }
+        try { DbValueSet.LoadMaxKey(db); } catch { }
+        try { DbValueSetConcept.LoadMaxKey(db); } catch { }
 
-        DbValueSet.LoadMaxKey(db);
-        DbValueSetConcept.LoadMaxKey(db);
+        try { DbStructureDefinition.LoadMaxKey(db); } catch { }
+        try { DbElement.LoadMaxKey(db); } catch { }
+        try { DbElementAdditionalBinding.LoadMaxKey(db); } catch { }
+        try { DbElementType.LoadMaxKey(db); } catch { }
 
-        DbStructureDefinition.LoadMaxKey(db);
-        DbElement.LoadMaxKey(db);
-        DbElementAdditionalBinding.LoadMaxKey(db);
-        DbElementType.LoadMaxKey(db);
-
-        DbExtensionSubstitution.LoadMaxKey(db);
-        DbExternalInclusion.LoadMaxKey(db);
+        try { DbExtensionSubstitution.LoadMaxKey(db); } catch { }
+        try { DbExternalInclusion.LoadMaxKey(db); } catch { }
     }
 
     public static void DropTables(
         IDbConnection db,
         bool forPackages = true,
         bool forTerminologies = true,
-        bool forStructures = true)
+        bool forStructures = true,
+        bool forSubstitutions = true)
     {
         if (forPackages)
         {
@@ -58,8 +58,12 @@ public static class DbContentClasses
             DbElementAdditionalBinding.DropTable(db);
             DbElementType.DropTable(db);
 
-            DbExtensionSubstitution.DropTable(db);
             DbExternalInclusion.DropTable(db);
+        }
+
+        if (forSubstitutions)
+        {
+            DbExtensionSubstitution.DropTable(db);
         }
     }
 
@@ -67,7 +71,8 @@ public static class DbContentClasses
         IDbConnection db,
         bool forPackages = true,
         bool forTerminologies = true,
-        bool forStructures = true)
+        bool forStructures = true,
+        bool forSubstitutions = true)
     {
         if (forPackages)
         {
@@ -93,8 +98,12 @@ public static class DbContentClasses
             DbElementAdditionalBinding.CreateTable(db);
             DbElementType.CreateTable(db);
 
-            DbExtensionSubstitution.CreateTable(db);
             DbExternalInclusion.CreateTable(db);
+        }
+
+        if (forSubstitutions)
+        {
+            DbExtensionSubstitution.CreateTable(db);
         }
     }
 }
@@ -105,9 +114,63 @@ public static class DbContentClasses
 public partial class DbExtensionSubstitution : DbRecordBase
 {
     public required string ReplacementUrl { get; set; }
-    public required string? SourceElementId { get; set; }
-    public required Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes? SourceVersion { get; set; }
-    public required string Context { get; set; }
+    public string? ReplacementName { get; set; }
+    public string? ReplacementSourcePackage { get; set; } = null;
+    public string? SourceVersion { get; set; } = null;
+    public Fhir.CodeGen.Common.Packaging.FhirReleases.FhirSequenceCodes? SourceFhirSequence { get; set; } = null;
+    public string? SourceElementId { get; set; } = null;
+    public string? SourceTypeReplacement { get; set; } = null;
+    public string? SourceFromContextElement { get; set; } = null;
+    public string? SourceFromContextExpandedLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string> SourceFromContextExpanded
+    {
+        get
+        {
+            if (SourceFromContextExpandedLiteral is null)
+            {
+                return [];
+            }
+            return SourceFromContextExpandedLiteral.Split(',').ToList();
+        }
+        set
+        {
+            if ((value is null) ||
+                (value.Count == 0))
+            {
+                SourceFromContextExpandedLiteral = null;
+                return;
+            }
+
+            SourceFromContextExpandedLiteral = string.Join(',', value);
+        }
+    }
+    public bool? IsModifier { get; set; } = null;
+    public string? ContextsLiteral { get; set; } = null;
+    [CgSQLiteIgnore]
+    public List<string> Contexts
+    {
+        get
+        {
+            if (ContextsLiteral is null)
+            {
+                return [];
+            }
+
+            return ContextsLiteral.Split(',').ToList();
+        }
+        set
+        {
+            if ((value is null) ||
+                (value.Count == 0))
+            {
+                ContextsLiteral = null;
+                return;
+            }
+
+            ContextsLiteral = string.Join(',', value);
+        }
+    }
 }
 
 [CgSQLiteTable(tableName: "ExternalInclusions")]

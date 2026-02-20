@@ -135,12 +135,12 @@ public class StructurePageExporter
 
             mdWriter.WriteLine(
                 $"Note that there is a profile defined to simplify use of this cross-version resource representation:" +
-                $"[Profile: {id}](StructureDefinition-{sdOutcome.GenShortId}.html)");
+                $"[Profile: {id}]({sdOutcome.GenFileName}.html)");
             mdWriter.WriteLine();
 
             mdWriter.WriteLine(
                 $"A computable version of the following element information is available in:" +
-                $" [{sdOutcome.ElementConceptMapName}](ConceptMap-{(sdOutcome.ElementConceptMapFileName![..^4] + "html")})");
+                $" [{sdOutcome.ElementConceptMapName}]({sdOutcome.ElementConceptMapFileName!}.html)");
             mdWriter.WriteLine();
             mdWriter.WriteLine($"| Source Element (FHIR {igTr.PackagePair.SourceFhirSequence}) | Target(s) |");
             mdWriter.WriteLine("| -------------- | ---- |");
@@ -355,7 +355,7 @@ public class StructurePageExporter
                     {
                         DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
                         targetLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
-                        targetLink = crOutcome.GenFileName![..^4] + "html";
+                        targetLink = crOutcome.GenFileName! + ".html";
                     }
                     else
                     {
@@ -367,7 +367,7 @@ public class StructurePageExporter
                 {
                     //targetLabel = edOutcome.GenUrl!;
                     targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
-                    targetLink = edOutcome.GenFileName![..^4] + "html";
+                    targetLink = edOutcome.GenFileName! + ".html";
                 }
 
                 outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);

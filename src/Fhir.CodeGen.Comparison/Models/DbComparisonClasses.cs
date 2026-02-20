@@ -20,14 +20,13 @@ public static class DbComparisonClasses
 {
     public static void LoadIndices(IDbConnection db)
     {
-        DbValueSetComparison.LoadMaxKey(db);
-        DbValueSetConceptComparison.LoadMaxKey(db);
+        try { DbValueSetComparison.LoadMaxKey(db); } catch { }
+        try { DbValueSetConceptComparison.LoadMaxKey(db); } catch { }
 
-        DbStructureComparison.LoadMaxKey(db);
+        try { DbStructureComparison.LoadMaxKey(db); } catch { }
 
-        DbElementComparison.LoadMaxKey(db);
-        //DbCollatedTypeComparison.LoadMaxKey(db);
-        DbElementTypeComparison.LoadMaxKey(db);
+        try { DbElementComparison.LoadMaxKey(db); } catch { }
+        try { DbElementTypeComparison.LoadMaxKey(db); } catch { }
     }
 
     public static void DropTables(

@@ -147,12 +147,11 @@ public static class DbOutcomeClasses
 {
     public static void LoadIndices(IDbConnection db)
     {
-        DbValueSetOutcome.LoadMaxKey(db);
-        DbValueSetConceptOutcome.LoadMaxKey(db);
-
-        DbStructureOutcome.LoadMaxKey(db);
-        DbElementOutcome.LoadMaxKey(db);
-        DbElementOutcomeTarget.LoadMaxKey(db);
+        try { DbValueSetOutcome.LoadMaxKey(db); } catch { }
+        try { DbValueSetConceptOutcome.LoadMaxKey(db); } catch { }
+        try { DbStructureOutcome.LoadMaxKey(db); } catch { }
+        try { DbElementOutcome.LoadMaxKey(db); } catch { }
+        try { DbElementOutcomeTarget.LoadMaxKey(db); } catch { }
     }
 
     public static void DropTables(

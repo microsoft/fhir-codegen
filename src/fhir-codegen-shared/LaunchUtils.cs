@@ -100,6 +100,7 @@ internal static class LaunchUtils
                 ("load", "Load contents for processing (core and maps)"),
                 ("load-base", "Load FHIR Core package definitions"),
                 ("load-maps", "Load FHIR-Cross-Version-Source maps"),
+                ("load-substitutions", "Load and expand extension substitutions"),
                 ("compare", "Run a comparison and update the database"),
                 ("compare-vs", "Run a comparison of ValueSet data and update the database"),
                 ("compare-sd", "Run a comparison of Structure data and update the database"),
