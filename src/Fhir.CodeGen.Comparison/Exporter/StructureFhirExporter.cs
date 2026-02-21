@@ -1120,9 +1120,9 @@ public class StructureFhirExporter
             _db,
             SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-            SourceStructureKey: sdOutcome.SourceStructureKey,
-            RequiresXVerDefinition: true,
-            ParentRequiresXverDefinition: false);
+            SourceStructureKey: sdOutcome.SourceStructureKey);
+            //RequiresXVerDefinition: true,
+            //ParentRequiresXverDefinition: false);
             //ParentElementOutcomeKeyIsNull: true);
 
         // build a lookup based on context paths
@@ -1147,20 +1147,17 @@ public class StructureFhirExporter
         // iterate over the elements and add to the differential as necessary
         foreach (DbElement targetEd in targetElements)
         {
-            List<DbElementOutcome> targetEdOutcomes = [];
             if (!edOutcomeContextLookup.Contains(targetEd.Id))
             {
                 continue;
             }
 
-            List<DbElementOutcome> existingOutcomes = edOutcomeContextLookup[targetEd.Id].ToList();
-            foreach (DbElementOutcome existingOutcome in existingOutcomes)
+            List<DbElementOutcome> targetEdOutcomes = [];
+            foreach (DbElementOutcome existingOutcome in edOutcomeContextLookup[targetEd.Id])
             {
-                if ((existingOutcome.RequiresXVerDefinition == true) &&
-                    (existingOutcome.ParentRequiresXverDefinition != true))
+                if (existingOutcome.NeedsExtensionDefinition())
                 {
                     targetEdOutcomes.Add(existingOutcome);
-                    continue;
                 }
             }
 
@@ -1575,21 +1572,26 @@ public class StructureFhirExporter
 
         HashSet<string> generatedExtensionIds = [];
 
-        // get the element outcomes for this package pair that need exporting
+        // get the element outcomes for this pair
         List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
             _db,
             SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-            RequiresXVerDefinition: true,
-            ExtensionSubstitutionKeyIsNull: true,
-            ContentReferenceExtensionUrlIsNull: true,
-            ParentRequiresXverDefinition: false,
+            //RequiresXVerDefinition: true,
+            //ExtensionSubstitutionKeyIsNull: true,
+            //ContentReferenceExtensionUrlIsNull: true,
+            //ParentRequiresXverDefinition: false,
             //ParentElementOutcomeKeyIsNull: true,
             orderByProperties: [nameof(DbElementOutcome.SourceStructureKey), nameof(DbElementOutcome.SourceResourceOrder)]);
 
         // iterate over the outcomes that need exporting
         foreach (DbElementOutcome edOutcome in edOutcomes)
         {
+            if (!edOutcome.NeedsExtensionDefinition())
+            {
+                continue;
+            }
+
             // get the source structure
             if (!sourceSds.TryGetValue(edOutcome.SourceStructureKey, out DbStructureDefinition? sourceSd))
             {

@@ -399,116 +399,126 @@ public class IgExporter
         }
     ];
 
+    private class IgParameterValue
+    {
+        [JsonPropertyName("code")]
+        public string? Code { get; set; }
+        [JsonPropertyName("value")]
+        public string? Value { get; set; }
+    }
+
+
+
     // codes described at: https://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
-    private static List<(string code, string value)> _xverIgParameters = [
-        // apply-contact: if true, overwrite all canonical resource contact details with that found in the IG.
-        ("apply-contact", "false"),
+    private List<IgParameterValue> _xverIgParameters = [];
+    //    // apply-contact: if true, overwrite all canonical resource contact details with that found in the IG.
+    //    ("apply-contact", "false"),
 
-        // apply-context: if true, overwrite all canonical resource context details with that found in the IG.
-        ("apply-context", "false"),
+    //    // apply-context: if true, overwrite all canonical resource context details with that found in the IG.
+    //    ("apply-context", "false"),
 
-        // apply-copyright: if true, overwrite all canonical resource copyright details with that found in the IG.
-        ("apply-copyright", "true"),
+    //    // apply-copyright: if true, overwrite all canonical resource copyright details with that found in the IG.
+    //    ("apply-copyright", "true"),
 
-        // apply-jurisdiction: if true, overwrite all canonical resource jurisdiction details with that found in the IG.
-        ("apply-jurisdiction", "false"),
+    //    // apply-jurisdiction: if true, overwrite all canonical resource jurisdiction details with that found in the IG.
+    //    ("apply-jurisdiction", "false"),
 
-        // apply-publisher: if true, overwrite all canonical resource publisher details with that found in the IG.
-        ("apply-publisher", "false"),
+    //    // apply-publisher: if true, overwrite all canonical resource publisher details with that found in the IG.
+    //    ("apply-publisher", "false"),
 
-        // apply-version: if true, overwrite all canonical resource version details with that found in the IG.
-        ("apply-version", "false"),
+    //    // apply-version: if true, overwrite all canonical resource version details with that found in the IG.
+    //    ("apply-version", "false"),
 
-        // apply-wg: if true, overwrite all canonical resource WG details with that found in the IG.
-        ("apply-wg", "false"),
+    //    // apply-wg: if true, overwrite all canonical resource WG details with that found in the IG.
+    //    ("apply-wg", "false"),
 
-        // copyrightyear: The copyright year text to include in the implementation guide footer
-        ("copyrightyear", "2025+"),
+    //    // copyrightyear: The copyright year text to include in the implementation guide footer
+    //    ("copyrightyear", "2025+"),
 
-        // default-contact: if true, populate all canonical resources that don't specify their own contact details with that found in the IG. Ignored if apply-contact is true.
-        ("default-contact", "true"),
+    //    // default-contact: if true, populate all canonical resources that don't specify their own contact details with that found in the IG. Ignored if apply-contact is true.
+    //    ("default-contact", "true"),
 
-        // default-context: if true, populate all canonical resources that don't specify their own context details with that found in the IG. Ignored if apply-context is true.
-        ("default-context", "false"),
+    //    // default-context: if true, populate all canonical resources that don't specify their own context details with that found in the IG. Ignored if apply-context is true.
+    //    ("default-context", "false"),
 
-        // default-copyright: if true, populate all canonical resources that don't specify their own copyright details with that found in the IG. Ignored if apply-copyright is true.
-        //("default-copyright", "true"),
+    //    // default-copyright: if true, populate all canonical resources that don't specify their own copyright details with that found in the IG. Ignored if apply-copyright is true.
+    //    //("default-copyright", "true"),
 
-        // default-jurisdiction: f true, populate all canonical resources that don't specify their own jurisdiction details with that found in the IG. Ignored if apply-jurisdiction is true.
-        ("default-jurisdiction", "true"),
+    //    // default-jurisdiction: f true, populate all canonical resources that don't specify their own jurisdiction details with that found in the IG. Ignored if apply-jurisdiction is true.
+    //    ("default-jurisdiction", "true"),
 
-        // default-publisher: if true, populate all canonical resources that don't specify their own publisher details with that found in the IG. Ignored if apply-publisher is true.
-        ("default-publisher", "false"),
+    //    // default-publisher: if true, populate all canonical resources that don't specify their own publisher details with that found in the IG. Ignored if apply-publisher is true.
+    //    ("default-publisher", "false"),
 
-        // default-version: if true, populate all canonical resources that don't specify their own version details with that found in the IG. Ignored if apply-version is true.
-        ("default-version", "true"),
+    //    // default-version: if true, populate all canonical resources that don't specify their own version details with that found in the IG. Ignored if apply-version is true.
+    //    ("default-version", "true"),
 
-        // default-wg: if true, populate all canonical resources that don't specify their own WG details with that found in the IG. Ignored if apply-contact is true.
-        ("default-wg", "true"),
+    //    // default-wg: if true, populate all canonical resources that don't specify their own WG details with that found in the IG. Ignored if apply-contact is true.
+    //    ("default-wg", "true"),
 
-        // excludemap: If true, causes the mapping tab to be excluded from all StructureDefinition artifact pages
-        ("excludemap", "true"),
+    //    // excludemap: If true, causes the mapping tab to be excluded from all StructureDefinition artifact pages
+    //    ("excludemap", "true"),
 
-        // i18n-default-lang: The default language (e.g. Resource.language) to assume in the IG when the resource and/or the element context doesn't specify a language
-        //("i18n-default-lang", "US-en"),
-        //("i18n-default-lang", "en-US"),
-        //("i18n-default-lang", "en"),
+    //    // i18n-default-lang: The default language (e.g. Resource.language) to assume in the IG when the resource and/or the element context doesn't specify a language
+    //    //("i18n-default-lang", "US-en"),
+    //    //("i18n-default-lang", "en-US"),
+    //    //("i18n-default-lang", "en"),
 
-        // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
-        //("jira-code", ""),
+    //    // jira-code: If your IG is published via HL7 and should your package ID diverge from the file name in the JIRA-Spec-Artifacts repository, this parameter will help point to the right file.
+    //    //("jira-code", ""),
 
-        // no-check-usage: No Warning in QA if there are extensions/profiles that are not used in this IG
-        ("no-check-usage", "true"),
+    //    // no-check-usage: No Warning in QA if there are extensions/profiles that are not used in this IG
+    //    ("no-check-usage", "true"),
 
-        // no-expansions-files: Do not create the 'expansions.*' files
-        ("no-expansions-files", "true"),
+    //    // no-expansions-files: Do not create the 'expansions.*' files
+    //    ("no-expansions-files", "true"),
 
-        // no-ig-database: Do not create the package.db file
-        ("no-ig-database", "true"),
+    //    // no-ig-database: Do not create the package.db file
+    //    ("no-ig-database", "true"),
 
-        // path-resource: Additional directories for source content
-        //("path-resource", "input/elementmaps"),
-        //("path-resource", "input/resourcemaps"),
-        //("path-resource", "input/vocabularymaps"),
+    //    // path-resource: Additional directories for source content
+    //    //("path-resource", "input/elementmaps"),
+    //    //("path-resource", "input/resourcemaps"),
+    //    //("path-resource", "input/vocabularymaps"),
 
-        /* pin-canonicals: Defines how the IG publisher treats unversioned canonical references. Possible values:
-         *   pin-none: no action is taken (default)
-         *   pin-all: any unversioned canonical references that can be resolved through the package dependencies will have |(version) appended to the canonical, where (version) is the latest available within the package dependencies
-         *   pin-multiples: pinning the canonical reference will only happen if there is multiple versions found in the package dependencies
-         */
-        ("pin-canonicals", "pin-all"),
+    //    /* pin-canonicals: Defines how the IG publisher treats unversioned canonical references. Possible values:
+    //     *   pin-none: no action is taken (default)
+    //     *   pin-all: any unversioned canonical references that can be resolved through the package dependencies will have |(version) appended to the canonical, where (version) is the latest available within the package dependencies
+    //     *   pin-multiples: pinning the canonical reference will only happen if there is multiple versions found in the package dependencies
+    //     */
+    //    ("pin-canonicals", "pin-all"),
 
-        // releaselabel: The release label at the top of the page. This is a text label with no fixed set of values that describes the status of the publication to users. Typical values might be 'STU X' or 'Normative Standard' or '2024 Edition'
-        ("releaselabel", "STU"),
+    //    // releaselabel: The release label at the top of the page. This is a text label with no fixed set of values that describes the status of the publication to users. Typical values might be 'STU X' or 'Normative Standard' or '2024 Edition'
+    //    ("releaselabel", "STU"),
 
-        // show-inherited-invariants: if true, render inherited constraints in the full details and invariants view
-        ("show-inherited-invariants", "false"),
+    //    // show-inherited-invariants: if true, render inherited constraints in the full details and invariants view
+    //    ("show-inherited-invariants", "false"),
 
-        // shownav: Determines whether the next/previous navigation tabs are shown in the header and footer
-        ("shownav", "true"),
+    //    // shownav: Determines whether the next/previous navigation tabs are shown in the header and footer
+    //    ("shownav", "true"),
 
-        // special-url: If a canonical resource in the IG should actually have a URL that isn't the one implied by the canonical URL for the IG itself, it must be listed here explicitly (as well as defined in the resource itself). It must be listed here to stop it accidentally being different. Each canonical url must be listed in full as present on the resource; it is not possible to specify a pattern.
-        //("special-url", "http://terminology.hl7.org/CodeSystem/designation-usage"),
-        //("special-url", "http://terminology.hl7.org/ValueSet/designation-usage"),
+    //    // special-url: If a canonical resource in the IG should actually have a URL that isn't the one implied by the canonical URL for the IG itself, it must be listed here explicitly (as well as defined in the resource itself). It must be listed here to stop it accidentally being different. Each canonical url must be listed in full as present on the resource; it is not possible to specify a pattern.
+    //    //("special-url", "http://terminology.hl7.org/CodeSystem/designation-usage"),
+    //    //("special-url", "http://terminology.hl7.org/ValueSet/designation-usage"),
 
-        // special-url-base: A common alternative base URL for multiple canonical resources in the IG. The entire Canonical URL must exactly match {special-url-base}/{type}/{id}
-        ("special-url-base", "http://terminology.hl7.org"),
+    //    // special-url-base: A common alternative base URL for multiple canonical resources in the IG. The entire Canonical URL must exactly match {special-url-base}/{type}/{id}
+    //    ("special-url-base", "http://terminology.hl7.org"),
 
-        // suppress-mappings: By default, snapshots inherit mappings, and the mappings are carried through. But many of them aren't useful, or desired, and can be suppressed by adding this parameter. The value is the URI found in StructureDefinition.mapping.uri. The special value '*' suppresses most of the mappings in the main specification
-        ("suppress-mappings", "true"),
+    //    // suppress-mappings: By default, snapshots inherit mappings, and the mappings are carried through. But many of them aren't useful, or desired, and can be suppressed by adding this parameter. The value is the URI found in StructureDefinition.mapping.uri. The special value '*' suppresses most of the mappings in the main specification
+    //    ("suppress-mappings", "true"),
 
-        // usage-stats-opt-out: If true, usage stats (information about extensions, value sets, and invariants being used) is not sent to fhir.org (see e.g. http://clinfhir.com/igAnalysis.html).
-        ("usage-stats-opt-out", "true"),
+    //    // usage-stats-opt-out: If true, usage stats (information about extensions, value sets, and invariants being used) is not sent to fhir.org (see e.g. http://clinfhir.com/igAnalysis.html).
+    //    ("usage-stats-opt-out", "true"),
 
-        /* version-comparison:
-         * Control how the IG publisher does a comparison with a previously published version (see qa.html). Possible values:
-         *   {last} - compare with the last published version (whatever it's status) - this is the default if the parameter doesn't appear
-         *   {current} - compare with the last full published version
-         *   n/a - don't do any comparison
-         *   [v] - a previous version where [v] is the version
-         */
-        ("version-comparison", "n/a"),
-    ];
+    //    /* version-comparison:
+    //     * Control how the IG publisher does a comparison with a previously published version (see qa.html). Possible values:
+    //     *   {last} - compare with the last published version (whatever it's status) - this is the default if the parameter doesn't appear
+    //     *   {current} - compare with the last full published version
+    //     *   n/a - don't do any comparison
+    //     *   [v] - a previous version where [v] is the version
+    //     */
+    //    ("version-comparison", "n/a"),
+    //];
 
     private readonly XVerExporter _exporter;
 
@@ -524,7 +534,6 @@ public class IgExporter
 
     private static Dictionary<string, string> _publisherScripts = [];
     private static Lock _publisherScriptsLock = new();
-
 
     public IgExporter(
         IDbConnection db,
@@ -569,7 +578,7 @@ public class IgExporter
         {
             using FileStream jsonFs = new(filename, System.IO.FileMode.Open, FileAccess.Read);
             {
-                List<(string code, string value)>? igParams = JsonSerializer.Deserialize<List<(string code, string value)>>(jsonFs);
+                List<IgParameterValue>? igParams = JsonSerializer.Deserialize<List<IgParameterValue>>(jsonFs);
                 if ((igParams is not null) &&
                     (igParams.Count > 0))
                 {
@@ -922,7 +931,7 @@ public class IgExporter
         pageBuilder.AppendLine("""]},""");  // close index
 
         string igParams = string.Join(",\n", _xverIgParameters.Select(cv =>
-            $$$"""    { "code" : "{{{cv.code}}}", "value" : "{{{cv.value}}}" }"""));
+            $$$"""    { "code" : "{{{cv.Code}}}", "value" : "{{{cv.Value}}}" }"""));
 
         List<string> deps = _xverDependencies
             .Where(d => d.NeededForPublisher)
@@ -1116,9 +1125,9 @@ public class IgExporter
                 Code = new Coding()
                 {
                     System = "http://hl7.org/fhir/tools/CodeSystem/ig-parameters",
-                    Code = cv.code,
+                    Code = cv.Code,
                 },
-                Value = cv.value,
+                Value = cv.Value,
             })
             .ToList();
 

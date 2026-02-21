@@ -106,17 +106,17 @@ public class StructureOutcomeGenerator
         DbFhirPackage targetPackage = packagePair.TargetPackage;
 
         // get all the elements that are content references and export extensions
-        List<DbElementOutcome> edOutcomesWithCRs = DbElementOutcome.SelectList(
+        Dictionary<int, DbElementOutcome> edOutcomesWithCRs = DbElementOutcome.SelectDict(
             _db,
             SourceFhirPackageKey: sourcePackage.Key,
             TargetFhirPackageKey: targetPackage.Key,
-            SourceUsedAsContentReference: true,
-            SourceAncestorUsedAsContentReferenceIdIsNull: true,
-            RequiresXVerDefinition: true,
-            ParentRequiresXverDefinition: false);
+            SourceUsedAsContentReference: true);
+            //SourceAncestorUsedAsContentReferenceIdIsNull: true,
+            //RequiresXVerDefinition: true,
+            //ParentRequiresXverDefinition: false);
 
         // iterate over these elements to add contexts of elements that use them as content references
-        foreach (DbElementOutcome edOutcomeWithCR in edOutcomesWithCRs)
+        foreach (DbElementOutcome edOutcomeWithCR in edOutcomesWithCRs.Values)
         {
             // find the elements that use this element as a content reference
             List<DbElement> referencingEds = DbElement.SelectList(
@@ -151,46 +151,49 @@ public class StructureOutcomeGenerator
             }
 
             _edOutcomeCache.CacheUpdate(edOutcomeWithCR);
-
-            //List<string> allCtx = [];
-            //allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
-            //allCtx.AddRange(ctxToAdd);
-
-            //edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
-            //_edOutcomeCache.CacheUpdate(edOutcomeWithCR);
         }
 
         // do the same for every extension that has an ancestor that is a content reference
-        edOutcomesWithCRs = DbElementOutcome.SelectList(
+        List<DbElementOutcome> edOutcomesWithAncestorCRs = DbElementOutcome.SelectList(
             _db,
             SourceFhirPackageKey: sourcePackage.Key,
             TargetFhirPackageKey: targetPackage.Key,
             SourceUsedAsContentReference: false,
-            SourceAncestorUsedAsContentReferenceIdIsNull: false,
-            RequiresXVerDefinition: true,
-            ParentRequiresXverDefinition: false);
+            SourceAncestorUsedAsContentReferenceIdIsNull: false);
+            //RequiresXVerDefinition: true,
+            //ParentRequiresXverDefinition: false);
 
         // iterate over these elements to add contexts of elements that use them as content references
-        foreach (DbElementOutcome edOutcomeWithCR in edOutcomesWithCRs)
+        foreach (DbElementOutcome edOutcomeWithCR in edOutcomesWithAncestorCRs)
         {
+            if ((edOutcomeWithCR.SourceAncestorContentReferenceOutcomeKey is null) ||
+                !edOutcomesWithCRs.TryGetValue(edOutcomeWithCR.SourceAncestorContentReferenceOutcomeKey!.Value, out DbElementOutcome? crOutcome))
+            {
+                throw new Exception($"Failed to resolve ancestor element outcome!");
+            }
+
+            //string sourceId = edOutcomeWithCR.SourceAncestorUsedAsContentReferenceId!;
             string sourceId = edOutcomeWithCR.SourceAncestorUsedAsContentReferenceId!;
 
-            // resolve the element
-            DbElement? crEd = DbElement.SelectSingle(
-                _db,
-                FhirPackageKey: sourcePackage.Key,
-                Id: sourceId);
+            //// resolve the outcome
+            //DbElementOutcome crOutcome = crOutcomeLookup[sourceId].First();
 
-            if (crEd is null)
-            {
-                throw new Exception($"Could not find content reference ancestor element with id {sourceId} for ElementOutcome with key {edOutcomeWithCR.Key}");
-            }
+            //// resolve the element
+            //DbElement? crEd = DbElement.SelectSingle(
+            //    _db,
+            //    FhirPackageKey: sourcePackage.Key,
+            //    Id: sourceId);
+
+            //if (crEd is null)
+            //{
+            //    throw new Exception($"Could not find content reference ancestor element with id {sourceId} for ElementOutcome with key {edOutcomeWithCR.Key}");
+            //}
 
             // find the elements that use this element as a content reference
             List<DbElement> referencingEds = DbElement.SelectList(
                 _db,
                 FhirPackageKey: sourcePackage.Key,
-                ContentReferenceSourceKey: crEd.Key);
+                ContentReferenceSourceKey: crOutcome.SourceElementKey);// crEd.Key);
 
             int sourceIdLen = sourceId.Length;
 
@@ -219,13 +222,6 @@ public class StructureOutcomeGenerator
             }
 
             _edOutcomeCache.CacheUpdate(edOutcomeWithCR);
-
-            //List<string> allCtx = [];
-            //allCtx.AddRange(edOutcomeWithCR.ExtensionContexts);
-            //allCtx.AddRange(ctxToAdd);
-
-            //edOutcomeWithCR.ExtensionContexts = allCtx.Order().Distinct().ToList();
-            //_edOutcomeCache.CacheUpdate(edOutcomeWithCR);
         }
 
         // apply our changes

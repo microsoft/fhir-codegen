@@ -467,7 +467,8 @@ public class VocabularyFhirExporter
                 orderByProperties: [nameof(DbElement.Id)]);
 
             string? purpose = null;
-            if (igTr.PackagePair.Distance == 1)
+            if ((igTr.PackagePair.Distance == 1) ||
+                (vsOutcome.ValueSetComparisonKey is null))
             {
                 purpose = $$$"""
                     This value set is part of the cross-version definitions generated to enable use of the
@@ -490,7 +491,7 @@ public class VocabularyFhirExporter
             {
                 string? mappingTrace = null;
 
-                if (vsComparisons.TryGetValue(vsOutcome.ValueSetComparisonKey, out DbValueSetComparison? vsComp))
+                if (vsComparisons.TryGetValue(vsOutcome.ValueSetComparisonKey!.Value, out DbValueSetComparison? vsComp))
                 {
                     DbValueSet? r2Vs = vsComp.ContentKeyR2 is null
                         ? null

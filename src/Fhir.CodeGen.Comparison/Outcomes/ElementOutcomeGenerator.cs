@@ -419,6 +419,10 @@ public class ElementOutcomeGenerator
                 ? parentEd.Id
                 : parentOutcome?.SourceAncestorUsedAsContentReferenceId;
 
+            int? ancestorCrKey = parentEd?.UsedAsContentReference == true
+                ? parentOutcome?.Key
+                : parentOutcome?.SourceAncestorContentReferenceOutcomeKey;
+
             // create the non-mapped element outcome
             DbElementOutcome elementOutcome = new()
             {
@@ -440,6 +444,7 @@ public class ElementOutcomeGenerator
                 SourceChildElementCount = sourceEd.ChildElementCount,
                 SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
                 SourceAncestorUsedAsContentReferenceId = ancestorCR,
+                SourceAncestorContentReferenceOutcomeKey = ancestorCrKey,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -458,10 +463,12 @@ public class ElementOutcomeGenerator
                 ContentReferenceExtensionUrl = contentRefEdOutcome?.GenUrl,
                 ContentReferenceRequiresXVerDefinition = contentRefEdOutcome?.RequiresXVerDefinition,
                 ContentReferenceAncestorId = contentRefEdOutcome?.SourceId ?? parentOutcome?.ContentReferenceAncestorId,
+                RequiresDefinitionAsContentReference = null,
 
                 AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,
                 ParentRequiresXverDefinition = parentOutcome?.RequiresXVerDefinition ?? false,
+                RequiresDefinitionForGroupRepetitions = null,
                 SourceIsModifier = sourceEd.IsModifier,
                 DefineAsModifier = defineAsModifier,
                 ExtensionContexts = contexts,
@@ -483,11 +490,6 @@ public class ElementOutcomeGenerator
 
                 Comments = comments,
             };
-
-            //if (requiresXVerDefinition)
-            //{
-            //    outcomesRequiringXver.Add(elementOutcome.Key);
-            //}
 
             if (sourceEd.ResourceFieldOrder == 0)
             {
@@ -514,6 +516,8 @@ public class ElementOutcomeGenerator
                 TargetElementId = null,
                 TargetResourceOrder = null,
                 TargetComponentOrder = null,
+                TargetMinCardinality = null,
+                TargetMaxCardinalityString = null,
                 ContextElementKey = null,
                 ContextElementId = null,
                 ContextRootExtensionUrl = null,
@@ -560,7 +564,8 @@ public class ElementOutcomeGenerator
             return edOutcome.RequiresXVerDefinition;
         }
 
-        bool childrenRequireXver = true;
+        bool allChildrenRequireXver = true;
+        int childCountRequiringXver = 0;
 
         // iterate over each child outcome to bubble up requirements
         foreach (DbElementOutcome childOutcome in childOutcomes)
@@ -569,17 +574,24 @@ public class ElementOutcomeGenerator
                 childOutcome,
                 outcomesByParentKey);
 
-            childrenRequireXver = childrenRequireXver && childRequiresXver;
+            if (childRequiresXver)
+            {
+                childCountRequiringXver++;
+            }
+            else
+            {
+                allChildrenRequireXver = false;
+            }
         }
 
         bool originalParentRequiresXver = edOutcome.ParentRequiresXverDefinition;
 
         // update children if necessary
-        if (childrenRequireXver && !edOutcome.RequiresXVerDefinition)
+        if (allChildrenRequireXver && !edOutcome.RequiresXVerDefinition)
         {
             setOutcomeRequiresRecursive(
                 edOutcome,
-                childrenRequireXver,
+                allChildrenRequireXver,
                 outcomesByParentKey);
         }
 
@@ -587,7 +599,7 @@ public class ElementOutcomeGenerator
         edOutcome.ParentRequiresXverDefinition = originalParentRequiresXver;
 
         // update the generation info on the way out
-        if (childrenRequireXver)
+        if (allChildrenRequireXver)
         {
             (string idLong, string idShort, string name) = XVerProcessor.GenerateExtensionId(
                 _packagePair.SourcePackageShortName,
@@ -600,8 +612,29 @@ public class ElementOutcomeGenerator
             edOutcome.RequiresXVerDefinition = true;
         }
 
+        // check for needing to create a definition due to cardinality issues
+        if (!allChildrenRequireXver &&
+            (childCountRequiringXver > 0) &&
+            (edOutcome.SourceResourceOrder != 0) &&
+            (edOutcome.SourceMaxCardinalityString != "1"))
+        {
+            // need to resolve targets
+            List<DbElementComparison> comparisons = DbElementComparison.SelectList(
+                _db,
+                SourceFhirPackageKey: edOutcome.SourceFhirPackageKey,
+                TargetFhirPackageKey: edOutcome.TargetFhirPackageKey,
+                SourceElementKey: edOutcome.SourceElementKey);
+
+            if (comparisons.Any(ec => ec.TargetRequiresMoreValues == true) &&
+                !comparisons.Any(ec => ec.TargetRequiresMoreValues != true))
+            {
+                edOutcome.RequiresDefinitionForGroupRepetitions = true;
+            }
+
+        }
+
         // return for parent
-        return childrenRequireXver;
+        return allChildrenRequireXver;
     }
 
     private void setOutcomeRequiresRecursive(
@@ -747,7 +780,7 @@ public class ElementOutcomeGenerator
             string? basicBasePath = null;
             DbElement? basicEd = null;
             DbExtensionSubstitution? extSubstitute = null;
-            bool elementRequiresXVer = !edTr.IsFullyMappedAcrossAllTargets;
+            bool elementRequiresXVer = (!edTr.IsFullyMappedAcrossAllTargets) && (sourceEd.ChildElementCount == 0);
             List<string> outcomeComments = [];
 
             Dictionary<int, DbElement> allContextTargets = [];
@@ -855,6 +888,8 @@ public class ElementOutcomeGenerator
                         TargetElementId = null,
                         TargetResourceOrder = null,
                         TargetComponentOrder = null,
+                        TargetMinCardinality = null,
+                        TargetMaxCardinalityString = null,
 
                         ContextElementKey = contextTargetEd?.Key,
                         ContextElementId = contextTargetEd?.Id,
@@ -985,8 +1020,10 @@ public class ElementOutcomeGenerator
                     else
                     {
                         targetComments =
-                            $"Element `{sourceEd.Id}` has is mapped to FHIR {_packagePair.TargetFhirSequence}" +
-                            $" element `{ecTargetEd.Id}`, but has no comparisons.";
+                            $"Element `{sourceEd.Id}` is mapped to FHIR {_packagePair.TargetFhirSequence}" +
+                            $" element `{ecTargetEd.Id}` as `{elementComparison.Relationship}`," +
+                            $" concept domain: `{elementComparison.ConceptDomainRelationship}`," +
+                            $" value domain: `{elementComparison.ValueDomainRelationship}`.";
                     }
 
                     // create our target
@@ -1007,6 +1044,8 @@ public class ElementOutcomeGenerator
                         TargetElementId = elementComparison.NotMapped ? null : ecTargetEd?.Id,
                         TargetResourceOrder = elementComparison.NotMapped ? 0 : ecTargetEd?.ResourceFieldOrder,
                         TargetComponentOrder = elementComparison.NotMapped ? 0 : ecTargetEd?.ComponentFieldOrder,
+                        TargetMinCardinality = elementComparison.NotMapped ? null : ecTargetEd?.MinCardinality,
+                        TargetMaxCardinalityString = elementComparison.NotMapped ? null : ecTargetEd?.MaxCardinalityString,
 
                         ContextElementKey = contextTargetEd?.Key,
                         ContextElementId = contextTargetEd?.Id,
@@ -1254,14 +1293,6 @@ public class ElementOutcomeGenerator
                 allContextTargets[genericContextEd.Key] = genericContextEd;
             }
 
-            //// build target canonical urls
-            //string? targetCanonicalUnversioned = targetEd is null
-            //    ? null
-            //    : $"{sdTr.TargetStructure.UnversionedUrl}#{targetEd.Id}";
-            //string? targetCanonicalVersioned = targetCanonicalUnversioned is null
-            //    ? null
-            //    : $"{targetCanonicalUnversioned}|{sdTr.TargetStructure.Version ?? _packagePair.TargetPackage.PackageVersion}";
-
             if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out extSubstitute))
             {
                 outcomeComments.Add(
@@ -1269,9 +1300,6 @@ public class ElementOutcomeGenerator
                     $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`:" +
                     $" `{extSubstitute.ReplacementUrl}`.");
             }
-
-            //UnmappedTypeKeys = edTr.UnmappedTypes.Select(ut => ut.Key).ToList(),
-            //    UnmappedTypeNames = edTr.UnmappedTypes.Select(ut => ut.Literal).ToList(),
 
             List<string> alternateCanonicalTargets = [];
             List<string> alternateReferenceTargets = [];
@@ -1371,6 +1399,18 @@ public class ElementOutcomeGenerator
                 ? parentEd.Id
                 : parentOutcome?.SourceAncestorUsedAsContentReferenceId;
 
+            int? ancestorCrKey = parentEd?.UsedAsContentReference == true
+                ? parentOutcome?.Key
+                : parentOutcome?.SourceAncestorContentReferenceOutcomeKey;
+
+            // check to see if we need to update the content reference outcome
+            if ((contentRefEdOutcome is not null) &&
+                elementRequiresXVer &&
+                (contentRefEdOutcome.RequiresDefinitionAsContentReference != true))
+            {
+                contentRefEdOutcome.RequiresDefinitionAsContentReference = true;
+            }
+
             // create the mapped element outcome
             DbElementOutcome elementOutcome = new()
             {
@@ -1392,6 +1432,7 @@ public class ElementOutcomeGenerator
                 SourceChildElementCount = sourceEd.ChildElementCount,
                 SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
                 SourceAncestorUsedAsContentReferenceId = ancestorCR,
+                SourceAncestorContentReferenceOutcomeKey = ancestorCrKey,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -1410,6 +1451,7 @@ public class ElementOutcomeGenerator
                 ContentReferenceExtensionUrl = contentRefEdOutcome?.GenUrl,
                 ContentReferenceRequiresXVerDefinition = contentRefEdOutcome?.RequiresXVerDefinition,
                 ContentReferenceAncestorId = contentRefEdOutcome?.SourceId ?? parentOutcome?.ContentReferenceAncestorId,
+                RequiresDefinitionAsContentReference = null,
 
                 AlternateCanonicalTargets = alternateCanonicalTargets,
                 AlternateReferenceTargets = alternateReferenceTargets,
@@ -1417,6 +1459,7 @@ public class ElementOutcomeGenerator
                 AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,
                 ParentRequiresXverDefinition = parentOutcome?.RequiresXVerDefinition ?? false,
+                RequiresDefinitionForGroupRepetitions = null,
                 SourceIsModifier = sourceEd.IsModifier,
                 DefineAsModifier = defineAsModifier,
                 ExtensionContexts = allContextTargets.Values.Select(ed => ed.Id).Distinct().Order().ToList(),

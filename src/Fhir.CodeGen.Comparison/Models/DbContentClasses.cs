@@ -23,8 +23,9 @@ public static class DbContentClasses
         try { DbElementAdditionalBinding.LoadMaxKey(db); } catch { }
         try { DbElementType.LoadMaxKey(db); } catch { }
 
-        try { DbExtensionSubstitution.LoadMaxKey(db); } catch { }
         try { DbExternalInclusion.LoadMaxKey(db); } catch { }
+        try { DbExtensionSubstitution.LoadMaxKey(db); } catch { }
+        try { DbFhirTypeValueSet.LoadMaxKey(db); } catch { }
     }
 
     public static void DropTables(
@@ -32,7 +33,7 @@ public static class DbContentClasses
         bool forPackages = true,
         bool forTerminologies = true,
         bool forStructures = true,
-        bool forSubstitutions = true)
+        bool forSupport = true)
     {
         if (forPackages)
         {
@@ -57,13 +58,13 @@ public static class DbContentClasses
             DbElement.DropTable(db);
             DbElementAdditionalBinding.DropTable(db);
             DbElementType.DropTable(db);
-
-            DbExternalInclusion.DropTable(db);
         }
 
-        if (forSubstitutions)
+        if (forSupport)
         {
+            DbExternalInclusion.DropTable(db);
             DbExtensionSubstitution.DropTable(db);
+            DbFhirTypeValueSet.DropTable(db);
         }
     }
 
@@ -72,7 +73,7 @@ public static class DbContentClasses
         bool forPackages = true,
         bool forTerminologies = true,
         bool forStructures = true,
-        bool forSubstitutions = true)
+        bool forSupport = true)
     {
         if (forPackages)
         {
@@ -97,17 +98,23 @@ public static class DbContentClasses
             DbElement.CreateTable(db);
             DbElementAdditionalBinding.CreateTable(db);
             DbElementType.CreateTable(db);
-
-            DbExternalInclusion.CreateTable(db);
         }
 
-        if (forSubstitutions)
+        if (forSupport)
         {
+            DbExternalInclusion.CreateTable(db);
             DbExtensionSubstitution.CreateTable(db);
+            DbFhirTypeValueSet.CreateTable(db);
         }
     }
 }
 
+[CgSQLiteTable(tableName: "FhirTypeValueSets")]
+[CgSQLiteIndex(nameof(UnversionedUrl))]
+public partial class DbFhirTypeValueSet : DbRecordBase
+{
+    public required string UnversionedUrl { get; set; }
+}
 
 [CgSQLiteTable(tableName: "ExtensionSubstitutions")]
 [CgSQLiteIndex(nameof(SourceElementId))]

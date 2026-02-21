@@ -290,7 +290,7 @@ public abstract class DbArtifactOutcomeWithTargetBase : DbArtifactOutcomeBase
 public partial class DbValueSetOutcome : DbArtifactOutcomeWithTargetBase
 {
     [CgSQLiteForeignKey(referenceTable: "ValueSetComparisons", referenceColumn: nameof(DbValueSetComparison.Key))]
-    public required int ValueSetComparisonKey { get; set; }
+    public required int? ValueSetComparisonKey { get; set; }
     //[CgSQLiteIgnore]
     //public override int ComparisonKey { get => this.ValueSetComparisonKey; set => this.ValueSetComparisonKey = value; }
 
@@ -324,7 +324,7 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
     public required int ValueSetOutcomeKey { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ValueSetConceptComparisons", referenceColumn: nameof(DbValueSetConceptComparison.Key))]
-    public required int ValueSetConceptComparisonKey { get; set; }
+    public required int? ValueSetConceptComparisonKey { get; set; }
     //[CgSQLiteIgnore]
     //public override int ComparisonKey { get => this.ValueSetConceptComparisonKey; set => this.ValueSetConceptComparisonKey = value; }
 
@@ -430,6 +430,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required int SourceChildElementCount { get; set; }
     public required bool SourceUsedAsContentReference { get; set; }
     public required string? SourceAncestorUsedAsContentReferenceId { get; set; }
+    public required int? SourceAncestorContentReferenceOutcomeKey { get; set; }
 
     public string? AlternateCanonicalTargetsLiteral { get; set; }
     [CgSQLiteIgnore]
@@ -477,6 +478,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
     public required int? ParentElementOutcomeKey { get; set; }
     public required bool ParentRequiresXverDefinition { get; set; }
+    public required bool? RequiresDefinitionForGroupRepetitions { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ExtensionSubstitutions", referenceColumn: nameof(Key), modelTypeName: nameof(DbExtensionSubstitution))]
     public required int? ExtensionSubstitutionKey { get; set; }
@@ -488,6 +490,7 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required string? ContentReferenceExtensionUrl { get; set; }
     public required bool? ContentReferenceRequiresXVerDefinition { get; set; }
     public required string? ContentReferenceAncestorId { get; set; }
+    public required bool? RequiresDefinitionAsContentReference { get; set; }
 
     public required int? OutcomeTargetCount { get; set; }
 
@@ -656,6 +659,34 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
             UnmappedChildTypeNamesLiteral = string.Join(',', value);
         }
     }
+
+    public bool NeedsExtensionDefinition()
+    {
+        if (BasicElementEquivalent is not null)
+        {
+            return false;
+        }
+
+        if (RequiresXVerDefinition &&
+            (ExtensionSubstitutionKey is null) &&
+            (ContentReferenceExtensionUrl is null) &&
+            (ParentRequiresXverDefinition != true))
+        {
+            return true;
+        }
+
+        if (RequiresDefinitionAsContentReference == true)
+        {
+            return true;
+        }
+
+        if (RequiresDefinitionForGroupRepetitions == true)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
 
 [CgSQLiteTable(tableName: "ElementOutcomeTargets")]
@@ -692,6 +723,9 @@ public partial class DbElementOutcomeTarget : DbRecordBase
 
     public required int? TargetResourceOrder { get; set; }
     public required int? TargetComponentOrder { get; set; }
+
+    public required int? TargetMinCardinality { get; set; }
+    public required string? TargetMaxCardinalityString { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]

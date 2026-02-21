@@ -15,6 +15,16 @@ namespace Fhir.CodeGen.Comparison.CompareTool;
 
 public class ValueSetComparer
 {
+    private class PackagePairTypeMappings
+    {
+        public DbMappingSourceFile? ResourceMapSource { get; set; } = null;
+        public Dictionary<string, List<(string target, CMR? relationship)>> ResourceMappings { get; set; } = [];
+        public DbMappingSourceFile? TypesMapSource { get; set; } = null;
+        public Dictionary<string, List<(string target, CMR? relationship)>> TypeMappings { get; set; } = [];
+        public DbMappingSourceFile? TypeFallbackMapSource { get; set; } = null;
+        public Dictionary<string, List<(string target, CMR? relationship)>> TypeFallbackMappings { get; set; } = [];
+    }
+
     private class ValueSetComparisonTrackingRecord
     {
         public required DbFhirPackage SourcePackage { get; init; }
@@ -72,6 +82,8 @@ public class ValueSetComparer
 
     private List<DbFhirPackage> _packages = [];
 
+    private HashSet<string> _fhirTypeValueSetUrls = [];
+
     public ValueSetComparer(
         IDbConnection db,
         ILoggerFactory loggerFactory)
@@ -89,6 +101,9 @@ public class ValueSetComparer
         int? maxStepSize = null,
         HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
+        // get the list of value sets that contain FHIR types
+        _fhirTypeValueSetUrls = DbFhirTypeValueSet.SelectList(_db).Select(o => o.UnversionedUrl).ToHashSet();
+
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
 
@@ -206,10 +221,106 @@ public class ValueSetComparer
         _conceptComparisonCache.Clear();
     }
 
+    private PackagePairTypeMappings getTypeMappings(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
+    {
+
+        string sourceToTarget =
+            $"{sourcePackage.DefinitionFhirSequence.ToRLiteral()[1..]}" +
+            $"to" +
+            $"{targetPackage.DefinitionFhirSequence.ToRLiteral()[1..]}";
+
+        // get the resource, type, and fallback type map info
+        DbMappingSourceFile? resourceMapSourceFile = DbMappingSourceFile.SelectSingle(
+            _db,
+            Url: $"http://hl7.org/fhir/uv/xver/ConceptMap/resources-{sourceToTarget}",
+            compareStringsWithLike: true);
+
+        DbMappingSourceFile? typeMapSourceFile = DbMappingSourceFile.SelectSingle(
+            _db,
+            Url: $"http://hl7.org/fhir/uv/xver/ConceptMap/types-{sourceToTarget}",
+            compareStringsWithLike: true);
+
+        DbMappingSourceFile? typeFallbackMapSourceFile = DbMappingSourceFile.SelectSingle(
+            _db,
+            Url: $"http://hl7.org/fhir/uv/xver/ConceptMap/types-fallback",
+            compareStringsWithLike: true);
+
+        PackagePairTypeMappings pairTypeMappings = new()
+        {
+            ResourceMapSource = resourceMapSourceFile,
+            TypesMapSource = typeMapSourceFile,
+            TypeFallbackMapSource = typeFallbackMapSourceFile,
+        };
+
+        if (resourceMapSourceFile is not null)
+        {
+            List<DbStructureMapping> mappings = DbStructureMapping.SelectList(
+                _db,
+                ConceptMapSourceKey: resourceMapSourceFile.Key);
+            foreach (DbStructureMapping rsm in mappings)
+            {
+                if (!pairTypeMappings.ResourceMappings.TryGetValue(rsm.SourceStructureId, out List<(string target, CMR? relationship)>? targets))
+                {
+                    targets = [];
+                    pairTypeMappings.ResourceMappings.Add(rsm.SourceStructureId, targets);
+                }
+
+                if (rsm.TargetStructureId is not null)
+                {
+                    targets.Add((rsm.TargetStructureId, rsm.Relationship));
+                }
+            }
+        }
+
+        if (typeMapSourceFile is not null)
+        {
+            List<DbStructureMapping> mappings = DbStructureMapping.SelectList(
+                _db,
+                ConceptMapSourceKey: typeMapSourceFile.Key);
+            foreach (DbStructureMapping rsm in mappings)
+            {
+                if (!pairTypeMappings.TypeMappings.TryGetValue(rsm.SourceStructureId, out List<(string target, CMR? relationship)>? targets))
+                {
+                    targets = [];
+                    pairTypeMappings.TypeMappings.Add(rsm.SourceStructureId, targets);
+                }
+
+                if (rsm.TargetStructureId is not null)
+                {
+                    targets.Add((rsm.TargetStructureId, rsm.Relationship));
+                }
+            }
+        }
+
+        if (typeFallbackMapSourceFile is not null)
+        {
+            List<DbStructureMapping> mappings = DbStructureMapping.SelectList(
+                _db,
+                ConceptMapSourceKey: typeFallbackMapSourceFile.Key);
+            foreach (DbStructureMapping rsm in mappings)
+            {
+                if (!pairTypeMappings.TypeFallbackMappings.TryGetValue(rsm.SourceStructureId, out List<(string target, CMR? relationship)>? targets))
+                {
+                    targets = [];
+                    pairTypeMappings.TypeFallbackMappings.Add(rsm.SourceStructureId, targets);
+                }
+
+                if (rsm.TargetStructureId is not null)
+                {
+                    targets.Add((rsm.TargetStructureId, rsm.Relationship));
+                }
+            }
+        }
+
+        return pairTypeMappings;
+    }
+
     private void doComparison(DbFhirPackage sourcePackage, DbFhirPackage targetPackage)
     {
         int sourceIndex = sourcePackage.PackageArrayIndex;
         int targetIndex = targetPackage.PackageArrayIndex;
+
+        PackagePairTypeMappings pairTypeMappings = getTypeMappings(sourcePackage, targetPackage);
 
         int steps = Math.Abs(targetIndex - sourceIndex);
 
@@ -237,7 +348,7 @@ public class ValueSetComparer
                 // do the comparisons
                 foreach (ValueSetComparisonTrackingRecord trackingRecord in trackingRecords)
                 {
-                    doComparison(trackingRecord);
+                    doComparison(trackingRecord, pairTypeMappings);
                 }
             }
             else
@@ -251,19 +362,21 @@ public class ValueSetComparer
                 // do the comparisons transitively
                 foreach (ValueSetComparisonTrackingRecord trackingRecord in trackingRecords)
                 {
-                    doTransitiveComparison(trackingRecord);
+                    doTransitiveComparison(trackingRecord, pairTypeMappings);
                 }
             }
         }
     }
 
-    private void doTransitiveComparison(ValueSetComparisonTrackingRecord trackingRecord)
+    private void doTransitiveComparison(
+        ValueSetComparisonTrackingRecord trackingRecord,
+        PackagePairTypeMappings pairTypeMappings)
     {
         // get our key (if necessary)
         trackingRecord.ComparisonRecordKey ??= DbValueSetComparison.GetIndex();
 
         // build the relevant concept comparison records
-        doTransitiveConceptComparisons(trackingRecord);
+        doTransitiveConceptComparisons(trackingRecord, pairTypeMappings);
 
         // determine the conceptRelationship based on the comparison steps
         CMR? vsRelationship = CMR.Equivalent;
@@ -317,12 +430,16 @@ public class ValueSetComparer
         _vsComparisonCache.CacheAdd(vsComparison);
     }
 
-    private void doTransitiveConceptComparisons(ValueSetComparisonTrackingRecord trackingRecord)
+    private void doTransitiveConceptComparisons(
+        ValueSetComparisonTrackingRecord trackingRecord,
+        PackagePairTypeMappings pairTypeMappings)
     {
         if (trackingRecord.ComparisonSteps.Count == 0)
         {
             throw new Exception("Cannot build transitive comparisons without comparison steps!");
         }
+
+        bool allowTypeFallbacks = _fhirTypeValueSetUrls.Contains(trackingRecord.SourceValueSet.UnversionedUrl);
 
         int sourceIndex = trackingRecord.SourcePackage.PackageArrayIndex;
         int targetIndex = trackingRecord.TargetPackage.PackageArrayIndex;
@@ -348,8 +465,12 @@ public class ValueSetComparer
             ? []
             : DbValueSetConcept.SelectDict(_db, ValueSetKey: trackingRecord.TargetValueSet.Key);
 
+        ILookup<string, DbValueSetConcept>? targetConceptsByCode = allowTypeFallbacks
+            ? targetConcepts.Values.ToLookup(c => c.Code)
+            : null;
+
         // get any explicit mappings from the start to the end
-        List<DbValueSetConceptMapping> explicitMappings = trackingRecord.TargetValueSet is null
+        List <DbValueSetConceptMapping> explicitMappings = trackingRecord.TargetValueSet is null
             ? []
             : DbValueSetConceptMapping.SelectList(
                 _db,
@@ -498,6 +619,66 @@ public class ValueSetComparer
                     }
                 }
 
+                // if this allows type fallbacks, check those
+                if (allowTypeFallbacks &&
+                    (targetConcept is null) &&
+                    (targetConceptsByCode is not null))
+                {
+                    List<(DbValueSetConcept concept, CMR? relationship)> possibleTargets = [];
+
+                    List<(string target, CMR? relationship)>? targetTypes = [];
+                    if (pairTypeMappings.ResourceMappings.TryGetValue(sourceConcept.Code, out targetTypes) ||
+                        pairTypeMappings.TypeMappings.TryGetValue(sourceConcept.Code, out targetTypes) ||
+                        pairTypeMappings.TypeFallbackMappings.TryGetValue(sourceConcept.Code, out targetTypes))
+                    {
+                        HashSet<int> usedKeys = [];
+
+                        // iterate over our possible matches
+                        foreach ((string targetType, CMR? r) in targetTypes)
+                        {
+                            List<DbValueSetConcept> matches = targetConceptsByCode[targetType].ToList();
+                            foreach (DbValueSetConcept vsc in matches)
+                            {
+                                if (usedKeys.Add(vsc.Key))
+                                {
+                                    possibleTargets.Add((vsc, r));
+                                }
+                            }
+                        }
+                    }
+
+                    if (possibleTargets.Count > 0)
+                    {
+                        foreach ((DbValueSetConcept tc, CMR? r) in possibleTargets)
+                        {
+                            CMR? consolidatedRelationship = r ?? path.Relationship ?? CMR.Equivalent;
+                            string typeMessage =
+                                $"Applying explicit FHIR Type mapping" +
+                                $" from `{trackingRecord.SourceValueSet.VersionedUrl}#{sourceConcept.Code}`" +
+                                $" to `{trackingRecord.TargetValueSet?.VersionedUrl}#{targetConcept?.Code}`" +
+                                $" as {r}.";
+
+
+                            // create our comparison record
+                            DbValueSetConceptComparison typeConceptComparison = createConceptComparison(
+                                trackingRecord,
+                                sourceConcept,
+                                tc,
+                                consolidatedRelationship,
+                                sourceConceptIsEscape: sourceConceptIsEscape,
+                                targetConceptIsEscape: targetConceptIsEscape,
+                                technicalMessage: typeMessage,
+                                userMessage: null,
+                                contentStepKeys: path.ContentKeys);
+
+                            _conceptComparisonCache.CacheAdd(typeConceptComparison);
+                        }
+
+                        // added from type mappings
+                        continue;
+                    }
+                }
+
                 // create our comparison record
                 DbValueSetConceptComparison conceptComparison = createConceptComparison(
                     trackingRecord,
@@ -523,10 +704,14 @@ public class ValueSetComparer
         return result;
     }
 
-    private void doComparison(ValueSetComparisonTrackingRecord trackingRecord)
+    private void doComparison(
+        ValueSetComparisonTrackingRecord trackingRecord,
+        PackagePairTypeMappings pairTypeMappings)
     {
         DbValueSet sourceVs = trackingRecord.SourceValueSet;
         DbValueSet? targetVs = trackingRecord.TargetValueSet;
+
+        bool allowTypeFallbacks = _fhirTypeValueSetUrls.Contains(trackingRecord.SourceValueSet.UnversionedUrl);
 
         // get the source concepts
         List<DbValueSetConcept> sourceConcepts = DbValueSetConcept.SelectList(
@@ -698,8 +883,38 @@ public class ValueSetComparer
                 continue;
             }
 
+            List<DbValueSetConcept> possibleTargets = [];
+
+            // if this allows type fallbacks, check those next
+            if (allowTypeFallbacks)
+            {
+                List<(string target, CMR? relationship)>? targetTypes = [];
+                if (pairTypeMappings.ResourceMappings.TryGetValue(sourceConcept.Code, out targetTypes) ||
+                    pairTypeMappings.TypeMappings.TryGetValue(sourceConcept.Code, out targetTypes) ||
+                    pairTypeMappings.TypeFallbackMappings.TryGetValue(sourceConcept.Code, out targetTypes))
+                {
+                    HashSet<int> usedKeys = [];
+
+                    // iterate over our possible matches
+                    foreach ((string targetType, CMR? typeRelationship) in targetTypes)
+                    {
+                        List<DbValueSetConcept> matches = targetConceptsByCode[targetType].ToList();
+                        foreach (DbValueSetConcept vsc in matches)
+                        {
+                            if (usedKeys.Add(vsc.Key))
+                            {
+                                possibleTargets.Add(vsc);
+                            }
+                        }
+                    }
+                }
+            }
+
             // no explicit mapping, try to find by code
-            List<DbValueSetConcept> possibleTargets = targetConceptsByCode[sourceConcept.Code].ToList();
+            if (possibleTargets.Count == 0)
+            {
+                possibleTargets = targetConceptsByCode[sourceConcept.Code].ToList();
+            }
 
             // if there are multiple possible targets, we want to filter by system
             if (possibleTargets.Count > 1)

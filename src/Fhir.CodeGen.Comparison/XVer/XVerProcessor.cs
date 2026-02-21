@@ -275,6 +275,7 @@ public partial class XVerProcessor
                 //LoadFhirCrossVersionMaps();
 
                 //LoadExtensionSubstitutions();
+                //LoadFhirTypeValueSets();
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet);
@@ -285,12 +286,13 @@ public partial class XVerProcessor
                 //CompareInDatabase();
 
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
+                //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes(specificPairs: specificPairs);
-                //GenerateOutcomes();
+                GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);
@@ -311,6 +313,7 @@ public partial class XVerProcessor
                 LoadDatabase(true);
                 LoadFhirCrossVersionMaps();
                 LoadExtensionSubstitutions();
+                LoadFhirTypeValueSets();
                 break;
 
             case "load-base":
@@ -321,6 +324,7 @@ public partial class XVerProcessor
             case "load-maps":
                 //LoadDatabase(_config.ReloadDatabase, true);
                 LoadFhirCrossVersionMaps();
+                LoadFhirTypeValueSets();
                 break;
 
             case "load-substitutions":
@@ -333,6 +337,7 @@ public partial class XVerProcessor
                     LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
                     LoadExtensionSubstitutions();
+                    LoadFhirTypeValueSets();
                 }
 
                 CompareInDatabase();
@@ -344,6 +349,7 @@ public partial class XVerProcessor
                     LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
                     LoadExtensionSubstitutions();
+                    LoadFhirTypeValueSets();
                 }
 
                 CompareInDatabase(FhirArtifactClassEnum.ValueSet);
@@ -355,6 +361,7 @@ public partial class XVerProcessor
                     LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
                     LoadExtensionSubstitutions();
+                    LoadFhirTypeValueSets();
                 }
 
                 CompareInDatabase(FhirArtifactClassEnum.Resource);
@@ -366,6 +373,7 @@ public partial class XVerProcessor
                     LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
                     LoadExtensionSubstitutions();
+                    LoadFhirTypeValueSets();
                 }
 
                 GenerateOutcomes();
@@ -377,6 +385,7 @@ public partial class XVerProcessor
                     LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
                     LoadExtensionSubstitutions();
+                    LoadFhirTypeValueSets();
                 }
 
                 GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet);
@@ -388,6 +397,7 @@ public partial class XVerProcessor
                     LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
                     LoadExtensionSubstitutions();
+                    LoadFhirTypeValueSets();
                 }
 
                 GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
@@ -400,6 +410,7 @@ public partial class XVerProcessor
                     LoadDatabase(_config.ReloadDatabase);
                     LoadFhirCrossVersionMaps();
                     LoadExtensionSubstitutions();
+                    LoadFhirTypeValueSets();
                 }
 
                 ExportOutcomes();
@@ -409,6 +420,7 @@ public partial class XVerProcessor
                 LoadDatabase(_config.ReloadDatabase);
                 LoadFhirCrossVersionMaps();
                 LoadExtensionSubstitutions();
+                LoadFhirTypeValueSets();
                 CompareInDatabase();
                 GenerateOutcomes();
                 ExportOutcomes();
@@ -748,9 +760,25 @@ public partial class XVerProcessor
 
         if (!_db.TryLoadExtensionSubstitutions(_config.CrossVersionMapSourcePath))
         {
-            throw new Exception($"Failed to load extension substitution maps from source path: {_config.CrossVersionMapSourcePath}");
+            throw new Exception($"Failed to load extension substitutions from source path: {_config.CrossVersionMapSourcePath}");
+        }
+    }
+
+    public void LoadFhirTypeValueSets()
+    {
+        if (_db == null)
+        {
+            LoadDatabase(false);
+            if (_db == null)
+            {
+                throw new Exception($"Failed to create or load a comparison database!");
+            }
         }
 
+        if (!_db.TryLoadFhirTypeValueSets(_config.CrossVersionMapSourcePath))
+        {
+            throw new Exception($"Failed to load extension FHIR-type value set list from source path: {_config.CrossVersionMapSourcePath}");
+        }
     }
 
     /// <summary>

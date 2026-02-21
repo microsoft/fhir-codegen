@@ -196,6 +196,53 @@ public class ComparisonDatabase : IDisposable
 
     public IDbConnection DbConnection => _db;
 
+    public bool TryLoadFhirTypeValueSets(
+        string crossVersionMapSourcePath)
+    {
+        string filename = Path.Combine(crossVersionMapSourcePath, "input", "ig-support", "valueSetsOfFhirTypes.json");
+        if (!File.Exists(filename))
+        {
+            throw new Exception($"Could not find FHIR-type value set list source file at {filename}!");
+        }
+
+        List<string>? vsUrls;
+
+        try
+        {
+            _logger.LogInformation($"Loading FHIR-type value set URLs from `{filename}`");
+            using FileStream jsonFs = new(filename, System.IO.FileMode.Open, FileAccess.Read);
+            {
+                vsUrls = JsonSerializer.Deserialize<List<string>>(jsonFs);
+                if ((vsUrls is null) ||
+                    (vsUrls.Count == 0))
+                {
+                    _logger.LogWarning($"No value set URLs found in {filename}!");
+                    return true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Attempt to load content from {filename} failed! {ex.Message}");
+            return false;
+        }
+
+        _logger.LogInformation($"Found {vsUrls.Count} substitution requests");
+
+        // recreate our substitution table
+        DbFhirTypeValueSet.DropTable(_db);
+        DbFhirTypeValueSet.CreateTable(_db);
+        DbFhirTypeValueSet.LoadMaxKey(_db);
+
+        List<DbFhirTypeValueSet> toAdd = vsUrls
+            .Select(v => new DbFhirTypeValueSet() { Key = DbFhirTypeValueSet.GetIndex(), UnversionedUrl = v })
+            .ToList();
+
+        toAdd.Insert(_db, ignoreDuplicates: true, insertPrimaryKey: true);
+
+        return true;
+    }
+
     public bool TryLoadExtensionSubstitutions(
         string crossVersionMapSourcePath,
         ConfigRoot? config = null)

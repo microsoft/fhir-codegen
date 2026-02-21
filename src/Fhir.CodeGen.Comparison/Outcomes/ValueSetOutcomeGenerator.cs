@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
@@ -153,8 +154,51 @@ public class ValueSetOutcomeGenerator
         foreach (DbValueSet sourceVs in allSourceValueSets.Values)
         {
             List<DbValueSetComparison> sourceComparisons = vsComparsionsBySourceKey[sourceVs.Key].ToList();
+
+            if ((sourceVs.CanExpand == false) ||
+                (sourceVs.IsExcluded == true) ||
+                XVerProcessor._exclusionSet.Contains(sourceVs.UnversionedUrl) ||
+                XVerProcessor._exclusionSet.Contains(sourceVs.VersionedUrl))
+            {
+                continue;
+            }
+
+            Dictionary<int, DbValueSetConcept> sourceConcepts = allSourceConceptsByVsKey[sourceVs.Key]
+                .ToDictionary(c => c.Key);
+
             if (sourceComparisons.Count == 0)
             {
+                (string idLong, string idShort, string name) = XVerProcessor.GenerateArtifactId(
+                    packagePair.SourcePackageShortName,
+                    sourceVs.Id,
+                    packagePair.TargetPackageShortName);
+
+                string url = $"{XVerProcessor._canonicalRootCrossVersion}ValueSet/{idLong}";
+                string vsFilename = "ValueSet-" + idShort;
+
+                (string cmIdLong, string cmIdShort, string cmName) = XVerProcessor.GenerateArtifactId(
+                    packagePair.SourcePackageShortName,
+                    sourceVs.Id,
+                    packagePair.TargetPackageShortName,
+                    targetArtifactId: null,
+                    prefixLong: "Map",
+                    prefixShort: "Map");
+
+                string cmUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{idLong}";
+                string cmFilename = "Concept" + cmIdShort;
+
+                doNoMap(
+                    sourceVs,
+                    sourceConcepts,
+                    null,
+                    false,
+                    0,
+                    null,
+                    idLong, idShort, name,
+                    url, vsFilename,
+                    cmIdLong, cmIdShort, cmName,
+                    cmUrl, cmFilename);
+
                 continue;
             }
 
@@ -170,9 +214,6 @@ public class ValueSetOutcomeGenerator
                         .ToList();
                 }
             }
-
-            Dictionary<int, DbValueSetConcept> sourceConcepts = allSourceConceptsByVsKey[sourceVs.Key]
-                .ToDictionary(c => c.Key);
 
             Dictionary<int, Dictionary<int, DbValueSetConcept>> targetConceptsByVsKey = [];
 
@@ -231,21 +272,12 @@ public class ValueSetOutcomeGenerator
                     ? null
                     : targetValueSets[vsComparison.TargetContentKey.Value];
 
-                //(string idLong, string idShort, string name) = XVerProcessor.GenerateArtifactId(
-                //    packagePair.SourcePackageShortName,
-                //    sourceVs.Id,
-                //    packagePair.TargetPackageShortName,
-                //    targetArtifactId: targetVs?.Id,
-                //    prefixLong: "ValueSet",
-                //    prefixShort: "Vs");
-
                 (string idLong, string idShort, string name) = XVerProcessor.GenerateArtifactId(
                     packagePair.SourcePackageShortName,
                     sourceVs.Id,
                     packagePair.TargetPackageShortName,
                     targetArtifactId: targetVs?.Id);
 
-                //string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ValueSet/{idLong}";
                 string url = $"{XVerProcessor._canonicalRootCrossVersion}ValueSet/{idLong}";
                 string vsFilename = "ValueSet-" + idShort;
 
@@ -257,136 +289,23 @@ public class ValueSetOutcomeGenerator
                     prefixLong: "Map",
                     prefixShort: "Map");
 
-                //string cmUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{idLong}";
                 string cmUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{idLong}";
                 string cmFilename = "Concept" + cmIdShort;
 
                 if ((targetVs is null) ||
                     vsComparison.NotMapped)
                 {
-                    bool noMapVsRequiresXVer = fullyMapsAcrossAllTargets != true;
-
-                    // build our no-map outcome
-                    DbValueSetOutcome noMapOutcome = new()
-                    {
-                        Key = DbValueSetOutcome.GetIndex(),
-                        ValueSetComparisonKey = vsComparison.Key,
-
-                        SourceFhirPackageKey = packagePair.SourcePackageKey,
-                        SourceFhirSequence = packagePair.SourceFhirSequence,
-                        SourceValueSetKey = sourceVs.Key,
-                        TotalSourceCount = -1,
-
-                        TargetFhirPackageKey = packagePair.TargetPackageKey,
-                        TargetFhirSequence = packagePair.TargetFhirSequence,
-                        TargetValueSetKey = null,
-
-                        TotalTargetCount = vsTargetCount,
-
-                        RequiresXVerDefinition = noMapVsRequiresXVer,
-                        GenLongId = idLong,
-                        GenShortId = idShort,
-                        GenUrl = url,
-                        GenName = name,
-                        GenFileName = vsFilename,
-
-                        ConceptMapLongId = cmIdLong,
-                        ConceptMapShortId = cmIdShort,
-                        ConceptMapUrl = cmUrl,
-                        ConceptMapName = cmName,
-                        ConceptMapFileName = cmFilename,
-
-                        IsRenamed = false,
-                        IsUnmapped = false,
-                        IsIdentical = false,
-                        IsEquivalent = false,
-                        IsBroaderThanTarget = false,
-                        IsNarrowerThanTarget = false,
-
-                        FullyMapsToThisTarget = false,
-                        FullyMapsAcrossAllTargets = fullyMapsAcrossAllTargets,
-
-                        Comments = vsComparison.TechnicalMessage ?? vsComparison.UserMessage ?? "TODO",
-
-                        //OutcomeAction = noMapAction,
-                        //ContentKeys = vsComparison.ContentKeys,
-
-                        SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
-                        SourceCanonicalVersioned = sourceVs.VersionedUrl,
-                        SourceVersion = sourceVs.Version,
-                        SourceId = sourceVs.Id,
-                        SourceName = sourceVs.Name,
-                        TargetCanonicalUnversioned = null,
-                        TargetCanonicalVersioned = null,
-                        TargetVersion = null,
-                        TargetId = null,
-                        TargetName = null,
-                    };
-
-                    _vsOutcomeCache.CacheAdd(noMapOutcome);
-
-                    // build our no-map concept outcomes
-                    foreach (DbValueSetConceptComparison conceptComparison in conceptComparsionsByVsComparisonKey[vsComparison.Key])
-                    {
-                        //OutcomeValueSetConceptActionCodes noMapConceptAction = noMapAction switch
-                        //{
-                        //    OutcomeValueSetActionCodes.UseOtherValueSets => OutcomeValueSetConceptActionCodes.MappedElsewhere,
-                        //    OutcomeValueSetActionCodes.UseOtherAndCrossVersion => fullyMappedConceptKeys.Contains(conceptComparison.SourceConceptKey)
-                        //        ? OutcomeValueSetConceptActionCodes.MappedElsewhere
-                        //        : OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
-                        //    _ => OutcomeValueSetConceptActionCodes.UseCrossVersionDefinition,
-                        //};
-
-                        DbValueSetConcept sourceConcept = allSourceConcepts[conceptComparison.SourceContentKey];
-
-                        DbValueSetConceptOutcome noMapConceptOutcome = new()
-                        {
-                            Key = DbValueSetConceptOutcome.GetIndex(),
-                            ValueSetOutcomeKey = noMapOutcome.Key,
-                            ValueSetConceptComparisonKey = conceptComparison.Key,
-
-                            SourceFhirPackageKey = packagePair.SourcePackageKey,
-                            SourceFhirSequence = packagePair.SourceFhirSequence,
-                            SourceValueSetKey = sourceVs.Key,
-                            SourceValueSetConceptKey = sourceConcept.Key,
-                            SourceDisplay = sourceConcept.Display,
-                            TotalSourceCount = -1,
-
-                            TargetFhirPackageKey = packagePair.TargetPackageKey,
-                            TargetFhirSequence = packagePair.TargetFhirSequence,
-                            TargetValueSetKey = null,
-                            TargetValueSetConceptKey = null,
-                            TargetDisplay = null,
-                            TotalTargetCount = -1,
-
-                            RequiresXVerDefinition = noMapVsRequiresXVer,
-
-                            IsRenamed = false,
-                            IsUnmapped = false,
-                            IsIdentical = false,
-                            IsEquivalent = false,
-                            IsBroaderThanTarget = false,
-                            IsNarrowerThanTarget = false,
-
-                            FullyMapsToThisTarget = false,
-                            FullyMapsAcrossAllTargets = fullyMappedConceptKeys.Contains(sourceConcept.Key),
-
-                            Comments = vsComparison.TechnicalMessage ?? vsComparison.UserMessage ?? "TODO",
-
-                            //OutcomeAction = noMapConceptAction,
-                            //ContentKeys = conceptComparison.ContentKeys,
-                            //CodeLiteralsMatch = false,
-                            //SourceCodeTreatedAsEscapeValve = conceptComparison.SourceCodeTreatedAsEscapeValve,
-                            //TargetCodeTreatedAsEscapeValve = false,
-
-                            SourceSystem = sourceConcept.System,
-                            SourceCode = sourceConcept.Code,
-                            TargetSystem = null,
-                            TargetCode = null,
-                        };
-
-                        _conceptOutcomeCache.CacheAdd(noMapConceptOutcome);
-                    }
+                    doNoMap(
+                        sourceVs,
+                        sourceConcepts,
+                        vsComparison,
+                        fullyMapsAcrossAllTargets,
+                        vsTargetCount,
+                        fullyMappedConceptKeys,
+                        idLong, idShort, name,
+                        url, vsFilename,
+                        cmIdLong, cmIdShort, cmName,
+                        cmUrl, cmFilename);
 
                     // move to next comparison
                     continue;
@@ -600,6 +519,197 @@ public class ValueSetOutcomeGenerator
                 }
 
             }
+        }
+
+        return;
+
+        void doNoMap(
+            DbValueSet sourceVs,
+            Dictionary<int, DbValueSetConcept> sourceConcepts,
+            DbValueSetComparison? vsComparison,
+            bool fullyMapsAcrossAllTargets,
+            int vsTargetCount,
+            HashSet<int>? fullyMappedConceptKeys,
+            string idLong, string idShort, string name,
+            string url, string vsFilename,
+            string cmIdLong, string cmIdShort, string cmName,
+            string cmUrl, string cmFilename)
+        {
+            bool noMapVsRequiresXVer = fullyMapsAcrossAllTargets != true;
+
+            string comments = vsComparison?.TechnicalMessage ?? vsComparison?.UserMessage ?? string.Empty;
+
+            if (vsTargetCount == 0)
+            {
+                comments +=
+                    $"\nFHIR ValueSet `{sourceVs.VersionedUrl}`," +
+                    $" defined in FHIR {packagePair.SourceFhirSequence}" +
+                    $" does not have any mapping to FHIR {packagePair.TargetFhirSequence}";
+            }
+            else
+            {
+                comments +=
+                    $"\nFHIR ValueSet `{sourceVs.VersionedUrl}`," +
+                    $" defined in FHIR {packagePair.SourceFhirSequence}" +
+                    $" does not have a map to FHIR {packagePair.TargetFhirSequence}";
+            }
+
+            // build our no-map outcome
+            DbValueSetOutcome noMapOutcome = new()
+            {
+                Key = DbValueSetOutcome.GetIndex(),
+                ValueSetComparisonKey = vsComparison?.Key,
+
+                SourceFhirPackageKey = packagePair.SourcePackageKey,
+                SourceFhirSequence = packagePair.SourceFhirSequence,
+                SourceValueSetKey = sourceVs.Key,
+                TotalSourceCount = -1,
+
+                TargetFhirPackageKey = packagePair.TargetPackageKey,
+                TargetFhirSequence = packagePair.TargetFhirSequence,
+                TargetValueSetKey = null,
+
+                TotalTargetCount = vsTargetCount,
+
+                RequiresXVerDefinition = noMapVsRequiresXVer,
+                GenLongId = idLong,
+                GenShortId = idShort,
+                GenUrl = url,
+                GenName = name,
+                GenFileName = vsFilename,
+
+                ConceptMapLongId = cmIdLong,
+                ConceptMapShortId = cmIdShort,
+                ConceptMapUrl = cmUrl,
+                ConceptMapName = cmName,
+                ConceptMapFileName = cmFilename,
+
+                IsRenamed = false,
+                IsUnmapped = false,
+                IsIdentical = false,
+                IsEquivalent = false,
+                IsBroaderThanTarget = false,
+                IsNarrowerThanTarget = false,
+
+                FullyMapsToThisTarget = false,
+                FullyMapsAcrossAllTargets = fullyMapsAcrossAllTargets,
+
+                Comments = comments,
+
+                SourceCanonicalUnversioned = sourceVs.UnversionedUrl,
+                SourceCanonicalVersioned = sourceVs.VersionedUrl,
+                SourceVersion = sourceVs.Version,
+                SourceId = sourceVs.Id,
+                SourceName = sourceVs.Name,
+                TargetCanonicalUnversioned = null,
+                TargetCanonicalVersioned = null,
+                TargetVersion = null,
+                TargetId = null,
+                TargetName = null,
+            };
+
+            _vsOutcomeCache.CacheAdd(noMapOutcome);
+
+            if (vsComparison?.Key is not null)
+            {
+                // build our no-map concept outcomes
+                foreach (DbValueSetConceptComparison conceptComparison in conceptComparsionsByVsComparisonKey[vsComparison.Key])
+                {
+                    DbValueSetConcept sourceConcept = allSourceConcepts[conceptComparison.SourceContentKey];
+
+                    DbValueSetConceptOutcome noMapConceptOutcome = new()
+                    {
+                        Key = DbValueSetConceptOutcome.GetIndex(),
+                        ValueSetOutcomeKey = noMapOutcome.Key,
+                        ValueSetConceptComparisonKey = conceptComparison.Key,
+
+                        SourceFhirPackageKey = packagePair.SourcePackageKey,
+                        SourceFhirSequence = packagePair.SourceFhirSequence,
+                        SourceValueSetKey = sourceVs.Key,
+                        SourceValueSetConceptKey = sourceConcept.Key,
+                        SourceDisplay = sourceConcept.Display,
+                        TotalSourceCount = -1,
+
+                        TargetFhirPackageKey = packagePair.TargetPackageKey,
+                        TargetFhirSequence = packagePair.TargetFhirSequence,
+                        TargetValueSetKey = null,
+                        TargetValueSetConceptKey = null,
+                        TargetDisplay = null,
+                        TotalTargetCount = -1,
+
+                        RequiresXVerDefinition = noMapVsRequiresXVer,
+
+                        IsRenamed = false,
+                        IsUnmapped = false,
+                        IsIdentical = false,
+                        IsEquivalent = false,
+                        IsBroaderThanTarget = false,
+                        IsNarrowerThanTarget = false,
+
+                        FullyMapsToThisTarget = false,
+                        FullyMapsAcrossAllTargets = fullyMappedConceptKeys?.Contains(sourceConcept.Key) == true,
+
+                        Comments = vsComparison.TechnicalMessage ?? vsComparison.UserMessage ?? "The ValueSet is unmapped.",
+
+                        SourceSystem = sourceConcept.System,
+                        SourceCode = sourceConcept.Code,
+                        TargetSystem = null,
+                        TargetCode = null,
+                    };
+
+                    _conceptOutcomeCache.CacheAdd(noMapConceptOutcome);
+                }
+            }
+            else
+            {
+                // build our no-map concept outcomes
+                foreach (DbValueSetConcept sourceConcept in sourceConcepts.Values.OrderBy(c => c.FhirKey))
+                {
+                    DbValueSetConceptOutcome noMapConceptOutcome = new()
+                    {
+                        Key = DbValueSetConceptOutcome.GetIndex(),
+                        ValueSetOutcomeKey = noMapOutcome.Key,
+                        ValueSetConceptComparisonKey = null,
+
+                        SourceFhirPackageKey = packagePair.SourcePackageKey,
+                        SourceFhirSequence = packagePair.SourceFhirSequence,
+                        SourceValueSetKey = sourceVs.Key,
+                        SourceValueSetConceptKey = sourceConcept.Key,
+                        SourceDisplay = sourceConcept.Display,
+                        TotalSourceCount = -1,
+
+                        TargetFhirPackageKey = packagePair.TargetPackageKey,
+                        TargetFhirSequence = packagePair.TargetFhirSequence,
+                        TargetValueSetKey = null,
+                        TargetValueSetConceptKey = null,
+                        TargetDisplay = null,
+                        TotalTargetCount = -1,
+
+                        RequiresXVerDefinition = noMapVsRequiresXVer,
+
+                        IsRenamed = false,
+                        IsUnmapped = false,
+                        IsIdentical = false,
+                        IsEquivalent = false,
+                        IsBroaderThanTarget = false,
+                        IsNarrowerThanTarget = false,
+
+                        FullyMapsToThisTarget = false,
+                        FullyMapsAcrossAllTargets = fullyMappedConceptKeys?.Contains(sourceConcept.Key) == true,
+
+                        Comments = "The ValueSet is unmapped.",
+
+                        SourceSystem = sourceConcept.System,
+                        SourceCode = sourceConcept.Code,
+                        TargetSystem = null,
+                        TargetCode = null,
+                    };
+
+                    _conceptOutcomeCache.CacheAdd(noMapConceptOutcome);
+                }
+            }
+
+
         }
     }
 }

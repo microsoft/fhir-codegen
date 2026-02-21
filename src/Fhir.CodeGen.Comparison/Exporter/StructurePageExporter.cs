@@ -221,12 +221,13 @@ public class StructurePageExporter
         HashSet<int> targetStructureKeys = sdOutcome.TargetStructureKey is not null
             ? [sdOutcome.TargetStructureKey!.Value]
             : [];
-        Dictionary<int, (string label, string link)> outcomeAccumulator = [];
+        Dictionary<int, List<(string label, string link)>> outcomeAccumulator = [];
 
         // iterate over the element outcomes that target this structure
         foreach (DbElementOutcome edOutcome in edOutcomes)
         {
             List<string> targetLines = [];
+            HashSet<string> usedLinks = [];
 
             // get the targets for this outcome
             List<DbElementOutcomeTarget> edTargets = DbElementOutcomeTarget.SelectList(
@@ -252,9 +253,11 @@ public class StructurePageExporter
 
                 if (edTarget.TargetElementId is not null)
                 {
+                    bool needsXVer = edOutcome.NeedsExtensionDefinition();
+
                     // check to see if there is a root target and an extension, in which case the element should not be listed
-                    if ((!edOutcome.RequiresXVerDefinition) ||
-                        (edOutcome.RequiresXVerDefinition && (edTarget.TargetResourceOrder != 0)))
+                    if ((!needsXVer) ||
+                        (needsXVer && (edTarget.TargetResourceOrder != 0)))
                     {
                         targetLines.Add($"[{edTarget.TargetElementId}]({targetBaseUrl}{edTarget.TargetElementId.Split('.')[0]}.html#resource)");
                     }
@@ -280,7 +283,13 @@ public class StructurePageExporter
                 targetLabel = string.Join('.', ["Basic", .. components[1..]]);
                 targetLink = $"{targetBaseUrl}Basic.html#resource";
 
-                outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                {
+                    outcomeLines = [];
+                    outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                }
+
+                outcomeLines.Add((targetLabel, targetLink));
                 targetLines.Add($"[{targetLabel}]({targetLink})");
             }
 
@@ -293,63 +302,122 @@ public class StructurePageExporter
             bool additionalAlternateReference = !isAlternateReference &&
                 (edOutcome.AlternateReferenceTargetsLiteral is not null);
 
-            if (edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true))
+            //if (edOutcome.RequiresXVerDefinition || (edOutcome.ContentReferenceRequiresXVerDefinition == true))
+            if (edOutcome.NeedsExtensionDefinition())
             {
-                string targetLabel;
-                string targetLink;
+                bool addedParent = false;
 
-                if (edOutcome.ParentRequiresXverDefinition &&
-                    (edOutcome.ParentElementOutcomeKey is not null) &&
-                    outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
+                //// check to see if we have a slice definition
+                //if (edOutcome.ParentRequiresXverDefinition &&
+                //    (edOutcome.ParentElementOutcomeKey is not null) &&
+                //    outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out List<(string label, string link)>? parentLines))
+                //{
+                //    addedParent = true;
+                //    foreach ((string parentLabel, string parentLink) in parentLines)
+                //    {
+                //        string targetLabel;
+                //        string targetLink;
+
+                //        if (edOutcomesByKey.Contains(edOutcome.ParentElementOutcomeKey.Value))
+                //        {
+                //            if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
+                //            {
+                //                targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.SourceNameClean()}";
+                //            }
+                //            else
+                //            {
+                //                targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.GenUrl!}";
+                //            }
+                //            targetLink = parentLink;
+                //        }
+                //        else
+                //        {
+                //            targetLabel = $"Slice: {edOutcome.GenUrl!}";
+                //            targetLink = parentLink;
+                //        }
+
+                //        if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                //        {
+                //            outcomeLines = [];
+                //            outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                //        }
+
+                //        outcomeLines.Add((targetLabel, targetLink));
+                //        targetLines.Add($"[{targetLabel}]({targetLink})");
+                //    }
+                //}
+
+                //// check to see if we have an extension substitution
+                //if (edOutcome.ExtensionSubstitutionUrl is not null)
+                //{
+                //    string targetLabel;
+                //    string targetLink;
+
+                //    if (isAlternateCanonical)
+                //    {
+                //        targetLabel = "Standard Extension: alternate-canonical";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else if (isAlternateReference)
+                //    {
+                //        targetLabel = "Standard Extension: alternate-reference";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/tools/", StringComparison.Ordinal))
+                //    {
+                //        targetLabel = $"Tooling Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.Ordinal))
+                //    {
+                //        targetLabel = $"Standard Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else if ((edOutcome.ExtensionSubstitutionKey is not null) &&
+                //        (DbExtensionSubstitution.SelectSingle(_db, Key: edOutcome.ExtensionSubstitutionKey!.Value) is DbExtensionSubstitution extSub))
+                //    {
+                //        if (extSub.ReplacementSourcePackage is not null)
+                //        {
+                //            targetLabel = extSub.ReplacementSourcePackage + ": ";
+                //        }
+                //        else
+                //        {
+                //            targetLabel = "External Extension: ";
+                //        }
+
+                //        if (extSub.ReplacementName is not null)
+                //        {
+                //            targetLabel += extSub.ReplacementName;
+                //        }
+                //        else
+                //        {
+                //            targetLabel += edOutcome.ExtensionSubstitutionUrl;
+                //        }
+
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else
+                //    {
+                //        targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+
+                //    if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                //    {
+                //        outcomeLines = [];
+                //        outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                //    }
+
+                //    outcomeLines.Add((targetLabel, targetLink));
+                //    targetLines.Add($"[{targetLabel}]({targetLink})");
+                //}
+
+                // check for a content reference link
+                if (edOutcome.ContentReferenceExtensionUrl is not null)
                 {
-                    if (edOutcomesByKey.Contains(edOutcome.ParentElementOutcomeKey.Value))
-                    {
-                        if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
-                        {
-                            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.SourceNameClean()}";
-                        }
-                        else
-                        {
-                            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.GenUrl!}";
-                        }
-                        targetLink = parent.link;
-                    }
-                    else
-                    {
-                        targetLabel = $"Slice: {edOutcome.GenUrl!}";
-                        targetLink = parent.link;
-                    }
-                }
-                else if (edOutcome.ExtensionSubstitutionUrl is not null)
-                {
-                    if (isAlternateCanonical)
-                    {
-                        targetLabel = "Standard Extension: alternate-canonical";
-                        targetLink = edOutcome.ExtensionSubstitutionUrl;
-                    }
-                    else if (isAlternateReference)
-                    {
-                        targetLabel = "Standard Extension: alternate-reference";
-                        targetLink = edOutcome.ExtensionSubstitutionUrl;
-                    }
-                    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/tools/", StringComparison.Ordinal))
-                    {
-                        targetLabel = $"Tooling Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
-                        targetLink = edOutcome.ExtensionSubstitutionUrl;
-                    }
-                    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.Ordinal))
-                    {
-                        targetLabel = $"Standard Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
-                        targetLink = edOutcome.ExtensionSubstitutionUrl;
-                    }
-                    else
-                    {
-                        targetLabel = edOutcome.ExtensionSubstitutionUrl;
-                        targetLink = edOutcome.ExtensionSubstitutionUrl;
-                    }
-                }
-                else if (edOutcome.ContentReferenceExtensionUrl is not null)
-                {
+                    string targetLabel;
+                    string targetLink;
+
                     if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
                         edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
                     {
@@ -362,31 +430,359 @@ public class StructurePageExporter
                         targetLabel = edOutcome.ContentReferenceExtensionUrl;
                         targetLink = edOutcome.ContentReferenceExtensionUrl;
                     }
+
+                    if (usedLinks.Add(targetLink))
+                    {
+                        if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                        {
+                            outcomeLines = [];
+                            outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                        }
+
+                        outcomeLines.Add((targetLabel, targetLink));
+                        targetLines.Add($"[{targetLabel}]({targetLink})");
+                    }
+                }
+
+                bool addedDirect = false;
+                // check for content reference or group repetiton requirements
+                if ((edOutcome.RequiresDefinitionAsContentReference == true) ||
+                    (edOutcome.RequiresDefinitionForGroupRepetitions == true))
+                {
+                    addedDirect = true;
+
+                    string targetLabel;
+                    string targetLink;
+
+                    targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
+                    targetLink = edOutcome.GenFileName! + ".html";
+
+                    if (usedLinks.Add(targetLink))
+                    {
+                        if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                        {
+                            outcomeLines = [];
+                            outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                        }
+
+                        outcomeLines.Add((targetLabel, targetLink));
+                        targetLines.Add($"[{targetLabel}]({targetLink})");
+                    }
+                }
+
+                if (!addedParent && !addedDirect)
+                {
+                    string targetLabel;
+                    string targetLink;
+
+                    targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
+                    targetLink = edOutcome.GenFileName! + ".html";
+
+                    if (usedLinks.Add(targetLink))
+                    {
+                        if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                        {
+                            outcomeLines = [];
+                            outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                        }
+
+                        outcomeLines.Add((targetLabel, targetLink));
+                        targetLines.Add($"[{targetLabel}]({targetLink})");
+                    }
+                }
+
+                ////string targetLabel;
+                ////string targetLink;
+
+                //if (edOutcome.ParentRequiresXverDefinition &&
+                //    (edOutcome.ParentElementOutcomeKey is not null) &&
+                //    outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out (string label, string link) parent))
+                //{
+                //    if (edOutcomesByKey.Contains(edOutcome.ParentElementOutcomeKey.Value))
+                //    {
+                //        if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
+                //        {
+                //            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.SourceNameClean()}";
+                //        }
+                //        else
+                //        {
+                //            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.GenUrl!}";
+                //        }
+                //        targetLink = parent.link;
+                //    }
+                //    else
+                //    {
+                //        targetLabel = $"Slice: {edOutcome.GenUrl!}";
+                //        targetLink = parent.link;
+                //    }
+                //}
+                //else if (edOutcome.ExtensionSubstitutionUrl is not null)
+                //{
+                //    if (isAlternateCanonical)
+                //    {
+                //        targetLabel = "Standard Extension: alternate-canonical";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else if (isAlternateReference)
+                //    {
+                //        targetLabel = "Standard Extension: alternate-reference";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/tools/", StringComparison.Ordinal))
+                //    {
+                //        targetLabel = $"Tooling Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.Ordinal))
+                //    {
+                //        targetLabel = $"Standard Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //    else
+                //    {
+                //        targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                //        targetLink = edOutcome.ExtensionSubstitutionUrl;
+                //    }
+                //}
+                //else if (edOutcome.ContentReferenceExtensionUrl is not null)
+                //{
+                //    if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
+                //        edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
+                //    {
+                //        DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
+                //        targetLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
+                //        targetLink = crOutcome.GenFileName! + ".html";
+                //    }
+                //    else
+                //    {
+                //        targetLabel = edOutcome.ContentReferenceExtensionUrl;
+                //        targetLink = edOutcome.ContentReferenceExtensionUrl;
+                //    }
+                //}
+                //else
+                //{
+                //    //targetLabel = edOutcome.GenUrl!;
+                //    targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
+                //    targetLink = edOutcome.GenFileName! + ".html";
+                //}
+
+                //outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                //targetLines.Add($"[{targetLabel}]({targetLink})");
+            }
+
+            if (edOutcome.ExtensionSubstitutionUrl is not null)
+            {
+                string targetLabel;
+                string targetLink;
+
+                if (isAlternateCanonical)
+                {
+                    targetLabel = "Standard Extension: alternate-canonical";
+                    targetLink = edOutcome.ExtensionSubstitutionUrl;
+                }
+                else if (isAlternateReference)
+                {
+                    targetLabel = "Standard Extension: alternate-reference";
+                    targetLink = edOutcome.ExtensionSubstitutionUrl;
+                }
+                else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/tools/", StringComparison.Ordinal))
+                {
+                    targetLabel = $"Tooling Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                    targetLink = edOutcome.ExtensionSubstitutionUrl;
+                }
+                else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.Ordinal))
+                {
+                    targetLabel = $"Standard Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                    targetLink = edOutcome.ExtensionSubstitutionUrl;
+                }
+                else if ((edOutcome.ExtensionSubstitutionKey is not null) &&
+                    (DbExtensionSubstitution.SelectSingle(_db, Key: edOutcome.ExtensionSubstitutionKey!.Value) is DbExtensionSubstitution extSub))
+                {
+                    if (extSub.ReplacementSourcePackage is not null)
+                    {
+                        targetLabel = extSub.ReplacementSourcePackage + ": ";
+                    }
+                    else
+                    {
+                        targetLabel = "External Extension: ";
+                    }
+
+                    if (extSub.ReplacementName is not null)
+                    {
+                        targetLabel += extSub.ReplacementName;
+                    }
+                    else
+                    {
+                        targetLabel += edOutcome.ExtensionSubstitutionUrl;
+                    }
+
+                    targetLink = edOutcome.ExtensionSubstitutionUrl;
                 }
                 else
                 {
-                    //targetLabel = edOutcome.GenUrl!;
-                    targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
-                    targetLink = edOutcome.GenFileName! + ".html";
+                    targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                    targetLink = edOutcome.ExtensionSubstitutionUrl;
                 }
 
-                outcomeAccumulator[edOutcome.Key] = (targetLabel, targetLink);
+                if (usedLinks.Add(targetLink))
+                {
+                    if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                    {
+                        outcomeLines = [];
+                        outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                    }
+
+                    outcomeLines.Add((targetLabel, targetLink));
+                    targetLines.Add($"[{targetLabel}]({targetLink})");
+                }
+            }
+
+            // check for a content reference link
+            if (edOutcome.ContentReferenceExtensionUrl is not null)
+            {
+                string targetLabel;
+                string targetLink;
+
+                if ((edOutcome.ContentReferenceOutcomeKey is not null) &&
+                    edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
+                {
+                    DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
+                    targetLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
+                    targetLink = crOutcome.GenFileName! + ".html";
+                }
+                else
+                {
+                    targetLabel = edOutcome.ContentReferenceExtensionUrl;
+                    targetLink = edOutcome.ContentReferenceExtensionUrl;
+                }
+
+                if (usedLinks.Add(targetLink))
+                {
+                    if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                    {
+                        outcomeLines = [];
+                        outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                    }
+
+                    outcomeLines.Add((targetLabel, targetLink));
+                    targetLines.Add($"[{targetLabel}]({targetLink})");
+                }
+            }
+
+            // check to see if we have an ancestor content reference-based definition
+            if ((edOutcome.SourceAncestorContentReferenceOutcomeKey is not null) &&
+                edOutcomesByKey.Contains(edOutcome.SourceAncestorContentReferenceOutcomeKey.Value) &&
+                (edOutcomesByKey[edOutcome.SourceAncestorContentReferenceOutcomeKey.Value].FirstOrDefault() is DbElementOutcome po) &&
+                (po.RequiresDefinitionAsContentReference == true))
+            {
+                string targetLabel;
+                string targetLink;
+
+                if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
+                {
+                    targetLabel = $"Extension: {po.GenName} Slice:{edOutcome.SourceNameClean()}";
+                }
+                else
+                {
+                    targetLabel = $"Extension: {po.GenName} Slice:{edOutcome.GenUrl!}";
+                }
+                targetLink = po.GenFileName! + ".html";
+
+                if (usedLinks.Add(targetLink))
+                {
+                    if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                    {
+                        outcomeLines = [];
+                        outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                    }
+
+                    outcomeLines.Add((targetLabel, targetLink));
+                    targetLines.Add($"[{targetLabel}]({targetLink})");
+                }
+            }
+
+            // check to see if we have a slice definition
+            if (edOutcome.ParentRequiresXverDefinition &&
+                (edOutcome.ParentElementOutcomeKey is not null) &&
+                outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out List<(string label, string link)>? parentLines))
+            {
+                if (parentLines.Count > 1)
+                {
+                    Console.Write("");
+                }
+
+                foreach ((string parentLabel, string parentLink) in parentLines)
+                {
+                    string targetLabel;
+                    string targetLink;
+
+                    if (edOutcomesByKey.Contains(edOutcome.ParentElementOutcomeKey.Value))
+                    {
+                        if (edOutcome.GenUrl!.StartsWith("http:", StringComparison.Ordinal))
+                        {
+                            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.SourceNameClean()}";
+                        }
+                        else
+                        {
+                            targetLabel = $"Extension: {edOutcomesByKey[edOutcome.ParentElementOutcomeKey.Value].First().GenName} Slice:{edOutcome.GenUrl!}";
+                        }
+                        targetLink = parentLink;
+                    }
+                    else
+                    {
+                        targetLabel = $"Slice: {edOutcome.GenUrl!}";
+                        targetLink = parentLink;
+                    }
+
+                    if (usedLinks.Add(parentLink))
+                    {
+                        if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                        {
+                            outcomeLines = [];
+                            outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                        }
+
+                        outcomeLines.Add((targetLabel, targetLink));
+                        targetLines.Add($"[{targetLabel}]({targetLink})");
+                    }
+                }
+            }
+
+            if (additionalAlternateCanonical &&
+                usedLinks.Add(CommonDefinitions.ExtUrlAlternateCanonical))
+            {
+                string targetLabel = "Standard Extension: alternate-canonical";
+                string targetLink = CommonDefinitions.ExtUrlAlternateCanonical;
+
+                if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                {
+                    outcomeLines = [];
+                    outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                }
+
+                outcomeLines.Add((targetLabel, targetLink));
                 targetLines.Add($"[{targetLabel}]({targetLink})");
             }
 
-            if (additionalAlternateCanonical)
+            if (additionalAlternateReference &&
+                usedLinks.Add(CommonDefinitions.ExtUrlAlternateReference))
             {
-                targetLines.Add($"[Standard Extension: alternate-canonical]({CommonDefinitions.ExtUrlAlternateCanonical})");
-            }
+                string targetLabel = "Standard Extension: alternate-reference";
+                string targetLink = CommonDefinitions.ExtUrlAlternateReference;
 
-            if (additionalAlternateReference)
-            {
-                targetLines.Add($"[Standard Extension: alternate-reference]({CommonDefinitions.ExtUrlAlternateReference})");
+                if (!outcomeAccumulator.TryGetValue(edOutcome.Key, out List<(string label, string link)>? outcomeLines))
+                {
+                    outcomeLines = [];
+                    outcomeAccumulator[edOutcome.Key] = outcomeLines;
+                }
+
+                outcomeLines.Add((targetLabel, targetLink));
+                targetLines.Add($"[{targetLabel}]({targetLink})");
             }
 
             mdWriter.WriteLine(
                 $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
-                $" | {string.Join("<br/>", targetLines)}" +
+                $" | {string.Join("<br/>", targetLines.Distinct())}" +
                 $" |");
         }
         mdWriter.WriteLine("{: .grid }");
