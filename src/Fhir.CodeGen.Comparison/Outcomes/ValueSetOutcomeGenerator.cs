@@ -510,8 +510,10 @@ public class ValueSetOutcomeGenerator
                         //TargetCodeTreatedAsEscapeValve = conceptComparison.TargetCodeTreatedAsEscapeValve,
 
                         SourceSystem = sourceConcept.System,
+                        SourceSystemVersion = sourceConcept.SystemVersion,
                         SourceCode = sourceConcept.Code,
                         TargetSystem = targetConcept?.System,
+                        TargetSystemVersion = targetConcept?.SystemVersion,
                         TargetCode = targetConcept?.Code,
                     };
 
@@ -652,8 +654,10 @@ public class ValueSetOutcomeGenerator
                         Comments = vsComparison.TechnicalMessage ?? vsComparison.UserMessage ?? "The ValueSet is unmapped.",
 
                         SourceSystem = sourceConcept.System,
+                        SourceSystemVersion = sourceConcept.SystemVersion,
                         SourceCode = sourceConcept.Code,
                         TargetSystem = null,
+                        TargetSystemVersion = null,
                         TargetCode = null,
                     };
 
@@ -700,8 +704,10 @@ public class ValueSetOutcomeGenerator
                         Comments = "The ValueSet is unmapped.",
 
                         SourceSystem = sourceConcept.System,
+                        SourceSystemVersion = sourceConcept.SystemVersion,
                         SourceCode = sourceConcept.Code,
                         TargetSystem = null,
+                        TargetSystemVersion = null,
                         TargetCode = null,
                     };
 

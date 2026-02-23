@@ -22,6 +22,8 @@ namespace Fhir.CodeGen.Comparison.Exporter;
 
 public class VocabularyFhirExporter
 {
+    private static bool _exportAsDesiredVersion = true;
+
     private readonly XVerExporter _exporter;
     private readonly IDbConnection _db;
 
@@ -147,7 +149,7 @@ public class VocabularyFhirExporter
                 // write the concept map to a file
                 string filename = vsOutcome.ConceptMapFileName ?? throw new ArgumentNullException(nameof(vsOutcome.ConceptMapFileName));
                 string path = Path.Combine(dir, filename + ".json");
-                if (exporterR4 is not null)
+                if (_exportAsDesiredVersion && (exporterR4 is not null))
                 {
                     File.WriteAllText(path, exporterR4.ToJson(vsCm, new SerializerSettings() { Pretty = true }));
                 }
@@ -208,11 +210,21 @@ public class VocabularyFhirExporter
                 (lastSourceSystem != vscOutcome.SourceSystem) ||
                 (lastTargetSystem != vscOutcome.TargetSystem))
             {
+                string sourceCanonical = vscOutcome.SourceSystemVersion is null
+                    ? vscOutcome.SourceSystem
+                    : (vscOutcome.SourceSystem + "|" + vscOutcome.SourceSystemVersion);
+
+                string? targetCanonical = vscOutcome.TargetSystem is null
+                    ? null
+                    : vscOutcome.TargetSystemVersion is null
+                    ? vscOutcome.TargetSystem
+                    : (vscOutcome.TargetSystem + "|" + vscOutcome.TargetSystemVersion);
+
                 // create a new group
                 currentGroup = new()
                 {
-                    Source = vscOutcome.SourceSystem,
-                    Target = vscOutcome.TargetSystem,
+                    Source = sourceCanonical,
+                    Target = targetCanonical,
                     Element = [],
                 };
                 vsCm.Group.Add(currentGroup);

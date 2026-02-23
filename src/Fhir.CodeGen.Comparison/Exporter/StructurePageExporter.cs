@@ -331,10 +331,10 @@ public class StructurePageExporter
                 if ((edOutcome.ParentElementOutcomeKey is not null) &&
                     outcomeAccumulator.TryGetValue(edOutcome.ParentElementOutcomeKey.Value, out List<(string label, string link)>? parentOutcomeLines))
                 {
-                    if (parentOutcomeLines.Count > 1)
-                    {
-                        Console.Write("");
-                    }
+                    //if (parentOutcomeLines.Count > 1)
+                    //{
+                    //    Console.Write("");
+                    //}
 
                     foreach ((string parentLabel, string parentLink) in parentOutcomeLines)
                     {

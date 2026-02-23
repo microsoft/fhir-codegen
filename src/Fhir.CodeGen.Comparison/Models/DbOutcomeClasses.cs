@@ -346,10 +346,12 @@ public partial class DbValueSetConceptOutcome : DbOutcomeBase
     //public override int? TargetContentKey { get => this.TargetValueSetConceptKey; set => this.TargetValueSetConceptKey = value; }
 
     public required string SourceSystem { get; set; }
+    public required string SourceSystemVersion { get; set; }
     public required string SourceCode { get; set; }
     public required string? SourceDisplay { get; set; }
 
     public required string? TargetSystem { get; set; }
+    public required string? TargetSystemVersion { get; set; }
     public required string? TargetCode { get; set; }
     public required string? TargetDisplay { get; set; }
 }

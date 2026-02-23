@@ -271,12 +271,12 @@ public class ElementOutcomeGenerator
         foreach (DbElementOutcome edOutcome in edOutcomes)
         {
             // check if any require this to have an extension
-            int count = DbElementOutcome.SelectCount(
+           int count = DbElementOutcome.SelectCount(
                 _db,
                 SourceFhirPackageKey: sourcePackage.Key,
                 TargetFhirPackageKey: targetPackage.Key,
-                SourceAncestorContentReferenceOutcomeKey: edOutcome.Key,
-                RequiresExtensionDefinition: true);
+                ContentReferenceOutcomeKey: edOutcome.Key,
+                RequiresXVerDefinition: true);
 
             if (count != 0)
             {

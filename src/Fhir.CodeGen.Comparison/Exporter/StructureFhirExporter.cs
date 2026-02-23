@@ -31,6 +31,8 @@ namespace Fhir.CodeGen.Comparison.Exporter;
 
 public class StructureFhirExporter
 {
+    private static bool _exportAsDesiredVersion = true;
+
     private readonly XVerExporter _exporter;
     private readonly IDbConnection _db;
 
@@ -306,7 +308,7 @@ public class StructureFhirExporter
             string filename = sdOutcomes.First().ElementConceptMapFileName
                 ?? throw new Exception($"Failed to write concept map for {sourceSd.VersionedUrl} to {igTr.PackagePair.TargetPackageShortName}");
             string path = Path.Combine(dir, filename + ".json");
-            if (exporterR4 is not null)
+            if (_exportAsDesiredVersion && (exporterR4 is not null))
             {
                 File.WriteAllText(path, exporterR4.ToJson(edCm, new SerializerSettings() { Pretty = true }));
             }
@@ -1236,7 +1238,7 @@ public class StructureFhirExporter
             filename = cm.Id;
         }
         string path = Path.Combine(dir, filename + ".json");
-        if (exporterR4 is not null)
+        if (_exportAsDesiredVersion && (exporterR4 is not null))
         {
             File.WriteAllText(path, exporterR4.ToJson(cm, new SerializerSettings() { Pretty = true }));
         }
