@@ -396,7 +396,8 @@ public partial class DbStructureOutcome : DbArtifactOutcomeWithTargetBase
     nameof(SourceFhirPackageKey),
     nameof(TargetFhirPackageKey),
     nameof(RequiresXVerDefinition),
-    nameof(ParentRequiresXverDefinition),
+    nameof(RequiresExtensionDefinition),
+    nameof(RequiresSliceDefinition),
     nameof(ExtensionSubstitutionKey),
     nameof(ParentElementOutcomeKey),
     nameof(SourceStructureKey),
@@ -408,7 +409,8 @@ public partial class DbStructureOutcome : DbArtifactOutcomeWithTargetBase
     nameof(SourceUsedAsContentReference),
     nameof(SourceAncestorUsedAsContentReferenceId),
     nameof(RequiresXVerDefinition),
-    nameof(ParentRequiresXverDefinition))]
+    nameof(RequiresExtensionDefinition),
+    nameof(RequiresSliceDefinition))]
 public partial class DbElementOutcome : DbArtifactOutcomeBase
 {
     //[CgSQLiteForeignKey(referenceTable: "StructureOutcomes", referenceColumn: nameof(DbStructureOutcome.Key), modelTypeName: nameof(DbStructureOutcome))]
@@ -422,6 +424,9 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     //[CgSQLiteIgnore]
     //public override int SourceContentKey { get => this.SourceElementKey; set => this.SourceElementKey = value; }
 
+    public required bool RequiresExtensionDefinition { get; set; }
+    public required bool RequiresSliceDefinition { get; set; }
+    public required string? GenSliceName { get; set; }
 
     public required int SourceResourceOrder { get; set; }
     public required int SourceComponentOrder { get; set; }
@@ -477,13 +482,12 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
 
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
     public required int? ParentElementOutcomeKey { get; set; }
-    public required bool ParentRequiresXverDefinition { get; set; }
-    public required bool? RequiresDefinitionForGroupRepetitions { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ExtensionSubstitutions", referenceColumn: nameof(Key), modelTypeName: nameof(DbExtensionSubstitution))]
     public required int? ExtensionSubstitutionKey { get; set; }
     public required string? ExtensionSubstitutionUrl { get; set; }
-    public required string? BasicElementEquivalent { get; set; }
+    public required string? BasicElementBaseId { get; set; }
+    public required string? BasicElementId { get; set; }
 
     [CgSQLiteForeignKey(referenceTable: "ElementOutcomes", referenceColumn: nameof(Key), modelTypeName: nameof(DbElementOutcome))]
     public required int? ContentReferenceOutcomeKey { get; set; }
@@ -660,33 +664,33 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
         }
     }
 
-    public bool NeedsExtensionDefinition()
-    {
-        if (BasicElementEquivalent is not null)
-        {
-            return false;
-        }
+    //public bool NeedsExtensionDefinition()
+    //{
+    //    if (BasicElementBaseId is not null)
+    //    {
+    //        return false;
+    //    }
 
-        if (RequiresXVerDefinition &&
-            (ExtensionSubstitutionKey is null) &&
-            (ContentReferenceExtensionUrl is null) &&
-            (ParentRequiresXverDefinition != true))
-        {
-            return true;
-        }
+    //    if (RequiresXVerDefinition &&
+    //        (ExtensionSubstitutionKey is null) &&
+    //        (ContentReferenceExtensionUrl is null) &&
+    //        (ParentRequiresXverDefinition != true))
+    //    {
+    //        return true;
+    //    }
 
-        if (RequiresDefinitionAsContentReference == true)
-        {
-            return true;
-        }
+    //    if (RequiresDefinitionAsContentReference == true)
+    //    {
+    //        return true;
+    //    }
 
-        if (RequiresDefinitionForGroupRepetitions == true)
-        {
-            return true;
-        }
+    //    if (RequiresDefinitionForGroupRepetitions == true)
+    //    {
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 }
 
 [CgSQLiteTable(tableName: "ElementOutcomeTargets")]
