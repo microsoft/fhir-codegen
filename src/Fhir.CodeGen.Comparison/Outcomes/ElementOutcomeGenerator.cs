@@ -984,6 +984,12 @@ public class ElementOutcomeGenerator
                 }
             }
 
+            // check for no outcome target elements
+            if (!edTr.OutcomeTargets.Any(eot => eot.TargetElementId is not null))
+            {
+                elementRequiresXVer = true;
+            }
+
             // check for the current element not thinking it needs a definition, but the parent does
             if (!elementRequiresXVer && (parentOutcome?.RequiresXVerDefinition == true))
             {
