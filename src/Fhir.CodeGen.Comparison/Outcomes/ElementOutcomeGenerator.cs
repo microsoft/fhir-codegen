@@ -439,7 +439,7 @@ public class ElementOutcomeGenerator
                 else
                 {
                     comments +=
-                        $"\nNote that the source element matches Basic element path `{basicBasePath}`," +
+                        $"\nThe source element matches Basic element path `{basicBasePath}`," +
                         $" but the definitions are not compatible" +
                         $" (source: `{sourceEd.FullCollatedTypeLiteral}`:{sourceEd.FhirCardinalityString}" +
                         $" -> basic: `{basicEd.FullCollatedTypeLiteral}`:{basicEd.FhirCardinalityString}).";
@@ -451,7 +451,7 @@ public class ElementOutcomeGenerator
             if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out DbExtensionSubstitution? extSubstitute))
             {
                 comments +=
-                    $"\nNote that there is an externally-defined extension that has been flagged as the" +
+                    $"\nThere is an externally-defined extension that has been mapped as the" +
                     $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`:" +
                     $" `{extSubstitute.ReplacementUrl}`.";
             }
@@ -689,6 +689,7 @@ public class ElementOutcomeGenerator
             DbExtensionSubstitution? extSubstitute = null;
             bool elementRequiresXVer = (!edTr.IsFullyMappedAcrossAllTargets) && (sourceEd.ChildElementCount == 0);
             List<string> outcomeComments = [];
+            List<string> outcomeNotes = [];
 
             Dictionary<int, DbElement> allContextTargets = [];
 
@@ -932,11 +933,18 @@ public class ElementOutcomeGenerator
                     }
                     else
                     {
-                        targetComments =
-                            $"Element `{sourceEd.Id}` is mapped to FHIR {_packagePair.TargetFhirSequence}" +
-                            $" element `{ecTargetEd.Id}` as `{elementComparison.Relationship}`," +
-                            $" concept domain: `{elementComparison.ConceptDomainRelationship}`," +
-                            $" value domain: `{elementComparison.ValueDomainRelationship}`.";
+                        if (sourceIsRootEd)
+                        {
+                            targetComments =
+                                $"The root element `{sourceEd.Id}` is mapped to FHIR {_packagePair.TargetFhirSequence}" +
+                                $" `{ecTargetEd.Id}`.";
+                        }
+                        else
+                        {
+                            targetComments =
+                                $"Element `{sourceEd.Id}` is mapped to FHIR {_packagePair.TargetFhirSequence}" +
+                                $" element `{ecTargetEd.Id}` as `{elementComparison.Relationship}`.";
+                        }
                     }
 
                     // create our target
@@ -1033,9 +1041,9 @@ public class ElementOutcomeGenerator
                 {
                     basicBasePath = null;
                     basicPath = null;
-                    outcomeComments.Add(
-                        $"Note that the source element matches Basic element path `{basicPath}` (`{basicBasePath}`)," +
-                        $" but the definitions are not compatible" +
+                    outcomeNotes.Add(
+                        $"While the source element matches Basic element path `{basicPath}` (`{basicBasePath}`)," +
+                        $" the definitions are not compatible" +
                         $" (source: `{sourceEd.FullCollatedTypeLiteral}`:{sourceEd.FhirCardinalityString}" +
                         $" -> basic: `{basicEd.FullCollatedTypeLiteral}`:{basicEd.FhirCardinalityString}).");
                 }
@@ -1061,8 +1069,8 @@ public class ElementOutcomeGenerator
                         // need to promote the modifier to the parent context
                         parentOutcome.DefineAsModifier = true;
                         parentOutcome.Comments +=
-                            $"Note that the child extension for element `{sourceEd.Name}`" +
-                            $" is a modifier, so this extension needs to be defined as a modifier.";
+                            $"A child extension for element `{sourceEd.Name}` is a modifier," +
+                            $" so this extension needs to be defined as a modifier.";
                     }
 
                     if ((ancestorOutcome is not null) &&
@@ -1070,8 +1078,8 @@ public class ElementOutcomeGenerator
                     {
                         ancestorOutcome.DefineAsModifier = true;
                         ancestorOutcome.Comments +=
-                            $"Note that the child extension for element `{sourceEd.Id}`" +
-                            $" is a modifier, so this extension needs to be defined as a modifier.";
+                            $"A child extension for element `{sourceEd.Id}`  is a modifier," +
+                            $" so this extension needs to be defined as a modifier.";
                     }
                 }
                 else
@@ -1083,8 +1091,8 @@ public class ElementOutcomeGenerator
                         if (ctxTargetEd.IsModifier)
                         {
                             defineAsModifier = false;
-                            outcomeComments.Add(
-                                $"Note that the target element context `{ctxTargetEd.Id}` is a modifier element," +
+                            outcomeNotes.Add(
+                                $"The target context `{ctxTargetEd.Id}` is a modifier element," +
                                 $" so this extension does not need to be defined as a modifier.");
                             break;
                         }
@@ -1114,8 +1122,9 @@ public class ElementOutcomeGenerator
                             DbElement ctxTargetParentEd = _allTargetElements[ctxTargetEd.ParentElementKey.Value];
 
                             string replacementComment =
-                                $"Note that the target element context `{ctxTargetEd.Id}` is a primitive-type element" +
-                                $" and this extension needs to be defined as a modifier. The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
+                                $"The target element context `{ctxTargetEd.Id}` is a primitive-type element" +
+                                $" and this extension needs to be defined as a modifier." +
+                                $" The context was moved up to parent element `{ctxTargetParentEd.Id}`.";
 
                             ctxChanges.Add((ctxTargetEd, ctxTargetParentEd, replacementComment));
                         }
@@ -1168,8 +1177,9 @@ public class ElementOutcomeGenerator
                     DbElement ctxTargetParentEd = _allTargetElements[ctxTargetEd.ParentElementKey.Value];
 
                     string replacementComment =
-                        $"Note that the target element context `{ctxTargetEd.Id}` is a choice-type element" +
-                        $" and cannot directly hold extensions. The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
+                        $"The target context `{ctxTargetEd.Id}` is a choice-type element" +
+                        $" and cannot directly hold extensions." +
+                        $" The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
 
                     ctxChanges.Add((ctxTargetEd, ctxTargetParentEd, replacementComment));
                 }
@@ -1211,10 +1221,27 @@ public class ElementOutcomeGenerator
 
             if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out extSubstitute))
             {
-                outcomeComments.Add(
-                    $"Note that there is an externally-defined extension that has been flagged as the" +
-                    $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`:" +
-                    $" `{extSubstitute.ReplacementUrl}`.");
+                switch (extSubstitute.ReplacementUrl)
+                {
+                    case CommonDefinitions.ExtUrlAlternateCanonical:
+                        outcomeNotes.Add(
+                            $"The standard extension `alternate-canonical` has been mapped as the" +
+                            $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped Canonical type.");
+                        break;
+
+                    case CommonDefinitions.ExtUrlAlternateReference:
+                        outcomeNotes.Add(
+                            $"The standard extension `alternate-reference` has been mapped as the" +
+                            $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped Canonical type.");
+                        break;
+
+                    default:
+                        outcomeNotes.Add(
+                            $"An externally-defined extension that has been mapped as the" +
+                            $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`:" +
+                            $" `{extSubstitute.ReplacementUrl}`.");
+                        break;
+                }
             }
 
             List<string> alternateCanonicalTargets = [];
@@ -1223,74 +1250,104 @@ public class ElementOutcomeGenerator
             List<string> unmappedTypeNames = edTr.UnmappedTypes.Select(ut => ut.TypeName!).Distinct().ToList();
             List<string> mappedTypeNames = edTr.MappedTypes.Select(ut => ut.TypeName!).Distinct().ToList();
 
-            // check to see if we are replacing using a generic extension definition (e.g., alternate-canonical)
-            if ((unmappedTypeNames.Count == 1) &&
-                (sourceEd.DistinctTypeCount == 1) &&
-                (sourceEd.ChildElementCount == 0))
-            {
-                switch (unmappedTypeNames[0])
-                {
-                    case "Reference":
-                        {
-                            // only allow reference if there are no mapped types or only 'Reference'
-                            if ((sourceEd.DistinctTypeLiterals == "Reference") &&
-                                _typeExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateReference, out DbExtensionSubstitution? arExt))
-                            {
-                                extSubstitute = arExt;
-                                alternateReferenceTargets = edTr.UnmappedTypes
-                                    .Where(ut => ut.TargetProfile is not null)
-                                    .Select(ut => ut.TargetProfile!)
-                                    .Distinct()
-                                    .Order()
-                                    .ToList();
-                                outcomeComments.Add(
-                                    $"Note that there is an externally-defined extension that has been flagged as the" +
-                                    $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped Reference type:" +
-                                    $" `{extSubstitute.ReplacementUrl}`.");
-                            }
-                        }
-                        break;
+            bool allAlternates = !unmappedTypeNames.Any(tn => (tn != "Reference") && (tn != "canonical"));
 
-                    case "canonical":
-                        {
-                            // only allow reference if there are no mapped types or only 'canonical'
-                            if ((sourceEd.DistinctTypeLiterals == "canonical") &&
-                                _typeExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateCanonical, out DbExtensionSubstitution? acExt))
-                            {
-                                extSubstitute = acExt;
-                                alternateCanonicalTargets = edTr.UnmappedTypes
-                                    .Where(ut => ut.TargetProfile is not null)
-                                    .Select(ut => ut.TargetProfile!)
-                                    .Distinct()
-                                    .Order()
-                                    .ToList();
-                                outcomeComments.Add(
-                                    $"Note that there is an externally-defined extension that has been flagged as the" +
-                                    $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped Canonical type:" +
-                                    $" `{extSubstitute.ReplacementUrl}`.");
-                            }
-                        }
-                        break;
-                }
-            }
-            else if (sourceEd.ChildElementCount == 0)
+            List<DbElementType> unmappedReferenceTypes = edTr.UnmappedTypes
+                .Where(ut => (ut.TypeName == "Reference") && (ut.TargetProfile is not null))
+                .ToList();
+
+            List<DbElementType> unmappedCanonicalTypes = edTr.UnmappedTypes
+                .Where(ut => (ut.TypeName == "canonical") && (ut.TargetProfile is not null))
+                .ToList();
+
+            if (sourceEd.ChildElementCount == 0)
             {
                 // check for allowed reference targets
-                alternateReferenceTargets = edTr.UnmappedTypes
-                    .Where(ut => ut.TargetProfile is not null)
-                    .Select(ut => ut.TargetProfile!)
-                    .Distinct()
-                    .Order()
-                    .ToList();
+                if (unmappedReferenceTypes.Count > 0)
+                {
+                    alternateReferenceTargets = unmappedReferenceTypes
+                        .Select(ut => ut.TargetProfile!)
+                        .Distinct()
+                        .Order()
+                        .ToList();
+
+                    if (allAlternates && (unmappedCanonicalTypes.Count == 0))
+                    {
+                        if (_typeExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateReference, out DbExtensionSubstitution? arExt))
+                        {
+                            extSubstitute = arExt;
+                        }
+                        outcomeNotes.Add(
+                            $"The standard extension `alternate-reference` has been mapped as the" +
+                            $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with unmapped reference targets:" +
+                            $" {string.Join(", ", alternateReferenceTargets.Select(v => v.Replace("http://hl7.org/fhir/StructureDefinition/", "")))}.");
+                    }
+                    else
+                    {
+                        outcomeNotes.Add(
+                            $"The standard extension `alternate-reference` has been mapped as PART of the" +
+                            $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with unmapped reference targets:" +
+                            $" {string.Join(", ", alternateReferenceTargets.Select(v => v.Replace("http://hl7.org/fhir/StructureDefinition/", "")))}.");
+                    }
+
+                    foreach (DbElementType ut in unmappedReferenceTypes)
+                    {
+                        edTr.UnmappedTypes.Remove(ut);
+                    }
+
+                    unmappedTypeNames.Remove("Reference");
+                }
 
                 // check for allowed canonical targets
-                alternateCanonicalTargets = edTr.UnmappedTypes
-                    .Where(ut => ut.TargetProfile is not null)
-                    .Select(ut => ut.TargetProfile!)
-                    .Distinct()
-                    .Order()
-                    .ToList();
+                if (unmappedCanonicalTypes.Count > 0)
+                {
+                    alternateCanonicalTargets = unmappedCanonicalTypes
+                        .Select(ut => ut.TargetProfile!)
+                        .Distinct()
+                        .Order()
+                        .ToList();
+
+                    if (allAlternates && (unmappedReferenceTypes.Count == 0))
+                    {
+                        if (_typeExtensionSubstitutionsByUrl.TryGetValue(CommonDefinitions.ExtUrlAlternateCanonical, out DbExtensionSubstitution? acExt))
+                        {
+                            extSubstitute = acExt;
+                        }
+                        outcomeNotes.Add(
+                            $"The standard extension `alternate-canonical` has been mapped as the" +
+                            $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped Canonical type:" +
+                            $" {string.Join(", ", alternateCanonicalTargets.Select(v => v.Replace("http://hl7.org/fhir/StructureDefinition/", "")))}.");
+                    }
+                    else
+                    {
+                        outcomeNotes.Add(
+                            $"The standard extension `altnernate-canonical` has been mapped as PART of the" +
+                            $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}` with an unmapped canonical targets:" +
+                            $" {string.Join(", ", alternateCanonicalTargets.Select(v => v.Replace("http://hl7.org/fhir/StructureDefinition/", "")))}.");
+                    }
+
+                    foreach (DbElementType ut in unmappedCanonicalTypes)
+                    {
+                        edTr.UnmappedTypes.Remove(ut);
+                    }
+
+                    unmappedTypeNames.Remove("canonical");
+                }
             }
+
+            // check to see if we have now mapped everything
+            if ((unmappedTypeNames.Count == 0) &&
+                elementRequiresXVer &&
+                ((alternateCanonicalTargets.Count != 0) || (alternateReferenceTargets.Count != 0)))
+            {
+                elementRequiresXVer = false;
+            }
+
+            List<string> unmappedChildTypeNames = edTr.ChildTypeMappingResults
+                .SelectMany(ctr => ctr.UnmappedTypeChildren)
+                .Select(ued => ued.Name)
+                .Distinct()
+                .ToList();
 
             DbElement? targetEd = allContextTargets.Count == 1
                 ? allContextTargets.Values.First()
@@ -1330,16 +1387,17 @@ public class ElementOutcomeGenerator
                 : $"{_packagePair.SourceFhirSequence}: {sourceEd.Short}";
             string artifactDescription = $"{_packagePair.SourceFhirSequence}: `{sourceEd.Id}`";
 
-            List<string> unmappedChildTypeNames = edTr.ChildTypeMappingResults
-                .SelectMany(ctr => ctr.UnmappedTypeChildren)
-                .Select(ued => ued.Name)
-                .Distinct()
-                .ToList();
+
 
             if (edTr.DiscreteTargetCount == 0)
             {
                 artifactShort += " (new)";
                 artifactDescription += $" (new:{sourceEd.FullCollatedTypeLiteral.Replace("http://hl7.org/fhir/StructureDefinition/", "")})";
+
+                outcomeComments.Add(
+                    $"Element `{sourceEd.Id}`" +
+                    $" has no mapping targets in FHIR {_packagePair.TargetFhirSequence}." +
+                    $" Typically, this is because the element has been added (is a new element).");
             }
             else
             {
@@ -1347,6 +1405,11 @@ public class ElementOutcomeGenerator
                 {
                     artifactShort += " additional types";
                     artifactDescription += $" additional types ({string.Join(", ", edTr.UnmappedTypes.Select(ut => ut.Literal))})";
+
+                    outcomeComments.Add(
+                        $"The mappings for `{sourceEd.Id}`" +
+                        $" do not cover the following types:" +
+                        $" {string.Join(", ", unmappedTypeNames.Order())}.");
                 }
 
                 if (unmappedChildTypeNames.Count > 0)
@@ -1356,6 +1419,11 @@ public class ElementOutcomeGenerator
                         artifactShort += " additional types";
                     }
                     artifactDescription += $" additional types from child elements ({string.Join(", ", unmappedChildTypeNames)})";
+
+                    outcomeComments.Add(
+                        $"The mappings for `{sourceEd.Id}`" +
+                        $" do not cover the following types based on type expansion:" +
+                        $" {string.Join(", ", unmappedChildTypeNames.Order())}.");
                 }
 
                 switch (edTr.BoundValueSetRelationship)
@@ -1364,11 +1432,21 @@ public class ElementOutcomeGenerator
                     case CMR.RelatedTo:
                         artifactShort += " additional codes";
                         artifactDescription += $" additional codes";
+
+                        outcomeComments.Add(
+                            $"The mappings for `{sourceEd.Id}`" +
+                            $" do not allow expression of the necessary codes, per the bindings on the source and target.");
+
                         break;
                 }
             }
 
-            string outcomeComment = string.Join('\n', outcomeComments);
+            if (outcomeNotes.Count > 0)
+            {
+                outcomeComments.AddRange(outcomeNotes);
+            }
+
+            string outcomeComment = string.Join('\n', outcomeComments.Distinct());
 
             // create the mapped element outcome
             DbElementOutcome elementOutcome = new()

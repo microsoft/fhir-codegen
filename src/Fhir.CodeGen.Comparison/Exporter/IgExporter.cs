@@ -681,9 +681,6 @@ public class IgExporter
                 <a href="index.html">Home</a>
               </li>
               <li>
-                <a href="faqs.html">FAQs</a>
-              </li>
-              <li>
                 <a href="lookup-sd.html">Structure Lookup</a>
               </li>
               <li>
@@ -863,7 +860,6 @@ public class IgExporter
 
         HashSet<string> skipPages = [
             "index",
-            "faqs",
             "lookup-sd",
             "lookup-vs",
             "downloads",
@@ -873,7 +869,7 @@ public class IgExporter
         StringBuilder pageBuilder = new();
         pageBuilder.AppendLine(""" "page" : """);
         pageBuilder.AppendLine("""  { "nameUrl" : "index.html", "title" : "Home", "generation" : "markdown" , "page" : [ """);
-        pageBuilder.AppendLine("""  { "nameUrl" : "faqs.html", "title" : "FAQs", "generation" : "markdown" },""");
+        //pageBuilder.AppendLine("""  { "nameUrl" : "faqs.html", "title" : "FAQs", "generation" : "markdown" },""");
 
         if (igTr.SdPageContentFiles.Count == 1)
         {
@@ -1018,7 +1014,6 @@ public class IgExporter
 
         HashSet<string> skipPages = [
             "index",
-            "faqs",
             "lookup-sd",
             "lookup-vs",
             "downloads",
@@ -1091,14 +1086,14 @@ public class IgExporter
             Title = "Home",
             Generation = ImplementationGuide.GuidePageGeneration.Markdown,
             Page = [
-                new()
-                {
-                    Source = new FhirUrl("faqs.md"),
-                    Name = "faqs.html",
-                    Title = "FAQs",
-                    Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+                //new()
+                //{
+                //    Source = new FhirUrl("faqs.md"),
+                //    Name = "faqs.html",
+                //    Title = "FAQs",
+                //    Generation = ImplementationGuide.GuidePageGeneration.Markdown,
 
-                },
+                //},
                 sdLookupPage,
                 vsLookupPage,
                 new()
@@ -1688,7 +1683,7 @@ public class IgExporter
             string description = fnNoExt switch
             {
                 "index" => "Home",
-                "faqs" => "FAQs",
+                //"faqs" => "FAQs",
                 "toc" => "Contents",
                 "downloads" => "Downlaods",
                 "changelog" => "Change Log",

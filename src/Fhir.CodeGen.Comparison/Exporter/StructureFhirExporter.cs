@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Threading.Tasks;
 using Fhir.CodeGen.Common.Extensions;
@@ -1176,14 +1177,13 @@ public class StructureFhirExporter
                 continue;
             }
 
-            List<DbElementOutcome> targetEdOutcomes = [];
-            foreach (DbElementOutcome existingOutcome in edOutcomeContextLookup[targetEd.Id])
-            {
-                if (existingOutcome.RequiresXVerDefinition)
-                {
-                    targetEdOutcomes.Add(existingOutcome);
-                }
-            }
+            List<DbElementOutcome> targetEdOutcomes = edOutcomeContextLookup[targetEd.Id]
+                .Where(eo => eo.RequiresXVerDefinition ||
+                    (eo.ExtensionSubstitutionUrl is not null) ||
+                    (eo.AlternateCanonicalTargetsLiteral is not null) ||
+                    (eo.AlternateReferenceTargetsLiteral is not null))
+                .OrderBy(eo => eo.SourceResourceOrder)
+                .ToList();
 
             // if there are none, move on
             if (targetEdOutcomes.Count == 0)
@@ -1234,28 +1234,6 @@ public class StructureFhirExporter
             // add each outcome that we should have here
             foreach (DbElementOutcome targetEdOutcome in targetEdOutcomes)
             {
-                string url;
-
-                if (targetEdOutcome.ExtensionSubstitutionUrl is not null)
-                {
-                    url = targetEdOutcome.ExtensionSubstitutionUrl;
-                }
-                else if ((targetEdOutcome.RequiresDefinitionAsContentReference == true) &&
-                    (targetEdOutcome.ContentReferenceExtensionUrl is not null))
-                {
-                    url = targetEdOutcome.ContentReferenceExtensionUrl;
-                }
-                else if (targetEdOutcome.RequiresXVerDefinition &&
-                    (targetEdOutcome.GenUrl is not null) &&
-                    targetEdOutcome.GenUrl.StartsWith("http:", StringComparison.Ordinal))
-                {
-                    url = targetEdOutcome.GenUrl;
-                }
-                else
-                {
-                    continue;
-                }
-
                 bool isAlternateCanonical = targetEdOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
                 bool isAlternateReference = targetEdOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
 
@@ -1265,133 +1243,286 @@ public class StructureFhirExporter
                 bool additionalAlternateReference = !isAlternateReference &&
                     (targetEdOutcome.AlternateReferenceTargetsLiteral is not null);
 
-                string? definition = null;
-                if (isAlternateCanonical &&
-                    (targetEdOutcome.AlternateCanonicalTargetsLiteral is not null))
-                {
-                    definition = definition is null
-                        ? string.Empty
-                        : (definition + "\n");
-                    definition += $"This extension can be used as a substitute for {targetEdOutcome.AlternateCanonicalTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
-                }
-
-                if (isAlternateReference &&
-                    (targetEdOutcome.AlternateReferenceTargetsLiteral is not null))
-                {
-                    definition = definition is null
-                        ? string.Empty
-                        : (definition + "\n");
-                    definition += $"This extension can be used as a substitute for elements with reference targets of {targetEdOutcome.AlternateReferenceTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
-                }
-
-                int adjustedMin = targetEdOutcome.SourceMinCardinality == 0
+                int adjustedMin = (targetEdOutcome.SourceMinCardinality == 0) || additionalAlternateCanonical || additionalAlternateReference
                     ? 0
-                    : ((additionalAlternateCanonical || additionalAlternateReference) ? 0 : targetEdOutcome.SourceMinCardinality);
+                    : targetEdOutcome.SourceMinCardinality;
 
-                ElementDefinition extEd = new()
+                string path = targetPath;
+                string? edShort = targetEdOutcome.GenArtifactShort ?? $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}";
+                string? edDefinition = targetEdOutcome.GenArtifactDescription;
+                string? edComment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments;
+
+                string idPrefix = $"{targetId}:{targetEdOutcome.SourceNameClean()}";
+                string sliceName = targetEdOutcome.SourceNameClean();
+
+                bool addedSlice = false;
+
+                // check for extension
+                if (targetEdOutcome.RequiresExtensionDefinition)
                 {
-                    ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}",
-                    SliceName = targetEdOutcome.SourceNameClean(),
-                    Path = targetPath,
-                    Short = targetEdOutcome.GenArtifactShort ?? $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-                    Definition = targetEdOutcome.GenArtifactDescription ?? definition,
-                    Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
-                    Min = adjustedMin,
-                    Max = targetEdOutcome.SourceMaxCardinalityString,
-                    Base = new ElementDefinition.BaseComponent()
-                    {
-                        Path = "DomainResource.extension",
-                        Min = 0,
-                        Max = "*",
-                    },
-                    Type = [
+                    string sliceSuffix = addedSlice
+                        ? "Ext"
+                        : string.Empty;
+                    addedSlice = true;
+
+                    profileSd.Differential.Element.Add(getEd(
+                        targetEdOutcome.GenUrl!,
+                        idPrefix + sliceSuffix,
+                        sliceName + sliceSuffix,
+                        path,
+                        edShort,
+                        edDefinition,
+                        edComment,
+                        adjustedMin,
+                        targetEdOutcome.SourceMaxCardinalityString));
+                }
+
+                // check for substitution
+                if (targetEdOutcome.ExtensionSubstitutionUrl is not null)
+                {
+                    string sliceSuffix = addedSlice
+                        ? FhirSanitizationUtils.SanitizeForProperty(targetEdOutcome.ExtensionSubstitutionUrl.Split('/')[^1])
+                        : string.Empty;
+                    addedSlice = true;
+
+                    profileSd.Differential.Element.Add(getEd(
+                        targetEdOutcome.ExtensionSubstitutionUrl,
+                        idPrefix + sliceSuffix,
+                        sliceName + sliceSuffix,
+                        path,
+                        edShort,
+                        edDefinition,
+                        edComment,
+                        adjustedMin,
+                        targetEdOutcome.SourceMaxCardinalityString));
+                }
+
+                // check for content reference link
+                if ((targetEdOutcome.RequiresDefinitionAsContentReference == true) &&
+                    (targetEdOutcome.ContentReferenceExtensionUrl is not null))
+                {
+                    string sliceSuffix = addedSlice
+                        ? FhirSanitizationUtils.SanitizeForProperty(targetEdOutcome.ContentReferenceExtensionUrl.Split('/')[^1])
+                        : string.Empty;
+                    addedSlice = true;
+
+                    profileSd.Differential.Element.Add(getEd(
+                        targetEdOutcome.ContentReferenceExtensionUrl,
+                        idPrefix + sliceSuffix,
+                        sliceName + sliceSuffix,
+                        path,
+                        edShort,
+                        edDefinition,
+                        edComment,
+                        adjustedMin,
+                        targetEdOutcome.SourceMaxCardinalityString));
+                }
+
+                // check for additional alternate canonical
+                if (additionalAlternateCanonical)
+                {
+                    string sliceSuffix = (addedSlice || additionalAlternateReference)
+                        ? "AlternateCanonical"
+                        : string.Empty;
+                    addedSlice = true;
+
+                    profileSd.Differential.Element.Add(getEd(
+                        CommonDefinitions.ExtUrlAlternateCanonical,
+                        idPrefix + sliceSuffix,
+                        sliceName + sliceSuffix,
+                        path,
+                        edShort,
+                        edDefinition,
+                        edComment,
+                        adjustedMin,
+                        targetEdOutcome.SourceMaxCardinalityString));
+                }
+
+                // check for additional alternate reference
+                if (additionalAlternateReference)
+                {
+                    string sliceSuffix = (addedSlice || additionalAlternateCanonical)
+                        ? "AlternateReference"
+                        : string.Empty;
+                    addedSlice = true;
+
+                    profileSd.Differential.Element.Add(getEd(
+                        CommonDefinitions.ExtUrlAlternateReference,
+                        idPrefix + sliceSuffix,
+                        sliceName + sliceSuffix,
+                        path,
+                        edShort,
+                        edDefinition,
+                        edComment,
+                        adjustedMin,
+                        targetEdOutcome.SourceMaxCardinalityString));
+                }
+
+                if (addedSlice && (adjustedMin > 0))
+                {
+                    targetSlicingEd.Min += adjustedMin;
+                }
+
+                //if (isAlternateCanonical &&
+                //    (targetEdOutcome.AlternateCanonicalTargetsLiteral is not null))
+                //{
+                //    definition = definition is null
+                //        ? string.Empty
+                //        : (definition + "\n");
+                //    definition += $"This extension can be used as a substitute for {targetEdOutcome.AlternateCanonicalTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
+                //}
+
+                //if (isAlternateReference &&
+                //    (targetEdOutcome.AlternateReferenceTargetsLiteral is not null))
+                //{
+                //    definition = definition is null
+                //        ? string.Empty
+                //        : (definition + "\n");
+                //    definition += $"This extension can be used as a substitute for elements with reference targets of {targetEdOutcome.AlternateReferenceTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
+                //}
+
+
+                //ElementDefinition extEd = new()
+                //{
+                //    ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}",
+                //    SliceName = targetEdOutcome.SourceNameClean(),
+                //    Path = targetPath,
+                //    Short = targetEdOutcome.GenArtifactShort ?? $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
+                //    Definition = targetEdOutcome.GenArtifactDescription ?? definition,
+                //    Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
+                //    Min = adjustedMin,
+                //    Max = targetEdOutcome.SourceMaxCardinalityString,
+                //    Base = new ElementDefinition.BaseComponent()
+                //    {
+                //        Path = "DomainResource.extension",
+                //        Min = 0,
+                //        Max = "*",
+                //    },
+                //    Type = [
+                //        new ElementDefinition.TypeRefComponent()
+                //        {
+                //            Code = "Extension",
+                //            Profile = [ url ],
+                //        },
+                //    ],
+                //};
+
+                //profileSd.Differential.Element.Add(extEd);
+
+                //if (extEd.Min > 0)
+                //{
+                //    targetSlicingEd.Min += extEd.Min;
+                //}
+
+                //// check to see if we also need the alternate-canonical url
+                //if (additionalAlternateCanonical)
+                //{
+                //    definition = $"This extension can be used as a substitute for {targetEdOutcome.AlternateCanonicalTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
+
+                //    ElementDefinition acEd = new()
+                //    {
+                //        ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}Canonical",
+                //        SliceName = targetEdOutcome.SourceNameClean() + "Canonical",
+                //        Path = targetPath,
+                //        //Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
+                //        //Definition = definition,
+                //        //Comment = targetEdOutcome.Comments,
+                //        Short = $"{igTr.PackagePair.SourceFhirSequence}: additional canonical references",
+                //        Definition = $"{igTr.PackagePair.SourceFhirSequence}: additional canonical references ({string.Join(", ", targetEdOutcome.AlternateCanonicalTargets.Select(v => v.Split("/")[^1]))})",
+                //        Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
+                //        Min = 0,
+                //        Max = targetEdOutcome.SourceMaxCardinalityString,
+                //        Base = new ElementDefinition.BaseComponent()
+                //        {
+                //            Path = "DomainResource.extension",
+                //            Min = 0,
+                //            Max = "*",
+                //        },
+                //        Type = [
+                //            new ElementDefinition.TypeRefComponent()
+                //            {
+                //                Code = "Extension",
+                //                Profile = [ url ],
+                //            },
+                //        ],
+                //    };
+
+                //    profileSd.Differential.Element.Add(acEd);
+                //}
+
+                //if (additionalAlternateReference)
+                //{
+                //    definition = $"This extension can be used as a substitute for elements with reference targets of {targetEdOutcome.AlternateReferenceTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
+
+                //    ElementDefinition arEd = new()
+                //    {
+                //        ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}Reference",
+                //        SliceName = targetEdOutcome.SourceNameClean() + "Reference",
+                //        Path = targetPath,
+                //        //Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
+                //        //Definition = definition,
+                //        //Comment = targetEdOutcome.Comments,
+                //        Short = $"{igTr.PackagePair.SourceFhirSequence}: additional references",
+                //        Definition = $"{igTr.PackagePair.SourceFhirSequence}: additional references ({string.Join(", ", targetEdOutcome.AlternateReferenceTargets.Select(v => v.Split("/")[^1]))})",
+                //        Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
+                //        Min = 0,
+                //        Max = targetEdOutcome.SourceMaxCardinalityString,
+                //        Base = new ElementDefinition.BaseComponent()
+                //        {
+                //            Path = "DomainResource.extension",
+                //            Min = 0,
+                //            Max = "*",
+                //        },
+                //        Type = [
+                //            new ElementDefinition.TypeRefComponent()
+                //            {
+                //                Code = "Extension",
+                //                Profile = [ url ],
+                //            },
+                //        ],
+                //    };
+
+                //    profileSd.Differential.Element.Add(arEd);
+                //}
+            }
+        }
+    }
+
+    private ElementDefinition getEd(
+        string url,
+        string id,
+        string sliceName,
+        string path,
+        string? edShort,
+        string? edDefinition,
+        string? edComment,
+        int cardMin,
+        string? cardMax)
+    {
+        return new()
+        {
+            ElementId = id,
+            SliceName = sliceName,
+            Path = path,
+            Short = edShort,
+            Definition = edDefinition,
+            Comment = edComment,
+            Min = cardMin,
+            Max = cardMax,
+            Base = new ElementDefinition.BaseComponent()
+            {
+                Path = "DomainResource.extension",
+                Min = 0,
+                Max = "*",
+            },
+            Type = [
                         new ElementDefinition.TypeRefComponent()
                         {
                             Code = "Extension",
                             Profile = [ url ],
                         },
                     ],
-                };
-
-                profileSd.Differential.Element.Add(extEd);
-
-                if (extEd.Min > 0)
-                {
-                    targetSlicingEd.Min += extEd.Min;
-                }
-
-                // check to see if we also need the alternate-canonical url
-                if (additionalAlternateCanonical)
-                {
-                    definition = $"This extension can be used as a substitute for {targetEdOutcome.AlternateCanonicalTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
-
-                    ElementDefinition acEd = new()
-                    {
-                        ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}Canonical",
-                        SliceName = targetEdOutcome.SourceNameClean() + "Canonical",
-                        Path = targetPath,
-                        //Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-                        //Definition = definition,
-                        //Comment = targetEdOutcome.Comments,
-                        Short = $"{igTr.PackagePair.SourceFhirSequence}: additional canonical references",
-                        Definition = $"{igTr.PackagePair.SourceFhirSequence}: additional canonical references ({string.Join(", ", targetEdOutcome.AlternateCanonicalTargets.Select(v => v.Split("/")[^1]))})",
-                        Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
-                        Min = 0,
-                        Max = targetEdOutcome.SourceMaxCardinalityString,
-                        Base = new ElementDefinition.BaseComponent()
-                        {
-                            Path = "DomainResource.extension",
-                            Min = 0,
-                            Max = "*",
-                        },
-                        Type = [
-                            new ElementDefinition.TypeRefComponent()
-                            {
-                                Code = "Extension",
-                                Profile = [ url ],
-                            },
-                        ],
-                    };
-
-                    profileSd.Differential.Element.Add(acEd);
-                }
-
-                if (additionalAlternateReference)
-                {
-                    definition = $"This extension can be used as a substitute for elements with reference targets of {targetEdOutcome.AlternateReferenceTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
-
-                    ElementDefinition arEd = new()
-                    {
-                        ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}Reference",
-                        SliceName = targetEdOutcome.SourceNameClean() + "Reference",
-                        Path = targetPath,
-                        //Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-                        //Definition = definition,
-                        //Comment = targetEdOutcome.Comments,
-                        Short = $"{igTr.PackagePair.SourceFhirSequence}: additional references",
-                        Definition = $"{igTr.PackagePair.SourceFhirSequence}: additional references ({string.Join(", ", targetEdOutcome.AlternateReferenceTargets.Select(v => v.Split("/")[^1]))})",
-                        Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
-                        Min = 0,
-                        Max = targetEdOutcome.SourceMaxCardinalityString,
-                        Base = new ElementDefinition.BaseComponent()
-                        {
-                            Path = "DomainResource.extension",
-                            Min = 0,
-                            Max = "*",
-                        },
-                        Type = [
-                            new ElementDefinition.TypeRefComponent()
-                            {
-                                Code = "Extension",
-                                Profile = [ url ],
-                            },
-                        ],
-                    };
-
-                    profileSd.Differential.Element.Add(arEd);
-                }
-            }
-        }
+        };
     }
 
     private void addContentForBasicProfile(
