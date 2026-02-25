@@ -290,7 +290,7 @@ public class ValueSetOutcomeGenerator
                     prefixShort: "Map");
 
                 string cmUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{idLong}";
-                string cmFilename = "Concept" + cmIdShort;
+                string cmFilename = $"ConceptMap-{cmIdShort}";
 
                 if ((targetVs is null) ||
                     vsComparison.NotMapped)
@@ -336,28 +336,25 @@ public class ValueSetOutcomeGenerator
 
                 if (isIdentical)
                 {
-                    //vsAction = OutcomeValueSetActionCodes.UseValueSetSameName;
                     vsRequiresXVer = false;
                 }
                 else if (isEquivalent)
                 {
-                    //vsAction = OutcomeValueSetActionCodes.UseValueSetRenamed;
                     vsRequiresXVer = false;
                 }
                 else if (fullyMapsAcrossAllTargets)
                 {
-                    //vsAction = sourceVs.Id == targetVs.Id
-                    //    ? OutcomeValueSetActionCodes.UseValueSetSameName
-                    //    : OutcomeValueSetActionCodes.UseValueSetRenamed;
                     vsRequiresXVer = false;
                 }
                 else
                 {
-                    //vsAction = sourceVs.Id == targetVs.Id
-                    //    ? OutcomeValueSetActionCodes.UseSameNameAndCrossVersion
-                    //    : OutcomeValueSetActionCodes.UseRenamedAndCrossVersion;
                     vsRequiresXVer = true;
                 }
+
+                string artifactShort = $"{packagePair.SourceFhirSequence}: {sourceVs.Title ?? sourceVs.Name}";
+                string artifactDescription = sourceVs.Description is null
+                    ? $"Cross-version extension to represent the {packagePair.SourceFhirSequence} value set `{sourceVs.VersionedUrl}`"
+                    : $"{packagePair.SourceFhirSequence}: {sourceVs.Description}";
 
                 // create our value set outcome
                 DbValueSetOutcome vsOutcome = new()
@@ -381,6 +378,11 @@ public class ValueSetOutcomeGenerator
                     GenUrl = url,
                     GenName = name,
                     GenFileName = vsFilename,
+
+                    GenArtifactShort = artifactShort,
+                    GenArtifactDescription = artifactDescription,
+                    GenArtifactComment = sourceVs.Purpose,
+                    GenMappingComment = sourceVs.Purpose,
 
                     ConceptMapLongId = cmIdLong,
                     ConceptMapShortId = cmIdShort,
@@ -556,6 +558,11 @@ public class ValueSetOutcomeGenerator
                     $" does not have a map to FHIR {packagePair.TargetFhirSequence}";
             }
 
+            string artifactShort = $"{packagePair.SourceFhirSequence}: {sourceVs.Title ?? sourceVs.Name}";
+            string artifactDescription = sourceVs.Description is null
+                ? $"Cross-version extension to represent the {packagePair.SourceFhirSequence} value set `{sourceVs.VersionedUrl}`"
+                : $"{packagePair.SourceFhirSequence}: {sourceVs.Description}";
+
             // build our no-map outcome
             DbValueSetOutcome noMapOutcome = new()
             {
@@ -579,6 +586,15 @@ public class ValueSetOutcomeGenerator
                 GenUrl = url,
                 GenName = name,
                 GenFileName = vsFilename,
+
+                GenArtifactShort = artifactShort,
+                GenArtifactDescription = artifactDescription,
+                GenArtifactComment = sourceVs.Purpose is null
+                    ? comments
+                    : (comments + "\n" + sourceVs.Purpose),
+                GenMappingComment = sourceVs.Purpose is null
+                    ? comments
+                    : (comments + "\n" + sourceVs.Purpose),
 
                 ConceptMapLongId = cmIdLong,
                 ConceptMapShortId = cmIdShort,

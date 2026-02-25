@@ -510,6 +510,11 @@ public class StructureOutcomeGenerator
                     }
                 }
 
+                string artifactShort = $"{packagePair.SourceFhirSequence}: {sourceSd.Title ?? sourceSd.Name}";
+                string artifactDescription = sourceSd.Description is null
+                    ? $"Cross-version extension to represent a {packagePair.SourceFhirSequence} `{sourceSd.Name}`"
+                    : $"{packagePair.SourceFhirSequence}: {sourceSd.Description}";
+
                 // create our structure outcome
                 DbStructureOutcome sdOutcome = new()
                 {
@@ -559,6 +564,15 @@ public class StructureOutcomeGenerator
                     GenName = name,
                     GenFileName = $"StructureDefinition-{idShort}",
 
+                    GenArtifactShort = artifactShort,
+                    GenArtifactDescription = artifactDescription,
+                    GenArtifactComment = sourceSd.Comment is null
+                        ? comments
+                        : (comments + "\n" + sourceSd.Comment),
+                    GenMappingComment = sourceSd.Comment is null
+                        ? comments
+                        : (comments + "\n" + sourceSd.Comment),
+
                     ElementConceptMapLongId = emIdLong,
                     ElementConceptMapShortId = emIdShort,
                     ElementConceptMapUrl = emUrl,
@@ -598,6 +612,11 @@ public class StructureOutcomeGenerator
             $"FHIR {packagePair.SourceFhirSequence} `{sourceSd.Name}` does not map to" +
             $" FHIR {packagePair.TargetFhirSequence}.";
 
+        string artifactShort = $"{packagePair.SourceFhirSequence}: {sourceSd.Title ?? sourceSd.Name}";
+        string artifactDescription = sourceSd.Description is null
+            ? $"Cross-version extension to represent a {packagePair.SourceFhirSequence} `{sourceSd.Name}`"
+            : $"{packagePair.SourceFhirSequence}: {sourceSd.Description}";
+
         // build our no-map outcome
         DbStructureOutcome noMapOutcome = new()
         {
@@ -623,6 +642,15 @@ public class StructureOutcomeGenerator
             GenUrl = url,
             GenName = name,
             GenFileName = $"StructureDefinition-{idShort}",
+
+            GenArtifactShort = artifactShort,
+            GenArtifactDescription = artifactDescription,
+            GenArtifactComment = sourceSd.Comment is null
+                    ? comments
+                    : (comments + "\n" + sourceSd.Comment),
+            GenMappingComment = sourceSd.Comment is null
+                    ? comments
+                    : (comments + "\n" + sourceSd.Comment),
 
             ElementConceptMapLongId = emIdLong,
             ElementConceptMapShortId = emIdShort,

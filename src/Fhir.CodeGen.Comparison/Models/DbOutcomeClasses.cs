@@ -259,6 +259,11 @@ public abstract class DbArtifactOutcomeBase : DbOutcomeBase
     public required string? GenName { get; set; }
     public required string? GenFileName { get; set; }
 
+    public required string? GenArtifactShort { get; set; }
+    public required string? GenArtifactDescription { get; set; }
+    public required string? GenArtifactComment { get; set; }
+    public required string? GenMappingComment { get; set; }
+
     public required string SourceCanonicalVersioned { get; set; }
     public required string SourceCanonicalUnversioned { get; set; }
     public required string SourceId { get; set; }
