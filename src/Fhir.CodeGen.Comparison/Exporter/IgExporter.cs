@@ -700,7 +700,10 @@ public class IgExporter
                   <li>
                     <a href="changelog.html">Change Log</a>
                   </li>
-              </ul>
+                  <li>
+                    <a href="https://confluence.hl7.org/spaces/FHIRI/pages/413256623/FAQs">FAQs</a>
+                  </li>
+                </ul>
               </li>
             </ul>
             """;

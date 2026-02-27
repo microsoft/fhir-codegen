@@ -404,8 +404,10 @@ public class StructureOutcomeGenerator
                 DbStructureDefinition? targetSd = sdTr.TargetStructure;
 
                 (string idLong, string idShort, string name) = XVerProcessor.GenerateProfileId(
+                    packagePair.SourceFhirSequence,
                     packagePair.SourcePackageShortName,
                     sourceSd.Id,
+                    packagePair.TargetFhirSequence,
                     packagePair.TargetPackageShortName,
                     targetSd?.Id);
 
@@ -593,8 +595,10 @@ public class StructureOutcomeGenerator
         string? comments)
     {
         (string idLong, string idShort, string name) = XVerProcessor.GenerateProfileId(
+            packagePair.SourceFhirSequence,
             packagePair.SourcePackageShortName,
             sourceSd.Id,
+            packagePair.TargetFhirSequence,
             packagePair.TargetPackageShortName);
 
         string url = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";

@@ -44,6 +44,7 @@ public class ElementOutcomeGenerator
         public List<DbElementType> MappedTypes { get; set; } = [];
         public List<DbElementType> UnmappedTypes { get; set; } = [];
         public List<ChildTypeMappingResult> ChildTypeMappingResults { get; set; } = [];
+        public List<string> DistinctTargetElementTypes = [];
     }
 
     private class ChildTypeMappingResult
@@ -704,6 +705,8 @@ public class ElementOutcomeGenerator
             }
 
             List<DbElementOutcomeTarget> currentElementOutcomeTargets = [];
+            DbElement? altReferenceContextTargetEd = null;
+            DbElement? altCanonicalContextTargetEd = null;
 
             // process across each target structure this element has a link to
             foreach (StructureOutcomeGenerator.StructureOutcomeTrackingRecord sdTr in structureTrackingRecords.Values)
@@ -858,10 +861,17 @@ public class ElementOutcomeGenerator
                 // check to see if there are any mapped comparisons (need to know later)
                 bool hasMappedComparisons = elementComparisons.Any(ec => ec.NotMapped == false);
 
+                HashSet<int?> mappedTargetEdKeys = [];
+
                 // traverse the comparisons for this element (can map to multiple elments in target structure)
                 foreach (DbElementComparison elementComparison in elementComparisons.Where(ec => ec.TargetStructureKey == sdTr.TargetStructure.Key))
                 {
                     if (hasMappedComparisons && elementComparison.NotMapped)
+                    {
+                        continue;
+                    }
+
+                    if (!mappedTargetEdKeys.Add(elementComparison.TargetElementKey))
                     {
                         continue;
                     }
@@ -1158,73 +1168,6 @@ public class ElementOutcomeGenerator
                 }
             }
 
-            // if we have any targets, check for choice-type contexts that need to be moved up
-            if (allContextTargets.Count > 0)
-            {
-                List<(DbElement toRemove, DbElement replacement, string comment)> ctxChanges = [];
-
-                // iterate over the context target elements to see if we have targets that are choice types
-                foreach (DbElement ctxTargetEd in allContextTargets.Values)
-                {
-                    if (!ctxTargetEd.IsChoiceType)
-                    {
-                        continue;
-                    }
-
-                    // need to move up to a higher level
-                    if (ctxTargetEd.ParentElementKey is null)
-                    {
-                        throw new Exception(
-                            $"Cannot determine modifier extension context for source element `{sourceEd.Id}`" +
-                            $" mapping to target choice-type element `{ctxTargetEd.Id}`" +
-                            $" because the target element has no parent to move up to.");
-                    }
-
-                    DbElement ctxTargetParentEd = _allTargetElements[ctxTargetEd.ParentElementKey.Value];
-
-                    string replacementComment =
-                        $"The target context `{ctxTargetEd.Id}` is a choice-type element" +
-                        $" and cannot directly hold extensions." +
-                        $" The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
-
-                    ctxChanges.Add((ctxTargetEd, ctxTargetParentEd, replacementComment));
-                }
-
-                foreach ((DbElement toRemove, DbElement replacement, string comment) in ctxChanges)
-                {
-                    // iterate over the targets to update their contexts if necessary
-                    foreach (DbElementOutcomeTarget eot in edTr.OutcomeTargets)
-                    {
-                        if (eot.ContextElementKey == toRemove.Key)
-                        {
-                            eot.ContextElementKey = replacement.Key;
-                            eot.ContextElementId = replacement.Id;
-                            eot.Comments +=
-                                $"\n{comment}";
-                        }
-                    }
-
-                    allContextTargets.Remove(toRemove.Key);
-                    allContextTargets[replacement.Key] = replacement;
-
-                    outcomeComments.Add(comment);
-                }
-            }
-
-            // if we still have have no context targets but need an extension, it just goes on element
-            if (elementRequiresXVer &&
-                (allContextTargets.Count == 0))
-            {
-                DbElement genericContextEd = DbElement.SelectSingle(
-                    _db,
-                    FhirPackageKey: _packagePair.TargetPackageKey,
-                    Id: "Element",
-                    ResourceFieldOrder: 0)
-                    ?? throw new Exception("Cannot find generic Element for context.");
-
-                allContextTargets[genericContextEd.Key] = genericContextEd;
-            }
-
             if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out extSubstitute))
             {
                 switch (extSubstitute.ReplacementUrl)
@@ -1256,10 +1199,32 @@ public class ElementOutcomeGenerator
             List<string> unmappedTypeNames = edTr.UnmappedTypes.Select(ut => ut.TypeName!).Distinct().ToList();
             List<string> mappedTypeNames = edTr.MappedTypes.Select(ut => ut.TypeName!).Distinct().ToList();
 
-            bool allAlternates = !unmappedTypeNames.Any(tn => (tn != "Reference") && (tn != "canonical"));
+            List<string> unmappedDistinctTypeNames = edTr.UnmappedTypes.Select(ut => ut.TypeName!).Distinct().ToList();
+
+            bool hasUnmappedCodeableReference = unmappedDistinctTypeNames.Contains("CodeableReference");
+            bool crMapsConcept = edTr.ChildTypeMappingResults.Any(cmr => cmr.MappedTypeChildren.Any(e => e.Name == "concept"));
+            bool crMapsReference = edTr.ChildTypeMappingResults.Any(cmr => cmr.MappedTypeChildren.Any(e => e.Name == "reference"));
+            bool promoteCodeableReferenceReferenceType = hasUnmappedCodeableReference && crMapsConcept;
+
+            bool allAlternates = unmappedDistinctTypeNames.All(tn =>
+                (tn == "Reference") ||
+                (tn == "canonical") ||
+                (promoteCodeableReferenceReferenceType && (tn == "CodeableReference")));
+
+            bool allAlternateReferences = unmappedDistinctTypeNames.All(tn =>
+                (tn == "Reference") ||
+                (promoteCodeableReferenceReferenceType && (tn == "CodeableReference")));
+
+            bool allAlternateCanonicals = unmappedDistinctTypeNames.All(tn => tn == "canonical");
+
+            bool targetHasReference = edTr.DistinctTargetElementTypes.Any(tn => tn == "Reference");
+            bool targetHasCanonical = edTr.DistinctTargetElementTypes.Any(tn => tn == "canonical");
 
             List<DbElementType> unmappedReferenceTypes = edTr.UnmappedTypes
-                .Where(ut => (ut.TypeName == "Reference") && (ut.TargetProfile is not null))
+                .Where(ut =>
+                    ((ut.TypeName == "Reference") ||
+                        (promoteCodeableReferenceReferenceType && (ut.TypeName == "CodeableReference"))) &&
+                    (ut.TargetProfile is not null))
                 .ToList();
 
             List<DbElementType> unmappedCanonicalTypes = edTr.UnmappedTypes
@@ -1269,7 +1234,8 @@ public class ElementOutcomeGenerator
             if (sourceEd.ChildElementCount == 0)
             {
                 // check for allowed reference targets
-                if (unmappedReferenceTypes.Count > 0)
+                if (targetHasReference &&
+                    (unmappedReferenceTypes.Count > 0))
                 {
                     alternateReferenceTargets = unmappedReferenceTypes
                         .Select(ut => ut.TargetProfile!)
@@ -1302,10 +1268,15 @@ public class ElementOutcomeGenerator
                     }
 
                     unmappedTypeNames.Remove("Reference");
+                    if (promoteCodeableReferenceReferenceType)
+                    {
+                        unmappedTypeNames.Remove("CodeableReference");
+                    }
                 }
 
                 // check for allowed canonical targets
-                if (unmappedCanonicalTypes.Count > 0)
+                if (targetHasCanonical &&
+                    (unmappedCanonicalTypes.Count > 0))
                 {
                     alternateCanonicalTargets = unmappedCanonicalTypes
                         .Select(ut => ut.TargetProfile!)
@@ -1393,8 +1364,6 @@ public class ElementOutcomeGenerator
                 : $"{_packagePair.SourceFhirSequence}: {sourceEd.Short}";
             string artifactDescription = $"{_packagePair.SourceFhirSequence}: `{sourceEd.Id}`";
 
-
-
             if (edTr.DiscreteTargetCount == 0)
             {
                 artifactShort += " (new)";
@@ -1445,6 +1414,106 @@ public class ElementOutcomeGenerator
 
                         break;
                 }
+            }
+
+            // if we have any targets, check for choice-type contexts that need to be moved up
+            if (allContextTargets.Count > 0)
+            {
+                List<(DbElement toRemove, DbElement replacement, string comment)> ctxChanges = [];
+
+                // iterate over the context target elements to see if we have targets that are choice types
+                foreach (DbElement ctxTargetEd in allContextTargets.Values)
+                {
+                    if (!ctxTargetEd.IsChoiceType)
+                    {
+                        continue;
+                    }
+
+                    // check to see if we have sources that are going to be alternates and targets that could match
+                    if ((unmappedReferenceTypes.Count > 0) &&
+                        targetHasReference)
+                    {
+                        altReferenceContextTargetEd = ctxTargetEd;
+                        outcomeNotes.Add(
+                            $"Source element `{sourceEd.Id}` has unmapped reference types." +
+                            $" While the target element `{ctxTargetEd.Id}` is a choice type and does not allow extensions," +
+                            $" the `alternate-reference` extension can be applied to Reference values within it.");
+
+                        if (unmappedDistinctTypeNames.Count == 1)
+                        {
+                            // do not change the target
+                            continue;
+                        }
+                    }
+
+                    if ((unmappedCanonicalTypes.Count > 0) &&
+                        targetHasCanonical)
+                    {
+                        altCanonicalContextTargetEd = ctxTargetEd;
+                        outcomeNotes.Add(
+                            $"Source element `{sourceEd.Id}` has unmapped canonical types." +
+                            $" While the target element `{ctxTargetEd.Id}` is a choice type and does not allow extensions," +
+                            $" the `alternate-canonical` extension can be applied to canoncial values within it.");
+
+                        if (unmappedDistinctTypeNames.Count == 1)
+                        {
+                            // do not change the target
+                            continue;
+                        }
+                    }
+
+                    // need to move up to a higher level
+                    if (ctxTargetEd.ParentElementKey is null)
+                    {
+                        throw new Exception(
+                            $"Cannot determine modifier extension context for source element `{sourceEd.Id}`" +
+                            $" mapping to target choice-type element `{ctxTargetEd.Id}`" +
+                            $" because the target element has no parent to move up to.");
+                    }
+
+                    DbElement ctxTargetParentEd = _allTargetElements[ctxTargetEd.ParentElementKey.Value];
+
+                    string replacementComment =
+                        $"The target context `{ctxTargetEd.Id}` is a choice-type element" +
+                        $" and cannot directly hold extensions." +
+                        $" The context is moved up to parent element `{ctxTargetParentEd.Id}`.";
+
+                    ctxChanges.Add((ctxTargetEd, ctxTargetParentEd, replacementComment));
+                }
+
+                foreach ((DbElement toRemove, DbElement replacement, string comment) in ctxChanges)
+                {
+                    // iterate over the targets to update their contexts if necessary
+                    foreach (DbElementOutcomeTarget eot in edTr.OutcomeTargets)
+                    {
+                        if (eot.ContextElementKey == toRemove.Key)
+                        {
+                            eot.ContextElementKey = replacement.Key;
+                            eot.ContextElementId = replacement.Id;
+                            eot.Comments +=
+                                $"\n{comment}";
+                        }
+                    }
+
+                    allContextTargets.Remove(toRemove.Key);
+                    allContextTargets[replacement.Key] = replacement;
+
+                    outcomeComments.Add(comment);
+                }
+            }
+
+            // if we still have have no context targets but need an extension, it just goes on element
+            if (elementRequiresXVer &&
+                (allContextTargets.Count == 0))
+            {
+                DbElement genericContextEd = DbElement.SelectSingle(
+                    _db,
+                    FhirPackageKey: _packagePair.TargetPackageKey,
+                    Id: "Element",
+                    ResourceFieldOrder: 0)
+                    ?? throw new Exception("Cannot find generic Element for context.");
+
+                allContextTargets[genericContextEd.Key] = genericContextEd;
             }
 
             if (outcomeNotes.Count > 0)
@@ -1508,7 +1577,9 @@ public class ElementOutcomeGenerator
                 RequiresDefinitionAsContentReference = (contentRefEd is not null) && elementRequiresXVer,
 
                 AlternateCanonicalTargets = alternateCanonicalTargets,
+                AlternateCanonicalContextLiteral = altCanonicalContextTargetEd?.Id,
                 AlternateReferenceTargets = alternateReferenceTargets,
+                AlternateReferenceContextLiteral = altReferenceContextTargetEd?.Id,
 
                 AncestorElementOutcomeKey = elementRequiresXVer ? ancestorOutcome?.Key : null,
                 ParentElementOutcomeKey = parentOutcome?.Key,
@@ -1773,6 +1844,11 @@ public class ElementOutcomeGenerator
             }
 
             edTr.TargetElements = currentTargetElements;
+            edTr.DistinctTargetElementTypes = currentTargetElements
+                .Values
+                .SelectMany(v => v.DistinctTypeLiterals.Split(','))
+                .Distinct()
+                .ToList();
 
             Dictionary<int, DbElementType> mappedTypes = [];
             Dictionary<int, DbElementType> unmappedTypes = sourceEts
@@ -2040,8 +2116,12 @@ public class ElementOutcomeGenerator
                 }
             }
 
+            List<string> unmappedDistinctTypeNames = unmappedTypes.Select(kvp => kvp.Value.TypeName ?? kvp.Value.Literal).Distinct().ToList();
+
             // check if unmapped types can be handled via child element mappings (distributed mapping)
             if ((unmappedTypes.Count > 0) &&
+                (sourceEts.Count <= 2) &&
+                //(unmappedDistinctTypeNames.Count == 1) &&
                 (sourceEd.ChildElementCount == 0) &&
                 (currentTargetElements.Count > 0))
             {
@@ -2069,6 +2149,9 @@ public class ElementOutcomeGenerator
                 // if we resolved any types via children, log summary
                 if (resolvedViaChildren.Count > 0)
                 {
+                    // update distinct type names
+                    unmappedDistinctTypeNames = unmappedTypes.Select(kvp => kvp.Value.TypeName ?? kvp.Value.Literal).Distinct().ToList();
+
                     edTr.Messages.Add(
                         $"Element `{sourceEd.Id}` resolved {resolvedViaChildren.Count} unmapped type(s)" +
                         $" via distributed child element mappings");

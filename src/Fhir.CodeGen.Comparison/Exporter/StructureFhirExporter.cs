@@ -1144,14 +1144,14 @@ public class StructureFhirExporter
         StructureDefinition profileSd)
     {
         // get the element outcomes that require a definition and are not part of one already
-        List<DbElementOutcome> edOutcomes = DbElementOutcome.SelectList(
+        Dictionary<int, DbElementOutcome> edOutcomes = DbElementOutcome.SelectDict(
             _db,
             SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
             TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
             SourceStructureKey: sdOutcome.SourceStructureKey);
 
         // build a lookup based on context paths
-        ILookup<string, DbElementOutcome> edOutcomeContextLookup = edOutcomes
+        ILookup<string, DbElementOutcome> edOutcomeContextLookup = edOutcomes.Values
             .SelectMany(edo => edo.ExtensionContexts, (edo, context) => new { Context = context, Outcome = edo })
             .ToLookup(x => x.Context, x => x.Outcome);
 
@@ -1185,7 +1185,37 @@ public class StructureFhirExporter
                 .OrderBy(eo => eo.SourceResourceOrder)
                 .ToList();
 
-            // if there are none, move on
+            // if there are none, go to the next element
+            if (targetEdOutcomes.Count == 0)
+            {
+                continue;
+            }
+
+            List<DbElementOutcome> extSubReview = targetEdOutcomes.Where(eo =>
+                (eo.ExtensionSubstitutionUrl is not null) &&
+                !eo.RequiresExtensionDefinition &&
+                (eo.ParentElementOutcomeKey is not null))
+                .ToList();
+
+            // check to see if there is a parent outcome that is generating an extension
+            foreach (DbElementOutcome reviewOutcome in extSubReview)
+            {
+                if ((reviewOutcome.ParentElementOutcomeKey is null) ||
+                    !edOutcomes.TryGetValue(reviewOutcome.ParentElementOutcomeKey.Value, out DbElementOutcome? rpOutcome))
+                {
+                    continue;
+                }
+
+                if (rpOutcome.RequiresExtensionDefinition ||
+                    rpOutcome.RequiresExtensionDefinition ||
+                    rpOutcome.RequiresSliceDefinition ||
+                    (rpOutcome.ContentReferenceRequiresXVerDefinition == true))
+                {
+                    targetEdOutcomes.Remove(reviewOutcome);
+                }
+            }
+
+            // if there are no more targets, go to the next element
             if (targetEdOutcomes.Count == 0)
             {
                 continue;
@@ -1219,17 +1249,18 @@ public class StructureFhirExporter
                     Ordered = false,
                     Rules = ElementDefinition.SlicingRules.Open,
                 },
-                Base = new ElementDefinition.BaseComponent()
-                {
-                    Path = actualTargetEd.BasePath ?? "DomainResource.extension",
-                    Min = 0,
-                    Max = "*",
-                },
+                // TODO: can I remove the base from here?
+                //Base = new ElementDefinition.BaseComponent()
+                //{
+                //    Path = actualTargetEd.BasePath ?? "DomainResource.extension",
+                //    Min = 0,
+                //    Max = "*",
+                //},
                 Min = 0,
                 Max = "*",
             };
 
-            profileSd.Differential.Element.Add(targetSlicingEd);
+            bool addedTargetSlicingEd = false;
 
             // add each outcome that we should have here
             foreach (DbElementOutcome targetEdOutcome in targetEdOutcomes)
@@ -1246,6 +1277,21 @@ public class StructureFhirExporter
                 int adjustedMin = (targetEdOutcome.SourceMinCardinality == 0) || additionalAlternateCanonical || additionalAlternateReference
                     ? 0
                     : targetEdOutcome.SourceMinCardinality;
+
+                // if we think it is required, check for targeting required elements already
+                if ((adjustedMin > 0) &&
+                    (targetEdOutcome.TotalTargetCount > 0))
+                {
+                    // resolve the outcome targets
+                    List<DbElementOutcomeTarget> outcomeTargets = DbElementOutcomeTarget.SelectList(
+                        _db,
+                        ElementOutcomeKey: targetEdOutcome.Key);
+
+                    if (outcomeTargets.Any(eot => eot.TargetMinCardinality > 0))
+                    {
+                        adjustedMin = 0;
+                    }
+                }
 
                 string path = targetPath;
                 string? edShort = targetEdOutcome.GenArtifactShort ?? $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}";
@@ -1265,28 +1311,14 @@ public class StructureFhirExporter
                         : string.Empty;
                     addedSlice = true;
 
+                    if (!addedTargetSlicingEd)
+                    {
+                        profileSd.Differential.Element.Add(targetSlicingEd);
+                        addedTargetSlicingEd = true;
+                    }
+
                     profileSd.Differential.Element.Add(getEd(
                         targetEdOutcome.GenUrl!,
-                        idPrefix + sliceSuffix,
-                        sliceName + sliceSuffix,
-                        path,
-                        edShort,
-                        edDefinition,
-                        edComment,
-                        adjustedMin,
-                        targetEdOutcome.SourceMaxCardinalityString));
-                }
-
-                // check for substitution
-                if (targetEdOutcome.ExtensionSubstitutionUrl is not null)
-                {
-                    string sliceSuffix = addedSlice
-                        ? FhirSanitizationUtils.SanitizeForProperty(targetEdOutcome.ExtensionSubstitutionUrl.Split('/')[^1])
-                        : string.Empty;
-                    addedSlice = true;
-
-                    profileSd.Differential.Element.Add(getEd(
-                        targetEdOutcome.ExtensionSubstitutionUrl,
                         idPrefix + sliceSuffix,
                         sliceName + sliceSuffix,
                         path,
@@ -1306,6 +1338,12 @@ public class StructureFhirExporter
                         : string.Empty;
                     addedSlice = true;
 
+                    if (!addedTargetSlicingEd)
+                    {
+                        profileSd.Differential.Element.Add(targetSlicingEd);
+                        addedTargetSlicingEd = true;
+                    }
+
                     profileSd.Differential.Element.Add(getEd(
                         targetEdOutcome.ContentReferenceExtensionUrl,
                         idPrefix + sliceSuffix,
@@ -1318,13 +1356,126 @@ public class StructureFhirExporter
                         targetEdOutcome.SourceMaxCardinalityString));
                 }
 
-                // check for additional alternate canonical
-                if (additionalAlternateCanonical)
+                // check for substitution
+                if (targetEdOutcome.ExtensionSubstitutionUrl is not null)
+                {
+                    bool isAltCanonical = targetEdOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateCanonical;
+                    bool isAltReference = targetEdOutcome.ExtensionSubstitutionUrl == CommonDefinitions.ExtUrlAlternateReference;
+
+                    if (targetEd.IsChoiceType && isAltCanonical)
+                    {
+                        string acTargetId = targetEd.Id + ":valueCanonical.extension";
+                        string acTargetPath = targetEd.Path[..^3] + "Canonical.extension";
+
+                        // add the base for this element we need for slicing
+                        ElementDefinition acContextSlicingEd = new()
+                        {
+                            ElementId = acTargetId,
+                            Path = acTargetPath,
+                            Slicing = new()
+                            {
+                                Discriminator = [
+                                    new ElementDefinition.DiscriminatorComponent()
+                                {
+                                    Type = ElementDefinition.DiscriminatorType.Value,
+                                    Path = "url",
+                                }
+                                ],
+                                Ordered = false,
+                                Rules = ElementDefinition.SlicingRules.Open,
+                            },
+                            Min = 0,
+                            Max = "*",
+                        };
+
+                        profileSd.Differential.Element.Add(acContextSlicingEd);
+
+                        profileSd.Differential.Element.Add(getEd(
+                            CommonDefinitions.ExtUrlAlternateCanonical,
+                            acTargetId + ":alternateCanonical",
+                            "alternateCanonical",
+                            acTargetPath,
+                            edShort,
+                            edDefinition,
+                            edComment));
+                    }
+                    else if (targetEd.IsChoiceType && isAltReference)
+                    {
+                        string arTargetId = targetEd.Id + ":valueReference.extension";
+                        string arTargetPath = targetEd.Path[..^3] + "Reference.extension";
+
+                        // add the base for this element we need for slicing
+                        ElementDefinition acContextSlicingEd = new()
+                        {
+                            ElementId = arTargetId,
+                            Path = arTargetPath,
+                            Slicing = new()
+                            {
+                                Discriminator = [
+                                    new ElementDefinition.DiscriminatorComponent()
+                                {
+                                    Type = ElementDefinition.DiscriminatorType.Value,
+                                    Path = "url",
+                                }
+                                ],
+                                Ordered = false,
+                                Rules = ElementDefinition.SlicingRules.Open,
+                            },
+                            Min = 0,
+                            Max = "*",
+                        };
+
+                        profileSd.Differential.Element.Add(acContextSlicingEd);
+
+                        profileSd.Differential.Element.Add(getEd(
+                            CommonDefinitions.ExtUrlAlternateReference,
+                            arTargetId + ":alternateReference",
+                            "alternateReference",
+                            arTargetPath,
+                            edShort,
+                            edDefinition,
+                            edComment));
+                    }
+                    else
+                    {
+                        string sliceSuffix = addedSlice
+                            ? FhirSanitizationUtils.SanitizeForProperty(targetEdOutcome.ExtensionSubstitutionUrl.Split('/')[^1])
+                            : string.Empty;
+                        addedSlice = true;
+
+                        if (!addedTargetSlicingEd)
+                        {
+                            profileSd.Differential.Element.Add(targetSlicingEd);
+                            addedTargetSlicingEd = true;
+                        }
+
+                        profileSd.Differential.Element.Add(getEd(
+                            targetEdOutcome.ExtensionSubstitutionUrl,
+                            idPrefix + sliceSuffix,
+                            sliceName + sliceSuffix,
+                            path,
+                            edShort,
+                            edDefinition,
+                            edComment,
+                            adjustedMin,
+                            targetEdOutcome.SourceMaxCardinalityString));
+                    }
+                }
+
+
+                // check for additional alternate canonical on root
+                if (additionalAlternateCanonical && (targetEdOutcome.AlternateCanonicalContextLiteral is null))
                 {
                     string sliceSuffix = (addedSlice || additionalAlternateReference)
                         ? "AlternateCanonical"
                         : string.Empty;
                     addedSlice = true;
+
+                    if (!addedTargetSlicingEd)
+                    {
+                        profileSd.Differential.Element.Add(targetSlicingEd);
+                        addedTargetSlicingEd = true;
+                    }
 
                     profileSd.Differential.Element.Add(getEd(
                         CommonDefinitions.ExtUrlAlternateCanonical,
@@ -1338,13 +1489,19 @@ public class StructureFhirExporter
                         targetEdOutcome.SourceMaxCardinalityString));
                 }
 
-                // check for additional alternate reference
-                if (additionalAlternateReference)
+                // check for additional alternate reference on root
+                if (additionalAlternateReference && (targetEdOutcome.AlternateReferenceContextLiteral is null))
                 {
                     string sliceSuffix = (addedSlice || additionalAlternateCanonical)
                         ? "AlternateReference"
                         : string.Empty;
                     addedSlice = true;
+
+                    if (!addedTargetSlicingEd)
+                    {
+                        profileSd.Differential.Element.Add(targetSlicingEd);
+                        addedTargetSlicingEd = true;
+                    }
 
                     profileSd.Differential.Element.Add(getEd(
                         CommonDefinitions.ExtUrlAlternateReference,
@@ -1363,127 +1520,105 @@ public class StructureFhirExporter
                     targetSlicingEd.Min += adjustedMin;
                 }
 
-                //if (isAlternateCanonical &&
-                //    (targetEdOutcome.AlternateCanonicalTargetsLiteral is not null))
-                //{
-                //    definition = definition is null
-                //        ? string.Empty
-                //        : (definition + "\n");
-                //    definition += $"This extension can be used as a substitute for {targetEdOutcome.AlternateCanonicalTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
-                //}
+                // check for additional alternate canonical NOT on root
+                if (additionalAlternateCanonical &&
+                    (targetEdOutcome.AlternateCanonicalContextLiteral is not null) &&
+                    (targetIdLookup[targetEdOutcome.AlternateCanonicalContextLiteral].FirstOrDefault() is DbElement acTargetEd))
+                {
+                    string acTargetId = acTargetEd.Id;
+                    string acTargetPath = acTargetEd.Path;
 
-                //if (isAlternateReference &&
-                //    (targetEdOutcome.AlternateReferenceTargetsLiteral is not null))
-                //{
-                //    definition = definition is null
-                //        ? string.Empty
-                //        : (definition + "\n");
-                //    definition += $"This extension can be used as a substitute for elements with reference targets of {targetEdOutcome.AlternateReferenceTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
-                //}
+                    // check to see if we need to introduce type slicing first
+                    if (acTargetEd.IsChoiceType)
+                    {
+                        acTargetId += ":valueCanonical";
+                        acTargetPath = acTargetPath[..^3] + "Canonical";
+                    }
 
+                    acTargetId += ".extension";
+                    acTargetPath += ".extension";
 
-                //ElementDefinition extEd = new()
-                //{
-                //    ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}",
-                //    SliceName = targetEdOutcome.SourceNameClean(),
-                //    Path = targetPath,
-                //    Short = targetEdOutcome.GenArtifactShort ?? $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-                //    Definition = targetEdOutcome.GenArtifactDescription ?? definition,
-                //    Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
-                //    Min = adjustedMin,
-                //    Max = targetEdOutcome.SourceMaxCardinalityString,
-                //    Base = new ElementDefinition.BaseComponent()
-                //    {
-                //        Path = "DomainResource.extension",
-                //        Min = 0,
-                //        Max = "*",
-                //    },
-                //    Type = [
-                //        new ElementDefinition.TypeRefComponent()
-                //        {
-                //            Code = "Extension",
-                //            Profile = [ url ],
-                //        },
-                //    ],
-                //};
+                    // add the base for this element we need for slicing
+                    ElementDefinition acContextSlicingEd = new()
+                    {
+                        ElementId = acTargetId,
+                        Path = acTargetPath,
+                        Slicing = new()
+                        {
+                            Discriminator = [
+                                new ElementDefinition.DiscriminatorComponent()
+                                {
+                                    Type = ElementDefinition.DiscriminatorType.Value,
+                                    Path = "url",
+                                }
+                            ],
+                            Ordered = false,
+                            Rules = ElementDefinition.SlicingRules.Open,
+                        },
+                        Min = 0,
+                        Max = "*",
+                    };
 
-                //profileSd.Differential.Element.Add(extEd);
+                    profileSd.Differential.Element.Add(acContextSlicingEd);
 
-                //if (extEd.Min > 0)
-                //{
-                //    targetSlicingEd.Min += extEd.Min;
-                //}
+                    profileSd.Differential.Element.Add(getEd(
+                        CommonDefinitions.ExtUrlAlternateCanonical,
+                        acTargetId + ":alternateCanonical",
+                        "alternateCanonical",
+                        acTargetPath,
+                        edShort,
+                        edDefinition,
+                        edComment));
+                }
 
-                //// check to see if we also need the alternate-canonical url
-                //if (additionalAlternateCanonical)
-                //{
-                //    definition = $"This extension can be used as a substitute for {targetEdOutcome.AlternateCanonicalTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
+                // check for additional alternate reference NOT on root
+                if (additionalAlternateReference &&
+                    (targetEdOutcome.AlternateReferenceContextLiteral is not null) &&
+                    (targetIdLookup[targetEdOutcome.AlternateReferenceContextLiteral].FirstOrDefault() is DbElement arTargetEd))
+                {
+                    string arTargetId = arTargetEd.Id;
+                    string arTargetPath = arTargetEd.Path;
 
-                //    ElementDefinition acEd = new()
-                //    {
-                //        ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}Canonical",
-                //        SliceName = targetEdOutcome.SourceNameClean() + "Canonical",
-                //        Path = targetPath,
-                //        //Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-                //        //Definition = definition,
-                //        //Comment = targetEdOutcome.Comments,
-                //        Short = $"{igTr.PackagePair.SourceFhirSequence}: additional canonical references",
-                //        Definition = $"{igTr.PackagePair.SourceFhirSequence}: additional canonical references ({string.Join(", ", targetEdOutcome.AlternateCanonicalTargets.Select(v => v.Split("/")[^1]))})",
-                //        Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
-                //        Min = 0,
-                //        Max = targetEdOutcome.SourceMaxCardinalityString,
-                //        Base = new ElementDefinition.BaseComponent()
-                //        {
-                //            Path = "DomainResource.extension",
-                //            Min = 0,
-                //            Max = "*",
-                //        },
-                //        Type = [
-                //            new ElementDefinition.TypeRefComponent()
-                //            {
-                //                Code = "Extension",
-                //                Profile = [ url ],
-                //            },
-                //        ],
-                //    };
+                    // check to see if we need to introduce type slicing first
+                    if (arTargetEd.IsChoiceType)
+                    {
+                        arTargetId += ":valueReference";
+                        arTargetPath = arTargetPath[..^3] + "Reference";
+                    }
 
-                //    profileSd.Differential.Element.Add(acEd);
-                //}
+                    arTargetId += ".extension";
+                    arTargetPath += ".extension";
 
-                //if (additionalAlternateReference)
-                //{
-                //    definition = $"This extension can be used as a substitute for elements with reference targets of {targetEdOutcome.AlternateReferenceTargetsLiteral} in FHIR {igTr.PackagePair.TargetFhirSequence}";
+                    // add the base for this element we need for slicing
+                    ElementDefinition acContextSlicingEd = new()
+                    {
+                        ElementId = arTargetId,
+                        Path = arTargetPath,
+                        Slicing = new()
+                        {
+                            Discriminator = [
+                                new ElementDefinition.DiscriminatorComponent()
+                                {
+                                    Type = ElementDefinition.DiscriminatorType.Value,
+                                    Path = "url",
+                                }
+                            ],
+                            Ordered = false,
+                            Rules = ElementDefinition.SlicingRules.Open,
+                        },
+                        Min = 0,
+                        Max = "*",
+                    };
 
-                //    ElementDefinition arEd = new()
-                //    {
-                //        ElementId = $"{targetId}:{targetEdOutcome.SourceNameClean()}Reference",
-                //        SliceName = targetEdOutcome.SourceNameClean() + "Reference",
-                //        Path = targetPath,
-                //        //Short = $"Cross-version extension for {targetEdOutcome.SourceId} from {igTr.PackagePair.SourceFhirSequence} for use in FHIR {igTr.PackagePair.TargetFhirSequence}",
-                //        //Definition = definition,
-                //        //Comment = targetEdOutcome.Comments,
-                //        Short = $"{igTr.PackagePair.SourceFhirSequence}: additional references",
-                //        Definition = $"{igTr.PackagePair.SourceFhirSequence}: additional references ({string.Join(", ", targetEdOutcome.AlternateReferenceTargets.Select(v => v.Split("/")[^1]))})",
-                //        Comment = targetEdOutcome.GenArtifactComment ?? targetEdOutcome.Comments,
-                //        Min = 0,
-                //        Max = targetEdOutcome.SourceMaxCardinalityString,
-                //        Base = new ElementDefinition.BaseComponent()
-                //        {
-                //            Path = "DomainResource.extension",
-                //            Min = 0,
-                //            Max = "*",
-                //        },
-                //        Type = [
-                //            new ElementDefinition.TypeRefComponent()
-                //            {
-                //                Code = "Extension",
-                //                Profile = [ url ],
-                //            },
-                //        ],
-                //    };
-
-                //    profileSd.Differential.Element.Add(arEd);
-                //}
+                    profileSd.Differential.Element.Add(getEd(
+                        CommonDefinitions.ExtUrlAlternateReference,
+                        arTargetId + ":alternateReference",
+                        "alternateReference",
+                        arTargetPath,
+                        edShort,
+                        edDefinition,
+                        edComment));
+                }
             }
         }
     }
@@ -1496,8 +1631,8 @@ public class StructureFhirExporter
         string? edShort,
         string? edDefinition,
         string? edComment,
-        int cardMin,
-        string? cardMax)
+        int? cardMin = null,
+        string? cardMax = null)
     {
         return new()
         {
@@ -1516,12 +1651,12 @@ public class StructureFhirExporter
                 Max = "*",
             },
             Type = [
-                        new ElementDefinition.TypeRefComponent()
-                        {
-                            Code = "Extension",
-                            Profile = [ url ],
-                        },
-                    ],
+                new ElementDefinition.TypeRefComponent()
+                {
+                    Code = "Extension",
+                    Profile = [ url ],
+                },
+            ],
         };
     }
 
@@ -2117,6 +2252,23 @@ public class StructureFhirExporter
         bool excludeExtensionElement = false,
         string? elementUrlOverride = null)
     {
+        bool inTopLevel = extSd.Differential.Element.Count == 0;
+
+        List<DbElementOutcomeTarget> edOutcomeTargets = DbElementOutcomeTarget.SelectList(
+            _db,
+            ElementOutcomeKey: edOutcome.Key);
+
+        int extMinCard;
+        if ((edOutcomeTargets.Count == 0) ||
+            edOutcomeTargets.All(eot => eot.TargetMinCardinality == 0))
+        {
+            extMinCard = sourceEd.MinCardinality;
+        }
+        else
+        {
+            extMinCard = 0;
+        }
+
         extElementId ??= "Extension";
         extElementPath ??= "Extension";
         dtValueElements ??= [];
@@ -2140,7 +2292,7 @@ public class StructureFhirExporter
                 Short = edOutcome.GenArtifactShort ?? sourceEd.Short,
                 Definition = edOutcome.GenArtifactDescription ?? sourceEd.Definition,
                 Comment = edOutcome.GenArtifactComment ?? sourceEd.Comments,
-                Min = sourceEd.MinCardinality,
+                Min = extMinCard,
                 Max = sourceEd.MaxCardinalityString,
                 Base = new()
                 {
@@ -2168,7 +2320,7 @@ public class StructureFhirExporter
                 Requirements = (sourceEd.Requirements is null)
                     ? edOutcome.Comments
                     : sourceEd.Requirements + " " + edOutcome.Comments,
-                Min = sourceEd.MinCardinality,
+                Min = extMinCard,
                 Max = sourceEd.MaxCardinalityString,
                 Base = new()
                 {
@@ -2278,6 +2430,51 @@ public class StructureFhirExporter
 
         bool needsValueElement = validValueTypes.Count > 0;
         bool needsExtensionElement = hasChildren || (invalidValueTypes.Count > 0);
+
+        List<string> distinctSourceTypeNames = sourceTypes.Select(t => t.TypeName ?? t.Literal).Distinct().ToList();
+
+        bool codeableRefDisableBinding = false;
+        bool codeableRefDisableTargets = false;
+
+        // check for a partially-mapped codeablereference
+        if ((distinctSourceTypeNames.Count == 1) &&
+            (distinctSourceTypeNames[0] == "CodeableReference") &&
+            (edOutcome.MappedChildTypeElementNamesLiteral is not null) &&
+            (edOutcome.UnmappedChildTypeElementNamesLiteral is not null))
+        {
+            // handle the case of mapped concept and unmapped reference
+            if ((edOutcome.MappedChildTypeElementNamesLiteral == "concept") &&
+                (edOutcome.UnmappedChildTypeElementNamesLiteral == "reference"))
+            {
+                codeableRefDisableBinding = true;
+                typeValidity = sourceTypes
+                    .Select(et => ("Reference", true, et))
+                    .ToList();
+            }
+
+            // handle the case of mapped reference and unmapped concept
+            if ((edOutcome.MappedChildTypeElementNamesLiteral == "reference") &&
+                (edOutcome.UnmappedChildTypeElementNamesLiteral == "concept"))
+            {
+                codeableRefDisableTargets = true;
+                typeValidity = sourceTypes
+                    .Select(et => ("CodeableConcept", true, et))
+                    .ToList();
+            }
+
+            validValueTypes = typeValidity
+                .Where(tv => tv.isValid)
+                .Select(tv => (tv.tn, tv.et))
+                .ToList();
+
+            invalidValueTypes = typeValidity
+                .Where(tv => !tv.isValid)
+                .Select(tv => (tv.tn, tv.et))
+                .ToList();
+
+            needsValueElement = validValueTypes.Count > 0;
+            needsExtensionElement = hasChildren || (invalidValueTypes.Count > 0);
+        }
 
         int extensionMinCardinality = childOutcomes.Sum(eo => eo.SourceMinCardinality);
         if (invalidValueTypes.Count > 0)
@@ -2530,7 +2727,7 @@ public class StructureFhirExporter
             },
             Min = 1,
             Max = "1",
-            Fixed = new FhirUri(elementUrlOverride ?? edOutcome.GenUrl),
+            Fixed = new FhirUri(elementUrlOverride ?? (inTopLevel ? edOutcome.GenUrl : edOutcome.GenSliceName)),
         });
 
         // add the value element - either with proper types or constrained to zero repetitions
@@ -2580,14 +2777,17 @@ public class StructureFhirExporter
                 Type = [],
             };
 
+            bool appliedBinding = false;
+
             // add a value-set binding (if necessary)
-            if (sourceEd.BindingValueSetKey is not null)
+            if ((sourceEd.BindingValueSetKey is not null) &&
+                !codeableRefDisableBinding)
             {
                 DbValueSetOutcome? vsOutcome = DbValueSetOutcome.SelectSingle(
                     _db,
                     SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
                     TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-                    SourceValueSetKey: sourceEd.BindingValueSetKey.Value);
+                    SourceValueSetKey: sourceEd.BindingValueSetKey!.Value);
 
                 if (vsOutcome is not null)
                 {
@@ -2609,6 +2809,8 @@ public class StructureFhirExporter
                             ValueSet = vsOutcome.TargetCanonicalVersioned ?? vsOutcome.TargetCanonicalUnversioned,
                         };
                     }
+
+                    appliedBinding = true;
                 }
             }
 
@@ -2629,7 +2831,8 @@ public class StructureFhirExporter
                 }
 
                 if ((dtBindingVsKey is not null) &&
-                    FhirTypeMappings.CanApplyBindings(typeName))
+                    FhirTypeMappings.CanApplyBindings(typeName) &&
+                    !codeableRefDisableBinding)
                 {
                     DbValueSetOutcome? vsOutcome = DbValueSetOutcome.SelectSingle(
                         _db,
@@ -2637,7 +2840,7 @@ public class StructureFhirExporter
                         TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
                         SourceValueSetKey: dtBindingVsKey.Value);
 
-                    if (vsOutcome is not null)
+                    if (!appliedBinding && (vsOutcome is not null))
                     {
                         if (vsOutcome.RequiresXVerDefinition == true)
                         {
@@ -2657,6 +2860,8 @@ public class StructureFhirExporter
                                 ValueSet = vsOutcome.TargetCanonicalVersioned ?? vsOutcome.TargetCanonicalUnversioned,
                             };
                         }
+
+                        appliedBinding = true;
                     }
                 }
 
@@ -2675,7 +2880,8 @@ public class StructureFhirExporter
                     tr.ProfileElement.AddRange(getValidResourceUrls(igTr.PackagePair.SequencePair, dtTypeProfiles));
                 }
 
-                if (et.TargetProfile is not null)
+                if ((et.TargetProfile is not null) &&
+                    !codeableRefDisableTargets)
                 {
                     tr.TargetProfileElement ??= [];
                     tr.TargetProfileElement.AddRange(getValidResourceUrls(igTr.PackagePair.SequencePair, [et.TargetProfile]));
@@ -2683,7 +2889,8 @@ public class StructureFhirExporter
 
                 if (!addedDtTargetProfiles &&
                     (dtTargetProfiles is not null) &&
-                    FhirTypeMappings.CanApplyTargetProfiles(typeName))
+                    FhirTypeMappings.CanApplyTargetProfiles(typeName) &&
+                    !codeableRefDisableTargets)
                 {
                     addedDtTargetProfiles = true;
                     tr.TargetProfileElement ??= [];
@@ -2692,6 +2899,28 @@ public class StructureFhirExporter
             }
 
             etValueEd.Type = typeRefs.Values.OrderBy(tr => tr.TypeName).ToList();
+
+            // if we applied a binding, make sure we actually wanted to
+            if (appliedBinding)
+            {
+                HashSet<string> sourceTypeHash = new(sourceEd.DistinctTypeLiterals.Split(','));
+
+                bool sourceIsCoded = sourceTypeHash.Contains("CodeableConcept") ||
+                    sourceTypeHash.Contains("CodeableReference") ||
+                    sourceTypeHash.Contains("Coding") ||
+                    sourceTypeHash.Contains("Code");
+
+                bool targetIsCoded = typeRefs.Keys.Contains("CodeableConcept") ||
+                    typeRefs.Keys.Contains("CodeableReference") ||
+                    typeRefs.Keys.Contains("Coding") ||
+                    typeRefs.Keys.Contains("Code");
+
+                if (sourceIsCoded && !targetIsCoded)
+                {
+                    etValueEd.Binding = null;
+                    appliedBinding = false;
+                }
+            }
 
             // add our element
             extSd.Differential.Element.Add(etValueEd);

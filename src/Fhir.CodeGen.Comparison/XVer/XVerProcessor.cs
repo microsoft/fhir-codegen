@@ -291,7 +291,7 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
-                GenerateOutcomes(specificPairs: specificPairs);
+                //GenerateOutcomes(specificPairs: specificPairs);
                 //GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
@@ -1410,11 +1410,16 @@ public partial class XVerProcessor
     }
 
     internal static (string idLong, string idShort, string name) GenerateProfileId(
+        FhirReleases.FhirSequenceCodes sourceFhirSequence,
         string sourcePackageShortName,
         string sourceArtifactId,
+        FhirReleases.FhirSequenceCodes targetFhirSequence,
         string targetPackageShortName)
     {
-        string name = $"Profile{sourceArtifactId.ToPascalCase()}";
+        string name = $"Profile" +
+            $"_{sourceFhirSequence.ToRLiteral()}" +
+            $"_{sourceArtifactId.ToPascalCase()}" +
+            $"_{targetFhirSequence.ToRLiteral()}";
         string idLong = $"profile-{sourceArtifactId}";
 
         if (idLong.Length <= 64)
@@ -1428,18 +1433,29 @@ public partial class XVerProcessor
     }
 
     internal static (string idLong, string idShort, string name) GenerateProfileId(
+        FhirReleases.FhirSequenceCodes sourceFhirSequence,
         string sourcePackageShortName,
         string sourceArtifactId,
+        FhirReleases.FhirSequenceCodes targetFhirSequence,
         string targetPackageShortName,
         string? targetArtifactId)
     {
         if ((targetArtifactId is null) ||
             (sourceArtifactId.Equals(targetArtifactId, StringComparison.OrdinalIgnoreCase)))
         {
-            return GenerateProfileId(sourcePackageShortName, sourceArtifactId, targetPackageShortName);
+            return GenerateProfileId(
+                sourceFhirSequence,
+                sourcePackageShortName,
+                sourceArtifactId,
+                targetFhirSequence,
+                targetPackageShortName);
         }
 
-        string name = $"Profile{sourceArtifactId.ToPascalCase()}For{targetArtifactId.ToPascalCase()}";
+        string name = $"Profile" +
+            $"_{sourceFhirSequence.ToRLiteral()}" +
+            $"_{sourceArtifactId.ToPascalCase()}" +
+            $"_{targetFhirSequence.ToRLiteral()}" +
+            $"_{targetArtifactId.ToPascalCase()}";
         string idLong = $"profile-{sourceArtifactId}-for-{targetArtifactId}";
 
         if (idLong.Length <= 64)

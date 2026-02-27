@@ -464,6 +464,26 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
         }
     }
 
+    public string? AlternateCanonicalContextLiteral { get; set; }
+    [CgSQLiteIgnore]
+    public List<string> AlternateCanonicalContexts
+    {
+        get => AlternateCanonicalContextLiteral is null
+            ? []
+            : AlternateCanonicalContextLiteral.Split(',').ToList();
+
+        set
+        {
+            if (value.Count == 0)
+            {
+                AlternateCanonicalContextLiteral = null;
+                return;
+            }
+
+            AlternateCanonicalContextLiteral = string.Join(',', value);
+        }
+    }
+
     public string? AlternateReferenceTargetsLiteral { get; set; }
     [CgSQLiteIgnore]
     public List<string> AlternateReferenceTargets
@@ -481,6 +501,26 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
             }
 
             AlternateReferenceTargetsLiteral = string.Join(',', value);
+        }
+    }
+
+    public string? AlternateReferenceContextLiteral { get; set; }
+    [CgSQLiteIgnore]
+    public List<string> AlternateReferenceContexts
+    {
+        get => AlternateReferenceContextLiteral is null
+            ? []
+            : AlternateReferenceContextLiteral.Split(',').ToList();
+
+        set
+        {
+            if (value.Count == 0)
+            {
+                AlternateReferenceContextLiteral = null;
+                return;
+            }
+
+            AlternateReferenceContextLiteral = string.Join(',', value);
         }
     }
 
@@ -635,39 +675,39 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
         }
     }
 
-    public string? UnmappedTypeChildKeysLiteral { get; set; } = null;
+    public string? UnmappedTypeChildElementKeysLiteral { get; set; } = null;
     [CgSQLiteIgnore]
     public List<int> UnmappedTypeChildKeys
     {
-        get => UnmappedTypeChildKeysLiteral is null
+        get => UnmappedTypeChildElementKeysLiteral is null
             ? []
-            : UnmappedTypeChildKeysLiteral.Split(',').Select(x => int.Parse(x)).ToList();
+            : UnmappedTypeChildElementKeysLiteral.Split(',').Select(x => int.Parse(x)).ToList();
         set
         {
             if (value.Count == 0)
             {
-                UnmappedTypeChildKeysLiteral = null;
+                UnmappedTypeChildElementKeysLiteral = null;
                 return;
             }
-            UnmappedTypeChildKeysLiteral = string.Join(',', value);
+            UnmappedTypeChildElementKeysLiteral = string.Join(',', value);
         }
     }
 
-    public string? UnmappedChildTypeNamesLiteral { get; set; } = null;
+    public string? UnmappedChildTypeElementNamesLiteral { get; set; } = null;
     [CgSQLiteIgnore]
     public List<string> UnmappedChildTypeNames
     {
-        get => UnmappedChildTypeNamesLiteral is null
+        get => UnmappedChildTypeElementNamesLiteral is null
             ? []
-            : UnmappedChildTypeNamesLiteral.Split(',').ToList();
+            : UnmappedChildTypeElementNamesLiteral.Split(',').ToList();
         set
         {
             if (value.Count == 0)
             {
-                UnmappedChildTypeNamesLiteral = null;
+                UnmappedChildTypeElementNamesLiteral = null;
                 return;
             }
-            UnmappedChildTypeNamesLiteral = string.Join(',', value);
+            UnmappedChildTypeElementNamesLiteral = string.Join(',', value);
         }
     }
 
