@@ -40,7 +40,8 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
     private static readonly Uri _igListUri = new("https://github.com/FHIR/ig-registry/blob/master/fhir-ig-list.json");
 
     private Uri _igQasUri = new("https://build.fhir.org/ig/qas.json");
-    private Uri _branchUri = new("https://build.fhir.org/branches/");
+    private Uri _coreCiBranchUri = new("https://build.fhir.org/branches/");
+    private Uri _coreCiIgUri = new("https://build.fhir.org/ig/");
     private static Uri _fhirIgListUri = new("https://raw.githubusercontent.com/FHIR/ig-registry/refs/heads/master/fhir-ig-list.json");
 
     private List<FhirCiQaRecord> _igQaRecords = [];
@@ -67,7 +68,7 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
         _httpClient = client ?? new HttpClient();
 
         _igQasUri = new(_registryEndpoint.ServerUri, "ig/qas.json");
-        _branchUri = new(_registryEndpoint.ServerUri, "branches/");
+        _coreCiBranchUri = new(_registryEndpoint.ServerUri, "branches/");
 
         _coreCiFhirSequence = Enum.GetValues<FhirReleases.FhirSequenceCodes>().Max();
         _coreCiPackageId = FhirReleases.ToCorePackageDirective(_coreCiFhirSequence);
@@ -156,7 +157,7 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
                 ResourceCount = null,
                 Canonical = "http://hl7.org/fhir",
                 Kind = null,
-                Url = new Uri(_branchUri, coreBranch.Name).AbsoluteUri,
+                Url = new Uri(_coreCiBranchUri, coreBranch.Name).AbsoluteUri,
                 Scope = null,
                 Keywords = null,
                 GitHubOrg = "hl7",
@@ -241,10 +242,15 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
                 versionTag = "current";
             }
 
-            if (versionTag is null)
-            {
-                versionTag = "current$" + qaRec.GitHubBranch;
-            }
+            versionTag ??= "current$" + qaRec.GitHubBranch;
+
+            string branchUrl = qaRec.RepositoryUrl is null
+                ? qaRec.GitHubBranch
+                : qaRec.RepositoryUrl.Replace("/qa.json", string.Empty);
+
+            Uri branchUri = branchUrl.EndsWith('/')
+                ? new(_coreCiIgUri, branchUrl)
+                : new(_coreCiIgUri, branchUrl + "/");
 
             versions[versionTag] = new()
             {
@@ -255,10 +261,10 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
                 Version = versionTag,
                 Distribution = new()
                 {
-                    TarballUrl = new Uri(_branchUri, $"{qaRec.GitHubBranch}/package.tgz").AbsoluteUri,
+                    TarballUrl = new Uri(branchUri, "package.tgz").AbsoluteUri,
                 },
                 CanonicalUrl = "http://hl7.org/fhir",
-                WebPublicationUrl = new Uri(_branchUri, qaRec.GitHubBranch + "/").AbsoluteUri,
+                WebPublicationUrl = branchUri.AbsoluteUri,
                 PublicationDate = qaRec.BuildDate?.DateTime ?? qaRec.BuildDateIso?.DateTime,
                 OriginalVersion = qaRec.PackageVersion,
             };
@@ -333,7 +339,7 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
 
             // try to get the manifest
             (HttpStatusCode httpStatus, string? corePackageManifestJson) = GetJsonContent(
-                new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.manifest.json"));
+                new Uri(_coreCiBranchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.manifest.json"));
 
             if (httpStatus.IsSuccessful() &&
                 (corePackageManifestJson is not null))
@@ -350,11 +356,11 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
                         Version = versionTag,
                         Distribution = new()
                         {
-                            TarballUrl = new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.tgz").AbsoluteUri,
+                            TarballUrl = new Uri(_coreCiBranchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.tgz").AbsoluteUri,
                         },
                         Type = "Core",
                         CanonicalUrl = "http://hl7.org/fhir",
-                        WebPublicationUrl = new Uri(_branchUri, coreBranchName + "/").AbsoluteUri,
+                        WebPublicationUrl = new Uri(_coreCiBranchUri, coreBranchName + "/").AbsoluteUri,
                         PublicationDate = coreCiManifest.PublicationDate ?? coreBranchRec.LastModified?.DateTime,
                         OriginalVersion = coreCiManifest.Version,
                     };
@@ -364,7 +370,7 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
             }
 
             // get the version information
-            (httpStatus, string? coreVersionInfo) = GetContent(new Uri(_branchUri, coreBranchName + "/version.info"), "text/plain");
+            (httpStatus, string? coreVersionInfo) = GetContent(new Uri(_coreCiBranchUri, coreBranchName + "/version.info"), "text/plain");
             if (!httpStatus.IsSuccessful() ||
                 (coreVersionInfo is null))
             {
@@ -388,11 +394,11 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
                 Version = versionTag,
                 Distribution = new()
                 {
-                    TarballUrl = new Uri(_branchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.tgz").AbsoluteUri,
+                    TarballUrl = new Uri(_coreCiBranchUri, $"{coreBranchName}/{requestedCoreSequence.ToCorePackageId()}.tgz").AbsoluteUri,
                 },
                 Type = "Core",
                 CanonicalUrl = "http://hl7.org/fhir",
-                WebPublicationUrl = new Uri(_branchUri, coreBranchName + "/").AbsoluteUri,
+                WebPublicationUrl = new Uri(_coreCiBranchUri, coreBranchName + "/").AbsoluteUri,
                 PublicationDate = coreBuildDate?.DateTime ?? coreBranchRec.LastModified?.DateTime,
                 OriginalVersion = coreVersion,
             };
@@ -590,11 +596,11 @@ public class FhirCiClient : RegistryClientBase, IPackageRegistryClient
                 _igQaRecords = JsonSerializer.Deserialize<List<FhirCiQaRecord>>(json) ?? [];
                 _igQaRecordsByPackageId = _igQaRecords.ToLookup(r => r.PackageId);
 
-                (status, json) = GetJsonContent(_branchUri);
+                (status, json) = GetJsonContent(_coreCiBranchUri);
                 if (!status.IsSuccessful() ||
                     (json is null))
                 {
-                    Console.WriteLine($"Failed to core branch records: {status} from '{_branchUri.AbsoluteUri}'");
+                    Console.WriteLine($"Failed to core branch records: {status} from '{_coreCiBranchUri.AbsoluteUri}'");
                     return;
                 }
 

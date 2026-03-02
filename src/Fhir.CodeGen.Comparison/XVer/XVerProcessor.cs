@@ -104,8 +104,6 @@ public partial class XVerProcessor
     internal const string _canonicalRootCrossVersion = "http://hl7.org/fhir/uv/xver/";
     private string _crossDefinitionVersion = "0.0.1-snapshot-2";
     private static readonly DateTimeOffset _runTime = DateTimeOffset.UtcNow;
-    internal ConfigXVer.VersionSpecificExtensionBehaviorCodes _versionSpecificExtBehavior = ConfigXVer.VersionSpecificExtensionBehaviorCodes.TargetVersion;
-    internal ConfigXVer.VersionSpecificExportCodes _versionSpecificExport = ConfigXVer.VersionSpecificExportCodes.TargetVersion;
 
     /// <summary>
     /// The directions for comparison (Up and Down).
@@ -182,9 +180,6 @@ public partial class XVerProcessor
         }
 
         _comparisonCache = [];
-
-        _versionSpecificExport = _config.VersionSpecificExport;
-        _versionSpecificExtBehavior = _config.VersionSpecificExtension;
     }
 
     /// <summary>
@@ -279,7 +274,7 @@ public partial class XVerProcessor
 
                 //LoadFhirCrossVersionMaps();
 
-                LoadExtensionSubstitutions();
+                //LoadExtensionSubstitutions();
                 //LoadFhirTypeValueSets();
 
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
@@ -288,7 +283,7 @@ public partial class XVerProcessor
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, maxStepSize: 1);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //CompareInDatabase(artifactFilter: FhirArtifactClassEnum.Resource);
-                CompareInDatabase();
+                //CompareInDatabase();
 
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, specificPairs: specificPairs);
@@ -297,7 +292,7 @@ public partial class XVerProcessor
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource, specificPairs: specificPairs);
                 //GenerateOutcomes(artifactFilter: FhirArtifactClassEnum.Resource);
                 //GenerateOutcomes(specificPairs: specificPairs);
-                GenerateOutcomes();
+                //GenerateOutcomes();
 
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, maxStepSize: 1, includeIgScripts: false);
                 //ExportOutcomes(artifactFilter: FhirArtifactClassEnum.ValueSet, includeIgScripts: false);

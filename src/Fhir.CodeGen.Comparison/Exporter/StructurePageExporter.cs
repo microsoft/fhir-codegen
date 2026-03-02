@@ -398,6 +398,11 @@ public class StructurePageExporter
                     targetLabel = $"Standard Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
                     targetLink = edOutcome.ExtensionSubstitutionUrl;
                 }
+                else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/uv/subscriptions-backport/", StringComparison.Ordinal))
+                {
+                    targetLabel = $"Subscription-Backport Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1].Replace("backport-", string.Empty)}";
+                    targetLink = edOutcome.ExtensionSubstitutionUrl;
+                }
                 else if ((edOutcome.ExtensionSubstitutionKey is not null) &&
                     (DbExtensionSubstitution.SelectSingle(_db, Key: edOutcome.ExtensionSubstitutionKey!.Value) is DbExtensionSubstitution extSub))
                 {

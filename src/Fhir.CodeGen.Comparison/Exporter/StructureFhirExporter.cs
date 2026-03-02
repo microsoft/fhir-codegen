@@ -254,7 +254,7 @@ public class StructureFhirExporter
 
     private void exportElementMaps(XVerIgExportTrackingRecord igTr)
     {
-        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == ConfigXVer.VersionSpecificExportCodes.TargetVersion) &&
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
             (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
             : null;
@@ -870,7 +870,7 @@ public class StructureFhirExporter
 
     private void exportResourceMaps(XVerIgExportTrackingRecord igTr)
     {
-        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == ConfigXVer.VersionSpecificExportCodes.TargetVersion) &&
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
             (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
             : null;
@@ -2182,9 +2182,9 @@ public class StructureFhirExporter
         {
             switch (_exporter._versionSpecificExtBehavior)
             {
-                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.None:
+                case XVerExporter.VersionSpecificExtensionBehaviorCodes.None:
                     break;
-                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.ShortVersion:
+                case XVerExporter.VersionSpecificExtensionBehaviorCodes.ShortVersion:
                     {
                         extSd.Extension.Add(new Extension()
                         {
@@ -2204,7 +2204,7 @@ public class StructureFhirExporter
                         });
                     }
                     break;
-                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.TargetVersion:
+                case XVerExporter.VersionSpecificExtensionBehaviorCodes.TargetVersion:
                     {
                         // add the version-specific fhir version information
                         string targetVersion = igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R5

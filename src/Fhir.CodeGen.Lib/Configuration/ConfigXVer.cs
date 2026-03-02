@@ -317,45 +317,6 @@ public class ConfigXVer : ConfigRoot
         },
     };
 
-    public enum VersionSpecificExtensionBehaviorCodes
-    {
-        None,
-        ShortVersion,
-        TargetVersion,
-    }
-
-    public VersionSpecificExtensionBehaviorCodes VersionSpecificExtension { get; set; } = VersionSpecificExtensionBehaviorCodes.ShortVersion;
-    public static ConfigurationOption VersionSpecificExtensionBehaviorParameter => new()
-    {
-        Name = "Version_Specific_Extension",
-        EnvVarName = "Version_Specific_Extension",
-        DefaultValue = VersionSpecificExtensionBehaviorCodes.ShortVersion,
-        CliOption = new System.CommandLine.Option<VersionSpecificExtensionBehaviorCodes>("--version-specific-ext", "Behavior for version-specific extensions in comparison processing.")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
-            IsRequired = false,
-        },
-    };
-
-    public enum VersionSpecificExportCodes
-    {
-        CurrentVersion,
-        TargetVersion,
-    }
-
-    public VersionSpecificExportCodes VersionSpecificExport { get; set; } = VersionSpecificExportCodes.TargetVersion;
-    public static ConfigurationOption VersionSpecificExportBehaviorParameter => new()
-    {
-        Name = "Version_Specific_Export",
-        EnvVarName = "Version_Specific_Export",
-        DefaultValue = VersionSpecificExportCodes.TargetVersion,
-        CliOption = new System.CommandLine.Option<VersionSpecificExportCodes>("--version-specific-export", "Behavior for version-specific artifacts in export processing.")
-        {
-            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
-            IsRequired = false,
-        },
-    };
-
 
     private static readonly ConfigurationOption[] _options =
     [
@@ -375,8 +336,6 @@ public class ConfigXVer : ConfigRoot
         CrossVersionMapSourcePathParameter,
         CrossVersionMapDestinationPathParameter,
         UseInternalTypeMapsParameter,
-        VersionSpecificExtensionBehaviorParameter,
-        VersionSpecificExportBehaviorParameter,
     ];
 
     /// <summary>Gets the array of configuration options.</summary>
@@ -483,12 +442,6 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Use_Internal_Type_Maps":
                     UseInternalTypeMaps = GetOpt(parseResult, opt, UseInternalTypeMaps);
-                    break;
-                case "Version_Specific_Extension":
-                    VersionSpecificExtension = GetOpt(parseResult, opt, VersionSpecificExtension);
-                    break;
-                case "Version_Specific_Export":
-                    VersionSpecificExport = GetOpt(parseResult, opt, VersionSpecificExport);
                     break;
             }
         }

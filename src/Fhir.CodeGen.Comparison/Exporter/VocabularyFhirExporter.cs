@@ -58,7 +58,7 @@ public class VocabularyFhirExporter
 
     private void exportConceptMaps(XVerIgExportTrackingRecord igTr)
     {
-        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == ConfigXVer.VersionSpecificExportCodes.TargetVersion) &&
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
             (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
             : null;

@@ -15,6 +15,20 @@ namespace Fhir.CodeGen.Comparison.Exporter;
 
 public class XVerExporter
 {
+    public enum VersionSpecificExtensionBehaviorCodes
+    {
+        None,
+        ShortVersion,
+        TargetVersion,
+    }
+
+    public enum VersionSpecificExportCodes
+    {
+        CurrentVersion,
+        TargetVersion,
+    }
+
+
     private readonly IDbConnection _db;
 
     private ILoggerFactory _loggerFactory;
@@ -26,8 +40,8 @@ public class XVerExporter
     internal string _crossDefinitionVersion;
     internal readonly DateTimeOffset _runTime = DateTimeOffset.UtcNow;
 
-    internal ConfigXVer.VersionSpecificExtensionBehaviorCodes _versionSpecificExtBehavior;
-    internal ConfigXVer.VersionSpecificExportCodes _versionSpecificExport;
+    internal VersionSpecificExtensionBehaviorCodes _versionSpecificExtBehavior = VersionSpecificExtensionBehaviorCodes.ShortVersion;
+    internal VersionSpecificExportCodes _versionSpecificExport = VersionSpecificExportCodes.TargetVersion;
 
     public XVerExporter(
         IDbConnection db,
@@ -41,9 +55,6 @@ public class XVerExporter
         _outputPath = config.OutputDirectory;
         _crossVersionSourcePath = string.IsNullOrEmpty(config.CrossVersionMapSourcePath) ? null : config.CrossVersionMapSourcePath;
         _crossDefinitionVersion = string.IsNullOrEmpty(config.XverArtifactVersion) ? "0.0.1-snapshot-3" : config.XverArtifactVersion;
-
-        _versionSpecificExtBehavior = config.VersionSpecificExtension;
-        _versionSpecificExport = config.VersionSpecificExport;
     }
 
     public void Export(
