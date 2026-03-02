@@ -324,12 +324,12 @@ public class ConfigXVer : ConfigRoot
         TargetVersion,
     }
 
-    public VersionSpecificExtensionBehaviorCodes VersionSpecificExtension { get; set; } = VersionSpecificExtensionBehaviorCodes.TargetVersion;
+    public VersionSpecificExtensionBehaviorCodes VersionSpecificExtension { get; set; } = VersionSpecificExtensionBehaviorCodes.ShortVersion;
     public static ConfigurationOption VersionSpecificExtensionBehaviorParameter => new()
     {
         Name = "Version_Specific_Extension",
         EnvVarName = "Version_Specific_Extension",
-        DefaultValue = VersionSpecificExtensionBehaviorCodes.TargetVersion,
+        DefaultValue = VersionSpecificExtensionBehaviorCodes.ShortVersion,
         CliOption = new System.CommandLine.Option<VersionSpecificExtensionBehaviorCodes>("--version-specific-ext", "Behavior for version-specific extensions in comparison processing.")
         {
             Arity = System.CommandLine.ArgumentArity.ZeroOrOne,

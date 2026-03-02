@@ -1794,60 +1794,7 @@ public class StructureFhirExporter
 
         profileSd.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, null);
 
-        // the version-specific extension is only valid for R4 and later
-        if (igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R4)
-        {
-            switch (_exporter._versionSpecificExtBehavior)
-            {
-                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.None:
-                    break;
-                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.ShortVersion:
-                    {
-                        profileSd.Extension.Add(new Extension()
-                        {
-                            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
-                            Extension = [
-                                new()
-                            {
-                                Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
-                                Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
-                            },
-                            new()
-                            {
-                                Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
-                                Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
-                            },
-                        ],
-                        });
-                    }
-                    break;
-                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.TargetVersion:
-                    {
-                        // add the version-specific fhir version information
-                        string targetVersion = igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R5
-                            ? igTr.PackagePair.TargetFhirVersionShort
-                            : igTr.PackagePair.TargetPackage.PackageVersion;
-
-                        profileSd.Extension.Add(new Extension()
-                        {
-                            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
-                            Extension = [
-                                new()
-                        {
-                            Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
-                            Value = new Code(targetVersion),
-                        },
-                        new()
-                        {
-                            Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
-                            Value = new Code(targetVersion),
-                        },
-                    ],
-                        });
-                    }
-                    break;
-            }
-        }
+        // NOTE: version specific extensions are not needed for profiles since they are based on specific values of resources anyway
 
         return profileSd;
     }
