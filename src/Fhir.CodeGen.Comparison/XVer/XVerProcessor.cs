@@ -104,6 +104,8 @@ public partial class XVerProcessor
     internal const string _canonicalRootCrossVersion = "http://hl7.org/fhir/uv/xver/";
     private string _crossDefinitionVersion = "0.0.1-snapshot-2";
     private static readonly DateTimeOffset _runTime = DateTimeOffset.UtcNow;
+    internal ConfigXVer.VersionSpecificExtensionBehaviorCodes _versionSpecificExtBehavior = ConfigXVer.VersionSpecificExtensionBehaviorCodes.TargetVersion;
+    internal ConfigXVer.VersionSpecificExportCodes _versionSpecificExport = ConfigXVer.VersionSpecificExportCodes.TargetVersion;
 
     /// <summary>
     /// The directions for comparison (Up and Down).
@@ -180,6 +182,9 @@ public partial class XVerProcessor
         }
 
         _comparisonCache = [];
+
+        _versionSpecificExport = _config.VersionSpecificExport;
+        _versionSpecificExtBehavior = _config.VersionSpecificExtension;
     }
 
     /// <summary>
@@ -570,10 +575,7 @@ public partial class XVerProcessor
 
         XVerExporter exporter = new(
             _db.DbConnection,
-            _config.LogFactory,
-            _config.OutputDirectory,
-            _config.CrossVersionMapSourcePath,
-            _config.XverArtifactVersion);
+            _config);
         switch (artifactFilter)
         {
             case FhirArtifactClassEnum.CodeSystem:

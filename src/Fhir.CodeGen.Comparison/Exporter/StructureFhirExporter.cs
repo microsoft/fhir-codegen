@@ -16,6 +16,7 @@ using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
+using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Hl7.Fhir.Language.Debugging;
 using Hl7.Fhir.Model;
@@ -32,8 +33,6 @@ namespace Fhir.CodeGen.Comparison.Exporter;
 
 public class StructureFhirExporter
 {
-    private static bool _exportAsDesiredVersion = true;
-
     private readonly XVerExporter _exporter;
     private readonly IDbConnection _db;
 
@@ -255,7 +254,8 @@ public class StructureFhirExporter
 
     private void exportElementMaps(XVerIgExportTrackingRecord igTr)
     {
-        CrossVersionExporter.ConceptMapToR4? exporterR4 = (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == ConfigXVer.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
             : null;
 
@@ -309,7 +309,7 @@ public class StructureFhirExporter
             string filename = sdOutcomes.First().ElementConceptMapFileName
                 ?? throw new Exception($"Failed to write concept map for {sourceSd.VersionedUrl} to {igTr.PackagePair.TargetPackageShortName}");
             string path = Path.Combine(dir, filename + ".json");
-            if (_exportAsDesiredVersion && (exporterR4 is not null))
+            if (exporterR4 is not null)
             {
                 File.WriteAllText(path, exporterR4.ToJson(edCm, new SerializerSettings() { Pretty = true }));
             }
@@ -870,7 +870,8 @@ public class StructureFhirExporter
 
     private void exportResourceMaps(XVerIgExportTrackingRecord igTr)
     {
-        CrossVersionExporter.ConceptMapToR4? exporterR4 = (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == ConfigXVer.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
             : null;
 
@@ -965,7 +966,7 @@ public class StructureFhirExporter
             filename = cm.Id;
         }
         string path = Path.Combine(dir, filename + ".json");
-        if (_exportAsDesiredVersion && (exporterR4 is not null))
+        if (exporterR4 is not null)
         {
             File.WriteAllText(path, exporterR4.ToJson(cm, new SerializerSettings() { Pretty = true }));
         }
@@ -1793,29 +1794,59 @@ public class StructureFhirExporter
 
         profileSd.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, null);
 
-        // add the version-specific fhir version information
-        string targetVersion = igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R5
-            ? igTr.PackagePair.TargetFhirVersionShort
-            : igTr.PackagePair.TargetPackage.PackageVersion;
-
+        // the version-specific extension is only valid for R4 and later
         if (igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R4)
         {
-            profileSd.Extension.Add(new Extension()
+            switch (_exporter._versionSpecificExtBehavior)
             {
-                Url = CommonDefinitions.ExtUrlVersionSpecificUse,
-                Extension = [
-                    new()
-                {
-                    Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
-                    Value = new Code(targetVersion),
-                },
-                new()
-                {
-                    Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
-                    Value = new Code(targetVersion),
-                },
-            ],
-            });
+                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.None:
+                    break;
+                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.ShortVersion:
+                    {
+                        profileSd.Extension.Add(new Extension()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
+                            Extension = [
+                                new()
+                            {
+                                Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
+                                Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
+                            },
+                            new()
+                            {
+                                Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
+                                Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
+                            },
+                        ],
+                        });
+                    }
+                    break;
+                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.TargetVersion:
+                    {
+                        // add the version-specific fhir version information
+                        string targetVersion = igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R5
+                            ? igTr.PackagePair.TargetFhirVersionShort
+                            : igTr.PackagePair.TargetPackage.PackageVersion;
+
+                        profileSd.Extension.Add(new Extension()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
+                            Extension = [
+                                new()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
+                            Value = new Code(targetVersion),
+                        },
+                        new()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
+                            Value = new Code(targetVersion),
+                        },
+                    ],
+                        });
+                    }
+                    break;
+            }
         }
 
         return profileSd;
@@ -2199,23 +2230,60 @@ public class StructureFhirExporter
 
         extSd.cgAddPackageSource(igTr.PackageId, _exporter._crossDefinitionVersion, igTr.PackageUrl);
 
-        // add the version-specific fhir version information
-        extSd.Extension.Add(new Extension()
+        // the version-specific extension is only valid for R4 and later
+        if (igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R4)
         {
-            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
-            Extension = [
-                new()
-                {
-                    Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
-                    Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
-                },
-                new()
-                {
-                    Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
-                    Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
-                },
-            ],
-        });
+            switch (_exporter._versionSpecificExtBehavior)
+            {
+                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.None:
+                    break;
+                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.ShortVersion:
+                    {
+                        extSd.Extension.Add(new Extension()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
+                            Extension = [
+                                new()
+                            {
+                                Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
+                                Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
+                            },
+                            new()
+                            {
+                                Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
+                                Value = new Code(igTr.PackagePair.TargetFhirVersionShort),
+                            },
+                        ],
+                        });
+                    }
+                    break;
+                case ConfigXVer.VersionSpecificExtensionBehaviorCodes.TargetVersion:
+                    {
+                        // add the version-specific fhir version information
+                        string targetVersion = igTr.PackagePair.TargetFhirSequence >= FhirReleases.FhirSequenceCodes.R5
+                            ? igTr.PackagePair.TargetFhirVersionShort
+                            : igTr.PackagePair.TargetPackage.PackageVersion;
+
+                        extSd.Extension.Add(new Extension()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUse,
+                            Extension = [
+                                new()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUseStart,
+                            Value = new Code(targetVersion),
+                        },
+                        new()
+                        {
+                            Url = CommonDefinitions.ExtUrlVersionSpecificUseEnd,
+                            Value = new Code(targetVersion),
+                        },
+                    ],
+                        });
+                    }
+                    break;
+            }
+        }
 
         // add this element and its children to the differential
         addToDifferentialRecursive(

@@ -8,6 +8,7 @@ using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.Outcomes;
+using Fhir.CodeGen.Lib.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Fhir.CodeGen.Comparison.Exporter;
@@ -25,21 +26,24 @@ public class XVerExporter
     internal string _crossDefinitionVersion;
     internal readonly DateTimeOffset _runTime = DateTimeOffset.UtcNow;
 
+    internal ConfigXVer.VersionSpecificExtensionBehaviorCodes _versionSpecificExtBehavior;
+    internal ConfigXVer.VersionSpecificExportCodes _versionSpecificExport;
+
     public XVerExporter(
         IDbConnection db,
-        ILoggerFactory loggerFactory,
-        string outputPath,
-        string? crossVersionSourcePath,
-        string xverVersion)
+        ConfigXVer config)
     {
-        _loggerFactory = loggerFactory;
-        _logger = loggerFactory.CreateLogger<XVerExporter>();
+        _loggerFactory = config.LogFactory;
+        _logger = _loggerFactory.CreateLogger<XVerExporter>();
 
         _db = db;
 
-        _outputPath = outputPath;
-        _crossVersionSourcePath = string.IsNullOrEmpty(crossVersionSourcePath) ? null : crossVersionSourcePath;
-        _crossDefinitionVersion = string.IsNullOrEmpty(xverVersion) ? "0.0.1-snapshot-3" : xverVersion;
+        _outputPath = config.OutputDirectory;
+        _crossVersionSourcePath = string.IsNullOrEmpty(config.CrossVersionMapSourcePath) ? null : config.CrossVersionMapSourcePath;
+        _crossDefinitionVersion = string.IsNullOrEmpty(config.XverArtifactVersion) ? "0.0.1-snapshot-3" : config.XverArtifactVersion;
+
+        _versionSpecificExtBehavior = config.VersionSpecificExtension;
+        _versionSpecificExport = config.VersionSpecificExport;
     }
 
     public void Export(

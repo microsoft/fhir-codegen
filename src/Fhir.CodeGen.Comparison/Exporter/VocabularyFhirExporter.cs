@@ -9,6 +9,7 @@ using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.Models;
 using Fhir.CodeGen.Comparison.XVer;
+using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
@@ -22,8 +23,6 @@ namespace Fhir.CodeGen.Comparison.Exporter;
 
 public class VocabularyFhirExporter
 {
-    private static bool _exportAsDesiredVersion = true;
-
     private readonly XVerExporter _exporter;
     private readonly IDbConnection _db;
 
@@ -59,7 +58,8 @@ public class VocabularyFhirExporter
 
     private void exportConceptMaps(XVerIgExportTrackingRecord igTr)
     {
-        CrossVersionExporter.ConceptMapToR4? exporterR4 = (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
+        CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == ConfigXVer.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
             : null;
 
@@ -149,7 +149,7 @@ public class VocabularyFhirExporter
                 // write the concept map to a file
                 string filename = vsOutcome.ConceptMapFileName ?? throw new ArgumentNullException(nameof(vsOutcome.ConceptMapFileName));
                 string path = Path.Combine(dir, filename + ".json");
-                if (_exportAsDesiredVersion && (exporterR4 is not null))
+                if (exporterR4 is not null)
                 {
                     File.WriteAllText(path, exporterR4.ToJson(vsCm, new SerializerSettings() { Pretty = true }));
                 }
