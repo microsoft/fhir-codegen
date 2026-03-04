@@ -491,6 +491,10 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
     public required bool IsChoiceType { get; set; }
     public required bool IsModifier { get; set; }
     public required string? IsModifierReason { get; set; }
+    public required bool IsDeprecated { get; set; }
+    public bool IsPrimitiveTypeElement() => (DistinctTypeCount == 1) &&
+        (FullCollatedTypeLiteral.Length > 0) &&
+        (char.IsLower(FullCollatedTypeLiteral[0]));
 
     public string NameClean() => Name.EndsWith("[x]", StringComparison.Ordinal)
         ? Name[..^3]
@@ -593,6 +597,7 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
         IsChoiceType = false,
         IsModifier = false,
         IsModifierReason = null,
+        IsDeprecated = false,
     };
 }
 

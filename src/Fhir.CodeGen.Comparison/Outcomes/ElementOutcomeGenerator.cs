@@ -407,6 +407,17 @@ public class ElementOutcomeGenerator
             List<string> contexts = [];
 
             bool defineAsModifier = sourceEd.IsModifier;
+            if (defineAsModifier &&
+                (sourceEd.ParentElementKey == rootEd.Key) &&
+                (rootEdOutcome is not null))
+            {
+                rootEdOutcome.DefineAsModifier = true;
+                rootEdOutcome.ModifierReason =
+                    $"Element `{sourceEd.Id}` is a modifier and is a direct child of the root element," +
+                    $" so the extension definition for `{sourceSd.Name}` must be a modifier.";
+                rootEdOutcome.Comments += "\n" + rootEdOutcome.ModifierReason;
+            }
+
             if (sourceEd.ResourceFieldOrder == 0)
             {
                 contexts.Add("Basic");
@@ -457,6 +468,11 @@ public class ElementOutcomeGenerator
                     $" `{extSubstitute.ReplacementUrl}`.";
             }
 
+            if (sourceEd.IsDeprecated)
+            {
+                comments += $"\nElement `{sourceEd.Id}` has been flagged as deprecated.";
+            }
+
             string? ancestorCR = parentEd?.UsedAsContentReference == true
                 ? parentEd.Id
                 : parentOutcome?.SourceAncestorUsedAsContentReferenceId;
@@ -490,6 +506,7 @@ public class ElementOutcomeGenerator
                 SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
                 SourceAncestorUsedAsContentReferenceId = ancestorCR,
                 SourceAncestorContentReferenceOutcomeKey = ancestorCrKey,
+                SourceIsDeprecated = sourceEd.IsDeprecated,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -526,6 +543,7 @@ public class ElementOutcomeGenerator
                 ParentElementOutcomeKey = parentOutcome?.Key,
                 SourceIsModifier = sourceEd.IsModifier,
                 DefineAsModifier = defineAsModifier,
+                ModifierReason = sourceEd.IsModifierReason,
                 ExtensionContexts = contexts,
                 BasicElementBaseId = basicBasePath,
                 BasicElementId = basicPath,
@@ -574,6 +592,7 @@ public class ElementOutcomeGenerator
                 TargetComponentOrder = null,
                 TargetMinCardinality = null,
                 TargetMaxCardinalityString = null,
+                TargetIsModifier = null,
                 ContextElementKey = null,
                 ContextElementId = null,
                 ContextRootExtensionUrl = null,
@@ -735,8 +754,8 @@ public class ElementOutcomeGenerator
                     {
                         outcomeComments.Add(
                             $"FHIR {_packagePair.SourceFhirSequence} {sourceSd.ArtifactClass} `{sourceSd.Name}`" +
-                            $" is representable via" +
-                            $" FHIR {_packagePair.TargetFhirSequence} extensions.");
+                            $" is representable via extensions in" +
+                            $" FHIR {_packagePair.TargetFhirSequence}.");
                     }
                 }
 
@@ -807,6 +826,7 @@ public class ElementOutcomeGenerator
                         TargetComponentOrder = null,
                         TargetMinCardinality = null,
                         TargetMaxCardinalityString = null,
+                        TargetIsModifier = null,
 
                         ContextElementKey = contextTargetEd?.Key,
                         ContextElementId = contextTargetEd?.Id,
@@ -852,7 +872,10 @@ public class ElementOutcomeGenerator
                     .ToList();
 
                 // figure out our context element, if possible
-                contextTargetEd = findCommonAncestor(sdTr.TargetStructure.FhirPackageKey, targetEds);
+                contextTargetEd = findCommonAncestor(
+                    sdTr.TargetStructure.FhirPackageKey,
+                    targetEds,
+                    requireNonPrimitive: (sourceEd.IsChoiceType || sourceEd.ChildElementCount > 0));
                 if (contextTargetEd is not null)
                 {
                     allContextTargets[contextTargetEd.Key] = contextTargetEd;
@@ -926,7 +949,10 @@ public class ElementOutcomeGenerator
                                 .ToList();
 
                             // figure out our context element, if possible
-                            contextTargetEd = findCommonAncestor(sdTr.TargetStructure.FhirPackageKey, parentTargetEds);
+                            contextTargetEd = findCommonAncestor(
+                                sdTr.TargetStructure.FhirPackageKey,
+                                parentTargetEds,
+                                requireNonPrimitive: (sourceEd.IsChoiceType || sourceEd.ChildElementCount > 0));
                             if (contextTargetEd is not null)
                             {
                                 testTargetEd = contextTargetEd;
@@ -977,6 +1003,7 @@ public class ElementOutcomeGenerator
                         TargetComponentOrder = elementComparison.NotMapped ? 0 : ecTargetEd?.ComponentFieldOrder,
                         TargetMinCardinality = elementComparison.NotMapped ? null : ecTargetEd?.MinCardinality,
                         TargetMaxCardinalityString = elementComparison.NotMapped ? null : ecTargetEd?.MaxCardinalityString,
+                        TargetIsModifier = elementComparison.NotMapped ? null : ecTargetEd?.IsModifier,
 
                         ContextElementKey = contextTargetEd?.Key,
                         ContextElementId = contextTargetEd?.Id,
@@ -1014,6 +1041,7 @@ public class ElementOutcomeGenerator
             }
 
             bool defineAsModifier = sourceEd.IsModifier;
+            string? modifierReason = sourceEd.IsModifierReason;
 
             // if this is the root element, force some values
             if (sourceIsRootEd)
@@ -1084,18 +1112,20 @@ public class ElementOutcomeGenerator
                     {
                         // need to promote the modifier to the parent context
                         parentOutcome.DefineAsModifier = true;
-                        parentOutcome.Comments +=
-                            $"A child extension for element `{sourceEd.Name}` is a modifier," +
-                            $" so this extension needs to be defined as a modifier.";
+                        modifierReason = 
+                            $"Child element `{sourceEd.Name}` is a modifier," +
+                            $" so this extension must be a modifier.";
+                        parentOutcome.Comments += "\n" + modifierReason;
                     }
 
                     if ((ancestorOutcome is not null) &&
                         (ancestorOutcome.Key != parentOutcome?.Key))
                     {
                         ancestorOutcome.DefineAsModifier = true;
-                        ancestorOutcome.Comments +=
-                            $"A child extension for element `{sourceEd.Id}`  is a modifier," +
-                            $" so this extension needs to be defined as a modifier.";
+                        modifierReason = 
+                            $"Descendent element `{sourceEd.Id}` is a modifier and part of this extension," +
+                            $" so this extension must be a modifier.";
+                        ancestorOutcome.Comments += "\n" + modifierReason;
                     }
                 }
                 else
@@ -1107,6 +1137,7 @@ public class ElementOutcomeGenerator
                         if (ctxTargetEd.IsModifier)
                         {
                             defineAsModifier = false;
+                            modifierReason = null;
                             outcomeNotes.Add(
                                 $"The target context `{ctxTargetEd.Id}` is a modifier element," +
                                 $" so this extension does not need to be defined as a modifier.");
@@ -1516,6 +1547,11 @@ public class ElementOutcomeGenerator
                 allContextTargets[genericContextEd.Key] = genericContextEd;
             }
 
+            if (sourceEd.IsDeprecated)
+            {
+                outcomeNotes.Add($"Element `{sourceEd.Id}` has been flagged as deprecated.");
+            }
+
             if (outcomeNotes.Count > 0)
             {
                 outcomeComments.AddRange(outcomeNotes);
@@ -1545,6 +1581,7 @@ public class ElementOutcomeGenerator
                 SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
                 SourceAncestorUsedAsContentReferenceId = ancestorCR,
                 SourceAncestorContentReferenceOutcomeKey = ancestorCrKey,
+                SourceIsDeprecated = sourceEd.IsDeprecated,
                 TotalSourceCount = -1,
 
                 TargetFhirPackageKey = _packagePair.TargetPackageKey,
@@ -1585,6 +1622,7 @@ public class ElementOutcomeGenerator
                 ParentElementOutcomeKey = parentOutcome?.Key,
                 SourceIsModifier = sourceEd.IsModifier,
                 DefineAsModifier = defineAsModifier,
+                ModifierReason = modifierReason,
                 ExtensionContexts = allContextTargets.Values.Select(ed => ed.Id).Distinct().Order().ToList(),
                 BasicElementBaseId = basicBasePath,
                 BasicElementId = basicPath,
@@ -2190,7 +2228,10 @@ public class ElementOutcomeGenerator
     }
 
 
-    private DbElement? findCommonAncestor(int targetFhirPackageKey, List<DbElement> eds)
+    private DbElement? findCommonAncestor(
+        int targetFhirPackageKey,
+        List<DbElement> eds,
+        bool requireNonPrimitive)
     {
         if (eds.Count == 0)
         {
@@ -2199,7 +2240,21 @@ public class ElementOutcomeGenerator
 
         if (eds.Count == 1)
         {
-            return eds[0];
+            if (!requireNonPrimitive ||
+                eds[0].IsChoiceType ||
+                (eds[0].ChildElementCount > 0) ||
+                (eds[0].IsPrimitiveTypeElement() != true))
+            {
+                return eds[0];
+            }
+
+            if ((eds[0].ParentElementKey is null) ||
+                !_allTargetElements.TryGetValue(eds[0].ParentElementKey!.Value, out DbElement? parentEd))
+            {
+                throw new Exception("Element is primitive and has no parent, cannot find common ancestor.");
+            }
+
+            return parentEd;
         }
 
         List<int> structureKeys = eds.Select(ed => ed.StructureKey)

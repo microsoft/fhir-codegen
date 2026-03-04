@@ -547,6 +547,9 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
 
     public required bool SourceIsModifier { get; set; }
     public required bool DefineAsModifier { get; set; }
+    public required string? ModifierReason { get; set; }
+    public required bool SourceIsDeprecated { get; set; }
+
     public string? ExtensionContextsLiteral { get; set; } = null;
     [CgSQLiteIgnore]
     public List<string> ExtensionContexts
@@ -777,6 +780,8 @@ public partial class DbElementOutcomeTarget : DbRecordBase
 
     public required int? TargetMinCardinality { get; set; }
     public required string? TargetMaxCardinalityString { get; set; }
+
+    public required bool? TargetIsModifier { get; set; }
 
 
     [CgSQLiteForeignKey(referenceTable: "Elements", referenceColumn: nameof(DbElement.Key))]

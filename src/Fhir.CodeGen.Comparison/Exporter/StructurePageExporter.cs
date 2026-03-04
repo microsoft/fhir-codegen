@@ -307,7 +307,9 @@ public class StructurePageExporter
                 string targetLabel;
                 string targetLink;
 
-                targetLabel = $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
+                targetLabel = edOutcome.DefineAsModifier
+                    ? $"Modifier Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}"
+                    : $"Extension: {edOutcome.GenName ?? edOutcome.GenUrl!}";
                 targetLink = edOutcome.GenFileName! + ".html";
 
                 if (usedLinks.Add(targetLink))
@@ -372,6 +374,10 @@ public class StructurePageExporter
                 }
             }
 
+            string extLiteral = edOutcome.DefineAsModifier
+                ? "Modifier Extension"
+                : "Extension";
+
             // check for extension substitution
             if (edOutcome.ExtensionSubstitutionUrl is not null)
             {
@@ -390,17 +396,17 @@ public class StructurePageExporter
                 }
                 else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/tools/", StringComparison.Ordinal))
                 {
-                    targetLabel = $"Tooling Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                    targetLabel = $"Tooling {extLiteral}: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
                     targetLink = edOutcome.ExtensionSubstitutionUrl;
                 }
                 else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/StructureDefinition/", StringComparison.Ordinal))
                 {
-                    targetLabel = $"Standard Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
+                    targetLabel = $"Standard {extLiteral}: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1]}";
                     targetLink = edOutcome.ExtensionSubstitutionUrl;
                 }
                 else if (edOutcome.ExtensionSubstitutionUrl.StartsWith("http://hl7.org/fhir/uv/subscriptions-backport/", StringComparison.Ordinal))
                 {
-                    targetLabel = $"Subscription-Backport Extension: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1].Replace("backport-", string.Empty)}";
+                    targetLabel = $"Subscription-Backport {extLiteral}: {edOutcome.ExtensionSubstitutionUrl.Split('/')[^1].Replace("backport-", string.Empty)}";
                     targetLink = edOutcome.ExtensionSubstitutionUrl;
                 }
                 else if ((edOutcome.ExtensionSubstitutionKey is not null) &&
@@ -408,11 +414,13 @@ public class StructurePageExporter
                 {
                     if (extSub.ReplacementSourcePackage is not null)
                     {
-                        targetLabel = extSub.ReplacementSourcePackage + ": ";
+                        targetLabel = edOutcome.DefineAsModifier
+                            ? extSub.ReplacementSourcePackage + ": Modifier "
+                            : extSub.ReplacementSourcePackage + ": ";
                     }
                     else
                     {
-                        targetLabel = "External Extension: ";
+                        targetLabel = $"External {extLiteral}: ";
                     }
 
                     if (extSub.ReplacementName is not null)
@@ -428,7 +436,9 @@ public class StructurePageExporter
                 }
                 else
                 {
-                    targetLabel = edOutcome.ExtensionSubstitutionUrl;
+                    targetLabel = edOutcome.DefineAsModifier
+                        ? ("Modifier " + edOutcome.ExtensionSubstitutionUrl)
+                        : edOutcome.ExtensionSubstitutionUrl;
                     targetLink = edOutcome.ExtensionSubstitutionUrl;
                 }
 
@@ -456,12 +466,14 @@ public class StructurePageExporter
                     edOutcomesByKey.Contains(edOutcome.ContentReferenceOutcomeKey.Value))
                 {
                     DbElementOutcome crOutcome = edOutcomesByKey[edOutcome.ContentReferenceOutcomeKey.Value].First();
-                    targetLabel = $"Extension: {crOutcome.GenName ?? crOutcome.GenUrl!}";
+                    targetLabel = $"{extLiteral}: {crOutcome.GenName ?? crOutcome.GenUrl!}";
                     targetLink = crOutcome.GenFileName! + ".html";
                 }
                 else
                 {
-                    targetLabel = edOutcome.ContentReferenceExtensionUrl;
+                    targetLabel = edOutcome.DefineAsModifier
+                        ? ("Modifier " + edOutcome.ContentReferenceExtensionUrl)
+                        : edOutcome.ContentReferenceExtensionUrl;
                     targetLink = edOutcome.ContentReferenceExtensionUrl;
                 }
 

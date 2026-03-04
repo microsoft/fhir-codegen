@@ -2185,6 +2185,7 @@ public class ComparisonDatabase : IDisposable
                 IsChoiceType = typeNames.Count > 1,
                 IsModifier = ed.IsModifier == true,
                 IsModifierReason = ed.IsModifierReason,
+                IsDeprecated = ed.cgStandardStatus()?.Equals("deprecated", StringComparison.OrdinalIgnoreCase) == true,
             };
 
             dbElements.Add(dbStructure.Key.ToString() + ":" + ed.ElementId, dbElement);
