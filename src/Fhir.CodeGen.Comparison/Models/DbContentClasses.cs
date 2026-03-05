@@ -466,6 +466,8 @@ public partial class DbElement : DbPackageContent, IDbContentWithId
 
     public required int DistinctTypeCount { get; set; }
     public required string DistinctTypeLiterals { get; set; }
+    [CgSQLiteIgnore]
+    public List<string> DistinctTypes => DistinctTypeLiterals.Split(',').ToList();
 
     public required Hl7.Fhir.Model.BindingStrength? ValueSetBindingStrength { get; init; }
     public required string? BindingValueSet { get; set; }

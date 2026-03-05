@@ -20,7 +20,7 @@ public class StructureOutcomeGenerator
     public class StructureOutcomeTrackingRecord
     {
         public required DbStructureDefinition SourceStructure { get; set; }
-        public required DbStructureComparison StructureComparison { get; set; }
+        public required DbStructureComparison? StructureComparison { get; set; }
         public required DbStructureDefinition? TargetStructure { get; set; }
 
         public DbElement? SourceRootElement { get; set; } = null;
@@ -202,28 +202,41 @@ public class StructureOutcomeGenerator
                 continue;
             }
 
+            Dictionary<int, StructureOutcomeTrackingRecord> trackingRecords = [];
+
             List<DbStructureComparison> structureComparisons = sdComparsionsBySourceKey[sourceSd.Key]
                 .Where(sc => sc.TargetFhirPackageKey == packagePair.TargetPackageKey)
                 .ToList();
             if (structureComparisons.Count == 0)
             {
-                // create our structure no-map outcome
-                DbStructureOutcome noMapSdOutcome = createNoMapStructureOutcome(
-                    packagePair,
-                    sourceSd,
-                    structureOutcomeKey: null,
-                    structureComparisonKey: null,
-                    comments: null);
+                trackingRecords.Add(
+                    0,
+                    new()
+                    {
+                        SourceStructure = sourceSd,
+                        SourceRootElement = sourceStructureRootElements.GetValueOrDefault(sourceSd.Id),
+                        StructureComparison = null,
+                        TargetStructure = null,
+                        StructureOutcomeKey = DbStructureOutcome.GetIndex(),
+                        IsFullyMappedAcrossAllTargets = true,
+                        IsFullyMappedToThisTarget = false,
+                    });
 
-                // create our element no-map outcomes
-                elementOutcomeGenerator.ProcessNoMapStructure(sourceSd, noMapSdOutcome);
+                //// create our structure no-map outcome
+                //DbStructureOutcome noMapSdOutcome = createNoMapStructureOutcome(
+                //    packagePair,
+                //    sourceSd,
+                //    structureOutcomeKey: null,
+                //    structureComparisonKey: null,
+                //    comments: null);
 
-                continue;
+                //// create our element no-map outcomes
+                //elementOutcomeGenerator.ProcessNoMapStructure(sourceSd, noMapSdOutcome);
+
+                //continue;
             }
 
-            Dictionary<int, StructureOutcomeTrackingRecord> trackingRecords = [];
-
-            // build our tracking records, be optimistic that all elements will be fully mapped
+            // build our tracking records for valid comparisons, be optimistic that all elements will be fully mapped
             foreach (DbStructureComparison structureComparison in structureComparisons)
             {
                 if (structureComparison.NotMapped ||
@@ -293,7 +306,9 @@ public class StructureOutcomeGenerator
                 //string emUrl = $"http://hl7.org/fhir/{packagePair.SourceFhirVersionShort}/ConceptMap/{emIdLong}";
                 string emUrl = $"{XVerProcessor._canonicalRootCrossVersion}ConceptMap/{emIdLong}";
 
-                if (sdTr.StructureComparison.NotMapped || (targetSd is null))
+                if (sdTr.StructureComparison is null ||
+                    sdTr.StructureComparison.NotMapped ||
+                    (targetSd is null))
                 {
                     bool noMapSdRequiresXVer = !sdTr.IsFullyMappedAcrossAllTargets;
 
@@ -310,11 +325,11 @@ public class StructureOutcomeGenerator
                         noMapComments =
                             $"FHIR {packagePair.SourceFhirSequence} `{sourceSd.Name}` does not map to" +
                             $" FHIR {packagePair.TargetFhirSequence}.";
-                        if (sdTr.StructureComparison.TechnicalMessage is not null)
+                        if (sdTr.StructureComparison?.TechnicalMessage is not null)
                         {
                             noMapComments += "\n" + sdTr.StructureComparison.TechnicalMessage;
                         }
-                        if (sdTr.StructureComparison.UserMessage is not null)
+                        if (sdTr.StructureComparison?.UserMessage is not null)
                         {
                             noMapComments += "\n" + sdTr.StructureComparison.UserMessage;
                         }

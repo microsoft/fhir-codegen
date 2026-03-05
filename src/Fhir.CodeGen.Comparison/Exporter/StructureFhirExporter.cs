@@ -1080,31 +1080,31 @@ public class StructureFhirExporter
                     targetSd,
                     sdOutcome);
 
-                if ((targetSd is null) ||
-                    ((targetSd.Name == "Basic") && (sourceSd.Name != "Basic")))
-                {
-                    DbElementOutcome? rootElementOutcome = DbElementOutcome.SelectSingle(
-                            _db,
-                            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
-                            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
-                            SourceStructureKey: sdOutcome.SourceStructureKey,
-                            SourceResourceOrder: 0);
+                //if ((targetSd is null) ||
+                //    ((targetSd.Name == "Basic") && (sourceSd.Name != "Basic")))
+                //{
+                //    DbElementOutcome? rootElementOutcome = DbElementOutcome.SelectSingle(
+                //            _db,
+                //            SourceFhirPackageKey: igTr.PackagePair.SourcePackageKey,
+                //            TargetFhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                //            SourceStructureKey: sdOutcome.SourceStructureKey,
+                //            SourceResourceOrder: 0);
 
-                    if (rootElementOutcome is null)
-                    {
-                        throw new Exception($"First element outcome for source structure `{sourceSd.Name}` in package pair `{igTr.PackageId}` is not the root element");
-                    }
+                //    if (rootElementOutcome is null)
+                //    {
+                //        throw new Exception($"First element outcome for source structure `{sourceSd.Name}` in package pair `{igTr.PackageId}` is not the root element");
+                //    }
 
-                    // if this is a basic resource profile, it only needs the root extension
-                    addContentForBasicProfile(
-                        igTr,
-                        sourceSd,
-                        sdOutcome,
-                        rootElementOutcome,
-                        profileSd);
-                }
-                else
-                {
+                //    // if this is a basic resource profile, it only needs the root extension
+                //    addContentForBasicProfile(
+                //        igTr,
+                //        sourceSd,
+                //        sdOutcome,
+                //        rootElementOutcome,
+                //        profileSd);
+                //}
+                //else
+                //{
                     // add the content for a mapped resource
                     addContentForMappedProfile(
                         igTr,
@@ -1112,7 +1112,7 @@ public class StructureFhirExporter
                         targetSd,
                         sdOutcome,
                         profileSd);
-                }
+                //}
 
                 // write the profile to a file
                 string filename = sdOutcome.GenFileName ?? throw new ArgumentNullException(nameof(sdOutcome.GenFileName));
@@ -1140,7 +1140,7 @@ public class StructureFhirExporter
     private void addContentForMappedProfile(
         XVerIgExportTrackingRecord igTr,
         DbStructureDefinition sourceSd,
-        DbStructureDefinition targetSd,
+        DbStructureDefinition? targetSd,
         DbStructureOutcome sdOutcome,
         StructureDefinition profileSd)
     {
@@ -1157,10 +1157,16 @@ public class StructureFhirExporter
             .ToLookup(x => x.Context, x => x.Outcome);
 
         // we need to traverse the elements in the order of the target structure
-        List<DbElement> targetElements = DbElement.SelectList(
-            _db,
-            StructureKey: targetSd.Key,
-            orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
+        List<DbElement> targetElements = targetSd is null
+            ? DbElement.SelectList(
+                _db,
+                FhirPackageKey: igTr.PackagePair.TargetPackageKey,
+                Id: "Basic",
+                orderByProperties: [nameof(DbElement.ResourceFieldOrder)])
+            : DbElement.SelectList(
+                _db,
+                StructureKey: targetSd.Key,
+                orderByProperties: [nameof(DbElement.ResourceFieldOrder)]);
 
         if (targetElements.Count == 0)
         {
@@ -1173,16 +1179,39 @@ public class StructureFhirExporter
         // iterate over the elements and add to the differential as necessary
         foreach (DbElement targetEd in targetElements)
         {
+            // check to see if we are in the 'Basic.code' target element, which we need to profile
+            if ((targetEd.Id == "Basic.code") && (sourceSd.Name != "Basic"))
+            {
+                ElementDefinition basicCodeEd = new ElementDefinition()
+                {
+                    ElementId = "Basic.code",
+                    Path = "Basic.code",
+                    Pattern = new CodeableConcept("http://hl7.org/fhir/fhir-types", sourceSd.Id),
+                    Base = new ElementDefinition.BaseComponent()
+                    {
+                        Path = "Basic.code",
+                        Min = 1,
+                        Max = "*",
+                    }
+                };
+
+                // nothing else to do on code in this case
+                continue;
+            }
+
+            // skip any elements that do not have something to add
             if (!edOutcomeContextLookup.Contains(targetEd.Id))
             {
                 continue;
             }
 
             List<DbElementOutcome> targetEdOutcomes = edOutcomeContextLookup[targetEd.Id]
-                .Where(eo => eo.RequiresXVerDefinition ||
+                .Where(eo =>
+                    (eo.ExtensionDefinitionIsProhibited != true) &&
+                    (eo.RequiresXVerDefinition ||
                     (eo.ExtensionSubstitutionUrl is not null) ||
                     (eo.AlternateCanonicalTargetsLiteral is not null) ||
-                    (eo.AlternateReferenceTargetsLiteral is not null))
+                    (eo.AlternateReferenceTargetsLiteral is not null)))
                 .OrderBy(eo => eo.SourceResourceOrder)
                 .ToList();
 
@@ -1961,6 +1990,11 @@ public class StructureFhirExporter
                 continue;
             }
 
+            if (edOutcome.ExtensionDefinitionIsProhibited)
+            {
+                continue;
+            }
+
             List<StructureDefinition.ContextComponent> contexts = edOutcome.ExtensionContexts
                 .Select(c => new StructureDefinition.ContextComponent()
                 {
@@ -2342,6 +2376,11 @@ public class StructureFhirExporter
         bool excludeExtensionElement = false,
         string? elementUrlOverride = null)
     {
+        if (edOutcome.ExtensionDefinitionIsProhibited)
+        {
+            return;
+        }
+
         bool inTopLevel = extSd.Differential.Element.Count == 0;
 
         List<DbElementOutcomeTarget> edOutcomeTargets = DbElementOutcomeTarget.SelectList(

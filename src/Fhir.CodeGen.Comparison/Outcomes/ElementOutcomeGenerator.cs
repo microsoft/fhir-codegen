@@ -111,6 +111,9 @@ public class ElementOutcomeGenerator
     private readonly Dictionary<string, DbExtensionSubstitution> _extensionSubstitutionsByElementId;
     private readonly Dictionary<string, DbExtensionSubstitution> _typeExtensionSubstitutionsByUrl;
 
+    private readonly HashSet<string> _sourceResourceTypes;
+    private readonly HashSet<string> _targetResourceTypes;
+
     private DbRecordCache<DbElementOutcome> _edOutcomeCache;
     private DbRecordCache<DbElementOutcomeTarget> _edOutcomeTargetCache;
 
@@ -164,6 +167,18 @@ public class ElementOutcomeGenerator
         _edComparsionsBySourceStructureKey = _edComparisons.ToLookup(c => c.SourceStructureKey);
 
         _etcComparisonsBySourceElementKey = _etcComparisons.ToLookup(c => c.SourceElementKey);
+
+        _sourceResourceTypes = [];
+        foreach (DbStructureDefinition sd in DbStructureDefinition.SelectList(_db, FhirPackageKey: packagePair.SourcePackageKey, ArtifactClass: FhirArtifactClassEnum.Resource))
+        {
+            _sourceResourceTypes.Add(sd.Name);
+        }
+
+        _targetResourceTypes = [];
+        foreach (DbStructureDefinition sd in DbStructureDefinition.SelectList(_db, FhirPackageKey: packagePair.TargetPackageKey, ArtifactClass: FhirArtifactClassEnum.Resource))
+        {
+            _targetResourceTypes.Add(sd.Name);
+        }
 
         _targetBasicElementPathLookup = [];
         _targetBasicElementsById = [];
@@ -393,7 +408,8 @@ public class ElementOutcomeGenerator
                 ? $"Cross-version extension to represent the {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`"
                 : $"{_packagePair.SourceFhirSequence}: {sourceEd.Definition}";
 
-            bool requiresXVerDefinition = true;
+            // cannot generate extensions for root elements
+            bool requiresXVerDefinition = sourceEd.ResourceFieldOrder != 0;
 
             DbElementOutcome? parentOutcome = null;
 
@@ -484,6 +500,20 @@ public class ElementOutcomeGenerator
             bool requiresSliceDefinition = requiresXVerDefinition && (parentOutcome?.RequiresXVerDefinition ?? false);
             bool requiresExtensionDefinition = requiresXVerDefinition && !requiresSliceDefinition;
 
+            bool extensionDefinitionIsProhibited = false;
+            string? extensionProhibitionReason = null;
+
+            List<string> sourceDistinctTypes = sourceEd.DistinctTypes;
+
+            // check for invalid source types that cannot have extensions
+            if (sourceDistinctTypes.Contains("Resource") ||
+                sourceDistinctTypes.Any(v => _sourceResourceTypes.Contains(v)) ||
+                sourceDistinctTypes.Any(v => _targetResourceTypes.Contains(v)))
+            {
+                extensionDefinitionIsProhibited = true;
+                extensionProhibitionReason = $"Element is a resource type that cannot be represented via extensions.";
+            }
+
             // create the non-mapped element outcome
             DbElementOutcome elementOutcome = new()
             {
@@ -513,6 +543,9 @@ public class ElementOutcomeGenerator
                 TargetFhirSequence = _packagePair.TargetFhirSequence,
                 TotalTargetCount = 0,
                 OutcomeTargetCount = 1,
+
+                ExtensionDefinitionIsProhibited = extensionDefinitionIsProhibited,
+                ExtensionProhibitionReason = extensionProhibitionReason,
 
                 RequiresXVerDefinition = requiresXVerDefinition,
                 RequiresExtensionDefinition = requiresExtensionDefinition,
@@ -707,7 +740,9 @@ public class ElementOutcomeGenerator
             string? basicPath = null;
             DbElement? basicEd = null;
             DbExtensionSubstitution? extSubstitute = null;
-            bool elementRequiresXVer = (!edTr.IsFullyMappedAcrossAllTargets) && (sourceEd.ChildElementCount == 0);
+            bool elementRequiresXVer = (sourceEd.ResourceFieldOrder != 0) &&
+                (!edTr.IsFullyMappedAcrossAllTargets) &&
+                (sourceEd.ChildElementCount == 0);
             List<string> outcomeComments = [];
             List<string> outcomeNotes = [];
 
@@ -732,6 +767,8 @@ public class ElementOutcomeGenerator
             {
                 if (sourceIsRootEd)
                 {
+                    // we cannot generate extensions for root elements
+                    elementRequiresXVer = false;
                     sdTr.SourceRootElement = sourceEd;
 
                     if (sourceSd.ArtifactClass == FhirArtifactClassEnum.Resource)
@@ -744,11 +781,11 @@ public class ElementOutcomeGenerator
                             $" is representable via" +
                             $" FHIR {_packagePair.TargetFhirSequence} {tAC} `{tName}`.");
 
-                        if ((tName == "Basic") &&
-                            (sourceEd.Id != "Basic"))
-                        {
-                            elementRequiresXVer = true;
-                        }
+                        //if ((tName == "Basic") &&
+                        //    (sourceEd.Id != "Basic"))
+                        //{
+                        //    elementRequiresXVer = true;
+                        //}
                     }
                     else
                     {
@@ -1022,7 +1059,8 @@ public class ElementOutcomeGenerator
             }
 
             // check for no outcome target elements
-            if (!edTr.OutcomeTargets.Any(eot => eot.TargetElementId is not null))
+            if (!sourceIsRootEd &&
+                edTr.OutcomeTargets.All(eot => eot.TargetElementId is null))
             {
                 elementRequiresXVer = true;
             }
@@ -1537,14 +1575,28 @@ public class ElementOutcomeGenerator
             if (elementRequiresXVer &&
                 (allContextTargets.Count == 0))
             {
-                DbElement genericContextEd = DbElement.SelectSingle(
-                    _db,
-                    FhirPackageKey: _packagePair.TargetPackageKey,
-                    Id: "Element",
-                    ResourceFieldOrder: 0)
-                    ?? throw new Exception("Cannot find generic Element for context.");
+                if (targetStructures.Count == 1)
+                {
+                    DbElement sdRootContextEd = DbElement.SelectSingle(
+                        _db,
+                        FhirPackageKey: _packagePair.TargetPackageKey,
+                        Id: targetStructures.First(),
+                        ResourceFieldOrder: 0)
+                        ?? throw new Exception("Cannot find root element for context.");
 
-                allContextTargets[genericContextEd.Key] = genericContextEd;
+                    allContextTargets[sdRootContextEd.Key] = sdRootContextEd;
+                }
+                else
+                {
+                    DbElement genericContextEd = DbElement.SelectSingle(
+                        _db,
+                        FhirPackageKey: _packagePair.TargetPackageKey,
+                        Id: "Element",
+                        ResourceFieldOrder: 0)
+                        ?? throw new Exception("Cannot find generic Element for context.");
+
+                    allContextTargets[genericContextEd.Key] = genericContextEd;
+                }
             }
 
             if (sourceEd.IsDeprecated)
@@ -1555,6 +1607,19 @@ public class ElementOutcomeGenerator
             if (outcomeNotes.Count > 0)
             {
                 outcomeComments.AddRange(outcomeNotes);
+            }
+
+            bool extensionDefinitionIsProhibited = false;
+            string? extensionProhibitionReason = null;
+
+            // check for invalid source types that cannot have extensions
+            if (elementRequiresXVer &&
+                unmappedDistinctTypeNames.Contains("Resource") ||
+                unmappedDistinctTypeNames.Any(v => _sourceResourceTypes.Contains(v)) ||
+                unmappedDistinctTypeNames.Any(v => _targetResourceTypes.Contains(v)))
+            {
+                extensionDefinitionIsProhibited = true;
+                extensionProhibitionReason = $"Element is a resource type that cannot be represented via extensions.";
             }
 
             string outcomeComment = string.Join('\n', outcomeComments.Distinct());
@@ -1588,6 +1653,9 @@ public class ElementOutcomeGenerator
                 TargetFhirSequence = _packagePair.TargetFhirSequence,
                 TotalTargetCount = edTr.DiscreteTargetCount,
                 OutcomeTargetCount = edTr.OutcomeTargets.Count,
+
+                ExtensionDefinitionIsProhibited = extensionDefinitionIsProhibited,
+                ExtensionProhibitionReason = extensionProhibitionReason,
 
                 RequiresXVerDefinition = elementRequiresXVer,
                 RequiresExtensionDefinition = requiresExtensionDefinition,

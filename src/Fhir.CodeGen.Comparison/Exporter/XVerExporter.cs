@@ -54,7 +54,7 @@ public class XVerExporter
 
         _outputPath = config.OutputDirectory;
         _crossVersionSourcePath = string.IsNullOrEmpty(config.CrossVersionMapSourcePath) ? null : config.CrossVersionMapSourcePath;
-        _crossDefinitionVersion = string.IsNullOrEmpty(config.XverArtifactVersion) ? "0.0.1-snapshot-3" : config.XverArtifactVersion;
+        _crossDefinitionVersion = string.IsNullOrEmpty(config.XverArtifactVersion) ? "0.1.0" : config.XverArtifactVersion;
     }
 
     public void Export(

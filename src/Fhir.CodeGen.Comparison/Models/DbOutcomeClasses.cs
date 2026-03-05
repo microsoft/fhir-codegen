@@ -543,6 +543,9 @@ public partial class DbElementOutcome : DbArtifactOutcomeBase
     public required string? ContentReferenceAncestorId { get; set; }
     public required bool? RequiresDefinitionAsContentReference { get; set; }
 
+    public required bool ExtensionDefinitionIsProhibited { get; set; }
+    public required string? ExtensionProhibitionReason { get; set; }
+
     public required int? OutcomeTargetCount { get; set; }
 
     public required bool SourceIsModifier { get; set; }

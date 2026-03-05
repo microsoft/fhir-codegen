@@ -226,6 +226,27 @@ public class StructurePageExporter
         // iterate over the element outcomes that target this structure
         foreach (DbElementOutcome edOutcome in edOutcomes)
         {
+            if (edOutcome.SourceResourceOrder == 0)
+            {
+                mdWriter.WriteLine(
+                    $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
+                    $" | " +
+                    $" | " +
+                    $" |");
+                continue;
+            }
+
+            if (edOutcome.ExtensionDefinitionIsProhibited)
+            {
+                mdWriter.WriteLine(
+                    $"| [`{edOutcome.SourceId}`]({sourceBaseUrl}{sdOutcome.SourceName}.html#resource)" +
+                    $" | <i>Not Available</i>" +
+                    $" | {edOutcome.ExtensionProhibitionReason?.ForMdTable()}" +
+                    $" |");
+
+                continue;
+            }
+
             List<string> targetLines = [];
             HashSet<string> usedLinks = [];
 
