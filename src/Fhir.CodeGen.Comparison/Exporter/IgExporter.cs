@@ -30,6 +30,9 @@ public class IgExporter
         public List<ValidationIgExportTrackingRecord> ValidationIgs { get; set; } = [];
     }
 
+    public record struct EdOutcomeMapTargetRecord(
+        string sdCanonical, string elementPath);
+
     public class XVerIgExportTrackingRecord
     {
         public required FhirPackageComparisonPair PackagePair { get; set; }
@@ -56,6 +59,8 @@ public class IgExporter
 
         public string? ExtensionDir { get; set; } = null;
         public List<XVerIgFileRecord> ExtensionFiles { get; set; } = [];
+
+        public Dictionary<int, List<EdOutcomeMapTargetRecord>> EdOutcomeMapTargets { get; set;} = [];
 
         public string? ProfileDir { get; set; } = null;
         public List<XVerIgFileRecord> ProfileFiles { get; set; } = [];
