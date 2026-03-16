@@ -666,13 +666,54 @@ public class IgExporter
 
     public void FinalizeXVerIgs(XVerExportTrackingRecord tr)
     {
-        // iterate over the IGs
+        // iterate over the component IGs
         foreach (XVerIgExportTrackingRecord igTr in tr.XVerIgs)
         {
             writeIgIni(igTr.IgRootDir!, igTr.PackageId);
             writeIgJson(igTr);
             writeMenuXml(igTr);
         }
+
+        // iterate over the validation IGs
+        foreach (ValidationIgExportTrackingRecord vTr in tr.ValidationIgs)
+        {
+            writeIgIni(vTr.IgRootDir!, vTr.PackageId);
+            writeIgJson(vTr);
+            writeMenuXml(vTr);
+        }
+    }
+
+    private void writeMenuXml(ValidationIgExportTrackingRecord vTr)
+    {
+        string contents = $$$"""
+            <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+              <li>
+                <a href="toc.html">Contents</a>
+              </li>
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li class="dropdown">
+                <a data-toggle="dropdown" href="#" class="dropdown-toggle">Support
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="downloads.html">Downloads</a>
+                  </li>
+                  <li>
+                    <a href="changelog.html">Change Log</a>
+                  </li>
+                  <li>
+                    <a href="https://confluence.hl7.org/spaces/FHIRI/pages/413256623/FAQs">FAQs</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            """;
+
+        string filename = Path.Combine(vTr.IncludesDir!, "menu.xml");
+        File.WriteAllText(filename, contents);
     }
 
     private void writeMenuXml(XVerIgExportTrackingRecord igTr)
@@ -715,8 +756,241 @@ public class IgExporter
 
         string filename = Path.Combine(igTr.IncludesDir!, "menu.xml");
         File.WriteAllText(filename, contents);
-
     }
+
+    private void writeIgJson(ValidationIgExportTrackingRecord vTr)
+    {
+        switch (vTr.Package.DefinitionFhirSequence)
+        {
+            case FhirReleases.FhirSequenceCodes.DSTU2:
+            case FhirReleases.FhirSequenceCodes.STU3:
+            case FhirReleases.FhirSequenceCodes.R4:
+            case FhirReleases.FhirSequenceCodes.R4B:
+                writeIgJsonR4(vTr);
+                break;
+
+            case FhirReleases.FhirSequenceCodes.R5:
+            case FhirReleases.FhirSequenceCodes.R6:
+                writeIgJsonR5(vTr);
+                break;
+        }
+    }
+
+    private void writeIgJsonR4(ValidationIgExportTrackingRecord vTr)
+    {
+        HashSet<string> skipPages = [
+            "index",
+            "lookup-sd",
+            "lookup-vs",
+            "downloads",
+            "changelog",
+        ];
+
+        StringBuilder pageBuilder = new();
+        pageBuilder.AppendLine(""" "page" : """);
+        pageBuilder.AppendLine("""  { "nameUrl" : "index.html", "title" : "Home", "generation" : "markdown" , "page" : [ """);
+        //pageBuilder.AppendLine("""  { "nameUrl" : "faqs.html", "title" : "FAQs", "generation" : "markdown" },""");
+
+        pageBuilder.AppendLine("""  { "nameUrl" : "downloads.html", "title" : "Downloads", "generation" : "markdown" },""");
+        pageBuilder.AppendLine("""  { "nameUrl" : "changelog.html", "title" : "Change Log", "generation" : "markdown" }""");
+
+        pageBuilder.AppendLine("""]},""");  // close index
+
+        string igParams = string.Join(",\n", _xverIgParameters.Select(cv =>
+            $$$"""    { "code" : "{{{cv.Code}}}", "value" : "{{{cv.Value}}}" }"""));
+
+        List<string> deps = _xverDependencies
+            .Where(d => d.NeededForPublisher)
+            .Select(d => d.AsJsonIgDependency(vTr.Package.DefinitionFhirSequence))
+            .ToList();
+
+        string dependencies = deps.Count == 0
+            ? string.Empty
+            : $$$"""
+                "dependsOn" : [
+                {{{string.Join(",\n", deps)}}}
+                ],
+                """;
+
+        string igJson = $$$"""
+            {
+              "resourceType" : "ImplementationGuide",
+              "id" : "{{{vTr.PackageId}}}",
+              "extension" : [{
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                "valueCode" : "trial-use"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                "valueCode" : "fhir"
+              },
+              {
+                "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+                "valueInteger" : 0
+              }],
+              "url" : "http://hl7.org/fhir/uv/xver/ImplementationGuide/{{{vTr.PackageId}}}",
+              "version" : "{{{_exporter._crossDefinitionVersion}}}",
+              "name" : "{{{FhirSanitizationUtils.ReformatIdForName(vTr.PackageId)}}}",
+              "title" : "Validation package consolidating extensions for Using Data Elements in FHIR {{{vTr.Package.DefinitionFhirSequence}}}",
+              "status" : "active",
+              "date" : "{{{_exporter._runTime.ToString("O")}}}",
+              "publisher" : "{{{CommonDefinitions.WorkgroupNames["fhir"]}}}",
+              "contact" : [{
+                "name" : "{{{CommonDefinitions.WorkgroupNames["fhir"]}}}",
+                "telecom" : [{
+                  "system" : "url",
+                  "value" : "{{{CommonDefinitions.WorkgroupUrls["fhir"]}}}"
+                }]
+              }],
+              "description" : "Cross Version Extensions to in FHIR {{{vTr.Package.DefinitionFhirSequence}}}",
+              "jurisdiction" : [{
+                "coding" : [{
+                  "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                  "code" : "001",
+                  "display" : "World"
+                }]
+              }],
+              "packageId" : "{{{vTr.PackageId}}}",
+              "license" : "{{{EnumUtility.GetLiteral(ImplementationGuide.SPDXLicense.CC01_0)}}}",
+              "fhirVersion" : ["{{{vTr.Package.PackageVersion}}}"],
+              {{{dependencies}}}
+              "definition" : {
+                {{{pageBuilder.ToString()}}}
+                "parameter" : [
+                {{{igParams}}}
+                ]
+              }
+            }
+            """;
+
+        string filename = Path.Combine(vTr.InputDir!, $"ig-{vTr.PackageId}.json");
+        File.WriteAllText(filename, igJson);
+    }
+
+
+    private void writeIgJsonR5(ValidationIgExportTrackingRecord vTr)
+    {
+        List<ImplementationGuide.DependsOnComponent> deps = _xverDependencies
+            .Where(d => d.NeededForPublisher)
+            .Select(d => d.AsIgDependsOn(vTr.Package.DefinitionFhirSequence))
+            .ToList();
+
+        HashSet<string> skipPages = [
+            "index",
+            "lookup-sd",
+            "lookup-vs",
+            "downloads",
+            "changelog",
+        ];
+
+        ImplementationGuide.PageComponent igPage = new()
+        {
+            Source = new FhirUrl("index.md"),
+            Name = "index.html",
+            Title = "Home",
+            Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+            Page = [
+                new()
+                {
+                    Source = new FhirUrl("downloads.md"),
+                    Name = "downloads.html",
+                    Title = "Downloads",
+                    Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+
+                },
+                new()
+                {
+                    Source = new FhirUrl("changelog.md"),
+                    Name = "changelog.html",
+                    Title = "Change Log",
+                    Generation = ImplementationGuide.GuidePageGeneration.Markdown,
+                }
+            ],
+        };
+
+        List<ImplementationGuide.ParameterComponent> igParams = _xverIgParameters
+            .Select(cv => new ImplementationGuide.ParameterComponent
+            {
+                Code = new Coding()
+                {
+                    System = "http://hl7.org/fhir/tools/CodeSystem/ig-parameters",
+                    Code = cv.Code,
+                },
+                Value = cv.Value,
+            })
+            .ToList();
+
+
+        ImplementationGuide ig = new()
+        {
+            Id = vTr.PackageId,
+            Extension = [
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+                    Value = new Code("trial-use"),
+                },
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+                    Value = new Code("fhir"),
+                },
+                new()
+                {
+                    Url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+                    Value = new Integer(0),
+                }
+            ],
+            Url = $"http://hl7.org/fhir/uv/xver/ImplementationGuide/{vTr.PackageId}",
+            Version = _exporter._crossDefinitionVersion,
+            Name = FhirSanitizationUtils.ReformatIdForName(vTr.PackageId),
+            Title = $"Validation package consolidating extensions for Using Data Elements in FHIR {vTr.Package.DefinitionFhirSequence}",
+            Status = PublicationStatus.Active,
+            Date = _exporter._runTime.ToString("O"),
+            Publisher = CommonDefinitions.WorkgroupNames["fhir"],
+            Contact = [
+                new()
+                {
+                    Name = CommonDefinitions.WorkgroupNames["fhir"],
+                    Telecom = [
+                        new()
+                        {
+                            System = ContactPoint.ContactPointSystem.Url,
+                            Value = CommonDefinitions.WorkgroupUrls["fhir"],
+                        },
+                    ],
+                }
+            ],
+            Description = $"Cross Version Extensions to in FHIR {vTr.Package.DefinitionFhirSequence}",
+            Jurisdiction = [
+                new()
+                {
+                    Coding = [
+                        new()
+                        {
+                            System = "http://unstats.un.org/unsd/methods/m49/m49.htm",
+                            Code = "001",
+                            Display = "World",
+                        }
+                    ],
+                }
+            ],
+            PackageId = vTr.PackageId,
+            License = ImplementationGuide.SPDXLicense.CC01_0,
+            FhirVersion = [EnumUtility.ParseLiteral<FHIRVersion>(vTr.Package.PackageVersion) ?? FHIRVersion.N5_0_0],
+            DependsOn = deps,
+            Definition = new()
+            {
+                Resource = [],
+                Page = igPage,
+                Parameter = igParams,
+            }
+        };
+
+        string filename = Path.Combine(vTr.InputDir!, $"ig-{vTr.PackageId}.json");
+        File.WriteAllText(filename, ig.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+    }
+
 
     private void writeIgJson(XVerIgExportTrackingRecord igTr)
     {
