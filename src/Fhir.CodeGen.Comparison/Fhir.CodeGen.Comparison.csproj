@@ -49,6 +49,9 @@
 
   <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
     <ItemGroup>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.STU3'">
+        <Aliases>coreR3</Aliases>
+      </ReferencePath>
       <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4'">
         <Aliases>coreR4</Aliases>
       </ReferencePath>

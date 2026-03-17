@@ -58,6 +58,11 @@ public class VocabularyFhirExporter
 
     private void exportConceptMaps(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.ConceptMapToR3? exporterR3 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R4)
+            ? new()
+            : null;
+
         CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
             (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
@@ -149,7 +154,11 @@ public class VocabularyFhirExporter
                 // write the concept map to a file
                 string filename = vsOutcome.ConceptMapFileName ?? throw new ArgumentNullException(nameof(vsOutcome.ConceptMapFileName));
                 string path = Path.Combine(dir, filename + ".json");
-                if (exporterR4 is not null)
+                if (exporterR3 is not null)
+                {
+                    File.WriteAllText(path, exporterR3.ToJson(vsCm, new SerializerSettings() { Pretty = true }));
+                }
+                else if (exporterR4 is not null)
                 {
                     File.WriteAllText(path, exporterR4.ToJson(vsCm, new SerializerSettings() { Pretty = true }));
                 }
@@ -357,6 +366,11 @@ public class VocabularyFhirExporter
 
     private void exportValueSets(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.ValueSetToR3? exporterR3 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R4)
+            ? new()
+            : null;
+
         if (igTr.VocabularyDir is null)
         {
             throw new Exception("VocabularyDir is null");
@@ -692,7 +706,15 @@ public class VocabularyFhirExporter
             // write the code system to a file
             string filename = vsOutcome.GenFileName ?? throw new ArgumentNullException(nameof(vsOutcome.GenFileName));
             string path = Path.Combine(dir, filename + ".json");
-            File.WriteAllText(path, fhirVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            
+            if (exporterR3 is not null)
+            {
+                File.WriteAllText(path, exporterR3.ToJson(fhirVs, new SerializerSettings() { Pretty = true }));
+            }
+            else
+            {
+                File.WriteAllText(path, fhirVs.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            }
 
             exported.Add(new()
             {

@@ -254,6 +254,11 @@ public class StructureFhirExporter
 
     private void exportElementMaps(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.ConceptMapToR3? exporterR3 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R4)
+            ? new()
+            : null;
+
         CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
             (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
@@ -309,7 +314,11 @@ public class StructureFhirExporter
             string filename = sdOutcomes.First().ElementConceptMapFileName
                 ?? throw new Exception($"Failed to write concept map for {sourceSd.VersionedUrl} to {igTr.PackagePair.TargetPackageShortName}");
             string path = Path.Combine(dir, filename + ".json");
-            if (exporterR4 is not null)
+            if (exporterR3 is not null)
+            {
+                File.WriteAllText(path, exporterR3.ToJson(edCm, new SerializerSettings() { Pretty = true }));
+            }
+            else if (exporterR4 is not null)
             {
                 File.WriteAllText(path, exporterR4.ToJson(edCm, new SerializerSettings() { Pretty = true }));
             }
@@ -928,6 +937,11 @@ public class StructureFhirExporter
 
     private void exportResourceMaps(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.ConceptMapToR3? exporterR3 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R4)
+            ? new()
+            : null;
+
         CrossVersionExporter.ConceptMapToR4? exporterR4 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
             (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R5)
             ? new()
@@ -1024,7 +1038,11 @@ public class StructureFhirExporter
             filename = cm.Id;
         }
         string path = Path.Combine(dir, filename + ".json");
-        if (exporterR4 is not null)
+        if (exporterR3 is not null)
+        {
+            File.WriteAllText(path, exporterR3.ToJson(cm, new SerializerSettings() { Pretty = true }));
+        }
+        else if (exporterR4 is not null)
         {
             File.WriteAllText(path, exporterR4.ToJson(cm, new SerializerSettings() { Pretty = true }));
         }
@@ -1089,6 +1107,11 @@ public class StructureFhirExporter
 
     private void exportProfiles(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.StructureDefinitionToR3? exporterR3 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R4)
+            ? new()
+            : null;
+
         if (igTr.ProfileDir is null)
         {
             throw new Exception("ProfileDir is null");
@@ -1175,7 +1198,16 @@ public class StructureFhirExporter
                 // write the profile to a file
                 string filename = sdOutcome.GenFileName ?? throw new ArgumentNullException(nameof(sdOutcome.GenFileName));
                 string path = Path.Combine(dir, filename + ".json");
-                File.WriteAllText(path, profileSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+
+                if (exporterR3 is not null)
+                {
+                    File.WriteAllText(path, exporterR3.ToJson(profileSd, new SerializerSettings() { Pretty = true }));
+                }
+                else
+                {
+                    File.WriteAllText(path, profileSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+                }
+
                 exported.Add(new()
                 {
                     FileName = filename + ".json",
@@ -1964,6 +1996,11 @@ public class StructureFhirExporter
 
     private void exportExtensions(XVerIgExportTrackingRecord igTr)
     {
+        CrossVersionExporter.StructureDefinitionToR3? exporterR3 = (_exporter._versionSpecificExport == XVerExporter.VersionSpecificExportCodes.TargetVersion) &&
+            (igTr.PackagePair.TargetFhirSequence < FhirReleases.FhirSequenceCodes.R4)
+            ? new()
+            : null;
+
         if (igTr.ExtensionDir is null)
         {
             throw new Exception("ExtensionDir is null");
@@ -2089,7 +2126,15 @@ public class StructureFhirExporter
             // write the extension to a file
             string filename = edOutcome.GenFileName ?? throw new ArgumentNullException(nameof(edOutcome.GenFileName));
             string path = Path.Combine(dir, filename + ".json");
-            File.WriteAllText(path, extSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+
+            if (exporterR3 is not null)
+            {
+                File.WriteAllText(path, exporterR3.ToJson(extSd, new SerializerSettings() { Pretty = true }));
+            }
+            else
+            {
+                File.WriteAllText(path, extSd.ToJson(new FhirJsonSerializationSettings() { Pretty = true }));
+            }
 
             exported.Add(new()
             {

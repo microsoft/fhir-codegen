@@ -12,11 +12,14 @@
     <PackageReference Include="Hl7.Fhir.R5" Version="5.13.1" />
     <PackageReference Include="Hl7.Fhir.R4" Version="5.13.1" />
     <!--<PackageReference Include="Hl7.Fhir.R4B" Version="5.13.1" />-->
-    <!--<PackageReference Include="Hl7.Fhir.STU3" Version="5.13.1" />-->
+    <PackageReference Include="Hl7.Fhir.STU3" Version="5.13.1" />
   </ItemGroup>
 
   <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
     <ItemGroup>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.STU3'">
+        <Aliases>coreR3</Aliases>
+      </ReferencePath>
       <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4'">
         <Aliases>coreR4</Aliases>
       </ReferencePath>

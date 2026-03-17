@@ -49,4 +49,22 @@
     <ProjectReference Include="..\Fhir.CodeGen.Lib\Fhir.CodeGen.Lib.csproj" />
     <ProjectReference Include="..\Fhir.CodeGen.Comparison\Fhir.CodeGen.Comparison.csproj" />
   </ItemGroup>
+
+  <Target Name="AddPackageAliases" BeforeTargets="ResolveReferences" Outputs="%(PackageReference.Identity)">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.STU3'">
+        <Aliases>coreR3</Aliases>
+      </ReferencePath>
+      <ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4'">
+        <Aliases>coreR4</Aliases>
+      </ReferencePath>
+      <!--<ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R4B.Core'">
+        <Aliases>coreR4B</Aliases>
+      </ReferencePath>-->
+      <!--<ReferencePath Condition="'%(FileName)'=='Hl7.Fhir.R5'">
+        <Aliases>coreR5</Aliases>
+      </ReferencePath>-->
+    </ItemGroup>
+  </Target>
+
 </Project>
