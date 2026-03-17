@@ -12,6 +12,7 @@ using Fhir.CodeGen.Common.FhirExtensions;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
 using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Lib.Configuration;
 using Fhir.CodeGen.Lib.Language;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
@@ -529,6 +530,8 @@ public class IgExporter
 
     private readonly IDbConnection _db;
 
+    private HashSet<FhirReleases.FhirSequenceCodes> _allowedExportVersions = [];
+
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
 
@@ -545,7 +548,8 @@ public class IgExporter
         ILoggerFactory loggerFactory,
         string outputPath,
         string? crossVersionSourcePath,
-        XVerExporter exporter)
+        XVerExporter exporter,
+        ConfigXVer config)
 
     {
         _loggerFactory = loggerFactory;
@@ -561,6 +565,36 @@ public class IgExporter
         }
 
         _exporter = exporter;
+
+        if (config.ExportR2)
+        {
+            _allowedExportVersions.Add(FhirReleases.FhirSequenceCodes.DSTU2);
+        }
+
+        if (config.ExportR3)
+        {
+            _allowedExportVersions.Add(FhirReleases.FhirSequenceCodes.STU3);
+        }
+
+        if (config.ExportR4)
+        {
+            _allowedExportVersions.Add(FhirReleases.FhirSequenceCodes.R4);
+        }
+
+        if (config.ExportR4B)
+        {
+            _allowedExportVersions.Add(FhirReleases.FhirSequenceCodes.R4B);
+        }
+
+        if (config.ExportR5)
+        {
+            _allowedExportVersions.Add(FhirReleases.FhirSequenceCodes.R5);
+        }
+
+        if (config.ExportR6)
+        {
+            _allowedExportVersions.Add(FhirReleases.FhirSequenceCodes.R6);
+        }
 
         // load any support files
         loadIgParams();
@@ -597,13 +631,15 @@ public class IgExporter
         }
     }
 
+
+
     public XVerExportTrackingRecord CreateInitialXVerIgs(
         bool includeScripts = true,
         int? maxStepSize = null,
         HashSet<(FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t)>? specificPairs = null)
     {
         XVerExportTrackingRecord tr = new();
-
+        
         // get the list of packages
         _packages = DbFhirPackage.SelectList(_db, orderByProperties: [nameof(DbFhirPackage.PackageVersion)]);
 
@@ -618,15 +654,16 @@ public class IgExporter
                 DbFhirPackage sourcePackage = _packages[i];
                 DbFhirPackage targetPackage = _packages[i + stepSize];
 
-                if ((specificPairs is null) ||
-                    specificPairs.Contains((sourcePackage.DefinitionFhirSequence, targetPackage.DefinitionFhirSequence)))
+                if (_allowedExportVersions.Contains(targetPackage.DefinitionFhirSequence) &&
+                    ((specificPairs is null) ||
+                        specificPairs.Contains((sourcePackage.DefinitionFhirSequence, targetPackage.DefinitionFhirSequence))))
                 {
                     packagePairs.Add(new(sourcePackage, targetPackage));
                 }
 
-
-                if ((specificPairs is null) ||
-                    specificPairs.Contains((targetPackage.DefinitionFhirSequence, sourcePackage.DefinitionFhirSequence)))
+                if (_allowedExportVersions.Contains(sourcePackage.DefinitionFhirSequence) &&
+                    ((specificPairs is null) ||
+                    specificPairs.Contains((targetPackage.DefinitionFhirSequence, sourcePackage.DefinitionFhirSequence))))
                 {
                     packagePairs.Add(new(targetPackage, sourcePackage));
                 }
@@ -645,7 +682,10 @@ public class IgExporter
             targetFhirVersions = [];
             foreach ((FhirReleases.FhirSequenceCodes s, FhirReleases.FhirSequenceCodes t) in specificPairs)
             {
-                targetFhirVersions.Add(t);
+                if (_allowedExportVersions.Contains(t))
+                {
+                    targetFhirVersions.Add(t);
+                }
             }
         }
 
@@ -654,6 +694,11 @@ public class IgExporter
         {
             if ((targetFhirVersions is not null) &&
                 !targetFhirVersions.Contains(package.DefinitionFhirSequence))
+            {
+                continue;
+            }
+
+            if (!_allowedExportVersions.Contains(package.DefinitionFhirSequence))
             {
                 continue;
             }
@@ -677,10 +722,31 @@ public class IgExporter
         // iterate over the validation IGs
         foreach (ValidationIgExportTrackingRecord vTr in tr.ValidationIgs)
         {
+            writeValidationExampleBundle(vTr);
             writeIgIni(vTr.IgRootDir!, vTr.PackageId);
             writeIgJson(vTr);
             writeMenuXml(vTr);
         }
+    }
+
+    private void writeValidationExampleBundle(ValidationIgExportTrackingRecord vTr)
+    {
+        string dir = Path.Combine(vTr.InputDir!, "resources");
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+
+        string json = $$$"""
+            {
+                "resourceType": "Bundle",
+                "id": "bundle-placeholder",
+                "type": "collection"
+            }
+            """;
+
+        string filename = Path.Combine(dir, "bundle-placeholder.json");
+        File.WriteAllText(filename, json);
     }
 
     private void writeMenuXml(ValidationIgExportTrackingRecord vTr)
@@ -786,6 +852,17 @@ public class IgExporter
             "changelog",
         ];
 
+        List<string> resourceDefinitions = [];
+        resourceDefinitions.Add($$$"""
+                {
+                    "reference" : {
+                        "reference" : "Bundle/bundle-placeholder"
+                    },
+                    "name" : "bundle-placeholder",
+                    "description" : "Placeholder Bundle since an artifact is required to package."
+                }
+            """);
+
         StringBuilder pageBuilder = new();
         pageBuilder.AppendLine(""" "page" : """);
         pageBuilder.AppendLine("""  { "nameUrl" : "index.html", "title" : "Home", "generation" : "markdown" , "page" : [ """);
@@ -856,6 +933,9 @@ public class IgExporter
               {{{dependencies}}}
               "definition" : {
                 {{{pageBuilder.ToString()}}}
+                "resource" : [
+                {{{string.Join("\n,  ", resourceDefinitions)}}}
+                ],
                 "parameter" : [
                 {{{igParams}}}
                 ]
@@ -981,7 +1061,14 @@ public class IgExporter
             DependsOn = deps,
             Definition = new()
             {
-                Resource = [],
+                Resource = [
+                    new()
+                    {
+                        Reference = new ResourceReference("Bundle/bundle-placeholder"),
+                        Name = "bundle-placeholder",
+                        Description = "Placeholder Bundle since an artifact is required to package.",
+                    }
+                    ],
                 Page = igPage,
                 Parameter = igParams,
             }

@@ -132,6 +132,120 @@ public class ConfigXVer : ConfigRoot
     };
 
     [ConfigOption(
+        ArgName = "--export-r2",
+        EnvName = "Export_R2",
+        ArgArity = "0..1",
+        Description = "Set to export DSTU2 artifacts from the comparison database.")]
+    public bool ExportR2 { get; set; } = false;
+
+    private static ConfigurationOption ExportR2Parameter => new()
+    {
+        Name = "Export_R2",
+        EnvVarName = "Export_R2",
+        DefaultValue = false,
+        CliOption = new System.CommandLine.Option<bool>("--export-r2", "Set to export DSTU2 artifacts from the comparison database.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--export-r3",
+        EnvName = "Export_R3",
+        ArgArity = "0..1",
+        Description = "Set to export STU3 artifacts from the comparison database.")]
+    public bool ExportR3 { get; set; } = true;
+
+    private static ConfigurationOption ExportR3Parameter => new()
+    {
+        Name = "Export_R3",
+        EnvVarName = "Export_R3",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--export-r3", "Set to export STU3 artifacts from the comparison database.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--export-r4",
+        EnvName = "Export_R4",
+        ArgArity = "0..1",
+        Description = "Set to export R4 artifacts from the comparison database.")]
+    public bool ExportR4 { get; set; } = true;
+
+    private static ConfigurationOption ExportR4Parameter => new()
+    {
+        Name = "Export_R4",
+        EnvVarName = "Export_R4",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--export-r4", "Set to export R4 artifacts from the comparison database.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--export-r4b",
+        EnvName = "Export_R4B",
+        ArgArity = "0..1",
+        Description = "Set to export R4B artifacts from the comparison database.")]
+    public bool ExportR4B { get; set; } = true;
+
+    private static ConfigurationOption ExportR4BParameter => new()
+    {
+        Name = "Export_R4B",
+        EnvVarName = "Export_R4B",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--export-r4b", "Set to export R4B artifacts from the comparison database.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--export-r5",
+        EnvName = "Export_R5",
+        ArgArity = "0..1",
+        Description = "Set to export R5 artifacts from the comparison database.")]
+    public bool ExportR5 { get; set; } = true;
+
+    private static ConfigurationOption ExportR5Parameter => new()
+    {
+        Name = "Export_R5",
+        EnvVarName = "Export_R5",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--export-r5", "Set to export R5 artifacts from the comparison database.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
+        ArgName = "--export-r6",
+        EnvName = "Export_R6",
+        ArgArity = "0..1",
+        Description = "Set to export R6 artifacts from the comparison database.")]
+    public bool ExportR6 { get; set; } = true;
+
+    private static ConfigurationOption ExportR6Parameter => new()
+    {
+        Name = "Export_R6",
+        EnvVarName = "Export_R6",
+        DefaultValue = true,
+        CliOption = new System.CommandLine.Option<bool>("--export-r6", "Set to export R6 artifacts from the comparison database.")
+        {
+            Arity = System.CommandLine.ArgumentArity.ZeroOrOne,
+            IsRequired = false,
+        },
+    };
+
+    [ConfigOption(
         ArgName = "--xver-version",
         EnvName = "Xver_Artifact_Version",
         ArgArity = "0..1",
@@ -336,6 +450,12 @@ public class ConfigXVer : ConfigRoot
         CrossVersionMapSourcePathParameter,
         CrossVersionMapDestinationPathParameter,
         UseInternalTypeMapsParameter,
+        ExportR2Parameter,
+        ExportR3Parameter,
+        ExportR4Parameter,
+        ExportR4BParameter,
+        ExportR5Parameter,
+        ExportR6Parameter,
     ];
 
     /// <summary>Gets the array of configuration options.</summary>
@@ -442,6 +562,24 @@ public class ConfigXVer : ConfigRoot
                     break;
                 case "Use_Internal_Type_Maps":
                     UseInternalTypeMaps = GetOpt(parseResult, opt, UseInternalTypeMaps);
+                    break;
+                case "Export_R2":
+                    ExportR2 = GetOpt(parseResult, opt, ExportR2);
+                    break;
+                case "Export_R3":
+                    ExportR3 = GetOpt(parseResult, opt, ExportR3);
+                    break;
+                case "Export_R4":
+                    ExportR4 = GetOpt(parseResult, opt, ExportR4);
+                    break;
+                case "Export_R4B":
+                    ExportR4B = GetOpt(parseResult, opt, ExportR4B);
+                    break;
+                case "Export_R5":
+                    ExportR5 = GetOpt(parseResult, opt, ExportR5);
+                    break;
+                case "Export_R6":
+                    ExportR6 = GetOpt(parseResult, opt, ExportR6);
                     break;
             }
         }

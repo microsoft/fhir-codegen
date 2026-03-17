@@ -31,6 +31,8 @@ public class XVerExporter
 
     private readonly IDbConnection _db;
 
+    private ConfigXVer _config;
+
     private ILoggerFactory _loggerFactory;
     private ILogger _logger;
 
@@ -51,6 +53,7 @@ public class XVerExporter
         _logger = _loggerFactory.CreateLogger<XVerExporter>();
 
         _db = db;
+        _config = config;
 
         _outputPath = config.OutputDirectory;
         _crossVersionSourcePath = string.IsNullOrEmpty(config.CrossVersionMapSourcePath) ? null : config.CrossVersionMapSourcePath;
@@ -70,7 +73,8 @@ public class XVerExporter
             _loggerFactory,
             _outputPath,
             _crossVersionSourcePath,
-            this);
+            this,
+            _config);
 
         IgExporter.XVerExportTrackingRecord tr = igExporter.CreateInitialXVerIgs(
             includeIgScripts,
