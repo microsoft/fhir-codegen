@@ -492,7 +492,46 @@ public class VocabularyFhirExporter
                 BindingValueSetKey: sourceVs.Key,
                 orderByProperties: [nameof(DbElement.Id)]);
 
-            string? purpose = null;
+            string nonGeneratedOutcomeText;
+            if (nonGeneratedConceptOutcomes.Count == 0)
+            {
+                nonGeneratedOutcomeText = "Note that all concepts are included in this cross-version definition because no concepts have compatible representations";
+            }
+            else if (nonGeneratedConceptOutcomes.Count <= 10)
+            {
+                nonGeneratedOutcomeText = "The following concepts are not included in this cross-version definition because they have valid representations:\n" +
+                    $"\n* {string.Join("\n* ", nonGeneratedConceptOutcomes.Select(nco => $"`{nco.SourceSystem}#{nco.SourceCode}`"))}";
+            }
+            else
+            {
+                nonGeneratedOutcomeText = $"Note that there are {nonGeneratedConceptOutcomes.Count} concepts not included in this cross-version definition because they have valid representations.";
+            }
+
+            string techComments;
+            if (vsOutcome.Comments.Length < 1000)
+            {
+                techComments = vsOutcome.Comments;
+            }
+            else
+            {
+                techComments = vsOutcome.Comments[..1000];
+                int trimIndex = techComments.LastIndexOf('\n');
+                if (trimIndex == -1)
+                {
+                    trimIndex = techComments.LastIndexOf(' ');
+                }
+
+                if (trimIndex == -1)
+                {
+                    techComments = techComments + "...";
+                }
+                else
+                {
+                    techComments = techComments[..trimIndex] + "...";
+                }
+            }
+
+            string ? purpose = null;
             if ((igTr.PackagePair.Distance == 1) ||
                 (vsOutcome.ValueSetComparisonKey is null))
             {
@@ -504,13 +543,10 @@ public class VocabularyFhirExporter
                     The source value set is bound to the following FHIR {{{igTr.PackagePair.SourceFhirSequence}}} elements:
                     * {{{string.Join("\n* ", sourceVsBoundElements.Select(ed => $"`{ed.Id}`"))}}}
 
-                    The following concepts are not included in this cross-version definition because they have valid representations
-                    * {{{(nonGeneratedConceptOutcomes.Count == 0
-                        ? "_no concepts_"
-                        : string.Join("\n* ", nonGeneratedConceptOutcomes.Select(nco => $"`{nco.SourceSystem}#{nco.SourceCode}`")))}}}
+                    {{{nonGeneratedOutcomeText}}}
 
                     Following are the generation technical comments:
-                    {{{vsOutcome.Comments}}}
+                    {{{techComments}}}
                     """;
             }
             else
@@ -556,13 +592,10 @@ public class VocabularyFhirExporter
                     Across FHIR versions, the value set has been mapped as:
                     {{{mappingTrace}}}
 
-                    The following concepts are not included in this cross-version definition because they have valid representations
-                    * {{{(nonGeneratedConceptOutcomes.Count == 0
-                        ? "_no concepts_"
-                        : string.Join("\n* ", nonGeneratedConceptOutcomes.Select(nco => $"`{nco.SourceSystem}#{nco.SourceCode}`")))}}}
+                    {{{nonGeneratedOutcomeText}}}
 
                     Following are the generation technical comments:
-                    {{{vsOutcome.Comments}}}
+                    {{{techComments}}}
                     """;
             }
 
