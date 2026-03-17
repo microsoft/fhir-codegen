@@ -343,300 +343,300 @@ public class ElementOutcomeGenerator
         return true;
     }
 
-    public void ProcessNoMapStructure(
-        DbStructureDefinition sourceSd,
-        DbStructureOutcome sdOutcome)
-    {
-        if (sourceSd.ArtifactClass == Common.Models.FhirArtifactClassEnum.PrimitiveType)
-        {
-            return;
-        }
+    //public void ProcessNoMapStructure(
+    //    DbStructureDefinition sourceSd,
+    //    DbStructureOutcome sdOutcome)
+    //{
+    //    if (sourceSd.ArtifactClass == Common.Models.FhirArtifactClassEnum.PrimitiveType)
+    //    {
+    //        return;
+    //    }
 
-        // get the elements of this structure, but filter out elements we should ignore
-        List<DbElement> sourceElements = _allSourceElementsBySdKey[sourceSd.Key]
-            .Where(ed => !skipElement(ed, skipFirstElement: false))
-            .ToList();
+    //    // get the elements of this structure, but filter out elements we should ignore
+    //    List<DbElement> sourceElements = _allSourceElementsBySdKey[sourceSd.Key]
+    //        .Where(ed => !skipElement(ed, skipFirstElement: false))
+    //        .ToList();
 
-        if (sourceElements.Count == 0)
-        {
-            // this is a special type like 'datatype', just itnore it
-            return;
-        }
+    //    if (sourceElements.Count == 0)
+    //    {
+    //        // this is a special type like 'datatype', just itnore it
+    //        return;
+    //    }
 
-        DbElement rootEd = sourceElements[0];
-        DbElementOutcome? rootEdOutcome = null;
+    //    DbElement rootEd = sourceElements[0];
+    //    DbElementOutcome? rootEdOutcome = null;
 
-        Dictionary<int, DbElementOutcome> edKeyOutcomeLookup = [];
-        //HashSet<int> outcomesRequiringXver = [];
+    //    Dictionary<int, DbElementOutcome> edKeyOutcomeLookup = [];
+    //    //HashSet<int> outcomesRequiringXver = [];
 
-        // iterate over the source elements for this structure to create no-map edOutcomes
-        foreach (DbElement sourceEd in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
-        {
-            DbElement? contentRefEd = null;
-            DbElementOutcome? contentRefEdOutcome = null;
-            if (sourceEd.ContentReferenceSourceKey is not null)
-            {
-                contentRefEd = _allSourceElements[sourceEd.ContentReferenceSourceKey.Value];
-                if (!edKeyOutcomeLookup.TryGetValue(contentRefEd.Key, out contentRefEdOutcome))
-                {
-                    throw new Exception(
-                        $"Could not find outcome for content reference element with key {contentRefEd.Key} and id `{contentRefEd.Id}` while processing element with key {sourceEd.Key} and id `{sourceEd.Id}`.");
-                }
-            }
+    //    // iterate over the source elements for this structure to create no-map edOutcomes
+    //    foreach (DbElement sourceEd in sourceElements.OrderBy(ed => ed.ResourceFieldOrder))
+    //    {
+    //        DbElement? contentRefEd = null;
+    //        DbElementOutcome? contentRefEdOutcome = null;
+    //        if (sourceEd.ContentReferenceSourceKey is not null)
+    //        {
+    //            contentRefEd = _allSourceElements[sourceEd.ContentReferenceSourceKey.Value];
+    //            if (!edKeyOutcomeLookup.TryGetValue(contentRefEd.Key, out contentRefEdOutcome))
+    //            {
+    //                throw new Exception(
+    //                    $"Could not find outcome for content reference element with key {contentRefEd.Key} and id `{contentRefEd.Id}` while processing element with key {sourceEd.Key} and id `{sourceEd.Id}`.");
+    //            }
+    //        }
 
-            DbElement? parentEd = sourceEd.ParentElementKey is null
-                ? null
-                : _allSourceElements[sourceEd.ParentElementKey.Value];
+    //        DbElement? parentEd = sourceEd.ParentElementKey is null
+    //            ? null
+    //            : _allSourceElements[sourceEd.ParentElementKey.Value];
 
-            List<DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
-                .OrderBy(et => et.Literal)
-                .ToList();
+    //        List<DbElementType> sourceEts = _sourceElementTypesByElementKey[sourceEd.Key]
+    //            .OrderBy(et => et.Literal)
+    //            .ToList();
 
-            (string idLong, string idShort, string name) = XVerProcessor.GenerateExtensionId(
-                _packagePair.SourcePackageShortName,
-                sourceEd.Id);
+    //        (string idLong, string idShort, string name) = XVerProcessor.GenerateExtensionId(
+    //            _packagePair.SourcePackageShortName,
+    //            sourceEd.Id);
 
-            string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
-            string? extFilename = $"StructureDefinition-{idShort}";
+    //        string extUrl = $"http://hl7.org/fhir/{_packagePair.SourceFhirVersionShort}/StructureDefinition/{idLong}";
+    //        string? extFilename = $"StructureDefinition-{idShort}";
 
-            string comments =
-                $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
-                $" since FHIR {_packagePair.SourceFhirSequence} `{sourceSd.Name}` is not mapped.";
+    //        string comments =
+    //            $"Element `{sourceEd.Id}` is not mapped to FHIR {_packagePair.TargetFhirSequence}," +
+    //            $" since FHIR {_packagePair.SourceFhirSequence} `{sourceSd.Name}` is not mapped.";
 
-            string artifactShort = $"{_packagePair.SourceFhirSequence}: {sourceEd.Short ?? sourceEd.NameClean()} (new)";
-            string artifactDescription = sourceEd.Definition is null
-                ? $"Cross-version extension to represent the {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`"
-                : $"{_packagePair.SourceFhirSequence}: {sourceEd.Definition}";
+    //        string artifactShort = $"{_packagePair.SourceFhirSequence}: {sourceEd.Short ?? sourceEd.NameClean()} (new)";
+    //        string artifactDescription = sourceEd.Definition is null
+    //            ? $"Cross-version extension to represent the {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`"
+    //            : $"{_packagePair.SourceFhirSequence}: {sourceEd.Definition}";
 
-            // cannot generate extensions for root elements
-            bool requiresXVerDefinition = sourceEd.ResourceFieldOrder != 0;
+    //        // cannot generate extensions for root elements
+    //        bool requiresXVerDefinition = sourceEd.ResourceFieldOrder != 0;
 
-            DbElementOutcome? parentOutcome = null;
+    //        DbElementOutcome? parentOutcome = null;
 
-            if ((sourceEd.ParentElementKey is not null) &&
-                edKeyOutcomeLookup.TryGetValue(sourceEd.ParentElementKey!.Value, out DbElementOutcome? parentOutcomeValue))
-            {
-                parentOutcome = parentOutcomeValue;
-                requiresXVerDefinition = requiresXVerDefinition || parentOutcome.RequiresXVerDefinition;
-            }
+    //        if ((sourceEd.ParentElementKey is not null) &&
+    //            edKeyOutcomeLookup.TryGetValue(sourceEd.ParentElementKey!.Value, out DbElementOutcome? parentOutcomeValue))
+    //        {
+    //            parentOutcome = parentOutcomeValue;
+    //            requiresXVerDefinition = requiresXVerDefinition || parentOutcome.RequiresXVerDefinition;
+    //        }
 
-            List<string> contexts = [];
+    //        List<string> contexts = [];
 
-            bool defineAsModifier = sourceEd.IsModifier;
-            if (defineAsModifier &&
-                (sourceEd.ParentElementKey == rootEd.Key) &&
-                (rootEdOutcome is not null))
-            {
-                rootEdOutcome.DefineAsModifier = true;
-                rootEdOutcome.ModifierReason =
-                    $"Element `{sourceEd.Id}` is a modifier and is a direct child of the root element," +
-                    $" so the extension definition for `{sourceSd.Name}` must be a modifier.";
-                rootEdOutcome.Comments += "\n" + rootEdOutcome.ModifierReason;
-            }
+    //        bool defineAsModifier = sourceEd.IsModifier;
+    //        if (defineAsModifier &&
+    //            (sourceEd.ParentElementKey == rootEd.Key) &&
+    //            (rootEdOutcome is not null))
+    //        {
+    //            rootEdOutcome.DefineAsModifier = true;
+    //            rootEdOutcome.ModifierReason =
+    //                $"Element `{sourceEd.Id}` is a modifier and is a direct child of the root element," +
+    //                $" so the extension definition for `{sourceSd.Name}` must be a modifier.";
+    //            rootEdOutcome.Comments += "\n" + rootEdOutcome.ModifierReason;
+    //        }
 
-            if (sourceEd.ResourceFieldOrder == 0)
-            {
-                contexts.Add("Basic");
-            }
-            else if (parentOutcome is not null)
-            {
-                contexts.Add(parentOutcome.GenLongId ?? parentOutcome.SourceName);
-            }
+    //        if (sourceEd.ResourceFieldOrder == 0)
+    //        {
+    //            contexts.Add("Basic");
+    //        }
+    //        else if (parentOutcome is not null)
+    //        {
+    //            contexts.Add(parentOutcome.GenLongId ?? parentOutcome.SourceName);
+    //        }
 
-            // check to see if we are trying to define an extension onto basic that has a matching basic path and compatible type
-            string? basicBasePath = null;
-            string? basicPath = null;
-            if (requiresXVerDefinition &&
-                _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
-                _targetBasicElementsById.TryGetValue(basicBasePath!, out DbElement? basicEd))
-            {
-                if (canSourceMapToBasicElementType(sourceEd, basicEd) &&
-                    (sourceEd.MinCardinality >= basicEd.MinCardinality) &&
-                    ((basicEd.MaxCardinality == -1) || (basicEd.MaxCardinality >= sourceEd.MaxCardinality)) &&
-                    (   ((sourceEd.ChildElementCount == 0) && (basicEd.ChildElementCount == 0)) ||
-                        ((sourceEd.ChildElementCount > 0) && (basicEd.ChildElementCount > 0))))
-                {
-                    basicPath = basicEd.Id;
-                    requiresXVerDefinition = false;
-                    comments +=
-                        $"\nElement matches Basic element path `{basicBasePath}` and is compatible," +
-                        $" use that element instead.";
-                    contexts = [];
-                    parentOutcome = null;
-                }
-                else
-                {
-                    comments +=
-                        $"\nThe source element matches Basic element path `{basicBasePath}`," +
-                        $" but the definitions are not compatible" +
-                        $" (source: `{sourceEd.FullCollatedTypeLiteral}`:{sourceEd.FhirCardinalityString}" +
-                        $" -> basic: `{basicEd.FullCollatedTypeLiteral}`:{basicEd.FhirCardinalityString}).";
-                    basicBasePath = null;
-                    basicPath = null;
-                }
-            }
+    //        // check to see if we are trying to define an extension onto basic that has a matching basic path and compatible type
+    //        string? basicBasePath = null;
+    //        string? basicPath = null;
+    //        if (requiresXVerDefinition &&
+    //            _targetBasicElementPathLookup.TryGetValue(sourceEd.Path.Substring(sourceSd.Name.Length), out basicBasePath) &&
+    //            _targetBasicElementsById.TryGetValue(basicBasePath!, out DbElement? basicEd))
+    //        {
+    //            if (canSourceMapToBasicElementType(sourceEd, basicEd) &&
+    //                (sourceEd.MinCardinality >= basicEd.MinCardinality) &&
+    //                ((basicEd.MaxCardinality == -1) || (basicEd.MaxCardinality >= sourceEd.MaxCardinality)) &&
+    //                (   ((sourceEd.ChildElementCount == 0) && (basicEd.ChildElementCount == 0)) ||
+    //                    ((sourceEd.ChildElementCount > 0) && (basicEd.ChildElementCount > 0))))
+    //            {
+    //                basicPath = basicEd.Id;
+    //                requiresXVerDefinition = false;
+    //                comments +=
+    //                    $"\nElement matches Basic element path `{basicBasePath}` and is compatible," +
+    //                    $" use that element instead.";
+    //                contexts = [];
+    //                parentOutcome = null;
+    //            }
+    //            else
+    //            {
+    //                comments +=
+    //                    $"\nThe source element matches Basic element path `{basicBasePath}`," +
+    //                    $" but the definitions are not compatible" +
+    //                    $" (source: `{sourceEd.FullCollatedTypeLiteral}`:{sourceEd.FhirCardinalityString}" +
+    //                    $" -> basic: `{basicEd.FullCollatedTypeLiteral}`:{basicEd.FhirCardinalityString}).";
+    //                basicBasePath = null;
+    //                basicPath = null;
+    //            }
+    //        }
 
-            if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out DbExtensionSubstitution? extSubstitute))
-            {
-                comments +=
-                    $"\nThere is an externally-defined extension that has been mapped as the" +
-                    $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`:" +
-                    $" `{extSubstitute.ReplacementUrl}`.";
-            }
+    //        if (_extensionSubstitutionsByElementId.TryGetValue(sourceEd.Id, out DbExtensionSubstitution? extSubstitute))
+    //        {
+    //            comments +=
+    //                $"\nThere is an externally-defined extension that has been mapped as the" +
+    //                $" representation of FHIR {_packagePair.SourceFhirSequence} element `{sourceEd.Id}`:" +
+    //                $" `{extSubstitute.ReplacementUrl}`.";
+    //        }
 
-            if (sourceEd.IsDeprecated)
-            {
-                comments += $"\nElement `{sourceEd.Id}` has been flagged as deprecated.";
-            }
+    //        if (sourceEd.IsDeprecated)
+    //        {
+    //            comments += $"\nElement `{sourceEd.Id}` has been flagged as deprecated.";
+    //        }
 
-            string? ancestorCR = parentEd?.UsedAsContentReference == true
-                ? parentEd.Id
-                : parentOutcome?.SourceAncestorUsedAsContentReferenceId;
+    //        string? ancestorCR = parentEd?.UsedAsContentReference == true
+    //            ? parentEd.Id
+    //            : parentOutcome?.SourceAncestorUsedAsContentReferenceId;
 
-            int? ancestorCrKey = parentEd?.UsedAsContentReference == true
-                ? parentOutcome?.Key
-                : parentOutcome?.SourceAncestorContentReferenceOutcomeKey;
+    //        int? ancestorCrKey = parentEd?.UsedAsContentReference == true
+    //            ? parentOutcome?.Key
+    //            : parentOutcome?.SourceAncestorContentReferenceOutcomeKey;
 
-            bool requiresSliceDefinition = requiresXVerDefinition && (parentOutcome?.RequiresXVerDefinition ?? false);
-            bool requiresExtensionDefinition = requiresXVerDefinition && !requiresSliceDefinition;
+    //        bool requiresSliceDefinition = requiresXVerDefinition && (parentOutcome?.RequiresXVerDefinition ?? false);
+    //        bool requiresExtensionDefinition = requiresXVerDefinition && !requiresSliceDefinition;
 
-            bool extensionDefinitionIsProhibited = false;
-            string? extensionProhibitionReason = null;
+    //        bool extensionDefinitionIsProhibited = false;
+    //        string? extensionProhibitionReason = null;
 
-            List<string> sourceDistinctTypes = sourceEd.DistinctTypes;
+    //        List<string> sourceDistinctTypes = sourceEd.DistinctTypes;
 
-            // check for invalid source types that cannot have extensions
-            if (sourceDistinctTypes.Contains("Resource") ||
-                sourceDistinctTypes.Any(v => _sourceResourceTypes.Contains(v)) ||
-                sourceDistinctTypes.Any(v => _targetResourceTypes.Contains(v)))
-            {
-                extensionDefinitionIsProhibited = true;
-                extensionProhibitionReason = $"Element is a resource type that cannot be represented via extensions.";
-            }
+    //        // check for invalid source types that cannot have extensions
+    //        if (sourceDistinctTypes.Contains("Resource") ||
+    //            sourceDistinctTypes.Any(v => _sourceResourceTypes.Contains(v)) ||
+    //            sourceDistinctTypes.Any(v => _targetResourceTypes.Contains(v)))
+    //        {
+    //            extensionDefinitionIsProhibited = true;
+    //            extensionProhibitionReason = $"Element is a resource type that cannot be represented via extensions.";
+    //        }
 
-            // create the non-mapped element outcome
-            DbElementOutcome elementOutcome = new()
-            {
-                Key = DbElementOutcome.GetIndex(),
+    //        // create the non-mapped element outcome
+    //        DbElementOutcome elementOutcome = new()
+    //        {
+    //            Key = DbElementOutcome.GetIndex(),
 
-                SourceFhirPackageKey = _packagePair.SourcePackageKey,
-                SourceFhirSequence = _packagePair.SourceFhirSequence,
-                SourceStructureKey = sourceSd.Key,
-                SourceElementKey = sourceEd.Key,
-                SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
-                SourceCanonicalVersioned = sourceSd.VersionedUrl,
-                SourceVersion = sourceSd.Version,
-                SourceId = sourceEd.Id,
-                SourceName = sourceEd.Name,
-                SourceResourceOrder = sourceEd.ResourceFieldOrder,
-                SourceComponentOrder = sourceEd.ComponentFieldOrder,
-                SourceMinCardinality = sourceEd.MinCardinality,
-                SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
-                SourceChildElementCount = sourceEd.ChildElementCount,
-                SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
-                SourceAncestorUsedAsContentReferenceId = ancestorCR,
-                SourceAncestorContentReferenceOutcomeKey = ancestorCrKey,
-                SourceIsDeprecated = sourceEd.IsDeprecated,
-                TotalSourceCount = -1,
+    //            SourceFhirPackageKey = _packagePair.SourcePackageKey,
+    //            SourceFhirSequence = _packagePair.SourceFhirSequence,
+    //            SourceStructureKey = sourceSd.Key,
+    //            SourceElementKey = sourceEd.Key,
+    //            SourceCanonicalUnversioned = sourceSd.UnversionedUrl,
+    //            SourceCanonicalVersioned = sourceSd.VersionedUrl,
+    //            SourceVersion = sourceSd.Version,
+    //            SourceId = sourceEd.Id,
+    //            SourceName = sourceEd.Name,
+    //            SourceResourceOrder = sourceEd.ResourceFieldOrder,
+    //            SourceComponentOrder = sourceEd.ComponentFieldOrder,
+    //            SourceMinCardinality = sourceEd.MinCardinality,
+    //            SourceMaxCardinalityString = sourceEd.MaxCardinalityString,
+    //            SourceChildElementCount = sourceEd.ChildElementCount,
+    //            SourceUsedAsContentReference = sourceEd.UsedAsContentReference == true,
+    //            SourceAncestorUsedAsContentReferenceId = ancestorCR,
+    //            SourceAncestorContentReferenceOutcomeKey = ancestorCrKey,
+    //            SourceIsDeprecated = sourceEd.IsDeprecated,
+    //            TotalSourceCount = -1,
 
-                TargetFhirPackageKey = _packagePair.TargetPackageKey,
-                TargetFhirSequence = _packagePair.TargetFhirSequence,
-                TotalTargetCount = 0,
-                OutcomeTargetCount = 1,
+    //            TargetFhirPackageKey = _packagePair.TargetPackageKey,
+    //            TargetFhirSequence = _packagePair.TargetFhirSequence,
+    //            TotalTargetCount = 0,
+    //            OutcomeTargetCount = 1,
 
-                ExtensionDefinitionIsProhibited = extensionDefinitionIsProhibited,
-                ExtensionProhibitionReason = extensionProhibitionReason,
+    //            ExtensionDefinitionIsProhibited = extensionDefinitionIsProhibited,
+    //            ExtensionProhibitionReason = extensionProhibitionReason,
 
-                RequiresXVerDefinition = requiresXVerDefinition,
-                RequiresExtensionDefinition = requiresExtensionDefinition,
-                RequiresSliceDefinition = requiresSliceDefinition,
-                GenLongId = idLong,
-                GenShortId = idShort,
-                GenUrl = extUrl,
-                GenName = name,
-                GenFileName = extFilename,
-                GenSliceName = sourceEd.NameClean(),
+    //            RequiresXVerDefinition = requiresXVerDefinition,
+    //            RequiresExtensionDefinition = requiresExtensionDefinition,
+    //            RequiresSliceDefinition = requiresSliceDefinition,
+    //            GenLongId = idLong,
+    //            GenShortId = idShort,
+    //            GenUrl = extUrl,
+    //            GenName = name,
+    //            GenFileName = extFilename,
+    //            GenSliceName = sourceEd.NameClean(),
 
-                GenArtifactShort = artifactShort,
-                GenArtifactDescription = artifactDescription,
-                GenArtifactComment = sourceEd.Comments is null
-                    ? comments
-                    : (comments + "\n" + sourceEd.Comments),
-                GenMappingComment = sourceEd.Comments is null
-                    ? comments
-                    : (comments + "\n" + sourceEd.Comments),
+    //            GenArtifactShort = artifactShort,
+    //            GenArtifactDescription = artifactDescription,
+    //            GenArtifactComment = sourceEd.Comments is null
+    //                ? comments
+    //                : (comments + "\n" + sourceEd.Comments),
+    //            GenMappingComment = sourceEd.Comments is null
+    //                ? comments
+    //                : (comments + "\n" + sourceEd.Comments),
 
-                ContentReferenceOutcomeKey = contentRefEdOutcome?.Key,
-                ContentReferenceExtensionUrl = contentRefEdOutcome?.GenUrl,
-                ContentReferenceRequiresXVerDefinition = contentRefEdOutcome?.RequiresXVerDefinition,
-                ContentReferenceAncestorId = contentRefEdOutcome?.SourceId ?? parentOutcome?.ContentReferenceAncestorId,
-                RequiresDefinitionAsContentReference = (contentRefEdOutcome is not null) && requiresXVerDefinition,
+    //            ContentReferenceOutcomeKey = contentRefEdOutcome?.Key,
+    //            ContentReferenceExtensionUrl = contentRefEdOutcome?.GenUrl,
+    //            ContentReferenceRequiresXVerDefinition = contentRefEdOutcome?.RequiresXVerDefinition,
+    //            ContentReferenceAncestorId = contentRefEdOutcome?.SourceId ?? parentOutcome?.ContentReferenceAncestorId,
+    //            RequiresDefinitionAsContentReference = (contentRefEdOutcome is not null) && requiresXVerDefinition,
 
-                AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
-                ParentElementOutcomeKey = parentOutcome?.Key,
-                SourceIsModifier = sourceEd.IsModifier,
-                DefineAsModifier = defineAsModifier,
-                ModifierReason = sourceEd.IsModifierReason,
-                ExtensionContexts = contexts,
-                BasicElementBaseId = basicBasePath,
-                BasicElementId = basicPath,
-                ExtensionSubstitutionKey = extSubstitute?.Key,
-                ExtensionSubstitutionUrl = extSubstitute?.ReplacementUrl,
+    //            AncestorElementOutcomeKey = requiresXVerDefinition ? rootEdOutcome?.Key : null,
+    //            ParentElementOutcomeKey = parentOutcome?.Key,
+    //            SourceIsModifier = sourceEd.IsModifier,
+    //            DefineAsModifier = defineAsModifier,
+    //            ModifierReason = sourceEd.IsModifierReason,
+    //            ExtensionContexts = contexts,
+    //            BasicElementBaseId = basicBasePath,
+    //            BasicElementId = basicPath,
+    //            ExtensionSubstitutionKey = extSubstitute?.Key,
+    //            ExtensionSubstitutionUrl = extSubstitute?.ReplacementUrl,
 
-                IsRenamed = false,
-                IsUnmapped = true,
-                IsIdentical = false,
-                IsEquivalent = false,
-                IsBroaderThanTarget = false,
-                IsNarrowerThanTarget = false,
+    //            IsRenamed = false,
+    //            IsUnmapped = true,
+    //            IsIdentical = false,
+    //            IsEquivalent = false,
+    //            IsBroaderThanTarget = false,
+    //            IsNarrowerThanTarget = false,
 
-                FullyMapsToThisTarget = false,
-                FullyMapsAcrossAllTargets = false,
-                UnmappedTypeKeys = sourceEts.Select(et => et.Key).ToList(),
-                UnmappedTypeNames = sourceEts.Select(et => et.Literal).ToList(),
+    //            FullyMapsToThisTarget = false,
+    //            FullyMapsAcrossAllTargets = false,
+    //            UnmappedTypeKeys = sourceEts.Select(et => et.Key).ToList(),
+    //            UnmappedTypeNames = sourceEts.Select(et => et.Literal).ToList(),
 
-                Comments = comments,
-            };
+    //            Comments = comments,
+    //        };
 
-            if (sourceEd.ResourceFieldOrder == 0)
-            {
-                rootEdOutcome = elementOutcome;
-            }
+    //        if (sourceEd.ResourceFieldOrder == 0)
+    //        {
+    //            rootEdOutcome = elementOutcome;
+    //        }
 
-            edKeyOutcomeLookup[sourceEd.Key] = elementOutcome;
+    //        edKeyOutcomeLookup[sourceEd.Key] = elementOutcome;
 
-            _edOutcomeCache.CacheAdd(elementOutcome);
+    //        _edOutcomeCache.CacheAdd(elementOutcome);
 
-            // create the matching no-map outcome target
-            DbElementOutcomeTarget nmEOT = new()
-            {
-                Key = DbElementOutcomeTarget.GetIndex(),
-                ElementOutcomeKey = elementOutcome.Key,
-                StructureOutcomeKey = sdOutcome.Key,
-                ElementComparisonKey = null,
-                SourceFhirPackageKey = _packagePair.SourcePackageKey,
-                SourceFhirSequence = _packagePair.SourceFhirSequence,
-                TargetFhirPackageKey = _packagePair.TargetPackageKey,
-                TargetFhirSequence = _packagePair.TargetFhirSequence,
-                TargetStructureKey = null,
-                TargetElementKey = null,
-                TargetElementId = null,
-                TargetResourceOrder = null,
-                TargetComponentOrder = null,
-                TargetMinCardinality = null,
-                TargetMaxCardinalityString = null,
-                TargetIsModifier = null,
-                ContextElementKey = null,
-                ContextElementId = null,
-                ContextRootExtensionUrl = null,
-                ContextParentExtensionUrl = null,
-                FullyMapsToThisTarget = false,
-                Comments = comments,
-            };
+    //        // create the matching no-map outcome target
+    //        DbElementOutcomeTarget nmEOT = new()
+    //        {
+    //            Key = DbElementOutcomeTarget.GetIndex(),
+    //            ElementOutcomeKey = elementOutcome.Key,
+    //            StructureOutcomeKey = sdOutcome.Key,
+    //            ElementComparisonKey = null,
+    //            SourceFhirPackageKey = _packagePair.SourcePackageKey,
+    //            SourceFhirSequence = _packagePair.SourceFhirSequence,
+    //            TargetFhirPackageKey = _packagePair.TargetPackageKey,
+    //            TargetFhirSequence = _packagePair.TargetFhirSequence,
+    //            TargetStructureKey = null,
+    //            TargetElementKey = null,
+    //            TargetElementId = null,
+    //            TargetResourceOrder = null,
+    //            TargetComponentOrder = null,
+    //            TargetMinCardinality = null,
+    //            TargetMaxCardinalityString = null,
+    //            TargetIsModifier = null,
+    //            ContextElementKey = null,
+    //            ContextElementId = null,
+    //            ContextRootExtensionUrl = null,
+    //            ContextParentExtensionUrl = null,
+    //            FullyMapsToThisTarget = false,
+    //            Comments = comments,
+    //        };
 
-            _edOutcomeTargetCache.CacheAdd(nmEOT);
-        }
-    }
+    //        _edOutcomeTargetCache.CacheAdd(nmEOT);
+    //    }
+    //}
 
     private bool relationshipMaps(CMR? relationship) =>
         (relationship is null) ||

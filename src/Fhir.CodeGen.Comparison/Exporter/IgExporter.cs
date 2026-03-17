@@ -724,7 +724,7 @@ public class IgExporter
         {
             writeValidationExampleBundle(vTr);
             writeIgIni(vTr.IgRootDir!, vTr.PackageId);
-            writeIgJson(vTr);
+            writeIgJson(vTr, tr);
             writeMenuXml(vTr);
         }
     }
@@ -824,7 +824,7 @@ public class IgExporter
         File.WriteAllText(filename, contents);
     }
 
-    private void writeIgJson(ValidationIgExportTrackingRecord vTr)
+    private void writeIgJson(ValidationIgExportTrackingRecord vTr, XVerExportTrackingRecord tr)
     {
         switch (vTr.Package.DefinitionFhirSequence)
         {
@@ -832,17 +832,17 @@ public class IgExporter
             case FhirReleases.FhirSequenceCodes.STU3:
             case FhirReleases.FhirSequenceCodes.R4:
             case FhirReleases.FhirSequenceCodes.R4B:
-                writeIgJsonR4(vTr);
+                writeIgJsonR4(vTr, tr);
                 break;
 
             case FhirReleases.FhirSequenceCodes.R5:
             case FhirReleases.FhirSequenceCodes.R6:
-                writeIgJsonR5(vTr);
+                writeIgJsonR5(vTr, tr);
                 break;
         }
     }
 
-    private void writeIgJsonR4(ValidationIgExportTrackingRecord vTr)
+    private void writeIgJsonR4(ValidationIgExportTrackingRecord vTr, XVerExportTrackingRecord tr)
     {
         HashSet<string> skipPages = [
             "index",
@@ -880,6 +880,18 @@ public class IgExporter
             .Where(d => d.NeededForPublisher)
             .Select(d => d.AsJsonIgDependency(vTr.Package.DefinitionFhirSequence))
             .ToList();
+
+        // add the related xver packages as dependencies
+        foreach (XVerIgExportTrackingRecord igTr in tr.XVerIgs)
+        {
+            if (igTr.PackagePair.TargetFhirSequence != vTr.Package.DefinitionFhirSequence)
+            {
+                continue;
+            }
+
+            deps.Add(
+                $$$"""{ "packageId":"{{{igTr.PackageId}}}", "version":"{{{_exporter._crossDefinitionVersion}}}", "uri":"{{{igTr.PackageUrl}}}", "id":"{{{igTr.PackageId.Replace('.', '_')}}}" }""");
+        }
 
         string dependencies = deps.Count == 0
             ? string.Empty
@@ -948,12 +960,29 @@ public class IgExporter
     }
 
 
-    private void writeIgJsonR5(ValidationIgExportTrackingRecord vTr)
+    private void writeIgJsonR5(ValidationIgExportTrackingRecord vTr, XVerExportTrackingRecord tr)
     {
         List<ImplementationGuide.DependsOnComponent> deps = _xverDependencies
             .Where(d => d.NeededForPublisher)
             .Select(d => d.AsIgDependsOn(vTr.Package.DefinitionFhirSequence))
             .ToList();
+
+        // add the related xver packages as dependencies
+        foreach (XVerIgExportTrackingRecord igTr in tr.XVerIgs)
+        {
+            if (igTr.PackagePair.TargetFhirSequence != vTr.Package.DefinitionFhirSequence)
+            {
+                continue;
+            }
+
+            deps.Add(new()
+            {
+                PackageId = igTr.PackageId,
+                Version = _exporter._crossDefinitionVersion,
+                Uri = igTr.PackageUrl,
+                ElementId = igTr.PackageId.Replace('.', '_'),
+            });
+        }
 
         HashSet<string> skipPages = [
             "index",

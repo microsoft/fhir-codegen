@@ -659,6 +659,8 @@ public class ComparisonDatabase : IDisposable
             return false;
         }
 
+        List<DbFhirPackage> r2Packages = [];
+
         foreach ((DefinitionCollection dc, DcInfoRec _) in _definitions)
         {
             // get the package metadata for this definition collection
@@ -673,12 +675,18 @@ public class ComparisonDatabase : IDisposable
 
             // load our structures
             addStructuresToDb(pm, dc, _exclusionSet);
+
+            if (dc.FhirSequence == FhirReleases.FhirSequenceCodes.DSTU2)
+            {
+                r2Packages.Add(pm);
+            }
         }
 
         // do value set post-processing
         doValueSetPostProcessing(_escapeValveCodes);
 
         // do element post-processing
+        findInheritedElements(r2Packages);
         fixContentReferences();
         //expandContentReferenceElements();
 
@@ -743,6 +751,69 @@ public class ComparisonDatabase : IDisposable
         }
 
         return;
+    }
+
+    private void findInheritedElements(List<DbFhirPackage> r2Packages)
+    {
+        foreach (DbFhirPackage package in r2Packages)
+        {
+            // resolve the 'Element.id' element
+            DbElement? idElement = DbElement.SelectSingle(
+                _db,
+                FhirPackageKey: package.Key,
+                Id: "Element.id");
+
+            if (idElement is not null)
+            {
+                // get elements with matching definition
+                List<DbElement> elements = DbElement.SelectList(
+                    _db,
+                    FhirPackageKey: package.Key,
+                    Short: idElement.Short,
+                    FullCollatedTypeLiteral: idElement.FullCollatedTypeLiteral);
+
+                elements.RemoveAll(e => e.Key == idElement.Key);
+
+                // update element information
+                foreach (DbElement ed in elements)
+                {
+                    ed.BasePath = idElement.Path;
+                    ed.BaseElementKey = idElement.Key;
+                    ed.BaseStructureKey = idElement.StructureKey;
+                    ed.IsSimpleType = true;
+                }
+
+                elements.Update(_db);
+            }
+
+            // resolve the 'Extension' element
+            DbElement? extElement = DbElement.SelectSingle(
+                _db,
+                FhirPackageKey: package.Key,
+                Id: "Element.extension");
+
+            if (extElement is not null)
+            {
+                // get elements with matching definition
+                List<DbElement> elements = DbElement.SelectList(
+                    _db,
+                    FhirPackageKey: package.Key,
+                    Short: extElement.Short,
+                    FullCollatedTypeLiteral: extElement.FullCollatedTypeLiteral);
+
+                elements.RemoveAll(e => e.Key == extElement.Key);
+
+                // update element information
+                foreach (DbElement ed in elements)
+                {
+                    ed.BasePath = extElement.Path;
+                    ed.BaseElementKey = extElement.Key;
+                    ed.BaseStructureKey = extElement.StructureKey;
+                }
+
+                elements.Update(_db);
+            }
+        }
     }
 
     private void fixContentReferences()
