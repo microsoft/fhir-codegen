@@ -220,11 +220,6 @@
             "commandLineArgs": "generate CQL --output-path ../../temp/cql -p hl7.fhir.r4.core@4.0.1 -p hl7.fhir.r4.expansions@4.0.1",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
-        "Gui": {
-            "commandName": "Project",
-            "commandLineArgs": "gui",
-            "workingDirectory": "$(MSBuildProjectDirectory)"
-        },
         "Cross Version Review": {
             "commandName": "Project",
             "commandLineArgs": "cross-version --output-path ../../temp/cross-version",

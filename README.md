@@ -113,7 +113,6 @@ Options:
 Commands:
   generate     Generate output from a FHIR package and exit.
   compare      Compare two sets of packages.
-  gui          Launch the GUI (experimental).
 ```
 
 More information about this project can be found in the [Command Line Documentation](https://microsoft.github.io/fhir-codegen/articles/cli.html).

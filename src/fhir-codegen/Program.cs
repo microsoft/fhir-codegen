@@ -32,7 +32,6 @@ using Fhir.CodeGen.Common.Smart;
 using Fhir.CodeGen.Comparison.CompareTool;
 using Fhir.CodeGen.Comparison.XVer;
 using static fhir_codegen_shared.LaunchUtils;
-using HarfBuzzSharp;
 using Fhir.CodeGen.Lib.SqlOnFhir;
 using Fhir.CodeGen.Comparison.Models;
 
@@ -109,7 +108,6 @@ public class Program
             "compare" => await DoCompare(pr, command, subCommand),
             "xver" => await DoXVer(pr, command, subCommand),
             //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr, command, subCommand),
-            "gui" => Gui.RunGui(pr, command, subCommand),
             //"interactive" => await DoInteractive(pr, command, subCommand);
             //"web" => await DoWeb(pr, command, subCommand);
             "sql" => await DoSql(pr, command, subCommand),
