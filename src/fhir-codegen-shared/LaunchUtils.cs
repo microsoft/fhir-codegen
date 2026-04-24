@@ -73,20 +73,6 @@ internal static class LaunchUtils
         },
         new()
         {
-            Literal = "interactive",
-            Description = "Launch into an interactive console.",
-            ConfigurationType = typeof(ConfigInteractive),
-            Disabled = true,
-        },
-        new()
-        {
-            Literal = "web",
-            Description = "Launch into a locally-hosted web UI",
-            ConfigurationType = typeof(ConfigFluentUi),
-            Disabled = true,
-        },
-        new()
-        {
             Literal = "compare",
             Description = "Compare two sets of packages",
             ConfigurationType = typeof(ConfigCompare),
@@ -120,13 +106,6 @@ internal static class LaunchUtils
             Literal = "sql",
             Description = "Perform SQL on FHIR v2 transformations",
             ConfigurationType = typeof(ConfigSql),
-            Disabled = true,
-        },
-        new()
-        {
-            Literal = "gui",
-            Description = "Launch the default GUI",
-            ConfigurationType = typeof(ConfigGui),
             Disabled = true,
         },
     ];
@@ -208,14 +187,6 @@ internal static class LaunchUtils
 
             case "sql":
                 config = new ConfigSql()
-                {
-                    LaunchCommand = command,
-                    LogFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole()),
-                };
-                break;
-
-            case "gui":
-                config = new ConfigGui()
                 {
                     LaunchCommand = command,
                     LogFactory = loggerFactory ?? LoggerFactory.Create(builder => builder.AddConsole()),
