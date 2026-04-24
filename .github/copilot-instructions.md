@@ -50,8 +50,8 @@ Projects under `src/` form a layered pipeline:
 | `Fhir.CodeGen.Lib` | Core engine: loader → normalized model → language exporters. Depends on Packages, CrossVersionLoader, MappingLanguage, LangSQLite, Common. |
 | `Fhir.CodeGen.Comparison` | Package/artifact diffing. |
 | `Fhir.CodeGen.CrossVersionExporter` | Produces cross-version artifacts. |
-| `fhir-codegen` | `System.CommandLine`-based CLI **and** experimental Avalonia GUI (`gui` subcommand). Shares code with `fhir-codegen-shared` (a Shared Project, imported via `.projitems`). |
-| `xver_editor`, `performance-test-cli` | Standalone tooling. |
+| `fhir-codegen` | `System.CommandLine`-based CLI. Shares code with `fhir-codegen-shared` (a Shared Project, imported via `.projitems`). |
+| `performance-test-cli` | Standalone tooling. |
 
 Tests live alongside their target: `Fhir.CodeGen.Lib.Tests`, `Fhir.CodeGen.MappingLanguage.Tests`, `Fhir.CodeGen.Packages.Tests`. Test data is under `Fhir.CodeGen.Lib.Tests/TestData/` and copied to output via `<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>`.
 
