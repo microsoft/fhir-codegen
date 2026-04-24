@@ -1,7 +1,12 @@
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/TypeReference.cs
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+=======
 #nullable enable
 
 using Fhir.CodeGen.Common.Extensions;
 using Fhir.CodeGen.Common.Utils;
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/TypeReference.cs
 
 namespace Fhir.CodeGen.Lib.Language.Firely;
 

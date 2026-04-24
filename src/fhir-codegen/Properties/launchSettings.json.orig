@@ -37,12 +37,16 @@
         },
         "Firely 5.x R5 SoF": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.R5/Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 -p ../../temp/sofSource --subset satellite",
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R5\\Model -p hl7.fhir.r5.core#5.0.0 -p hl7.fhir.r5.expansions#5.0.0 -p ..\\..\\temp\\sofSource --subset satellite",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely 5.x R6": {
             "commandName": "Project",
-            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.R6/Model -p hl7.fhir.r6.core#6.0.0-ballot4 -p hl7.fhir.r6.expansions#6.0.0-ballot4 --subset satellite",
+<<<<<<< HEAD
+            "commandLineArgs": "generate CSharpFirely2 --output-path ../../../firely-net-sdk/src/Hl7.Fhir.R6/Model -p hl7.fhir.r6.core#6.0.0-ballot3 -p hl7.fhir.r6.expansions#6.0.0-ballot3 --subset satellite",
+=======
+            "commandLineArgs": "generate CSharpFirely2 --output-path ..\\..\\..\\firely-net-sdk\\src\\Hl7.Fhir.R6\\Model -p hl7.fhir.r6.core#6.0.0-ballot3 -p hl7.fhir.r6.expansions#6.0.0-ballot3 --subset satellite",
+>>>>>>> main
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely IG Backport": {
@@ -72,7 +76,7 @@
         },
         "Firely IG DK-EHealth": {
             "commandName": "Project",
-            "commandLineArgs": "generate FirelyNetIg --fhir-cache ~/.fhir  --output-path ../../temp/firely-ig -p dk.ehealth.sundhed.fhir.ig.core#3.3.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
+            "commandLineArgs": "generate FirelyNetIg --fhir-cache ~/.fhir  --output-path ..\\..\\temp\\firely-ig -p dk.ehealth.sundhed.fhir.ig.core#3.3.0 --auto-load-expansions --resolve-dependencies true --include-experimental",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Firely OpenApi": {
@@ -107,7 +111,7 @@
         },
         "OpenApi Candle R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate OpenApi --fhir-server-url http://localhost:5826/fhir/r4 -p hl7.fhir.r4.core#4.0.1 --output-dir ../../temp/OAS --format yaml --include-experimental --schema-level names --metadata true --multi-file false --single-responses false --resolve-server-canonicals true --resolve-external-canonicals true --basic-scopes-only true",
+            "commandLineArgs": "generate OpenApi --fhir-server-url http://localhost:5826/fhir/r4 -p hl7.fhir.r4.core#4.0.1 --output-dir ..\\..\\temp\\OAS --format yaml --include-experimental --schema-level names --metadata true --multi-file false --single-responses false --resolve-server-canonicals true --resolve-external-canonicals true --basic-scopes-only true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Shorthand IG US Core": {
@@ -162,12 +166,20 @@
         },
         "Compare x-y": {
             "commandName": "Project",
+<<<<<<< HEAD
+            "commandLineArgs": "compare -c hl7.fhir.r4.core#4.0.1 -p hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ../../../fhir-cross-version  --map-destination-path ../../../fhir-cross-version-source --map-save-style Source",
+=======
             "commandLineArgs": "compare -p hl7.fhir.r5.core#5.0.0 -c hl7.fhir.r4b.core#4.3.0 --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
+>>>>>>> main
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Compare 43-50": {
             "commandName": "Project",
+<<<<<<< HEAD
+            "commandLineArgs": "compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --auto-load-expansions --resolve-dependencies true --map-source-path ../../../fhir-cross-version  --map-destination-path ../../../fhir-cross-version-source --map-save-style Source",
+=======
             "commandLineArgs": "compare -p hl7.fhir.r4b.core#4.3.0 -c hl7.fhir.r5.core#5.0.0 --save-comparison-result true --auto-load-expansions --resolve-dependencies true --map-source-path ..\\..\\..\\fhir-cross-version  --map-destination-path ..\\..\\..\\fhir-cross-version-source --map-save-style Source",
+>>>>>>> main
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Compare 50-43": {
@@ -212,12 +224,12 @@
         },
         "XVer fhir-db": {
             "commandName": "Project",
-            "commandLineArgs": "xver fhir --output-path ../../temp/xver --xver-version 0.1.0 --xver-export-for-publisher true --xver-generate-snapshots false --xver-generate-npms false --xver-include-scripts true",
+            "commandLineArgs": "xver fhir --output-path ..\\..\\temp\\xver --xver-version 0.1.0 --xver-export-for-publisher true --xver-generate-snapshots false --xver-generate-npms false --xver-include-scripts true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "CQL R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate CQL --output-path ../../temp/cql -p hl7.fhir.r4.core@4.0.1 -p hl7.fhir.r4.expansions@4.0.1",
+            "commandLineArgs": "generate CQL --output-path ..\\..\\temp\\cql -p hl7.fhir.r4.core@4.0.1 -p hl7.fhir.r4.expansions@4.0.1",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "Gui": {
@@ -232,37 +244,37 @@
         },
         "Sql": {
             "commandName": "Project",
-            "commandLineArgs": "sql -p hl7.fhir.r5.core#5.0.0 --view-definition-directory ./temp/viewdefinitions --output-path ../../temp/sof ",
+            "commandLineArgs": "sql -p hl7.fhir.r5.core#5.0.0 --view-definition-directory ./temp/viewdefinitions --output-path ..\\..\\temp\\sof ",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "SQLite R2": {
             "commandName": "Project",
-            "commandLineArgs": "generate sqlite --drop-tables --output-file ../../temp/fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r2.core@1.0.2 --auto-load-expansions",
+            "commandLineArgs": "generate sqlite --drop-tables --output-file ..\\..\\temp\\fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r2.core@1.0.2 --auto-load-expansions",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "SQLite R3": {
             "commandName": "Project",
-            "commandLineArgs": "generate sqlite --output-file ../../temp/fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r3.core@3.0.2 --auto-load-expansions",
+            "commandLineArgs": "generate sqlite --output-file ..\\..\\temp\\fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r3.core@3.0.2 --auto-load-expansions",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "SQLite R4": {
             "commandName": "Project",
-            "commandLineArgs": "generate sqlite --output-file ../../temp/fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r4.core@4.0.1 --auto-load-expansions",
+            "commandLineArgs": "generate sqlite --output-file ..\\..\\temp\\fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r4.core@4.0.1 --auto-load-expansions",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "SQLite R4B": {
             "commandName": "Project",
-            "commandLineArgs": "generate sqlite --output-file ../../temp/fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r4b.core@4.3.0 --auto-load-expansions",
+            "commandLineArgs": "generate sqlite --output-file ..\\..\\temp\\fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r4b.core@4.3.0 --auto-load-expansions",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "SQLite R5": {
             "commandName": "Project",
-            "commandLineArgs": "generate sqlite --output-file ../../temp/fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r5.core@5.0.0 --auto-load-expansions",
+            "commandLineArgs": "generate sqlite --output-file ..\\..\\temp\\fhir.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r5.core@5.0.0 --auto-load-expansions",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "SQLite R6": {
             "commandName": "Project",
-            "commandLineArgs": "generate sqlite --drop-tables --output-file ../../temp/fhir-r6.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r6.core@6.0.0-ballot4 --auto-load-expansions false --include-extended-structures true",
+            "commandLineArgs": "generate sqlite --drop-tables --output-file ..\\..\\temp\\fhir-r6.sqlite --max-expansion-size 8000 --resolve-dependencies false -p hl7.fhir.r6.core@6.0.0-ballot4 --auto-load-expansions false --include-extended-structures true",
             "workingDirectory": "$(MSBuildProjectDirectory)"
         },
         "http": {

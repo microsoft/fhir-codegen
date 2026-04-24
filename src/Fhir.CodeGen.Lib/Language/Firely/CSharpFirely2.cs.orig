@@ -1,15 +1,31 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿// <copyright file="CSharpFirely2.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
+
+using System.Diagnostics.CodeAnalysis;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Utility;
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirely2.cs
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGen.Models;
+using Microsoft.Health.Fhir.CodeGen.Utils;
+using Microsoft.Health.Fhir.CodeGenCommon.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+using Ncqa.Cql.Model;
+using static Microsoft.Health.Fhir.CodeGen.Language.Firely.CSharpFirelyCommon;
+using static Microsoft.Health.Fhir.CodeGenCommon.Extensions.FhirNameConventionExtensions;
+=======
 using Fhir.CodeGen.Lib.FhirExtensions;
 using Fhir.CodeGen.Lib.Models;
 using Fhir.CodeGen.Common.FhirExtensions;
-using Fhir.CodeGen.Common.Models;
 using Fhir.CodeGen.Common.Packaging;
 using Fhir.CodeGen.Common.Utils;
-using Ncqa.Cql.Model;
 using static Fhir.CodeGen.Lib.Language.Firely.CSharpFirelyCommon;
 using static Fhir.CodeGen.Common.Extensions.FhirNameConventionExtensions;
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirely2.cs
 
 #if NETSTANDARD2_0
 using Fhir.CodeGen.Common.Polyfill;
@@ -563,21 +579,33 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
 
         WriteGenerationComment(infoWriter);
 
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirely2.cs
         if (options.ExportStructures.Contains(FhirArtifactClassEnum.ValueSet))
+=======
+        if (options.ExportStructures.Contains(Common.Models.FhirArtifactClassEnum.ValueSet))
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirely2.cs
         {
             WriteSharedValueSets(subset);
         }
 
         _modelWriter.WriteLineIndented("// Generated items");
 
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirely2.cs
         if (options.ExportStructures.Contains(FhirArtifactClassEnum.PrimitiveType))
+=======
+        if (options.ExportStructures.Contains(Common.Models.FhirArtifactClassEnum.PrimitiveType))
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirely2.cs
         {
             WritePrimitiveTypes(_info.PrimitiveTypesByName.Values, ref dummy, subset);
         }
 
         AddModels(allPrimitives, _info.PrimitiveTypesByName.Values);
 
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirely2.cs
         if (options.ExportStructures.Contains(FhirArtifactClassEnum.ComplexType))
+=======
+        if (options.ExportStructures.Contains(Common.Models.FhirArtifactClassEnum.ComplexType))
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirely2.cs
         {
             WriteComplexDataTypes(_info.ComplexTypesByName.Values, ref dummy, subset);
         }
@@ -585,14 +613,22 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
         AddModels(allComplexTypes, _info.ComplexTypesByName.Values);
         AddModels(allComplexTypes, SharedR5DataTypes);
 
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirely2.cs
         if (options.ExportStructures.Contains(FhirArtifactClassEnum.Resource))
+=======
+        if (options.ExportStructures.Contains(Common.Models.FhirArtifactClassEnum.Resource))
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirely2.cs
         {
             WriteResources(_info.ResourcesByName.Values, ref dummy, subset);
         }
 
         AddModels(allResources, _info.ResourcesByName.Values);
 
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirely2.cs
         if (options.ExportStructures.Contains(FhirArtifactClassEnum.Interface))
+=======
+        if (options.ExportStructures.Contains(Common.Models.FhirArtifactClassEnum.Interface))
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirely2.cs
         {
             WriteInterfaces(_info.InterfacesByName.Values, ref dummy, subset);
         }
@@ -1000,7 +1036,12 @@ public sealed class CSharpFirely2 : ILanguage, IFileHashTestable
             foreach (SearchParameter sp in resourceSearchParams.Values.OrderBy(s => s.Name))
             {
                 // TODO:R6: Add support for the 'resource' search parameter type
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirely2.cs
                 if ((sp.TypeElement.ObjectValue is "resource"))
+=======
+                if ((sp.TypeElement.ObjectValue is string rt) &&
+                    (rt == "resource"))
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirely2.cs
                 {
                     Console.WriteLine($"Skipping SearchParameter {sp.Id} ({sp.Url}) because it is target type of 'resource'!!!");
                     continue;

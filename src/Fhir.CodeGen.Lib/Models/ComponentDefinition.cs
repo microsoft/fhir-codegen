@@ -60,7 +60,7 @@ public record class ComponentDefinition
 
     /// <summary>Cg explicit name.</summary>
     /// <returns>A string.</returns>
-    public string cgExplicitName() => Element?.cgExplicitName() ?? string.Empty;
+    public string? cgExplicitName() => Element.cgExplicitName();
 
     /// <summary>Gets the code generation name.</summary>
     /// <remarks>Note: Firely generation uses this version.</remarks>

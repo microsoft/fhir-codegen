@@ -84,7 +84,7 @@ public static class ElementDefinitionExtensions
     public static string cgBasePath(this ElementDefinition ed) => ed.Base?.Path ?? string.Empty;
 
     /// <summary>Gets the explicit name of this element if set, or returns an empty string.</summary>
-    public static string cgExplicitName(this ElementDefinition ed) => ed.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlExplicitTypeName)?.ToString() ?? string.Empty;
+    public static string? cgExplicitName(this ElementDefinition ed) => ed.GetExtensionValue<FhirString>(CommonDefinitions.ExtUrlExplicitTypeName)?.ToString();
 
     /// <summary>Gets the short name of this element, or explicit name if there is one.</summary>
     /// <param name="ed">                The ed to act on.</param>
@@ -95,12 +95,10 @@ public static class ElementDefinitionExtensions
     {
         if (allowExplicitName)
         {
-            string en = ed.cgExplicitName();
+            string? en = ed.cgExplicitName();
 
-            if (!string.IsNullOrEmpty(en))
-            {
+            if (en is not null)
                 return en;
-            }
         }
 
         if (removeChoiceMarker && ed.Path.EndsWith("[x]", StringComparison.Ordinal))

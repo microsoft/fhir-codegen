@@ -37,7 +37,7 @@ public static class FhirReleases
         /// <summary>FHIR R5.</summary>
         R5 = 5,
 
-        /// <summary>FHIR R5.</summary>
+        /// <summary>FHIR R6.</summary>
         R6 = 6,
     }
 

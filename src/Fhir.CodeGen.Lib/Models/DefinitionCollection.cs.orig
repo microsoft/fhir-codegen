@@ -1294,6 +1294,10 @@ public partial class DefinitionCollection
                     Console.WriteLine($"Operation: {op.Id} ({op.Url}) defines the parameter {pc.Name} more than once!!!");
                     continue;
                 }
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Models/DefinitionCollection.cs
+
+=======
+>>>>>>> main:src/Fhir.CodeGen.Lib/Models/DefinitionCollection.cs
                 fo = inFieldOrder.Count + 1;
                 inFieldOrder.Add(pc.Name, fo);
             }

@@ -6,10 +6,14 @@
 using System.ComponentModel;
 using System.Text;
 using Hl7.Fhir.Model;
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGen/Language/Firely/CSharpFirelyCommon.cs
+using Microsoft.Health.Fhir.CodeGen.FhirExtensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Extensions;
+using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Microsoft.Health.Fhir.CodeGenCommon.Utils;
+=======
 using Fhir.CodeGen.Lib.FhirExtensions;
-using Fhir.CodeGen.Common.Extensions;
-using Fhir.CodeGen.Common.Packaging;
-using Fhir.CodeGen.Common.Utils;
+>>>>>>> main:src/Fhir.CodeGen.Lib/Language/Firely/CSharpFirelyCommon.cs
 
 #if NETSTANDARD2_0
 using Fhir.CodeGen.Common.Polyfill;

@@ -385,6 +385,7 @@ msbuild.wrn
 /generated/r4-test.txt
 /firely
 /temp
+/scratch
 /cytoscape
 /generated/local_*
 

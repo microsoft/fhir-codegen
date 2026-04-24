@@ -729,7 +729,7 @@ public partial class FirelyNetIG : ILanguage
         foreach ((string unversionedUrl, string[] versions) in _info.ValueSetVersions.OrderBy(kvp => kvp.Key))
         {
             // check for exclusions
-            if (CSharpFirely2._exclusionSet.Contains(unversionedUrl))
+            if (CSharpFirely2.ExclusionSet.Contains(unversionedUrl))
             {
                 continue;
             }
@@ -813,7 +813,7 @@ public partial class FirelyNetIG : ILanguage
 
         // Enums and their containing classes cannot have the same name,
         // so we have to correct these here
-        if (CSharpFirely2._enumNamesOverride.TryGetValue(vs.Url, out var replacementName))
+        if (CSharpFirely2.EnumNamesOverride.TryGetValue(vs.Url, out var replacementName))
         {
             nameSanitized = replacementName;
         }
@@ -2164,9 +2164,9 @@ public partial class FirelyNetIG : ILanguage
                                 break;
                                 //throw new Exception($"Found multiple discriminators for {id}");
                             }
- 
+
                             if (discriminators.Length == 1)
-                            { 
+                            {
                                 discriminator = discriminators[0];
 
                                 bool isExtensionSlice = _findExtensionPathRegex.IsMatch(discriminator.Path);
@@ -3366,7 +3366,7 @@ public partial class FirelyNetIG : ILanguage
             remarks = (remarks == null ? string.Empty : remarks + "\n") +
                 $"Structure Definition Name: {cd.Structure.Name}";
         }
-  
+
         string directive;
         if (_info.TryGetPackageSource(cd.Structure, out string packageId, out string packageVersion))
         {
@@ -3572,7 +3572,7 @@ public partial class FirelyNetIG : ILanguage
                         Expression = "DataType",
                     },
                     ContextTarget = null,
-                    ContextElementInfo = new("", "", "", new ChoiceTypeReference(), null),
+                    ContextElementInfo = new("", "", "", ComplexTypeReference.DataTypeReference, null),
                     //ContextElementInfo = new CSharpFirely2.WrittenElementInfo()
                     //{
                     //    ElementType = "Hl7.Fhir.Model.DataType",
