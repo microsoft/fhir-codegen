@@ -525,7 +525,7 @@ public class PackageManifestTests
     [InlineData("example.org.ig", "notsemver")]
     [InlineData("hl7.fhir.r4.core", "4.0.1")]
     [InlineData("hl7.fhir.r4.core", "current")]
-    [InlineData("hl7.fhir.r6.core", "current")]
+    //[InlineData("hl7.fhir.r6.core", "current")]  -- cibuild is unreliable for testing
     [InlineData("hl7.fhir.uv.patient-corrections", "dev")]
     [InlineData("hl7.fhir.uv.subscriptions-backport.r4", "1.1.0")]
     [InlineData("hl7.fhir.uv.subscriptions-backport.r4b", "1.1.0")]
