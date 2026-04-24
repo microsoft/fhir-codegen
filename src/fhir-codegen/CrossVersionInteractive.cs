@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
-using Microsoft.Health.Fhir.CodeGen.Loader;
-using Microsoft.Health.Fhir.CodeGen.Models;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Lib.Configuration;
+using Fhir.CodeGen.Lib.Loader;
+using Fhir.CodeGen.Lib.Models;
+using Fhir.CodeGen.Common.Packaging;
 //using Terminal.Gui;
-using static Microsoft.Health.Fhir.CodeGen.CompareTool.PackageComparer;
+using static Fhir.CodeGen.Comparison.CompareTool.PackageComparer;
 
 namespace fhir_codegen;
 
@@ -91,7 +91,7 @@ internal class CrossVersionInteractive
     //    {
     //        string filename = config.ExistingComparisonPath.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
     //            ? config.ExistingComparisonPath
-    //            : Path.Combine(config.ExistingComparisonPath, "comparison.json");
+    //            : Contents.Combine(config.ExistingComparisonPath, "comparison.json");
 
     //        if (TryLoadExistingComparison(filename))
     //        {
@@ -143,7 +143,7 @@ internal class CrossVersionInteractive
     //    SelectExisting,
     //    SelectPackages,
     //    LoadPackages,
-    //    Compare,
+    //    CompareValueSets,
     //    ProcessOverview,
     //    ProcessValueSets,
     //    ProcessPrimitiveTypes,
@@ -264,7 +264,7 @@ internal class CrossVersionInteractive
     //            }
     //            break;
 
-    //        case UiStateCodes.Compare:
+    //        case UiStateCodes.CompareValueSets:
     //            {
     //                AddCompareUi(w);
     //            }
@@ -603,7 +603,7 @@ internal class CrossVersionInteractive
     //            (bool success, string message) = await TryLoadPackagesAsync();
     //            if (success)
     //            {
-    //                _nextState = UiStateCodes.Compare;
+    //                _nextState = UiStateCodes.CompareValueSets;
     //            }
     //            else
     //            {
@@ -736,7 +736,7 @@ internal class CrossVersionInteractive
 
     //        PackageComparer comparer = new(compareConfig, cache, _dcLeft, _dcRight);
 
-    //        _comparison = comparer.Compare();
+    //        _comparison = comparer.CompareValueSets();
 
     //        return (true, string.Empty);
     //    }
@@ -786,7 +786,7 @@ internal class CrossVersionInteractive
     //            ResolvePackageDependencies = true,
     //        });
 
-    //        _dcLeft = loaderLeft.LoadPackages(packageLeft.Name, [ packageLeft ])
+    //        _dcLeft = loaderLeft.LoadPackages(packageLeft.PackageId, [ packageLeft ])
     //            ?? throw new Exception($"Could not load left-hand-side package: {directiveLeft}");
 
     //        PackageLoader loaderRight = new(cache, new()
@@ -796,7 +796,7 @@ internal class CrossVersionInteractive
     //            ResolvePackageDependencies = true,
     //        });
 
-    //        _dcRight = loaderRight.LoadPackages(packageRight.Name, [ packageRight ])
+    //        _dcRight = loaderRight.LoadPackages(packageRight.PackageId, [ packageRight ])
     //            ?? throw new Exception($"Could not load right-hand-side package: {directiveRight}");
 
     //        return (true, string.Empty);

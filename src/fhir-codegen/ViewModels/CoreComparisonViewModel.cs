@@ -19,12 +19,15 @@ using CommunityToolkit.Mvvm.Input;
 using fhir_codegen.Models;
 using Hl7.Fhir.Utility;
 using Material.Icons;
-using Microsoft.Health.Fhir.CodeGen._ForPackages;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
-using Microsoft.Health.Fhir.CodeGen.Loader;
-using Microsoft.Health.Fhir.CodeGen.Models;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Lib.Configuration;
+using Fhir.CodeGen.Lib.Loader;
+using Fhir.CodeGen.Lib.Models;
+using Fhir.CodeGen.Common.Packaging;
+using Fhir.CodeGen.Comparison.Models;
+using Fhir.CodeGen.Packages.CacheClients;
+using Fhir.CodeGen.Packages.Models;
+using Tasks = System.Threading.Tasks;
 
 namespace fhir_codegen.ViewModels;
 
@@ -73,7 +76,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private int _targetDirectoryFhirVersionIndex = 2;
 
     [ObservableProperty]
-    private string[] _fhirVersions = [ "DSTU2", "STU3", "R4", "R4B", "R5", "R6" ];
+    private string[] _fhirVersions = ["DSTU2", "STU3", "R4", "R4B", "R5", "R6"];
 
     [ObservableProperty]
     private string _saveDirectory = string.Empty;       // "C:\\git\\version-modeling\\20191231\\_prev_02_down";
@@ -100,7 +103,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
     private List<string> _installedPackages = [];
 
     private static readonly Regex _corePackageRegex = new Regex("^hl7\\.fhir\\.r\\d+[A-Za-z]?\\.(core)$", RegexOptions.Compiled);
-    private static readonly HashSet<string> _releaseVersions = [ "1.0.2", "3.0.2", "4.0.1", "4.3.0", "5.0.0", ];
+    private static readonly HashSet<string> _releaseVersions = ["1.0.2", "3.0.2", "4.0.1", "4.3.0", "5.0.0",];
 
     public CoreComparisonViewModel(object? args = null)
         : base()
@@ -115,25 +118,26 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
             throw new InvalidOperationException("No configuration found");
         }
 
-        DiskPackageCache cache = new(config.FhirCacheDirectory);
+        IFhirCacheClient cache = new DiskCacheClient(config.FhirCacheDirectory);
 
         // first, we need to get the installed package references
-        IEnumerable<Firely.Fhir.Packages.PackageReference> internalReferences = cache.GetPackageReferences().Result;
+        IEnumerable<CachedPackageRecord> internalReferences = cache.ListCachedPackages().Result;
 
         // iterate over the internal references and convert them to the public references
-        foreach (Firely.Fhir.Packages.PackageReference pr in internalReferences)
+        foreach (CachedPackageRecord cachedPackage in internalReferences)
         {
-            if (string.IsNullOrEmpty(pr.Name) || string.IsNullOrEmpty(pr.Version))
+            if (string.IsNullOrEmpty(cachedPackage.Directive.PackageId) ||
+                ((cachedPackage.Directive.ResolvedVersion is null) && string.IsNullOrEmpty(cachedPackage.Directive.RequestedVersion)))
             {
                 continue;
             }
 
-            if (_corePackageRegex.IsMatch(pr.Name))
+            if (_corePackageRegex.IsMatch(cachedPackage.Directive.PackageId))
             {
-                _corePackages.Add(pr.Moniker);
+                _corePackages.Add(cachedPackage.Directive.AnyDirective);
             }
 
-            _installedPackages.Add(pr.Moniker);
+            _installedPackages.Add(cachedPackage.Directive.AnyDirective);
         }
 
         Packages = _onlyListFhirCore ? _corePackages : _installedPackages;
@@ -153,7 +157,8 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         Task.Run(DoPackageComparison);
     }
 
-    private async void DoPackageComparison()
+    //private async void DoPackageComparison()
+    private async Tasks.Task DoPackageComparison()
     {
         Processing = true;
         Message = null;
@@ -237,7 +242,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
 
         Task.Run(DoDirectoryComparison);
     }
-    private async void DoDirectoryComparison()
+    private async Tasks.Task DoDirectoryComparison()
     {
         Processing = true;
         Message = null;
@@ -256,7 +261,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
 
         PackageLoader loader = new(new());
         DefinitionCollection? source = await loader.LoadPackages([SourceDirectory], fhirVersion: FhirVersions[SourceDirectoryFhirVersionIndex]);
-
+        
         if (source == null)
         {
             Message = "Failed to load source definitions";
@@ -265,7 +270,7 @@ public partial class CoreComparisonViewModel : ViewModelBase, INavigableViewMode
         }
 
         DefinitionCollection? target = await loader.LoadPackages([TargetDirectory], fhirVersion: FhirVersions[TargetDirectoryFhirVersionIndex]);
-
+        
         if (target == null)
         {
             Message = "Failed to load target definitions";

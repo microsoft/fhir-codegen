@@ -380,8 +380,12 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+/generated
+/generated/**
 /generated/r4-test.txt
 /firely
 /temp
 /cytoscape
 /generated/local_*
+
+*.sqlite

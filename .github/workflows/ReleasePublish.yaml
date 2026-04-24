@@ -4,7 +4,7 @@ on:
     types: [published]
 
 env:
-  DOTNET_VERSION: '8'           # The .NET SDK version to use
+  DOTNET_VERSION: '9'           # The .NET SDK version to use
 
 jobs:
   release:

@@ -1,0 +1,151 @@
+﻿@implements IDialogContentComponent<IQueryable<ElementRecForUi>>
+
+<FluentDialogBody>
+    <div style="width: 100%; overflow-x: auto">
+        <FluentTreeView Items="@Items">
+            <ItemTemplate>
+                @if (context.Text.StartsWith("⚠️", StringComparison.Ordinal))
+                {
+                    <span style="color: var(--error);">
+                        <code>@context.Text</code>
+                    </span>
+                }
+                else
+                {
+                    <code>@context.Text</code>
+                }
+            </ItemTemplate>
+        </FluentTreeView>
+    </div>
+</FluentDialogBody>
+
+@code {
+    [Parameter]
+    public IQueryable<ElementRecForUi> Content { get; set; } = default!;
+
+    private IEnumerable<ITreeViewItem> Items = Enumerable.Empty<ITreeViewItem>();
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        ILookup<string, ElementRecForUi> recsByParent = Content.ToLookup(r => GetParentId(r).parentId);
+        Dictionary<string, TreeViewItem> itemsById = [];
+
+        if (!Content.Any())
+        {
+            Items = Enumerable.Empty<ITreeViewItem>();
+            return;
+        }
+
+        TreeViewItem? rootItem = null;
+
+        foreach (ElementRecForUi rec in Content)
+        {
+            (string parentId, bool isRoot) = GetParentId(rec);
+
+            if (isRoot)
+            {
+                TreeViewItem item = new TreeViewItem
+                    {
+                        Id = rec.Element.Id,
+                        Text = GetText(rec),
+                        Items = new List<TreeViewItem>(),
+                        Expanded = true,
+                    };
+                itemsById[rec.Element.Id] = item;
+                rootItem = item;
+                continue;
+            }
+
+            if (!itemsById.TryGetValue(parentId, out TreeViewItem? parentItem))
+            {
+                parentItem = new TreeViewItem
+                {
+                    Id = parentId,
+                    Text = GetText(rec),
+                    Items = new List<TreeViewItem>(),
+                    Expanded = true,
+                };
+                itemsById[parentId] = parentItem;
+            }
+
+            TreeViewItem childItem = new TreeViewItem
+            {
+                Id = rec.Element.Id,
+                Text = GetText(rec),
+                Items = new List<TreeViewItem>(),
+                Expanded = true,
+            };
+
+            itemsById[rec.Element.Id] = childItem;
+
+            if (parentItem.Items is null)
+            {
+                parentItem.Items = new List<TreeViewItem>
+                {
+                    childItem
+                };
+            }
+            else if (parentItem.Items is List<TreeViewItem> childItems)
+            {
+                childItems.Add(childItem);
+            }
+            else
+            {
+                childItem.Items = [.. parentItem.Items, childItem];
+            }
+        }
+
+        if (rootItem != null)
+        {
+            Items = [rootItem];
+        }
+        else
+        {
+            Items = Enumerable.Empty<ITreeViewItem>();
+        }
+    }
+
+    private string GetText(ElementRecForUi rec)
+    {
+        if (!rec.ElementProjections.Any())
+        {
+            return "⚠️ " + rec.Element.UiDisplayWithType;
+            // return $"{rec.Element.IdLong} !! no mapping records!";
+        }
+
+        if (rec.ElementProjections.Count() == 1)
+        {
+            ElementProjectionForUi proj = rec.ElementProjections.First();
+
+            if (proj.Comparison.NotMapped == true)
+            {
+                return "⚠️ " + rec.Element.UiDisplayWithType;
+                // return $"{rec.Element.IdLong} !! not mapped";
+            }
+
+            if (string.IsNullOrEmpty(proj.TargetCell.Element?.Id))
+            {
+                return "⚠️ " + rec.Element.UiDisplayWithType;
+                // return $"{rec.Element.IdLong} !! mapped to empty!";
+            }
+
+            return "✅ " + $"{rec.Element.UiDisplayWithType} -> {proj.TargetCell.Element.UiDisplayWithType}";
+        }
+
+        return "✅ " + $"{rec.Element.UiDisplayWithType} -> {string.Join(", ", rec.ElementProjections.Select(p => p.TargetCell.Element.UiDisplayWithType))}";
+        // return rec.Text;
+    }
+
+    private (string parentId, bool isRoot) GetParentId(ElementRecForUi rec)
+    {
+        string[] components = rec.Element.Id.Split('.');
+        if (components.Length == 1)
+        {
+            return (string.Empty, true);
+        }
+
+        return (string.Join(".", components[..^1]), false);
+    }
+}

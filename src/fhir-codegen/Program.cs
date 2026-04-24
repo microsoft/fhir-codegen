@@ -3,18 +3,17 @@
 //     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // </copyright>
 
-using SCL = System.CommandLine; // this is present to disambiguate Option from System.CommandLine and Microsoft.FluentUI.AspNetCore.Components
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 //using fhir_codegen.Components;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Fhir.CodeGen.Lib.Configuration;
 //using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 //using Microsoft.FluentUI.AspNetCore.Components;
-using Microsoft.Health.Fhir.CodeGen.Language;
+using Fhir.CodeGen.Lib.Language;
 using System.Reflection;
-using Microsoft.Health.Fhir.CodeGenCommon.Models;
+using Fhir.CodeGen.Common.Models;
 using System.CommandLine;
-using Microsoft.Health.Fhir.CodeGen.Extensions;
+using Fhir.CodeGen.Lib.Extensions;
 using System.CommandLine.Builder;
 using System.Text;
 using Microsoft.Extensions.Primitives;
@@ -23,22 +22,25 @@ using System.CommandLine.Help;
 using System.CommandLine.Invocation;
 using System.Collections;
 using Hl7.Fhir.Utility;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
-using Microsoft.Health.Fhir.CodeGen.Loader;
-using Microsoft.Health.Fhir.CodeGen.Models;
+using Fhir.CodeGen.Common.Packaging;
+using Fhir.CodeGen.Lib.Loader;
+using Fhir.CodeGen.Lib.Models;
 using System.Resources;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Health.Fhir.CodeGen.Net;
-using Microsoft.Health.Fhir.CodeGenCommon.Smart;
-using Microsoft.Health.Fhir.CodeGen.CompareTool;
+using Fhir.CodeGen.Lib.Net;
+using Fhir.CodeGen.Common.Smart;
+using Fhir.CodeGen.Comparison.CompareTool;
+using Fhir.CodeGen.Comparison.XVer;
+using static fhir_codegen_shared.LaunchUtils;
+using HarfBuzzSharp;
+using Fhir.CodeGen.Lib.SqlOnFhir;
+using Fhir.CodeGen.Comparison.Models;
 
 namespace fhir_codegen;
 
 /// <summary>A program.</summary>
 public class Program
 {
-    private static List<SCL.Option> _optsWithEnums = [];
-
     private static HashSet<string> _packageAliases =
     [
         "--package", "--load-package", "-p"
@@ -59,10 +61,25 @@ public class Program
             .Build();
 
         // in order to process help correctly we have to build a parser independent of the command
-        SCL.Parsing.Parser parser = BuildParser(envConfig);
+        Parser parser = BuildParser(envConfig);
 
         // attempt a parse
-        SCL.Parsing.ParseResult pr = parser.Parse(args);
+        ParseResult pr = parser.Parse(args);
+
+        string command;
+        string? subCommand;
+
+        if ((pr.CommandResult.Parent != null) &&
+            (pr.CommandResult.Parent?.Symbol.Name != pr.RootCommandResult.Symbol.Name))
+        {
+            command = pr.CommandResult.Parent!.Symbol.Name;
+            subCommand = pr.CommandResult.Command.Name;
+        }
+        else
+        {
+            command = pr.CommandResult.Command.Name;
+            subCommand = null;
+        }
 
         // check for invalid arguments, help, a generate command with no subcommand, or a generate with no packages to trigger the nicely formatted help
         if (pr.UnmatchedTokens.Any() ||
@@ -72,14 +89,13 @@ public class Program
             pr.Tokens.Any(t => t.Value.Equals("-h", StringComparison.Ordinal)) ||
             pr.Tokens.Any(t => t.Value.Equals("--help", StringComparison.Ordinal)) ||
             pr.Tokens.Any(t => t.Value.Equals("help", StringComparison.Ordinal)) ||
-            pr.CommandResult.Command.Name.Equals("generate", StringComparison.Ordinal))
-
+            ((command == "generate") && (subCommand == null)))
         {
             return await parser.InvokeAsync(args);
         }
 
         // check for a generate command with no packages
-        if ((pr.CommandResult.Command.Parents?.FirstOrDefault()?.Name.Equals("generate", StringComparison.Ordinal) ?? false) &&
+        if ((command == "generate") &&
             (!pr.Tokens.Any(t => _packageAliases.Contains(t.Value))))
         {
             Console.WriteLine("Error: generate command requires at least one package to process.");
@@ -87,430 +103,47 @@ public class Program
             return await parser.InvokeAsync(args.Append("--help").ToArray());
         }
 
-        // any language subcommand is a generate command
-        string command = pr.CommandResult.Command.Name;
-        if (LanguageManager.HasLanguage(command))
-        {
-            command = "generate";
-        }
-
         return command switch
         {
-            "generate" => await DoGenerate(pr),
-            "compare" => await DoCompare(pr),
-            //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr),
-            "gui" => Gui.RunGui(pr),
-            //case "interactive":
-            //    return await DoInteractive(pr);
-            //case "web":
-            //    return await DoWeb(pr);
+            "generate" => await DoGenerate(pr, command, subCommand),
+            "compare" => await DoCompare(pr, command, subCommand),
+            "xver" => await DoXVer(pr, command, subCommand),
+            //"cross-version" => await CrossVersionInteractive.DoCrossVersionReview(pr, command, subCommand),
+            "gui" => Gui.RunGui(pr, command, subCommand),
+            //"interactive" => await DoInteractive(pr, command, subCommand);
+            //"web" => await DoWeb(pr, command, subCommand);
+            "sql" => await DoSql(pr, command, subCommand),
             _ => await parser.InvokeAsync(args),
         };
     }
 
-    private static SCL.Parsing.Parser BuildParser(IConfiguration envConfig)
-    {
-        SCL.RootCommand command = BuildCommand(envConfig);
-
-        SCL.Parsing.Parser parser = new CommandLineBuilder(command)
-            .UseExceptionHandler((ex, ctx) =>
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                ctx.ExitCode = 1;
-            })
-            .UseDefaults()
-            .UseHelp(ctx =>
-            {
-                foreach (SCL.Option option in _optsWithEnums)
-                {
-                    StringBuilder sb = new();
-                    if (option.Aliases.Count != 0)
-                    {
-                        sb.AppendLine(string.Join(", ", option.Aliases));
-                    }
-                    else
-                    {
-                        sb.AppendLine(option.Name);
-                    }
-
-                    Type et = option.ValueType;
-
-                    if (option.ValueType.IsGenericType)
-                    {
-                        et = option.ValueType.GenericTypeArguments.First();
-                    }
-
-                    if (option.ValueType.IsArray)
-                    {
-                        et = option.ValueType.GetElementType()!;
-                    }
-
-                    foreach (MemberInfo mem in et.GetMembers(BindingFlags.Public | BindingFlags.Static).Where(m => m.DeclaringType == et).OrderBy(m => m.Name))
-                    {
-                        IEnumerable<DescriptionAttribute> attributes = mem.GetCustomAttributes<DescriptionAttribute>(false);
-
-                        sb.AppendLine($"  opt: {mem.Name}");
-                        if (attributes.Any())
-                        {
-                            sb.AppendLine($"       {attributes.First().Description}");
-                        }
-                    }
-
-                    ctx.HelpBuilder.CustomizeSymbol(
-                        option,
-                        firstColumnText: (ctx) => sb.ToString());
-                    //secondColumnText: (ctx) => option.Description);
-                }
-            })
-            .Build();
-
-        return parser;
-    }
-
-    /// <summary>Builds command parser.</summary>
-    /// <param name="envConfig">  The environment configuration.</param>
-    /// <param name="addHandlers">True to add handlers.</param>
-    /// <returns>A SCL.Parsing.Parser.</returns>
-    private static SCL.RootCommand BuildCommand(IConfiguration envConfig)
-    {
-        // create our root command
-        SCL.RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            rootCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // create our generate command
-        SCL.Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            generateCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // iterate through languages and add them as subcommands
-        foreach (ILanguage language in LanguageManager.GetLanguages())
-        {
-            SCL.Command languageCommand = new(language.Name, $"Generate {language.Name}");
-            if (language.Name.Any(char.IsUpper))
-            {
-                languageCommand.AddAlias(language.Name.ToLowerInvariant());
-            }
-
-            foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
-            {
-                languageCommand.AddOption(option);
-                TrackIfEnum(option);
-            }
-
-            generateCommand.AddCommand(languageCommand);
-        }
-
-        rootCommand.AddCommand(generateCommand);
-
-        // create our interactive command
-        SCL.Command interactiveCommand = new("interactive", "Launch into an interactive console.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigInteractive), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            interactiveCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(interactiveCommand);
-
-        // create our webserver command
-        SCL.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigFluentUi), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            webCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(webCommand);
-
-        // create our compare command
-        SCL.Command compareCommand = new("compare", "Compare two sets of packages.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigCompare), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            compareCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(compareCommand);
-
-        //// create our cross-version interactive command
-        //SCL.Command cviCommand = new("cross-version", "Interactively review cross-version definitions.");
-        //foreach (SCL.Option option in BuildCliOptions(typeof(ConfigCrossVersionInteractive), typeof(ConfigRoot), envConfig))
-        //{
-        //    // note that 'global' here is just recursive DOWNWARD
-        //    cviCommand.AddGlobalOption(option);
-        //    TrackIfEnum(option);
-        //}
-
-        //// TODO(ginoc): Set the command handler
-        //rootCommand.AddCommand(cviCommand);
-
-        // create our UI command
-        SCL.Command guiCommand = new("gui", "Launch the GUI.");
-        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGui), typeof(ConfigRoot), envConfig))
-        {
-            // note that 'global' here is just recursive DOWNWARD
-            guiCommand.AddGlobalOption(option);
-            TrackIfEnum(option);
-        }
-
-        // TODO(ginoc): Set the command handler
-        rootCommand.AddCommand(guiCommand);
-
-
-        return rootCommand;
-
-        void TrackIfEnum(SCL.Option option)
-        {
-            if (option.ValueType.IsEnum)
-            {
-                _optsWithEnums.Add(option);
-                return;
-            }
-
-            if (option.ValueType.IsGenericType)
-            {
-                if (option.ValueType.GenericTypeArguments.First().IsEnum)
-                {
-                    _optsWithEnums.Add(option);
-                }
-
-                return;
-            }
-
-            if (option.ValueType.IsArray)
-            {
-                if (option.ValueType.GetElementType()!.IsEnum)
-                {
-                    _optsWithEnums.Add(option);
-                }
-
-                return;
-            }
-        }
-    }
-
-    //private static SCL.RootCommand BuildCommand(IConfiguration envConfig)
-    //{
-    //    // create our root command
-    //    SCL.RootCommand rootCommand = new("A utility for processing FHIR packages into other formats/languages.");
-    //    //foreach (SCL.Option option in BuildCliOptions(typeof(ConfigRoot), envConfig: envConfig))
-    //    //{
-    //    //    rootCommand.AddOption(option);
-    //    //    TrackIfEnum(option);
-    //    //}
-
-    //    // create our generate command
-    //    SCL.Command generateCommand = new("generate", "Generate output from a FHIR package and exit.");
-    //    //foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
-    //    //{
-    //    //    generateCommand.AddOption(option);
-    //    //    TrackIfEnum(option);
-    //    //}
-
-    //    // iterate through languages and add them as subcommands
-    //    foreach (ILanguage language in LanguageManager.GetLanguages())
-    //    {
-    //        SCL.Command languageCommand = new(language.Name, $"Generate {language.Name}");
-    //        if (language.Name.Any(char.IsUpper))
-    //        {
-    //            languageCommand.AddAlias(language.Name.ToLowerInvariant());
-    //        }
-
-    //        foreach (SCL.Option option in BuildCliOptions(LanguageManager.ConfigTypeForLanguage(language.Name), envConfig: envConfig))
-    //        {
-    //            languageCommand.AddOption(option);
-    //            TrackIfEnum(option);
-    //        }
-
-    //        foreach (SCL.Option option in BuildCliOptions(typeof(ConfigGenerate), envConfig: envConfig))
-    //        {
-    //            languageCommand.AddOption(option);
-    //            TrackIfEnum(option);
-    //        }
-
-    //        generateCommand.AddCommand(languageCommand);
-    //    }
-
-    //    rootCommand.AddCommand(generateCommand);
-
-    //    // create our interactive command
-    //    SCL.Command interactiveCommand = new("interactive", "Launch into an interactive console.");
-    //    foreach (SCL.Option option in BuildCliOptions(typeof(ConfigInteractive), envConfig: envConfig))
-    //    {
-    //        // note that 'global' here is just recursive DOWNWARD
-    //        interactiveCommand.AddOption(option);
-    //        TrackIfEnum(option);
-    //    }
-
-    //    // TODO(ginoc): Set the command handler
-    //    rootCommand.AddCommand(interactiveCommand);
-
-    //    // create our generate command
-    //    SCL.Command webCommand = new("web", "Launch into a locally-hosted web UI.");
-    //    foreach (SCL.Option option in BuildCliOptions(typeof(ConfigFluentUi), envConfig: envConfig))
-    //    {
-    //        // note that 'global' here is just recursive DOWNWARD
-    //        webCommand.AddOption(option);
-    //        TrackIfEnum(option);
-    //    }
-
-    //    // TODO(ginoc): Set the command handler
-    //    rootCommand.AddCommand(webCommand);
-
-    //    return rootCommand;
-
-    //    void TrackIfEnum(SCL.Option option)
-    //    {
-    //        if (option.ValueType.IsEnum)
-    //        {
-    //            _optsWithEnums.Add(option);
-    //            return;
-    //        }
-
-    //        if (option.ValueType.IsGenericType)
-    //        {
-    //            if (option.ValueType.GenericTypeArguments.First().IsEnum)
-    //            {
-    //                _optsWithEnums.Add(option);
-    //            }
-
-    //            return;
-    //        }
-
-    //        if (option.ValueType.IsArray)
-    //        {
-    //            if (option.ValueType.GetElementType()!.IsEnum)
-    //            {
-    //                _optsWithEnums.Add(option);
-    //            }
-
-    //            return;
-    //        }
-    //    }
-    //}
-
-    private static Dictionary<string, LanguageOptionInfo> _configMapsByLang = [];
-
-    private record class LanguageOptionInfo
-    {
-        public required string Name { get; set; }
-
-        public required Type ConfigType { get; set; }
-
-        public List<PropertyOptionTuple> Properties { get; set; } = [];
-    }
-
-    private record class PropertyOptionTuple
-    {
-        public required PropertyInfo ConfigProp { get; set; }
-
-        public required SCL.Option CommandOpt { get; set; }
-    }
-
-    private static IEnumerable<SCL.Option> BuildCliOptions(
-        Type forType,
-        Type? excludeFromType = null,
-        IConfiguration? envConfig = null)
-    {
-        HashSet<string> inheritedPropNames = [];
-
-        if (excludeFromType != null)
-        {
-            PropertyInfo[] exProps = excludeFromType.GetProperties();
-            foreach (PropertyInfo exProp in exProps)
-            {
-                inheritedPropNames.Add(exProp.Name);
-            }
-        }
-
-        object? configDefault = null;
-        if (forType.IsAbstract)
-        {
-            throw new Exception($"Config type cannot be abstract! {forType.Name}");
-        }
-
-        configDefault = Activator.CreateInstance(forType);
-
-        if (configDefault is not ICodeGenConfig config)
-        {
-            throw new Exception("Config type must implement ICodeGenConfig");
-        }
-
-        foreach (ConfigurationOption opt in config.GetOptions())
-        {
-            // need to configure default values
-            if ((envConfig != null) &&
-                (!string.IsNullOrEmpty(opt.EnvVarName)))
-            {
-                opt.CliOption.SetDefaultValueFactory(() => envConfig.GetSection(opt.EnvVarName).GetChildren().Select(c => c.Value));
-            }
-            else
-            {
-                opt.CliOption.SetDefaultValue(opt.DefaultValue);
-            }
-
-            yield return opt.CliOption;
-        }
-    }
-
-    public static async Task<int> DoGenerate(SCL.Parsing.ParseResult pr)
+    public static async Task<int> DoGenerate(ParseResult pr, string command, string? subCommand)
     {
         try
         {
-            string languageName = pr.CommandResult.Command.Name;
-
-            if (!LanguageManager.TryGetLanguage(languageName, out ILanguage? language))
+            if (subCommand == null)
             {
-                throw new Exception($"Could not find language type for {languageName}");
+                throw new Exception("Generation requires a language to be specified");
             }
 
-            // get our language type
-            Type langType = LanguageManager.TypeForLanguage(languageName);
-
-            // get our language configuration type
-            Type configType = LanguageManager.ConfigTypeForLanguage(language.Name);
-
-            // create our configuration object
-            object? configGeneric = Activator.CreateInstance(configType)
-                ?? throw new Exception($"Could not create configuration object for {languageName} ({configType.Name})");
-
-            if (configGeneric is not ICodeGenConfig config)
-            {
-                throw new Exception($"Config type must implement ICodeGenConfig, {languageName} ({configType.Name})");
-            }
+            ICodeGenConfig config = ParseConfig(pr, command, subCommand);
 
             if (config is not ConfigRoot rootConfig)
             {
                 throw new Exception("Config type must inherit from ConfigRoot");
             }
 
-            // parse the arguments into the configuration object
-            config.Parse(pr);
-
-            object? langObject = Activator.CreateInstance(langType)
-                ?? throw new Exception($"Could not create language object for {languageName} ({langType.Name})");
-
-            if (langObject is not ILanguage iLang)
+            if (config is not ConfigGenerate genConfig)
             {
-                throw new Exception($"Language type must implement ILanguage, {languageName} ({langType.Name})");
+                throw new Exception("Config type must inherit from ConfigGenerate");
             }
 
-            PackageLoader loader = new(config is ConfigRoot cr ? cr : null, new()
+            if (!LanguageManager.TryGetLanguage(subCommand, out ILanguage? iLang))
+            {
+                throw new Exception($"Language type must implement ILanguage, {subCommand}");
+            }
+
+            PackageLoader loader = new(rootConfig, new()
             {
                 JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
             });
@@ -519,8 +152,7 @@ public class Program
                 ?? throw new Exception($"Could not load packages: {string.Join(',', rootConfig.Packages)}");
 
             // check for a FHIR server URL
-            if ((rootConfig is ConfigGenerate genConfig) &&
-                !string.IsNullOrEmpty(genConfig.FhirServerUrl))
+            if (!string.IsNullOrEmpty(genConfig.FhirServerUrl))
             {
                 // parse any HTTP headers the caller has provided
                 Dictionary<string, List<string>> headers = ParseHttpHeaderArgs(genConfig.FhirServerHeaders);
@@ -568,7 +200,7 @@ public class Program
         return 0;
     }
 
-    public static async Task<int> DoCompare(SCL.Parsing.ParseResult pr)
+    public static async Task<int> DoCompare(ParseResult pr, string command, string? subCommand)
     {
         try
         {
@@ -631,138 +263,70 @@ public class Program
         return 0;
     }
 
-    private static Dictionary<string, List<string>> ParseHttpHeaderArgs(List<string> argValues)
-    {
-        if (argValues.Count == 0)
-        {
-            return [];
-        }
-
-        Dictionary<string, List<string>> headers = [];
-
-        foreach (string header in argValues)
-        {
-            int separatorLocation = header.IndexOf('=');
-
-            if (separatorLocation == -1)
-            {
-                // ignore
-                continue;
-            }
-
-            string key = header[..separatorLocation].Trim();
-            string value = header[(separatorLocation + 1)..].Trim();
-
-            if (headers.TryGetValue(key, out List<string>? parsedValues))
-            {
-                parsedValues.Append(value);
-            }
-            else
-            {
-                headers.Add(key, [value]);
-            }
-        }
-
-        return headers;
-    }
-
-
-    public static async Task<int> DoGenerateReflection(SCL.Parsing.ParseResult pr)
+    public static Task<int> DoXVer(ParseResult pr, string command, string? subCommand)
     {
         try
         {
-            await Task.Delay(0);
-
-            string languageName = pr.CommandResult.Command.Name;
-
-            if (!_configMapsByLang.TryGetValue(languageName, out LanguageOptionInfo? langConfigMap))
-            {
-                throw new Exception($"Could not find language config map for {languageName}");
-            }
-
-            if (langConfigMap.ConfigType.IsAbstract)
-            {
-                throw new Exception($"Could not find language config map for {languageName}");
-            }
-
             // create our configuration object
-            object? langConfig = Activator.CreateInstance(langConfigMap.ConfigType)
-                ?? throw new Exception($"Could not create configuration object for {languageName}");
+            ConfigXVer config = new();
 
-            // iterate over the properties and get the values from the parse result
-            foreach (PropertyOptionTuple map in langConfigMap.Properties)
-            {
-                string propName = map.ConfigProp.Name;
+            // parse the arguments into the configuration object
+            config.Parse(pr);
 
-                object? configValue = map.ConfigProp.GetValue(langConfig);
-                object? optValue = pr.GetValueForOption(map.CommandOpt);
-
-                if (map.ConfigProp.PropertyType.IsArray &&
-                    (configValue is Array configValueArray) &&
-                    (optValue is IEnumerator enumerator))
-                {
-                    Type valueType = map.ConfigProp.PropertyType.GetElementType()!;
-                    //Type valueType = configValueArray.GetType().GetElementType()!;
-
-                    Type listType = typeof(List<>); // Represents List<T>
-                    Type concreteType = listType.MakeGenericType(valueType); // Create a concrete type (e.g., List<string>)
-
-                    object? tempList = Activator.CreateInstance(concreteType); // Instantiate the list
-
-                    // use the enumerator to add values to the array
-                    while (enumerator.MoveNext())
-                    {
-                        ((IList)tempList!).Add(enumerator.Current);
-
-                        object? value = enumerator.Current;
-                    }
-
-                    Array parsedValues = Array.CreateInstance(valueType, ((IList)tempList!).Count);
-
-                    foreach (object? item in (IList)tempList!)
-                    {
-                        parsedValues.SetValue(item, ((IList)tempList!).IndexOf(item));
-                    }
-
-                    map.ConfigProp.SetValue(langConfig, parsedValues);
-                }
-                else if (map.ConfigProp.PropertyType.IsGenericType)
-                {
-                    Type hashGenType = typeof(HashSet<>);
-
-                    if (map.ConfigProp.PropertyType.GetGenericTypeDefinition() == hashGenType)
-                    {
-                        Type valueType = map.ConfigProp.PropertyType.GetElementType()!;
-
-                        Type concreteType = hashGenType.MakeGenericType(valueType);
-
-                    }
-
-                    Type ieGenericType = typeof(IEnumerable<>);
-
-                }
-                else
-                {
-                    map.ConfigProp.SetValue(langConfig, pr.GetValueForOption(map.CommandOpt));
-                }
-            }
-
-
-            Console.WriteLine("In generate....");
+            XVerProcessor xVerProcessor = new(config);
+            xVerProcessor.ProcessCommand(subCommand);
         }
         catch (Exception ex)
         {
             if (ex.InnerException != null)
             {
-                Console.WriteLine($"RunGenerate <<< caught: {ex.Message}::{ex.InnerException.Message}");
+                Console.WriteLine($"DoXVer <<< caught: {ex.Message}::{ex.InnerException.Message}");
             }
             else
             {
-                Console.WriteLine($"RunGenerate <<< caught: {ex.Message}");
+                Console.WriteLine($"DoXVer <<< caught: {ex.Message}");
             }
         }
 
-        return 10;
+        return Task.FromResult(0);
+    }
+
+
+    public static async Task<int> DoSql(ParseResult pr, string command, string? subCommand)
+    {
+        try
+        {
+            // create our configuration object
+            ConfigSql config = new();
+
+            // parse the arguments into the configuration object
+            config.Parse(pr);
+
+            // create a loader because these are all different FHIR core versions
+            PackageLoader loader = new(config, new()
+            {
+                JsonModel = LoaderOptions.JsonDeserializationModel.SystemTextJson,
+            });
+
+            DefinitionCollection dc = await loader.LoadPackages(config.Packages)
+                ?? throw new Exception($"Could not load packages: {string.Join(", ", config.Packages)}");
+
+            SqlOnFhirProcessor processor = new(config);
+            processor.Process(dc);
+        }
+        catch (Exception ex)
+        {
+            if (ex.InnerException != null)
+            {
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}::{ex.InnerException.Message}");
+            }
+            else
+            {
+                Console.WriteLine($"DoCompare <<< caught: {ex.Message}");
+            }
+        }
+
+        return 0;
     }
 
     ///// <summary>web UI.</summary>
@@ -776,7 +340,7 @@ public class Program
     //        WebApplicationBuilder builder = null!;
 
     //        // when packaging as a dotnet tool, we need to do some directory shenanigans for the static content root
-    //        string root = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location ?? AppContext.BaseDirectory) ?? string.Empty;
+    //        string root = Contents.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location ?? AppContext.BaseDirectory) ?? string.Empty;
     //        if (!string.IsNullOrEmpty(root))
     //        {
     //            string webRoot = FindRelativeDir(root, "staticwebassets", false);
@@ -881,67 +445,5 @@ public class Program
 
     //        LaunchBrowser(url);
     //    }
-    //}
-
-    /// <summary>Executes the browser operation.</summary>
-    /// <param name="url">URL of the resource.</param>
-    private static void LaunchBrowser(string url)
-    {
-        ProcessStartInfo psi = new();
-
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            psi.FileName = "open";
-            psi.ArgumentList.Add(url);
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-        {
-            psi.FileName = "xdg-open";
-            psi.ArgumentList.Add(url);
-        }
-        else
-        {
-            psi.FileName = "cmd";
-            psi.ArgumentList.Add("/C");
-            psi.ArgumentList.Add("start");
-            psi.ArgumentList.Add(url);
-        }
-
-        Process.Start(psi);
-    }
-
-
-    ///// <summary>Searches for the FHIR specification directory.</summary>
-    ///// <exception cref="DirectoryNotFoundException">Thrown when the requested directory is not
-    /////  present.</exception>
-    ///// <param name="dirName">       The name of the directory we are searching for.</param>
-    ///// <param name="throwIfNotFound">(Optional) True to throw if not found.</param>
-    ///// <returns>The found FHIR directory.</returns>
-    //public static string FindRelativeDir(
-    //    string startDir,
-    //    string dirName,
-    //    bool throwIfNotFound = true)
-    //{
-    //    string currentDir = string.IsNullOrEmpty(startDir) ? Path.GetDirectoryName(AppContext.BaseDirectory) ?? string.Empty : startDir;
-    //    string testDir = Path.Combine(currentDir, dirName);
-
-    //    while (!Directory.Exists(testDir))
-    //    {
-    //        currentDir = Path.GetFullPath(Path.Combine(currentDir, ".."));
-
-    //        if (currentDir == Path.GetPathRoot(currentDir))
-    //        {
-    //            if (throwIfNotFound)
-    //            {
-    //                throw new DirectoryNotFoundException($"Could not find directory {dirName}!");
-    //            }
-
-    //            return string.Empty;
-    //        }
-
-    //        testDir = Path.Combine(currentDir, dirName);
-    //    }
-
-    //    return testDir;
     //}
 }

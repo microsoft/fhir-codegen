@@ -17,14 +17,14 @@ using fhir_codegen.Models;
 using fhir_codegen.ViewModels;
 using fhir_codegen.Views;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Health.Fhir.CodeGen.Configuration;
+using Fhir.CodeGen.Lib.Configuration;
 
 namespace fhir_codegen;
 
 internal class Gui
 {
     [STAThread]
-    public static int RunGui(System.CommandLine.Parsing.ParseResult pr)
+    public static int RunGui(System.CommandLine.Parsing.ParseResult pr, string command, string? subCommand)
     {
         ConfigGui config = new();
         config.Parse(pr);

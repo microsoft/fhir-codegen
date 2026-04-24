@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);DISABLE_XML</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants);DISABLE_XML</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Language\Cql\_Definitional\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Fhir.CodeGen.Common\Polyfill\CodeGenCommonPolyfill.cs" Link="Polyfill\CodeGenCommonPolyfill.cs" />
+    <Content Include="Language\Cql\_Definitional\CqlFhirCodePaths-CS.fsh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Language\Cql\_Definitional\CqlFhirProperties.fsh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hl7.Fhir.R5" Version="5.13.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.11" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.6.28" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp" Version="1.15.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fhir.CodeGen.LangSQLite\Fhir.CodeGen.LangSQLite.csproj" />
+    <ProjectReference Include="..\Fhir.CodeGen.Packages\Fhir.CodeGen.Packages.csproj" />
+    <ProjectReference Include="..\Fhir.CodeGen.Common\Fhir.CodeGen.Common.csproj" />
+    <ProjectReference Include="..\Fhir.CodeGen.CrossVersionLoader\Fhir.CodeGen.CrossVersionLoader.csproj" />
+    <ProjectReference Include="..\Fhir.CodeGen.MappingLanguage\Fhir.CodeGen.MappingLanguage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Language\Firely\Cql\Models\fhir-modelinfo-4.0.1.xml">
+      <LogicalName>Fhir401</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Polyfill\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+  
+</Project>
