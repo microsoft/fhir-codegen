@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\fhir-codegen.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PolySharp" Version="1.15.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+<<<<<<< HEAD:src/Microsoft.Health.Fhir.CodeGenCommon/Microsoft.Health.Fhir.CodeGenCommon.csproj
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+=======
+    <PackageReference Include="System.Text.Json" Version="9.0.6" />
+>>>>>>> main:src/Fhir.CodeGen.Common/Fhir.CodeGen.Common.csproj
+  </ItemGroup>
+
+</Project>

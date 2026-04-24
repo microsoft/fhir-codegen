@@ -7,9 +7,9 @@
 using System.Text.Json.Nodes;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
-using Microsoft.Health.Fhir.CodeGen.Loader;
-using Microsoft.Health.Fhir.CodeGen.Models;
-using Microsoft.Health.Fhir.CodeGenCommon.Packaging;
+using Fhir.CodeGen.Lib.Loader;
+using Fhir.CodeGen.Lib.Models;
+using Fhir.CodeGen.Common.Packaging;
 
 namespace performance_test_cli.PackageLoading;
 

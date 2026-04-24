@@ -1,0 +1,130 @@
+﻿// <copyright file="StructureParseTests.cs" company="Microsoft Corporation">
+//     Copyright (c) Microsoft Corporation. All rights reserved.
+//     Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// </copyright>
+
+
+using System.Text.Json;
+using Shouldly;
+using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
+using Fhir.CodeGen.Lib.FhirExtensions;
+using Fhir.CodeGen.Lib.Tests.Extensions;
+using Fhir.CodeGen.Common.Models;
+
+namespace Fhir.CodeGen.Lib.Tests.FromFailures;
+
+/// <summary>A structure parse tests.</summary>
+public class ParseTests
+{
+    ///// <summary>
+    ///// Note that the Expansion is WRONG in several publications
+    ///// TODO(ginoc): Remove this test when current build is verified correct.
+    ///// </summary>
+    ///// <param name="json">The JSON.</param>
+    //[Theory]
+    //[FileData("TestData/R5/expansions/ValueSet-units-of-time.json")]
+    //[Trait("Category", "Issues")]
+    //[Trait("FhirVersion", "R5")]
+    //public void TestParseR5ValueSetUnitsOfTime(string json)
+    //{
+    //    FhirJsonPocoDeserializer parser = new(new FhirJsonPocoDeserializerSettings()
+    //    {
+    //        DisableBase64Decoding = false,
+    //        Validator = null,
+    //    });
+
+    //    // always use lenient parsing
+    //    Resource parsed = parser.DeserializeResource(json);
+
+    //    parsed.ShouldNotBeNull();
+    //    parsed.ShouldBeOfType<ValueSet>();
+
+    //    ValueSet vs = (ValueSet)parsed;
+
+    //    vs.Expansion.ShouldNotBeNull();
+    //    vs.Expansion.Contains.ShouldNotBeEmpty();
+    //    vs.Expansion.Contains.Count.ShouldBe(7);
+
+    //    foreach (ValueSet.ContainsComponent cc in vs.Expansion.Contains)
+    //    {
+    //        cc.Display.ShouldStartWith(cc.Code);
+    //    }
+    //}
+
+    [Theory]
+    [FileData("TestData/R4B/ValueSet-nhin-purposeofuse.json")]
+    [Trait("Category", "Issues")]
+    [Trait("FhirVersion", "R4B")]
+    public void TestParseR4BValueSetNhinPOU(string json)
+    {
+        Hl7.Fhir.ElementModel.ISourceNode sn = FhirJsonNode.Parse(json);
+
+        Fhir.CodeGen.CrossVersionLoader.Converter_43_50 c = new();
+
+        Resource r = c.Convert(sn);
+
+        r.ShouldNotBeNull();
+        r.ShouldBeOfType<ValueSet>();
+
+        ValueSet vs = (ValueSet)r;
+
+        vs.Id.ShouldBe("nhin-purposeofuse");
+        vs.Name.ShouldBe("NHIN PurposeOfUse");
+        vs.Contained.ShouldNotBeEmpty();
+        vs.Contained[0].ShouldBeOfType<ConceptMap>();
+        vs.Contained[0].Id.ShouldBe("map");
+
+        vs.Experimental.ShouldBe(false);
+        vs.DateElement.ShouldBeEquivalentTo(new FhirDateTime(2010, 1, 29));
+    }
+
+    [Theory]
+    [FileData("TestData/R5/StructureDefinition-integer64.json")]
+    [Trait("Category", "Issues")]
+    [Trait("FhirVersion", "R5")]
+    public void TestParseR5StructureInt64(string json)
+    {
+        FhirJsonPocoDeserializer parser = new(new FhirJsonPocoDeserializerSettings()
+        {
+            DisableBase64Decoding = false,
+            Validator = null,
+            OnPrimitiveParseFailed = LocalPrimitiveParseHandler,
+        });
+
+        // always use lenient parsing
+        Resource parsed = parser.DeserializeResource(json);
+
+        parsed.ShouldNotBeNull();
+        parsed.ShouldBeOfType<StructureDefinition>();
+
+        StructureDefinition sd = (StructureDefinition)parsed;
+
+        sd.cgArtifactClass().ShouldBe(FhirArtifactClassEnum.PrimitiveType);
+    }
+
+    public (object?, FhirJsonException?) LocalPrimitiveParseHandler(
+        ref Utf8JsonReader reader,
+        Type targetType,
+        object? originalValue,
+        FhirJsonException originalException)
+    {
+        if (targetType == typeof(long))
+        {
+            if (originalValue is long ol)
+            {
+                return (ol, null);
+            }
+
+            if (originalValue is string s)
+            {
+                if (long.TryParse(s, out long l))
+                {
+                    return (l, null);
+                }
+            }
+        }
+
+        return (null, null);
+    }
+}
